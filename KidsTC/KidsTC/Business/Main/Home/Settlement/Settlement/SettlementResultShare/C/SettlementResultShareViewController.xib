@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettlementResultShareViewController">
+            <connections>
+                <outlet property="titleLabel" destination="7LO-OA-aak" id="QWB-ND-QDO"/>
+                <outlet property="view" destination="Ygo-JS-tD4" id="XLy-Ma-eHz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Ygo-JS-tD4">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5W-tu-7qb">
+                    <rect key="frame" x="564" y="30" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="z5W-tu-7qb" secondAttribute="height" multiplier="1:1" id="JFq-Qv-Hgi"/>
+                        <constraint firstAttribute="width" constant="16" id="QCp-Nd-pw1"/>
+                    </constraints>
+                    <state key="normal" image="shareClose"/>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="5TN-AX-pBm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8U2-5H-p8d">
+                    <rect key="frame" x="219" y="547" width="162" height="83"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="8U2-5H-p8d" secondAttribute="height" multiplier="284:145" id="A91-fr-1FO"/>
+                        <constraint firstAttribute="width" constant="100" id="t20-eX-hSD"/>
+                    </constraints>
+                    <state key="normal" image="shareBtn"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="t20-eX-hSD"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="share:" destination="-1" eventType="touchUpInside" id="DEr-tB-p5A"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfu-vc-NQL">
+                    <rect key="frame" x="138" y="73" width="324" height="454"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareImage" translatesAutoresizingMaskIntoConstraints="NO" id="VmJ-Il-qdl">
+                            <rect key="frame" x="50" y="162" width="223" height="292"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="VmJ-Il-qdl" secondAttribute="height" multiplier="192:251" id="e2S-jL-G1g"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R27-Dk-mDZ">
+                            <rect key="frame" x="0.0" y="0.0" width="324" height="206"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shareCloud" translatesAutoresizingMaskIntoConstraints="NO" id="PGa-Ji-YUk">
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="206"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LO-OA-aak">
+                                    <rect key="frame" x="12" y="12" width="300" height="182"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="PGa-Ji-YUk" firstAttribute="top" secondItem="R27-Dk-mDZ" secondAttribute="top" id="LWE-xx-FyL"/>
+                                <constraint firstAttribute="width" secondItem="R27-Dk-mDZ" secondAttribute="height" multiplier="443:281" id="V9w-Zy-vti"/>
+                                <constraint firstAttribute="bottom" secondItem="7LO-OA-aak" secondAttribute="bottom" constant="12" id="ZOf-sX-5EO"/>
+                                <constraint firstItem="7LO-OA-aak" firstAttribute="top" secondItem="R27-Dk-mDZ" secondAttribute="top" constant="12" id="f80-7i-9SB"/>
+                                <constraint firstAttribute="trailing" secondItem="7LO-OA-aak" secondAttribute="trailing" constant="12" id="mbs-0H-GwV"/>
+                                <constraint firstItem="PGa-Ji-YUk" firstAttribute="leading" secondItem="R27-Dk-mDZ" secondAttribute="leading" id="pDp-Ar-avv"/>
+                                <constraint firstItem="7LO-OA-aak" firstAttribute="leading" secondItem="R27-Dk-mDZ" secondAttribute="leading" constant="12" id="pmB-gv-mZH"/>
+                                <constraint firstAttribute="bottom" secondItem="PGa-Ji-YUk" secondAttribute="bottom" id="qco-P6-goz"/>
+                                <constraint firstAttribute="trailing" secondItem="PGa-Ji-YUk" secondAttribute="trailing" id="xHd-8w-vG3"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="VmJ-Il-qdl" secondAttribute="bottom" id="6Ed-0O-qAJ"/>
+                        <constraint firstItem="R27-Dk-mDZ" firstAttribute="top" secondItem="Qfu-vc-NQL" secondAttribute="top" id="8q4-yi-993"/>
+                        <constraint firstItem="R27-Dk-mDZ" firstAttribute="leading" secondItem="Qfu-vc-NQL" secondAttribute="leading" id="9Rp-N6-a5e"/>
+                        <constraint firstItem="VmJ-Il-qdl" firstAttribute="centerX" secondItem="Qfu-vc-NQL" secondAttribute="centerX" id="LZT-kg-S0B"/>
+                        <constraint firstItem="R27-Dk-mDZ" firstAttribute="bottom" secondItem="VmJ-Il-qdl" secondAttribute="top" constant="44" id="LhF-yU-27i"/>
+                        <constraint firstItem="VmJ-Il-qdl" firstAttribute="width" secondItem="Qfu-vc-NQL" secondAttribute="width" multiplier="0.69" id="R9r-nt-ZXW"/>
+                        <constraint firstAttribute="width" constant="200" id="nzi-4s-9oc"/>
+                        <constraint firstAttribute="trailing" secondItem="R27-Dk-mDZ" secondAttribute="trailing" id="rzG-us-FqQ"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="nzi-4s-9oc"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="z5W-tu-7qb" firstAttribute="top" secondItem="Ygo-JS-tD4" secondAttribute="top" constant="30" id="H7B-gz-q3a"/>
+                <constraint firstAttribute="trailing" secondItem="z5W-tu-7qb" secondAttribute="trailing" constant="20" id="IID-XU-9CW"/>
+                <constraint firstItem="8U2-5H-p8d" firstAttribute="width" secondItem="Qfu-vc-NQL" secondAttribute="width" multiplier="0.5" id="Pul-92-UjD"/>
+                <constraint firstItem="Qfu-vc-NQL" firstAttribute="centerY" secondItem="Ygo-JS-tD4" secondAttribute="centerY" id="Qnl-YR-4LY"/>
+                <constraint firstItem="Qfu-vc-NQL" firstAttribute="width" secondItem="Ygo-JS-tD4" secondAttribute="width" multiplier="0.54" id="cGy-Lb-GND"/>
+                <constraint firstItem="8U2-5H-p8d" firstAttribute="centerX" secondItem="Ygo-JS-tD4" secondAttribute="centerX" id="dSw-fA-XEe"/>
+                <constraint firstItem="8U2-5H-p8d" firstAttribute="top" secondItem="Qfu-vc-NQL" secondAttribute="bottom" constant="20" id="gyW-7W-4gn"/>
+                <constraint firstItem="Qfu-vc-NQL" firstAttribute="centerX" secondItem="Ygo-JS-tD4" secondAttribute="centerX" id="vjz-CI-BYa"/>
+            </constraints>
+            <point key="canvasLocation" x="243" y="141"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="shareBtn" width="284" height="145"/>
+        <image name="shareClose" width="33" height="33"/>
+        <image name="shareCloud" width="443" height="281"/>
+        <image name="shareImage" width="384" height="502"/>
+    </resources>
+</document>

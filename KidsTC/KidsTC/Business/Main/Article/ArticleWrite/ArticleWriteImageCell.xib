@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="ArticleWriteImageCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-fo-gZK">
+                        <rect key="frame" x="12" y="12" width="296" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="JRG-JO-r52"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygU-HB-mun">
+                        <rect key="frame" x="284" y="12" width="24" height="24"/>
+                        <state key="normal" image="compose_delete"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pGf-sL-7uA"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gO5-fo-gZK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="C94-V0-IWF"/>
+                    <constraint firstItem="ygU-HB-mun" firstAttribute="trailing" secondItem="gO5-fo-gZK" secondAttribute="trailing" id="JQr-Sq-zP6"/>
+                    <constraint firstItem="ygU-HB-mun" firstAttribute="top" secondItem="gO5-fo-gZK" secondAttribute="top" id="KyJ-c2-yij"/>
+                    <constraint firstItem="ygU-HB-mun" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="PtU-Tk-fP9"/>
+                    <constraint firstAttribute="bottom" secondItem="gO5-fo-gZK" secondAttribute="bottom" constant="12" id="TVS-bP-zz6"/>
+                    <constraint firstItem="gO5-fo-gZK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="XxR-dA-i5X"/>
+                    <constraint firstItem="ygU-HB-mun" firstAttribute="trailing" secondItem="gO5-fo-gZK" secondAttribute="trailing" id="cyG-eR-MWE"/>
+                    <constraint firstAttribute="trailing" secondItem="ygU-HB-mun" secondAttribute="trailing" constant="12" id="dsE-NV-hqy"/>
+                    <constraint firstAttribute="trailing" secondItem="gO5-fo-gZK" secondAttribute="trailing" constant="12" id="jRf-yb-OcP"/>
+                    <constraint firstItem="ygU-HB-mun" firstAttribute="top" secondItem="gO5-fo-gZK" secondAttribute="top" id="jw7-56-EEe"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="JQr-Sq-zP6"/>
+                        <exclude reference="KyJ-c2-yij"/>
+                        <exclude reference="PtU-Tk-fP9"/>
+                        <exclude reference="dsE-NV-hqy"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deleteBtn" destination="ygU-HB-mun" id="XcU-fE-uZU"/>
+                <outlet property="iconConstraintHeight" destination="JRG-JO-r52" id="PaH-UG-eak"/>
+                <outlet property="iconImageView" destination="gO5-fo-gZK" id="eur-pJ-UiV"/>
+            </connections>
+            <point key="canvasLocation" x="-1380" y="54.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="compose_delete" width="24" height="24"/>
+    </resources>
+</document>

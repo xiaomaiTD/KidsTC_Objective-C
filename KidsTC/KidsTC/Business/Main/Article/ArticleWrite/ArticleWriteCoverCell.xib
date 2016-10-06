@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="116" id="KGk-i7-Jjw" customClass="ArticleWriteCoverCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XDG-0q-xMx">
+                        <rect key="frame" x="12" y="12" width="296" height="85"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="105" id="DVV-CB-Suy"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLW-97-gvP">
+                        <rect key="frame" x="0.0" y="12" width="320" height="85"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_cover_default_iPhone6" translatesAutoresizingMaskIntoConstraints="NO" id="NM6-M3-YFY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWj-6a-co3">
+                                <rect key="frame" x="118" y="33" width="84" height="20"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compose_pic_big_add" translatesAutoresizingMaskIntoConstraints="NO" id="peD-DV-3fB">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="41U-2P-Bel"/>
+                                            <constraint firstAttribute="height" constant="20" id="dSG-tw-lbd"/>
+                                            <constraint firstAttribute="width" constant="40" id="dWe-fh-wtf"/>
+                                            <constraint firstAttribute="width" secondItem="peD-DV-3fB" secondAttribute="height" multiplier="1:1" id="l1T-HZ-W1d"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="dWe-fh-wtf"/>
+                                                <exclude reference="l1T-HZ-W1d"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加封面" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzC-tk-k3C">
+                                        <rect key="frame" x="24" y="0.0" width="60" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="BzC-tk-k3C" firstAttribute="top" secondItem="oWj-6a-co3" secondAttribute="top" id="1cv-Yv-LVh"/>
+                                    <constraint firstItem="BzC-tk-k3C" firstAttribute="leading" secondItem="peD-DV-3fB" secondAttribute="trailing" constant="4" id="QGe-vC-LQ8"/>
+                                    <constraint firstItem="peD-DV-3fB" firstAttribute="leading" secondItem="oWj-6a-co3" secondAttribute="leading" id="d30-df-BTm"/>
+                                    <constraint firstItem="peD-DV-3fB" firstAttribute="top" secondItem="oWj-6a-co3" secondAttribute="top" id="ekf-af-Km1"/>
+                                    <constraint firstAttribute="trailing" secondItem="BzC-tk-k3C" secondAttribute="trailing" id="hqh-zn-La1"/>
+                                    <constraint firstAttribute="bottom" secondItem="peD-DV-3fB" secondAttribute="bottom" id="qMZ-uI-VIQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="BzC-tk-k3C" secondAttribute="bottom" id="uMm-Yo-rg6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NM6-M3-YFY" secondAttribute="bottom" id="2Wq-U1-cJl"/>
+                            <constraint firstItem="oWj-6a-co3" firstAttribute="centerY" secondItem="DLW-97-gvP" secondAttribute="centerY" id="6ul-zm-HeR"/>
+                            <constraint firstAttribute="trailing" secondItem="NM6-M3-YFY" secondAttribute="trailing" id="Aql-oA-2ZH"/>
+                            <constraint firstItem="NM6-M3-YFY" firstAttribute="top" secondItem="DLW-97-gvP" secondAttribute="top" id="SJl-Zx-ruS"/>
+                            <constraint firstItem="oWj-6a-co3" firstAttribute="centerX" secondItem="DLW-97-gvP" secondAttribute="centerX" id="m8Q-ly-cRA"/>
+                            <constraint firstItem="NM6-M3-YFY" firstAttribute="leading" secondItem="DLW-97-gvP" secondAttribute="leading" id="vRL-Na-9C5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DLW-97-gvP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="03d-X2-Skk"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="4Rr-kN-muZ"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="top" secondItem="DLW-97-gvP" secondAttribute="top" id="4m8-jI-O3B"/>
+                    <constraint firstItem="DLW-97-gvP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="BIb-kn-gZz"/>
+                    <constraint firstAttribute="bottom" secondItem="XDG-0q-xMx" secondAttribute="bottom" constant="12" id="DgD-Pj-7fU"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ULZ-Zs-Fce"/>
+                    <constraint firstItem="DLW-97-gvP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="VLf-4S-clB"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="f81-nE-IsT"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="l8A-rg-dmo"/>
+                    <constraint firstAttribute="trailing" secondItem="XDG-0q-xMx" secondAttribute="trailing" constant="12" id="pWa-bc-fUs"/>
+                    <constraint firstAttribute="trailing" secondItem="DLW-97-gvP" secondAttribute="trailing" id="vVS-Bw-tjQ"/>
+                    <constraint firstItem="XDG-0q-xMx" firstAttribute="leading" secondItem="DLW-97-gvP" secondAttribute="leading" id="wfM-px-StT"/>
+                    <constraint firstAttribute="bottom" secondItem="DLW-97-gvP" secondAttribute="bottom" constant="12" id="wwa-XE-k6o"/>
+                    <constraint firstItem="DLW-97-gvP" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yvR-0r-KP7"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="4m8-jI-O3B"/>
+                        <exclude reference="wfM-px-StT"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="coverImageView" destination="XDG-0q-xMx" id="QF3-ig-pRB"/>
+                <outlet property="placeHolderView" destination="DLW-97-gvP" id="WyB-2u-xih"/>
+            </connections>
+            <point key="canvasLocation" x="-808" y="257"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="compose_cover_default_iPhone6" width="375" height="88"/>
+        <image name="compose_pic_big_add" width="24" height="24"/>
+    </resources>
+</document>

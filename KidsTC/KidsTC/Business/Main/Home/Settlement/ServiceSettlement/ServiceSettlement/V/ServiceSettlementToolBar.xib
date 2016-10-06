@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ServiceSettlementToolBar">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shc-1n-dSx">
+                    <rect key="frame" x="60" y="0.0" width="340" height="50"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="commitAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="KbC-9c-lLo"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdt-9d-oDx">
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnN-1j-N0u">
+                            <rect key="frame" x="30" y="25" width="0.0" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="NnN-1j-N0u" firstAttribute="centerY" secondItem="tdt-9d-oDx" secondAttribute="centerY" id="GSc-hc-jEK"/>
+                        <constraint firstItem="NnN-1j-N0u" firstAttribute="leading" secondItem="tdt-9d-oDx" secondAttribute="leading" constant="30" id="UKS-iR-Bg6"/>
+                        <constraint firstAttribute="trailing" secondItem="NnN-1j-N0u" secondAttribute="trailing" constant="30" id="ftO-2s-cbO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tdt-9d-oDx" secondAttribute="bottom" id="4ue-ro-0gi"/>
+                <constraint firstAttribute="trailing" secondItem="Shc-1n-dSx" secondAttribute="trailing" id="FdI-9u-E9y"/>
+                <constraint firstItem="tdt-9d-oDx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Iay-ho-D5o"/>
+                <constraint firstItem="tdt-9d-oDx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yak-lh-kPf"/>
+                <constraint firstItem="Shc-1n-dSx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="foI-RI-2Wk"/>
+                <constraint firstAttribute="bottom" secondItem="Shc-1n-dSx" secondAttribute="bottom" id="m6u-6H-YbC"/>
+                <constraint firstItem="Shc-1n-dSx" firstAttribute="leading" secondItem="tdt-9d-oDx" secondAttribute="trailing" id="wn5-NC-qH3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="commitBtn" destination="Shc-1n-dSx" id="zaW-bo-jwR"/>
+                <outlet property="totalPriceLabel" destination="NnN-1j-N0u" id="KTv-CO-uBo"/>
+            </connections>
+            <point key="canvasLocation" x="813" y="396"/>
+        </view>
+    </objects>
+</document>

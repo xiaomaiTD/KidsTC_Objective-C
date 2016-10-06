@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="138" id="q6g-Ss-ASb" customClass="FlashAdvanceSettlementServiceInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q6g-Ss-ASb" id="ED4-iU-ALh">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_100_100" translatesAutoresizingMaskIntoConstraints="NO" id="DWI-RS-lxL">
+                        <rect key="frame" x="8" y="8" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="UIn-zX-4Id"/>
+                            <constraint firstAttribute="width" secondItem="DWI-RS-lxL" secondAttribute="height" multiplier="1:1" id="uhp-cW-bzN"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNh-JH-kVn">
+                        <rect key="frame" x="88" y="0.0" width="232" height="131"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="¥10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot4-KW-Xmg">
+                                <rect key="frame" x="8" y="102" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c9-db-v17">
+                                <rect key="frame" x="8" y="8" width="216" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Ot4-KW-Xmg" firstAttribute="top" secondItem="7c9-db-v17" secondAttribute="bottom" constant="8" id="Hc5-hE-st9"/>
+                            <constraint firstItem="7c9-db-v17" firstAttribute="leading" secondItem="pNh-JH-kVn" secondAttribute="leading" constant="8" id="RcA-pu-dT2"/>
+                            <constraint firstAttribute="trailing" secondItem="7c9-db-v17" secondAttribute="trailing" constant="8" id="Y7d-Jy-OJt"/>
+                            <constraint firstAttribute="bottom" secondItem="Ot4-KW-Xmg" secondAttribute="bottom" constant="8" id="d5L-kH-cv0"/>
+                            <constraint firstItem="Ot4-KW-Xmg" firstAttribute="leading" secondItem="pNh-JH-kVn" secondAttribute="leading" constant="8" id="eJH-R9-LQG"/>
+                            <constraint firstItem="7c9-db-v17" firstAttribute="top" secondItem="pNh-JH-kVn" secondAttribute="top" constant="8" id="w4M-FZ-J6q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DWI-RS-lxL" secondAttribute="bottom" constant="8" id="0ha-eB-0ti"/>
+                    <constraint firstItem="DWI-RS-lxL" firstAttribute="centerY" secondItem="ED4-iU-ALh" secondAttribute="centerY" id="12T-Wg-jS6"/>
+                    <constraint firstAttribute="bottom" secondItem="pNh-JH-kVn" secondAttribute="bottom" id="1Rj-1s-lU6"/>
+                    <constraint firstItem="DWI-RS-lxL" firstAttribute="leading" secondItem="ED4-iU-ALh" secondAttribute="leading" constant="8" id="Fxp-qO-ro6"/>
+                    <constraint firstItem="pNh-JH-kVn" firstAttribute="top" secondItem="ED4-iU-ALh" secondAttribute="top" id="X7p-hC-TQi"/>
+                    <constraint firstAttribute="trailing" secondItem="pNh-JH-kVn" secondAttribute="trailing" id="aYC-pp-p6k"/>
+                    <constraint firstItem="pNh-JH-kVn" firstAttribute="leading" secondItem="DWI-RS-lxL" secondAttribute="trailing" id="gK9-1B-jVw"/>
+                    <constraint firstItem="DWI-RS-lxL" firstAttribute="top" secondItem="ED4-iU-ALh" secondAttribute="top" constant="8" id="jJt-Vo-ZZI"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="12T-Wg-jS6"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImageView" destination="DWI-RS-lxL" id="3ym-Vx-D66"/>
+                <outlet property="priceLabel" destination="Ot4-KW-Xmg" id="bdI-HU-xbT"/>
+                <outlet property="serveDescLabel" destination="7c9-db-v17" id="arx-aB-EUU"/>
+            </connections>
+            <point key="canvasLocation" x="379" y="511"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder_100_100" width="100" height="100"/>
+    </resources>
+</document>

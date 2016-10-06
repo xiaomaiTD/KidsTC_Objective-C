@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettlementResultViewController">
+            <connections>
+                <outlet property="detailBtn" destination="Xiv-Be-1OV" id="Fqw-NB-XXc"/>
+                <outlet property="goHomeBtn" destination="b6S-TY-WHT" id="mom-t5-tiL"/>
+                <outlet property="subTipLabel" destination="K57-1R-fR9" id="LFe-Pf-E1u"/>
+                <outlet property="tipLabel" destination="IUa-PM-T4h" id="rDF-uy-34m"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfQ-Ho-DkU">
+                    <rect key="frame" x="0.0" y="84" width="600" height="99"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您取消了支付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUa-PM-T4h">
+                            <rect key="frame" x="249" y="20" width="102" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您可以查看订单，重新支付！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K57-1R-fR9">
+                            <rect key="frame" x="203" y="61" width="195" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="K57-1R-fR9" firstAttribute="centerX" secondItem="ZfQ-Ho-DkU" secondAttribute="centerX" id="9Ax-KD-rdg"/>
+                        <constraint firstItem="K57-1R-fR9" firstAttribute="top" secondItem="IUa-PM-T4h" secondAttribute="bottom" constant="20" id="C8y-Bj-sca"/>
+                        <constraint firstAttribute="bottom" secondItem="K57-1R-fR9" secondAttribute="bottom" constant="20" id="Qi2-yG-zK3"/>
+                        <constraint firstAttribute="height" constant="100" id="Qtt-O5-11p"/>
+                        <constraint firstItem="IUa-PM-T4h" firstAttribute="top" secondItem="ZfQ-Ho-DkU" secondAttribute="top" constant="20" id="feH-74-bEg"/>
+                        <constraint firstItem="IUa-PM-T4h" firstAttribute="centerX" secondItem="ZfQ-Ho-DkU" secondAttribute="centerX" id="pbO-Op-zZS"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Qtt-O5-11p"/>
+                        </mask>
+                    </variation>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msc-eK-IIv">
+                    <rect key="frame" x="182" y="191" width="236" height="55"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6S-TY-WHT">
+                            <rect key="frame" x="128" y="13" width="100" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="回到首页">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goHome:" destination="-1" eventType="touchUpInside" id="ewr-fK-Ten"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiv-Be-1OV">
+                            <rect key="frame" x="8" y="13" width="100" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="KxX-AZ-i4g"/>
+                            </constraints>
+                            <state key="normal" title="订单详情">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="detail:" destination="-1" eventType="touchUpInside" id="wnu-gK-N1G"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="b6S-TY-WHT" firstAttribute="leading" secondItem="Xiv-Be-1OV" secondAttribute="trailing" constant="20" id="3Qs-eY-scx"/>
+                        <constraint firstItem="Xiv-Be-1OV" firstAttribute="centerY" secondItem="Msc-eK-IIv" secondAttribute="centerY" id="AvQ-Vq-Nm5"/>
+                        <constraint firstAttribute="trailing" secondItem="b6S-TY-WHT" secondAttribute="trailing" constant="8" id="EBh-qc-P4i"/>
+                        <constraint firstItem="Xiv-Be-1OV" firstAttribute="leading" secondItem="Msc-eK-IIv" secondAttribute="leading" constant="8" id="FCF-YP-RLN"/>
+                        <constraint firstItem="b6S-TY-WHT" firstAttribute="centerY" secondItem="Xiv-Be-1OV" secondAttribute="centerY" id="JfD-EJ-3iU"/>
+                        <constraint firstItem="Xiv-Be-1OV" firstAttribute="top" secondItem="Msc-eK-IIv" secondAttribute="top" constant="13" id="Rgq-al-I5h"/>
+                        <constraint firstItem="b6S-TY-WHT" firstAttribute="width" secondItem="Xiv-Be-1OV" secondAttribute="width" id="WAL-nM-IPG"/>
+                        <constraint firstAttribute="bottom" secondItem="Xiv-Be-1OV" secondAttribute="bottom" constant="12" id="Z6H-RK-vfw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ZfQ-Ho-DkU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="cTx-MJ-oKU"/>
+                <constraint firstAttribute="trailing" secondItem="ZfQ-Ho-DkU" secondAttribute="trailing" id="qp6-vi-mHW"/>
+                <constraint firstItem="Msc-eK-IIv" firstAttribute="top" secondItem="ZfQ-Ho-DkU" secondAttribute="bottom" constant="8" id="sZr-fy-HgA"/>
+                <constraint firstItem="ZfQ-Ho-DkU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uJM-IY-lOQ"/>
+                <constraint firstItem="Msc-eK-IIv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zN2-DV-zSh"/>
+            </constraints>
+            <point key="canvasLocation" x="868" y="468"/>
+        </view>
+    </objects>
+</document>

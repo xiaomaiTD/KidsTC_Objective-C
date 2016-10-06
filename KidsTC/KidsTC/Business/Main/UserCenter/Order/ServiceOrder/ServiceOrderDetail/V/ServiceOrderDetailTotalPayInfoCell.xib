@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ServiceOrderDetailTotalPayInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwF-Fh-pMh">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="RPP-Ce-qgy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <color key="textColor" red="1" green="0.59999999999999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实付款" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjn-D9-MeE">
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-IN-Btl">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Hl0-l0-b2E"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jwF-Fh-pMh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Ak-yl-5WO"/>
+                    <constraint firstAttribute="trailing" secondItem="jwF-Fh-pMh" secondAttribute="trailing" constant="12" id="1hF-hb-yW9"/>
+                    <constraint firstItem="3c3-IN-Btl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="70T-Vm-VNd"/>
+                    <constraint firstAttribute="trailing" secondItem="3c3-IN-Btl" secondAttribute="trailing" id="7Oj-kG-Xah"/>
+                    <constraint firstItem="Xjn-D9-MeE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D3V-Gy-5YW"/>
+                    <constraint firstAttribute="bottom" secondItem="3c3-IN-Btl" secondAttribute="bottom" id="Wrs-SW-afs"/>
+                    <constraint firstItem="jwF-Fh-pMh" firstAttribute="leading" secondItem="Xjn-D9-MeE" secondAttribute="trailing" constant="12" id="Xzn-c0-kAs"/>
+                    <constraint firstAttribute="bottom" secondItem="jwF-Fh-pMh" secondAttribute="bottom" id="YWB-OE-j8p"/>
+                    <constraint firstAttribute="bottom" secondItem="Xjn-D9-MeE" secondAttribute="bottom" id="zfS-bd-d1i"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="Hl0-l0-b2E" id="uM2-bA-vsG"/>
+                <outlet property="line" destination="3c3-IN-Btl" id="vZJ-IF-hTT"/>
+                <outlet property="totalPriceLabel" destination="jwF-Fh-pMh" id="E3M-Pf-ocX"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

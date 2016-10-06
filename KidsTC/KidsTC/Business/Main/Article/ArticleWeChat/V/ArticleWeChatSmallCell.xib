@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleWeChatSmallCell" id="KGk-i7-Jjw" customClass="ArticleWeChatSmallCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jV1-7c-9ic">
+                        <rect key="frame" x="269" y="8" width="27" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jV1-7c-9ic" secondAttribute="height" multiplier="1:1" id="4pY-V6-rC0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYl-AD-d8K">
+                        <rect key="frame" x="24" y="8" width="237" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jV1-7c-9ic" secondAttribute="bottom" constant="8" id="0ng-Pi-GHP"/>
+                    <constraint firstItem="jV1-7c-9ic" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="1dZ-4f-O0r"/>
+                    <constraint firstAttribute="trailing" secondItem="jV1-7c-9ic" secondAttribute="trailing" constant="24" id="2IV-v8-R9U"/>
+                    <constraint firstItem="FYl-AD-d8K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="3rS-xJ-Yp2"/>
+                    <constraint firstItem="FYl-AD-d8K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="BZP-2S-9Qj"/>
+                    <constraint firstItem="jV1-7c-9ic" firstAttribute="leading" secondItem="FYl-AD-d8K" secondAttribute="trailing" constant="8" id="Oos-ke-jtA"/>
+                    <constraint firstAttribute="bottom" secondItem="FYl-AD-d8K" secondAttribute="bottom" constant="8" id="jC4-0j-Xfx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImageView" destination="jV1-7c-9ic" id="NHx-qs-K4k"/>
+                <outlet property="titleLabel" destination="FYl-AD-d8K" id="Fcp-M0-Xig"/>
+            </connections>
+            <point key="canvasLocation" x="246" y="424"/>
+        </tableViewCell>
+    </objects>
+</document>

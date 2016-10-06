@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="KGk-i7-Jjw" customClass="OrderBookingSelectTimeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oax-Pe-Y32">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="tkC-oB-Z1t"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqS-dY-qYM">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-09-02(周五) 09:00-10:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35T-lB-Et9">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="预约时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR0-rp-5yN">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="35T-lB-Et9" firstAttribute="leading" secondItem="cqS-dY-qYM" secondAttribute="leading" id="0DG-X6-ixX"/>
+                            <constraint firstItem="IR0-rp-5yN" firstAttribute="leading" secondItem="cqS-dY-qYM" secondAttribute="leading" id="8xS-ug-JJC"/>
+                            <constraint firstAttribute="trailing" secondItem="35T-lB-Et9" secondAttribute="trailing" id="ChF-JN-h7X"/>
+                            <constraint firstAttribute="bottom" secondItem="35T-lB-Et9" secondAttribute="bottom" id="Mfh-4h-c2h"/>
+                            <constraint firstItem="IR0-rp-5yN" firstAttribute="top" secondItem="cqS-dY-qYM" secondAttribute="top" id="NUf-ib-hen"/>
+                            <constraint firstAttribute="trailing" secondItem="IR0-rp-5yN" secondAttribute="trailing" id="YhR-ha-2kf"/>
+                            <constraint firstItem="35T-lB-Et9" firstAttribute="top" secondItem="IR0-rp-5yN" secondAttribute="bottom" constant="8" id="gW2-ek-aU2"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="zza-oT-B7J"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="booking_time01" translatesAutoresizingMaskIntoConstraints="NO" id="ztS-PP-ivD">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Wou-Qz-ppG"/>
+                            <constraint firstAttribute="width" secondItem="ztS-PP-ivD" secondAttribute="height" multiplier="1:1" id="sKc-Ld-QnO"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Oax-Pe-Y32" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="79W-AS-OrL"/>
+                    <constraint firstItem="Oax-Pe-Y32" firstAttribute="top" secondItem="cqS-dY-qYM" secondAttribute="bottom" constant="12" id="DLI-Js-9f6"/>
+                    <constraint firstItem="cqS-dY-qYM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="DiE-2C-JoX"/>
+                    <constraint firstAttribute="trailing" secondItem="Oax-Pe-Y32" secondAttribute="trailing" id="JL5-fD-tVh"/>
+                    <constraint firstItem="cqS-dY-qYM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Nul-1p-dPY"/>
+                    <constraint firstAttribute="bottom" secondItem="Oax-Pe-Y32" secondAttribute="bottom" id="fXU-AZ-rsY"/>
+                    <constraint firstAttribute="trailing" secondItem="ztS-PP-ivD" secondAttribute="trailing" constant="12" id="k7q-44-mmh"/>
+                    <constraint firstItem="ztS-PP-ivD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tv1-hb-5ut"/>
+                    <constraint firstItem="ztS-PP-ivD" firstAttribute="leading" secondItem="cqS-dY-qYM" secondAttribute="trailing" constant="8" id="v4R-Ez-7PP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="tkC-oB-Z1t" id="dyj-tO-ec4"/>
+                <outlet property="timeLabel" destination="35T-lB-Et9" id="8Rv-Hk-m3v"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="25.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="booking_time01" width="74" height="78"/>
+    </resources>
+</document>

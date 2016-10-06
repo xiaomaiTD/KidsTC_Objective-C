@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="KGk-i7-Jjw" customClass="FlashAdvanceSettlementReadRuleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuk-Cu-7vj">
+                        <rect key="frame" x="36" y="8" width="249" height="28"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTg-f8-NMd">
+                                <rect key="frame" x="28" y="6" width="119" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="HBh-3U-Rfe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3a-y5-HS5">
+                                <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="F3a-y5-HS5" secondAttribute="height" multiplier="1:1" id="MTV-TG-qUG"/>
+                                    <constraint firstAttribute="width" constant="28" id="gcd-gY-jkl"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                <state key="normal" image="check_no"/>
+                                <state key="selected" image="check_yes"/>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kU1-le-kcE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZO-ap-RUc">
+                                <rect key="frame" x="147" y="6" width="102" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="QPO-JV-4qg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="《闪购规则》">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5Nj-uw-TXS"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wtw-sT-5Qy">
+                                <rect key="frame" x="155" y="23" width="86" height="1"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="1PF-vC-lGR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jTg-f8-NMd" firstAttribute="centerY" secondItem="yuk-Cu-7vj" secondAttribute="centerY" id="0Qk-Wi-iBQ"/>
+                            <constraint firstAttribute="bottom" secondItem="F3a-y5-HS5" secondAttribute="bottom" id="DZv-r3-TqV"/>
+                            <constraint firstAttribute="bottom" secondItem="rZO-ap-RUc" secondAttribute="bottom" id="ECb-v1-IWa"/>
+                            <constraint firstItem="jTg-f8-NMd" firstAttribute="top" secondItem="yuk-Cu-7vj" secondAttribute="top" id="Nyd-Fc-Vsb"/>
+                            <constraint firstAttribute="bottom" secondItem="jTg-f8-NMd" secondAttribute="bottom" id="Shb-Kp-brt"/>
+                            <constraint firstItem="Wtw-sT-5Qy" firstAttribute="leading" secondItem="rZO-ap-RUc" secondAttribute="leading" constant="8" id="dtF-qI-hL2"/>
+                            <constraint firstItem="Wtw-sT-5Qy" firstAttribute="top" secondItem="rZO-ap-RUc" secondAttribute="bottom" id="jOB-Q5-Y7I"/>
+                            <constraint firstItem="jTg-f8-NMd" firstAttribute="leading" secondItem="F3a-y5-HS5" secondAttribute="trailing" id="lOC-wi-4KF"/>
+                            <constraint firstAttribute="trailing" secondItem="rZO-ap-RUc" secondAttribute="trailing" id="lQi-Cj-pr9"/>
+                            <constraint firstItem="rZO-ap-RUc" firstAttribute="leading" secondItem="jTg-f8-NMd" secondAttribute="trailing" id="piO-Qy-mBv"/>
+                            <constraint firstItem="rZO-ap-RUc" firstAttribute="top" secondItem="yuk-Cu-7vj" secondAttribute="top" id="qFo-yW-LQO"/>
+                            <constraint firstItem="F3a-y5-HS5" firstAttribute="leading" secondItem="yuk-Cu-7vj" secondAttribute="leading" id="t2w-vS-6Am"/>
+                            <constraint firstItem="rZO-ap-RUc" firstAttribute="centerY" secondItem="yuk-Cu-7vj" secondAttribute="centerY" id="voa-AJ-Hge"/>
+                            <constraint firstItem="F3a-y5-HS5" firstAttribute="top" secondItem="yuk-Cu-7vj" secondAttribute="top" id="x3T-v8-qcs"/>
+                            <constraint firstItem="Wtw-sT-5Qy" firstAttribute="trailing" secondItem="rZO-ap-RUc" secondAttribute="trailing" constant="-8" id="xhX-3R-2gM"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Nyd-Fc-Vsb"/>
+                                <exclude reference="Shb-Kp-brt"/>
+                                <exclude reference="ECb-v1-IWa"/>
+                                <exclude reference="qFo-yW-LQO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yuk-Cu-7vj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="K4e-Gw-Uyg"/>
+                    <constraint firstItem="yuk-Cu-7vj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xl4-N6-LFY"/>
+                    <constraint firstItem="yuk-Cu-7vj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e3x-lJ-6UX"/>
+                    <constraint firstAttribute="bottom" secondItem="yuk-Cu-7vj" secondAttribute="bottom" constant="8" id="nxR-mO-5Sp"/>
+                    <constraint firstItem="yuk-Cu-7vj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oLs-fK-WcX"/>
+                    <constraint firstAttribute="bottom" secondItem="yuk-Cu-7vj" secondAttribute="bottom" id="qUC-dc-hz4"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Xl4-N6-LFY"/>
+                        <exclude reference="qUC-dc-hz4"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="HLine" destination="Wtw-sT-5Qy" id="hyZ-oK-U4s"/>
+                <outlet property="HLineConstraintHeight" destination="1PF-vC-lGR" id="1Hk-Hx-Aeh"/>
+                <outlet property="checkRuleBtn" destination="F3a-y5-HS5" id="peg-zc-S2J"/>
+                <outlet property="readRuleBtn" destination="rZO-ap-RUc" id="P4P-0d-Vjm"/>
+            </connections>
+            <point key="canvasLocation" x="579" y="374.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="check_no" width="30" height="30"/>
+        <image name="check_yes" width="30" height="30"/>
+    </resources>
+</document>

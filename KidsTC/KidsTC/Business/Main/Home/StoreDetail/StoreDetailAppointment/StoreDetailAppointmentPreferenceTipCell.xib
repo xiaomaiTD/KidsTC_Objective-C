@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="StoreDetailAppointmentPreferenceTipCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="童成为您谋福利，预约即可享有" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4a3-Ec-v4w">
+                        <rect key="frame" x="8" y="8" width="304" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9Y-6N-il7">
+                        <rect key="frame" x="8" y="43" width="304" height="0.0"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="o18-rM-uma"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w9Y-6N-il7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="407-V4-ptH"/>
+                    <constraint firstAttribute="bottom" secondItem="4a3-Ec-v4w" secondAttribute="bottom" constant="8" id="5Au-FQ-80Y"/>
+                    <constraint firstAttribute="trailing" secondItem="w9Y-6N-il7" secondAttribute="trailing" constant="8" id="JeG-Xf-2Ef"/>
+                    <constraint firstAttribute="trailing" secondItem="4a3-Ec-v4w" secondAttribute="trailing" constant="8" id="RXf-RC-Ynt"/>
+                    <constraint firstItem="4a3-Ec-v4w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="SzZ-4a-IxY"/>
+                    <constraint firstAttribute="bottom" secondItem="w9Y-6N-il7" secondAttribute="bottom" id="Zmh-oa-sf0"/>
+                    <constraint firstItem="4a3-Ec-v4w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="g6b-Or-ThG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="o18-rM-uma" id="iBJ-GI-ltT"/>
+            </connections>
+            <point key="canvasLocation" x="771" y="407"/>
+        </tableViewCell>
+    </objects>
+</document>

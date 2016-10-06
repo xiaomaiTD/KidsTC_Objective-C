@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="gXO-Em-adg" customClass="ServiceOrderDetailRefundInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gXO-Em-adg" id="hgJ-sI-8Ci">
+                <frame key="frameInset" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kc-VP-wqU">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-Qb-Ue0">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="6wE-fY-vnO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Kc-VP-wqU" firstAttribute="leading" secondItem="hgJ-sI-8Ci" secondAttribute="leading" constant="12" id="4xy-hm-68o"/>
+                    <constraint firstAttribute="bottom" secondItem="6Kc-VP-wqU" secondAttribute="bottom" constant="12" id="IJ8-Wh-g0u"/>
+                    <constraint firstItem="gEO-Qb-Ue0" firstAttribute="leading" secondItem="hgJ-sI-8Ci" secondAttribute="leading" id="Xaf-eY-zEg"/>
+                    <constraint firstAttribute="trailing" secondItem="gEO-Qb-Ue0" secondAttribute="trailing" id="YJl-hY-wSc"/>
+                    <constraint firstItem="6Kc-VP-wqU" firstAttribute="top" secondItem="hgJ-sI-8Ci" secondAttribute="top" constant="12" id="fsz-9A-0KI"/>
+                    <constraint firstAttribute="trailing" secondItem="6Kc-VP-wqU" secondAttribute="trailing" constant="12" id="n13-W2-TfJ"/>
+                    <constraint firstAttribute="bottom" secondItem="gEO-Qb-Ue0" secondAttribute="bottom" id="pf9-BN-0ju"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="6wE-fY-vnO" id="rfq-uy-x1G"/>
+                <outlet property="refundDescLabel" destination="6Kc-VP-wqU" id="8YH-kH-y6R"/>
+            </connections>
+            <point key="canvasLocation" x="760" y="372"/>
+        </tableViewCell>
+    </objects>
+</document>

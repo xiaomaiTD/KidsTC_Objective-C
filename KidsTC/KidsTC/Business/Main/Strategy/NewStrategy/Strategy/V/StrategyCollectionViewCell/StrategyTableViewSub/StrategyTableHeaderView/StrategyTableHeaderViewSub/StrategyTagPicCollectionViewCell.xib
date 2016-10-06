@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StrategyTagPicCollectionViewCellID" id="gTV-IL-0wX" customClass="StrategyTagPicCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="226" height="159"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="226" height="159"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eGc-RJ-cJj">
+                        <rect key="frame" x="0.0" y="0.0" width="226" height="159"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="eGc-RJ-cJj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="68k-9w-bJC"/>
+                <constraint firstAttribute="bottom" secondItem="eGc-RJ-cJj" secondAttribute="bottom" id="N46-E3-11a"/>
+                <constraint firstAttribute="trailing" secondItem="eGc-RJ-cJj" secondAttribute="trailing" id="ham-mY-Dgw"/>
+                <constraint firstItem="eGc-RJ-cJj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yMZ-Kl-UCt"/>
+            </constraints>
+            <size key="customSize" width="226" height="159"/>
+            <connections>
+                <outlet property="iconImageView" destination="eGc-RJ-cJj" id="qwW-SS-USM"/>
+            </connections>
+            <point key="canvasLocation" x="321" y="432.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

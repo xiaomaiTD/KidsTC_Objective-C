@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="serveDetailCellReuseIdentifier" rowHeight="175" id="KGk-i7-Jjw" customClass="FDServeDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="385" height="174"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAC-2A-UD6">
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="174"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aAC-2A-UD6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="87X-ap-mYQ"/>
+                    <constraint firstItem="aAC-2A-UD6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="YP2-jL-AVu"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aAC-2A-UD6" secondAttribute="trailing" constant="-8" id="kWw-iB-duv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="aAC-2A-UD6" secondAttribute="bottom" constant="-8" id="rwd-le-9dg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="webView" destination="aAC-2A-UD6" id="VNQ-RY-LG2"/>
+            </connections>
+            <point key="canvasLocation" x="414.5" y="469.5"/>
+        </tableViewCell>
+    </objects>
+</document>

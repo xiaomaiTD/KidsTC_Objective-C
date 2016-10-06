@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FlashBalanceSettlementScoreCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVq-zX-fVN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqb-E2-1Qw">
+                                <rect key="frame" x="8" y="8" width="34" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8P-bE-tCk">
+                                <rect key="frame" x="50" y="13" width="38" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOB-Ic-r8F">
+                                <rect key="frame" x="278" y="11" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Ah-8I-NUT">
+                                <rect key="frame" x="242" y="13" width="34" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="T1Z-S7-HxP"/>
+                                    <constraint firstAttribute="height" constant="21" id="fXY-cW-z1b"/>
+                                    <constraint firstAttribute="height" constant="17" id="jtz-2T-1yO"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fXY-cW-z1b"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="8ij-Us-ma8"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="FOB-Ic-r8F" firstAttribute="centerY" secondItem="6Ah-8I-NUT" secondAttribute="centerY" id="36v-20-TBS"/>
+                            <constraint firstItem="FOB-Ic-r8F" firstAttribute="centerY" secondItem="Fqb-E2-1Qw" secondAttribute="centerY" id="K66-sw-8qG"/>
+                            <constraint firstAttribute="bottom" secondItem="Fqb-E2-1Qw" secondAttribute="bottom" constant="8" id="KdO-We-ei2"/>
+                            <constraint firstItem="Fqb-E2-1Qw" firstAttribute="top" secondItem="EVq-zX-fVN" secondAttribute="top" constant="8" id="NK9-qc-D2R"/>
+                            <constraint firstItem="FOB-Ic-r8F" firstAttribute="leading" secondItem="6Ah-8I-NUT" secondAttribute="trailing" constant="2" id="Rhw-FN-k8m"/>
+                            <constraint firstItem="Fqb-E2-1Qw" firstAttribute="leading" secondItem="EVq-zX-fVN" secondAttribute="leading" constant="8" id="e3e-3E-Rd1"/>
+                            <constraint firstItem="S8P-bE-tCk" firstAttribute="leading" secondItem="Fqb-E2-1Qw" secondAttribute="trailing" constant="8" id="nPu-gL-X5E"/>
+                            <constraint firstAttribute="trailing" secondItem="FOB-Ic-r8F" secondAttribute="trailing" constant="8" id="qSJ-k1-gpk"/>
+                            <constraint firstItem="S8P-bE-tCk" firstAttribute="centerY" secondItem="Fqb-E2-1Qw" secondAttribute="centerY" id="yBE-FB-uoY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EVq-zX-fVN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WRe-h8-Wfc"/>
+                    <constraint firstAttribute="trailing" secondItem="EVq-zX-fVN" secondAttribute="trailing" id="qNj-LU-Pqy"/>
+                    <constraint firstAttribute="bottom" secondItem="EVq-zX-fVN" secondAttribute="bottom" id="sNY-De-COd"/>
+                    <constraint firstItem="EVq-zX-fVN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xQH-oU-cxJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="scoreBGView" destination="EVq-zX-fVN" id="RFL-bt-2c0"/>
+                <outlet property="scoreInputTf" destination="6Ah-8I-NUT" id="Shd-PK-NgY"/>
+                <outlet property="scoreTipLabel" destination="S8P-bE-tCk" id="Y7E-4S-jft"/>
+                <outlet property="useScoreTipLabel" destination="FOB-Ic-r8F" id="7Z9-8f-Vqw"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

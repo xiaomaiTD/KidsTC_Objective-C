@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="155" id="MHT-gM-f5S" customClass="FlashServiceOrderDetailServiceInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MHT-gM-f5S" id="WYT-Ug-b6q">
+                <frame key="frameInset" width="320" height="148"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_100_100" translatesAutoresizingMaskIntoConstraints="NO" id="E1b-Yq-bi3">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="E1b-Yq-bi3" secondAttribute="height" multiplier="1:1" id="myz-Qa-LIo"/>
+                            <constraint firstAttribute="width" constant="80" id="vax-gH-7cZ"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUj-Je-N6W">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="待使用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDe-Zd-oyr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J46-ec-DWQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="xDe-Zd-oyr" firstAttribute="leading" secondItem="LUj-Je-N6W" secondAttribute="leading" constant="12" id="183-Uv-uqc"/>
+                            <constraint firstItem="xDe-Zd-oyr" firstAttribute="top" secondItem="J46-ec-DWQ" secondAttribute="bottom" constant="12" id="2hf-f1-Yuz"/>
+                            <constraint firstItem="J46-ec-DWQ" firstAttribute="top" secondItem="LUj-Je-N6W" secondAttribute="top" constant="12" id="Fqf-FH-Jy6"/>
+                            <constraint firstAttribute="trailing" secondItem="J46-ec-DWQ" secondAttribute="trailing" id="SFm-YO-VjS"/>
+                            <constraint firstAttribute="trailing" secondItem="J46-ec-DWQ" secondAttribute="trailing" constant="8" id="UCi-oO-uww"/>
+                            <constraint firstAttribute="bottom" secondItem="xDe-Zd-oyr" secondAttribute="bottom" constant="12" id="kcz-zl-dZe"/>
+                            <constraint firstItem="J46-ec-DWQ" firstAttribute="leading" secondItem="LUj-Je-N6W" secondAttribute="leading" constant="12" id="yr9-qL-RPW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UCi-oO-uww"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_r" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-pp-Uma">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="cnb-pp-Uma" secondAttribute="height" multiplier="1:1" id="K9O-QN-5Jm"/>
+                            <constraint firstAttribute="width" constant="13" id="Rzb-Cc-vlA"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysa-19-x7Q">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="l0p-me-2Na"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_flash_fail" translatesAutoresizingMaskIntoConstraints="NO" id="Wdg-O9-201">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="4vI-Kt-6ea"/>
+                            <constraint firstAttribute="height" constant="80" id="5st-S1-nmg"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="cnb-pp-Uma" firstAttribute="centerY" secondItem="WYT-Ug-b6q" secondAttribute="centerY" id="18v-Qn-BXW"/>
+                    <constraint firstAttribute="trailing" secondItem="cnb-pp-Uma" secondAttribute="trailing" constant="12" id="6b3-sE-Zm8"/>
+                    <constraint firstItem="cnb-pp-Uma" firstAttribute="leading" secondItem="Wdg-O9-201" secondAttribute="trailing" id="9vG-si-83N"/>
+                    <constraint firstItem="cnb-pp-Uma" firstAttribute="leading" secondItem="LUj-Je-N6W" secondAttribute="trailing" constant="8" id="ArP-GR-XDr"/>
+                    <constraint firstItem="E1b-Yq-bi3" firstAttribute="centerY" secondItem="WYT-Ug-b6q" secondAttribute="centerY" id="LHe-Ta-OBt"/>
+                    <constraint firstItem="E1b-Yq-bi3" firstAttribute="leading" secondItem="WYT-Ug-b6q" secondAttribute="leading" constant="12" id="LhV-2m-0nh"/>
+                    <constraint firstAttribute="bottom" secondItem="Ysa-19-x7Q" secondAttribute="bottom" id="N5U-K5-Sku"/>
+                    <constraint firstItem="Wdg-O9-201" firstAttribute="top" secondItem="WYT-Ug-b6q" secondAttribute="top" constant="12" id="Pxl-fz-UyG"/>
+                    <constraint firstAttribute="bottom" secondItem="LUj-Je-N6W" secondAttribute="bottom" id="SCy-O4-WT6"/>
+                    <constraint firstItem="LUj-Je-N6W" firstAttribute="top" secondItem="WYT-Ug-b6q" secondAttribute="top" id="Xwb-u0-Ap8"/>
+                    <constraint firstItem="E1b-Yq-bi3" firstAttribute="top" secondItem="WYT-Ug-b6q" secondAttribute="top" constant="12" id="gB6-o2-QcC"/>
+                    <constraint firstAttribute="trailing" secondItem="Ysa-19-x7Q" secondAttribute="trailing" id="gto-PN-I9b"/>
+                    <constraint firstItem="LUj-Je-N6W" firstAttribute="leading" secondItem="E1b-Yq-bi3" secondAttribute="trailing" id="i1d-KL-oW6"/>
+                    <constraint firstAttribute="trailing" secondItem="LUj-Je-N6W" secondAttribute="trailing" id="iEi-Ej-8xO"/>
+                    <constraint firstItem="Ysa-19-x7Q" firstAttribute="leading" secondItem="WYT-Ug-b6q" secondAttribute="leading" id="l7v-BX-scU"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E1b-Yq-bi3" secondAttribute="bottom" constant="12" id="yAk-HW-mbE"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="LHe-Ta-OBt"/>
+                        <exclude reference="iEi-Ej-8xO"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="l0p-me-2Na" id="sqE-L9-pYX"/>
+                <outlet property="failImageView" destination="Wdg-O9-201" id="xmN-9m-1yk"/>
+                <outlet property="iconImageView" destination="E1b-Yq-bi3" id="aNB-dY-ZwK"/>
+                <outlet property="orderStatusDescLabel" destination="xDe-Zd-oyr" id="cJh-dA-M95"/>
+                <outlet property="serveDescLabel" destination="J46-ec-DWQ" id="C7M-Wg-nZS"/>
+            </connections>
+            <point key="canvasLocation" x="449" y="369.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow_r" width="15" height="15"/>
+        <image name="icon_flash_fail" width="85" height="84"/>
+        <image name="placeholder_100_100" width="100" height="100"/>
+    </resources>
+</document>

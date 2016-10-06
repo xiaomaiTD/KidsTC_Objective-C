@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ArticleColumnHeader">
+            <rect key="frame" x="0.0" y="0.0" width="252" height="122"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0f-Em-wlA"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mef-FM-18y">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="RbW-CO-UKs"/>
+                        <constraint firstAttribute="height" constant="30" id="V0l-dF-jQd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ia2-dF-C6d"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFP-Rj-jFi">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="d0f-Em-wlA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8k9-m7-Yej"/>
+                <constraint firstAttribute="bottom" secondItem="d0f-Em-wlA" secondAttribute="bottom" id="H0w-Dx-HIx"/>
+                <constraint firstItem="d0f-Em-wlA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="HUy-Lg-ZJD"/>
+                <constraint firstItem="dFP-Rj-jFi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="K7Z-5v-STB"/>
+                <constraint firstItem="dFP-Rj-jFi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="My7-tf-isE"/>
+                <constraint firstAttribute="trailing" secondItem="d0f-Em-wlA" secondAttribute="trailing" id="NgA-h8-hGj"/>
+                <constraint firstItem="mef-FM-18y" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Okc-8c-tn6"/>
+                <constraint firstItem="mef-FM-18y" firstAttribute="top" secondItem="dFP-Rj-jFi" secondAttribute="bottom" constant="12" id="nSL-pC-oFL"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="countLabel" destination="dFP-Rj-jFi" id="uce-NM-U2O"/>
+                <outlet property="imageView" destination="d0f-Em-wlA" id="2wr-Jo-Z3c"/>
+                <outlet property="statesBtn" destination="mef-FM-18y" id="EgW-D2-sOk"/>
+            </connections>
+            <point key="canvasLocation" x="253" y="185"/>
+        </view>
+    </objects>
+</document>

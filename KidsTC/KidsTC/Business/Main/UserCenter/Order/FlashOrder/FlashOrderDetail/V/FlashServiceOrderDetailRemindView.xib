@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="jLl-Ck-uxH" customClass="FlashServiceOrderDetailRemindView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57Z-9z-BNg">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_dotted_line_pink" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-ge-Ydt"/>
+                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="童成平台不会以任何理由要求您点击任何网址链接进行退款操作。点击查看“谨防诈骗公告申明”。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avd-3P-zLC">
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="1" green="0.59999999999999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ring_pink" translatesAutoresizingMaskIntoConstraints="NO" id="mqh-Pk-sOc">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="dhx-BF-K3M"/>
+                                <constraint firstAttribute="width" secondItem="mqh-Pk-sOc" secondAttribute="height" multiplier="22:25" id="e82-aw-gQU"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36k-ZW-Pw8">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="ske-CK-2Lv"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="14" maxY="0.0"/>
+                            <state key="normal" image="icon_close_pink"/>
+                            <connections>
+                                <action selector="deleteAction:" destination="jLl-Ck-uxH" eventType="touchUpInside" id="acc-yh-oS3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="eaK-ge-Ydt" secondAttribute="trailing" id="0HG-jT-wPG"/>
+                        <constraint firstItem="eaK-ge-Ydt" firstAttribute="top" secondItem="57Z-9z-BNg" secondAttribute="top" id="1P1-CS-YlH"/>
+                        <constraint firstItem="36k-ZW-Pw8" firstAttribute="top" secondItem="57Z-9z-BNg" secondAttribute="top" id="SeH-uE-cLn"/>
+                        <constraint firstItem="36k-ZW-Pw8" firstAttribute="leading" secondItem="avd-3P-zLC" secondAttribute="trailing" constant="4" id="Xv1-S8-O2e"/>
+                        <constraint firstItem="mqh-Pk-sOc" firstAttribute="leading" secondItem="57Z-9z-BNg" secondAttribute="leading" constant="12" id="a9l-M1-72Q"/>
+                        <constraint firstAttribute="bottom" secondItem="36k-ZW-Pw8" secondAttribute="bottom" id="cbB-Rr-OG2"/>
+                        <constraint firstItem="avd-3P-zLC" firstAttribute="leading" secondItem="mqh-Pk-sOc" secondAttribute="trailing" constant="4" id="cgb-O9-yRn"/>
+                        <constraint firstItem="eaK-ge-Ydt" firstAttribute="leading" secondItem="57Z-9z-BNg" secondAttribute="leading" id="fPI-JA-kjd"/>
+                        <constraint firstAttribute="trailing" secondItem="36k-ZW-Pw8" secondAttribute="trailing" id="nDI-HV-7ai"/>
+                        <constraint firstItem="avd-3P-zLC" firstAttribute="centerY" secondItem="57Z-9z-BNg" secondAttribute="centerY" id="tIS-vT-r2d"/>
+                        <constraint firstAttribute="bottom" secondItem="eaK-ge-Ydt" secondAttribute="bottom" id="vUO-Cl-6EL"/>
+                        <constraint firstItem="mqh-Pk-sOc" firstAttribute="centerY" secondItem="57Z-9z-BNg" secondAttribute="centerY" id="vnf-XT-3mX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="57Z-9z-BNg" firstAttribute="leading" secondItem="jLl-Ck-uxH" secondAttribute="leading" id="7Jx-Mh-Vtp"/>
+                <constraint firstAttribute="trailing" secondItem="57Z-9z-BNg" secondAttribute="trailing" id="HA6-na-Vjh"/>
+                <constraint firstAttribute="bottom" secondItem="57Z-9z-BNg" secondAttribute="bottom" id="QiZ-PA-k0r"/>
+                <constraint firstItem="57Z-9z-BNg" firstAttribute="top" secondItem="jLl-Ck-uxH" secondAttribute="top" constant="8" id="Y8Q-sr-g8n"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="deleteBtn" destination="36k-ZW-Pw8" id="8Vk-wQ-A2i"/>
+                <outlet property="titleLabel" destination="avd-3P-zLC" id="PGi-MJ-vUJ"/>
+            </connections>
+            <point key="canvasLocation" x="-94.5" y="-119"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_dotted_line_pink" width="538" height="67"/>
+        <image name="icon_close_pink" width="41" height="46"/>
+        <image name="icon_ring_pink" width="44" height="50"/>
+    </resources>
+</document>

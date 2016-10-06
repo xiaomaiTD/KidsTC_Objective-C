@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SoftwareSettingViewCellID" id="KGk-i7-Jjw" customClass="SoftwareSettingViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userCenter_arrow_dark" translatesAutoresizingMaskIntoConstraints="NO" id="IKn-vO-6eT">
+                        <rect key="frame" x="299" y="15" width="13" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="IKn-vO-6eT" secondAttribute="height" multiplier="1:1" id="edc-Gh-P2t"/>
+                            <constraint firstAttribute="width" constant="13" id="o0e-uW-rVM"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQG-pD-uei">
+                        <rect key="frame" x="253" y="13" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uem-nH-iDI">
+                        <rect key="frame" x="8" y="13" width="38" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dQG-pD-uei" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4dc-qE-HDT"/>
+                    <constraint firstItem="uem-nH-iDI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8mt-m1-wne"/>
+                    <constraint firstItem="IKn-vO-6eT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gvx-pr-Axg"/>
+                    <constraint firstItem="IKn-vO-6eT" firstAttribute="width" secondItem="IKn-vO-6eT" secondAttribute="height" multiplier="1:1" id="i6y-mv-jvS"/>
+                    <constraint firstItem="IKn-vO-6eT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n2j-K4-IBz"/>
+                    <constraint firstItem="IKn-vO-6eT" firstAttribute="leading" secondItem="dQG-pD-uei" secondAttribute="trailing" constant="8" id="sWR-yG-TpT"/>
+                    <constraint firstItem="uem-nH-iDI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vMv-H3-eUQ"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="i6y-mv-jvS"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="arrowImageView" destination="IKn-vO-6eT" id="umo-kg-fLe"/>
+                <outlet property="subTitleLabel" destination="dQG-pD-uei" id="aSD-hN-doJ"/>
+                <outlet property="titleLabel" destination="uem-nH-iDI" id="0wE-CD-d4G"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="userCenter_arrow_dark" width="15" height="15"/>
+    </resources>
+</document>

@@ -1,0 +1,212 @@
+//
+//  OrderListView.m
+//  KidsTC
+//
+//  Created by 钱烨 on 7/8/15.
+//  Copyright (c) 2015 KidsTC. All rights reserved.
+//
+
+#import "OrderListView.h"
+#import "OrderListViewCell.h"
+#import "ToolBox.h"
+#import "GHeader.h"
+#import "KTCEmptyDataView.h"
+
+static NSString *const kCellIdentifier = @"OrderListViewCellCellIdentifier";
+
+@interface OrderListView () <UITableViewDataSource, UITableViewDelegate, OrderListCellDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) UINib *cellNib;
+
+@property (nonatomic, strong) NSArray *listModels;
+
+@property (nonatomic, assign) BOOL noMoreData;
+
+- (void)pullDownToRefresh;
+
+- (void)pullUpToLoadMore;
+
+@end
+
+@implementation OrderListView
+
+#pragma mark Initialization
+
+
+- (id)awakeAfterUsingCoder:(NSCoder *)aDecoder
+{
+    self = [super awakeAfterUsingCoder:aDecoder];
+    static BOOL bLoad;
+    if (!bLoad)
+    {
+        bLoad = YES;
+        OrderListView *view = [ToolBox getObjectFromNibWithView:self];
+        [view buildSubviews];
+        return view;
+    }
+    bLoad = NO;
+    return self;
+}
+
+- (void)buildSubviews {
+    self.tableView.backgroundView = nil;
+    [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 5)];
+    if (!self.cellNib) {
+        self.cellNib = [UINib nibWithNibName:NSStringFromClass([OrderListViewCell class]) bundle:nil];
+        [self.tableView registerNib:self.cellNib forCellReuseIdentifier:kCellIdentifier];
+    }
+    WeakSelf(self)
+    RefreshHeader *mj_header = [RefreshHeader headerWithRefreshingBlock:^{
+        StrongSelf(self)
+        [self pullDownToRefresh];
+    }];
+    mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_header = mj_header;
+    
+    RefreshFooter *mj_footer = [RefreshFooter footerWithRefreshingBlock:^{
+        StrongSelf(self)
+        if (self.noMoreData) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return;
+        }
+        [self pullUpToLoadMore];
+    }];
+    mj_footer.automaticallyChangeAlpha = YES;
+    self.tableView.mj_footer = mj_footer;
+}
+
+#pragma mark UITableViewDataSource & UITableViewDelegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.listModels count];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    if (!cell) {
+        cell =  [[[NSBundle mainBundle] loadNibNamed:@"OrderListViewCell" owner:nil options:nil] objectAtIndex:0];
+    }
+    [cell configWithOrderListModel:[self.listModels objectAtIndex:indexPath.section] atIndexPath:indexPath];
+    cell.delegate = self;
+    return cell;
+}
+/**
+ *  - (void)didClickedPayButtonOnOrderListViewCell:(OrderListViewCell *)cell;
+ 
+ - (void)didClickedCommentButtonOnOrderListViewCell:(OrderListViewCell *)cell;
+ 
+ - (void)didClickedReturnButtonOnOrderListViewCell:(OrderListViewCell *)cell;
+
+ */
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderListModel *model = [self.listModels objectAtIndex:indexPath.section];
+    return [model cellHeight];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListView:didSelectAtIndex:)]) {
+        [self.delegate orderListView:self didSelectAtIndex:indexPath.section];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 2;
+}
+
+
+#pragma mark OrderListCellDelegate
+
+- (void)didClickedPayButtonOnOrderListViewCell:(OrderListViewCell *)cell {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListView:didClickedPayButtonAtIndex:)]) {
+        [self.delegate orderListView:self didClickedPayButtonAtIndex:cell.indexPath.section];
+    }
+}
+
+- (void)didClickedCommentButtonOnOrderListViewCell:(OrderListViewCell *)cell {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListView:didClickedCommentButtonAtIndex:)]) {
+        [self.delegate orderListView:self didClickedCommentButtonAtIndex:cell.indexPath.section];
+    }
+}
+
+- (void)didClickedReturnButtonOnOrderListViewCell:(OrderListViewCell *)cell {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListView:didClickedReturnButtonAtIndex:)]) {
+        [self.delegate orderListView:self didClickedReturnButtonAtIndex:cell.indexPath.section];
+    }
+}
+
+#pragma mark Private methods
+
+- (void)pullDownToRefresh {
+    self.tableView.backgroundView = nil;
+    [self.tableView.mj_footer resetNoMoreData];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListViewDidPullDownToRefresh:)]) {
+        [self.delegate orderListViewDidPullDownToRefresh:self];
+    }
+}
+
+- (void)pullUpToLoadMore {
+    self.tableView.backgroundView = nil;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(orderListViewDidPullUpToLoadMore:)]) {
+        [self.delegate orderListViewDidPullUpToLoadMore:self];
+    }
+}
+
+#pragma mark Public methods
+
+- (void)reloadData {
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(orderListModelsForOrderListView:)]) {
+        self.listModels = [self.dataSource orderListModelsForOrderListView:self];
+    }
+    [self.tableView reloadData];
+    if ([self.listModels count] == 0) {
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tableView.frame.size.height) image:nil description:@"啥都木有啊···" needGoHome:YES];
+    } else {
+        self.tableView.backgroundView = nil;
+    }
+}
+
+- (void)endRefresh {
+    [self.tableView.mj_header endRefreshing];
+}
+
+- (void)endLoadMore {
+    [self.tableView.mj_footer endRefreshing];
+}
+
+- (void)noMoreData:(BOOL)noMore {
+    self.noMoreData = noMore;
+    if (noMore) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    } else {
+        [self.tableView.mj_footer resetNoMoreData];
+    }
+}
+
+- (void)hideLoadMoreFooter:(BOOL)hidden {
+    [self.tableView.mj_footer setHidden:hidden];
+}
+
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
+
+@end
