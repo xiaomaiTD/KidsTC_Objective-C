@@ -14,6 +14,7 @@
 //SDK
 #import "WeChatManager.h"
 #import "KTCMapService.h"
+#import <JSPatchPlatform/JSPatch.h>
 
 //Category
 #import "AppDelegate+ThirdSDK.h"
@@ -73,6 +74,8 @@
 
 - (void)prepareForApplication {
     
+    [self JSPatchRemote:true];
+    
     [self setupUserAgent];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
@@ -91,6 +94,22 @@
     
     [[KTCMapService shareKTCMapService] startService];
     
+}
+
+- (void)JSPatchRemote:(BOOL)remote{
+    
+    if (!remote) {
+        [JSPatch testScriptInBundle];
+    }else{
+        [JSPatch setupLogger:^(NSString *msg) {
+            TCLog(@"JSPatch-TCLog-:\n====\n\n%@\n\n=====", msg);
+        }];
+        [JSPatch startWithAppKey:@"20c782609295b915"];
+#ifdef DEBUG
+        [JSPatch setupDevelopment];
+#endif
+        [JSPatch sync];
+    }
 }
 
 - (void)setupUserAgent {

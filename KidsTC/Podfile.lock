@@ -19,6 +19,15 @@ PODS:
     - Colours/ObjC (= 5.13.0)
   - Colours/ObjC (5.13.0)
   - GTSDK (1.5.0)
+  - JSPatchPlatform (1.6.2):
+    - JSPatchPlatform/Core (= 1.6.2)
+  - JSPatchPlatform/Core (1.6.2)
+  - JSPatchPlatform/Extensions (1.6.2):
+    - JSPatchPlatform/Core
+  - JSPatchPlatform/JPCFunction (1.6.2):
+    - JSPatchPlatform/Core
+  - JSPatchPlatform/JPCFunctionBinder (1.6.2):
+    - JSPatchPlatform/Core
   - KMNavigationBarTransition (0.0.10)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
@@ -45,6 +54,10 @@ DEPENDENCIES:
   - BaiduMapKit (~> 3.0.0)
   - Colours (~> 5.13.0)
   - GTSDK (~> 1.5.0)
+  - JSPatchPlatform (~> 1.6.2)
+  - JSPatchPlatform/Extensions
+  - JSPatchPlatform/JPCFunction
+  - JSPatchPlatform/JPCFunctionBinder
   - KMNavigationBarTransition (~> 0.0.10)
   - Masonry (~> 1.0.2)
   - MJRefresh (~> 3.1.12)
@@ -63,6 +76,7 @@ SPEC CHECKSUMS:
   BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
   GTSDK: 4380de452178d8ba2a67189f10c6743d0f9536b9
+  JSPatchPlatform: 105e331f1b899a397d2bc0300a9ace9f9d7b8f08
   KMNavigationBarTransition: 7a519f915cfe6fe09764b2061ea01043b445f7d2
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
