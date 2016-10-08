@@ -1,0 +1,1 @@
+../../../JSPatchPlatform/JSPatch/Extensions/JPCFunctionBinder/UIKit/JPUIKit.h

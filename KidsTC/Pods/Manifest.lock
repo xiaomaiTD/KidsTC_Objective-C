@@ -1,0 +1,93 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - BaiduMapKit (3.0.0)
+  - Colours (5.13.0):
+    - Colours/ObjC (= 5.13.0)
+  - Colours/ObjC (5.13.0)
+  - GTSDK (1.5.0)
+  - JSPatchPlatform (1.6.2):
+    - JSPatchPlatform/Core (= 1.6.2)
+  - JSPatchPlatform/Core (1.6.2)
+  - JSPatchPlatform/Extensions (1.6.2):
+    - JSPatchPlatform/Core
+  - JSPatchPlatform/JPCFunction (1.6.2):
+    - JSPatchPlatform/Core
+  - JSPatchPlatform/JPCFunctionBinder (1.6.2):
+    - JSPatchPlatform/Core
+  - KMNavigationBarTransition (0.0.10)
+  - Masonry (1.0.2)
+  - MJRefresh (3.1.12)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
+  - SAMKeychain (1.5.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SSZipArchive (1.6.1)
+  - SVProgressHUD (2.0.3)
+  - TZImagePickerController (1.6.7)
+  - UMengAnalytics (4.1.0)
+  - WeiboSDK (3.1.3)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - BaiduMapKit (~> 3.0.0)
+  - Colours (~> 5.13.0)
+  - GTSDK (~> 1.5.0)
+  - JSPatchPlatform (~> 1.6.2)
+  - JSPatchPlatform/Extensions
+  - JSPatchPlatform/JPCFunction
+  - JSPatchPlatform/JPCFunctionBinder
+  - KMNavigationBarTransition (~> 0.0.10)
+  - Masonry (~> 1.0.2)
+  - MJRefresh (~> 3.1.12)
+  - NJKWebViewProgress (~> 0.2.3)
+  - SAMKeychain (~> 1.5.2)
+  - SDWebImage (~> 3.8.2)
+  - SSZipArchive (~> 1.6.1)
+  - SVProgressHUD (~> 2.0.3)
+  - TZImagePickerController (~> 1.6.7)
+  - UMengAnalytics (~> 4.1.0)
+  - WeiboSDK (~> 3.1.3)
+  - YYKit (~> 1.0.9)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
+  Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
+  GTSDK: 4380de452178d8ba2a67189f10c6743d0f9536b9
+  JSPatchPlatform: 105e331f1b899a397d2bc0300a9ace9f9d7b8f08
+  KMNavigationBarTransition: 7a519f915cfe6fe09764b2061ea01043b445f7d2
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SSZipArchive: 0847403f612553a361f9b44f1c7e135cefbc668d
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  TZImagePickerController: d3b16a1ab3393b251a23fbb22ac2d6bc83a50d5f
+  UMengAnalytics: 19b28253793d77dff10fb7d502faad1fb6b8ce4a
+  WeiboSDK: acb067053668102cf07d01aa7604350162c2e466
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
+
+COCOAPODS: 0.39.0
