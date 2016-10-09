@@ -14,14 +14,14 @@
 @implementation BuryPointManager
 singleM(BuryPointManager)
 
-- (void)registerSdk {
++ (void)registerSdk {
     
     [self registerMta];
     
     [self registerUmeng];
 }
 
-- (void)registerMta {
++ (void)registerMta {
     
     [MTA startWithAppkey:@"IGILB3C2N33P"];
     [[MTAConfig getInstance] setChannel:@"iphone"];
@@ -35,7 +35,7 @@ singleM(BuryPointManager)
 #endif
 }
 
-- (void)registerUmeng {
++ (void)registerUmeng {
     
     UMConfigInstance.appKey = @"57625e6f67e58ea042003764";
     UMConfigInstance.channelId = @"App Store";
@@ -48,13 +48,13 @@ singleM(BuryPointManager)
 #endif
 }
 
-- (void)trackBegin:(NSString *)pageId {
++ (void)trackBegin:(NSString *)pageId {
     if (pageId.length<1) return;
     [MTA trackPageViewBegin:pageId];
     [MobClick beginLogPageView:pageId];
 }
 
-- (void)trackEnd:(NSString *)pageId {
++ (void)trackEnd:(NSString *)pageId {
     if (pageId.length<1) return;
     [MTA trackPageViewEnd:pageId];
     [MobClick endLogPageView:pageId];

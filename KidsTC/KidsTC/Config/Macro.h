@@ -15,6 +15,9 @@
 #pragma mark - 获取app版本号
 #define APP_VERSION [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"]
 
+#pragma mark - 获取系统版本号
+#define SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
 #pragma mark - Log
 #ifdef DEBUG
 #define TCLog(...) NSLog(@"%s 第%d行\n%@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])

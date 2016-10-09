@@ -12,5 +12,5 @@
 
 @interface AppDelegate (ThirdSDK) <GeTuiSdkDelegate, UIAlertViewDelegate>
 
--(void)registerGeTui;
+//-(void)registerGeTui;
 @end

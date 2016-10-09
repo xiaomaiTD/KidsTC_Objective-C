@@ -50,45 +50,45 @@ const char *key = "payloadKey";
 #pragma mark-
 #pragma mark public
 
--(void)registerGeTui{
-    
-    // 通过个推平台分配的appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
-    [GeTuiSdk startSdkWithAppId:appId appKey:appKey appSecret:appSecret delegate:self];
-    
-    // 注册APNS
-    [self registerUserNotification];
-    //NSLog(@"option:%@",option);
-    
-    //注册通知
-    [NotificationCenter addObserver:self selector:@selector(clearBadgeCount) name:UIApplicationDidBecomeActiveNotification object:nil];
-
-}
+//-(void)registerGeTui{
+//    
+//    // 通过个推平台分配的appId、 appKey 、appSecret 启动SDK，注：该方法需要在主线程中调用
+//    [GeTuiSdk startSdkWithAppId:appId appKey:appKey appSecret:appSecret delegate:self];
+//    
+//    // 注册APNS
+//    [self registerUserNotification];
+//    //NSLog(@"option:%@",option);
+//    
+//    //注册通知
+//    [NotificationCenter addObserver:self selector:@selector(clearBadgeCount) name:UIApplicationDidBecomeActiveNotification object:nil];
+//
+//}
 
 #pragma mark - 复写appDelegate方法
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{//杀死状态下 或 后台进入都会走此方法
-    // 处理APNs代码，通过userInfo可以取到推送的信息（包括内容，角标，自定义参数等）。如果需要弹窗等其他操作，则需要自行编码。
-    NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
-    [self handleReceivedNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
-}
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{//杀死状态下 或 后台进入都会走此方法
+//    // 处理APNs代码，通过userInfo可以取到推送的信息（包括内容，角标，自定义参数等）。如果需要弹窗等其他操作，则需要自行编码。
+//    NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
+//    [self handleReceivedNotification:userInfo];
+//    completionHandler(UIBackgroundFetchResultNewData);
+//}
 
-- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    TCLog(@"deviceToken--:%@",deviceToken);
-    [self connectGeTuiWithToken:deviceToken];
-    
-}
+//- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+//    TCLog(@"deviceToken--:%@",deviceToken);
+//    [self connectGeTuiWithToken:deviceToken];
+//    
+//}
 
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err{
-    
-    NSLog(@"注册远程通知失败:%@",err.description);
-}
+//- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err{
+//    
+//    NSLog(@"注册远程通知失败:%@",err.description);
+//}
 
-- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    /// Background Fetch 恢复SDK 运行
-    [GeTuiSdk resume];
-    completionHandler(UIBackgroundFetchResultNewData);
-}
+//- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+//    
+//    /// Background Fetch 恢复SDK 运行
+//    [GeTuiSdk resume];
+//    completionHandler(UIBackgroundFetchResultNewData);
+//}
 
 
 
@@ -107,50 +107,50 @@ const char *key = "payloadKey";
     [PushServiceManager sharePushServiceManager].token = token;
 }
 
--(void)registerUserNotification{ //注册APNS
-    
-#ifdef __IPHONE_8_0
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-        
-        UIUserNotificationType types = (UIUserNotificationTypeAlert |
-                                        UIUserNotificationTypeSound |
-                                        UIUserNotificationTypeBadge);
-        
-        UIUserNotificationSettings *settings;
-        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        
-    } else {
-        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
-                                                                       UIRemoteNotificationTypeSound |
-                                                                       UIRemoteNotificationTypeBadge);
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
-    }
-#else
-    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
-                                                                   UIRemoteNotificationTypeSound |
-                                                                   UIRemoteNotificationTypeBadge);
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
-#endif
-}
+//-(void)registerUserNotification{ //注册APNS
+//    
+//#ifdef __IPHONE_8_0
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+//        
+//        UIUserNotificationType types = (UIUserNotificationTypeAlert |
+//                                        UIUserNotificationTypeSound |
+//                                        UIUserNotificationTypeBadge);
+//        
+//        UIUserNotificationSettings *settings;
+//        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+//        [[UIApplication sharedApplication] registerForRemoteNotifications];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//        
+//    } else {
+//        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
+//                                                                       UIRemoteNotificationTypeSound |
+//                                                                       UIRemoteNotificationTypeBadge);
+//        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+//    }
+//#else
+//    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert |
+//                                                                   UIRemoteNotificationTypeSound |
+//                                                                   UIRemoteNotificationTypeBadge);
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+//#endif
+//}
 
 #pragma mark-
 #pragma mark GeTui回调
 #pragma mark-
 #pragma mark 个推debug
-/** SDK启动成功返回cid */
-- (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
-    //个推SDK已注册，返回clientId
-    TCLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
-    [[PushServiceManager sharePushServiceManager] bindAccount:YES withClientId:clientId];
-}
+///** SDK启动成功返回cid */
+//- (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
+//    //个推SDK已注册，返回clientId
+//    TCLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
+//    [[PushServiceManager sharePushServiceManager] bindAccount:YES withClientId:clientId];
+//}
 
 /** SDK遇到错误回调 */
-- (void)GeTuiSdkDidOccurError:(NSError *)error {
-    //个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
-    TCLog(@"\n>>>[GexinSdk error]:%@\n\n", [error localizedDescription]);
-}
+//- (void)GeTuiSdkDidOccurError:(NSError *)error {
+//    //个推错误报告，集成步骤发生的任何错误都在这里通知，如果集成后，无法正常收到消息，查看这里的通知。
+//    TCLog(@"\n>>>[GexinSdk error]:%@\n\n", [error localizedDescription]);
+//}
 
 /** SDK收到透传消息回调 */
 - (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {

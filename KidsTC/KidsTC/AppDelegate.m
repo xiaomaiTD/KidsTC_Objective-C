@@ -16,8 +16,8 @@
 #import "KTCMapService.h"
 #import "BuryPointManager.h"
 #import <JSPatchPlatform/JSPatch.h>
+#import "NotificationService.h"
 
-//Category
 #import "AppDelegate+ThirdSDK.h"
 
 #import "User.h"
@@ -54,6 +54,7 @@
     [[CoverManager shareCoverManager] showPoster:^{
         [_window makeKeyAndVisible];
     }];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -69,6 +70,21 @@
     [[SDImageCache sharedImageCache] clearMemory];
     [[SDWebImageManager sharedManager] cancelAll];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
+#pragma mark - Notification
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [NotificationService didReceiveDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [NotificationService handleRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [NotificationService resumeGt];
+    completionHandler(UIBackgroundFetchResultNewData);
 }
 
 #pragma mark - private
@@ -89,9 +105,9 @@
     
     [WeChatManager sharedManager];
     
-    [self registerGeTui];
+    [NotificationService regiterService];
     
-    [[BuryPointManager shareBuryPointManager] registerSdk];
+    [BuryPointManager registerSdk];
     
     [[KTCMapService shareKTCMapService] startService];
     
