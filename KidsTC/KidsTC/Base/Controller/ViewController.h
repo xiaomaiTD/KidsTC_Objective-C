@@ -16,5 +16,4 @@
 #pragma mark Keyboard Notification
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillDisappear:(NSNotification *)notification;
-
 @end

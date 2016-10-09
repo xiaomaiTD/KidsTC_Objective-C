@@ -49,29 +49,6 @@ const char *key = "payloadKey";
 
 #pragma mark-
 #pragma mark public
--(void)registerMTAAndUmeng{
-    
-    //注册友盟
-    UMConfigInstance.appKey = @"57625e6f67e58ea042003764";
-    UMConfigInstance.channelId = @"App Store";
-    [MobClick setAppVersion:APP_VERSION];
-    [MobClick startWithConfigure:UMConfigInstance];
-    
-    //注册MTA
-    [MTA startWithAppkey:@"IGILB3C2N33P"];
-    [[MTAConfig getInstance] setChannel:@"iphone"];
-
-#ifdef DEBUG
-    [[MTAConfig getInstance] setDebugEnable:YES];
-    [[MTAConfig getInstance] setReportStrategy:MTA_STRATEGY_INSTANT];
-    [MobClick setLogEnabled:YES];
-#else
-    [[MTAConfig getInstance] setDebugEnable:NO];
-    [[MTAConfig getInstance] setReportStrategy:MTA_STRATEGY_BATCH];
-    [[MTAConfig getInstance] setMinBatchReportCount:10];
-    [MobClick setLogEnabled:NO];
-#endif
-}
 
 -(void)registerGeTui{
     
@@ -104,7 +81,6 @@ const char *key = "payloadKey";
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err{
     
     NSLog(@"注册远程通知失败:%@",err.description);
-    [MTA trackError:err.description];
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {

@@ -14,6 +14,7 @@
 //SDK
 #import "WeChatManager.h"
 #import "KTCMapService.h"
+#import "BuryPointManager.h"
 #import <JSPatchPlatform/JSPatch.h>
 
 //Category
@@ -90,7 +91,7 @@
     
     [self registerGeTui];
     
-    [self registerMTAAndUmeng];
+    [[BuryPointManager shareBuryPointManager] registerSdk];
     
     [[KTCMapService shareKTCMapService] startService];
     
@@ -111,6 +112,7 @@
         [JSPatch sync];
     }
 }
+
 
 - (void)setupUserAgent {
     

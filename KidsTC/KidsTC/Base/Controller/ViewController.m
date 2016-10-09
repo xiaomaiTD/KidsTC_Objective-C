@@ -10,8 +10,7 @@
 #import "Macro.h"
 #import "UIImage+Category.h"
 #import "UIBarButtonItem+Category.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
+#import "BuryPointManager.h"
 @interface ViewController ()
 
 @end
@@ -59,18 +58,12 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (self.pageId.length>0) {
-        [MTA trackPageViewBegin:self.pageId];
-        [MobClick beginLogPageView:self.pageId];
-    }
+    [[BuryPointManager shareBuryPointManager] trackBegin:self.pageId];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    if (self.pageId.length>0) {
-        [MTA trackPageViewEnd:self.pageId];
-        [MobClick endLogPageView:self.pageId];
-    }
+    [[BuryPointManager shareBuryPointManager] trackEnd:self.pageId];
 }
 
 - (BOOL)prefersStatusBarHidden{

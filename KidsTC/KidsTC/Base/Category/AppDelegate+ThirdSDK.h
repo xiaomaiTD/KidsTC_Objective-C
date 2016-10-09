@@ -9,12 +9,8 @@
 #import "AppDelegate.h"
 
 #import "GeTuiSdk.h"
-#import "MTA.h"
-#import "MTAConfig.h"
-#import "UMMobClick/MobClick.h"
 
 @interface AppDelegate (ThirdSDK) <GeTuiSdkDelegate, UIAlertViewDelegate>
 
 -(void)registerGeTui;
-- (void)registerMTAAndUmeng;
 @end

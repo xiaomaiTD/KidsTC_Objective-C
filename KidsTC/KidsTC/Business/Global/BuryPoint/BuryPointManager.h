@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Single.h"
 @interface BuryPointManager : NSObject
-
+singleH(BuryPointManager)
+- (void)registerSdk;
+- (void)trackBegin:(NSString *)pageId;
+- (void)trackEnd:(NSString *)pageId;
 @end

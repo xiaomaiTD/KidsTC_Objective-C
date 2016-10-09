@@ -44,6 +44,7 @@
 		EC1E2FAE1D8286EC002381E7 /* ArticleWriteCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1E2FAC1D8286EC002381E7 /* ArticleWriteCoverCell.xib */; };
 		EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2FB01D8286F9002381E7 /* ArticleWriteImageCell.m */; };
 		EC1E2FB31D8286F9002381E7 /* ArticleWriteImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1E2FB11D8286F9002381E7 /* ArticleWriteImageCell.xib */; };
+		EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF601DA9239800C49E29 /* BuryPointManager.m */; };
 		EC42B91C1D82C0EE00E257F6 /* ArticleWriteTextLinePositionModifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EC42B91B1D82C0EE00E257F6 /* ArticleWriteTextLinePositionModifier.m */; };
 		EC42B9201D82DD4600E257F6 /* ArticleWriteCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC42B91E1D82DD4600E257F6 /* ArticleWriteCategoryCell.m */; };
 		EC42B9211D82DD4600E257F6 /* ArticleWriteCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC42B91F1D82DD4600E257F6 /* ArticleWriteCategoryCell.xib */; };
@@ -1015,6 +1016,8 @@
 		EC1E2FAF1D8286F9002381E7 /* ArticleWriteImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteImageCell.h; sourceTree = "<group>"; };
 		EC1E2FB01D8286F9002381E7 /* ArticleWriteImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteImageCell.m; sourceTree = "<group>"; };
 		EC1E2FB11D8286F9002381E7 /* ArticleWriteImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleWriteImageCell.xib; sourceTree = "<group>"; };
+		EC31CF5F1DA9239800C49E29 /* BuryPointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuryPointManager.h; sourceTree = "<group>"; };
+		EC31CF601DA9239800C49E29 /* BuryPointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuryPointManager.m; sourceTree = "<group>"; };
 		EC42B91A1D82C0EE00E257F6 /* ArticleWriteTextLinePositionModifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteTextLinePositionModifier.h; sourceTree = "<group>"; };
 		EC42B91B1D82C0EE00E257F6 /* ArticleWriteTextLinePositionModifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteTextLinePositionModifier.m; sourceTree = "<group>"; };
 		EC42B91D1D82DD4600E257F6 /* ArticleWriteCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteCategoryCell.h; sourceTree = "<group>"; };
@@ -2692,6 +2695,15 @@
 			path = ArticleWrite;
 			sourceTree = "<group>";
 		};
+		EC31CF5E1DA9233C00C49E29 /* BuryPoint */ = {
+			isa = PBXGroup;
+			children = (
+				EC31CF5F1DA9239800C49E29 /* BuryPointManager.h */,
+				EC31CF601DA9239800C49E29 /* BuryPointManager.m */,
+			);
+			path = BuryPoint;
+			sourceTree = "<group>";
+		};
 		EC4FBBCC1D77CD8300BBD050 = {
 			isa = PBXGroup;
 			children = (
@@ -2868,6 +2880,7 @@
 		EC4FBC3E1D77CEE300BBD050 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EC31CF5E1DA9233C00C49E29 /* BuryPoint */,
 				EC68C3CD1D9BF02700D4401A /* Cover */,
 				EC68C3C91D9BD3D700D4401A /* Synchronize */,
 				EC68C3C51D9BD2A200D4401A /* Scheme */,
@@ -8017,6 +8030,7 @@
 				EC4FC27A1D77CEE400BBD050 /* ThemeManager.m in Sources */,
 				EC0B6D941D8E693A00EC20EA /* ArticleAutoRollCell.m in Sources */,
 				EC68C3B51D9BBC5700D4401A /* HomeRefreshViewController.m in Sources */,
+				EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */,
 				EC72642A1D7D279A00AA739B /* ArticleLikeViewController.m in Sources */,
 				ECAA494F1D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.m in Sources */,
 				EC4FC2541D77CEE400BBD050 /* MapLocateViewController.m in Sources */,
@@ -8397,8 +8411,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "545a09e0-33d5-467d-8e1f-b71e2e4d69ef";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development_Pro;
+				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -8432,8 +8446,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "545a09e0-33d5-467d-8e1f-b71e2e4d69ef";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development_Pro;
+				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
