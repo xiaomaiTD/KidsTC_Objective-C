@@ -169,15 +169,13 @@ singleM(NotificationService)
 
 //- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler  {
 //    NSLog(@"userNotificationCenter-willPresentNotification-");
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        UNNotificationPresentationOptions options =
-//        UNNotificationPresentationOptionBadge|
-//        UNNotificationPresentationOptionSound|
-//        UNNotificationPresentationOptionAlert;
-//        completionHandler (options);
-//        NSLog(@"userNotificationCenter-willPresentNotification-:\n\n===\n\n%@\n\n===\n\n",notification);
-//        NSLog(@"userInfo-:\n\n===\n\n%@\n\n===\n\n",notification.request.content.userInfo);
-//    });
+//    UNNotificationPresentationOptions options =
+//    UNNotificationPresentationOptionBadge|
+//    UNNotificationPresentationOptionSound|
+//    UNNotificationPresentationOptionAlert;
+//    completionHandler (options);
+//    NSLog(@"userNotificationCenter-willPresentNotification-:\n\n===\n\n%@\n\n===\n\n",notification);
+//    NSLog(@"userInfo-:\n\n===\n\n%@\n\n===\n\n",notification.request.content.userInfo);
 //}
 //
 //- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
