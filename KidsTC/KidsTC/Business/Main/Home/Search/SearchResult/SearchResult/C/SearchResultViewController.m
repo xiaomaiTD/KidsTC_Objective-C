@@ -20,8 +20,6 @@
 #import "SearchParmsModel.h"
 #import "KTCMapService.h"
 #import "MapLocateViewController.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 #import "ServiceDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "WebViewController.h"
@@ -783,9 +781,6 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
         ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.serveId channelId:item.channelId];
         [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomEvent:@"event_skip_search_result_dtl_service" args:nil];
-        [MobClick event:@"event_skip_search_result_dtl_service" attributes:nil];
     }else if (tableView == self.tv2) {
         SearchResultStoreItem *item = self.ary2[indexPath.section];
         if (item.storeId.length<=0) {
@@ -795,9 +790,6 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
         StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeId];
         [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomEvent:@"event_skip_search_result_dtl_store" args:nil];
-        [MobClick event:@"event_skip_search_result_dtl_store" attributes:nil];
     }else{
         SearchResultArticleItem *item = self.ary3[indexPath.row];
         if (item.linkUrl.length<=0) {
@@ -807,9 +799,6 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
         WebViewController *controller = [[WebViewController alloc] init];
         controller.urlString = item.linkUrl;
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomEvent:@"event_skip_search_result_dtl_article" args:nil];
-        [MobClick event:@"event_skip_search_result_dtl_article" attributes:nil];
     }
 }
 

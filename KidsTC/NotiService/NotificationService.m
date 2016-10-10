@@ -1,8 +1,8 @@
 //
 //  NotificationService.m
-//  TCNotificationService
+//  NotiService
 //
-//  Created by 詹平 on 2016/10/9.
+//  Created by 詹平 on 2016/10/10.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
@@ -33,17 +33,24 @@ static NSString *const kMedias = @"medias";
     }
     [totalLogStr appendFormat:@"\n\n【======媒体资源数组信息======】\n\n%@",urlStrsInfo];
 #endif
-    
-    [self downloadMedias:urlStrs resuleBlock:^(NSArray<UNNotificationAttachment *> *attachments, NSString *logStr) {
-        self.bestAttemptContent.attachments = attachments;
+    if (urlStrs.count>0) {
+        [self downloadMedias:urlStrs resuleBlock:^(NSArray<UNNotificationAttachment *> *attachments, NSString *logStr) {
+            self.bestAttemptContent.attachments = attachments;
 #ifdef DEBUG
-        NSArray *identifiers = [attachments valueForKeyPath:@"_identifier"];
-        [totalLogStr appendFormat:@"\n\n【======媒体资源排序信息======】\n\n%@",[self jsonStr:identifiers]];
-        [totalLogStr appendFormat:@"\n\n【======媒体资源下载信息======】\n\n%@====================",logStr];
+            NSArray *identifiers = [attachments valueForKeyPath:@"_identifier"];
+            [totalLogStr appendFormat:@"\n\n【======媒体资源排序信息======】\n\n%@",[self jsonStr:identifiers]];
+            [totalLogStr appendFormat:@"\n\n【======媒体资源下载信息======】\n\n%@====================",logStr];
+            self.bestAttemptContent.body = [NSString stringWithFormat:@"%@%@",self.bestAttemptContent.body,totalLogStr];
+#endif
+            contentHandler(self.bestAttemptContent);
+        }];
+    }else{
+#ifdef DEBUG
+        [totalLogStr appendFormat:@"\n\n【======暂无媒体资源信息======】\n\n"];
         self.bestAttemptContent.body = [NSString stringWithFormat:@"%@%@",self.bestAttemptContent.body,totalLogStr];
 #endif
         contentHandler(self.bestAttemptContent);
-    }];
+    }
 }
 
 - (void)serviceExtensionTimeWillExpire {
@@ -53,6 +60,8 @@ static NSString *const kMedias = @"medias";
 #endif
     self.contentHandler(self.bestAttemptContent);
 }
+
+#pragma mark - 根据推送过来的medias去下载相应的媒体数据
 
 - (void)downloadMedias:(NSArray<NSString *> *)urlStrs resuleBlock:(void(^)(NSArray<UNNotificationAttachment *> *attachments, NSString *logStr))resultBlock{
     NSMutableArray<UNNotificationAttachment *> *attachments = [NSMutableArray array];
@@ -91,9 +100,7 @@ static NSString *const kMedias = @"medias";
         [logStr appendFormat:@">>>第%zd个媒体资源下载完成-开头:-->\n",(index+1)];
         if (!error) {
             [logStr appendFormat:@"下载成功-->\n"];
-            NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-            NSString *fileName = urlStr.lastPathComponent;
-            NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
+            NSString *filePath = [self filePath:urlStr];
             BOOL bWrite = [data writeToFile:filePath atomically:YES];
             if (bWrite) {
                 [logStr appendFormat:@"写入成功-->\n"];
@@ -102,7 +109,7 @@ static NSString *const kMedias = @"medias";
                     [logStr appendFormat:@"fileUrl有值(%@)-->\n",fileUrl];
                     NSString *identifier = [NSString stringWithFormat:@"%zd",index];
                     NSError *attError = nil;
-                    attachment = [UNNotificationAttachment attachmentWithIdentifier:identifier URL:fileUrl options:nil error:nil];
+                    attachment = [UNNotificationAttachment attachmentWithIdentifier:identifier URL:fileUrl options:nil error:&attError];
                     if (!attError && attachment) {
                         [logStr appendFormat:@"attachment创建成功(attachment:%@)-->\n",attachment];
                     }else{
@@ -118,11 +125,24 @@ static NSString *const kMedias = @"medias";
             [logStr appendFormat:@"下载失败(原因:%@)-->\n",[self jsonStr:error.userInfo]];
         }
         [logStr appendFormat:@"第%zd个媒体资源下载完成-结尾:--<\n\n",(index+1)];
-        if (resuleBlock) {
-            resuleBlock(attachment,logStr);
-        }
+        if (resuleBlock) resuleBlock(attachment,logStr);
     }];
     [task resume];
+}
+
+- (NSString *)filePath:(NSString *)urlStr {
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *fileName = urlStr.lastPathComponent;
+    NSRange range = [fileName rangeOfString:@"?"];
+    if (range.length>0) {
+        fileName = [fileName substringToIndex:range.location];
+    }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    fileName = [fileName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#pragma clang diagnostic pop
+    NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
+    return filePath;
 }
 
 - (NSString *)jsonStr:(id)object {

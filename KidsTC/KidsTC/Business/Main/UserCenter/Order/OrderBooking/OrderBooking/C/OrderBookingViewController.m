@@ -27,9 +27,6 @@
 #import "OrderBookingSelectTimeViewController.h"
 #import "OrderBookingSelectAgeViewController.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
 @interface OrderBookingViewController ()<UITableViewDelegate,UITableViewDataSource,OrderBookingBaseCellDelegate>
 
 @property (nonatomic, weak) UITableView *tableView;
@@ -222,8 +219,6 @@
 - (void)serviceInfo {
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.data.productInfo.productId channelId:@""];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_result_orders_dtl" args:nil];
 }
 
 - (void)storeInfo {

@@ -15,7 +15,6 @@
 #import "SegueMaster.h"
 #import "KTCEmptyDataView.h"
 #import "StrategyTagColumnTableViewController.h"
-#import "UMMobClick/MobClick.h"
 #import "StrategyToolBar.h"
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
@@ -68,16 +67,6 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (self.models.count<=0) [self loadDataWithStrategyCell:nil loadDataRefresh:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [MobClick beginLogPageView:self.pageId];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [MobClick endLogPageView:self.pageId];
 }
 
 - (void)loadDataWithStrategyCell:(StrategyCollectionViewCell *)strategyCell loadDataRefresh:(BOOL)refresh{

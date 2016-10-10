@@ -14,8 +14,6 @@
 #import "CashierDeskViewController.h"
 #import "OrderListViewModel.h"
 #import "GHeader.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 #import "ServiceOrderDetailViewController.h"
 
 
@@ -122,9 +120,6 @@
         controller.orderId = model.orderId;
         controller.delegate = self;
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-        [MobClick event:@"event_skip_acct_orders" attributes:nil];
     }
 }
 
@@ -144,9 +139,6 @@
     CommentFoundingViewController *controller = [[CommentFoundingViewController alloc] initWithCommentFoundingModel:[CommentFoundingModel modelFromServiceOrderModel:model]];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomKeyValueEvent:@"event_skip_orders_evaluate" props:nil];
-    [MobClick event:@"event_skip_orders_evaluate" attributes:nil];
 }
 
 - (void)orderListView:(OrderListView *)listView didClickedReturnButtonAtIndex:(NSUInteger)index {

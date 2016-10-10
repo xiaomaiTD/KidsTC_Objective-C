@@ -46,7 +46,6 @@
 #import "InterfaceManager.h"
 #import "KTCMapService.h"
 #import "OnlineCustomerService.h"
-#import "MTA.h"
 #import "CashierDeskModel.h"
 
 #define FDSegmentViewHight 40
@@ -232,8 +231,6 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
         {
             ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.data.serveId channelId:@"0"];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_search_result_dtl_service" args:nil];
         }
             break;
         case FDToolBarViewBtnType_FlashBuy:
@@ -432,8 +429,6 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
     StoreDetialMapViewController *controller = [[StoreDetialMapViewController alloc] init];
     controller.models = store;
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_service_promotion_dtl" args:nil];
 }
 - (void)fdHeaderView:(FDHeaderView *)fdHeaderView didClickWithSegue:(SegueModel *)segue{
     
@@ -593,8 +588,6 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
             FDStoreItem *storeItem = self.currentAry[indexPath.row];
             StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:storeItem.storeId];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_server_stores_dtl" args:nil];
         }
             break;
         case FDSegmentViewBtnType_Comment:

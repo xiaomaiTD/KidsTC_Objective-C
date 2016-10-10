@@ -39,9 +39,6 @@
 #import "CommentFoundingViewController.h"
 #import "OrderBookingViewController.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
 #define TOOLBAR_HEIGHT 64
 
 @interface FlashServiceOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,FlashServiceOrderDetailBaseCellDelegate,FlashServiceOrderDetailToolBarDelegate,OrderRefundViewControllerDelegate,CommentFoundingViewControllerDelegate,FlashServiceOrderDetailRemindViewDelegate>

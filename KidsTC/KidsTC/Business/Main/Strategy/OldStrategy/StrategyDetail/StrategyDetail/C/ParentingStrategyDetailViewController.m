@@ -19,7 +19,6 @@
 #import "TCProgressHUD.h"
 #import "User.h"
 #import "iToast.h"
-#import "MTA.h"
 #import "StoreDetialMapViewController.h"
 
 @interface ParentingStrategyDetailViewController () <ParentingStrategyDetailViewDelegate, StrategyDetailBottomViewDelegate>
@@ -93,7 +92,6 @@
     StoreDetialMapViewController *controller = [[StoreDetialMapViewController alloc] init];
     controller.models = ary;
     [self.navigationController pushViewController:controller animated:YES];
-    [MTA trackCustomEvent:@"event_skip_map_stores_dtl" args:nil];
 }
 
 - (void)didClickedAllRelatedServiceOnParentingStrategyDetailView:(ParentingStrategyDetailView *)detailView {
@@ -105,8 +103,7 @@
     StrategyDetailServiceItemModel *serviceModel = [self.viewModel.detailModel.relatedServices objectAtIndex:index];
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_stgy_prods_dtl" args:nil];
+
 }
 
 - (void)parentingStrategyDetailView:(ParentingStrategyDetailView *)detailView didSelectedLinkWithSegueModel:(SegueModel *)model {

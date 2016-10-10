@@ -14,9 +14,6 @@
 #import "StoreDetailAppointmentPreferenceInfoCell.h"
 #import "StoreDetailAppointmentContactCell.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
 @interface StoreDetailAppointmentViewController ()<UITableViewDelegate,UITableViewDataSource,StoreDetailAppointmentBaseCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewHight;
@@ -104,15 +101,9 @@
     [Request startWithName:@"ORDER_CREATE_APPOINTMENTORDER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         [self submitOrderSucceed:dic];
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"true", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_appoint_result" props:trackParam];
-        [MobClick event:@"event_result_appoint_result" attributes:trackParam];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
         [self submitOrderFailed:error];
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"false", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_appoint_result" props:trackParam];
-        [MobClick event:@"event_result_appoint_result" attributes:trackParam];
     }];
 }
 

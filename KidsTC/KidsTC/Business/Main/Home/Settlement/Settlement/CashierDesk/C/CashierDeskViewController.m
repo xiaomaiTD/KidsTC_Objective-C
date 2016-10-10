@@ -14,9 +14,6 @@
 
 #import "WeChatManager.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
 @interface CashierDeskViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *orderIdLabel;
@@ -151,23 +148,13 @@
         [self settlementPaid:YES orderId:orderId];
         if (self.resultBlock) self.resultBlock(YES);
         [[iToast makeText:@"结算成功"] show];
-        NSDictionary *trackParam = @{@"id":orderId,@"result":@"true"};
-        [MTA trackCustomKeyValueEvent:@"event_result_pay_result" props:trackParam];
-        [MobClick event:@"event_result_pay_result" attributes:trackParam];
     } failure:^(NSError *error) {
         //[self settlementPaid:NO orderId:orderId];
         NSString *errMsg = @"结算失败";
         NSString *text = [[error userInfo] objectForKey:kErrMsgKey];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
-        NSDictionary *trackParam = @{@"id":orderId,@"result":@"false"};
-        [MTA trackCustomKeyValueEvent:@"event_result_pay_result" props:trackParam];
-        [MobClick event:@"event_result_pay_result" attributes:trackParam];
     }];
-    
-    NSDictionary *trackParam = @{@"id":orderId,@"payType":@(order.payInfo.payType),@"result":@"trure"};
-    [MTA trackCustomKeyValueEvent:@"event_result_orderplace_submit" props:trackParam];
-    [MobClick event:@"event_result_orderplace_submit" attributes:trackParam];
 }
 
 #pragma mark - 结算结果

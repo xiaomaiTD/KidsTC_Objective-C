@@ -7,8 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 @class AppointmentOrderModel;
 @class AppointmentOrderDetailViewController;
 

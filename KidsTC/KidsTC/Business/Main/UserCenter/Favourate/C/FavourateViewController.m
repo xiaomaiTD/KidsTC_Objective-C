@@ -14,7 +14,6 @@
 //#import "WebViewController.h"  //原接入点在点击事件的 FavourateViewSegmentTagNews处现为segue跳转
 #import "SegueMaster.h"
 #import "ArticleColumnViewController.h"
-#import "MTA.h"
 #import "NSString+Category.h"
 
 @interface FavourateViewController () <FavourateViewDelegate>
@@ -51,8 +50,6 @@
             FavouriteServiceItemModel *model = [array objectAtIndex:index];
             ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_acct_favors_dtl_service" args:nil];
         }
             break;
         case FavourateViewSegmentTagStore:
@@ -60,8 +57,6 @@
             FavouriteStoreItemModel *model = [array objectAtIndex:index];
             StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_acct_favors_dtl_store" args:nil];
         }
             break;
         case FavourateViewSegmentTagStrategy:

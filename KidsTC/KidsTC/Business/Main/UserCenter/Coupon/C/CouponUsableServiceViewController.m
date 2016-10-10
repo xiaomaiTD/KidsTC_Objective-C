@@ -11,7 +11,7 @@
 #import "ServiceDetailViewController.h"
 #import "GHeader.h"
 #import "KTCEmptyDataView.h"
-#import "MTA.h"
+
 static NSString *const kCellIdentifier = @"ServiceListViewCell";
 
 @interface CouponUsableServiceViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -118,8 +118,6 @@ static NSString *const kCellIdentifier = @"ServiceListViewCell";
 
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.identifier channelId:item.channelId];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_coupon_prods_dtl" args:nil];
 }
 
 #pragma mark Private methods

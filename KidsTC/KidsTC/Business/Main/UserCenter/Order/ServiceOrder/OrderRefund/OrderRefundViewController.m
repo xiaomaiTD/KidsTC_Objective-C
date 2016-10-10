@@ -10,8 +10,6 @@
 #import "OrderRefundViewModel.h"
 #import "iToast.h"
 #import "TCProgressHUD.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 @interface OrderRefundViewController () <OrderRefundViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollBGView;
@@ -102,9 +100,6 @@
             [self.delegate orderRefundViewController:self didSucceedWithRefundForOrderId:self.orderId];
         }
         [self back];
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.orderId, @"id", @"true", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_refund_apply" props:trackParam];
-        [MobClick event:@"event_result_refund_apply" attributes:trackParam];
         [TCProgressHUD dismissSVP];
     } failure:^(NSError *error) {
         NSString *msg = nil;
@@ -115,9 +110,6 @@
             msg = @"退款申请提交失败";
         }
         [[iToast makeText:msg] show];
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.orderId, @"id", @"false", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_refund_apply" props:trackParam];
-        [MobClick event:@"event_result_refund_apply" attributes:trackParam];
         [TCProgressHUD dismissSVP];
     }];
 }

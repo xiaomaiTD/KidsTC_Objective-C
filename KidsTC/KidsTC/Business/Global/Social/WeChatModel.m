@@ -12,11 +12,6 @@
  */
 
 #import "WeChatModel.h"
-//#import "ServiceDetailViewController.h"
-//#import "UIAlertView+Blocks.h"
-//#import "MTA.h"
-//#import "KTCTabBarController.h"
-//#import "GPayment.h"
 #import "TabBarController.h"
 
 @implementation WeChatModel

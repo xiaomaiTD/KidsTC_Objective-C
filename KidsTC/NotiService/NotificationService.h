@@ -1,8 +1,8 @@
 //
 //  NotificationService.h
-//  TCNotificationService
+//  NotiService
 //
-//  Created by 詹平 on 2016/10/9.
+//  Created by 詹平 on 2016/10/10.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 

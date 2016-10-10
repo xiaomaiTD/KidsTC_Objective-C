@@ -13,4 +13,5 @@ singleH(BuryPointManager)
 + (void)registerSdk;
 + (void)trackBegin:(NSString *)pageId;
 + (void)trackEnd:(NSString *)pageId;
++ (void)trackEvent:(NSString *)event attributes:(NSDictionary *)attributes;
 @end

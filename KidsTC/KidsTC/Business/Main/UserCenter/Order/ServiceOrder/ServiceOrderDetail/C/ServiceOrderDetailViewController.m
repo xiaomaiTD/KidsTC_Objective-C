@@ -43,11 +43,6 @@
 #import "OrderBookingViewController.h"
 #import "ServiceSettlementViewController.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
-
-
 #define TOOLBAR_HEIGHT 64
 
 @interface ServiceOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceOrderDetailBaseCellDelegate,ServiceOrderDetailToolBarDelegate,OrderRefundViewControllerDelegate,CommentFoundingViewControllerDelegate,ServiceOrderDetailRemindViewDelegate>
@@ -494,16 +489,10 @@
 
 - (void)cancelOrderSucceed:(NSDictionary *)data {
     [self loadOrderDetailSuccess:nil faliure:nil];
-    NSDictionary *trackParam = @{ @"id":self.orderId,@"result":@"true"};
-    [MTA trackCustomKeyValueEvent:@"event_result_order_dtl_cancel" props:trackParam];
-    [MobClick event:@"event_result_order_dtl_cancel" attributes:trackParam];
 }
 
 - (void)cancelOrderFailed:(NSError *)error {
     [[iToast makeText:@"取消订单失败"] show];
-    NSDictionary *trackParam = @{ @"id":self.orderId,@"result":@"false"};
-    [MTA trackCustomKeyValueEvent:@"event_result_order_dtl_cancel" props:trackParam];
-    [MobClick event:@"event_result_order_dtl_cancel" attributes:trackParam];
 }
 
 #pragma mark ================立即支付================
@@ -530,9 +519,6 @@
     OrderRefundViewController *controller = [[OrderRefundViewController alloc] initWithOrderId:self.orderId];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomKeyValueEvent:@"event_skip_order_dtl_refund" props:nil];
-    [MobClick event:@"event_skip_order_dtl_refund" attributes:nil];
 }
 
 #pragma mark OrderRefundViewControllerDelegate
@@ -556,9 +542,6 @@
         btn.backgroundColor = [UIColor lightGrayColor];
         [btn setTitle:@"已发送消费码" forState:UIControlStateDisabled];
         [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
-        NSDictionary *trackParam = @{@"id":self.orderId,@"result":@"true"};
-        [MTA trackCustomKeyValueEvent:@"event_result_order_dtl_consume" props:trackParam];
-        [MobClick event:@"event_result_order_dtl_consume" attributes:trackParam];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         btn.enabled = YES;
         NSString *errMsg = @"获取消费码失败";
@@ -567,9 +550,6 @@
             if ([msg isKindOfClass:[NSString class]] && [msg length] > 0) errMsg = msg;
         }
         [[iToast makeText:errMsg] show];
-        NSDictionary *trackParam = @{@"id":self.orderId,@"result":@"false"};
-        [MTA trackCustomKeyValueEvent:@"event_result_order_dtl_consume" props:trackParam];
-        [MobClick event:@"event_result_order_dtl_consume" attributes:trackParam];
     }];
 }
 
@@ -579,9 +559,6 @@
     CommentFoundingViewController *controller = [[CommentFoundingViewController alloc] initWithCommentFoundingModel:[CommentFoundingModel modelFromServiceOrderDetailModel:self.model]];
     controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomKeyValueEvent:@"event_skip_order_dtl_evaluate" props:nil];
-    [MobClick event:@"event_skip_order_dtl_evaluate" attributes:nil];
 }
 
 #pragma mark CommentFoundingViewControllerDelegate

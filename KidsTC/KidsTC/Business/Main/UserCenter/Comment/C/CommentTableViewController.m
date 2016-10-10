@@ -24,8 +24,6 @@
 
 #import "GHeader.h"
 #import "KTCEmptyDataView.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 
 static NSString *const waitToCommentCellIdentifier = @"OrderListViewCellCellIdentifier";
 static NSString *const myCommentListCellIdentifier = @"myCommentListCellIdentifier";
@@ -239,9 +237,6 @@ static NSUInteger pageSize = 10;
     
     
     if (self.segmentControl.selectedSegmentIndex == 0) {//待评价
-        //MTA
-        [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-        [MobClick event:@"event_skip_acct_orders" attributes:nil];
         
         if (self.waitToCommentListAry.count == 0) {
             [self loadDataForNew:YES];
@@ -342,9 +337,6 @@ static NSUInteger pageSize = 10;
         controller.orderId = model.orderId;
         controller.delegate = self;
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-        [MobClick event:@"event_skip_acct_orders" attributes:nil];
     }else{//我的评价
         MyCommentListItemModel *model = [self.myCommentListAry objectAtIndex:indexPath.section];
         switch (model.relationType) {
@@ -418,9 +410,6 @@ static NSUInteger pageSize = 10;
     controller.delegate = self;
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomKeyValueEvent:@"event_skip_orders_evaluate" props:nil];
-    [MobClick event:@"event_skip_orders_evaluate" attributes:nil];
 }
 
 - (void)didClickedReturnButtonOnOrderListViewCell:(OrderListViewCell *)cell {
@@ -503,13 +492,6 @@ static NSUInteger pageSize = 10;
 
 - (void)commentEditViewControllerDidFinishSubmitComment:(CommentEditViewController *)vc {
     [self loadDataForNew:YES];
-}
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

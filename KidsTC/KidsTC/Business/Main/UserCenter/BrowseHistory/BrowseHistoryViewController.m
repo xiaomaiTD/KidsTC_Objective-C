@@ -11,7 +11,7 @@
 #import "KTCEmptyDataView.h"
 #import "GHeader.h"
 #import "KTCMapService.h"
-#import "MTA.h"
+
 //服务
 #import "ServiceListViewCell.h"
 #import "ServiceListItemModel.h"
@@ -324,15 +324,12 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
         ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
         [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomEvent:@"event_skip_search_result_dtl_service" args:nil];
+
     }else{//门店
         StoreListItemModel *model = [self.storeAry objectAtIndex:indexPath.row];
         StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
         [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
-        //MTA
-        [MTA trackCustomEvent:@"event_skip_search_result_dtl_store" args:nil];
     }
 }
 

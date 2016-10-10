@@ -15,8 +15,6 @@
 #import "InterfaceManager.h"
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 #import "UserCenterMessageButton.h"
 
 #import "UserCenterBaseCell.h"
@@ -352,25 +350,16 @@
         case UserCenterCellActionTypeAllOrder:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeAll];
-            //MTA
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-            [MobClick event:@"event_skip_acct_orders" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeWaitPay:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingPayment];
-            //MTA
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-            [MobClick event:@"event_skip_acct_orders" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeWaitUse:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingUse];
-            //MTA
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-            [MobClick event:@"event_skip_acct_orders" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeMyComment:
@@ -378,16 +367,11 @@
             CommentTableViewController *controller = [[CommentTableViewController alloc]init];
             controller.isHaveWaitToComment = self.model.data.userCount.order_wait_evaluate>0;
             toController = controller;
-            //MTA
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_comment" props:nil];
-            [MobClick event:@"event_skip_acct_comment" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeRefund:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeRefund];
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_orders" props:nil];
-            [MobClick event:@"event_skip_acct_orders" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeCoupon:
@@ -398,9 +382,6 @@
         case UserCenterCellActionTypePointment:
         {
             toController = [[AppointmentOrderListViewController alloc] initWithNibName:@"AppointmentOrderListViewController" bundle:nil];
-            //MTA
-            [MTA trackCustomKeyValueEvent:@"event_skip_acct_appoints" props:nil];
-            [MobClick event:@"event_skip_acct_appoints" attributes:nil];
         }
             break;
         case UserCenterCellActionTypeCarrotHistory:

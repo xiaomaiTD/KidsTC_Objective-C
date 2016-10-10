@@ -67,9 +67,6 @@
             [weakSelf.delegate AppointmentOrderDetailViewController:weakSelf didCanceledOrderWithId:weakSelf.orderModel.orderId];
         }
         [weakSelf.navigationController popViewControllerAnimated:YES];
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.viewModel.orderModel.orderId, @"id", @"true", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_appoint_dtl_cancel" props:trackParam];
-        [MobClick event:@"event_result_appoint_dtl_cancel" attributes:trackParam];
     } failure:^(NSError *error) {
         if (error.userInfo) {
             NSString *msg = [error.userInfo objectForKey:@"data"];
@@ -81,9 +78,6 @@
         } else {
             [[iToast makeText:@"取消订单失败"] show];
         }
-        NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.viewModel.orderModel.orderId, @"id", @"false", @"result", nil];
-        [MTA trackCustomKeyValueEvent:@"event_result_appoint_dtl_cancel" props:trackParam];
-        [MobClick event:@"event_result_appoint_dtl_cancel" attributes:trackParam];
     }];
 }
 

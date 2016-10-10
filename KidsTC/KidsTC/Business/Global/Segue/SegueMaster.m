@@ -27,7 +27,6 @@
 #import "SearchResultViewController.h"
 #import "ArticleWeChatTableViewController.h"
 #import "ArticleCommentViewController.h"
-#import "MTA.h"
 #import "NSString+Category.h"
 
 @implementation SegueMaster
@@ -267,7 +266,6 @@
     }
     if (toController && fromVC.navigationController) [fromVC.navigationController pushViewController:toController animated:YES];
     
-    //MTA
     [self mtaJudgerWithFromVc:fromVC sugueModel:model];
     return toController;
 }
@@ -275,30 +273,6 @@
 
 + (void)mtaJudgerWithFromVc:(UIViewController *)fromVC sugueModel:(SegueModel *)model{
     
-    if ([fromVC isKindOfClass:[HomeViewController class]]) {
-        if (model.destination == SegueDestinationServiceDetail) {
-            [MTA trackCustomEvent:@"event_skip_home_floor_service" args:nil];
-        } else if (model.destination == SegueDestinationStoreDetail) {
-            [MTA trackCustomEvent:@"event_skip_home_floor_store" args:nil];
-        }
-    } else if ([fromVC isKindOfClass:[NotificationCenterViewController class]]) {
-        if (model.destination == SegueDestinationServiceDetail) {
-            [MTA trackCustomEvent:@"event_skip_acct_msgs_dtl_service" args:nil];
-        } else if (model.destination == SegueDestinationStoreDetail) {
-            [MTA trackCustomEvent:@"event_skip_acct_msgs_dtl_store" args:nil];
-        }
-    } else if ([fromVC isKindOfClass:[UIViewController class]] && fromVC.view.tag == NotificationSegueTag) {
-        if (model.destination == SegueDestinationServiceDetail) {
-            [MTA trackCustomEvent:@"event_skip_msg_notify_service" args:nil];
-        } else if (model.destination == SegueDestinationStoreDetail) {
-            [MTA trackCustomEvent:@"event_skip_msg_notify_store" args:nil];
-        }
-    } else if ([fromVC isKindOfClass:[ParentingStrategyDetailViewController class]]) {
-        if (model.destination == SegueDestinationServiceDetail) {
-            [MTA trackCustomEvent:@"event_skip_stgyitem_service" args:nil];
-        } else if (model.destination == SegueDestinationStoreDetail) {
-            [MTA trackCustomEvent:@"event_skip_stgyitem_store" args:nil];
-        }
-    }
+    
 }
 @end

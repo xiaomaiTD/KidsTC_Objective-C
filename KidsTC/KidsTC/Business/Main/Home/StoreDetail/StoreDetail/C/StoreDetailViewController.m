@@ -35,7 +35,6 @@
 #import "User.h"
 #import "iToast.h"
 #import "TabBarController.h"
-#import "MTA.h"
 #import "UIBarButtonItem+Category.h"
 #import "StoreDetailAppointmentViewController.h"
 
@@ -126,8 +125,6 @@
         }
     }];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_map_stores_dtl" args:nil];
 }
 
 - (void)didClickedActiveOnStoreDetailView:(StoreDetailView *)detailView atIndex:(NSUInteger)index {
@@ -149,8 +146,6 @@
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_service_promotion_dtl" args:nil];
 }
 
 - (void)didClickedAllHotRecommendOnStoreDetailView:(StoreDetailView *)detailView {
@@ -164,8 +159,6 @@
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.serviceId channelId:item.channelId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_store_service_free_dtl" args:nil];
 }
 
 - (void)didClickedAllStrategyOnStoreDetailView:(StoreDetailView *)detailView {
@@ -179,8 +172,6 @@
     ParentingStrategyDetailViewController *controller = [[ParentingStrategyDetailViewController alloc] initWithStrategyIdentifier:model.strategyId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_store_stgy_dtl" args:nil];
 }
 
 - (void)didClickedMoreDetailOnStoreDetailView:(StoreDetailView *)detailView {
@@ -331,8 +322,6 @@
             ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
             [controller setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_historys_dtl_store" args:nil];
         }
             break;
         case KTCBrowseHistoryTypeStore:

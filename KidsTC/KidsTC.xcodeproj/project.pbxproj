@@ -31,6 +31,8 @@
 		EC154D581D88316C007137E8 /* ArticleUserCenterToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC154D571D88316C007137E8 /* ArticleUserCenterToolBar.m */; };
 		EC154D5A1D883179007137E8 /* ArticleUserCenterToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC154D591D883179007137E8 /* ArticleUserCenterToolBar.xib */; };
 		EC154D5D1D88364E007137E8 /* ArticleUserCenterToolBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC154D5C1D88364E007137E8 /* ArticleUserCenterToolBarItem.m */; };
+		EC1AB2CF1DAB953900C158C5 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2CE1DAB953900C158C5 /* NotificationService.m */; };
+		EC1AB2D31DAB953900C158C5 /* NotiService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC1AB2CB1DAB953900C158C5 /* NotiService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EC1E2F8D1D827EA4002381E7 /* ArticleWriteBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F7A1D827EA4002381E7 /* ArticleWriteBaseCell.m */; };
 		EC1E2F8E1D827EA4002381E7 /* ArticleWriteBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F7C1D827EA4002381E7 /* ArticleWriteBottomView.m */; };
 		EC1E2F941D827EA4002381E7 /* ArticleWriteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F851D827EA4002381E7 /* ArticleWriteModel.m */; };
@@ -108,7 +110,6 @@
 		EC4FC24B1D77CEE400BBD050 /* GuideManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC781D77CEE300BBD050 /* GuideManager.m */; };
 		EC4FC24C1D77CEE400BBD050 /* GuideViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC7B1D77CEE300BBD050 /* GuideViewCell.m */; };
 		EC4FC24D1D77CEE400BBD050 /* GuideViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBC7C1D77CEE300BBD050 /* GuideViewCell.xib */; };
-		EC4FC24E1D77CEE400BBD050 /* ImageUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC7F1D77CEE300BBD050 /* ImageUploader.m */; };
 		EC4FC24F1D77CEE400BBD050 /* KTCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC821D77CEE300BBD050 /* KTCLocation.m */; };
 		EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC841D77CEE300BBD050 /* KTCMapService.mm */; };
 		EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC861D77CEE300BBD050 /* KTCMapUtil.mm */; };
@@ -756,7 +757,6 @@
 		EC4FC4ED1D77CEE400BBD050 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FC2141D77CEE400BBD050 /* WebViewController.m */; };
 		EC4FC59F1D77CEEF00BBD050 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC4FC4F61D77CEEE00BBD050 /* AlipaySDK.bundle */; };
 		EC4FC5A01D77CEEF00BBD050 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4FC4F71D77CEEE00BBD050 /* AlipaySDK.framework */; };
-		EC4FC5A11D77CEEF00BBD050 /* libmtasdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4FC4F91D77CEEE00BBD050 /* libmtasdk.a */; };
 		EC4FC5A21D77CEEF00BBD050 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4FC4FE1D77CEEE00BBD050 /* TencentOpenAPI.framework */; };
 		EC4FC5A31D77CEEF00BBD050 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC4FC4FF1D77CEEE00BBD050 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		EC4FC5A41D77CEEF00BBD050 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4FC5011D77CEEE00BBD050 /* libWeChatSDK.a */; };
@@ -870,6 +870,7 @@
 		EC7264AF1D81070400AA739B /* ArticleHomeUserArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7264AD1D81070400AA739B /* ArticleHomeUserArticleCell.xib */; };
 		EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7264B11D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m */; };
 		EC7264B41D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */; };
+		EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC72C2371DAB3C10003DF2CB /* GameKit.framework */; };
 		EC7AF7A71D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7AF7A51D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.m */; };
 		EC7AF7A81D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7AF7A61D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.xib */; };
 		EC810A601D8FE0C700B4B87A /* NSDate+ZP.m in Sources */ = {isa = PBXBuildFile; fileRef = EC810A5D1D8FE0C700B4B87A /* NSDate+ZP.m */; };
@@ -878,8 +879,6 @@
 		EC810A671D8FE53400B4B87A /* NSString+ZP.m in Sources */ = {isa = PBXBuildFile; fileRef = EC810A651D8FE53400B4B87A /* NSString+ZP.m */; };
 		EC810A6A1D90242500B4B87A /* ServiceOrderDetailToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC810A691D90242500B4B87A /* ServiceOrderDetailToolBarButton.m */; };
 		EC810A6D1D90E24F00B4B87A /* FlashServiceOrderDetailToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC810A6C1D90E24F00B4B87A /* FlashServiceOrderDetailToolBarButton.m */; };
-		EC8EB7641DAA65D200CEFF62 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8EB7631DAA65D200CEFF62 /* NotificationService.m */; };
-		EC8EB7681DAA65D200CEFF62 /* TCNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC8EB7601DAA65D200CEFF62 /* TCNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		ECAA49301D79A45B00799CBE /* ArticleHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48F81D79A45B00799CBE /* ArticleHomeViewController.m */; };
 		ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48FB1D79A45B00799CBE /* ArticleHomeModel.m */; };
@@ -915,7 +914,6 @@
 		ECAA49501D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAA492C1D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.xib */; };
 		ECAA49511D79A45B00799CBE /* ArticleHomeVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA492E1D79A45B00799CBE /* ArticleHomeVideoCell.m */; };
 		ECAA49521D79A45B00799CBE /* ArticleHomeVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECAA492F1D79A45B00799CBE /* ArticleHomeVideoCell.xib */; };
-		ECB0BE291D9FB64B003092C8 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECB0BE281D9FB64B003092C8 /* GameKit.framework */; };
 		ECB3E7581D9264DB0059267D /* AppVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E7561D9264DB0059267D /* AppVersionViewController.m */; };
 		ECB3E77B1D92C82E0059267D /* OrderBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E75D1D92C82E0059267D /* OrderBookingViewController.m */; };
 		ECB3E77C1D92C82E0059267D /* OrderBookingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E7601D92C82E0059267D /* OrderBookingModel.m */; };
@@ -957,12 +955,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EC8EB7661DAA65D200CEFF62 /* PBXContainerItemProxy */ = {
+		EC1AB2D11DAB953900C158C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EC4FBBCD1D77CD8300BBD050 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EC8EB75F1DAA65D200CEFF62;
-			remoteInfo = TCNotificationService;
+			remoteGlobalIDString = EC1AB2CA1DAB953900C158C5;
+			remoteInfo = NotiService;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -973,7 +971,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				EC8EB7681DAA65D200CEFF62 /* TCNotificationService.appex in Embed App Extensions */,
+				EC1AB2D31DAB953900C158C5 /* NotiService.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1024,6 +1022,10 @@
 		EC154D591D883179007137E8 /* ArticleUserCenterToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleUserCenterToolBar.xib; sourceTree = "<group>"; };
 		EC154D5B1D88364E007137E8 /* ArticleUserCenterToolBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleUserCenterToolBarItem.h; sourceTree = "<group>"; };
 		EC154D5C1D88364E007137E8 /* ArticleUserCenterToolBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleUserCenterToolBarItem.m; sourceTree = "<group>"; };
+		EC1AB2CB1DAB953900C158C5 /* NotiService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotiService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC1AB2CD1DAB953900C158C5 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		EC1AB2CE1DAB953900C158C5 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		EC1AB2D01DAB953900C158C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC1E2F791D827EA4002381E7 /* ArticleWriteBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteBaseCell.h; sourceTree = "<group>"; };
 		EC1E2F7A1D827EA4002381E7 /* ArticleWriteBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteBaseCell.m; sourceTree = "<group>"; };
 		EC1E2F7B1D827EA4002381E7 /* ArticleWriteBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteBottomView.h; sourceTree = "<group>"; };
@@ -1163,8 +1165,6 @@
 		EC4FBC7A1D77CEE300BBD050 /* GuideViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewCell.h; sourceTree = "<group>"; };
 		EC4FBC7B1D77CEE300BBD050 /* GuideViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewCell.m; sourceTree = "<group>"; };
 		EC4FBC7C1D77CEE300BBD050 /* GuideViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideViewCell.xib; sourceTree = "<group>"; };
-		EC4FBC7E1D77CEE300BBD050 /* ImageUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploader.h; sourceTree = "<group>"; };
-		EC4FBC7F1D77CEE300BBD050 /* ImageUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploader.m; sourceTree = "<group>"; };
 		EC4FBC811D77CEE300BBD050 /* KTCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCLocation.h; sourceTree = "<group>"; };
 		EC4FBC821D77CEE300BBD050 /* KTCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTCLocation.m; sourceTree = "<group>"; };
 		EC4FBC831D77CEE300BBD050 /* KTCMapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCMapService.h; sourceTree = "<group>"; };
@@ -2266,10 +2266,6 @@
 		EC4FC4F21D77CEEE00BBD050 /* Single.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Single.h; sourceTree = "<group>"; };
 		EC4FC4F61D77CEEE00BBD050 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		EC4FC4F71D77CEEE00BBD050 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
-		EC4FC4F91D77CEEE00BBD050 /* libmtasdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmtasdk.a; sourceTree = "<group>"; };
-		EC4FC4FA1D77CEEE00BBD050 /* MTA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTA.h; sourceTree = "<group>"; };
-		EC4FC4FB1D77CEEE00BBD050 /* MTAConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAConfig.h; sourceTree = "<group>"; };
-		EC4FC4FC1D77CEEE00BBD050 /* MTAFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTAFeedback.h; sourceTree = "<group>"; };
 		EC4FC4FE1D77CEEE00BBD050 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		EC4FC4FF1D77CEEE00BBD050 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		EC4FC5011D77CEEE00BBD050 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -2450,6 +2446,7 @@
 		EC7264B01D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeUserArticleCollectionViewCell.h; sourceTree = "<group>"; };
 		EC7264B11D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeUserArticleCollectionViewCell.m; sourceTree = "<group>"; };
 		EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleHomeUserArticleCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC72C2371DAB3C10003DF2CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EC7AF7A41D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderDetailCountDownCell.h; sourceTree = "<group>"; };
 		EC7AF7A51D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailCountDownCell.m; sourceTree = "<group>"; };
 		EC7AF7A61D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceOrderDetailCountDownCell.xib; sourceTree = "<group>"; };
@@ -2465,10 +2462,6 @@
 		EC810A691D90242500B4B87A /* ServiceOrderDetailToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderDetailToolBarButton.m; sourceTree = "<group>"; };
 		EC810A6B1D90E24F00B4B87A /* FlashServiceOrderDetailToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashServiceOrderDetailToolBarButton.h; sourceTree = "<group>"; };
 		EC810A6C1D90E24F00B4B87A /* FlashServiceOrderDetailToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashServiceOrderDetailToolBarButton.m; sourceTree = "<group>"; };
-		EC8EB7601DAA65D200CEFF62 /* TCNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TCNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC8EB7621DAA65D200CEFF62 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		EC8EB7631DAA65D200CEFF62 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		EC8EB7651DAA65D200CEFF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8FD0D01DAA528900570884 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
@@ -2526,7 +2519,6 @@
 		ECAA492D1D79A45B00799CBE /* ArticleHomeVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeVideoCell.h; sourceTree = "<group>"; };
 		ECAA492E1D79A45B00799CBE /* ArticleHomeVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeVideoCell.m; sourceTree = "<group>"; };
 		ECAA492F1D79A45B00799CBE /* ArticleHomeVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleHomeVideoCell.xib; sourceTree = "<group>"; };
-		ECB0BE281D9FB64B003092C8 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		ECB3E7551D9264DB0059267D /* AppVersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppVersionViewController.h; sourceTree = "<group>"; };
 		ECB3E7561D9264DB0059267D /* AppVersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppVersionViewController.m; sourceTree = "<group>"; };
 		ECB3E75C1D92C82E0059267D /* OrderBookingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderBookingViewController.h; sourceTree = "<group>"; };
@@ -2592,24 +2584,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EC1AB2C81DAB953900C158C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC4FBBD21D77CD8300BBD050 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EC4FC5F91D77D0A000BBD050 /* CoreMotion.framework in Frameworks */,
 				EC4FC5A21D77CEEF00BBD050 /* TencentOpenAPI.framework in Frameworks */,
-				ECB0BE291D9FB64B003092C8 /* GameKit.framework in Frameworks */,
-				EC4FC5A11D77CEEF00BBD050 /* libmtasdk.a in Frameworks */,
+				EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */,
 				EC4FC5A01D77CEEF00BBD050 /* AlipaySDK.framework in Frameworks */,
 				EC4FC5A41D77CEEF00BBD050 /* libWeChatSDK.a in Frameworks */,
 				7D40FF20A143CED91220CB23 /* Pods_KidsTC.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC8EB75D1DAA65D200CEFF62 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2619,7 +2610,7 @@
 		62B89970E1DD5EA8B662C18D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECB0BE281D9FB64B003092C8 /* GameKit.framework */,
+				EC72C2371DAB3C10003DF2CB /* GameKit.framework */,
 				EC4FC5F81D77D0A000BBD050 /* CoreMotion.framework */,
 				6FD7E4F8A8973C1EE806FAC0 /* Pods_KidsTC.framework */,
 				EC8FD0D01DAA528900570884 /* UserNotifications.framework */,
@@ -2705,6 +2696,16 @@
 			path = ArticleUserCenter;
 			sourceTree = "<group>";
 		};
+		EC1AB2CC1DAB953900C158C5 /* NotiService */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2CD1DAB953900C158C5 /* NotificationService.h */,
+				EC1AB2CE1DAB953900C158C5 /* NotificationService.m */,
+				EC1AB2D01DAB953900C158C5 /* Info.plist */,
+			);
+			path = NotiService;
+			sourceTree = "<group>";
+		};
 		EC1E2F781D827EA4002381E7 /* ArticleWrite */ = {
 			isa = PBXGroup;
 			children = (
@@ -2769,7 +2770,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4FBBD71D77CD8300BBD050 /* KidsTC */,
-				EC8EB7611DAA65D200CEFF62 /* TCNotificationService */,
+				EC1AB2CC1DAB953900C158C5 /* NotiService */,
 				EC4FBBD61D77CD8300BBD050 /* Products */,
 				62B89970E1DD5EA8B662C18D /* Frameworks */,
 				BED5981BA5E74A1B7F513B6F /* Pods */,
@@ -2780,7 +2781,7 @@
 			isa = PBXGroup;
 			children = (
 				EC4FBBD51D77CD8300BBD050 /* KidsTC.app */,
-				EC8EB7601DAA65D200CEFF62 /* TCNotificationService.appex */,
+				EC1AB2CB1DAB953900C158C5 /* NotiService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2956,7 +2957,6 @@
 				EC4FBC641D77CEE300BBD050 /* Contacts */,
 				EC4FC6371D78092900BBD050 /* FailureView */,
 				EC4FBC6F1D77CEE300BBD050 /* Guide */,
-				EC4FBC7D1D77CEE300BBD050 /* ImgUploader */,
 				EC4FBC801D77CEE300BBD050 /* Map */,
 				EC4FBC901D77CEE300BBD050 /* OnlineCustomerService */,
 				EC4FBC931D77CEE300BBD050 /* Payment */,
@@ -3124,15 +3124,6 @@
 				EC4FBC7C1D77CEE300BBD050 /* GuideViewCell.xib */,
 			);
 			path = V;
-			sourceTree = "<group>";
-		};
-		EC4FBC7D1D77CEE300BBD050 /* ImgUploader */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBC7E1D77CEE300BBD050 /* ImageUploader.h */,
-				EC4FBC7F1D77CEE300BBD050 /* ImageUploader.m */,
-			);
-			path = ImgUploader;
 			sourceTree = "<group>";
 		};
 		EC4FBC801D77CEE300BBD050 /* Map */ = {
@@ -6469,7 +6460,6 @@
 			isa = PBXGroup;
 			children = (
 				EC4FC4F51D77CEEE00BBD050 /* AliSDK */,
-				EC4FC4F81D77CEEE00BBD050 /* MTASDK */,
 				EC4FC4FD1D77CEEE00BBD050 /* TencentOpenAPI */,
 				EC4FC5001D77CEEE00BBD050 /* WeChatSDK */,
 			);
@@ -6483,17 +6473,6 @@
 				EC4FC4F71D77CEEE00BBD050 /* AlipaySDK.framework */,
 			);
 			path = AliSDK;
-			sourceTree = "<group>";
-		};
-		EC4FC4F81D77CEEE00BBD050 /* MTASDK */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FC4F91D77CEEE00BBD050 /* libmtasdk.a */,
-				EC4FC4FA1D77CEEE00BBD050 /* MTA.h */,
-				EC4FC4FB1D77CEEE00BBD050 /* MTAConfig.h */,
-				EC4FC4FC1D77CEEE00BBD050 /* MTAFeedback.h */,
-			);
-			path = MTASDK;
 			sourceTree = "<group>";
 		};
 		EC4FC4FD1D77CEEE00BBD050 /* TencentOpenAPI */ = {
@@ -7062,16 +7041,6 @@
 			path = HomeRefresh;
 			sourceTree = "<group>";
 		};
-		EC8EB7611DAA65D200CEFF62 /* TCNotificationService */ = {
-			isa = PBXGroup;
-			children = (
-				EC8EB7621DAA65D200CEFF62 /* NotificationService.h */,
-				EC8EB7631DAA65D200CEFF62 /* NotificationService.m */,
-				EC8EB7651DAA65D200CEFF62 /* Info.plist */,
-			);
-			path = TCNotificationService;
-			sourceTree = "<group>";
-		};
 		EC99A05A1D7B219A008E6F33 /* YYHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -7289,6 +7258,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EC1AB2CA1DAB953900C158C5 /* NotiService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC1AB2D41DAB953900C158C5 /* Build configuration list for PBXNativeTarget "NotiService" */;
+			buildPhases = (
+				EC1AB2C71DAB953900C158C5 /* Sources */,
+				EC1AB2C81DAB953900C158C5 /* Frameworks */,
+				EC1AB2C91DAB953900C158C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotiService;
+			productName = NotiService;
+			productReference = EC1AB2CB1DAB953900C158C5 /* NotiService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EC4FBBD41D77CD8300BBD050 /* KidsTC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC4FBBEC1D77CD8300BBD050 /* Build configuration list for PBXNativeTarget "KidsTC" */;
@@ -7305,29 +7291,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				EC8EB7671DAA65D200CEFF62 /* PBXTargetDependency */,
+				EC1AB2D21DAB953900C158C5 /* PBXTargetDependency */,
 			);
 			name = KidsTC;
 			productName = KidsTC;
 			productReference = EC4FBBD51D77CD8300BBD050 /* KidsTC.app */;
 			productType = "com.apple.product-type.application";
-		};
-		EC8EB75F1DAA65D200CEFF62 /* TCNotificationService */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EC8EB7691DAA65D200CEFF62 /* Build configuration list for PBXNativeTarget "TCNotificationService" */;
-			buildPhases = (
-				EC8EB75C1DAA65D200CEFF62 /* Sources */,
-				EC8EB75D1DAA65D200CEFF62 /* Frameworks */,
-				EC8EB75E1DAA65D200CEFF62 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TCNotificationService;
-			productName = TCNotificationService;
-			productReference = EC8EB7601DAA65D200CEFF62 /* TCNotificationService.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -7338,6 +7307,11 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = zhanping;
 				TargetAttributes = {
+					EC1AB2CA1DAB953900C158C5 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = F8C2RFLJQX;
+						ProvisioningStyle = Automatic;
+					};
 					EC4FBBD41D77CD8300BBD050 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = F8C2RFLJQX;
@@ -7356,11 +7330,6 @@
 							};
 						};
 					};
-					EC8EB75F1DAA65D200CEFF62 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = F8C2RFLJQX;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = EC4FBBD01D77CD8300BBD050 /* Build configuration list for PBXProject "KidsTC" */;
@@ -7377,12 +7346,19 @@
 			projectRoot = "";
 			targets = (
 				EC4FBBD41D77CD8300BBD050 /* KidsTC */,
-				EC8EB75F1DAA65D200CEFF62 /* TCNotificationService */,
+				EC1AB2CA1DAB953900C158C5 /* NotiService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EC1AB2C91DAB953900C158C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC4FBBD31D77CD8300BBD050 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7686,13 +7662,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC8EB75E1DAA65D200CEFF62 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -7759,6 +7728,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EC1AB2C71DAB953900C158C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1AB2CF1DAB953900C158C5 /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC4FBBD11D77CD8300BBD050 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7879,7 +7856,6 @@
 				EC4FC4B61D77CEE400BBD050 /* ServiceOrderDetailModel.m in Sources */,
 				EC4FC4D01D77CEE400BBD050 /* SoftwareSettingViewCell.m in Sources */,
 				EC4FC47E1D77CEE400BBD050 /* FavouriteViewStrategyCell.m in Sources */,
-				EC4FC24E1D77CEE400BBD050 /* ImageUploader.m in Sources */,
 				EC4FC27C1D77CEE400BBD050 /* WelcomeManager.m in Sources */,
 				EC4FC2B31D77CEE400BBD050 /* CategoryModel.m in Sources */,
 				EC4FC2DF1D77CEE400BBD050 /* HomeNewsCellModel.m in Sources */,
@@ -8408,25 +8384,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC8EB75C1DAA65D200CEFF62 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC8EB7641DAA65D200CEFF62 /* NotificationService.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EC8EB7671DAA65D200CEFF62 /* PBXTargetDependency */ = {
+		EC1AB2D21DAB953900C158C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EC8EB75F1DAA65D200CEFF62 /* TCNotificationService */;
-			targetProxy = EC8EB7661DAA65D200CEFF62 /* PBXContainerItemProxy */;
+			target = EC1AB2CA1DAB953900C158C5 /* NotiService */;
+			targetProxy = EC1AB2D11DAB953900C158C5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EC1AB2D51DAB953900C158C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: YE QIAN (L4HESQKF9M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F8C2RFLJQX;
+				INFOPLIST_FILE = NotiService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC.NotiService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EC1AB2D61DAB953900C158C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Tongcheng Information Technology Co., Ltd. (F8C2RFLJQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = F8C2RFLJQX;
+				INFOPLIST_FILE = NotiService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC.NotiService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		EC4FBBEA1D77CD8300BBD050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -8538,8 +8542,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "545a09e0-33d5-467d-8e1f-b71e2e4d69ef";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development_Pro;
+				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -8573,53 +8577,23 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d1e0afef-3efe-4225-ba98-9b6295bb68ce";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product_Pro;
+				PROVISIONING_PROFILE = "6f755e21-b36b-4be7-b860-93958bd46109";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		EC8EB76A1DAA65D200CEFF62 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = F8C2RFLJQX;
-				INFOPLIST_FILE = TCNotificationService/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC.TCNotificationService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		EC8EB76B1DAA65D200CEFF62 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = F8C2RFLJQX;
-				INFOPLIST_FILE = TCNotificationService/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC.TCNotificationService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EC1AB2D41DAB953900C158C5 /* Build configuration list for PBXNativeTarget "NotiService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC1AB2D51DAB953900C158C5 /* Debug */,
+				EC1AB2D61DAB953900C158C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		EC4FBBD01D77CD8300BBD050 /* Build configuration list for PBXProject "KidsTC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -8634,15 +8608,6 @@
 			buildConfigurations = (
 				EC4FBBED1D77CD8300BBD050 /* Debug */,
 				EC4FBBEE1D77CD8300BBD050 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EC8EB7691DAA65D200CEFF62 /* Build configuration list for PBXNativeTarget "TCNotificationService" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EC8EB76A1DAA65D200CEFF62 /* Debug */,
-				EC8EB76B1DAA65D200CEFF62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -27,9 +27,6 @@
 
 #import "NSString+Category.h"
 
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
-
 #define TOOLBAR_HEIGHT 60
 
 @interface FlashBalanceSettlementViewController ()<UITableViewDelegate,UITableViewDataSource,FlashBalanceSettlementBaseCellDelegate>
@@ -256,9 +253,6 @@
         [self settlementPaid:YES orderId:orderId];
         
         [[iToast makeText:@"结算成功"] show];
-        NSDictionary *trackParam = @{@"id":orderId,@"result":@"true"};
-        [MTA trackCustomKeyValueEvent:@"event_result_pay_result" props:trackParam];
-        [MobClick event:@"event_result_pay_result" attributes:trackParam];
     } failure:^(NSError *error) {
         [self settlementPaid:NO orderId:orderId];
         
@@ -266,14 +260,7 @@
         NSString *text = [[error userInfo] objectForKey:kErrMsgKey];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
-        NSDictionary *trackParam = @{@"id":orderId,@"result":@"false"};
-        [MTA trackCustomKeyValueEvent:@"event_result_pay_result" props:trackParam];
-        [MobClick event:@"event_result_pay_result" attributes:trackParam];
     }];
-    
-    NSDictionary *trackParam = @{@"id":orderId,@"payType":@(model.data.payInfo.payType),@"result":@"trure"};
-    [MTA trackCustomKeyValueEvent:@"event_result_orderplace_submit" props:trackParam];
-    [MobClick event:@"event_result_orderplace_submit" attributes:trackParam];
 }
 
 /** 下单失败 -> 提示 */
@@ -282,9 +269,6 @@
     NSString *text = [[error userInfo] objectForKey:@"data"];
     if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
     [[iToast makeText:errMsg] show];
-    NSDictionary *trackParam = @{@"result":@"false"};
-    [MTA trackCustomKeyValueEvent:@"event_result_orderplace_submit" props:trackParam];
-    [MobClick event:@"event_result_orderplace_submit" attributes:trackParam];
 }
 
 #pragma mark - 结算结果

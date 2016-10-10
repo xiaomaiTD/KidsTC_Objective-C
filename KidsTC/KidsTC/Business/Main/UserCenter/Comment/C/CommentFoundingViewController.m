@@ -14,8 +14,6 @@
 #import "KTCImageUploader.h"
 #import "iToast.h"
 #import "GHeader.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 @interface CommentFoundingViewController () <CommentFoundingViewDelegate, TZImagePickerControllerDelegate, MWPhotoBrowserDelegate>{
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -95,16 +93,6 @@
         } failure:^(NSError *error) {
             [TCProgressHUD dismissSVP];
             [[iToast makeText:@"照片上传失败，请重新提交"] show];
-            //MTA
-            if (self.commentModel.orderId) {
-                NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.commentModel.orderId, @"id", @"false", @"result", nil];
-                [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-                [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-            } else {
-                NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"false", @"result", nil];
-                [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-                [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-            }
         }];
     } else {
         [TCProgressHUD showSVP];
@@ -200,29 +188,9 @@
     [weakSelf.commentManager addCommentWithObject:object succeed:^(NSDictionary *data) {
         [TCProgressHUD dismissSVP];
         [weakSelf submitCommentSucceed:data];
-        //MTA
-        if (self.commentModel.orderId) {
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.commentModel.orderId, @"id", @"true", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-            [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-        } else {
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"true", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-            [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-        }
     } failure:^(NSError *error) {
         [TCProgressHUD dismissSVP];
         [weakSelf submitCommentFailed:error];
-        //MTA
-        if (self.commentModel.orderId) {
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:self.commentModel.orderId, @"id", @"false", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-            [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-        } else {
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"false", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_prod_evaluation_submit" props:trackParam];
-            [MobClick event:@"event_result_prod_evaluation_submit" attributes:trackParam];
-        }
     }];
 }
 

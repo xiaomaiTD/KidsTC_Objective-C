@@ -14,7 +14,6 @@
 #import "MapRouteViewController.h"
 #import "RouteAnnotation.h"
 #import "StoreDetailViewController.h"
-#import "MTA.h"
 @interface StoreDetialMapViewController ()<BMKMapViewDelegate,StoreDetailAnnotationTipViewDelegate>
 @property (nonatomic, weak) BMKMapView *mapView;
 @end
@@ -154,8 +153,6 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
             StoreListItemModel *model = view.model;
             StoreDetailViewController *controller = [[StoreDetailViewController alloc]initWithStoreId:model.identifier];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_server_stores_dtl" args:nil];
         }
             break;
     }

@@ -33,8 +33,6 @@
 #import "TabBarController.h"
 #import "ToolBox.h"
 #import "OnlineCustomerService.h"
-#import "MTA.h"
-#import "UMMobClick/MobClick.h"
 #import "ServiceSettlementViewController.h"
 
 @interface ServiceDetailViewController () <ServiceDetailViewDelegate, ServiceDetailBottomViewDelegate, KTCActionViewDelegate, KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ServiceDetailConfigViewDelegate>
@@ -165,8 +163,6 @@
     StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_server_stores_dtl" args:nil];
 }
 
 - (void)serviceDetailView:(ServiceDetailView *)detailView didClickedCommentCellAtIndex:(NSUInteger)index {
@@ -205,8 +201,6 @@
     StoreDetialMapViewController *controller = [[StoreDetialMapViewController alloc] init];
     controller.models = self.viewModel.detailModel.storeItemsArray;
     [self.navigationController pushViewController:controller animated:YES];
-    //MTA
-    [MTA trackCustomEvent:@"event_skip_service_promotion_dtl" args:nil];
 }
 
 - (void)didClickedAllRelatedServiceOnServiceDetailView:(ServiceDetailView *)detailView {
@@ -302,8 +296,6 @@
             ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
             [controller setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:controller animated:YES];
-            //MTA
-            [MTA trackCustomEvent:@"event_skip_historys_dtl_service" args:nil];
         }
             break;
         case KTCBrowseHistoryTypeStore:
@@ -579,19 +571,11 @@
         [weakSelf.viewModel addToSettlementWithBuyCount:buyNum storeId:storeId succeed:^(NSDictionary *data) {
             [TCProgressHUD dismissSVP];
             [weakSelf goSettlement];
-            //MTA
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"true", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_server_addtocart" props:trackParam];
-            [MobClick event:@"event_result_server_addtocart" attributes:trackParam];
         } failure:^(NSError *error) {
             [TCProgressHUD dismissSVP];
             if ([[error userInfo] count] > 0) {
                 [[iToast makeText:[[error userInfo] objectForKey:@"data"]] show];
             }
-            //MTA
-            NSDictionary *trackParam = [NSDictionary dictionaryWithObjectsAndKeys:@"false", @"result", nil];
-            [MTA trackCustomKeyValueEvent:@"event_result_server_addtocart" props:trackParam];
-            [MobClick event:@"event_result_server_addtocart" attributes:trackParam];
         }];
     }];
 }
