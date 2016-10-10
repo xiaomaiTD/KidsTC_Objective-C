@@ -72,7 +72,7 @@ singleM(User)
     if ([_uid isNotNull] && [_skey isNotNull]) {
         TCLog(@"checkLoginStatusFromServer - 本地存储了uid和skey，可以开始检查是否登录");
         NSDictionary *param = @{@"uid":_uid,@"skey":_skey};
-        [Request startAndCallBackInChildThreadWithName:@"LOGIN_IS_LOGIN" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [Request startWithName:@"LOGIN_IS_LOGIN" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
             TCLog(@"服务器端已经登录");
             _hasLogin = YES;
             [[CookieManager shareCookieManager] setCookies];

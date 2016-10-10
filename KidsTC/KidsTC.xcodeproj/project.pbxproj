@@ -56,7 +56,6 @@
 		EC4FBBDA1D77CD8300BBD050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBD91D77CD8300BBD050 /* main.m */; };
 		EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBBE41D77CD8300BBD050 /* Assets.xcassets */; };
 		EC4FBBF11D77CE5000BBD050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBF01D77CE5000BBD050 /* AppDelegate.m */; };
-		EC4FC2151D77CEE400BBD050 /* AppDelegate+ThirdSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC001D77CEE300BBD050 /* AppDelegate+ThirdSDK.m */; };
 		EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC021D77CEE300BBD050 /* CALayer+Category.m */; };
 		EC4FC2171D77CEE400BBD050 /* NSDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC041D77CEE300BBD050 /* NSDictionary+Category.m */; };
 		EC4FC2181D77CEE400BBD050 /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBC061D77CEE300BBD050 /* NSString+Category.m */; };
@@ -130,8 +129,6 @@
 		EC4FC2601D77CEE400BBD050 /* PosterViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBCAA1D77CEE300BBD050 /* PosterViewCell.xib */; };
 		EC4FC2611D77CEE400BBD050 /* PromotionBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCAD1D77CEE300BBD050 /* PromotionBaseModel.m */; };
 		EC4FC2621D77CEE400BBD050 /* PromotionFullCutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCAF1D77CEE300BBD050 /* PromotionFullCutModel.m */; };
-		EC4FC2631D77CEE400BBD050 /* PushNotificationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCB21D77CEE300BBD050 /* PushNotificationModel.m */; };
-		EC4FC2641D77CEE400BBD050 /* PushServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCB41D77CEE300BBD050 /* PushServiceManager.m */; };
 		EC4FC2651D77CEE400BBD050 /* RefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCB71D77CEE300BBD050 /* RefreshFooter.m */; };
 		EC4FC2661D77CEE400BBD050 /* RefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCB91D77CEE300BBD050 /* RefreshHeader.m */; };
 		EC4FC2671D77CEE400BBD050 /* CookieManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCBD1D77CEE300BBD050 /* CookieManager.m */; };
@@ -1066,8 +1063,6 @@
 		EC4FBBE91D77CD8300BBD050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC4FBBEF1D77CE5000BBD050 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EC4FBBF01D77CE5000BBD050 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EC4FBBFF1D77CEE300BBD050 /* AppDelegate+ThirdSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+ThirdSDK.h"; sourceTree = "<group>"; };
-		EC4FBC001D77CEE300BBD050 /* AppDelegate+ThirdSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+ThirdSDK.m"; sourceTree = "<group>"; };
 		EC4FBC011D77CEE300BBD050 /* CALayer+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Category.h"; sourceTree = "<group>"; };
 		EC4FBC021D77CEE300BBD050 /* CALayer+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Category.m"; sourceTree = "<group>"; };
 		EC4FBC031D77CEE300BBD050 /* NSDictionary+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Category.h"; sourceTree = "<group>"; };
@@ -1203,10 +1198,6 @@
 		EC4FBCAD1D77CEE300BBD050 /* PromotionBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionBaseModel.m; sourceTree = "<group>"; };
 		EC4FBCAE1D77CEE300BBD050 /* PromotionFullCutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionFullCutModel.h; sourceTree = "<group>"; };
 		EC4FBCAF1D77CEE300BBD050 /* PromotionFullCutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionFullCutModel.m; sourceTree = "<group>"; };
-		EC4FBCB11D77CEE300BBD050 /* PushNotificationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationModel.h; sourceTree = "<group>"; };
-		EC4FBCB21D77CEE300BBD050 /* PushNotificationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationModel.m; sourceTree = "<group>"; };
-		EC4FBCB31D77CEE300BBD050 /* PushServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceManager.h; sourceTree = "<group>"; };
-		EC4FBCB41D77CEE300BBD050 /* PushServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceManager.m; sourceTree = "<group>"; };
 		EC4FBCB61D77CEE300BBD050 /* RefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshFooter.h; sourceTree = "<group>"; };
 		EC4FBCB71D77CEE300BBD050 /* RefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshFooter.m; sourceTree = "<group>"; };
 		EC4FBCB81D77CEE300BBD050 /* RefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshHeader.h; sourceTree = "<group>"; };
@@ -2826,8 +2817,6 @@
 		EC4FBBFE1D77CEE300BBD050 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				EC4FBBFF1D77CEE300BBD050 /* AppDelegate+ThirdSDK.h */,
-				EC4FBC001D77CEE300BBD050 /* AppDelegate+ThirdSDK.m */,
 				EC4FBC011D77CEE300BBD050 /* CALayer+Category.h */,
 				EC4FBC021D77CEE300BBD050 /* CALayer+Category.m */,
 				EC4FBC031D77CEE300BBD050 /* NSDictionary+Category.h */,
@@ -2962,7 +2951,6 @@
 				EC4FBC931D77CEE300BBD050 /* Payment */,
 				EC4FBC9D1D77CEE300BBD050 /* Poster */,
 				EC4FBCAB1D77CEE300BBD050 /* Promotion */,
-				EC4FBCB01D77CEE300BBD050 /* Push */,
 				EC4FBCB51D77CEE300BBD050 /* Refresh */,
 				EC4FBCBA1D77CEE300BBD050 /* Request */,
 				EC4FBCC81D77CEE300BBD050 /* Segue */,
@@ -3237,17 +3225,6 @@
 				EC4FBCAF1D77CEE300BBD050 /* PromotionFullCutModel.m */,
 			);
 			path = Promotion;
-			sourceTree = "<group>";
-		};
-		EC4FBCB01D77CEE300BBD050 /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBCB11D77CEE300BBD050 /* PushNotificationModel.h */,
-				EC4FBCB21D77CEE300BBD050 /* PushNotificationModel.m */,
-				EC4FBCB31D77CEE300BBD050 /* PushServiceManager.h */,
-				EC4FBCB41D77CEE300BBD050 /* PushServiceManager.m */,
-			);
-			path = Push;
 			sourceTree = "<group>";
 		};
 		EC4FBCB51D77CEE300BBD050 /* Refresh */ = {
@@ -7866,7 +7843,6 @@
 				EC4FC2FE1D77CEE400BBD050 /* HomeThreeCell.m in Sources */,
 				EC4FC4271D77CEE400BBD050 /* PromotionLogoItem.m in Sources */,
 				EC4FC2DD1D77CEE400BBD050 /* HomeMoreTitleCellModel.m in Sources */,
-				EC4FC2631D77CEE400BBD050 /* PushNotificationModel.m in Sources */,
 				ECB3E77C1D92C82E0059267D /* OrderBookingModel.m in Sources */,
 				EC4FC4731D77CEE400BBD050 /* KTCFavouriteManager.m in Sources */,
 				EC4FC3E31D77CEE400BBD050 /* ParentingStrategyViewCell.m in Sources */,
@@ -8162,7 +8138,6 @@
 				EC4FC4431D77CEE400BBD050 /* CommentDetailViewCell.m in Sources */,
 				EC4FC3171D77CEE400BBD050 /* SearchResultProductCell.m in Sources */,
 				EC4FC2521D77CEE400BBD050 /* MapLocateAnnotationTipView.m in Sources */,
-				EC4FC2151D77CEE400BBD050 /* AppDelegate+ThirdSDK.m in Sources */,
 				EC4FC2CE1D77CEE400BBD050 /* FDSegmentView.m in Sources */,
 				EC4FC2611D77CEE400BBD050 /* PromotionBaseModel.m in Sources */,
 				EC4FC4741D77CEE400BBD050 /* FavourateSegmentViewCell.m in Sources */,
@@ -8373,7 +8348,6 @@
 				ECB3E77E1D92C82E0059267D /* OrderBookingMakeSureCell.m in Sources */,
 				EC4FC5F31D77CEEF00BBD050 /* ZPProgress.m in Sources */,
 				EC4FC5EF1D77CEEF00BBD050 /* ZPPopoverCell.m in Sources */,
-				EC4FC2641D77CEE400BBD050 /* PushServiceManager.m in Sources */,
 				EC4FC5B71D77CEEF00BBD050 /* Insurance.m in Sources */,
 				EC4FC2391D77CEE400BBD050 /* RegisterModel.m in Sources */,
 				EC4FC4CC1D77CEE400BBD050 /* SreviceOrderDetailRemarksCell.m in Sources */,
@@ -8593,6 +8567,7 @@
 				EC1AB2D61DAB953900C158C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC4FBBD01D77CD8300BBD050 /* Build configuration list for PBXProject "KidsTC" */ = {
 			isa = XCConfigurationList;

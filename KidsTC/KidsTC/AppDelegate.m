@@ -18,8 +18,6 @@
 #import <JSPatchPlatform/JSPatch.h>
 #import "NotificationService.h"
 
-#import "AppDelegate+ThirdSDK.h"
-
 #import "User.h"
 #import "CookieManager.h"
 #import "ReachabilityManager.h"
@@ -110,7 +108,6 @@
     [BuryPointManager registerSdk];
     
     [[KTCMapService shareKTCMapService] startService];
-    
 }
 
 - (void)JSPatchRemote:(BOOL)remote{
