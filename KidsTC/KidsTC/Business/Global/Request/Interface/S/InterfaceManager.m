@@ -33,7 +33,7 @@ singleM(InterfaceManager)
 - (void)synchronize{
     
     NSString *cfgver = self.model.version.length>0?self.model.version:@"";
-    NSDictionary *param = @{@"cfgver":cfgver,@"app":@"1",@"appVersion":APP_VERSION};
+    NSDictionary *param = @{@"cfgver":@"",@"app":@"1",@"appVersion":APP_VERSION};
     TCLog(@"[接口列表]:开始请求，本地cfgver:%@",cfgver);
     [Request startAndCallBackInChildThreadWithName:@"MAIN_GETINTERFACE" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         TCLog(@"[接口列表]:有新数据");

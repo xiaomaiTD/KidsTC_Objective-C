@@ -10,11 +10,10 @@
 
 #import "NavigationController.h"
 
-#import "HomeViewController.h"
+#import "TCHomeViewController.h"
 #import "ArticleHomeViewController.h"
 #import "StrategyViewController.h"
 #import "UserCenterViewController.h"
-#import "WebViewController.h"
 #import "WebViewController.h"
 
 #import "ThemeManager.h"
@@ -90,7 +89,7 @@ singleM(TabBarController)
         switch (ele.type) {
             case TabBarItemElementTypeHome:
             {
-                controller = [[HomeViewController alloc]init];
+                controller = [[TCHomeViewController alloc]init];
             }
                 break;
             case TabBarItemElementTypeArticle:

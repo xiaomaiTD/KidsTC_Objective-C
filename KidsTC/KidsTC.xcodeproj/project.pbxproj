@@ -33,6 +33,21 @@
 		EC154D5D1D88364E007137E8 /* ArticleUserCenterToolBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC154D5C1D88364E007137E8 /* ArticleUserCenterToolBarItem.m */; };
 		EC1AB2CF1DAB953900C158C5 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2CE1DAB953900C158C5 /* NotificationService.m */; };
 		EC1AB2D31DAB953900C158C5 /* NotiService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC1AB2CB1DAB953900C158C5 /* NotiService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EC1AB2E01DAC885300C158C5 /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2DD1DAC885300C158C5 /* TCHomeViewController.m */; };
+		EC1AB2E31DAC889B00C158C5 /* TCHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2E21DAC889B00C158C5 /* TCHomeModel.m */; };
+		EC1AB2E61DAC89E200C158C5 /* TCHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2E51DAC89E200C158C5 /* TCHomeData.m */; };
+		EC1AB2E91DAC8A5800C158C5 /* TCHomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2E81DAC8A5800C158C5 /* TCHomeModule.m */; };
+		EC1AB2EC1DAC8A9300C158C5 /* TCHomeCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2EB1DAC8A9300C158C5 /* TCHomeCategory.m */; };
+		EC1AB2EF1DAC8CA200C158C5 /* TCHomeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2EE1DAC8CA200C158C5 /* TCHomeFloor.m */; };
+		EC1AB2F81DAC970300C158C5 /* TCHomeFloorContentArticleParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2F71DAC970300C158C5 /* TCHomeFloorContentArticleParam.m */; };
+		EC1AB2FB1DACB4D300C158C5 /* TCHomeBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB2FA1DACB4D300C158C5 /* TCHomeBaseTableViewCell.m */; };
+		EC1AB3011DACD19E00C158C5 /* TCHomeFloorTitleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB3001DACD19E00C158C5 /* TCHomeFloorTitleContent.m */; };
+		EC1AB3041DACD1BC00C158C5 /* TCHomeFloorContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB3031DACD1BC00C158C5 /* TCHomeFloorContent.m */; };
+		EC1AB3071DACDD7C00C158C5 /* TCHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB3061DACDD7C00C158C5 /* TCHomeCollectionViewCell.m */; };
+		EC1AB30A1DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB3091DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.m */; };
+		EC1AB30D1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB30C1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.m */; };
+		EC1AB3101DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB30F1DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.m */; };
+		EC1AB3131DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1AB3121DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.m */; };
 		EC1E2F8D1D827EA4002381E7 /* ArticleWriteBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F7A1D827EA4002381E7 /* ArticleWriteBaseCell.m */; };
 		EC1E2F8E1D827EA4002381E7 /* ArticleWriteBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F7C1D827EA4002381E7 /* ArticleWriteBottomView.m */; };
 		EC1E2F941D827EA4002381E7 /* ArticleWriteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2F851D827EA4002381E7 /* ArticleWriteModel.m */; };
@@ -1023,6 +1038,36 @@
 		EC1AB2CD1DAB953900C158C5 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		EC1AB2CE1DAB953900C158C5 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		EC1AB2D01DAB953900C158C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC1AB2DC1DAC885300C158C5 /* TCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeViewController.h; sourceTree = "<group>"; };
+		EC1AB2DD1DAC885300C158C5 /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
+		EC1AB2E11DAC889B00C158C5 /* TCHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeModel.h; sourceTree = "<group>"; };
+		EC1AB2E21DAC889B00C158C5 /* TCHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeModel.m; sourceTree = "<group>"; };
+		EC1AB2E41DAC89E200C158C5 /* TCHomeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeData.h; sourceTree = "<group>"; };
+		EC1AB2E51DAC89E200C158C5 /* TCHomeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeData.m; sourceTree = "<group>"; };
+		EC1AB2E71DAC8A5800C158C5 /* TCHomeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeModule.h; sourceTree = "<group>"; };
+		EC1AB2E81DAC8A5800C158C5 /* TCHomeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeModule.m; sourceTree = "<group>"; };
+		EC1AB2EA1DAC8A9300C158C5 /* TCHomeCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCategory.h; sourceTree = "<group>"; };
+		EC1AB2EB1DAC8A9300C158C5 /* TCHomeCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCategory.m; sourceTree = "<group>"; };
+		EC1AB2ED1DAC8CA100C158C5 /* TCHomeFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloor.h; sourceTree = "<group>"; };
+		EC1AB2EE1DAC8CA200C158C5 /* TCHomeFloor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloor.m; sourceTree = "<group>"; };
+		EC1AB2F61DAC970300C158C5 /* TCHomeFloorContentArticleParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorContentArticleParam.h; sourceTree = "<group>"; };
+		EC1AB2F71DAC970300C158C5 /* TCHomeFloorContentArticleParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorContentArticleParam.m; sourceTree = "<group>"; };
+		EC1AB2F91DACB4D300C158C5 /* TCHomeBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeBaseTableViewCell.h; sourceTree = "<group>"; };
+		EC1AB2FA1DACB4D300C158C5 /* TCHomeBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeBaseTableViewCell.m; sourceTree = "<group>"; };
+		EC1AB2FF1DACD19E00C158C5 /* TCHomeFloorTitleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorTitleContent.h; sourceTree = "<group>"; };
+		EC1AB3001DACD19E00C158C5 /* TCHomeFloorTitleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorTitleContent.m; sourceTree = "<group>"; };
+		EC1AB3021DACD1BC00C158C5 /* TCHomeFloorContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorContent.h; sourceTree = "<group>"; };
+		EC1AB3031DACD1BC00C158C5 /* TCHomeFloorContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorContent.m; sourceTree = "<group>"; };
+		EC1AB3051DACDD7C00C158C5 /* TCHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewCell.h; sourceTree = "<group>"; };
+		EC1AB3061DACDD7C00C158C5 /* TCHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		EC1AB3081DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewBannerLayout.h; sourceTree = "<group>"; };
+		EC1AB3091DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewBannerLayout.m; sourceTree = "<group>"; };
+		EC1AB30B1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewTwinklingElfLayout.h; sourceTree = "<group>"; };
+		EC1AB30C1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewTwinklingElfLayout.m; sourceTree = "<group>"; };
+		EC1AB30E1DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewHorizontalListLayout.h; sourceTree = "<group>"; };
+		EC1AB30F1DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewHorizontalListLayout.m; sourceTree = "<group>"; };
+		EC1AB3111DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewTwoColumnLayout.h; sourceTree = "<group>"; };
+		EC1AB3121DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewTwoColumnLayout.m; sourceTree = "<group>"; };
 		EC1E2F791D827EA4002381E7 /* ArticleWriteBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteBaseCell.h; sourceTree = "<group>"; };
 		EC1E2F7A1D827EA4002381E7 /* ArticleWriteBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteBaseCell.m; sourceTree = "<group>"; };
 		EC1E2F7B1D827EA4002381E7 /* ArticleWriteBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteBottomView.h; sourceTree = "<group>"; };
@@ -2697,6 +2742,67 @@
 			path = NotiService;
 			sourceTree = "<group>";
 		};
+		EC1AB2DA1DAC885300C158C5 /* newHome */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2DB1DAC885300C158C5 /* C */,
+				EC1AB2DE1DAC885300C158C5 /* M */,
+				EC1AB2DF1DAC885300C158C5 /* V */,
+			);
+			path = newHome;
+			sourceTree = "<group>";
+		};
+		EC1AB2DB1DAC885300C158C5 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2DC1DAC885300C158C5 /* TCHomeViewController.h */,
+				EC1AB2DD1DAC885300C158C5 /* TCHomeViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC1AB2DE1DAC885300C158C5 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2E11DAC889B00C158C5 /* TCHomeModel.h */,
+				EC1AB2E21DAC889B00C158C5 /* TCHomeModel.m */,
+				EC1AB2E41DAC89E200C158C5 /* TCHomeData.h */,
+				EC1AB2E51DAC89E200C158C5 /* TCHomeData.m */,
+				EC1AB2E71DAC8A5800C158C5 /* TCHomeModule.h */,
+				EC1AB2E81DAC8A5800C158C5 /* TCHomeModule.m */,
+				EC1AB2EA1DAC8A9300C158C5 /* TCHomeCategory.h */,
+				EC1AB2EB1DAC8A9300C158C5 /* TCHomeCategory.m */,
+				EC1AB2ED1DAC8CA100C158C5 /* TCHomeFloor.h */,
+				EC1AB2EE1DAC8CA200C158C5 /* TCHomeFloor.m */,
+				EC1AB2FF1DACD19E00C158C5 /* TCHomeFloorTitleContent.h */,
+				EC1AB3001DACD19E00C158C5 /* TCHomeFloorTitleContent.m */,
+				EC1AB3021DACD1BC00C158C5 /* TCHomeFloorContent.h */,
+				EC1AB3031DACD1BC00C158C5 /* TCHomeFloorContent.m */,
+				EC1AB2F61DAC970300C158C5 /* TCHomeFloorContentArticleParam.h */,
+				EC1AB2F71DAC970300C158C5 /* TCHomeFloorContentArticleParam.m */,
+				EC1AB3081DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.h */,
+				EC1AB3091DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.m */,
+				EC1AB30B1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.h */,
+				EC1AB30C1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.m */,
+				EC1AB30E1DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.h */,
+				EC1AB30F1DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.m */,
+				EC1AB3111DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.h */,
+				EC1AB3121DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC1AB2DF1DAC885300C158C5 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC1AB2F91DACB4D300C158C5 /* TCHomeBaseTableViewCell.h */,
+				EC1AB2FA1DACB4D300C158C5 /* TCHomeBaseTableViewCell.m */,
+				EC1AB3051DACDD7C00C158C5 /* TCHomeCollectionViewCell.h */,
+				EC1AB3061DACDD7C00C158C5 /* TCHomeCollectionViewCell.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		EC1E2F781D827EA4002381E7 /* ArticleWrite */ = {
 			isa = PBXGroup;
 			children = (
@@ -3904,6 +4010,7 @@
 		EC4FBDBD1D77CEE300BBD050 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EC1AB2DA1DAC885300C158C5 /* newHome */,
 				EC4FBDBE1D77CEE300BBD050 /* C */,
 				EC4FBDC51D77CEE300BBD050 /* M */,
 				EC4FBDF91D77CEE300BBD050 /* S */,
@@ -7752,6 +7859,7 @@
 				EC4FC3D41D77CEE400BBD050 /* StrategyToolBar.m in Sources */,
 				EC4FC2941D77CEE400BBD050 /* ArticleCommentLayout.m in Sources */,
 				EC4FC2F81D77CEE400BBD050 /* HomeNoticeCell.m in Sources */,
+				EC1AB3041DACD1BC00C158C5 /* TCHomeFloorContent.m in Sources */,
 				EC4FC41E1D77CEE400BBD050 /* BrowseHistoryStoreListItemModel.m in Sources */,
 				EC4FC4211D77CEE400BBD050 /* KTCBrowseHistoryView.m in Sources */,
 				EC4FC4471D77CEE400BBD050 /* CommentDetailViewStrategyHeaderCell.m in Sources */,
@@ -7777,6 +7885,7 @@
 				EC4FC2F01D77CEE400BBD050 /* HomeBannerCollectionViewFlowLayout.m in Sources */,
 				EC4FC3871D77CEE400BBD050 /* SettlementResultShareViewController.m in Sources */,
 				EC4FC5E51D77CEEF00BBD050 /* README.md in Sources */,
+				EC1AB2EC1DAC8A9300C158C5 /* TCHomeCategory.m in Sources */,
 				EC4FC2951D77CEE400BBD050 /* ArticleCommentModel.m in Sources */,
 				EC4FC4161D77CEE400BBD050 /* AppointmentOrderModel.m in Sources */,
 				EC4FC2331D77CEE400BBD050 /* BindPhoneViewController.m in Sources */,
@@ -7807,6 +7916,7 @@
 				EC4FC2381D77CEE400BBD050 /* ThirdPartyLoginService.m in Sources */,
 				EC4FC3641D77CEE400BBD050 /* ServiceSettlementModel.m in Sources */,
 				ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */,
+				EC1AB3101DACE87600C158C5 /* TCHomeCollectionViewHorizontalListLayout.m in Sources */,
 				EC4FC2C11D77CEE400BBD050 /* FDCommentCell.m in Sources */,
 				EC68C3CC1D9BD3E800D4401A /* SynchronizeManager.m in Sources */,
 				EC4FC2E21D77CEE400BBD050 /* HomeRecommendCellModel.m in Sources */,
@@ -7877,16 +7987,19 @@
 				EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */,
 				EC4FC2E81D77CEE400BBD050 /* HomeTwoColumnCellModel.m in Sources */,
 				ECF704E51D89054000650C0A /* ArticleUserCenterCommentModel.m in Sources */,
+				EC1AB30A1DACE45F00C158C5 /* TCHomeCollectionViewBannerLayout.m in Sources */,
 				EC72643C1D7D473B00AA739B /* ArticleHomeTableView.m in Sources */,
 				EC4FC4581D77CEE400BBD050 /* CommentListViewModel.m in Sources */,
 				EC4FC36C1D77CEE400BBD050 /* ServiceSettlementPayTypeCell.m in Sources */,
 				EC4FC5E21D77CEEF00BBD050 /* DACircularProgressView.m in Sources */,
 				EC4FC3B61D77CEE400BBD050 /* StoreOwnedServiceModel.m in Sources */,
 				EC4FC2E61D77CEE400BBD050 /* HomeTitleCellModel.m in Sources */,
+				EC1AB3071DACDD7C00C158C5 /* TCHomeCollectionViewCell.m in Sources */,
 				EC4FC4291D77CEE400BBD050 /* ServiceListViewCell.m in Sources */,
 				EC4FC4201D77CEE400BBD050 /* KTCBrowseHistoryManager.m in Sources */,
 				EC4FC2291D77CEE400BBD050 /* AUIBannerScrollView.m in Sources */,
 				EC4FC2791D77CEE400BBD050 /* ThemeModel.m in Sources */,
+				EC1AB3011DACD19E00C158C5 /* TCHomeFloorTitleContent.m in Sources */,
 				EC4FC4871D77CEE400BBD050 /* FlashServiceOrderDetailAddressCell.m in Sources */,
 				EC4FC3C91D77CEE400BBD050 /* StrategyCollectionViewCell.m in Sources */,
 				EC4FC3201D77CEE400BBD050 /* SearchResultFactorView.m in Sources */,
@@ -7916,6 +8029,7 @@
 				EC4FC3A31D77CEE400BBD050 /* StoreDetailAppointmentPreferenceInfoCell.m in Sources */,
 				EC4FC3011D77CEE400BBD050 /* AUIStackView.m in Sources */,
 				EC4FC3001D77CEE400BBD050 /* HomeTwinklingCell.m in Sources */,
+				EC1AB2FB1DACB4D300C158C5 /* TCHomeBaseTableViewCell.m in Sources */,
 				EC4FC2701D77CEE400BBD050 /* CommonShareService.m in Sources */,
 				EC4FC32F1D77CEE400BBD050 /* ServiceDetailBottomView.m in Sources */,
 				EC4FC4851D77CEE400BBD050 /* FlashServiceOrderDetailViewController.m in Sources */,
@@ -7966,6 +8080,7 @@
 				EC4FC2E41D77CEE400BBD050 /* HomeThreeCellModel.m in Sources */,
 				EC4FC3831D77CEE400BBD050 /* SettlementPickStoreViewCell.m in Sources */,
 				EC4FC4411D77CEE400BBD050 /* CommentDetailView.m in Sources */,
+				EC1AB2EF1DAC8CA200C158C5 /* TCHomeFloor.m in Sources */,
 				EC4FC4BA1D77CEE400BBD050 /* ServiceOrderDetailInsuranceCell.m in Sources */,
 				EC4FC44B1D77CEE400BBD050 /* CommentFoundingView.m in Sources */,
 				EC4FC42B1D77CEE400BBD050 /* StoreListItemModel.m in Sources */,
@@ -7989,6 +8104,7 @@
 				ECAA49511D79A45B00799CBE /* ArticleHomeVideoCell.m in Sources */,
 				EC4FC4EC1D77CEE400BBD050 /* UserCenterProductAutoRollViewLayout.m in Sources */,
 				EC4FC21B1D77CEE400BBD050 /* UIButton+Category.m in Sources */,
+				EC1AB2E01DAC885300C158C5 /* TCHomeViewController.m in Sources */,
 				EC4FC26B1D77CEE400BBD050 /* SegueMaster.m in Sources */,
 				EC154D511D87F5C3007137E8 /* ArticleWritePreviewViewController.m in Sources */,
 				EC4FC44D1D77CEE400BBD050 /* CommentListView.m in Sources */,
@@ -8009,6 +8125,7 @@
 				EC4FC2231D77CEE400BBD050 /* NavigationController.m in Sources */,
 				EC4FC3AE1D77CEE400BBD050 /* StoreDetailAnnotationTipView.m in Sources */,
 				EC4FC2C01D77CEE400BBD050 /* FlashDetailAutoRollViewCell.m in Sources */,
+				EC1AB3131DACEF7400C158C5 /* TCHomeCollectionViewTwoColumnLayout.m in Sources */,
 				EC4FC3911D77CEE400BBD050 /* StoreDetailBottomView.m in Sources */,
 				EC4FC5EB1D77CEEF00BBD050 /* StepperView.m in Sources */,
 				EC4FC2EA1D77CEE400BBD050 /* HomeWholeImageNewsCellModel.m in Sources */,
@@ -8018,6 +8135,7 @@
 				EC4FC5AD1D77CEEF00BBD050 /* PlaceHolderTextView.m in Sources */,
 				EC4FC2251D77CEE400BBD050 /* ViewController.m in Sources */,
 				EC4FC2591D77CEE400BBD050 /* KTCPaymentInfo.m in Sources */,
+				EC1AB2F81DAC970300C158C5 /* TCHomeFloorContentArticleParam.m in Sources */,
 				EC4FC3A91D77CEE400BBD050 /* StoreDetailHotRecommendListViewController.m in Sources */,
 				EC4FC2B41D77CEE400BBD050 /* SearchParmsModel.m in Sources */,
 				EC4FC5E31D77CEEF00BBD050 /* DALabeledCircularProgressView.m in Sources */,
@@ -8029,6 +8147,7 @@
 				EC4FC2B11D77CEE400BBD050 /* ActivityViewModel.m in Sources */,
 				EC4FC3221D77CEE400BBD050 /* SearchResultFactorTablesContentView.m in Sources */,
 				EC4FC4B91D77CEE400BBD050 /* ServiceOrderDetailBaseCell.m in Sources */,
+				EC1AB2E31DAC889B00C158C5 /* TCHomeModel.m in Sources */,
 				EC4FC4591D77CEE400BBD050 /* MyCommentListViewModel.m in Sources */,
 				ECB3E77D1D92C82E0059267D /* OrderBookingBaseCell.m in Sources */,
 				EC4FC4301D77CEE400BBD050 /* CommentEditViewController.m in Sources */,
@@ -8078,6 +8197,7 @@
 				EC4FC4B51D77CEE400BBD050 /* ServiceOrderDetailViewController.m in Sources */,
 				EC4FC4821D77CEE400BBD050 /* NotificationCenterModel.m in Sources */,
 				EC4FC2E11D77CEE400BBD050 /* HomeNoticeCellModel.m in Sources */,
+				EC1AB2E91DAC8A5800C158C5 /* TCHomeModule.m in Sources */,
 				EC4FC3091D77CEE400BBD050 /* SearchTableViewController.m in Sources */,
 				EC810A6D1D90E24F00B4B87A /* FlashServiceOrderDetailToolBarButton.m in Sources */,
 				EC4FC2EC1D77CEE400BBD050 /* HomeDataManager.m in Sources */,
@@ -8113,6 +8233,7 @@
 				EC4FC4191D77CEE400BBD050 /* AppointmentOrderDetailViewController.m in Sources */,
 				EC4FC3111D77CEE400BBD050 /* SearchTableViewCell.m in Sources */,
 				EC4FC42E1D77CEE400BBD050 /* CommentDetailViewController.m in Sources */,
+				EC1AB2E61DAC89E200C158C5 /* TCHomeData.m in Sources */,
 				EC810A601D8FE0C700B4B87A /* NSDate+ZP.m in Sources */,
 				EC4FC30A1D77CEE400BBD050 /* SearchTypeItem.m in Sources */,
 				EC4FC4281D77CEE400BBD050 /* ServiceListItemModel.m in Sources */,
@@ -8205,6 +8326,7 @@
 				EC4FC3531D77CEE400BBD050 /* FlashBalanceSettlementAddressCell.m in Sources */,
 				EC4FC2EE1D77CEE400BBD050 /* BannerCollectionCell.m in Sources */,
 				EC4FC2DE1D77CEE400BBD050 /* HomeNewsBaseModel.m in Sources */,
+				EC1AB30D1DACE5AC00C158C5 /* TCHomeCollectionViewTwinklingElfLayout.m in Sources */,
 				EC4FC40D1D77CEE400BBD050 /* AppointmentListViewHeaderTabCell.m in Sources */,
 				EC4FC6411D78092900BBD050 /* WebFailureView.m in Sources */,
 				EC4FC25E1D77CEE400BBD050 /* PosterManager.m in Sources */,
