@@ -143,7 +143,7 @@ typedef enum {
 @property (nonatomic, assign) HomeContentCellType contentType;
 @property (nonatomic, assign) BOOL hasTitle;
 @property (nonatomic, strong) NSNumber *ratio;
-@property (nonatomic, assign) NSInteger marginTop;
+@property (nonatomic, assign) CGFloat marginTop;
 @property (nonatomic, assign) HomeTitleCellType titleType;
 @property (nonatomic, assign) NSInteger centerSeparation;
 @property (nonatomic, assign) NSInteger bottomSeparation;
