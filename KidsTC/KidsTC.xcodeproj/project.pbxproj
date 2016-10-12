@@ -956,6 +956,7 @@
 		ECDDEE521DAE30A600F619AC /* TCHomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE3E1DAE30A600F619AC /* TCHomeModule.m */; };
 		ECDDEE531DAE30A600F619AC /* TCHomeBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE411DAE30A600F619AC /* TCHomeBaseTableViewCell.m */; };
 		ECDDEE541DAE30A600F619AC /* TCHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE431DAE30A600F619AC /* TCHomeCollectionViewCell.m */; };
+		ECDDEE571DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE561DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m */; };
 		ECF704D51D88E74600650C0A /* ArticleUserCenterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF704D41D88E74600650C0A /* ArticleUserCenterTableHeaderView.m */; };
 		ECF704D71D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF704D61D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib */; };
 		ECF704DE1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF704DC1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m */; };
@@ -2606,6 +2607,8 @@
 		ECDDEE411DAE30A600F619AC /* TCHomeBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeBaseTableViewCell.m; sourceTree = "<group>"; };
 		ECDDEE421DAE30A600F619AC /* TCHomeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewCell.h; sourceTree = "<group>"; };
 		ECDDEE431DAE30A600F619AC /* TCHomeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewCell.m; sourceTree = "<group>"; };
+		ECDDEE551DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewBaseLayout.h; sourceTree = "<group>"; };
+		ECDDEE561DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewBaseLayout.m; sourceTree = "<group>"; };
 		ECF704D31D88E74600650C0A /* ArticleUserCenterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleUserCenterTableHeaderView.h; sourceTree = "<group>"; };
 		ECF704D41D88E74600650C0A /* ArticleUserCenterTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleUserCenterTableHeaderView.m; sourceTree = "<group>"; };
 		ECF704D61D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleUserCenterTableHeaderView.xib; sourceTree = "<group>"; };
@@ -7308,18 +7311,20 @@
 			children = (
 				ECDDEE231DAE30A600F619AC /* TCHomeCategory.h */,
 				ECDDEE241DAE30A600F619AC /* TCHomeCategory.m */,
+				ECDDEE551DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.h */,
+				ECDDEE561DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m */,
 				ECDDEE251DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.h */,
 				ECDDEE261DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m */,
-				ECDDEE271DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.h */,
-				ECDDEE281DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m */,
-				ECDDEE291DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.h */,
-				ECDDEE2A1DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m */,
-				ECDDEE2B1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.h */,
-				ECDDEE2C1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m */,
 				ECDDEE2D1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.h */,
 				ECDDEE2E1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m */,
+				ECDDEE271DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.h */,
+				ECDDEE281DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m */,
+				ECDDEE2B1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.h */,
+				ECDDEE2C1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m */,
 				ECDDEE2F1DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.h */,
 				ECDDEE301DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m */,
+				ECDDEE291DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.h */,
+				ECDDEE2A1DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m */,
 				ECDDEE311DAE30A600F619AC /* TCHomeData.h */,
 				ECDDEE321DAE30A600F619AC /* TCHomeData.m */,
 				ECDDEE331DAE30A600F619AC /* TCHomeFloor.h */,
@@ -7840,6 +7845,7 @@
 				EC4FC26D1D77CEE400BBD050 /* CommonShareViewController.m in Sources */,
 				EC4FC2CB1D77CEE400BBD050 /* FDChooseStoreView.m in Sources */,
 				EC4FC45E1D77CEE400BBD050 /* CouponUsableServiceViewController.m in Sources */,
+				ECDDEE571DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m in Sources */,
 				EC4FC26F1D77CEE400BBD050 /* CommonShareObject.m in Sources */,
 				EC4FC3B41D77CEE400BBD050 /* StoreDetailServiceListViewController.m in Sources */,
 				EC4FC5F11D77CEEF00BBD050 /* ZPPopoverItem.m in Sources */,

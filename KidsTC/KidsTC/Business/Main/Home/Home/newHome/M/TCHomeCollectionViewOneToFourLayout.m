@@ -7,9 +7,9 @@
 //
 
 #import "TCHomeCollectionViewOneToFourLayout.h"
-CGFloat const TCHomeCollectionViewOneToFourLayoutMargin = 12;
 
 @implementation TCHomeCollectionViewOneToFourLayout
+
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -20,18 +20,23 @@ CGFloat const TCHomeCollectionViewOneToFourLayoutMargin = 12;
     }
     return array;
 }
+
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewLayoutAttributes *att = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
     CGFloat collectionView_w = CGRectGetWidth(self.collectionView.bounds);
     CGFloat collectionView_h = CGRectGetHeight(self.collectionView.bounds);
-    CGFloat margin = TCHomeCollectionViewOneToFourLayoutMargin;
-    CGFloat att_y = margin;
-    CGFloat att_w = (collectionView_w - (_count - 1) * margin)/_count;
-    CGFloat att_h = collectionView_h - margin * 2;
-    CGFloat att_x = margin + (att_w + margin) * indexPath.row;
-    att.frame = CGRectMake(att_x, att_y, att_w, att_h);
+    NSUInteger row = indexPath.row;
+    TCHomeLayoutAttributes att = self.layoutAttributes;
+    int columnCount = self.columnCount;//列数
     
-    return att;
+    CGFloat att_y = att.top;
+    CGFloat att_w = (collectionView_w - att.left - att.right - att.horizontal * (columnCount - 1)) / columnCount;
+    CGFloat att_h = collectionView_h - att.top - att.bottom;
+    CGFloat att_x = att.left + (att_w + att.horizontal) * row;
+    attributes.frame = CGRectMake(att_x, att_y, att_w, att_h);
+    
+    return attributes;
 }
+
 @end

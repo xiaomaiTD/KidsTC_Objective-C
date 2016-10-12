@@ -6,8 +6,6 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface TCHomeCollectionViewHorizontalListLayout : UICollectionViewFlowLayout
-
+#import "TCHomeCollectionViewBaseLayout.h"
+@interface TCHomeCollectionViewHorizontalListLayout : TCHomeCollectionViewBaseLayout
 @end

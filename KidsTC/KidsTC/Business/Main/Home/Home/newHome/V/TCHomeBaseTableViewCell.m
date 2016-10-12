@@ -21,7 +21,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UICollectionViewLayout *layout = [TCHomeCollectionViewThreeLayout new];
+        UICollectionViewLayout *layout = [UICollectionViewLayout new];
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         [self addSubview:collectionView];
         collectionView.delegate = self;
@@ -29,7 +29,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
         collectionView.pagingEnabled = YES;
         collectionView.showsVerticalScrollIndicator = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
-        //collectionView.backgroundColor = [UIColor whiteColor];
+        collectionView.backgroundColor = [UIColor blueColor];
         [collectionView registerClass:[TCHomeCollectionViewCell class] forCellWithReuseIdentifier:kTCHomeCollectionViewCellID];
         self.collectionView = collectionView;
     }
@@ -43,9 +43,8 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 
 - (void)setFloor:(TCHomeFloor *)floor {
     _floor = floor;
-    UICollectionViewLayout *layout = [TCHomeCollectionViewThreeLayout new];
+    [self.collectionView reloadData];
     self.collectionView.collectionViewLayout = floor.collectionViewLayout;
-    //[self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
@@ -60,6 +59,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
     if (row<self.floor.contents.count) {
         cell.content = self.floor.contents[indexPath.row];
     }
+    
     return cell;
 }
 

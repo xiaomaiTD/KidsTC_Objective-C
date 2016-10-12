@@ -6,8 +6,7 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface TCHomeCollectionViewTwinklingElfLayout : UICollectionViewFlowLayout
+#import "TCHomeCollectionViewBaseLayout.h"
+@interface TCHomeCollectionViewTwinklingElfLayout : TCHomeCollectionViewBaseLayout
 
 @end

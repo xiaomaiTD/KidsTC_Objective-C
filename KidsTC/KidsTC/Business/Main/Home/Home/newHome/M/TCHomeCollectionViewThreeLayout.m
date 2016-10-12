@@ -9,6 +9,7 @@
 #import "TCHomeCollectionViewThreeLayout.h"
 
 @implementation TCHomeCollectionViewThreeLayout
+
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSMutableArray *array = [NSMutableArray array];
@@ -19,6 +20,7 @@
     }
     return array;
 }
+
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *att = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     CGFloat w = CGRectGetWidth(self.collectionView.bounds);

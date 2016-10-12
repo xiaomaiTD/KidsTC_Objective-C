@@ -6,8 +6,7 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface TCHomeCollectionViewBannerLayout : UICollectionViewFlowLayout
+#import "TCHomeCollectionViewBaseLayout.h"
+@interface TCHomeCollectionViewBannerLayout : TCHomeCollectionViewBaseLayout
 
 @end

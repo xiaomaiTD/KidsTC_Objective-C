@@ -8,6 +8,7 @@
 
 #import "TCHomeFloor.h"
 
+#import "TCHomeCollectionViewBaseLayout.h"
 #import "TCHomeCollectionViewBannerLayout.h"
 #import "TCHomeCollectionViewTwinklingElfLayout.h"
 #import "TCHomeCollectionViewHorizontalListLayout.h"
@@ -24,94 +25,129 @@
     _floorHeight = 100;
     _marginTop = _marginTop>0?_marginTop:0.001;
     _ratio = _ratio>0?_ratio:0.6;
+    int count = (int)_contents.count;
     
+    TCHomeCollectionViewBaseLayout *layout;
     switch (_contentType) {
             
         case TCHomeFloorContentTypeBanner://= 1,//banner
         {
-            _floorHeight = _ratio * SCREEN_WIDTH;
-            _collectionViewLayout = [TCHomeCollectionViewBannerLayout new];
+            layout = [TCHomeCollectionViewBannerLayout layoutWithCount:count
+                                                           columnCount:count
+                                                      layoutAttributes:TCHomeLayoutAttributesMake(8, 8, 8, 8, 0, 0)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat item_w = SCREEN_WIDTH - att.left - att.right;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = item_h + att.top + att.bottom;
         }
             break;
         case TCHomeFloorContentTypeTwinklingElf://= 2,//多个图标
         {
-            int groupNum = ((int)_contents.count +4-1) / 4 ;//按4个一组来分，有几组
-            CGFloat size = SCREEN_WIDTH/4;
-            _floorHeight = size * groupNum;
-            _collectionViewLayout = [TCHomeCollectionViewTwinklingElfLayout new];
+            layout = [TCHomeCollectionViewTwinklingElfLayout layoutWithCount:count
+                                                                 columnCount:4
+                                                            layoutAttributes:TCHomeLayoutAttributesMake(8, 8, 8, 8, 8, 8)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat columnCount = layout.columnCount;//列数
+            int rowCount = (count + columnCount - 1) / columnCount; //按columnCount个一组来分，有几组,行数
+            CGFloat item_w = (SCREEN_WIDTH - att.left - att.right - att.horizontal * (columnCount - 1)) / columnCount;
+            item_w = item_w>0?item_w:0;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = att.top + att.bottom + (item_h + att.vertical) * rowCount - att.vertical;//collectionView的高度
         }
             break;
         case TCHomeFloorContentTypeHorizontalList://= 3,//水平多张图片
         {
-            _floorHeight = SCREEN_WIDTH/3.5;
-            _collectionViewLayout = [TCHomeCollectionViewHorizontalListLayout new];
+            layout = [TCHomeCollectionViewHorizontalListLayout layoutWithCount:count
+                                                                   columnCount:3.5
+                                                              layoutAttributes:TCHomeLayoutAttributesMake(8, 8, 8, 8, 8, 8)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat columnCount = layout.columnCount;
+            int marginCountH = (columnCount - (int)columnCount) > 0 ? (int)columnCount : (columnCount - 1);
+            CGFloat item_w = (SCREEN_WIDTH - att.left - att.right - att.horizontal * marginCountH) / columnCount;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = item_h + att.top + att.bottom;
         }
             break;
         case TCHomeFloorContentTypeThree://= 4,//三张图片
         {
-            _collectionViewLayout = [TCHomeCollectionViewThreeLayout new];
+            layout = [TCHomeCollectionViewThreeLayout layoutWithCount:count
+                                                          columnCount:2
+                                                     layoutAttributes:TCHomeLayoutAttributesMake(8, 8, 8, 8, 8, 8)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat columnCount = layout.columnCount;
+            CGFloat item_w = (SCREEN_WIDTH - att.left - att.right - att.horizontal * (columnCount - 1)) / columnCount;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = item_h + att.top + att.bottom;
         }
             break;
         case TCHomeFloorContentTypeTwoColumn://= 5,//两列
         {
             _centerSeparation = _centerSeparation>0?_centerSeparation:0;
             _bottomSeparation = _bottomSeparation>0?_bottomSeparation:0;
-            int groupNum = ((int)_contents.count +2-1) / 2 ;//按2个一组来分，有几组
-            CGFloat size = (SCREEN_WIDTH - _centerSeparation)*0.5;
-            _floorHeight = (size + _bottomSeparation) * groupNum - _bottomSeparation;
             
-            TCHomeCollectionViewTwoColumnLayout *layout = [TCHomeCollectionViewTwoColumnLayout new];
-            layout.centerSeparation = _centerSeparation;
-            layout.bottomSeparation = _bottomSeparation;
-            _collectionViewLayout = layout;
+            layout = [TCHomeCollectionViewTwoColumnLayout layoutWithCount:count
+                                                              columnCount:2
+                                                         layoutAttributes:TCHomeLayoutAttributesMake(8, 8, 8, 8, _centerSeparation, _bottomSeparation)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat columnCount = layout.columnCount;
+            
+            int rowCount = (count + columnCount -1) / columnCount ;//按columnCount个一组来分，有几组
+            CGFloat item_w = (SCREEN_WIDTH - att.left - att.right - att.horizontal * (columnCount - 1)) / columnCount;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = att.top + att.bottom + (item_h + att.vertical) * rowCount - att.vertical;
         }
             break;
         case TCHomeFloorContentTypeNews://= 6,//不带图片的资讯
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeImageNews://= 7,//带一张图片的资讯
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeThreeImageNews://= 8,//带三张图片的资讯
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeWholeImageNews://= 11,//带一张大图的资讯
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeNotice://= 12,//童成热点，上下无限滚动
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeBigImageTwoDesc://= 13,//一张大图，下面带左右描述
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
         case TCHomeFloorContentTypeOneToFour://= 14,//1~4张图片
         {
-            NSUInteger count = _contents.count;
-            CGFloat size = (SCREEN_WIDTH - (count - 1) * TCHomeCollectionViewOneToFourLayoutMargin)/count;
-            _floorHeight = size * _ratio + TCHomeCollectionViewOneToFourLayoutMargin * 2;
-            TCHomeCollectionViewOneToFourLayout *layout = [TCHomeCollectionViewOneToFourLayout new];
-            layout.count = count;
-            _collectionViewLayout = layout;
+            layout = [TCHomeCollectionViewOneToFourLayout layoutWithCount:count
+                                                              columnCount:count
+                                                         layoutAttributes:TCHomeLayoutAttributesMake(12, 12, 12, 12, 12, 12)];
+            TCHomeLayoutAttributes att = layout.layoutAttributes;
+            CGFloat columnCount = layout.columnCount;
+            CGFloat item_w = (SCREEN_WIDTH - att.left - att.right - att.horizontal * (columnCount - 1))/columnCount;
+            item_w = item_w>0?item_w:0;
+            CGFloat item_h = item_w * _ratio;
+            _floorHeight = item_h + att.top + att.bottom;
         }
             break;
         default:
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            layout = [TCHomeCollectionViewBaseLayout new];
         }
             break;
-    } 
+    }
+    
+    _collectionViewLayout = layout;
     
     return YES;
 }

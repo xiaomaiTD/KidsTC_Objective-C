@@ -6,8 +6,6 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-extern CGFloat const TCHomeCollectionViewOneToFourLayoutMargin;
-@interface TCHomeCollectionViewOneToFourLayout : UICollectionViewLayout
-@property (nonatomic, assign) NSUInteger count;
+#import "TCHomeCollectionViewBaseLayout.h"
+@interface TCHomeCollectionViewOneToFourLayout : TCHomeCollectionViewBaseLayout
 @end
