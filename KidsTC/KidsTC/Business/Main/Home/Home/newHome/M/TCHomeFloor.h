@@ -28,7 +28,7 @@ typedef enum {
     TCHomeFloorContentTypeWholeImageNews = 11,//带一张大图的资讯
     TCHomeFloorContentTypeNotice = 12,//童成热点，上下无限滚动
     TCHomeFloorContentTypeBigImageTwoDesc = 13,//一张大图，下面带左右描述
-    TCHomeFloorContentTypeTwoThreeFour = 14,//1~4张图片
+    TCHomeFloorContentTypeOneToFour = 14,//1~4张图片
 }TCHomeFloorContentType;
 
 @interface TCHomeFloor : NSObject

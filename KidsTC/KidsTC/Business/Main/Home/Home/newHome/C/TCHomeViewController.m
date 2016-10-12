@@ -22,7 +22,6 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self loadData];
     
@@ -60,13 +59,19 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TCHomeFloor *floor = self.data.sections[indexPath.section];
-    return floor.floorHeight;
+    if (indexPath.section<self.data.sections.count) {
+        return self.data.sections[indexPath.section].floorHeight;
+    }else{
+        return 100;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    TCHomeFloor *floor = self.data.sections[section];
-    return floor.marginTop;
+    if (section<self.data.sections.count) {
+        return self.data.sections[section].marginTop;
+    }else{
+        return 12;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -75,7 +80,9 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TCHomeBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTCHomeBaseTableViewCellID];
-    cell.floor = self.data.sections[indexPath.section];
+    if (indexPath.section<self.data.sections.count) {
+        cell.floor = self.data.sections[indexPath.section];
+    }
     return cell;
 }
 

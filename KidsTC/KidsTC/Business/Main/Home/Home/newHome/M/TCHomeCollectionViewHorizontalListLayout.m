@@ -13,12 +13,8 @@
     [super prepareLayout];
     self.minimumInteritemSpacing = 0;
     self.minimumLineSpacing = 0;
-    int size = (int)(CGRectGetWidth(self.collectionView.bounds)/3.5);
+    CGFloat size = CGRectGetWidth(self.collectionView.bounds)/3.5;
     self.itemSize = CGSizeMake(size, size);
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-}
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-{
-    return YES;
 }
 @end

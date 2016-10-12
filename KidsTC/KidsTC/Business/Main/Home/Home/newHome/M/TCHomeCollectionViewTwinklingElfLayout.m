@@ -13,11 +13,7 @@
     [super prepareLayout];
     self.minimumInteritemSpacing = 0;
     self.minimumLineSpacing = 0;
-    int size = (int)(CGRectGetWidth(self.collectionView.bounds)/4);
+    CGFloat size = CGRectGetWidth(self.collectionView.bounds)/4;
     self.itemSize = CGSizeMake(size, size);
-}
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
-{
-    return YES;
 }
 @end

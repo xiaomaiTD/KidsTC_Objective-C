@@ -20,7 +20,7 @@
 
 #pragma mark - Log
 #ifdef DEBUG
-#define TCLog(...) NSLog(@"%s 第%d行\n%@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define TCLog(...) //NSLog(@"%s 第%d行\n%@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 #else
 #define TCLog(...)
 #endif

@@ -11,7 +11,9 @@
 #import "TCHomeCollectionViewBannerLayout.h"
 #import "TCHomeCollectionViewTwinklingElfLayout.h"
 #import "TCHomeCollectionViewHorizontalListLayout.h"
+#import "TCHomeCollectionViewThreeLayout.h"
 #import "TCHomeCollectionViewTwoColumnLayout.h"
+#import "TCHomeCollectionViewOneToFourLayout.h"
 
 @implementation TCHomeFloor
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -34,20 +36,20 @@
         case TCHomeFloorContentTypeTwinklingElf://= 2,//多个图标
         {
             int groupNum = ((int)_contents.count +4-1) / 4 ;//按4个一组来分，有几组
-            int size = (int)(SCREEN_WIDTH/4);
+            CGFloat size = SCREEN_WIDTH/4;
             _floorHeight = size * groupNum;
             _collectionViewLayout = [TCHomeCollectionViewTwinklingElfLayout new];
         }
             break;
         case TCHomeFloorContentTypeHorizontalList://= 3,//水平多张图片
         {
-            _floorHeight = (int)(SCREEN_WIDTH/3.5);
+            _floorHeight = SCREEN_WIDTH/3.5;
             _collectionViewLayout = [TCHomeCollectionViewHorizontalListLayout new];
         }
             break;
         case TCHomeFloorContentTypeThree://= 4,//三张图片
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            _collectionViewLayout = [TCHomeCollectionViewThreeLayout new];
         }
             break;
         case TCHomeFloorContentTypeTwoColumn://= 5,//两列
@@ -55,7 +57,7 @@
             _centerSeparation = _centerSeparation>0?_centerSeparation:0;
             _bottomSeparation = _bottomSeparation>0?_bottomSeparation:0;
             int groupNum = ((int)_contents.count +2-1) / 2 ;//按2个一组来分，有几组
-            int size = (int)((SCREEN_WIDTH - _centerSeparation)*0.5);
+            CGFloat size = (SCREEN_WIDTH - _centerSeparation)*0.5;
             _floorHeight = (size + _bottomSeparation) * groupNum - _bottomSeparation;
             
             TCHomeCollectionViewTwoColumnLayout *layout = [TCHomeCollectionViewTwoColumnLayout new];
@@ -94,9 +96,14 @@
             _collectionViewLayout = [UICollectionViewFlowLayout new];
         }
             break;
-        case TCHomeFloorContentTypeTwoThreeFour://= 14,//1~4张图片
+        case TCHomeFloorContentTypeOneToFour://= 14,//1~4张图片
         {
-            _collectionViewLayout = [UICollectionViewFlowLayout new];
+            NSUInteger count = _contents.count;
+            CGFloat size = (SCREEN_WIDTH - (count - 1) * TCHomeCollectionViewOneToFourLayoutMargin)/count;
+            _floorHeight = size * _ratio + TCHomeCollectionViewOneToFourLayoutMargin * 2;
+            TCHomeCollectionViewOneToFourLayout *layout = [TCHomeCollectionViewOneToFourLayout new];
+            layout.count = count;
+            _collectionViewLayout = layout;
         }
             break;
         default:
