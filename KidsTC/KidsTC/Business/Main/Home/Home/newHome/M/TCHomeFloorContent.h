@@ -10,6 +10,45 @@
 #import "SegueModel.h"
 #import "TCHomeFloorContentArticleParam.h"
 
+typedef enum {
+    TCHomeFloorContentTypeBanner = 1,//banner
+    TCHomeFloorContentTypeTwinklingElf = 2,//多个图标
+    TCHomeFloorContentTypeHorizontalList = 3,//水平多张图片
+    TCHomeFloorContentTypeThree = 4,//三张图片
+    TCHomeFloorContentTypeTwoColumn = 5,//两列
+    TCHomeFloorContentTypeNews = 6,//不带图片的资讯
+    TCHomeFloorContentTypeImageNews = 7,//带一张图片的资讯
+    TCHomeFloorContentTypeThreeImageNews = 8,//带三张图片的资讯
+    TCHomeFloorContentTypeWholeImageNews = 11,//带一张大图的资讯
+    TCHomeFloorContentTypeNotice = 12,//童成热点，上下无限滚动
+    TCHomeFloorContentTypeBigImageTwoDesc = 13,//一张大图，下面带左右描述
+    TCHomeFloorContentTypeOneToFour = 14,//1~4张图片
+    TCHomeFloorContentTypeFive = 16,//5张图片
+}TCHomeFloorContentType;
+
+struct TCHomeContentLayoutAttributes {
+    CGRect imgFrame;
+    CGRect titleFrame;
+    CGRect priceFrame;
+    CGRect articleParamFrame;
+};
+typedef struct TCHomeContentLayoutAttributes TCHomeContentLayoutAttributes;
+CG_INLINE TCHomeContentLayoutAttributes
+TCHomeContentLayoutAttributesMake(CGRect imgFrame,
+                                  CGRect titleFrame,
+                                  CGRect priceFrame,
+                                  CGRect articleParamFrame,
+                                  CGRect horizontal,
+                                  CGRect vertical)
+{
+    TCHomeContentLayoutAttributes att;
+    att.imgFrame = imgFrame;
+    att.titleFrame = titleFrame;
+    att.priceFrame = priceFrame;
+    att.articleParamFrame = articleParamFrame;
+    return att;
+}
+
 @interface TCHomeFloorContent : NSObject
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *title;
@@ -22,5 +61,9 @@
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
 //selfDefine
+@property (nonatomic, strong) NSAttributedString *attTitle;
 @property (nonatomic, strong) SegueModel *segueModel;
+@property (nonatomic, assign) TCHomeContentLayoutAttributes layoutAttributes;
+@property (nonatomic, assign) TCHomeFloorContentType type;
+- (void)setupAttTitle;
 @end

@@ -9,27 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "TCHomeFloorTitleContent.h"
 #import "TCHomeFloorContent.h"
-typedef enum {
-    TCHomeFloorTitleContentTypeNormalTitle = 1,
-    TCHomeFloorTitleContentTypeMoreTitle,
-    TCHomeFloorTitleContentTypeCountDownTitle,
-    TCHomeFloorTitleContentTypeCountDownMoreTitle
-}TCHomeFloorTitleContentType;
-
-typedef enum {
-    TCHomeFloorContentTypeBanner = 1,//banner
-    TCHomeFloorContentTypeTwinklingElf = 2,//多个图标
-    TCHomeFloorContentTypeHorizontalList = 3,//水平多张图片
-    TCHomeFloorContentTypeThree = 4,//三张图片
-    TCHomeFloorContentTypeTwoColumn = 5,//两列
-    TCHomeFloorContentTypeNews = 6,//不带图片的资讯
-    TCHomeFloorContentTypeImageNews = 7,//带一张图片的资讯
-    TCHomeFloorContentTypeThreeImageNews = 8,//带三张图片的资讯
-    TCHomeFloorContentTypeWholeImageNews = 11,//带一张大图的资讯
-    TCHomeFloorContentTypeNotice = 12,//童成热点，上下无限滚动
-    TCHomeFloorContentTypeBigImageTwoDesc = 13,//一张大图，下面带左右描述
-    TCHomeFloorContentTypeOneToFour = 14,//1~4张图片
-}TCHomeFloorContentType;
 
 @interface TCHomeFloor : NSObject
 @property (nonatomic, assign) BOOL hasTitle;

@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "SegueModel.h"
+
+typedef enum {
+    TCHomeFloorTitleContentTypeNormalTitle = 1,
+    TCHomeFloorTitleContentTypeMoreTitle,
+    TCHomeFloorTitleContentTypeCountDownTitle,
+    TCHomeFloorTitleContentTypeCountDownMoreTitle
+}TCHomeFloorTitleContentType;
+
 @interface TCHomeFloorTitleContent : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *subName;
@@ -17,4 +25,5 @@
 @property (nonatomic, strong) NSDictionary *params;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
+@property (nonatomic, assign) TCHomeFloorTitleContentType type;
 @end

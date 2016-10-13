@@ -941,12 +941,6 @@
 		ECB3E7AD1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */; };
 		ECDDEE441DAE30A600F619AC /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */; };
 		ECDDEE451DAE30A600F619AC /* TCHomeCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE241DAE30A600F619AC /* TCHomeCategory.m */; };
-		ECDDEE461DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE261DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m */; };
-		ECDDEE471DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE281DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m */; };
-		ECDDEE481DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE2A1DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m */; };
-		ECDDEE491DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE2C1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m */; };
-		ECDDEE4A1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE2E1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m */; };
-		ECDDEE4B1DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE301DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m */; };
 		ECDDEE4C1DAE30A600F619AC /* TCHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE321DAE30A600F619AC /* TCHomeData.m */; };
 		ECDDEE4D1DAE30A600F619AC /* TCHomeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE341DAE30A600F619AC /* TCHomeFloor.m */; };
 		ECDDEE4E1DAE30A600F619AC /* TCHomeFloorContent.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE361DAE30A600F619AC /* TCHomeFloorContent.m */; };
@@ -2577,18 +2571,6 @@
 		ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
 		ECDDEE231DAE30A600F619AC /* TCHomeCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCategory.h; sourceTree = "<group>"; };
 		ECDDEE241DAE30A600F619AC /* TCHomeCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCategory.m; sourceTree = "<group>"; };
-		ECDDEE251DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewBannerLayout.h; sourceTree = "<group>"; };
-		ECDDEE261DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewBannerLayout.m; sourceTree = "<group>"; };
-		ECDDEE271DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewHorizontalListLayout.h; sourceTree = "<group>"; };
-		ECDDEE281DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewHorizontalListLayout.m; sourceTree = "<group>"; };
-		ECDDEE291DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewOneToFourLayout.h; sourceTree = "<group>"; };
-		ECDDEE2A1DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewOneToFourLayout.m; sourceTree = "<group>"; };
-		ECDDEE2B1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewThreeLayout.h; sourceTree = "<group>"; };
-		ECDDEE2C1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewThreeLayout.m; sourceTree = "<group>"; };
-		ECDDEE2D1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewTwinklingElfLayout.h; sourceTree = "<group>"; };
-		ECDDEE2E1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewTwinklingElfLayout.m; sourceTree = "<group>"; };
-		ECDDEE2F1DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewTwoColumnLayout.h; sourceTree = "<group>"; };
-		ECDDEE301DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewTwoColumnLayout.m; sourceTree = "<group>"; };
 		ECDDEE311DAE30A600F619AC /* TCHomeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeData.h; sourceTree = "<group>"; };
 		ECDDEE321DAE30A600F619AC /* TCHomeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeData.m; sourceTree = "<group>"; };
 		ECDDEE331DAE30A600F619AC /* TCHomeFloor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloor.h; sourceTree = "<group>"; };
@@ -7313,18 +7295,6 @@
 				ECDDEE241DAE30A600F619AC /* TCHomeCategory.m */,
 				ECDDEE551DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.h */,
 				ECDDEE561DAE45EE00F619AC /* TCHomeCollectionViewBaseLayout.m */,
-				ECDDEE251DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.h */,
-				ECDDEE261DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m */,
-				ECDDEE2D1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.h */,
-				ECDDEE2E1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m */,
-				ECDDEE271DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.h */,
-				ECDDEE281DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m */,
-				ECDDEE2B1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.h */,
-				ECDDEE2C1DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m */,
-				ECDDEE2F1DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.h */,
-				ECDDEE301DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m */,
-				ECDDEE291DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.h */,
-				ECDDEE2A1DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m */,
 				ECDDEE311DAE30A600F619AC /* TCHomeData.h */,
 				ECDDEE321DAE30A600F619AC /* TCHomeData.m */,
 				ECDDEE331DAE30A600F619AC /* TCHomeFloor.h */,
@@ -7895,7 +7865,6 @@
 				EC4FC4A61D77CEE400BBD050 /* OrderListViewController.m in Sources */,
 				EC4FC24A1D77CEE400BBD050 /* GuideModel.m in Sources */,
 				EC4FC3C01D77CEE400BBD050 /* WelfareStoreLoveHouseAnnotationTipView.m in Sources */,
-				ECDDEE4B1DAE30A600F619AC /* TCHomeCollectionViewTwoColumnLayout.m in Sources */,
 				EC4FC3BB1D77CEE400BBD050 /* StoreDetialMapPoiViewController.m in Sources */,
 				EC4FC37B1D77CEE400BBD050 /* CashierDeskViewController.m in Sources */,
 				EC4FC3B31D77CEE400BBD050 /* StoreRelatedStrategyModel.m in Sources */,
@@ -7998,7 +7967,6 @@
 				EC4FC34E1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.m in Sources */,
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
 				ECB3E79D1D93BA8F0059267D /* ServiceOrderDetailBookingFailureCell.m in Sources */,
-				ECDDEE4A1DAE30A600F619AC /* TCHomeCollectionViewTwinklingElfLayout.m in Sources */,
 				EC4FC4D81D77CEE400BBD050 /* UserCenterBannerCell.m in Sources */,
 				EC4FC2F91D77CEE400BBD050 /* NoticeScrollView.m in Sources */,
 				EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */,
@@ -8102,7 +8070,6 @@
 				EC4FC4681D77CEE400BBD050 /* CouponUsableListView.m in Sources */,
 				EC4FC2491D77CEE400BBD050 /* GuideViewController.m in Sources */,
 				EC4FC25D1D77CEE400BBD050 /* PosterModel.m in Sources */,
-				ECDDEE481DAE30A600F619AC /* TCHomeCollectionViewOneToFourLayout.m in Sources */,
 				EC68C3C21D9BBC8D00D4401A /* HomeActivityViewController.m in Sources */,
 				EC4FC5E91D77CEEF00BBD050 /* UIImage+MWPhotoBrowser.m in Sources */,
 				EC4FC2B61D77CEE400BBD050 /* CategoryItemCell.m in Sources */,
@@ -8196,7 +8163,6 @@
 				EC4FC3F31D77CEE400BBD050 /* StrategyDetailServiceItemModel.m in Sources */,
 				EC4FC2F31D77CEE400BBD050 /* HomeCountDownMoreTitleCell.m in Sources */,
 				EC4FC40F1D77CEE400BBD050 /* AppointmentOrderListCell.m in Sources */,
-				ECDDEE461DAE30A600F619AC /* TCHomeCollectionViewBannerLayout.m in Sources */,
 				EC4FC46D1D77CEE400BBD050 /* FavourateViewController.m in Sources */,
 				EC4FC3B01D77CEE400BBD050 /* StoreDetialMapViewController.m in Sources */,
 				EC4FC5DB1D77CEEF00BBD050 /* MWGridCell.m in Sources */,
@@ -8220,7 +8186,6 @@
 				ECAA49341D79A45B00799CBE /* ArticleHomeAlbumCollectionViewCell.m in Sources */,
 				EC7264281D7D279A00AA739B /* ColumnModel.m in Sources */,
 				EC4FC4861D77CEE400BBD050 /* FlashServiceOrderDetailModel.m in Sources */,
-				ECDDEE471DAE30A600F619AC /* TCHomeCollectionViewHorizontalListLayout.m in Sources */,
 				EC4FC2EF1D77CEE400BBD050 /* HomeBannerCell.m in Sources */,
 				EC68C3B61D9BBC5700D4401A /* HomeRefreshModel.m in Sources */,
 				EC0B6D9D1D8E748600EC20EA /* ServiceOrderDetailRemindView.m in Sources */,
@@ -8434,7 +8399,6 @@
 				EC4FC5DA1D77CEEF00BBD050 /* MWCaptionView.m in Sources */,
 				EC1E2F8E1D827EA4002381E7 /* ArticleWriteBottomView.m in Sources */,
 				EC4FC23A1D77CEE400BBD050 /* RegisterViewController.m in Sources */,
-				ECDDEE491DAE30A600F619AC /* TCHomeCollectionViewThreeLayout.m in Sources */,
 				EC4FC3DF1D77CEE400BBD050 /* ParentingStrategyFilterView.m in Sources */,
 				EC4FC31B1D77CEE400BBD050 /* SearchResultViewLocationButton.m in Sources */,
 				EC4FC3FF1D77CEE400BBD050 /* AddressPickerViewCell.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-struct TCHomeLayoutAttributes {
+struct TCHomeLayoutMargins {
     CGFloat top;
     CGFloat left;
     CGFloat bottom;
@@ -16,17 +16,17 @@ struct TCHomeLayoutAttributes {
     CGFloat horizontal;
     CGFloat vertical;
 };
-typedef struct TCHomeLayoutAttributes TCHomeLayoutAttributes;
+typedef struct TCHomeLayoutMargins TCHomeLayoutMargins;
 
-CG_INLINE TCHomeLayoutAttributes
-TCHomeLayoutAttributesMake(CGFloat top,
-                           CGFloat left,
-                           CGFloat bottom,
-                           CGFloat right,
-                           CGFloat horizontal,
-                           CGFloat vertical)
+CG_INLINE TCHomeLayoutMargins
+TCHomeLayoutMarginsMake(CGFloat top,
+                        CGFloat left,
+                        CGFloat bottom,
+                        CGFloat right,
+                        CGFloat horizontal,
+                        CGFloat vertical)
 {
-    TCHomeLayoutAttributes att;
+    TCHomeLayoutMargins att;
     att.top = top;
     att.left = left;
     att.bottom = bottom;
@@ -36,11 +36,7 @@ TCHomeLayoutAttributesMake(CGFloat top,
     return att;
 }
 
-@interface TCHomeCollectionViewBaseLayout : UICollectionViewLayout
-@property (nonatomic, assign) TCHomeLayoutAttributes layoutAttributes;
-@property (nonatomic, assign) int count;
-@property (nonatomic, assign) CGFloat columnCount;
-+ (instancetype)layoutWithCount:(int)count
-                    columnCount:(int)columnCount
-               layoutAttributes:(TCHomeLayoutAttributes)layoutAttributes;
+@interface TCHomeCollectionViewBaseLayout : UICollectionViewFlowLayout
+@property (nonatomic, assign) TCHomeLayoutMargins layoutMargins;
+@property (nonatomic, strong) NSArray<UICollectionViewLayoutAttributes *> *attributes;
 @end

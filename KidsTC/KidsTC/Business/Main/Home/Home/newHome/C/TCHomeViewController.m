@@ -8,12 +8,13 @@
 
 #import "TCHomeViewController.h"
 #import "GHeader.h"
+#import "SegueMaster.h"
 #import "TCHomeModel.h"
 #import "TCHomeBaseTableViewCell.h"
 
 static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
-@interface TCHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TCHomeViewController ()<UITableViewDelegate,UITableViewDataSource,TCHomeBaseTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) TCHomeData *data;
 @end
@@ -37,7 +38,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 - (void)loadData {
     
     NSString *type = [User shareUser].role.roleIdentifierString;
-    NSDictionary *param = @{@"type":type,@"category":@""};
+    NSDictionary *param = @{@"type":@"13",@"category":@""};
     
     [Request startWithName:@"GET_PAGE_HOME_NEW_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         TCHomeModel *model = [TCHomeModel modelWithDictionary:dic];
@@ -80,13 +81,23 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TCHomeBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTCHomeBaseTableViewCellID];
+    cell.delegate = self;
     if (indexPath.section<self.data.sections.count) {
         cell.floor = self.data.sections[indexPath.section];
     }
     return cell;
 }
 
+#pragma mark - TCHomeBaseTableViewCellDelegate
 
-
+- (void)tcHomeBaseTableViewCell:(TCHomeBaseTableViewCell *)cell actionType:(TCHomeBaseTableViewCellActionType)type value:(id)value {
+    switch (type) {
+        case TCHomeBaseTableViewCellActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+    }
+}
 
 @end

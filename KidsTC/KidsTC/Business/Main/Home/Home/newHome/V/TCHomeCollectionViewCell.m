@@ -10,16 +10,26 @@
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
 
+@interface TCHomeNewsBar : UIView
+
+@end
+
+@implementation TCHomeNewsBar
+
+@end
+
+
 @interface TCHomeCollectionViewCell ()
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *priceLabel;
 @end
 
 @implementation TCHomeCollectionViewCell
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        
         UIImageView *imageView = [UIImageView new];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
@@ -35,11 +45,21 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.imageView.frame = self.bounds;
+    [self setupSubViews];
+}
+
+- (void)setupSubViews {
+    TCHomeContentLayoutAttributes att = _content.layoutAttributes;
+    self.imageView.frame = att.imgFrame;
+    self.titleLabel.frame = att.titleFrame;
 }
 
 - (void)setContent:(TCHomeFloorContent *)content {
+    _content = content;
+    [self setupSubViews];
+    self.titleLabel.attributedText = content.attTitle;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:content.imageUrl] placeholderImage:PLACEHOLDERIMAGE_SMALL];
+    
 }
 
 @end

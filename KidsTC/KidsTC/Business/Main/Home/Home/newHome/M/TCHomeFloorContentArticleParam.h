@@ -13,4 +13,6 @@
 @property (nonatomic, assign) NSInteger commentCount;
 @property (nonatomic, assign) BOOL isHot;
 @property (nonatomic, assign) BOOL isRecommend;
+//selfDefine
+@property (nonatomic, strong) NSAttributedString *articleStr;
 @end
