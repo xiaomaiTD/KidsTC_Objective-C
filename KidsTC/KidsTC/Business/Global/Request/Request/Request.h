@@ -40,6 +40,18 @@ typedef void (^FailureBlock)(NSURLSessionDataTask *task, NSError *error);
                                       success:(SuccessBlock)success
                                       failure:(FailureBlock)failure;
 /**
+ *  开始请求
+ *
+ *  @param name     请求别名
+ *  @param param    请求参数
+ *  @param success  成功 在当前线程回调
+ *  @param failure  失败 在当前程回调
+ */
++ (void)startSyncName:(NSString *)name
+                param:(NSDictionary *)param
+              success:(SuccessBlock)success
+              failure:(FailureBlock)failure;
+/**
  *  下载图片
  *
  *  @param urlStr  图片地址

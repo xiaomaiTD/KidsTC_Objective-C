@@ -118,6 +118,55 @@ static Request *_requestManager;
     [task resume];
 }
 
++ (void)startSyncName:(NSString *)name
+                param:(NSDictionary *)param
+              success:(SuccessBlock)success
+              failure:(FailureBlock)failure
+{
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0); //创建信号量
+    InterfaceItem *interfaceItem = [[InterfaceManager shareInterfaceManager] interfaceItemWithName:name];
+    if (!interfaceItem) {
+        if (failure) failure(nil,nil);
+        return;
+    };
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *urlStr = nil;
+    NSString *HTTPMethod = nil;
+    NSData *HTTPBody = nil;
+    switch (interfaceItem.method) {
+        case RequestTypeGet:
+        {
+            urlStr = [NSString stringWithFormat:@"%@%@",interfaceItem.url,[self paramString:param]];
+            HTTPMethod = @"GET";
+        }
+            break;
+        case RequestTypePost:
+        {
+            urlStr = interfaceItem.url;
+            HTTPMethod = @"POST";
+            HTTPBody = [[self paramString:param] dataUsingEncoding:NSUTF8StringEncoding];
+        }
+            break;
+    }
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = HTTPMethod;
+    request.HTTPBody = HTTPBody;
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            [self responseSuccessWithInterfaceItem:interfaceItem task:task responseObject:data success:success failure:failure];
+        }else{
+            [self responseFailureWithInterfaceItem:interfaceItem task:task error:error failure:failure];
+        }
+        dispatch_semaphore_signal(semaphore);   //发送信号
+    }];
+    [task resume];
+    dispatch_semaphore_wait(semaphore,DISPATCH_TIME_FOREVER);//等待
+}
+
 + (void)dowloadImgWithUrlStr:(NSString *)urlStr
                      success:(void (^)(NSURLSessionDataTask *task,NSData *data))success
                      failure:(void (^)(NSURLSessionDataTask *task,NSError *error))failure

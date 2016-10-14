@@ -91,6 +91,9 @@ NSString *const kSegueParameterKeyLinkUrl = @"kSegueParameterKeyLinkUrl";
         }
             break;
         default:
+        {
+            _destination = SegueDestinationNone;
+        }
             break;
     }
 }

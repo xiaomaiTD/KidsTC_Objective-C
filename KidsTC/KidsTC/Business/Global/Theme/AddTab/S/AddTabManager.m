@@ -67,10 +67,12 @@ singleM(AddTabManager)
     __block UIImage *sImg = nil;
     __block NSData *sImgData = nil;
     dispatch_group_async(group, queue, ^{
+        TCLog(@"AddTab两张图片--%@",[NSThread currentThread]);
         fImgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.data.fImg]];
         fImg = [UIImage imageWithData:fImgData];
     });
     dispatch_group_async(group, queue, ^{
+        TCLog(@"AddTab两张图片--%@",[NSThread currentThread]);
         sImgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.data.sImg]];
         sImg = [UIImage imageWithData:sImgData];
     });
