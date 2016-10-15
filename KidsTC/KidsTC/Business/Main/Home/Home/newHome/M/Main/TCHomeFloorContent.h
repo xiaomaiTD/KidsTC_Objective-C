@@ -27,8 +27,17 @@ typedef enum {
     TCHomeFloorContentTypeFive = 16,//5张图片
 }TCHomeFloorContentType;
 
+
+
 struct TCHomeContentLayoutAttributes {
+    BOOL showImg;
+    BOOL showTipImg;
+    BOOL showTitle;
+    BOOL showPrice;
+    BOOL showSubTitle;
+    BOOL showStatus;
     CGRect imgFrame;
+    CGRect tipImgFrame;
     CGRect titleFrame;
     CGRect priceFrame;
     CGRect subTitleFrame;
@@ -36,14 +45,30 @@ struct TCHomeContentLayoutAttributes {
 };
 typedef struct TCHomeContentLayoutAttributes TCHomeContentLayoutAttributes;
 CG_INLINE TCHomeContentLayoutAttributes
-TCHomeContentLayoutAttributesMake(CGRect imgFrame,
+TCHomeContentLayoutAttributesMake(BOOL showImg,
+                                  BOOL showTipImg,
+                                  BOOL showTitle,
+                                  BOOL showPrice,
+                                  BOOL showSubTitle,
+                                  BOOL showStatus,
+                                  CGRect imgFrame,
+                                  CGRect tipImgFrame,
                                   CGRect titleFrame,
                                   CGRect priceFrame,
                                   CGRect subTitleFrame,
                                   CGRect statusFrame)
 {
     TCHomeContentLayoutAttributes att;
+    
+    att.showImg = showImg;
+    att.showTipImg = showTipImg;
+    att.showTitle = showTitle;
+    att.showPrice = showPrice;
+    att.showSubTitle = showSubTitle;
+    att.showStatus = showStatus;
+    
     att.imgFrame = imgFrame;
+    att.tipImgFrame = tipImgFrame;
     att.titleFrame = titleFrame;
     att.priceFrame = priceFrame;
     att.subTitleFrame = subTitleFrame;
@@ -67,6 +92,8 @@ TCHomeContentLayoutAttributesMake(CGRect imgFrame,
 @property (nonatomic, strong) NSAttributedString *attSubTitle;
 @property (nonatomic, strong) NSAttributedString *attPrice;
 @property (nonatomic, strong) NSAttributedString *attStatus;
+@property (nonatomic, assign) BOOL hasLine;
+@property (nonatomic, strong) NSString *tipImgName;
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, assign) TCHomeContentLayoutAttributes layoutAttributes;
 @property (nonatomic, assign) TCHomeFloorContentType type;

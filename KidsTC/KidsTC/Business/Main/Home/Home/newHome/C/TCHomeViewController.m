@@ -116,14 +116,14 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     WeakSelf(self)
     HomeRefreshHeader *mj_header = [HomeRefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self)
-        [self getDataRefresh:YES roleHasChange:NO];
+        [self loadDataNewRoleHasChange:NO];
     }];
     mj_header.automaticallyChangeAlpha = YES;
     self.tableView.mj_header = mj_header;
     
     RefreshFooter *mj_footer = [RefreshFooter footerWithRefreshingBlock:^{
         StrongSelf(self)
-        [self getDataRefresh:NO roleHasChange:NO];
+        [self loadDataMore];
     }];
     mj_footer.automaticallyChangeAlpha = YES;
     self.tableView.mj_footer = mj_footer;
@@ -176,7 +176,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 - (void)roleHasChanged{
     [self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
-    [self getDataRefresh:YES roleHasChange:YES];
+    [self loadDataNewRoleHasChange:YES];
 }
 
 - (void)speek {
@@ -184,13 +184,12 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)getDataRefresh:(BOOL)refresh roleHasChange:(BOOL)roleHasChange {
+- (void)loadDataNewRoleHasChange:(BOOL)roleHasChange {
     NSString *type = [User shareUser].role.roleIdentifierString;
     dispatch_group_t group =  dispatch_group_create();
     dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
     __block NSMutableArray<TCHomeFloor *> *mainFloors = [NSMutableArray array];
     dispatch_group_async(group, queue, ^{
-        TCLog(@"AddTab两张图片--11--%@",[NSThread currentThread]);
         NSDictionary *param = @{@"type":@"13",
                                 @"category":@""};
         [Request startSyncName:@"GET_PAGE_HOME_NEW_V2" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
@@ -200,7 +199,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     });
     __block NSMutableArray<TCHomeFloor *> *recommendFloors = [NSMutableArray array];
     dispatch_group_async(group, queue, ^{
-        TCLog(@"AddTab两张图片--22--%@",[NSThread currentThread]);
+        self.page = 1;
         NSDictionary *param = @{@"populationType":@"13",
                                 @"page":@(self.page),
                                 @"pageCount":@(pageCount)};
@@ -210,7 +209,6 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
         } failure:nil];
     });
     dispatch_group_notify(group, queue, ^{
-        TCLog(@"AddTab两张图片--33--%@",[NSThread currentThread]);
         NSMutableArray<TCHomeFloor *> *allFloors = [NSMutableArray array];
         [allFloors addObjectsFromArray:mainFloors];
         [allFloors addObjectsFromArray:recommendFloors];
@@ -220,6 +218,22 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
             [self dealWitMJ];
         });
     });
+}
+
+- (void)loadDataMore {
+    __block NSMutableArray<TCHomeFloor *> *allFloors = [NSMutableArray arrayWithArray:self.floors];
+    NSDictionary *param = @{@"populationType":@"13",
+                            @"page":@(++self.page),
+                            @"pageCount":@(pageCount)};
+    [Request startWithName:@"GET_PAGE_RECOMMEND_NEW_PRODUCE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
+        [allFloors addObjectsFromArray:model.floors];
+        self.floors = [NSArray arrayWithArray:allFloors];
+        [self.tableView reloadData];
+        [self dealWitMJ];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self dealWitMJ];
+    }];
 }
 
 - (void)dealWitMJ {

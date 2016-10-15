@@ -7,13 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TCHomeFloorContent.h"
 #import "TCHomeFloor.h"
+
+typedef enum : NSUInteger {
+    TCHomeRecommendProductTypeNew=1,//今日新品
+    TCHomeRecommendProductTypeHot,//热销活动
+    TCHomeRecommendProductTypePopularity,//人气活动
+} TCHomeRecommendProductType;
 
 @interface TCHomeRecommendItem : NSObject
 @property (nonatomic, strong) NSString *serveId;
 @property (nonatomic, strong) NSString *channelId;
-//@property (nonatomic, assign) <#type#> reProductType;
+@property (nonatomic, assign) TCHomeRecommendProductType reProductType;
 @property (nonatomic, strong) NSString *serveName;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *imgUrl;

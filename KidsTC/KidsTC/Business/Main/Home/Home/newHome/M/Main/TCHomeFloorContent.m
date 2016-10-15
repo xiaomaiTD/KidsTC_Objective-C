@@ -43,7 +43,7 @@
             {
                 NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
                 attPrice.lineSpacing = 0;
-                attPrice.color = [UIColor darkGrayColor];
+                attPrice.color = COLOR_PINK;
                 attPrice.font = [UIFont systemFontOfSize:15];
                 attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
                 attPrice.alignment = NSTextAlignmentCenter;
@@ -62,16 +62,21 @@
                 break;
             case TCHomeFloorContentTypeNews:
             case TCHomeFloorContentTypeImageNews:
+            {
+                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+//                attTitle.lineSpacing = 4;
+                attTitle.color = [UIColor darkGrayColor];
+                attTitle.font = [UIFont systemFontOfSize:17];
+                attTitle.alignment = NSTextAlignmentLeft;
+                _attTitle = attTitle;
+                
+                _attSubTitle = _articleParam.articleStr;
+            }
+                break;
             case TCHomeFloorContentTypeThreeImageNews:
             case TCHomeFloorContentTypeWholeImageNews:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 6;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
+
             }
                 break;
             case TCHomeFloorContentTypeNotice:
@@ -104,10 +109,10 @@
                 case TCHomeFloorContentTypeRecommend:
             {
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 6;
+//                attTitle.lineSpacing = 4;
                 attTitle.color = [UIColor blackColor];
                 attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+//                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
                 attTitle.alignment = NSTextAlignmentLeft;
                 _attTitle = attTitle;
                 
@@ -129,14 +134,13 @@
                 
                 NSTextAttachment *imgAtt = [NSTextAttachment new];
                 imgAtt.image = [UIImage imageNamed:@"icon_clock"];
-                imgAtt.bounds = CGRectMake(0, -3, 15, 15);
+                imgAtt.bounds = CGRectMake(0, -2, 15, 15);
                 NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
                 NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:stattus];
                 [attStatus insertAttributedString:imgAttStr atIndex:0];
                 attStatus.lineSpacing = 0;
                 attStatus.color = [UIColor darkGrayColor];
                 attStatus.font = [UIFont systemFontOfSize:15];
-                attStatus.lineBreakMode = NSLineBreakByTruncatingTail;
                 attStatus.alignment = NSTextAlignmentRight;
                 _attStatus = attStatus;
                 
