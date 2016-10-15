@@ -64,7 +64,7 @@
             case TCHomeFloorContentTypeImageNews:
             {
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-//                attTitle.lineSpacing = 4;
+                attTitle.lineSpacing = 4;
                 attTitle.color = [UIColor darkGrayColor];
                 attTitle.font = [UIFont systemFontOfSize:17];
                 attTitle.alignment = NSTextAlignmentLeft;
@@ -76,7 +76,12 @@
             case TCHomeFloorContentTypeThreeImageNews:
             case TCHomeFloorContentTypeWholeImageNews:
             {
-
+                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                attTitle.lineSpacing = 4;
+                attTitle.color = [UIColor whiteColor];
+                attTitle.font = [UIFont systemFontOfSize:17];
+                attTitle.alignment = NSTextAlignmentLeft;
+                _attTitle = attTitle;
             }
                 break;
             case TCHomeFloorContentTypeNotice:
@@ -109,7 +114,7 @@
                 case TCHomeFloorContentTypeRecommend:
             {
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-//                attTitle.lineSpacing = 4;
+                attTitle.lineSpacing = 4;
                 attTitle.color = [UIColor blackColor];
                 attTitle.font = [UIFont systemFontOfSize:17];
 //                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
