@@ -24,6 +24,7 @@
 #import "TCHomeRecommendModel.h"
 #import "TCHomeBaseTableViewCell.h"
 
+#import "QRCodeScanViewController.h"
 #import "SpeekViewController.h"
 #import "SearchTableViewController.h"
 #import "CategoryViewController.h"
@@ -163,10 +164,8 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 }
 
 - (void)showScan{
-//    CategoryViewController *controller = [[CategoryViewController alloc]init];
-//    [self.navigationController pushViewController:controller animated:YES];
-    UIStoryboard *qrCodeStoryboard = [UIStoryboard storyboardWithName:@"QRCode" bundle:nil];
-    [self.navigationController pushViewController:qrCodeStoryboard.instantiateInitialViewController animated:YES];
+    QRCodeScanViewController *controller = [[QRCodeScanViewController alloc]init];
+    [self.navigationController pushViewController:controller animated:YES];    
 }
 
 - (void)changeRole{

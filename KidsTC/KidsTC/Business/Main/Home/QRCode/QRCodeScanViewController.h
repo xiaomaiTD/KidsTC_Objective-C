@@ -6,8 +6,8 @@
 //  Copyright © 2016年 詹平. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ViewController.h"
 
-@interface QRCodeScanViewController : UIViewController
+@interface QRCodeScanViewController : ViewController
 
 @end
