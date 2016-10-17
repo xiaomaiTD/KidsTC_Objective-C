@@ -15,5 +15,5 @@
 @property (nonatomic, strong) NSArray<TCHomeModule *> *modules;
 @property (nonatomic, strong) NSArray<TCHomeCategory *> *categorys;
 /**SelfDefine*/
-@property (nonatomic, strong) NSArray<TCHomeFloor *> *sections;
+@property (nonatomic, strong) NSArray<TCHomeFloor *> *floors;
 @end

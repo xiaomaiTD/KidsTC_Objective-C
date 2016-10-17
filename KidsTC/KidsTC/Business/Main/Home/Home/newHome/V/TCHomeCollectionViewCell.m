@@ -37,7 +37,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        //self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor whiteColor];
         
         UIImageView *imageView = [UIImageView new];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -52,7 +52,7 @@
         
         UILabel *titleLabel = [UILabel new];
         titleLabel.numberOfLines = 0;
-        //titleLabel.backgroundColor = [UIColor redColor];
+        titleLabel.backgroundColor = [UIColor redColor];
         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         [self addSubview:titleLabel];
         self.titleLabel = titleLabel;
@@ -124,6 +124,20 @@
     _line.hidden = !_content.hasLine;
     if (!_line.hidden) {
         _line.frame = CGRectMake(0, CGRectGetHeight(self.bounds) - LINE_H, CGRectGetWidth(self.bounds), LINE_H);
+    }
+    
+    switch (_content.type) {
+        case TCHomeFloorContentTypeWholeImageNews:
+        {
+            _titleLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+        }
+            break;
+            
+        default:
+        {
+            _titleLabel.backgroundColor = [UIColor clearColor];
+        }
+            break;
     }
 }
 

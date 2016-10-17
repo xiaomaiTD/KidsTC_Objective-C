@@ -14,12 +14,55 @@
 #import "TCHomeTitleContainer.h"
 #import "YYKit.h"
 
+@interface TCHomeNotiTipBGView : UIView
+@property (nonatomic, strong) NSString *imgUrl;
+@property (nonatomic, strong) UIImageView *notiImageView;
+@property (nonatomic, strong) UIView *line;
+@end
+
+@implementation TCHomeNotiTipBGView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        UIImageView *notiImageView = [UIImageView new];
+        notiImageView.contentMode = UIViewContentModeScaleToFill;
+        notiImageView.clipsToBounds = YES;
+        [self addSubview:notiImageView];
+        self.notiImageView = notiImageView;
+        
+        UIView *line = [UIView new];
+        line.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [self addSubview:line];
+        self.line = line;
+    }
+    return self;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGFloat self_w = CGRectGetWidth(self.bounds);
+    CGFloat self_h = CGRectGetHeight(self.bounds);
+    CGFloat margin = 8;
+    _notiImageView.frame = CGRectMake(margin, margin, self_w - 2 * margin, self_h - 2 * margin);
+    _line.frame = CGRectMake(self_w - LINE_H, margin, LINE_H, self_h - 2 * margin);
+}
+
+- (void)setImgUrl:(NSString *)imgUrl {
+    _imgUrl = imgUrl;
+    [_notiImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+}
+
+@end
+
 static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell";
 
 @interface TCHomeBaseTableViewCell ()<UICollectionViewDelegate,UICollectionViewDataSource,TCHomeTitleContainerDelegate>
 @property (nonatomic, strong) TCHomeTitleContainer *titleContainer;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIImageView *bgImageView;
+@property (nonatomic, strong) TCHomeNotiTipBGView *notiBGView;
+
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) YYTimer *timer;
 @end
@@ -46,7 +89,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
         collectionView.scrollsToTop = NO;
         collectionView.showsVerticalScrollIndicator = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.backgroundColor = [UIColor whiteColor];
+        collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [collectionView registerClass:[TCHomeCollectionViewCell class] forCellWithReuseIdentifier:kTCHomeCollectionViewCellID];
         [self addSubview:collectionView];
         self.collectionView = collectionView;
@@ -56,6 +99,11 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
         bgImageView.clipsToBounds = YES;
         collectionView.backgroundView = bgImageView;
         self.bgImageView = bgImageView;
+        
+        TCHomeNotiTipBGView *notiBGView = [TCHomeNotiTipBGView new];
+        [self addSubview:notiBGView];
+        self.notiBGView = notiBGView;
+        
         
         UIPageControl *pageControl = [UIPageControl new];
         pageControl.hidesForSinglePage = YES;
@@ -75,19 +123,24 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 - (void)setFloor:(TCHomeFloor *)floor {
     _floor = floor;
 
-    self.titleContainer.hidden = !_floor.showTitleContainer;
+    _titleContainer.hidden = !_floor.showTitleContainer;
     if (_floor.showTitleContainer) {
-        self.titleContainer.titleContent = floor.titleContent;
+        _titleContainer.titleContent = floor.titleContent;
     }
     
-    self.bgImageView.hidden = !_floor.showBgImageView;
+    _bgImageView.hidden = !_floor.showBgImageView;
     if (_floor.showBgImageView) {
-        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:floor.bgImgUrl]];
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:floor.bgImgUrl]];
     }
     
-    self.pageControl.hidden = !_floor.showPageControl;
+    _notiBGView.hidden = !_floor.showNotiImageView;
+    if (_floor.showNotiImageView) {
+        _notiBGView.imgUrl = floor.notiImgUrl;
+    }
+    
+    _pageControl.hidden = !_floor.showPageControl;
     if (_floor.showPageControl) {
-        self.pageControl.numberOfPages = _floor.contents.count;
+        _pageControl.numberOfPages = _floor.contents.count;
     }
     
     [self addYYTimer];
@@ -99,14 +152,17 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 
 - (void)setupSubViews {
     
-    if (self.floor.collectionViewLayout) {
-        self.collectionView.frame = self.floor.collectionViewFrame;
-        self.collectionView.collectionViewLayout = self.floor.collectionViewLayout;
+    if (_floor.collectionViewLayout) {
+        self.collectionView.frame = _floor.collectionViewFrame;
+        self.collectionView.collectionViewLayout = _floor.collectionViewLayout;
     }else{
         self.collectionView.frame = self.bounds;
     }
     if (_floor.showBgImageView) {
         self.bgImageView.frame = self.collectionView.bounds;
+    }
+    if (_floor.showNotiImageView) {
+        _notiBGView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.2, CGRectGetHeight(self.bounds));
     }
     if (_floor.showPageControl) {
         self.pageControl.frame = CGRectMake(0, CGRectGetHeight(self.bounds) - 30, CGRectGetWidth(self.bounds), 30);
@@ -154,6 +210,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 
 - (void)addYYTimer{
     if (_floor.canAddYYTimer) {
+        TCLog(@"_floor.contentType:%zd",_floor.contentType);
         if (self.timer) [self removeYYTimer];
         self.timer = [YYTimer timerWithTimeInterval:5 target:self selector:@selector(nextPage) repeats:YES];
     }else{
@@ -184,7 +241,8 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
     if (nextItem<count && nextSection<kTCHomeCollectionViewCellMaxSections) {
         NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
         // 3.通过动画滚动到下一个位置
-        [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+        [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        TCLog(@"_floor.contentType:%zd",_floor.contentType);
     }
 }
 - (NSIndexPath *)resetIndexPath
@@ -194,7 +252,8 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
     
     // 马上显示回最中间那组的数据
     NSIndexPath *currentIndexPathReset = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:kTCHomeCollectionViewCellMaxSections/2];
-    [self.collectionView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    [self.collectionView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    TCLog(@"_floor.contentType:%zd",_floor.contentType);
     return currentIndexPathReset;
 }
 

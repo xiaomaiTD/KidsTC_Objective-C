@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StrategyModel.h"
+
 #define StrategyToolBarScrollViewHeight 40
 @class StrategyToolBarScrollView;
 @protocol StrategyToolBarScrollViewDelegate <NSObject>
@@ -15,7 +15,7 @@
 @end
 
 @interface StrategyToolBarScrollView : UIScrollView
-@property (nonatomic, strong) NSArray<StrategyTypeListTagItem *> *tags;
+@property (nonatomic, strong) NSArray<NSString *> *tags;
 @property (nonatomic, weak) UIButton *selectedBtn;
 @property (nonatomic, weak) id<StrategyToolBarScrollViewDelegate> clickDelegate;
 - (void)changeTipPlaceWithSmallIndex:(NSUInteger)smallIndex

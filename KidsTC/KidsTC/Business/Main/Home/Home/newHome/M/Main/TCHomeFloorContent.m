@@ -74,8 +74,20 @@
             }
                 break;
             case TCHomeFloorContentTypeThreeImageNews:
+            {
+                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                attTitle.lineSpacing = 4;
+                attTitle.color = [UIColor darkGrayColor];
+                attTitle.font = [UIFont systemFontOfSize:17];
+                attTitle.alignment = NSTextAlignmentLeft;
+                _attTitle = attTitle;
+                
+                _attSubTitle = _articleParam.articleStr;
+            }
+                break;
             case TCHomeFloorContentTypeWholeImageNews:
             {
+                title = [NSString stringWithFormat:@"  %@",title];
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
                 attTitle.lineSpacing = 4;
                 attTitle.color = [UIColor whiteColor];
@@ -91,7 +103,7 @@
                 attTitle.color = [UIColor darkGrayColor];
                 attTitle.font = [UIFont systemFontOfSize:17];
                 attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentCenter;
+                attTitle.alignment = NSTextAlignmentLeft;
                 _attTitle = attTitle;
             }
                 break;
@@ -117,7 +129,6 @@
                 attTitle.lineSpacing = 4;
                 attTitle.color = [UIColor blackColor];
                 attTitle.font = [UIFont systemFontOfSize:17];
-//                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
                 attTitle.alignment = NSTextAlignmentLeft;
                 _attTitle = attTitle;
                 

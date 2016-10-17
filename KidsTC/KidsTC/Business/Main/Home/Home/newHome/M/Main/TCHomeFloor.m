@@ -31,7 +31,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 - (void)insetType {
     
     _titleContent.type = _titleType;
-    
+    [_titleContent setupAttName];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         obj.type = _contentType;
         [obj setupAttTitle];
@@ -49,6 +49,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     _showPageControl = _contentType == TCHomeFloorContentTypeBanner;
     _canAddYYTimer = (_contentType == TCHomeFloorContentTypeBanner ||
                       _contentType == TCHomeFloorContentTypeNotice) && (_contents.count>1);
+    _showNotiImageView = _contentType == TCHomeFloorContentTypeNotice;
     
     TCHomeCollectionViewBaseLayout *layout = [TCHomeCollectionViewBaseLayout new];
     layout.autoScroll = _canAddYYTimer;
@@ -174,7 +175,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     
     int count = (int)_contents.count;
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 20, 8, 20, 34, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 20, 0, 20, 34, 8);
     int columnCount = 4;//列数
     int rowCount = (count + columnCount - 1) / columnCount; //按columnCount个一组来分，有几组,行数
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * (columnCount - 1)) / columnCount;
@@ -209,7 +210,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 
 - (void)setupHorizontalListLayout:(TCHomeCollectionViewBaseLayout *)layout {
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 8, 0, 8, 8, 8);
     
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.sectionInset = UIEdgeInsetsMake(margins.top, margins.left, margins.bottom, margins.right);
@@ -252,7 +253,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 
 - (void)setupThreeLayout:(TCHomeCollectionViewBaseLayout *)layout {
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, LINE_H, LINE_H);
     int columnCount = 2;
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * (columnCount - 1)) / columnCount;
     
@@ -297,7 +298,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     _centerSeparation = _centerSeparation>0?_centerSeparation:0;
     _bottomSeparation = _bottomSeparation>0?_bottomSeparation:0;
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, _centerSeparation, _bottomSeparation);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, _centerSeparation, _bottomSeparation);
     int columnCount = 2;
     
     int rowCount = (count + columnCount -1) / columnCount ;//按columnCount个一组来分，有几组
@@ -424,21 +425,43 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 
 - (void)setupThreeImageNewsLayout:(TCHomeCollectionViewBaseLayout *)layout {
     int count = (int)_contents.count;
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 8, 0, 8, 8, 0);
     int columnCount = count;
     int marginCountH = (columnCount - (int)columnCount) > 0 ? (int)columnCount : (columnCount - 1);
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * marginCountH) / columnCount;
     
-    CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
-    CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
-    TCHomeContentLayoutAttributes contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    CGFloat margin = 8;
     
-    CGFloat item_h = img_y + img_h;
+    CGFloat title_x = 0;
+    CGFloat title_y = margin;
+    CGFloat title_w = SCREEN_WIDTH - 2 * margin;
+    CGFloat title_h = 21;
+    CGRect title_f = CGRectMake(title_x, title_y, title_w, title_h);
+    
+    CGFloat img_x = 0;
+    CGFloat img_w = item_w;
+    CGFloat img_h = img_w * _ratio;
+    CGFloat img_y = CGRectGetMaxY(title_f) + margin;
+    CGRect img_f = CGRectMake(img_x, img_y, img_w, img_h);
+    
+    CGFloat subTitle_x = 0;
+    CGFloat subTitle_y = CGRectGetMaxY(img_f) + margin;
+    CGFloat subTitle_w = SCREEN_WIDTH - 2 * margin;
+    CGFloat subTitle_h = 21;
+    CGRect subTitle_f = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
+    
+    CGFloat item_h = CGRectGetMaxY(subTitle_f) + margin;
     _floorHeight = item_h + margins.top + margins.bottom;
     CGFloat item_y = margins.top;
     __block CGFloat item_x;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        TCHomeContentLayoutAttributes contentAtt;
+        if (idx == 0) {
+            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, YES, NO, YES, NO, img_f, CGRectZero, title_f, CGRectZero, subTitle_f, CGRectZero);
+        }else{
+            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, img_f, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+        }
         obj.layoutAttributes = contentAtt;
         item_x = margins.left + (item_w + margins.horizontal) * idx;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
@@ -453,7 +476,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 
 - (void)setupWholeImageNewsLayout:(TCHomeCollectionViewBaseLayout *)layout {
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, 0, 0);
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right);
     
     CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
@@ -494,7 +517,9 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat item_h = 50;
     layout.itemSize = CGSizeMake(item_w, item_h);
     
-    CGFloat title_x = 0,title_h = item_h, title_y = 0, title_w = item_w;
+    CGFloat margin = 8;
+    
+    CGFloat title_x = item_w * 0.2 + margin,title_h = 21, title_y = (item_h - title_h) * 0.5, title_w = item_w - title_x - margin;
     CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     TCHomeContentLayoutAttributes contentAtt = TCHomeContentLayoutAttributesMake(NO, NO, YES, NO, NO, NO, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero);
     
@@ -502,7 +527,10 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat item_x = margins.left;
     __block CGFloat item_y;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
-    [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
+        if (idx==0) {
+            _notiImgUrl = obj.imageUrl;
+        }
         obj.layoutAttributes = contentAtt;
         item_y = idx * item_h;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
@@ -511,14 +539,13 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         [attributes addObject:att];
     }];
     layout.attributes = [NSArray arrayWithArray:attributes];
-    NSLog(@"_canAddYYTimer---%zd",_canAddYYTimer);
 }
 
 #pragma mark //= 13,//一张大图，下面带左右描述
 
 - (void)setupBigImageTwoDescLayout:(TCHomeCollectionViewBaseLayout *)layout {
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, 0, 0);
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right);
     
     CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
@@ -547,7 +574,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     
     int count = (int)_contents.count;
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(8, 8, 8, 8, 8, 8);
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, LINE_H, 0);
     int columnCount = count;
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * (columnCount - 1))/columnCount;
     item_w = item_w>0?item_w:0;
@@ -572,6 +599,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     }];
     layout.attributes = [NSArray arrayWithArray:attributes];
 }
+
+#pragma mark //= 15,//为您推荐
 
 - (void)setupRecommendLayout:(TCHomeCollectionViewBaseLayout *)layout {
     TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, 0, 0);
@@ -615,7 +644,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGFloat subTitle_h = 21;
         CGRect subTtitleFrme = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
         
-        TCHomeContentLayoutAttributes contentAtt = TCHomeContentLayoutAttributesMake(YES, YES, YES, YES, YES, YES, imgFrame, tipImgFrame, titleFrame, priceFrame, subTtitleFrme, statusFrame);
+        TCHomeContentLayoutAttributes contentAtt = TCHomeContentLayoutAttributesMake(YES, obj.tipImgName.length>0, YES, YES, YES, YES, imgFrame, tipImgFrame, titleFrame, priceFrame, subTtitleFrme, statusFrame);
         obj.layoutAttributes = contentAtt;
         
         _floorHeight = CGRectGetMaxY(subTtitleFrme) + margin * 2;
@@ -632,36 +661,50 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 
 - (void)setupFiveLayout:(TCHomeCollectionViewBaseLayout *)layout {
     
-    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, 0, 0);
-    int columnCount = 3;
-    CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * (columnCount - 1)) / columnCount;
-    CGFloat first_item_h = item_w * _ratio;
-    _floorHeight = first_item_h + margins.top + margins.bottom;
-    CGFloat other_item_h = (first_item_h - margins.vertical)/2;
-    __block CGFloat item_x, item_y,item_h;
+    TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, LINE_H, LINE_H);
+    
+    CGFloat left_w = (SCREEN_WIDTH - margins.left - margins.right - 2 * margins.horizontal);
+    __block CGFloat item_x, item_y, item_w, item_h;
+    __block CGFloat left_h;
+    __block CGRect last_f;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         if (idx == 0) {
             item_x = margins.left;
             item_y = margins.top;
-            item_h = first_item_h;
-        } else {
-            item_h = other_item_h;
-            if (idx == 1 || idx == 2) {
-                item_x = margins.left + (item_w + margins.horizontal) * (idx % columnCount);
-                item_y = margins.top + (other_item_h + margins.vertical) * (idx / columnCount);
-            }else{
-                item_x = margins.left + (item_w + margins.horizontal) * ((idx + 1) % columnCount);
-                item_y = margins.top + (other_item_h + margins.vertical) * ((idx + 1) / columnCount);
-            }
+            item_w = left_w * obj.widthScale;
+            item_h = item_w * _ratio;
+            left_h = item_h - margins.vertical;
+            _floorHeight = item_h + margins.top + margins.bottom;
+        } else if (idx == 1) {
+            item_x = CGRectGetMaxX(last_f) + margins.horizontal;
+            item_y = margins.top;
+            item_w = left_w * obj.widthScale;
+            item_h = left_h * obj.heightScale;
+        } else if (idx == 2) {
+            item_x = CGRectGetMinX(last_f);
+            item_y = CGRectGetMaxY(last_f) + margins.vertical;
+            item_w = left_w * obj.widthScale;
+            item_h = left_h * obj.heightScale;
+        } else if (idx == 3) {
+            item_x = CGRectGetMaxX(last_f) + margins.horizontal;
+            item_y = margins.top;
+            item_w = left_w * obj.widthScale;
+            item_h = left_h * obj.heightScale;
+        } else if (idx == 4) {
+            item_x = CGRectGetMinX(last_f);
+            item_y = CGRectGetMaxY(last_f) + margins.vertical;
+            item_w = left_w * obj.widthScale;
+            item_h = left_h * obj.heightScale;
         }
+        last_f = CGRectMake(item_x, item_y, item_w, item_h);
         CGRect imgFrame = CGRectMake(0, 0, item_w, item_h);
         TCHomeContentLayoutAttributes contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
         obj.layoutAttributes = contentAtt;
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
         UICollectionViewLayoutAttributes *att = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-        att.frame = CGRectMake(item_x, item_y, item_w, item_h);
+        att.frame = last_f;
         [attributes addObject:att];
     }];
     layout.attributes = [NSArray arrayWithArray:attributes];

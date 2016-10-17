@@ -48,7 +48,7 @@
     floor.ratio = self.picRate;
     floor.contentType = TCHomeFloorContentTypeRecommend;
     floor.marginTop = LINE_H;
-    [floor modelCustomTransformFromDictionary:nil];
+    
     return floor;
 }
 @end

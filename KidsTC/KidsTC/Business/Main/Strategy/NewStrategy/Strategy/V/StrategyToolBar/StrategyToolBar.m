@@ -94,7 +94,7 @@
 }
 
 
-- (void)setTags:(NSArray<StrategyTypeListTagItem *> *)tags{
+- (void)setTags:(NSArray<NSString *> *)tags{
     _tags = tags;
     
     self.scrollView.tags = tags;

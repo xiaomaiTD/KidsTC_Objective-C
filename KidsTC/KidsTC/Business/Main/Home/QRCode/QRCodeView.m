@@ -284,7 +284,7 @@ typedef enum : NSUInteger {
         case QRCodeViewInputTypeTfInput:
         {
             btn_x = (self_w * 0.5 - btn_w) * 0.5;
-            btn_y = CGRectGetMaxY(self.scanRect) + 20;
+            btn_y = CGRectGetMaxY(self.scanRect) + 24;
         }
             break;
     }
@@ -311,7 +311,7 @@ typedef enum : NSUInteger {
     CGFloat btn_w = 130;
     CGFloat btn_h = 40;
     CGFloat btn_x = (self_w * 1.5 - btn_w) * 0.5;
-    CGFloat btn_y = CGRectGetMaxY(self.scanRect) + 20;
+    CGFloat btn_y = CGRectGetMaxY(self.scanRect) + 24;
     return CGRectMake(btn_x, btn_y, btn_w, btn_h);
 }
 
@@ -325,7 +325,7 @@ typedef enum : NSUInteger {
         if ([object isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
             self.tipLabel.text = object.stringValue;
             AVMetadataMachineReadableCodeObject *newObj = (AVMetadataMachineReadableCodeObject *)[self.previewLayer transformedMetadataObjectForMetadataObject:object];
-            NSLog(@"%@", newObj);
+            TCLog(@"object.stringValue:%@", object.stringValue);
             [self drawCorners:newObj];
         }else{
             NSLog(@"没有扫描到数据");

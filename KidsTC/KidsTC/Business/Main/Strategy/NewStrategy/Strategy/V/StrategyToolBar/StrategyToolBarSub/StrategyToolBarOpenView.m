@@ -26,7 +26,7 @@
     return self;
 }
 
-- (void)setTags:(NSArray<StrategyTypeListTagItem *> *)tags{
+- (void)setTags:(NSArray<NSString *> *)tags{
     _tags = tags;
     
     if (self.tagBtns.count>0) {
@@ -34,8 +34,8 @@
         [self.tagBtns removeAllObjects];
     }
     
-    [tags enumerateObjectsUsingBlock:^(StrategyTypeListTagItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *btn = [self btnWithTitle:obj.name tag:idx];
+    [tags enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+        UIButton *btn = [self btnWithTitle:obj tag:idx];
         [self addSubview:btn];
         [self.tagBtns addObject:btn];
     }];

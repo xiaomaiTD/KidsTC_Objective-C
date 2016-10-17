@@ -879,7 +879,6 @@
 		EC8163BB1DB0D95C0079865A /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8163BA1DB0D95C0079865A /* iflyMSC.framework */; };
 		EC8163C51DB0DA690079865A /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163C11DB0DA690079865A /* QRCodeScanViewController.m */; };
 		EC8163C81DB0DA840079865A /* SpeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163C71DB0DA840079865A /* SpeekViewController.m */; };
-		EC8163CB1DB0E3780079865A /* TCHomeRecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163CA1DB0E3780079865A /* TCHomeRecommendTableViewCell.m */; };
 		EC8163E11DB0F3450079865A /* TCHomeCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163CF1DB0F3450079865A /* TCHomeCategory.m */; };
 		EC8163E21DB0F3450079865A /* TCHomeCollectionViewBaseLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163D11DB0F3450079865A /* TCHomeCollectionViewBaseLayout.m */; };
 		EC8163E31DB0F3450079865A /* TCHomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163D31DB0F3450079865A /* TCHomeData.m */; };
@@ -892,6 +891,8 @@
 		EC8163EC1DB0F3610079865A /* TCHomeRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163EB1DB0F3610079865A /* TCHomeRecommendModel.m */; };
 		EC8163EF1DB0F3F30079865A /* TCHomeRecommendItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163EE1DB0F3F30079865A /* TCHomeRecommendItem.m */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
+		ECA4E6111DB4D708004DB2C5 /* TCHomeCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA4E6101DB4D708004DB2C5 /* TCHomeCollectionViewLayout.m */; };
+		ECA4E6141DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA4E6131DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.m */; };
 		ECAA49301D79A45B00799CBE /* ArticleHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48F81D79A45B00799CBE /* ArticleHomeViewController.m */; };
 		ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48FB1D79A45B00799CBE /* ArticleHomeModel.m */; };
 		ECAA49321D79A45B00799CBE /* ArticleHomeAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48FE1D79A45B00799CBE /* ArticleHomeAlbumCell.m */; };
@@ -2479,8 +2480,6 @@
 		EC8163C11DB0DA690079865A /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		EC8163C61DB0DA840079865A /* SpeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeekViewController.h; sourceTree = "<group>"; };
 		EC8163C71DB0DA840079865A /* SpeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeekViewController.m; sourceTree = "<group>"; };
-		EC8163C91DB0E3780079865A /* TCHomeRecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeRecommendTableViewCell.h; sourceTree = "<group>"; };
-		EC8163CA1DB0E3780079865A /* TCHomeRecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeRecommendTableViewCell.m; sourceTree = "<group>"; };
 		EC8163CE1DB0F3450079865A /* TCHomeCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCategory.h; sourceTree = "<group>"; };
 		EC8163CF1DB0F3450079865A /* TCHomeCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCategory.m; sourceTree = "<group>"; };
 		EC8163D01DB0F3450079865A /* TCHomeCollectionViewBaseLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewBaseLayout.h; sourceTree = "<group>"; };
@@ -2507,6 +2506,10 @@
 		EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		ECA4E60F1DB4D708004DB2C5 /* TCHomeCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewLayout.h; sourceTree = "<group>"; };
+		ECA4E6101DB4D708004DB2C5 /* TCHomeCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewLayout.m; sourceTree = "<group>"; };
+		ECA4E6121DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeMainCollectionCell.h; sourceTree = "<group>"; };
+		ECA4E6131DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeMainCollectionCell.m; sourceTree = "<group>"; };
 		ECAA48F71D79A45B00799CBE /* ArticleHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeViewController.h; sourceTree = "<group>"; };
 		ECAA48F81D79A45B00799CBE /* ArticleHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeViewController.m; sourceTree = "<group>"; };
 		ECAA48FA1D79A45B00799CBE /* ArticleHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeModel.h; sourceTree = "<group>"; };
@@ -7389,6 +7392,8 @@
 			children = (
 				ECDDEE201DAE30A600F619AC /* TCHomeViewController.h */,
 				ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */,
+				ECA4E60F1DB4D708004DB2C5 /* TCHomeCollectionViewLayout.h */,
+				ECA4E6101DB4D708004DB2C5 /* TCHomeCollectionViewLayout.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -7402,8 +7407,8 @@
 				ECDDEE5C1DB0904800F619AC /* TCHomeTitleContainer.m */,
 				ECDDEE421DAE30A600F619AC /* TCHomeCollectionViewCell.h */,
 				ECDDEE431DAE30A600F619AC /* TCHomeCollectionViewCell.m */,
-				EC8163C91DB0E3780079865A /* TCHomeRecommendTableViewCell.h */,
-				EC8163CA1DB0E3780079865A /* TCHomeRecommendTableViewCell.m */,
+				ECA4E6121DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.h */,
+				ECA4E6131DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -8181,7 +8186,6 @@
 				EC4FC5DE1D77CEEF00BBD050 /* MWPhotoBrowser.m in Sources */,
 				EC4FC30E1D77CEE400BBD050 /* SearchHotKeywordsModel.m in Sources */,
 				EC4FC4ED1D77CEE400BBD050 /* WebViewController.m in Sources */,
-				EC8163CB1DB0E3780079865A /* TCHomeRecommendTableViewCell.m in Sources */,
 				EC4FC2BD1D77CEE400BBD050 /* FDCommentLayout.m in Sources */,
 				EC4FC4C81D77CEE400BBD050 /* ServiceOrderDetailStoreInfoCell.m in Sources */,
 				EC4FC21A1D77CEE400BBD050 /* UIBarButtonItem+Category.m in Sources */,
@@ -8290,6 +8294,7 @@
 				EC154D5D1D88364E007137E8 /* ArticleUserCenterToolBarItem.m in Sources */,
 				EC4FC3F01D77CEE400BBD050 /* ParentingStrategyDetailViewModel.m in Sources */,
 				EC4FC5EE1D77CEEF00BBD050 /* TTTAttributedLabel.m in Sources */,
+				ECA4E6111DB4D708004DB2C5 /* TCHomeCollectionViewLayout.m in Sources */,
 				EC4FC4491D77CEE400BBD050 /* CommentEditView.m in Sources */,
 				EC4FC4B41D77CEE400BBD050 /* OrderRefundViewModel.m in Sources */,
 				ECB3E7841D92C82E0059267D /* OrderBookingServiceInfoCell.m in Sources */,
@@ -8409,6 +8414,7 @@
 				EC8163E61DB0F3450079865A /* TCHomeFloorContentArticleParam.m in Sources */,
 				EC4FC5E41D77CEEF00BBD050 /* LICENSE.md in Sources */,
 				EC4FC5F41D77CEEF00BBD050 /* ZPTag.m in Sources */,
+				ECA4E6141DB4D7E7004DB2C5 /* TCHomeMainCollectionCell.m in Sources */,
 				EC7264421D7D739800AA739B /* ArticleHomeClassView.m in Sources */,
 				EC4FC3D71D77CEE400BBD050 /* StrategyDetailAnnotationTipView.m in Sources */,
 				EC4FC29B1D77CEE400BBD050 /* ArticleWeChatTableViewController.m in Sources */,
@@ -8713,8 +8719,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "545a09e0-33d5-467d-8e1f-b71e2e4d69ef";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development_Pro;
+				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -8749,8 +8755,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d1e0afef-3efe-4225-ba98-9b6295bb68ce";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product_Pro;
+				PROVISIONING_PROFILE = "6f755e21-b36b-4be7-b860-93958bd46109";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

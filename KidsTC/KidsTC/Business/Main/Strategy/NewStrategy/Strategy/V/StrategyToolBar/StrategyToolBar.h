@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StrategyModel.h"
+
 #import "StrategyToolBarScrollView.h"
 @class StrategyToolBar;
 @protocol StrategyToolBarDelegate <NSObject>
@@ -15,7 +15,7 @@
 @end
 
 @interface StrategyToolBar : UIView
-@property (nonatomic, strong) NSArray<StrategyTypeListTagItem *> *tags;
+@property (nonatomic, strong) NSArray<NSString *> *tags;
 @property (nonatomic, weak) id<StrategyToolBarDelegate> delegate;
 - (void)changeTipPlaceWithSmallIndex:(NSUInteger)smallIndex
                             bigIndex:(NSUInteger)bigIndex

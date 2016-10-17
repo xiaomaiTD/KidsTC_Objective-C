@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)setTags:(NSArray<StrategyTypeListTagItem *> *)tags{
+- (void)setTags:(NSArray<NSString *> *)tags{
     _tags = tags;
     
     if (self.tagBtns.count>0) {
@@ -42,8 +42,8 @@
         [self.tagBtns removeAllObjects];
     }
     
-    [tags enumerateObjectsUsingBlock:^(StrategyTypeListTagItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *btn = [self btnWithTitle:obj.name tag:idx];
+    [tags enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = [self btnWithTitle:obj tag:idx];
         //UIColor *randomColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1];
         //[btn setBackgroundColor:randomColor forState:UIControlStateNormal];
         [self addSubview:btn];

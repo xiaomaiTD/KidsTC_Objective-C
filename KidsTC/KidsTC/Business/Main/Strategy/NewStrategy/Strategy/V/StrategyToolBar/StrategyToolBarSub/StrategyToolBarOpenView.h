@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StrategyModel.h"
 #import "StrategyToolBarScrollView.h"
 #define MAX_ListCount 4 //最大列数
 #define BTN_Hight 34 //按钮高度
@@ -19,7 +18,7 @@
 @end
 
 @interface StrategyToolBarOpenView : UIView
-@property (nonatomic, weak) NSArray<StrategyTypeListTagItem *> *tags;
+@property (nonatomic, weak) NSArray<NSString *> *tags;
 @property (nonatomic, weak) UIButton *openBtn;
 @property (nonatomic, weak) id<StrategyToolBarOpenViewDelegate> delegate;
 - (void)selectedBtnIndex:(NSUInteger)index;

@@ -145,7 +145,7 @@ static NSString * const reuseIdentifier = @"Cell";
         [tags enumerateObjectsUsingBlock:^(StrategyTypeListTagItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             StrategyShowModel *modelsItem = [StrategyShowModel modelWithCurrentTagId:obj.ID currentIndex:idx];
             if (obj.ID == defaultTagId) {
-                self.toolBar.tags = model.data.typeList.tag;
+                self.toolBar.tags = [model.data.typeList.tag valueForKeyPath:@"_name"];
                 [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
                 modelsItem.header = [StrategyShowHeader headerWithBanner:typeList.banner tagPic:typeList.tagPic];
                 modelsItem.list = model.data.list;

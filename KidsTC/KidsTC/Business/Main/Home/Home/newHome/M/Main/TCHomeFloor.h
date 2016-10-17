@@ -31,6 +31,8 @@ extern int const kTCHomeCollectionViewCellMaxSections;
 @property (nonatomic, assign) BOOL showBgImageView;
 @property (nonatomic, assign) BOOL showPageControl;
 @property (nonatomic, assign) BOOL canAddYYTimer;
+@property (nonatomic, assign) BOOL showNotiImageView;
+@property (nonatomic, strong) NSString *notiImgUrl;
 @property (nonatomic, assign) CGFloat floorHeight;
 @property (nonatomic, assign) CGRect collectionViewFrame;
 @property (nonatomic, strong) UICollectionViewLayout *collectionViewLayout;

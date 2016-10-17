@@ -81,12 +81,16 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) TCHomeFloorContentArticleParam *articleParam;
+@property (nonatomic, assign) SegueDestination linkType;
+@property (nonatomic, strong) NSDictionary *params;
 //以下三个属性只有当TCHomeFloor的contentType为13的时候才会有
 @property (nonatomic, strong) NSString *subTitle;//右描述
 @property (nonatomic, strong) NSString *linkKey;//文字
 @property (nonatomic, strong) NSString *color;//linkKey的字体颜色
-@property (nonatomic, assign) SegueDestination linkType;
-@property (nonatomic, strong) NSDictionary *params;
+//以下两个属性只有当TCHomeFloor的contentType为16的时候才会有
+@property (nonatomic, assign) CGFloat widthScale;
+@property (nonatomic, assign) CGFloat heightScale;
+
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *attTitle;
 @property (nonatomic, strong) NSAttributedString *attSubTitle;
