@@ -8,12 +8,10 @@
 
 #import "SpeekViewController.h"
 #import "iflyMSC/IFlyMSC.h"
-#import <iflyMSC/IFlyRecognizerViewDelegate.h>
-#import <iflyMSC/IFlyRecognizerView.h>
 
-@interface SpeekViewController ()<IFlyRecognizerViewDelegate>{
-    IFlyRecognizerView      *_iflyRecognizerView;
-}
+@interface SpeekViewController ()<IFlySpeechRecognizerDelegate>
+//语音语义理解对象
+@property (nonatomic,strong) IFlySpeechUnderstander *iFlySpeechUnderstander;
 @end
 
 @implementation SpeekViewController
@@ -30,48 +28,69 @@
     btn.layer.masksToBounds = YES;
     btn.backgroundColor = COLOR_PINK;
     [btn setTitle:@"按住说话" forState:UIControlStateNormal];
-    [btn setTitle:@"释放" forState:UIControlStateFocused];
     [self.view addSubview:btn];
-    [btn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchDown];
-    [btn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchCancel | UIControlEventTouchUpOutside];
+    [btn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
     
-    //初始化语音识别控件
-    _iflyRecognizerView = [[IFlyRecognizerView alloc] initWithCenter:self.view.center];
-    _iflyRecognizerView.delegate = self;
-    [_iflyRecognizerView setParameter: @"iat" forKey: [IFlySpeechConstant IFLY_DOMAIN]];
-    //asr_audio_path保存录音文件名，如不再需要，设置value为nil表示取消，默认目录是documents
-    [_iflyRecognizerView setParameter:@"asrview.pcm " forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+    _iFlySpeechUnderstander = [IFlySpeechUnderstander sharedInstance];
+    _iFlySpeechUnderstander.delegate = self;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self stop];
+}
+
+/**
+ 开始录音
+ ****/
 - (void)start {
-    //启动识别服务
-    [_iflyRecognizerView start];
+    //设置为麦克风输入语音
+    bool ret = [_iFlySpeechUnderstander startListening];
+    if (ret) {
+        NSLog(@"启动识别服务成功");
+    }else{
+        NSLog(@"启动识别服务失败，请稍后重试");
+    }
 }
 
-- (void)cancel {
-    //启动识别服务
-    [_iflyRecognizerView cancel];
+/**
+ 停止录音
+ ****/
+- (void)stop {
+    [_iFlySpeechUnderstander stopListening];
 }
 
-/*识别结果返回代理
- @param resultArray 识别结果
- @ param isLast 表示是否最后一次结果
- */
-- (void)onResult: (NSArray *)resultArray isLast:(BOOL) isLast
+#pragma mark - 识别回调 IFlySpeechRecognizerDelegate
+
+
+/**
+ 语义理解服务结束回调（注：无论是否正确都会回调）
+ error.errorCode =
+ 0     听写正确
+ other 听写出错
+ ****/
+- (void) onError:(IFlySpeechError *) error
 {
-    NSLog(@"resultArray:%@",resultArray);
-    [resultArray enumerateObjectsUsingBlock:^(NSDictionary  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSData *data = [NSJSONSerialization dataWithJSONObject:obj options:kNilOptions error:nil];
-        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"json-str:%@",str);
-    }];
+    NSString * text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
+    NSLog(@"%@",text);
 }
-/*识别会话错误返回代理
- @ param  error 错误码
- */
-- (void)onError: (IFlySpeechError *) error
+
+
+/**
+ 语义理解结果回调
+ result 识别结果，NSArray的第一个元素为NSDictionary，NSDictionary的key为识别结果，value为置信度
+ isLast：表示最后一次
+ ****/
+- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
 {
-    NSLog(@"error:%@",error);
+    NSMutableString *result = [[NSMutableString alloc] init];
+    NSDictionary *dic = results [0];
+    
+    for (NSString *key in dic) {
+        [result appendFormat:@"%@",key];
+    }
+    
+    NSLog(@"听写结果：%@",result);
 }
+
 
 @end

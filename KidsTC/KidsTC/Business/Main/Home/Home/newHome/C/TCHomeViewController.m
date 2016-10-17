@@ -206,11 +206,11 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     switch (type) {
         case TCHomeMainCollectionCellActionTypeLoadData:
         {
-            self.categorys = value;
-            self.toolBar.tags = [self.categorys valueForKeyPath:@"_name"];
-            self.toolBar.hidden = NO;
-            [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
-            [self.collectionView reloadData];
+//            self.categorys = value;
+//            self.toolBar.tags = [self.categorys valueForKeyPath:@"_name"];
+//            self.toolBar.hidden = NO;
+//            [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
+//            [self.collectionView reloadData];
         }
             break;
         case TCHomeMainCollectionCellActionTypeSegue:

@@ -28,11 +28,16 @@
 
 #import "TabBarController.h"
 
+#import "iflyMSC/IFlyMSC.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self prepareForApplication];
+    
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"57ea3553"];
+    [IFlySpeechUtility createUtility:initString];
     
     [NSThread sleepForTimeInterval:3];
     
