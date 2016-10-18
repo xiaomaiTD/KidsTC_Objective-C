@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TCHomeFloor.h"
+#import "TCHomeRecommendPromotion.h"
 
 typedef enum : NSUInteger {
     TCHomeRecommendProductTypeNew=1,//今日新品
@@ -24,6 +25,12 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *imgUrl;
 @property (nonatomic, assign) CGFloat picRate;
 @property (nonatomic, strong) NSString *promotionText;
+@property (nonatomic, strong) TCHomeRecommendPromotion *promotionIcon;
+@property (nonatomic, strong) NSString *storeName;
+@property (nonatomic, strong) NSString *storeDistance;
+@property (nonatomic, assign) NSInteger saleNum;
+@property (nonatomic, assign) BOOL isPrivilege;
+@property (nonatomic, strong) NSString *processDesc;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 - (TCHomeFloor *)conventToFloor;

@@ -99,6 +99,9 @@ typedef enum {
     _selectedIndex = selectedIndex;
     [self setItem:_selectedIndex highlighted:YES];
     if (self.isCollapsed) {
+        if (selectedIndex>=self.itemContainerView.count) {
+            return;
+        }
         UIView *showingViewWhenCollapsed = [self.itemContainerView objectAtIndex:selectedIndex];
         [self bringSubviewToFront:showingViewWhenCollapsed];
         [self bringSubviewToFront:self.collapseView];
@@ -315,6 +318,9 @@ typedef enum {
             }
         } completion:^(BOOL finished) {
             [self.collapseView setHidden:NO];
+            if (self.selectedIndex>=self.itemContainerView.count) {
+                return ;
+            }
             UIView *showingViewWhenCollapsed = [self.itemContainerView objectAtIndex:self.selectedIndex];
             [self bringSubviewToFront:showingViewWhenCollapsed];
             [self bringSubviewToFront:self.collapseView];

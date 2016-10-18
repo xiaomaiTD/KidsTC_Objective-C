@@ -372,7 +372,7 @@ typedef enum : NSUInteger {
 - (void)tfTextDidChanged {
     
     if (self.tf.text.length>0) {
-        self.inputSureBtn.backgroundColor = [UIColor blueColor];
+        self.inputSureBtn.backgroundColor = COLOR_BLUE;
         self.inputSureBtn.enabled = YES;
     }else{
         self.inputSureBtn.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];

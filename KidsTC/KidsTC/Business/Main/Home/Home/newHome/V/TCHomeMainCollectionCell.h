@@ -12,6 +12,8 @@
 typedef enum : NSUInteger {
     TCHomeMainCollectionCellActionTypeLoadData=1,
     TCHomeMainCollectionCellActionTypeSegue,
+    TCHomeMainCollectionCellActionTypeScroll,
+    TCHomeMainCollectionCellActionTypeHomeRefresh
 } TCHomeMainCollectionCellActionType;
 
 @class TCHomeMainCollectionCell;
@@ -22,4 +24,7 @@ typedef enum : NSUInteger {
 @interface TCHomeMainCollectionCell : UICollectionViewCell
 @property (nonatomic, strong) TCHomeCategory *category;
 @property (nonatomic, weak) id<TCHomeMainCollectionCellDelegate> delegate;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+- (void)backToTop;
+- (void)scrollTo:(NSIndexPath *)indexPath;
 @end

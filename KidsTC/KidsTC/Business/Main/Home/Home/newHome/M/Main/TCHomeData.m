@@ -22,6 +22,7 @@
         NSMutableArray<TCHomeFloor *> *floors = [NSMutableArray array];
         [_modules enumerateObjectsUsingBlock:^(TCHomeModule * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.floors.count>0) {
+                obj.index = floors.count;
                 [floors addObjectsFromArray:obj.floors];
             }
         }];

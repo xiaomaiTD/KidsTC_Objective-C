@@ -955,6 +955,7 @@
 		ECB3E7A81D93C03E0059267D /* OrderBookingRemarksCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB3E7A61D93C03E0059267D /* OrderBookingRemarksCell.xib */; };
 		ECB3E7AC1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E7AA1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m */; };
 		ECB3E7AD1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */; };
+		ECC531DC1DB657C1004C1A35 /* TCHomeRecommendPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC531DB1DB657C1004C1A35 /* TCHomeRecommendPromotion.m */; };
 		ECDDEE441DAE30A600F619AC /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */; };
 		ECDDEE531DAE30A600F619AC /* TCHomeBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE411DAE30A600F619AC /* TCHomeBaseTableViewCell.m */; };
 		ECDDEE541DAE30A600F619AC /* TCHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE431DAE30A600F619AC /* TCHomeCollectionViewCell.m */; };
@@ -2608,6 +2609,8 @@
 		ECB3E7A91D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashServiceOrderDetailBookingFailureCell.h; sourceTree = "<group>"; };
 		ECB3E7AA1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashServiceOrderDetailBookingFailureCell.m; sourceTree = "<group>"; };
 		ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlashServiceOrderDetailBookingFailureCell.xib; sourceTree = "<group>"; };
+		ECC531DA1DB657C1004C1A35 /* TCHomeRecommendPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeRecommendPromotion.h; sourceTree = "<group>"; };
+		ECC531DB1DB657C1004C1A35 /* TCHomeRecommendPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeRecommendPromotion.m; sourceTree = "<group>"; };
 		ECDDEE201DAE30A600F619AC /* TCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeViewController.h; sourceTree = "<group>"; };
 		ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
 		ECDDEE401DAE30A600F619AC /* TCHomeBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -7159,6 +7162,8 @@
 				EC8163EB1DB0F3610079865A /* TCHomeRecommendModel.m */,
 				EC8163ED1DB0F3F30079865A /* TCHomeRecommendItem.h */,
 				EC8163EE1DB0F3F30079865A /* TCHomeRecommendItem.m */,
+				ECC531DA1DB657C1004C1A35 /* TCHomeRecommendPromotion.h */,
+				ECC531DB1DB657C1004C1A35 /* TCHomeRecommendPromotion.m */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -7924,6 +7929,7 @@
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
 				EC4FC23F1D77CEE400BBD050 /* RoleSelectViewController.m in Sources */,
 				ECF704E21D89000100650C0A /* ArticleUserCenterArticleModel.m in Sources */,
+				ECC531DC1DB657C1004C1A35 /* TCHomeRecommendPromotion.m in Sources */,
 				EC4FC3151D77CEE400BBD050 /* SearchResultArticleCell.m in Sources */,
 				EC7264271D7D279A00AA739B /* ColumnCell.m in Sources */,
 				EC4FC43D1D77CEE400BBD050 /* CommentReplyItemModel.m in Sources */,
@@ -8719,8 +8725,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "545a09e0-33d5-467d-8e1f-b71e2e4d69ef";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development_Pro;
+				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -8755,8 +8761,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d1e0afef-3efe-4225-ba98-9b6295bb68ce";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product_Pro;
+				PROVISIONING_PROFILE = "6f755e21-b36b-4be7-b860-93958bd46109";
+				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

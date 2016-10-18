@@ -33,7 +33,7 @@
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
             attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:17];
+            attSubName.font = [UIFont systemFontOfSize:16];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -48,7 +48,7 @@
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
             attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:17];
+            attSubName.font = [UIFont systemFontOfSize:16];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -63,7 +63,7 @@
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
             attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:17];
+            attSubName.font = [UIFont systemFontOfSize:16];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -78,7 +78,7 @@
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
             attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:17];
+            attSubName.font = [UIFont systemFontOfSize:16];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -93,7 +93,7 @@
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
             attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:17];
+            attSubName.font = [UIFont systemFontOfSize:16];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }

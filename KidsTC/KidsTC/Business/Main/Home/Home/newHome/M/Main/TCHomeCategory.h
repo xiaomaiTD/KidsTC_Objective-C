@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TCHomeFloor.h"
+#import "TCHomeModule.h"
 
 @interface TCHomeCategory : NSObject
 @property (nonatomic, strong) NSString *sysNo;
@@ -15,4 +16,5 @@
 /**SelfDefine*/
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, strong) NSArray<TCHomeFloor *> *floors;
+@property (nonatomic, strong) NSArray<TCHomeModule *> *modules;
 @end
