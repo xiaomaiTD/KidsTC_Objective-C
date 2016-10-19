@@ -885,7 +885,6 @@
 		EC8163E41DB0F3450079865A /* TCHomeFloor.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163D51DB0F3450079865A /* TCHomeFloor.m */; };
 		EC8163E51DB0F3450079865A /* TCHomeFloorContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163D71DB0F3450079865A /* TCHomeFloorContent.m */; };
 		EC8163E61DB0F3450079865A /* TCHomeFloorContentArticleParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163D91DB0F3450079865A /* TCHomeFloorContentArticleParam.m */; };
-		EC8163E71DB0F3450079865A /* TCHomeFloorTitleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163DB1DB0F3450079865A /* TCHomeFloorTitleContent.m */; };
 		EC8163E81DB0F3450079865A /* TCHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163DD1DB0F3450079865A /* TCHomeModel.m */; };
 		EC8163E91DB0F3460079865A /* TCHomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163DF1DB0F3450079865A /* TCHomeModule.m */; };
 		EC8163EC1DB0F3610079865A /* TCHomeRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8163EB1DB0F3610079865A /* TCHomeRecommendModel.m */; };
@@ -956,6 +955,9 @@
 		ECB3E7AC1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E7AA1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m */; };
 		ECB3E7AD1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */; };
 		ECC531DC1DB657C1004C1A35 /* TCHomeRecommendPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC531DB1DB657C1004C1A35 /* TCHomeRecommendPromotion.m */; };
+		ECC531EA1DB75BEE004C1A35 /* TCHomeFloorTitleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC531E51DB75BEE004C1A35 /* TCHomeFloorTitleContent.m */; };
+		ECC531EB1DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC531E71DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.m */; };
+		ECC531EC1DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC531E91DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.m */; };
 		ECDDEE441DAE30A600F619AC /* TCHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */; };
 		ECDDEE531DAE30A600F619AC /* TCHomeBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE411DAE30A600F619AC /* TCHomeBaseTableViewCell.m */; };
 		ECDDEE541DAE30A600F619AC /* TCHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDDEE431DAE30A600F619AC /* TCHomeCollectionViewCell.m */; };
@@ -2493,8 +2495,6 @@
 		EC8163D71DB0F3450079865A /* TCHomeFloorContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorContent.m; sourceTree = "<group>"; };
 		EC8163D81DB0F3450079865A /* TCHomeFloorContentArticleParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorContentArticleParam.h; sourceTree = "<group>"; };
 		EC8163D91DB0F3450079865A /* TCHomeFloorContentArticleParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorContentArticleParam.m; sourceTree = "<group>"; };
-		EC8163DA1DB0F3450079865A /* TCHomeFloorTitleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorTitleContent.h; sourceTree = "<group>"; };
-		EC8163DB1DB0F3450079865A /* TCHomeFloorTitleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorTitleContent.m; sourceTree = "<group>"; };
 		EC8163DC1DB0F3450079865A /* TCHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeModel.h; sourceTree = "<group>"; };
 		EC8163DD1DB0F3450079865A /* TCHomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeModel.m; sourceTree = "<group>"; };
 		EC8163DE1DB0F3450079865A /* TCHomeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeModule.h; sourceTree = "<group>"; };
@@ -2611,6 +2611,12 @@
 		ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlashServiceOrderDetailBookingFailureCell.xib; sourceTree = "<group>"; };
 		ECC531DA1DB657C1004C1A35 /* TCHomeRecommendPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeRecommendPromotion.h; sourceTree = "<group>"; };
 		ECC531DB1DB657C1004C1A35 /* TCHomeRecommendPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeRecommendPromotion.m; sourceTree = "<group>"; };
+		ECC531E41DB75BEE004C1A35 /* TCHomeFloorTitleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorTitleContent.h; sourceTree = "<group>"; };
+		ECC531E51DB75BEE004C1A35 /* TCHomeFloorTitleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorTitleContent.m; sourceTree = "<group>"; };
+		ECC531E61DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorTitleContentLayout.h; sourceTree = "<group>"; };
+		ECC531E71DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorTitleContentLayout.m; sourceTree = "<group>"; };
+		ECC531E81DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeFloorTitleContentShowpiece.h; sourceTree = "<group>"; };
+		ECC531E91DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeFloorTitleContentShowpiece.m; sourceTree = "<group>"; };
 		ECDDEE201DAE30A600F619AC /* TCHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeViewController.h; sourceTree = "<group>"; };
 		ECDDEE211DAE30A600F619AC /* TCHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeViewController.m; sourceTree = "<group>"; };
 		ECDDEE401DAE30A600F619AC /* TCHomeBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeBaseTableViewCell.h; sourceTree = "<group>"; };
@@ -7145,8 +7151,7 @@
 				EC8163D71DB0F3450079865A /* TCHomeFloorContent.m */,
 				EC8163D81DB0F3450079865A /* TCHomeFloorContentArticleParam.h */,
 				EC8163D91DB0F3450079865A /* TCHomeFloorContentArticleParam.m */,
-				EC8163DA1DB0F3450079865A /* TCHomeFloorTitleContent.h */,
-				EC8163DB1DB0F3450079865A /* TCHomeFloorTitleContent.m */,
+				ECC531E31DB75BEE004C1A35 /* TCHomeFloorTitleContent */,
 				EC8163DC1DB0F3450079865A /* TCHomeModel.h */,
 				EC8163DD1DB0F3450079865A /* TCHomeModel.m */,
 				EC8163DE1DB0F3450079865A /* TCHomeModule.h */,
@@ -7382,6 +7387,19 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		ECC531E31DB75BEE004C1A35 /* TCHomeFloorTitleContent */ = {
+			isa = PBXGroup;
+			children = (
+				ECC531E41DB75BEE004C1A35 /* TCHomeFloorTitleContent.h */,
+				ECC531E51DB75BEE004C1A35 /* TCHomeFloorTitleContent.m */,
+				ECC531E61DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.h */,
+				ECC531E71DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.m */,
+				ECC531E81DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.h */,
+				ECC531E91DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.m */,
+			);
+			path = TCHomeFloorTitleContent;
+			sourceTree = "<group>";
+		};
 		ECDDEE1E1DAE30A600F619AC /* newHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -7478,6 +7496,7 @@
 					EC4FBBD41D77CD8300BBD050 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = F8C2RFLJQX;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -7991,6 +8010,7 @@
 				EC4FC5E81D77CEEF00BBD050 /* README.mdown in Sources */,
 				ECAA49321D79A45B00799CBE /* ArticleHomeAlbumCell.m in Sources */,
 				ECE67B5A1DB3EF9C00F9935E /* QRCodeView.m in Sources */,
+				ECC531EC1DB75BEE004C1A35 /* TCHomeFloorTitleContentShowpiece.m in Sources */,
 				EC4FC2B21D77CEE400BBD050 /* CategoryViewController.m in Sources */,
 				EC4FC3FD1D77CEE400BBD050 /* AddressModel.m in Sources */,
 				EC4FC2CD1D77CEE400BBD050 /* FDHeaderView.m in Sources */,
@@ -8381,7 +8401,6 @@
 				EC4FC4B71D77CEE400BBD050 /* ServiceOrderDetailAddressCell.m in Sources */,
 				EC4FC2D51D77CEE400BBD050 /* HomeCellModel.m in Sources */,
 				EC4FC4661D77CEE400BBD050 /* CouponListViewSegmentCell.m in Sources */,
-				EC8163E71DB0F3450079865A /* TCHomeFloorTitleContent.m in Sources */,
 				EC4FC4711D77CEE400BBD050 /* FavouriteStoreItemModel.m in Sources */,
 				EC4FC2EB1D77CEE400BBD050 /* HomeModel.m in Sources */,
 				EC0B6D901D8E693A00EC20EA /* ArticleLayout.m in Sources */,
@@ -8460,6 +8479,7 @@
 				EC4FC4321D77CEE400BBD050 /* CommentFoundingViewController.m in Sources */,
 				EC4FC2D81D77CEE400BBD050 /* HomeCountDownTitleCellModel.m in Sources */,
 				EC68C3C41D9BBC8D00D4401A /* HomeActivityManager.m in Sources */,
+				ECC531EB1DB75BEE004C1A35 /* TCHomeFloorTitleContentLayout.m in Sources */,
 				EC0B6D911D8E693A00EC20EA /* ArticleModel.m in Sources */,
 				EC1E2F981D827EA4002381E7 /* ArticleWriteViewController.m in Sources */,
 				ECF704D51D88E74600650C0A /* ArticleUserCenterTableHeaderView.m in Sources */,
@@ -8516,6 +8536,7 @@
 				EC4FC43B1D77CEE400BBD050 /* CommentFoundingModel.m in Sources */,
 				EC4FC3211D77CEE400BBD050 /* SearchResultFactorBottomView.m in Sources */,
 				EC4FC3231D77CEE400BBD050 /* SearchResultFactorTableViewCell.m in Sources */,
+				ECC531EA1DB75BEE004C1A35 /* TCHomeFloorTitleContent.m in Sources */,
 				EC4FC22E1D77CEE400BBD050 /* RichPriceView.m in Sources */,
 				EC4FC2221D77CEE400BBD050 /* UIView+Category.m in Sources */,
 				EC4FC39D1D77CEE400BBD050 /* StoreDetailViewCouponCell.m in Sources */,
@@ -8703,6 +8724,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YE QIAN (L4HESQKF9M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8739,6 +8761,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Tongcheng Information Technology Co., Ltd. (F8C2RFLJQX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

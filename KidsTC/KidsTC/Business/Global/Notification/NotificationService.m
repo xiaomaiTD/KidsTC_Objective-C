@@ -41,6 +41,7 @@ static NSString *const appSecret = @"LijC2jxi4z7tTsa9ZTM9j6";
 
 @interface NotificationService ()<UNUserNotificationCenterDelegate,GeTuiSdkDelegate>
 @property (nonatomic, strong) NSString *deviceToken;
+@property (nonatomic, strong) NSString *clientId;
 @end
 
 @implementation NotificationService
@@ -146,7 +147,8 @@ singleM(NotificationService)
 - (void)GeTuiSdkDidRegisterClient:(NSString *)clientId {
     //个推SDK已注册，返回clientId
     TCLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
-    [self bindAccount:YES withClientId:clientId];
+    self.clientId = clientId;
+    [self bindAccount:YES];
 }
 
 /** SDK遇到错误回调 */
@@ -191,7 +193,7 @@ singleM(NotificationService)
 
 #pragma mark - GeTuiSdkDelegate Helper - 绑定账户
 
-- (void)bindAccount:(BOOL)bind withClientId:(NSString *)clientId{//绑定账号
+- (void)bindAccount:(BOOL)bind{//绑定账号
     
     NSUInteger type = 2;//解绑
     if (bind) {
@@ -201,15 +203,15 @@ singleM(NotificationService)
         [GeTuiSdk unbindAlias:[User shareUser].uid andSequenceNum:@"seq-1"];
     }
     
-    if (clientId == nil) {
-        clientId = @"";
+    if (_clientId == nil) {
+        _clientId = @"";
     }
     NSString *deviceId = self.deviceToken;
     if (![deviceId isNotNull]) {
         deviceId = @"";
     }
     NSDictionary *param = @{@"type":@(type),
-                            @"clientId":clientId,
+                            @"clientId":_clientId,
                             @"deviceId":deviceId,
                             @"deviceType":@"2"};
     [Request startWithName:@"PUSH_REGISTER_DEVICE" param:param progress:nil success:nil failure:nil];

@@ -76,7 +76,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         TCHomeTitleContainer *titleContainer = [TCHomeTitleContainer new];
-        titleContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, kTitleContentHeight);
+        titleContainer.frame = CGRectMake(0, 0, SCREEN_WIDTH, kTCHomeFloorTitleContentH);
         titleContainer.delegate = self;
         [self addSubview:titleContainer];
         self.titleContainer = titleContainer;

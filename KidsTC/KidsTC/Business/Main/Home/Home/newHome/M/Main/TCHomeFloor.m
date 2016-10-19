@@ -10,7 +10,6 @@
 
 #import "TCHomeCollectionViewBaseLayout.h"
 
-CGFloat const kTitleContentHeight = 44;
 int const kTCHomeCollectionViewCellMaxSections = 3;
 
 @implementation TCHomeFloor
@@ -31,7 +30,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
 - (void)insetType {
     
     _titleContent.type = _titleType;
-    [_titleContent setupAttName];
+    [_titleContent setupAttributes];
+    
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         obj.type = _contentType;
         [obj setupAttTitle];
@@ -127,8 +127,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         }
             break;
     }
-    _collectionViewFrame = CGRectMake(0, _showTitleContainer?44:0, SCREEN_WIDTH, _floorHeight);
-    _floorHeight += _showTitleContainer?44:0;
+    _collectionViewFrame = CGRectMake(0, _showTitleContainer?kTCHomeFloorTitleContentH:0, SCREEN_WIDTH, _floorHeight);
+    _floorHeight += _showTitleContainer?kTCHomeFloorTitleContentH:0;
     _collectionViewLayout = layout;
 }
 

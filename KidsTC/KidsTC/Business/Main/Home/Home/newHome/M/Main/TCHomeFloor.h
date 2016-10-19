@@ -10,7 +10,6 @@
 #import "TCHomeFloorTitleContent.h"
 #import "TCHomeFloorContent.h"
 
-extern CGFloat const kTitleContentHeight;
 extern int const kTCHomeCollectionViewCellMaxSections;
 
 @interface TCHomeFloor : NSObject

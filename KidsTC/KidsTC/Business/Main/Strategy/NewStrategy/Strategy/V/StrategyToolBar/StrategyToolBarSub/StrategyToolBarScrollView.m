@@ -91,7 +91,9 @@
 - (void)selectedBtnIndex:(NSUInteger)index
                  animate:(BOOL)animate
 {
-    if (index>self.tagBtns.count-1) return;
+    if (self.tagBtns.count<1 || index>self.tagBtns.count-1) {
+        return;
+    }
     
     CGFloat self_h = CGRectGetHeight(self.frame);
     

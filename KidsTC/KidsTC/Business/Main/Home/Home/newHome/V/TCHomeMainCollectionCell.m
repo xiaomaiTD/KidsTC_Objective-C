@@ -56,6 +56,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     }
     [self scrollViewDidScroll:self.tableView];
     [self.tableView reloadData];
+    [self dealWithBG];
 }
 
 - (void)backToTop {
@@ -153,24 +154,24 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
         [Request startSyncName:@"GET_PAGE_RECOMMEND_NEW_PRODUCE" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
             TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
             [recommendFloors addObjectsFromArray:model.floors];
-            recommendCount = model.floors.count;
-            if (recommendCount>0) {
-                TCHomeFloor *floor = model.floors[0];
-                TCHomeFloorTitleContent *titleContent = [TCHomeFloorTitleContent new];
-                titleContent.name = @"童成精选";
-                titleContent.subName = @"每日10:00更新";
-                floor.titleType = TCHomeFloorTitleContentTypeRecommend;
-                floor.hasTitle = YES;
-                floor.titleContent = titleContent;
-                floor.marginTop = mainFloors.count<1?0:12;
-                [floor modelCustomTransformFromDictionary:nil];
-            }
+            recommendCount = recommendFloors.count;
         } failure:nil];
     });
     
     dispatch_group_notify(group, queue, ^{
         NSMutableArray<TCHomeFloor *> *allFloors = [NSMutableArray array];
         [allFloors addObjectsFromArray:mainFloors];
+        if (recommendCount>0) {
+            TCHomeFloor *floor = recommendFloors[0];
+            TCHomeFloorTitleContent *titleContent = [TCHomeFloorTitleContent new];
+            titleContent.name = @"童成精选";
+            titleContent.subName = @"每日10:00更新";
+            floor.titleType = TCHomeFloorTitleContentTypeRecommend;
+            floor.hasTitle = YES;
+            floor.titleContent = titleContent;
+            floor.marginTop = mainFloors.count<1?0:12;
+            [floor modelCustomTransformFromDictionary:nil];
+        }
         [allFloors addObjectsFromArray:recommendFloors];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (updateCategorys) {
@@ -241,7 +242,11 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     if (recommendCount < pageCount) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
-    if (totalCount<1) {
+    [self dealWithBG];
+}
+
+- (void)dealWithBG {
+    if (self.category.floors.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.tableView.frame.size.height)
                                                                           image:nil
                                                                     description:@"啥都木有啊···"

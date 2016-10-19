@@ -14,6 +14,7 @@
 #import "GHeader.h"
 #import "Constant.h"
 #import "Macro.h"
+#import "NotificationService.h"
 
 //用户uid skey
 static NSString *const USERDEFAULT_UID_KEY = @"UserDefaultUidKey";
@@ -50,6 +51,7 @@ singleM(User)
         _uid = uid;
         _skey = skey;
         _hasLogin = YES;
+        [[NotificationService shareNotificationService] bindAccount:YES];
         [self userLocalSave];
         [[CookieManager shareCookieManager] setCookies];
     }else{
@@ -108,6 +110,7 @@ singleM(User)
 }
 
 - (void)logoutLocal{
+    [[NotificationService shareNotificationService] bindAccount:NO];
     [self deleteLocalSave];
     [self cleanMemory];
     [NotificationCenter postNotificationName:kUserLogoutNotification object:nil];

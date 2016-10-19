@@ -13,6 +13,7 @@
 
 #import "UIDevice+IdentifierAddition.h"
 #import "NSString+MD5Addition.h"
+#import <SAMKeychain/SAMKeychain.h>
 
 #include <sys/socket.h> // Per msqr
 #include <sys/sysctl.h>
@@ -101,14 +102,17 @@
 
 - (NSString *) uniqueDeviceIdentifier
 {
-    NSString *uniqueIdentifier = @"0";
-    
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
-        uniqueIdentifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
-    } else {
-        uniqueIdentifier = [self uniqueDeviceIdentifierOld];
+    NSString *uniqueIdentifier = [SAMKeychain passwordForService:@"KidsTC" account:@"KTC"];
+    if (uniqueIdentifier==nil || [uniqueIdentifier isEqualToString:@""]) {
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
+            uniqueIdentifier = [[UIDevice currentDevice].identifierForVendor UUIDString];
+        } else {
+            uniqueIdentifier = [self uniqueDeviceIdentifierOld];
+        }
+        if (uniqueIdentifier) {
+            [SAMKeychain setPassword:uniqueIdentifier forService:@"KidsTC" account:@"KTC"];
+        }
     }
-    
     return uniqueIdentifier;
 }
 

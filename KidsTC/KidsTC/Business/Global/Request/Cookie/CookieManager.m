@@ -24,6 +24,7 @@ static NSString *const CookieKeyUserRole    = @"population_type"; //用户角色
 singleM(CookieManager)
 
 -(void)setCookies{
+    
     [self setCookieWithName:CookieKey_uid andValue:[User shareUser].uid];
     [self setCookieWithName:CookieKey_skey andValue:[User shareUser].skey];
     [self setCookieWithName:CookieKey_appversion andValue:APP_VERSION];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "SegueModel.h"
+#import "TCHomeFloorTitleContentLayout.h"
+#import "TCHomeFloorTitleContentShowpiece.h"
 
 typedef enum {
     TCHomeFloorTitleContentTypeNormalTitle = 1,
@@ -25,9 +27,9 @@ typedef enum {
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
 //selfDefine
-@property (nonatomic, strong) NSAttributedString *attName;
-@property (nonatomic, strong) NSAttributedString *attSubName;
-@property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, assign) TCHomeFloorTitleContentType type;
-- (void)setupAttName;
+@property (nonatomic, strong) TCHomeFloorTitleContentLayout *layout;
+@property (nonatomic, strong) TCHomeFloorTitleContentShowpiece *showPiece;
+@property (nonatomic, strong) SegueModel *segueModel;
+- (void)setupAttributes;
 @end

@@ -15,4 +15,5 @@ singleH(NotificationService)
 + (void)didReceiveDeviceToken:(NSData *)deviceToken;
 + (void)handleRemoteNotification:(NSDictionary *)notiInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler;
 + (void)resumeGt;
+- (void)bindAccount:(BOOL)bind;
 @end
