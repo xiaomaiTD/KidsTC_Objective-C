@@ -7,7 +7,6 @@
 //
 
 #import "SegueMaster.h"
-#import "HomeViewController.h"
 #import "WebViewController.h"
 #import "ActivityViewController.h"
 #import "WelfareStoreViewController.h"

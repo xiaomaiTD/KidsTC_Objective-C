@@ -278,14 +278,19 @@ singleM(NotificationService)
             NSArray *identifiers = [attachments valueForKeyPath:@"_identifier"];
             [totalLogStr appendFormat:@"\n\n【======媒体资源排序信息======】\n\n%@",[self jsonStr:identifiers]];
             [totalLogStr appendFormat:@"\n\n【======媒体资源下载信息======】\n\n%@====================",logStr];
-#endif
             if (resultBlock) resultBlock(attachments,totalLogStr);
+#else
+            if (resultBlock) resultBlock(attachments,nil);
+#endif
+            
         }];
     }else{
 #ifdef DEBUG
         [totalLogStr appendFormat:@"\n\n【======暂无媒体资源信息======】\n\n"];
-#endif
         if (resultBlock) resultBlock(nil,totalLogStr);
+#else
+        if (resultBlock) resultBlock(nil,nil);
+#endif
     }
 }
 

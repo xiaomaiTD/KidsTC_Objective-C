@@ -15,7 +15,7 @@
 #import "CommentListItemModel.h"
 #import "StoreDetailNearbyModel.h"
 #import "CommonShareObject.h"
-#import "HomeModel.h"
+#import "TextSegueModel.h"
 #import "StoreRelatedStrategyModel.h"
 
 

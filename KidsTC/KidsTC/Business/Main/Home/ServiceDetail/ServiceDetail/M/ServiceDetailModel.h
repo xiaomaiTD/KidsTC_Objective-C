@@ -12,7 +12,7 @@
 #import "Insurance.h"
 #import "CommonShareObject.h"
 #import "KTCCommentManager.h"
-#import "HomeModel.h"
+#import "TextSegueModel.h"
 #import "ServiceMoreDetailHotSalesItemModel.h"
 
 @class ServiceDetailNoticeItem;

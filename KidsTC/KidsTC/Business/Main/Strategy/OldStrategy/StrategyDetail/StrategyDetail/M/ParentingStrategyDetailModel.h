@@ -12,7 +12,7 @@
 #import "StrategyDetailRelatedStoreItemModel.h"
 #import "StoreListItemModel.h"
 #import "StrategyDetailServiceItemModel.h"
-#import "HomeModel.h"
+#import "TextSegueModel.h"
 
 @class ParentingStrategyDetailCellModel;
 

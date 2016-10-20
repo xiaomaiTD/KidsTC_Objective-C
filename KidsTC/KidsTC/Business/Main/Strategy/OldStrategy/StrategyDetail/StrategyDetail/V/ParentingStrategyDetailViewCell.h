@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HomeModel.h"
+#import "TextSegueModel.h"
 
 @class ParentingStrategyDetailCellModel;
 @class ParentingStrategyDetailViewCell;

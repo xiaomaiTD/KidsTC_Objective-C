@@ -920,6 +920,10 @@
 		ECF5D10C1DB8CE3900A1B268 /* TCHomeMainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0F71DB8CE3900A1B268 /* TCHomeMainCollectionCell.m */; };
 		ECF5D10D1DB8CE3900A1B268 /* TCHomeTitleContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0F91DB8CE3900A1B268 /* TCHomeTitleContainer.m */; };
 		ECF5D1101DB8CE6300A1B268 /* TCHomeCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D10F1DB8CE6300A1B268 /* TCHomeCollectionViewLayout.m */; };
+		ECF5D1141DB8CF7100A1B268 /* HomeRoleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D1131DB8CF7100A1B268 /* HomeRoleButton.m */; };
+		ECF5D1181DB8CF9000A1B268 /* AUIFloorNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D1171DB8CF9000A1B268 /* AUIFloorNavigationView.m */; };
+		ECF5D11E1DB8D6EA00A1B268 /* TextSegueModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D11D1DB8D6EA00A1B268 /* TextSegueModel.m */; };
+		ECF5D1211DB8D77C00A1B268 /* AUIStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D1201DB8D77C00A1B268 /* AUIStackView.m */; };
 		ECF704D51D88E74600650C0A /* ArticleUserCenterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF704D41D88E74600650C0A /* ArticleUserCenterTableHeaderView.m */; };
 		ECF704D71D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF704D61D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib */; };
 		ECF704DE1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF704DC1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m */; };
@@ -2495,6 +2499,14 @@
 		ECF5D0F91DB8CE3900A1B268 /* TCHomeTitleContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeTitleContainer.m; sourceTree = "<group>"; };
 		ECF5D10E1DB8CE6300A1B268 /* TCHomeCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCHomeCollectionViewLayout.h; sourceTree = "<group>"; };
 		ECF5D10F1DB8CE6300A1B268 /* TCHomeCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCHomeCollectionViewLayout.m; sourceTree = "<group>"; };
+		ECF5D1121DB8CF7100A1B268 /* HomeRoleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRoleButton.h; sourceTree = "<group>"; };
+		ECF5D1131DB8CF7100A1B268 /* HomeRoleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRoleButton.m; sourceTree = "<group>"; };
+		ECF5D1161DB8CF9000A1B268 /* AUIFloorNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIFloorNavigationView.h; sourceTree = "<group>"; };
+		ECF5D1171DB8CF9000A1B268 /* AUIFloorNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIFloorNavigationView.m; sourceTree = "<group>"; };
+		ECF5D11C1DB8D6EA00A1B268 /* TextSegueModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextSegueModel.h; sourceTree = "<group>"; };
+		ECF5D11D1DB8D6EA00A1B268 /* TextSegueModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextSegueModel.m; sourceTree = "<group>"; };
+		ECF5D11F1DB8D77C00A1B268 /* AUIStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIStackView.h; sourceTree = "<group>"; };
+		ECF5D1201DB8D77C00A1B268 /* AUIStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIStackView.m; sourceTree = "<group>"; };
 		ECF704D31D88E74600650C0A /* ArticleUserCenterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleUserCenterTableHeaderView.h; sourceTree = "<group>"; };
 		ECF704D41D88E74600650C0A /* ArticleUserCenterTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleUserCenterTableHeaderView.m; sourceTree = "<group>"; };
 		ECF704D61D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleUserCenterTableHeaderView.xib; sourceTree = "<group>"; };
@@ -2840,6 +2852,8 @@
 				EC4FBC3A1D77CEE300BBD050 /* TCProgressHUD.xib */,
 				EC4FBC3B1D77CEE300BBD050 /* TipButton.h */,
 				EC4FBC3C1D77CEE300BBD050 /* TipButton.m */,
+				ECF5D11F1DB8D77C00A1B268 /* AUIStackView.h */,
+				ECF5D1201DB8D77C00A1B268 /* AUIStackView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7099,6 +7113,8 @@
 		ECF5D0D11DB8CE3900A1B268 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				ECF5D11C1DB8D6EA00A1B268 /* TextSegueModel.h */,
+				ECF5D11D1DB8D6EA00A1B268 /* TextSegueModel.m */,
 				ECF5D0D21DB8CE3900A1B268 /* Main */,
 				ECF5D0EA1DB8CE3900A1B268 /* Recommend */,
 			);
@@ -7160,6 +7176,8 @@
 		ECF5D0F11DB8CE3900A1B268 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				ECF5D1151DB8CF9000A1B268 /* NavigationFloor */,
+				ECF5D1111DB8CF7100A1B268 /* HomeRoleButton */,
 				ECF5D0F21DB8CE3900A1B268 /* TCHomeBaseTableViewCell.h */,
 				ECF5D0F31DB8CE3900A1B268 /* TCHomeBaseTableViewCell.m */,
 				ECF5D0F41DB8CE3900A1B268 /* TCHomeCollectionViewCell.h */,
@@ -7170,6 +7188,24 @@
 				ECF5D0F91DB8CE3900A1B268 /* TCHomeTitleContainer.m */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		ECF5D1111DB8CF7100A1B268 /* HomeRoleButton */ = {
+			isa = PBXGroup;
+			children = (
+				ECF5D1121DB8CF7100A1B268 /* HomeRoleButton.h */,
+				ECF5D1131DB8CF7100A1B268 /* HomeRoleButton.m */,
+			);
+			path = HomeRoleButton;
+			sourceTree = "<group>";
+		};
+		ECF5D1151DB8CF9000A1B268 /* NavigationFloor */ = {
+			isa = PBXGroup;
+			children = (
+				ECF5D1161DB8CF9000A1B268 /* AUIFloorNavigationView.h */,
+				ECF5D1171DB8CF9000A1B268 /* AUIFloorNavigationView.m */,
+			);
+			path = NavigationFloor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -7232,7 +7268,7 @@
 					EC4FBBD41D77CD8300BBD050 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = F8C2RFLJQX;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -7757,6 +7793,7 @@
 				EC68C3B71D9BBC5700D4401A /* HomeRefreshManager.m in Sources */,
 				ECF5D1011DB8CE3900A1B268 /* TCHomeFloorContentArticleParam.m in Sources */,
 				EC4FC41D1D77CEE400BBD050 /* BrowseHistoryServiceListItemModel.m in Sources */,
+				ECF5D1211DB8D77C00A1B268 /* AUIStackView.m in Sources */,
 				EC68C3A81D9BA89800D4401A /* ReachabilityManager.m in Sources */,
 				EC4FC47A1D77CEE400BBD050 /* FavouriteViewServiceCell.m in Sources */,
 				EC4FC3D61D77CEE400BBD050 /* StrategyToolBarScrollView.m in Sources */,
@@ -7937,6 +7974,7 @@
 				EC4FC3AE1D77CEE400BBD050 /* StoreDetailAnnotationTipView.m in Sources */,
 				EC4FC2C01D77CEE400BBD050 /* FlashDetailAutoRollViewCell.m in Sources */,
 				EC4FC3911D77CEE400BBD050 /* StoreDetailBottomView.m in Sources */,
+				ECF5D11E1DB8D6EA00A1B268 /* TextSegueModel.m in Sources */,
 				EC4FC5EB1D77CEEF00BBD050 /* StepperView.m in Sources */,
 				EC4FC4961D77CEE400BBD050 /* FlashServiceOrderDetailRemarksCell.m in Sources */,
 				EC4FC33D1D77CEE400BBD050 /* ServiceDetailViewModel.m in Sources */,
@@ -8079,6 +8117,7 @@
 				EC4FC2C51D77CEE400BBD050 /* FDServeDetailCell.m in Sources */,
 				EC4FC2551D77CEE400BBD050 /* MapRouteViewController.m in Sources */,
 				EC4FC36A1D77CEE400BBD050 /* ServiceSettlementPayInfoCell.m in Sources */,
+				ECF5D1181DB8CF9000A1B268 /* AUIFloorNavigationView.m in Sources */,
 				EC4FC21C1D77CEE400BBD050 /* UIColor+Category.m in Sources */,
 				EC4FC3DC1D77CEE400BBD050 /* ParentingStrategyViewController.m in Sources */,
 				EC4FC5AA1D77CEEF00BBD050 /* ATCountDown.m in Sources */,
@@ -8184,6 +8223,7 @@
 				EC4FC4511D77CEE400BBD050 /* CommentListViewSegmentCell.m in Sources */,
 				EC4FC3791D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.m in Sources */,
 				EC4FC3281D77CEE400BBD050 /* ServiceDetailConfigModel.m in Sources */,
+				ECF5D1141DB8CF7100A1B268 /* HomeRoleButton.m in Sources */,
 				EC4FC4721D77CEE400BBD050 /* FavouriteStrategyItemModel.m in Sources */,
 				EC4FC3141D77CEE400BBD050 /* SearchResultModel.m in Sources */,
 				EC4FC41B1D77CEE400BBD050 /* AppointmentOrderDetailViewModel.m in Sources */,
@@ -8296,7 +8336,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YE QIAN (L4HESQKF9M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				INFOPLIST_FILE = NotiService/Info.plist;
@@ -8314,8 +8354,8 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Tongcheng Information Technology Co., Ltd. (F8C2RFLJQX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				INFOPLIST_FILE = NotiService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -8415,7 +8455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YE QIAN (L4HESQKF9M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				ENABLE_BITCODE = NO;
@@ -8439,8 +8479,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5b1b7d7-e047-4943-8ca3-f82f77e0a48f";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -8452,8 +8492,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Tongcheng Information Technology Co., Ltd. (F8C2RFLJQX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F8C2RFLJQX;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -8476,8 +8516,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f755e21-b36b-4be7-b860-93958bd46109";
-				PROVISIONING_PROFILE_SPECIFIER = iPhoneKidsTC_ProvisioningProfiles_Product;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
