@@ -12,7 +12,6 @@
 #import "SDWebImageManager.h"
 
 //SDK
-#import "iflyMSC/IFlyMSC.h"
 #import "WeChatManager.h"
 #import "KTCMapService.h"
 #import "BuryPointManager.h"
@@ -28,16 +27,11 @@
 
 #import "TabBarController.h"
 
-#import "iflyMSC/IFlyMSC.h"
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self prepareForApplication];
-    
-    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"57ea3553"];
-    [IFlySpeechUtility createUtility:initString];
     
     [NSThread sleepForTimeInterval:3];
     
@@ -114,9 +108,6 @@
     [BuryPointManager registerSdk];
     
     [[KTCMapService shareKTCMapService] startService];
-    
-    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"57ea3553"];
-    [IFlySpeechUtility createUtility:initString];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{

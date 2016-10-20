@@ -7,11 +7,12 @@
 //
 
 #import "SpeekViewController.h"
-#import "iflyMSC/IFlyMSC.h"
+#import "SpeekView.h"
+#import "SearchHotKeywordsModel.h"
+#import "SearchResultViewController.h"
 
-@interface SpeekViewController ()<IFlySpeechRecognizerDelegate>
-//语音语义理解对象
-@property (nonatomic,strong) IFlySpeechUnderstander *iFlySpeechUnderstander;
+@interface SpeekViewController ()<SpeekViewDelegate>
+@property (nonatomic, strong) SpeekView *speekView;
 @end
 
 @implementation SpeekViewController
@@ -19,78 +20,84 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"语音输入";
+    self.navigationItem.title = @"语音搜索";
     
-    CGFloat margin = 20;
-    CGFloat btnHeight = 44;
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(margin, SCREEN_HEIGHT - btnHeight - margin * 2, SCREEN_WIDTH - margin*2, btnHeight)];
-    btn.layer.cornerRadius = 4;
-    btn.layer.masksToBounds = YES;
-    btn.backgroundColor = COLOR_PINK;
-    [btn setTitle:@"按住说话" forState:UIControlStateNormal];
-    [self.view addSubview:btn];
-    [btn addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
-    
-    _iFlySpeechUnderstander = [IFlySpeechUnderstander sharedInstance];
-    _iFlySpeechUnderstander.delegate = self;
+    SpeekView *speekView = [[SpeekView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    speekView.delegate = self;
+    [self.view addSubview:speekView];
+    self.speekView = speekView;
+    [speekView start];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self stop];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.speekView viewWillAppear];
 }
 
-/**
- 开始录音
- ****/
-- (void)start {
-    //设置为麦克风输入语音
-    bool ret = [_iFlySpeechUnderstander startListening];
-    if (ret) {
-        NSLog(@"启动识别服务成功");
-    }else{
-        NSLog(@"启动识别服务失败，请稍后重试");
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.speekView viewWillDisappear];
+}
+
+#pragma mark - SpeekViewDelegate
+
+- (void)speekView:(SpeekView *)view actionTyp:(SpeekViewActionType)type value:(id)value {
+    switch (type) {
+        case SpeekViewActionTypeRecognizeSuccess:
+        {
+            [self addSearchHistoryKeywords:value searchType:SearchType_Product];
+            SearchResultViewController *controller = [[SearchResultViewController alloc]init];
+            controller.searchParmsModel = [self searchParmsModelWithItem:nil searchType:SearchType_Product text:value];
+            controller.searchType = SearchType_Product;
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
     }
 }
 
 /**
- 停止录音
- ****/
-- (void)stop {
-    [_iFlySpeechUnderstander stopListening];
+ *  添加历史搜索关键词
+ */
+- (void)addSearchHistoryKeywords:(NSString *)text searchType:(SearchType)searchType {
+    [[SearchHistoryKeywordsManager shareSearchHistoryKeywordsManager] addSearchHistoryKeywords:text
+                                                                                    searchType:searchType];
 }
 
-#pragma mark - 识别回调 IFlySpeechRecognizerDelegate
-
-
-/**
- 语义理解服务结束回调（注：无论是否正确都会回调）
- error.errorCode =
- 0     听写正确
- other 听写出错
- ****/
-- (void) onError:(IFlySpeechError *) error
+- (SearchParmsModel *)searchParmsModelWithItem:(SearchHotKeywordsListItem *)item
+                                    searchType:(SearchType)searchType
+                                          text:(NSString *)text
 {
-    NSString * text = [NSString stringWithFormat:@"发生错误：%d %@",error.errorCode,error.errorDesc];
-    NSLog(@"%@",text);
-}
-
-
-/**
- 语义理解结果回调
- result 识别结果，NSArray的第一个元素为NSDictionary，NSDictionary的key为识别结果，value为置信度
- isLast：表示最后一次
- ****/
-- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
-{
-    NSMutableString *result = [[NSMutableString alloc] init];
-    NSDictionary *dic = results [0];
-    
-    for (NSString *key in dic) {
-        [result appendFormat:@"%@",key];
+    SearchParmsModel *searchParmsModel = nil;
+    switch (searchType) {
+        case SearchType_Product:
+        case SearchType_Store:
+        {
+            SearchParmsProductOrStoreModel *searchParmsProductOrStoreModel = nil;
+            if (item) {
+                SearchHotKeywordsListProductOrStoreItem *productOrStoreItem = (SearchHotKeywordsListProductOrStoreItem *)item;
+                searchParmsProductOrStoreModel = productOrStoreItem.search_parms;
+            }else{
+                searchParmsProductOrStoreModel = [[SearchParmsProductOrStoreModel alloc]init];
+                searchParmsProductOrStoreModel.k = text;
+            }
+            searchParmsModel = searchParmsProductOrStoreModel;
+        }
+            break;
+        case SearchType_Article:
+        {
+            SearchParmsArticleModel *searchParmsArticleModel = nil;
+            if (item) {
+                SearchHotKeywordsListArticleItem *articleItem = (SearchHotKeywordsListArticleItem *)item;
+                searchParmsArticleModel = articleItem.search_parms;
+            }else{
+                searchParmsArticleModel = [[SearchParmsArticleModel alloc]init];
+                searchParmsArticleModel.k = text;
+            }
+            searchParmsModel = searchParmsArticleModel;
+        }
+            break;
     }
-    
-    NSLog(@"听写结果：%@",result);
+    return searchParmsModel;
 }
-
 
 @end
