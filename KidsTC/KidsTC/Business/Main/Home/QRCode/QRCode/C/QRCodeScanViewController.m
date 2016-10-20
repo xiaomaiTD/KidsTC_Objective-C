@@ -52,12 +52,10 @@
 - (void)qrCodeView:(QRCodeView *)view actionType:(QRCodeViewActionType)type value:(id)value {
     
     switch (type) {
-        case QRCodeViewActionTypeScanSuccess:
+        case QRCodeViewActionTypeHasValiteValue:
         {
-            
             NSDictionary *dic = value;
             [self addHistory:dic];
-            
             NSString *string = dic[@"string"];
             [self.navigationController popViewControllerAnimated:YES];
             if ([string hasPrefix:@"http"]) {
@@ -72,7 +70,6 @@
             }else{
                 
             }
-            
         }
             break;
     }

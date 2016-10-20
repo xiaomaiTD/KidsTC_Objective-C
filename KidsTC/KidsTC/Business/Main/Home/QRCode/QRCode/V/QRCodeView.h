@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    QRCodeViewActionTypeScanSuccess = 1
+    QRCodeViewActionTypeHasValiteValue = 1
 } QRCodeViewActionType;
 
 @class QRCodeView;

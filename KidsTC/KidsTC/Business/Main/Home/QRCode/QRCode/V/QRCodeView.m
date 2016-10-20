@@ -336,7 +336,7 @@ typedef enum : NSUInteger {
             //[self drawCorners:newObj];
             NSString *string = object.stringValue;
             TCLog(@"扫描到的结果，UTF8处理前-->>>:%@",string);
-            if (object == NULL) {
+            if (string == NULL) {
                 return;
             }
             if (!object.stringValue || object.stringValue.length<1) {
@@ -350,7 +350,7 @@ typedef enum : NSUInteger {
             [self stopScan];
             NSDictionary *dic = @{@"string":string,
                                   @"type":object.type};
-            [self.delegate qrCodeView:self actionType:QRCodeViewActionTypeScanSuccess value:dic];
+            [self.delegate qrCodeView:self actionType:QRCodeViewActionTypeHasValiteValue value:dic];
         }else{
             TCLog(@"没有扫描到数据");
         }
@@ -449,7 +449,19 @@ typedef enum : NSUInteger {
 }
 
 - (void)inputSure:(UIButton *)btn {
-    
+    NSString *string = self.tf.text;
+    if (string == NULL) {
+        return;
+    }
+    if (!string || string.length<1) {
+        return;
+    }
+    if (![self.delegate respondsToSelector:@selector(qrCodeView:actionType:value:)]) {
+        return;
+    }
+    NSDictionary *dic = @{@"string":string,
+                          @"type":@"inputBarCode"};
+    [self.delegate qrCodeView:self actionType:QRCodeViewActionTypeHasValiteValue value:dic];
 }
 
 - (void)dealloc {
