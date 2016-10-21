@@ -59,13 +59,13 @@
             NSString *string = dic[@"string"];
             [self.navigationController popViewControllerAnimated:YES];
             if ([string hasPrefix:@"http"]) {
+                string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 if ([string containsString:@"kidstc.com"]) {
                     WebViewController *controller = [[WebViewController alloc] init];
                     controller.urlString = string;
                     [self.navigationController pushViewController:controller animated:YES];
                 }else{
-                    NSURL *url = [NSURL URLWithString:string];
-                    [[UIApplication sharedApplication] openURL:url];
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
                 }
             }else{
                 

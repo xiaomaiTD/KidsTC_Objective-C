@@ -345,8 +345,6 @@ typedef enum : NSUInteger {
             if (![self.delegate respondsToSelector:@selector(qrCodeView:actionType:value:)]) {
                 return;
             }
-            string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            TCLog(@"扫描到的结果，UTF8处理后-->>>:%@",string);
             [self stopScan];
             NSDictionary *dic = @{@"string":string,
                                   @"type":object.type};

@@ -17,7 +17,7 @@ static NSString *const kQRCodeScanHistoryTableViewCellID = @"QRCodeScanHistoryTa
 
 @interface QRCodeScanHistoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray<QRCodeScanHistoryItem *> *items;
+@property (nonatomic, weak) NSMutableArray<QRCodeScanHistoryItem *> *items;
 @end
 
 @implementation QRCodeScanHistoryViewController
@@ -92,6 +92,7 @@ static NSString *const kQRCodeScanHistoryTableViewCellID = @"QRCodeScanHistoryTa
     }
     NSString *string = item.subTitle;
     if ([string hasPrefix:@"http"]) {
+        string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         if ([string containsString:@"kidstc.com"]) {
             WebViewController *controller = [[WebViewController alloc] init];
             controller.urlString = string;
