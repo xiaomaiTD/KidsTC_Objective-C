@@ -12,8 +12,9 @@
 
 typedef enum : NSUInteger {
     TCHomeRecommendProductTypeNew=1,//今日新品
-    TCHomeRecommendProductTypeHot,//热销活动
-    TCHomeRecommendProductTypePopularity,//人气活动
+    TCHomeRecommendProductTypeHot=2,//热销活动
+    TCHomeRecommendProductTypePopularity=3,//人气活动
+    TCHomeRecommendProductTypePreference=5,//今日特惠
 } TCHomeRecommendProductType;
 
 @interface TCHomeRecommendItem : NSObject

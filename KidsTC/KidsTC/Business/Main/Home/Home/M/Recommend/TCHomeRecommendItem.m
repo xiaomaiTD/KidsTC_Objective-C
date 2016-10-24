@@ -42,6 +42,11 @@
             tipImgName = @"rec03";
         }
             break;
+        case TCHomeRecommendProductTypePreference:
+        {
+            tipImgName = @"rec05";
+        }
+            break;
     }
     content.tipImgName = tipImgName;
     
