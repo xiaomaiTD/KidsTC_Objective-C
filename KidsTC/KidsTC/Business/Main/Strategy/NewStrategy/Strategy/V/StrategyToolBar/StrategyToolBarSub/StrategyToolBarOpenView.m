@@ -56,7 +56,6 @@
     }];
 }
 
-
 - (UIButton *)btnWithTitle:(NSString *)title tag:(NSInteger)tag{
     UIButton *btn = [[UIButton alloc]init];
     btn.tag = tag;
@@ -66,9 +65,9 @@
     [btn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-    [btn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [btn setBackgroundColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateNormal];
-    //[btn setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
+    [btn setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     return btn;
 }

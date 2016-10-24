@@ -134,7 +134,7 @@
 }
 
 - (void)setupSpeechRecognizer {
-    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"57ea3553"];
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",@"580da4d4"];
     [IFlySpeechUtility createUtility:initString];
     //1.创建语音听写对象
     _iFlySpeechRecognizer = [IFlySpeechRecognizer sharedInstance];
@@ -254,7 +254,7 @@
         }
     }else {
         text = [NSString stringWithFormat:@"发生错误：%d %@", error.errorCode,error.errorDesc];
-        NSLog(@"%@",text);
+        [self recognizeFailed];
     }
     TCLog(@"%@",text);
 }

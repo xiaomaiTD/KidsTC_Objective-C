@@ -87,7 +87,7 @@ NSString *const kUpdataThemeNoti  = @"updataThemeNoti";
     if (additionalUrl.length==0) return nil;
     
     TabBarItemElement *element = [[TabBarItemElement alloc]init];
-    element.type = TabBarItemElementTypeAdditional;
+    element.type = TabBarItemElementTypeAddLink;
     element.additionalUrl = additionalUrl;
     
     CGFloat width = SCREEN_WIDTH / 5.0;
@@ -105,6 +105,16 @@ NSString *const kUpdataThemeNoti  = @"updataThemeNoti";
     CGFloat sImg_h = selImg.size.height / selImg.size.width * width;
     UIImage *sImg = [[selImg imageByScalingToSize:CGSizeMake(width, sImg_h)] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     element.image_Sel = sImg;
+    return element;
+}
+
++ (instancetype)addEleWithFImgName:(NSString *)fImgName
+                          sImgName:(NSString *)sImgName
+{
+    TabBarItemElement *element = [[TabBarItemElement alloc]init];
+    element.type = TabBarItemElementTypeAddCompose;
+    element.image_Nor = [UIImage imageNamed:fImgName];
+    element.image_Sel = [UIImage imageNamed:sImgName];
     return element;
 }
 

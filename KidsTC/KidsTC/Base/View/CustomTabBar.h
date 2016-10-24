@@ -16,7 +16,7 @@
 
 @class CustomTabBar;
 @protocol CustomTabBarDelegate <NSObject>
-- (void)customTabBar:(CustomTabBar *)customTabBar didSelectIndex:(NSUInteger)index;
+- (void)customTabBar:(CustomTabBar *)customTabBar didSelectElementType:(TabBarItemElementType)type;
 @end
 @interface CustomTabBar : UIView
 @property (nonatomic, strong) NSMutableArray<CustomTabBarButton *> *btns;

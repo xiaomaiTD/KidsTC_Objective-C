@@ -98,7 +98,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     self.tableView.mj_footer = mj_footer;
     
     mj_footer.automaticallyRefresh = YES;
-    mj_footer.triggerAutomaticallyRefreshPercent = -4.0;
+    //mj_footer.triggerAutomaticallyRefreshPercent = -4.0;
 }
 
 - (void)loadData:(BOOL)refresh {

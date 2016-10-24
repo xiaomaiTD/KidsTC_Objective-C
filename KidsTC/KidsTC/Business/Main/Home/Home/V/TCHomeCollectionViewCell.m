@@ -11,22 +11,13 @@
 #import "UIImage+Category.h"
 #import "YYKit.h"
 
-
-@interface TCHomeNewsBar : UIView
-
-@end
-
-@implementation TCHomeNewsBar
-
-@end
-
-
 @interface TCHomeCollectionViewCell ()
-
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIImageView *tipImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
+@property (nonatomic, strong) UILabel *storeAddressLabel;
+@property (nonatomic, strong) UILabel *saleNumLabel;
 @property (nonatomic, strong) YYLabel *subTitleLabel;
 @property (nonatomic, strong) UILabel *statusLabel;
 @property (nonatomic, strong) UIView *line;
@@ -37,7 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor whiteColor];
+        //self.backgroundColor = [UIColor whiteColor];
         
         UIImageView *imageView = [UIImageView new];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -50,17 +41,22 @@
         tipImageView.clipsToBounds = YES;
         self.tipImageView = tipImageView;
         
-        UILabel *titleLabel = [UILabel new];
-        titleLabel.numberOfLines = 0;
-        titleLabel.backgroundColor = [UIColor redColor];
-        titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        [self addSubview:titleLabel];
-        self.titleLabel = titleLabel;
-        
         UILabel *priceLabel = [UILabel new];
         //priceLabel.backgroundColor = [UIColor greenColor];
         [self addSubview:priceLabel];
         self.priceLabel = priceLabel;
+        
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.numberOfLines = 0;
+        //titleLabel.backgroundColor = [UIColor redColor];
+        titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+        [self addSubview:titleLabel];
+        self.titleLabel = titleLabel;
+        
+        UILabel *saleNumLabel = [UILabel new];
+        //saleNumLabel.backgroundColor = [UIColor redColor];
+        [self addSubview:saleNumLabel];
+        self.saleNumLabel = saleNumLabel;
         
         YYLabel *subTitleLabel = [YYLabel new];
         //subTitleLabel.backgroundColor = [UIColor blueColor];
@@ -72,6 +68,11 @@
         [self addSubview:statusLabel];
         self.statusLabel = statusLabel;
         
+        UILabel *storeAddressLabel = [UILabel new];
+        //storeAddressLabel.backgroundColor = [UIColor purpleColor];
+        [self addSubview:storeAddressLabel];
+        self.storeAddressLabel = storeAddressLabel;
+        
         UIView *line = [UIView new];
         line.backgroundColor = [UIColor groupTableViewBackgroundColor];
         line.hidden = YES;
@@ -81,10 +82,6 @@
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self setupSubViews];
-}
 
 - (void)setupSubViews {
     
@@ -93,6 +90,7 @@
     _imageView.hidden = !att.showImg;
     if (!_imageView.hidden) {
         _imageView.frame = att.imgFrame;
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:_content.imageUrl] placeholderImage:PLACEHOLDERIMAGE_SMALL];
     }
     
     _tipImageView.hidden = !att.showTipImg;
@@ -101,29 +99,45 @@
         _tipImageView.image = [UIImage imageNamed:_content.tipImgName];
     }
     
-    _titleLabel.hidden = !att.showTitle;
-    if (!_titleLabel.hidden) {
-        _titleLabel.frame = att.titleFrame;
-    }
-    
     _priceLabel.hidden = !att.showPrice;
     if (!_priceLabel.hidden) {
         _priceLabel.frame = att.priceFrame;
+        _priceLabel.attributedText = _content.attPrice;
+    }
+    
+    _titleLabel.hidden = !att.showTitle;
+    if (!_titleLabel.hidden) {
+        _titleLabel.frame = att.titleFrame;
+        _titleLabel.attributedText = _content.attTitle;
+    }
+    
+    _saleNumLabel.hidden = !att.showSaleNum;
+    if (!_saleNumLabel.hidden) {
+        _saleNumLabel.frame = att.saleNumFrame;
+        _saleNumLabel.attributedText = _content.attSaleNum;
     }
     
     _subTitleLabel.hidden = !att.showSubTitle;
     if (!_subTitleLabel.hidden) {
         _subTitleLabel.frame = att.subTitleFrame;
+        _subTitleLabel.attributedText = _content.attSubTitle;
     }
     
     _statusLabel.hidden = !att.showStatus;
     if (!_statusLabel.hidden) {
         _statusLabel.frame = att.statusFrame;
+        _statusLabel.attributedText = _content.attStatus;
     }
     
-    _line.hidden = !_content.hasLine;
+    _storeAddressLabel.hidden = !att.showStoreAddress;
+    if (!_storeAddressLabel.hidden) {
+        _storeAddressLabel.frame = att.storeAddressFrme;
+        _storeAddressLabel.attributedText = _content.attStoreAddress;
+    }
+    
+    _line.hidden = !att.showLine;
     if (!_line.hidden) {
-        _line.frame = CGRectMake(0, CGRectGetHeight(self.bounds) - LINE_H, CGRectGetWidth(self.bounds), LINE_H);
+        _line.frame = att.lineFrame;
     }
     
     switch (_content.type) {
@@ -144,12 +158,6 @@
 - (void)setContent:(TCHomeFloorContent *)content {
     _content = content;
     [self setupSubViews];
-    self.titleLabel.attributedText = content.attTitle;
-    self.priceLabel.attributedText = content.attPrice;
-    self.subTitleLabel.attributedText = content.attSubTitle;
-    self.statusLabel.attributedText = content.attStatus;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:content.imageUrl] placeholderImage:PLACEHOLDERIMAGE_SMALL];
-    
 }
 
 @end

@@ -21,7 +21,6 @@
         NSString *title = [NSString stringWithFormat:@"%@",_title];
         NSString *subTitle = [NSString stringWithFormat:@"%@",_subTitle];
         NSString *price = [NSString stringWithFormat:@"¥ %@",_price];
-        NSString *stattus = [NSString stringWithFormat:@"%@",@" 进行中"];
         switch (_type) {
             case TCHomeFloorContentTypeBanner:
             {
@@ -109,13 +108,24 @@
                 break;
             case TCHomeFloorContentTypeBigImageTwoDesc:
             {
+                NSRange range = [title rangeOfString:_linkKey];
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
                 attTitle.lineSpacing = 0;
                 attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
+                attTitle.font = [UIFont systemFontOfSize:15];
                 attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentCenter;
+                attTitle.alignment = NSTextAlignmentLeft;
+                [attTitle setColor:COLOR_PINK range:range];
                 _attTitle = attTitle;
+                
+                NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
+                attSubTitle.lineSpacing = 0;
+                attSubTitle.color = [UIColor lightGrayColor];
+                attSubTitle.font = [UIFont systemFontOfSize:15];
+                attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                attSubTitle.alignment = NSTextAlignmentLeft;
+                _attSubTitle = attSubTitle;
+                
             }
                 break;
             case TCHomeFloorContentTypeOneToFour:
@@ -132,14 +142,6 @@
                 attTitle.alignment = NSTextAlignmentLeft;
                 _attTitle = attTitle;
                 
-                NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
-                attSubTitle.lineSpacing = 0;
-                attSubTitle.color = [UIColor darkGrayColor];
-                attSubTitle.font = [UIFont systemFontOfSize:15];
-                attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attSubTitle.alignment = NSTextAlignmentLeft;
-                _attSubTitle = attSubTitle;
-                
                 NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
                 attPrice.lineSpacing = 0;
                 attPrice.color = COLOR_PINK;
@@ -148,17 +150,13 @@
                 attPrice.alignment = NSTextAlignmentRight;
                 _attPrice = attPrice;
                 
-                NSTextAttachment *imgAtt = [NSTextAttachment new];
-                imgAtt.image = [UIImage imageNamed:@"icon_clock"];
-                imgAtt.bounds = CGRectMake(0, -2, 15, 15);
-                NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
-                NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:stattus];
-                [attStatus insertAttributedString:imgAttStr atIndex:0];
-                attStatus.lineSpacing = 0;
-                attStatus.color = [UIColor darkGrayColor];
-                attStatus.font = [UIFont systemFontOfSize:15];
-                attStatus.alignment = NSTextAlignmentRight;
-                _attStatus = attStatus;
+                NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
+                attSubTitle.lineSpacing = 0;
+                attSubTitle.color = [UIColor lightGrayColor];
+                attSubTitle.font = [UIFont systemFontOfSize:15];
+                attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                attSubTitle.alignment = NSTextAlignmentLeft;
+                _attSubTitle = attSubTitle;
                 
             }
                 break;

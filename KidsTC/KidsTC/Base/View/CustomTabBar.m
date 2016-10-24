@@ -28,8 +28,16 @@ CGFloat const titleHight = 18;
     return self;
 }
 - (CGRect)imageRectForContentRect:(CGRect)contentRect{
-    if (self.element.type == TabBarItemElementTypeAdditional) {
+    TabBarItemElementType type = self.element.type;
+    if (type == TabBarItemElementTypeAddLink) {
         return CGRectMake(0, 0, CGRectGetWidth(contentRect), CGRectGetHeight(contentRect));
+    } else if (type == TabBarItemElementTypeAddCompose) {
+        CGFloat margin = 4;
+        CGFloat img_x = margin;
+        CGFloat img_y = margin;
+        CGFloat img_w = CGRectGetWidth(contentRect) - img_x * 2;
+        CGFloat img_h = CGRectGetHeight(contentRect) - img_y * 2;
+        return CGRectMake(img_x, img_y, img_w, img_h);
     }else{
         CGFloat imageX = (CGRectGetWidth(contentRect)-BTN_IMAGE_SIZE)*0.5;
         CGFloat imageY = (CGRectGetHeight(contentRect)-BTN_TITLE_BOTTOM_MARGIN-BTN_TITLE_HEIGHT-BTN_IMAGE_SIZE)*0.5;
@@ -37,7 +45,10 @@ CGFloat const titleHight = 18;
     }
 }
 - (CGRect)titleRectForContentRect:(CGRect)contentRect{
-    if (self.element.type == TabBarItemElementTypeAdditional) {
+    TabBarItemElementType type = self.element.type;
+    if (type == TabBarItemElementTypeAddLink) {
+        return CGRectZero;
+    } else if (type == TabBarItemElementTypeAddCompose) {
         return CGRectZero;
     } else {
         CGFloat titleW = CGRectGetWidth(contentRect);
@@ -55,10 +66,23 @@ CGFloat const titleHight = 18;
     if (element.title.length>0) [self setTitle:element.title forState:UIControlStateNormal];
     //2.设置标题颜色
     if (element.color_Nor) [self setTitleColor:element.color_Nor forState:UIControlStateNormal];
-    if (element.color_Sel) [self setTitleColor:element.color_Sel forState:UIControlStateDisabled];
+    if (element.color_Sel) [self setTitleColor:element.color_Sel forState:UIControlStateSelected];
     //3.设置图片
     if (element.image_Nor) [self setImage:element.image_Nor forState:UIControlStateNormal];
-    if (element.image_Sel) [self setImage:element.image_Sel forState:UIControlStateDisabled];
+    if (element.image_Sel) [self setImage:element.image_Sel forState:UIControlStateSelected];
+    
+    TabBarItemElementType type = self.element.type;
+    CALayer *layer = self.imageView.layer;
+    if (type == TabBarItemElementTypeAddCompose) {
+        layer.cornerRadius = 4;
+        layer.masksToBounds = YES;
+        self.imageView.backgroundColor = COLOR_PINK;
+    }else{
+        layer.cornerRadius = 0;
+        layer.masksToBounds = NO;
+        self.imageView.backgroundColor = [UIColor clearColor];
+    }
+    
 }
 
 @end
@@ -66,6 +90,8 @@ CGFloat const titleHight = 18;
 @interface CustomTabBar ()
 @property (nonatomic, weak) UIView *line;
 @property (nonatomic, weak) CustomTabBarButton *currentBtn;
+@property (nonatomic, strong) CustomTabBarButton *addLinkBtn;
+@property (nonatomic, strong) TabBarItemElement *addLinkEle;
 @end
 
 @implementation CustomTabBar
@@ -99,16 +125,24 @@ CGFloat const titleHight = 18;
     _elements = elements;
     
     NSMutableArray *btns = [NSMutableArray array];
+    CustomTabBarButton *addLinkBtn = nil;
+    TabBarItemElement *addLinkEle = nil;
     for (TabBarItemElement *element in elements) {
         CustomTabBarButton *btn = [[CustomTabBarButton alloc]init];
         btn.element = element;
         [self addSubview:btn];
         [btns addObject:btn];
         [btn addTarget:self action:@selector(didClickTCButton:) forControlEvents:UIControlEventTouchDown];
+        if (element.type == TabBarItemElementTypeAddLink) {
+            addLinkBtn = btn;
+            addLinkEle = element;
+        }
     }
     self.btns = btns;
+    self.addLinkBtn = addLinkBtn;
+    self.addLinkEle = addLinkEle;
     
-    if(self.btns.count>0) [self selectIndex:0];
+    if(btns.count>0) [self didClickTCButton:btns[0]];
 }
 
 -(void)layoutSubviews{
@@ -120,7 +154,10 @@ CGFloat const titleHight = 18;
     for (int i = 0; i<self.btns.count; i++) {
         CGFloat btnX = btnW * i;
         CustomTabBarButton *btn = self.btns[i];
-        if (btn.element.type == TabBarItemElementTypeAdditional) {
+        TabBarItemElementType type = btn.element.type;
+        if (type == TabBarItemElementTypeAddLink ||
+            type == TabBarItemElementTypeAddCompose)
+        {
             btn.frame = CGRectMake(btnX, btnH - btnW, btnW, btnW);
         }else{
             btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
@@ -128,22 +165,43 @@ CGFloat const titleHight = 18;
     }
 }
 
-- (void)didClickTCButton:(CustomTabBarButton *)btn{
-    NSUInteger index = [self.btns indexOfObject:btn];
-    [self selectIndex:index];
+- (void)selectIndex:(NSUInteger)index {
+    if(self.btns.count>index) [self didClickTCButton:self.btns[index]];
 }
 
-- (void)selectIndex:(NSUInteger)index{
+- (void)didClickTCButton:(CustomTabBarButton *)btn{
     
-    if (index>self.btns.count-1) return;
-    CustomTabBarButton *btn = self.btns[index];
-    if ([self.delegate respondsToSelector:@selector(customTabBar:didSelectIndex:)]) {
-        [self.delegate customTabBar:self didSelectIndex:index];
+    
+    
+    if ([self.delegate respondsToSelector:@selector(customTabBar:didSelectElementType:)]) {
+        [self.delegate customTabBar:self didSelectElementType:btn.element.type];
     }
-    self.currentBtn.enabled = YES;
-    btn.enabled = NO;
+    
+    if (self.addLinkBtn && self.addLinkEle) {
+        TabBarItemElementType type = btn.element.type;
+        if (type == TabBarItemElementTypeArticle ||
+            type == TabBarItemElementTypeAddCompose)
+        {
+            self.addLinkBtn.element = self.codedEle;
+        } else {
+            self.addLinkBtn.element = self.addLinkEle;
+        }
+        [self.addLinkBtn setNeedsLayout];
+        [self.addLinkBtn layoutIfNeeded];
+    }
+    
+    self.currentBtn.selected = NO;
+    btn.selected = YES;
     self.currentBtn = btn;
+    
+    
 }
+
+- (TabBarItemElement *)codedEle{
+    return [TabBarItemElement addEleWithFImgName:@"tabbar_compose" sImgName:@"tabbar_compose"];
+}
+
+
 
 - (void)makeBadgeIndex:(NSUInteger)index type:(TipButtonBadgeType)type value:(NSUInteger)value{
     if (index>self.btns.count-1) return;

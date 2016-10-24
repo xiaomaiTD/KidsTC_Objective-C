@@ -20,7 +20,7 @@
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     if (_modules.count>0) {
         NSMutableArray<TCHomeFloor *> *floors = [NSMutableArray array];
-        [_modules enumerateObjectsUsingBlock:^(TCHomeModule * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [_modules enumerateObjectsUsingBlock:^(TCHomeModule *obj, NSUInteger idx, BOOL *stop) {
             if (obj.floors.count>0) {
                 obj.index = floors.count;
                 [floors addObjectsFromArray:obj.floors];

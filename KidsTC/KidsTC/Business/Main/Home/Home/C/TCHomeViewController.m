@@ -483,7 +483,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     [self.activityImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         StrongSelf(self)
         make.height.width.equalTo(@80);
-        make.right.bottom.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 200, 0)).priorityLow();
+        make.right.bottom.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 240, 0)).priorityLow();
         self.iv_right = make.right.equalTo(self.view).offset(40).priority(UILayoutPriorityRequired);
     }];
     [self.iv_right deactivate];

@@ -7,6 +7,8 @@
 //
 
 #import "TCHomeRecommendItem.h"
+#import "NSAttributedString+YYText.h"
+#import "NSString+Category.h"
 
 @implementation TCHomeRecommendItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -43,11 +45,50 @@
     }
     content.tipImgName = tipImgName;
     
+    NSMutableAttributedString *attNum = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%zd",_saleNum]];
+    attNum.color = COLOR_BLUE;
+    NSMutableAttributedString *attSaleNum= [[NSMutableAttributedString alloc] initWithString:@"已售 "];
+    attSaleNum.color = [UIColor lightGrayColor];
+    [attSaleNum appendAttributedString:attNum];
+    attSaleNum.font = [UIFont systemFontOfSize:15];
+    attSaleNum.lineBreakMode = NSLineBreakByTruncatingTail;
+    attSaleNum.alignment = NSTextAlignmentRight;
+    content.attSaleNum = attSaleNum;
+    
+    NSString *processDesc = [NSString stringWithFormat:@" %@",_processDesc];
+    processDesc = [processDesc isNotNull]?processDesc:@" 进行中";
+    NSTextAttachment *imgAtt = [NSTextAttachment new];
+    imgAtt.image = [UIImage imageNamed:@"icon_clock"];
+    imgAtt.bounds = CGRectMake(0, -2, 15, 15);
+    NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
+    NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
+    [attStatus insertAttributedString:imgAttStr atIndex:0];
+    attStatus.lineSpacing = 0;
+    attStatus.color = [UIColor lightGrayColor];
+    attStatus.font = [UIFont systemFontOfSize:15];
+    attStatus.alignment = NSTextAlignmentRight;
+    content.attStatus = attStatus;
+    
+    NSString *distance = [_storeDistance isNotNull]?[NSString stringWithFormat:@"距离 %@",_storeDistance]:@"";
+    NSString *storeName = [_storeName isNotNull]?_storeName:@"";
+    NSString *stoeAddress = [NSString stringWithFormat:@"%@%@",storeName, distance];
+    if (stoeAddress.length>0) {
+        NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
+        attStoreAddress.lineSpacing = 0;
+        attStoreAddress.color = [UIColor lightGrayColor];
+        attStoreAddress.font = [UIFont systemFontOfSize:15];
+        attStoreAddress.lineBreakMode = NSLineBreakByTruncatingTail;
+        attStoreAddress.alignment = NSTextAlignmentLeft;
+        content.attStoreAddress = attStoreAddress;
+    }else{
+        content.attStoreAddress = nil;
+    }
+    
     TCHomeFloor *floor = [TCHomeFloor new];
     floor.contents = @[content];
     floor.ratio = self.picRate;
     floor.contentType = TCHomeFloorContentTypeRecommend;
-    floor.marginTop = LINE_H;
+    floor.marginTop = 0.001;
     
     return floor;
 }

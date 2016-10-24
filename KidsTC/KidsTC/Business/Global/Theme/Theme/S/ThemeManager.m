@@ -259,7 +259,9 @@ singleM(ThemeManager)
 - (void)addAdditionalElement{
     __block BOOL needInset = YES;
     [_theme.elements enumerateObjectsUsingBlock:^(TabBarItemElement *obj, NSUInteger idx, BOOL *stop) {
-        if (obj.type == TabBarItemElementTypeAdditional) {
+        if (obj.type == TabBarItemElementTypeAddLink ||
+            obj.type == TabBarItemElementTypeAddCompose)
+        {
             needInset = NO;
             *stop = YES;
         }

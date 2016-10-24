@@ -59,7 +59,6 @@
         case ServiceOrderDetailOrderStateWaitUse://待使用
         case ServiceOrderDetailOrderStatePartUse://部分使用
         {
-            if (data.totalPrice>0) [self addBtnWithTitle:@"申请退款" actionType:ActionTypeApplyRefund color:color];
             [self addBtnWithTitle:@"获取消费码" actionType:ActionTypeGetConsumerCode color:color];
         }
             break;
@@ -77,6 +76,7 @@
         {}
             break;
     }
+    if (data.canRefund) [self addBtnWithTitle:@"申请退款" actionType:ActionTypeApplyRefund color:color];
     if (data.isBuyAgain) [self addBtnWithTitle:@"再次购买" actionType:ActionTypeBuyAgain color:COLOR_PINK];
     
     self.hidden = _btns.count<1;

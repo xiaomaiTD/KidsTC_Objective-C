@@ -22,10 +22,13 @@
 #import "CustomTabBar.h"
 #import "YYFPSLabel.h"
 
+#import "ComposeView.h"
 
 
-@interface TabBarController ()<CustomTabBarDelegate>
+
+@interface TabBarController ()<CustomTabBarDelegate,ComposeViewDelegate>
 @property (nonatomic, strong) CustomTabBar *customTabBar;
+@property (nonatomic, strong) ComposeView *composeView;
 #ifdef DEBUG
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
 #endif
@@ -33,6 +36,17 @@
 
 @implementation TabBarController
 singleM(TabBarController)
+
+- (ComposeView *)composeView {
+    if (!_composeView) {
+        CGRect composeViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ComposeView *composeView = [[ComposeView alloc] initWithFrame:composeViewFrame];
+        composeView.delegate = self;
+        [[UIApplication sharedApplication].keyWindow addSubview:composeView];
+        _composeView = composeView;
+    }
+    return _composeView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,16 +121,23 @@ singleM(TabBarController)
                 controller = [[UserCenterViewController alloc]init];
             }
                 break;
-            case TabBarItemElementTypeAdditional:
+            case TabBarItemElementTypeAddLink:
             {
                 WebViewController *wvc = [[WebViewController alloc] init];
                 wvc.urlString = ele.additionalUrl;
                 controller = wvc;
             }
                 break;
+            case TabBarItemElementTypeAddCompose:
+            {
+                controller = [[ViewController alloc] init];
+            }
+                break;
         }
-        NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
-        [navis addObject:navi];
+        if (controller) {
+            NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
+            [navis addObject:navi];
+        }
     }
     self.viewControllers = navis;
 }
@@ -150,9 +171,55 @@ singleM(TabBarController)
  *  TabBarDelegate回调事件
  *
  *  @param customTabBar 当前TabBar
- *  @param index        当前TabBar选中的Index
+ *  @param index        当前TabBar选中的元素类型
  */
-- (void)customTabBar:(CustomTabBar *)customTabBar didSelectIndex:(NSUInteger)index{
+- (void)customTabBar:(CustomTabBar *)customTabBar didSelectElementType:(TabBarItemElementType)type{
+    /*
+     TabBarItemElementTypeHome=1,       //首页
+     TabBarItemElementTypeArticle,      //资讯
+     TabBarItemElementTypeStrategy,     //亲子攻略
+     TabBarItemElementTypeUserCenter,   //我
+     TabBarItemElementTypeAddLink,      //附加-活动
+     TabBarItemElementTypeAddCompose    //附加-发布
+     */
+    
+    NSInteger index = -1;
+    
+    switch (type) {
+        case TabBarItemElementTypeHome://首页
+        {
+            index = 0;
+        }
+            break;
+        case TabBarItemElementTypeArticle://资讯
+        {
+            index = 1;
+        }
+            break;
+        case TabBarItemElementTypeStrategy://亲子攻略
+        {
+            index = 3;
+        }
+            break;
+        case TabBarItemElementTypeUserCenter://我
+        {
+            index = 4;
+        }
+            break;
+        case TabBarItemElementTypeAddLink://附加-活动
+        {
+            index = 2;
+        }
+            break;
+        case TabBarItemElementTypeAddCompose://附加-发布
+        {
+            index = -1;
+            [self.composeView show];
+            return;
+        }
+            break;
+    }
+    
     if (self.selectedIndex != index) {
         self.selectedIndex = index;
         UINavigationController *navi = self.viewControllers[index];
@@ -160,6 +227,23 @@ singleM(TabBarController)
         if ([vc isKindOfClass:[WebViewController class]])[(WebViewController *)vc reload];
     }
     [customTabBar clearBadgeIndex:index];
+}
+
+#pragma mark - ComposeViewDelegate
+
+- (void)composeView:(ComposeView *)view actionType:(ComposeViewActionType)type value:(id)value {
+    switch (type) {
+        case ComposeViewActionTypeCompose:
+        {
+            
+        }
+            break;
+        case ComposeViewActionTypeSign:
+        {
+            
+        }
+            break;
+    }
 }
 
 #pragma mark - 更新主题

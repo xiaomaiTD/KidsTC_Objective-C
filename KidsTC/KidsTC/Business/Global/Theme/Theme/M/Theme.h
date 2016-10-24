@@ -28,7 +28,8 @@ typedef NS_ENUM(NSInteger, TabBarItemElementType) {
     TabBarItemElementTypeArticle,      //资讯
     TabBarItemElementTypeStrategy,     //亲子攻略
     TabBarItemElementTypeUserCenter,   //我
-    TabBarItemElementTypeAdditional    //附加tabBarItem
+    TabBarItemElementTypeAddLink,      //附加-活动
+    TabBarItemElementTypeAddCompose    //附加-发布
 };
 @interface TabBarItemElement : NSObject<NSCopying,NSMutableCopying>
 @property (nonatomic, assign) TabBarItemElementType type;//tab类型
@@ -53,4 +54,6 @@ typedef NS_ENUM(NSInteger, TabBarItemElementType) {
                            sImgName:(NSString *)sImgName
                       additionalUrl:(NSString *)additionalUrl;
 
++ (instancetype)addEleWithFImgName:(NSString *)fImgName
+                          sImgName:(NSString *)sImgName;
 @end

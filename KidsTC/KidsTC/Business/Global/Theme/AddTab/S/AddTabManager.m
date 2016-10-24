@@ -37,6 +37,9 @@ singleM(AddTabManager)
     if (!_addElement) {
         _addElement = [self localEle];
     }
+    if (!_addElement) {
+        _addElement = [self codedEle];
+    }
     return _addElement;
 }
 
@@ -145,6 +148,10 @@ singleM(AddTabManager)
         return addEle;
     }
     return nil;
+}
+
+- (TabBarItemElement *)codedEle{
+    return [TabBarItemElement addEleWithFImgName:@"tabbar_compose" sImgName:@"tabbar_compose"];
 }
 
 

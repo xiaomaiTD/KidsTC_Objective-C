@@ -89,7 +89,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
         collectionView.scrollsToTop = NO;
         collectionView.showsVerticalScrollIndicator = NO;
         collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        collectionView.backgroundColor = [UIColor whiteColor];
         [collectionView registerClass:[TCHomeCollectionViewCell class] forCellWithReuseIdentifier:kTCHomeCollectionViewCellID];
         [self addSubview:collectionView];
         self.collectionView = collectionView;

@@ -32,47 +32,92 @@ typedef enum {
 struct TCHomeContentLayoutAttributes {
     BOOL showImg;
     BOOL showTipImg;
-    BOOL showTitle;
+    
     BOOL showPrice;
+    BOOL showTitle;
+    
+    BOOL showSaleNum;
     BOOL showSubTitle;
+    
     BOOL showStatus;
+    BOOL showStoreAddress;
+    
+    BOOL showLine;
+    
     CGRect imgFrame;
     CGRect tipImgFrame;
-    CGRect titleFrame;
+    
     CGRect priceFrame;
+    CGRect titleFrame;
+    
+    CGRect saleNumFrame;
     CGRect subTitleFrame;
+    
     CGRect statusFrame;
+    CGRect storeAddressFrme;
+    
+    CGRect lineFrame;
 };
 typedef struct TCHomeContentLayoutAttributes TCHomeContentLayoutAttributes;
 CG_INLINE TCHomeContentLayoutAttributes
 TCHomeContentLayoutAttributesMake(BOOL showImg,
                                   BOOL showTipImg,
-                                  BOOL showTitle,
+                                  
                                   BOOL showPrice,
+                                  BOOL showTitle,
+                                  
+                                  BOOL showSaleNum,
                                   BOOL showSubTitle,
+                                  
                                   BOOL showStatus,
+                                  BOOL showStoreAddress,
+                                  
+                                  BOOL showLine,
+                                  
                                   CGRect imgFrame,
                                   CGRect tipImgFrame,
-                                  CGRect titleFrame,
+                                  
                                   CGRect priceFrame,
+                                  CGRect titleFrame,
+                                  
+                                  CGRect saleNumFrame,
                                   CGRect subTitleFrame,
-                                  CGRect statusFrame)
+                                  
+                                  CGRect statusFrame,
+                                  CGRect storeAddressFrme,
+                                  
+                                  CGRect lineFrame)
 {
     TCHomeContentLayoutAttributes att;
     
     att.showImg = showImg;
     att.showTipImg = showTipImg;
-    att.showTitle = showTitle;
+    
     att.showPrice = showPrice;
+    att.showTitle = showTitle;
+    
+    att.showSaleNum = showSaleNum;
     att.showSubTitle = showSubTitle;
+    
     att.showStatus = showStatus;
+    att.showStoreAddress = showStoreAddress;
+    
+    att.showLine = showLine;
     
     att.imgFrame = imgFrame;
     att.tipImgFrame = tipImgFrame;
-    att.titleFrame = titleFrame;
+    
     att.priceFrame = priceFrame;
+    att.titleFrame = titleFrame;
+    
+    att.saleNumFrame = saleNumFrame;
     att.subTitleFrame = subTitleFrame;
+    
     att.statusFrame = statusFrame;
+    att.storeAddressFrme = storeAddressFrme;
+    
+    att.lineFrame = lineFrame;
+    
     return att;
 }
 
@@ -93,10 +138,11 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
 
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *attTitle;
-@property (nonatomic, strong) NSAttributedString *attSubTitle;
 @property (nonatomic, strong) NSAttributedString *attPrice;
+@property (nonatomic, strong) NSAttributedString *attStoreAddress;
+@property (nonatomic, strong) NSAttributedString *attSaleNum;
+@property (nonatomic, strong) NSAttributedString *attSubTitle;
 @property (nonatomic, strong) NSAttributedString *attStatus;
-@property (nonatomic, assign) BOOL hasLine;
 @property (nonatomic, strong) NSString *tipImgName;
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, assign) TCHomeContentLayoutAttributes layoutAttributes;
