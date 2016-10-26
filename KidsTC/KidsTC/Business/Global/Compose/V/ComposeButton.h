@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComposeBtn.h"
 
 typedef enum : NSUInteger {
     ComposeButtonTypeCompose = 1,
-    ComposeButtonTypeSign,
+    ComposeButtonTypeSign
 } ComposeButtonType;
 
 @interface ComposeButton : UIButton
 @property (nonatomic, assign) ComposeButtonType type;
-+ (instancetype)btn:(ComposeButtonType)type;
+@property (nonatomic, strong) ComposeBtn *btnData;
++ (instancetype)btn:(ComposeButtonType)type data:(ComposeBtn *)btnData;
 @end

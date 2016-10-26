@@ -10,6 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "QRCodeAnimateView.h"
 
+NSString *const kQRCodeViewScanTypeScan = @"QRCodeViewScanTypeScan";
+NSString *const kQRCodeViewScanTypeInput = @"QRCodeViewScanTypeInput";
+
 typedef enum : NSUInteger {
     QRCodeViewInputTypeScan=1,//扫描
     QRCodeViewInputTypeTfInput//输入
@@ -339,7 +342,7 @@ typedef enum : NSUInteger {
             if (string == NULL) {
                 return;
             }
-            if (!object.stringValue || object.stringValue.length<1) {
+            if (!string || string.length<1) {
                 return;
             }
             if (![self.delegate respondsToSelector:@selector(qrCodeView:actionType:value:)]) {
@@ -347,7 +350,7 @@ typedef enum : NSUInteger {
             }
             [self stopScan];
             NSDictionary *dic = @{@"string":string,
-                                  @"type":object.type};
+                                  @"type":kQRCodeViewScanTypeScan};
             [self.delegate qrCodeView:self actionType:QRCodeViewActionTypeHasValiteValue value:dic];
         }else{
             TCLog(@"没有扫描到数据");
@@ -458,7 +461,7 @@ typedef enum : NSUInteger {
         return;
     }
     NSDictionary *dic = @{@"string":string,
-                          @"type":@"inputBarCode"};
+                          @"type":kQRCodeViewScanTypeInput};
     [self.delegate qrCodeView:self actionType:QRCodeViewActionTypeHasValiteValue value:dic];
 }
 

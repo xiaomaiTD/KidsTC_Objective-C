@@ -12,6 +12,11 @@
 #import "WebViewController.h"
 #import "QRCodeScanHistoryDataManager.h"
 #import "QRCodeScanHistoryViewController.h"
+#import "QRCodeScanTextViewController.h"
+#import "GHeader.h"
+#import "QRCodeScanBarCodeModel.h"
+#import "SegueMaster.h"
+
 
 @interface QRCodeScanViewController ()<QRCodeViewDelegate>
 @property (nonatomic, strong) QRCodeView *qrCodeView;
@@ -55,28 +60,15 @@
         case QRCodeViewActionTypeHasValiteValue:
         {
             NSDictionary *dic = value;
-            [self addHistory:dic];
-            NSString *string = dic[@"string"];
-            [self.navigationController popViewControllerAnimated:YES];
-            if ([string hasPrefix:@"http"]) {
-                string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                if ([string containsString:@"kidstc.com"]) {
-                    WebViewController *controller = [[WebViewController alloc] init];
-                    controller.urlString = string;
-                    [self.navigationController pushViewController:controller animated:YES];
-                }else{
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
-                }
-            }else{
-                
-            }
+            [self addHistoryLocal:dic];
+            [self segue:dic[@"string"]];
         }
             break;
     }
 }
 
-- (void)addHistory:(NSDictionary *)dic {
-    NSString *string = dic[@"string"];
+- (void)addHistoryLocal:(NSDictionary *)dic {
+    NSString *string = [NSString stringWithFormat:@"%@",dic[@"string"]];
     QRCodeScanHistoryItem *item = [QRCodeScanHistoryItem new];
     if ([string hasPrefix:@"http"]) {//链接
         item.title = @"链接";
@@ -90,5 +82,50 @@
     [[QRCodeScanHistoryDataManager shareQRCodeScanHistoryDataManager] addItem:item];
 }
 
+- (void)segue:(NSString *)string {
+    
+    if ([string hasPrefix:@"http"]) {
+        
+        NSDictionary *param = @{@"scanChannel":@"1",
+                                @"scanContent":string};
+        [Request startWithName:@"UPLOAD_SCAN_HISTORY" param:param progress:nil success:nil failure:nil];
+        
+        string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        if ([string containsString:@"kidstc.com"]) {
+            WebViewController *controller = [[WebViewController alloc] init];
+            controller.urlString = string;
+            [self.navigationController pushViewController:controller animated:YES];
+        }else{
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"可能存在风险，是否打开此链接？" message:string preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.qrCodeView startScan];
+            }];
+            UIAlertAction *sure = [UIAlertAction actionWithTitle:@"打开链接" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.qrCodeView startScan];
+                [self.navigationController popViewControllerAnimated:YES];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+            }];
+            [controller addAction:cancle];
+            [controller addAction:sure];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }else{
+        
+        NSDictionary *param = @{@"scanChannel":@"1",
+                                @"scanContent":string};
+        [TCProgressHUD showSVP];
+        [Request startWithName:@"SCAN_BAR_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [TCProgressHUD dismissSVP];
+            QRCodeScanBarCodeModel *model = [QRCodeScanBarCodeModel modelWithDictionary:dic];
+            [SegueMaster makeSegueWithModel:model.data.segueModel fromController:self];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [TCProgressHUD dismissSVP];
+            [[iToast makeText:@"查询失败"] show];
+            QRCodeScanTextViewController *controller = [[QRCodeScanTextViewController alloc] initWithNibName:@"QRCodeScanTextViewController" bundle:nil];
+            controller.text = string;
+            [self.navigationController pushViewController:controller animated:YES];
+        }];
+    }
+}
 
 @end

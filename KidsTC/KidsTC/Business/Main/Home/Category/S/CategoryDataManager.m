@@ -7,7 +7,7 @@
 //
 
 #import "CategoryDataManager.h"
-NSString *const CategoryFileName = @"Category";
+static NSString *const CategoryFileName = @"Category";
 
 @implementation CategoryDataManager
 singleM(CategoryDataManager)

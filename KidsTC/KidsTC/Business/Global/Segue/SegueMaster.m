@@ -11,7 +11,7 @@
 #import "ActivityViewController.h"
 #import "WelfareStoreViewController.h"
 #import "ParentingStrategyViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
@@ -159,7 +159,7 @@
             NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
             NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
             channelId = [channelId isNotNull]?channelId:@"0";
-            ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
             toController = controller;
         }
             break;

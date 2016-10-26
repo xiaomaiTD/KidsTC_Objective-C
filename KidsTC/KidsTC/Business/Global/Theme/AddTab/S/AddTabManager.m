@@ -8,6 +8,7 @@
 
 #import "AddTabManager.h"
 #import "AddTabModel.h"
+#import "ComposeManager.h"
 
 static NSString *const AddTabDirectoryName = @"AddTab";
 static NSString *const AddTabModelFileName = @"AddTab/AddTabModel";
@@ -151,7 +152,12 @@ singleM(AddTabManager)
 }
 
 - (TabBarItemElement *)codedEle{
-    return [TabBarItemElement addEleWithFImgName:@"tabbar_compose" sImgName:@"tabbar_compose"];
+    ComposeData *data = [ComposeManager shareComposeManager].model.data.data;
+    if (data) {
+        return [TabBarItemElement addEleWithFImgName:@"tabbar_compose_weibo" sImgName:@"tabbar_compose_weibo"];
+    }else{
+        return nil;
+    }
 }
 
 

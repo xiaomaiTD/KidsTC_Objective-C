@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ComposeClass.h"
 @class ArticleHomeClassItem;
 @interface ArticleWriteViewController : ViewController
 @property (nonatomic, strong) NSArray<ArticleHomeClassItem *> *classes;
+@property (nonatomic, strong) NSArray<ComposeClass *> *articleClasses;
 @end

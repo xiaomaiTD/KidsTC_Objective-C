@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface ProductDetailViewController : ViewController
-
+- (instancetype)initWithServiceId:(NSString *)serviceId channelId:(NSString *)channelId;
 @end

@@ -19,6 +19,7 @@
 #import "HomeActivityManager.h"
 #import "AppVersionManager.h"
 #import "HomeRefreshManager.h"
+#import "ComposeManager.h"
 
 @implementation SynchronizeManager
 
@@ -49,6 +50,8 @@
     [[AppVersionManager shareAppVersionManager] checkRemote];
     
     [[HomeRefreshManager shareHomeActivityManager] synchronize];
+    
+    [[ComposeManager shareComposeManager] synchronize];
 }
 
 

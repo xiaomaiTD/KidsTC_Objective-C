@@ -108,6 +108,8 @@ typedef enum : NSUInteger {
     
     self.navigationItem.title = @"编辑心情";
     
+    [self prepareClasses];
+    
     [self setupNaviItems];
     
     [self setupTableViews];
@@ -117,6 +119,31 @@ typedef enum : NSUInteger {
     bottomView.delegate = self;
     [self.view addSubview:bottomView];
     self.bottomView = bottomView;
+}
+
+- (void)prepareClasses {
+    if (self.classes.count<1) {
+        NSMutableArray<ArticleHomeClassItem *> *ary = [NSMutableArray array];
+        [self.articleClasses enumerateObjectsUsingBlock:^(ComposeClass  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.SysNo isNotNull] && ![@"0" isEqualToString:obj.SysNo]) {
+                ArticleHomeClassItem *item = [[ArticleHomeClassItem alloc] init];
+                item.ID = obj.SysNo;
+                item.className = obj.ClassName;
+                item.selectedIcon = obj.SelectedIcon;
+                item.icon = obj.Icon;
+                [item modelCustomTransformFromDictionary:nil];
+                [ary addObject:item];
+                item.selected = ary.count==1;
+            }
+        }];
+        self.classes = [NSArray arrayWithArray:ary];
+        
+        if (self.classes.count<1) {
+            [[iToast makeText:@"暂不支持投稿哟~"] show];
+            [self back];
+            return;
+        }
+    }
 }
 
 - (void)setupNaviItems {

@@ -22,13 +22,12 @@
 #import "CustomTabBar.h"
 #import "YYFPSLabel.h"
 
-#import "ComposeView.h"
+#import "ComposeManager.h"
 
 
 
-@interface TabBarController ()<CustomTabBarDelegate,ComposeViewDelegate>
+@interface TabBarController ()<CustomTabBarDelegate>
 @property (nonatomic, strong) CustomTabBar *customTabBar;
-@property (nonatomic, strong) ComposeView *composeView;
 #ifdef DEBUG
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
 #endif
@@ -36,17 +35,6 @@
 
 @implementation TabBarController
 singleM(TabBarController)
-
-- (ComposeView *)composeView {
-    if (!_composeView) {
-        CGRect composeViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ComposeView *composeView = [[ComposeView alloc] initWithFrame:composeViewFrame];
-        composeView.delegate = self;
-        [[UIApplication sharedApplication].keyWindow addSubview:composeView];
-        _composeView = composeView;
-    }
-    return _composeView;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -214,7 +202,7 @@ singleM(TabBarController)
         case TabBarItemElementTypeAddCompose://附加-发布
         {
             index = -1;
-            [self.composeView show];
+            [self showCompose];
             return;
         }
             break;
@@ -229,22 +217,11 @@ singleM(TabBarController)
     [customTabBar clearBadgeIndex:index];
 }
 
-#pragma mark - ComposeViewDelegate
-
-- (void)composeView:(ComposeView *)view actionType:(ComposeViewActionType)type value:(id)value {
-    switch (type) {
-        case ComposeViewActionTypeCompose:
-        {
-            
-        }
-            break;
-        case ComposeViewActionTypeSign:
-        {
-            
-        }
-            break;
-    }
+- (void)showCompose {
+    [[ComposeManager shareComposeManager] showCompose];
 }
+
+
 
 #pragma mark - 更新主题
 /**

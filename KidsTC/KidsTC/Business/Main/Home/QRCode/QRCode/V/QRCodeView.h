@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *const kQRCodeViewScanTypeScan;
+extern NSString *const kQRCodeViewScanTypeInput;
+
+
 typedef enum : NSUInteger {
     QRCodeViewActionTypeHasValiteValue = 1
 } QRCodeViewActionType;

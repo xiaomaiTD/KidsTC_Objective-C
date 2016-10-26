@@ -126,6 +126,7 @@ typedef enum : NSUInteger {
 /**SelfDefine*/
 @property (nonatomic, assign, getter=isSelcted) BOOL selected;
 @property (nonatomic, strong) NSArray<NSArray<ArticleHomeItem *> *> *sections;
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
 @end
 
 @interface ArticleHomeClass : NSObject

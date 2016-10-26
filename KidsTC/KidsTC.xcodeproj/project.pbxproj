@@ -799,6 +799,12 @@
 		EC68C3C81D9BD2B700D4401A /* SchemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3C71D9BD2B700D4401A /* SchemeManager.m */; };
 		EC68C3CC1D9BD3E800D4401A /* SynchronizeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3CB1D9BD3E800D4401A /* SynchronizeManager.m */; };
 		EC68C3D01D9BF03600D4401A /* CoverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3CF1D9BF03600D4401A /* CoverManager.m */; };
+		EC6FCA7B1DBF877E0002DA71 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6FCA7A1DBF877E0002DA71 /* ProductDetailViewController.m */; };
+		EC6FCA801DBF87B40002DA71 /* ProductDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6FCA7F1DBF87B40002DA71 /* ProductDetailModel.m */; };
+		EC6FCA841DBF87CE0002DA71 /* ProductDetailBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6FCA821DBF87CE0002DA71 /* ProductDetailBaseCell.m */; };
+		EC6FCA881DBF8E4D0002DA71 /* ProductDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6FCA871DBF8E4D0002DA71 /* ProductDetailToolBar.m */; };
+		EC6FCA8A1DBF8E5B0002DA71 /* ProductDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC6FCA891DBF8E5B0002DA71 /* ProductDetailToolBar.xib */; };
+		EC6FCA8D1DBF94000002DA71 /* ProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6FCA8C1DBF94000002DA71 /* ProductDetailView.m */; };
 		EC7264271D7D279A00AA739B /* ColumnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7264181D7D279A00AA739B /* ColumnCell.m */; };
 		EC7264281D7D279A00AA739B /* ColumnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC72641A1D7D279A00AA739B /* ColumnModel.m */; };
 		EC7264291D7D279A00AA739B /* ColumnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC72641C1D7D279A00AA739B /* ColumnViewController.m */; };
@@ -890,9 +896,15 @@
 		ECB3E7AC1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECB3E7AA1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m */; };
 		ECB3E7AD1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */; };
 		ECBCCEAE1DBDE1F7001B9571 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBCCEAD1DBDE1F7001B9571 /* iflyMSC.framework */; };
-		ECBCCEB21DBDF25C001B9571 /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEB11DBDF25C001B9571 /* ProductDetailViewController.m */; };
-		ECBCCEB51DBE18D7001B9571 /* ComposeView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEB41DBE18D7001B9571 /* ComposeView.m */; };
-		ECBCCEB81DBE19E1001B9571 /* ComposeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEB71DBE19E1001B9571 /* ComposeButton.m */; };
+		ECBCCECE1DBF145C001B9571 /* QRCodeScanBarCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCECD1DBF145C001B9571 /* QRCodeScanBarCodeModel.m */; };
+		ECBCCEF11DBF152E001B9571 /* ComposeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEE41DBF152E001B9571 /* ComposeBtn.m */; };
+		ECBCCEF21DBF152E001B9571 /* ComposeData.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEE61DBF152E001B9571 /* ComposeData.m */; };
+		ECBCCEF31DBF152E001B9571 /* ComposeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEE81DBF152E001B9571 /* ComposeModel.m */; };
+		ECBCCEF41DBF152E001B9571 /* ComposeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEEB1DBF152E001B9571 /* ComposeManager.m */; };
+		ECBCCEF51DBF152E001B9571 /* ComposeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEEE1DBF152E001B9571 /* ComposeButton.m */; };
+		ECBCCEF91DBF2A40001B9571 /* ComposeMd5Data.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEF81DBF2A40001B9571 /* ComposeMd5Data.m */; };
+		ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEFB1DBF2CC8001B9571 /* ComposeClass.m */; };
+		ECBCCF011DBF2EE9001B9571 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEFF1DBF2EE9001B9571 /* ComposeViewController.m */; };
 		ECF5D0C11DB8C4FE00A1B268 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */; };
 		ECF5D0C21DB8C4FE00A1B268 /* QRCodeAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AB1DB8C4FE00A1B268 /* QRCodeAnimateView.m */; };
 		ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AD1DB8C4FE00A1B268 /* QRCodeView.m */; };
@@ -2294,6 +2306,17 @@
 		EC68C3CB1D9BD3E800D4401A /* SynchronizeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SynchronizeManager.m; sourceTree = "<group>"; };
 		EC68C3CE1D9BF03600D4401A /* CoverManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverManager.h; sourceTree = "<group>"; };
 		EC68C3CF1D9BF03600D4401A /* CoverManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverManager.m; sourceTree = "<group>"; };
+		EC6FCA791DBF877E0002DA71 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		EC6FCA7A1DBF877E0002DA71 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		EC6FCA7E1DBF87B40002DA71 /* ProductDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailModel.h; sourceTree = "<group>"; };
+		EC6FCA7F1DBF87B40002DA71 /* ProductDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailModel.m; sourceTree = "<group>"; };
+		EC6FCA811DBF87CE0002DA71 /* ProductDetailBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailBaseCell.h; sourceTree = "<group>"; };
+		EC6FCA821DBF87CE0002DA71 /* ProductDetailBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailBaseCell.m; sourceTree = "<group>"; };
+		EC6FCA861DBF8E4D0002DA71 /* ProductDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailToolBar.h; sourceTree = "<group>"; };
+		EC6FCA871DBF8E4D0002DA71 /* ProductDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailToolBar.m; sourceTree = "<group>"; };
+		EC6FCA891DBF8E5B0002DA71 /* ProductDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailToolBar.xib; sourceTree = "<group>"; };
+		EC6FCA8B1DBF94000002DA71 /* ProductDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailView.h; sourceTree = "<group>"; };
+		EC6FCA8C1DBF94000002DA71 /* ProductDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailView.m; sourceTree = "<group>"; };
 		EC7264171D7D279A00AA739B /* ColumnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnCell.h; sourceTree = "<group>"; };
 		EC7264181D7D279A00AA739B /* ColumnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnCell.m; sourceTree = "<group>"; };
 		EC7264191D7D279A00AA739B /* ColumnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnModel.h; sourceTree = "<group>"; };
@@ -2444,12 +2467,24 @@
 		ECB3E7AA1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashServiceOrderDetailBookingFailureCell.m; sourceTree = "<group>"; };
 		ECB3E7AB1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlashServiceOrderDetailBookingFailureCell.xib; sourceTree = "<group>"; };
 		ECBCCEAD1DBDE1F7001B9571 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
-		ECBCCEB01DBDF25C001B9571 /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
-		ECBCCEB11DBDF25C001B9571 /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
-		ECBCCEB31DBE18D7001B9571 /* ComposeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeView.h; sourceTree = "<group>"; };
-		ECBCCEB41DBE18D7001B9571 /* ComposeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeView.m; sourceTree = "<group>"; };
-		ECBCCEB61DBE19E1001B9571 /* ComposeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeButton.h; sourceTree = "<group>"; };
-		ECBCCEB71DBE19E1001B9571 /* ComposeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeButton.m; sourceTree = "<group>"; };
+		ECBCCECC1DBF145C001B9571 /* QRCodeScanBarCodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanBarCodeModel.h; sourceTree = "<group>"; };
+		ECBCCECD1DBF145C001B9571 /* QRCodeScanBarCodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanBarCodeModel.m; sourceTree = "<group>"; };
+		ECBCCEE31DBF152E001B9571 /* ComposeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeBtn.h; sourceTree = "<group>"; };
+		ECBCCEE41DBF152E001B9571 /* ComposeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeBtn.m; sourceTree = "<group>"; };
+		ECBCCEE51DBF152E001B9571 /* ComposeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeData.h; sourceTree = "<group>"; };
+		ECBCCEE61DBF152E001B9571 /* ComposeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeData.m; sourceTree = "<group>"; };
+		ECBCCEE71DBF152E001B9571 /* ComposeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeModel.h; sourceTree = "<group>"; };
+		ECBCCEE81DBF152E001B9571 /* ComposeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeModel.m; sourceTree = "<group>"; };
+		ECBCCEEA1DBF152E001B9571 /* ComposeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeManager.h; sourceTree = "<group>"; };
+		ECBCCEEB1DBF152E001B9571 /* ComposeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeManager.m; sourceTree = "<group>"; };
+		ECBCCEED1DBF152E001B9571 /* ComposeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeButton.h; sourceTree = "<group>"; };
+		ECBCCEEE1DBF152E001B9571 /* ComposeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeButton.m; sourceTree = "<group>"; };
+		ECBCCEF71DBF2A40001B9571 /* ComposeMd5Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeMd5Data.h; sourceTree = "<group>"; };
+		ECBCCEF81DBF2A40001B9571 /* ComposeMd5Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeMd5Data.m; sourceTree = "<group>"; };
+		ECBCCEFA1DBF2CC8001B9571 /* ComposeClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeClass.h; sourceTree = "<group>"; };
+		ECBCCEFB1DBF2CC8001B9571 /* ComposeClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeClass.m; sourceTree = "<group>"; };
+		ECBCCEFE1DBF2EE9001B9571 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		ECBCCEFF1DBF2EE9001B9571 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		ECF5D0A71DB8C4FE00A1B268 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		ECF5D0AA1DB8C4FE00A1B268 /* QRCodeAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeAnimateView.h; sourceTree = "<group>"; };
@@ -2848,10 +2883,6 @@
 				EC4FBC2A1D77CEE300BBD050 /* AUIBannerScrollView */,
 				EC4FBC2E1D77CEE300BBD050 /* CustomTabBar.h */,
 				EC4FBC2F1D77CEE300BBD050 /* CustomTabBar.m */,
-				ECBCCEB31DBE18D7001B9571 /* ComposeView.h */,
-				ECBCCEB41DBE18D7001B9571 /* ComposeView.m */,
-				ECBCCEB61DBE19E1001B9571 /* ComposeButton.h */,
-				ECBCCEB71DBE19E1001B9571 /* ComposeButton.m */,
 				EC4FBC301D77CEE300BBD050 /* FiveStarsView.h */,
 				EC4FBC311D77CEE300BBD050 /* FiveStarsView.m */,
 				EC4FBC321D77CEE300BBD050 /* KTCEmptyDataView.h */,
@@ -2903,6 +2934,7 @@
 		EC4FBC3E1D77CEE300BBD050 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				ECBCCECF1DBF14F8001B9571 /* Compose */,
 				EC31CF621DA9DB9300C49E29 /* Notification */,
 				EC31CF5E1DA9233C00C49E29 /* BuryPoint */,
 				EC68C3CD1D9BF02700D4401A /* Cover */,
@@ -6678,6 +6710,38 @@
 			path = Cover;
 			sourceTree = "<group>";
 		};
+		EC6FCA781DBF877E0002DA71 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC6FCA791DBF877E0002DA71 /* ProductDetailViewController.h */,
+				EC6FCA7A1DBF877E0002DA71 /* ProductDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC6FCA7C1DBF878B0002DA71 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC6FCA8B1DBF94000002DA71 /* ProductDetailView.h */,
+				EC6FCA8C1DBF94000002DA71 /* ProductDetailView.m */,
+				EC6FCA811DBF87CE0002DA71 /* ProductDetailBaseCell.h */,
+				EC6FCA821DBF87CE0002DA71 /* ProductDetailBaseCell.m */,
+				EC6FCA861DBF8E4D0002DA71 /* ProductDetailToolBar.h */,
+				EC6FCA871DBF8E4D0002DA71 /* ProductDetailToolBar.m */,
+				EC6FCA891DBF8E5B0002DA71 /* ProductDetailToolBar.xib */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC6FCA7D1DBF87960002DA71 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC6FCA7E1DBF87B40002DA71 /* ProductDetailModel.h */,
+				EC6FCA7F1DBF87B40002DA71 /* ProductDetailModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
 		EC72640E1D7D279A00AA739B /* ArticleColumnOld */ = {
 			isa = PBXGroup;
 			children = (
@@ -7003,10 +7067,75 @@
 		ECBCCEAF1DBDF221001B9571 /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
-				ECBCCEB01DBDF25C001B9571 /* ProductDetailViewController.h */,
-				ECBCCEB11DBDF25C001B9571 /* ProductDetailViewController.m */,
+				EC6FCA7D1DBF87960002DA71 /* M */,
+				EC6FCA7C1DBF878B0002DA71 /* V */,
+				EC6FCA781DBF877E0002DA71 /* C */,
 			);
 			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		ECBCCECB1DBF145C001B9571 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCECC1DBF145C001B9571 /* QRCodeScanBarCodeModel.h */,
+				ECBCCECD1DBF145C001B9571 /* QRCodeScanBarCodeModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		ECBCCECF1DBF14F8001B9571 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCEFD1DBF2ECF001B9571 /* C */,
+				ECBCCEE21DBF152E001B9571 /* M */,
+				ECBCCEE91DBF152E001B9571 /* S */,
+				ECBCCEEC1DBF152E001B9571 /* V */,
+			);
+			path = Compose;
+			sourceTree = "<group>";
+		};
+		ECBCCEE21DBF152E001B9571 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCEE31DBF152E001B9571 /* ComposeBtn.h */,
+				ECBCCEE41DBF152E001B9571 /* ComposeBtn.m */,
+				ECBCCEFA1DBF2CC8001B9571 /* ComposeClass.h */,
+				ECBCCEFB1DBF2CC8001B9571 /* ComposeClass.m */,
+				ECBCCEE51DBF152E001B9571 /* ComposeData.h */,
+				ECBCCEE61DBF152E001B9571 /* ComposeData.m */,
+				ECBCCEF71DBF2A40001B9571 /* ComposeMd5Data.h */,
+				ECBCCEF81DBF2A40001B9571 /* ComposeMd5Data.m */,
+				ECBCCEE71DBF152E001B9571 /* ComposeModel.h */,
+				ECBCCEE81DBF152E001B9571 /* ComposeModel.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		ECBCCEE91DBF152E001B9571 /* S */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCEEA1DBF152E001B9571 /* ComposeManager.h */,
+				ECBCCEEB1DBF152E001B9571 /* ComposeManager.m */,
+			);
+			path = S;
+			sourceTree = "<group>";
+		};
+		ECBCCEEC1DBF152E001B9571 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCEED1DBF152E001B9571 /* ComposeButton.h */,
+				ECBCCEEE1DBF152E001B9571 /* ComposeButton.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		ECBCCEFD1DBF2ECF001B9571 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				ECBCCEFE1DBF2EE9001B9571 /* ComposeViewController.h */,
+				ECBCCEFF1DBF2EE9001B9571 /* ComposeViewController.m */,
+			);
+			path = C;
 			sourceTree = "<group>";
 		};
 		ECF5D0A41DB8C4FE00A1B268 /* QRCode */ = {
@@ -7021,6 +7150,7 @@
 		ECF5D0A51DB8C4FE00A1B268 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
+				ECBCCECB1DBF145C001B9571 /* M */,
 				ECF5D0A61DB8C4FE00A1B268 /* C */,
 				ECF5D0A91DB8C4FE00A1B268 /* V */,
 			);
@@ -7543,6 +7673,7 @@
 				EC4FC46B1D77CEE400BBD050 /* CouponUsableListViewCell.xib in Resources */,
 				EC0B6DA71D8E7E6700EC20EA /* FlashServiceOrderDetailRemindView.xib in Resources */,
 				EC4FC32C1D77CEE400BBD050 /* ServiceCommentListViewHeaderCell.xib in Resources */,
+				EC6FCA8A1DBF8E5B0002DA71 /* ProductDetailToolBar.xib in Resources */,
 				EC4FC2AC1D77CEE400BBD050 /* ActivityFilterView.xib in Resources */,
 				EC4FC4DB1D77CEE400BBD050 /* UserCenterBaseCell.xib in Resources */,
 				EC4FC4A71D77CEE400BBD050 /* OrderListViewController.xib in Resources */,
@@ -7735,6 +7866,7 @@
 				EC4FC5AE1D77CEEF00BBD050 /* AUIPickerView.m in Sources */,
 				EC4FC3F11D77CEE400BBD050 /* StrategyDetailRelatedServiceListViewController.m in Sources */,
 				ECF704DE1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m in Sources */,
+				EC6FCA7B1DBF877E0002DA71 /* ProductDetailViewController.m in Sources */,
 				EC4FC3FC1D77CEE400BBD050 /* AddressDataManager.m in Sources */,
 				ECAA49381D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.m in Sources */,
 				EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */,
@@ -7749,13 +7881,13 @@
 				EC4FC30F1D77CEE400BBD050 /* SearchHotKeywordsView.m in Sources */,
 				EC4FC4901D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.m in Sources */,
 				EC4FC3131D77CEE400BBD050 /* SearchResultViewController.m in Sources */,
-				ECBCCEB21DBDF25C001B9571 /* ProductDetailViewController.m in Sources */,
 				EC4FC3BC1D77CEE400BBD050 /* WelfareStoreViewController.m in Sources */,
 				EC4FC3D41D77CEE400BBD050 /* StrategyToolBar.m in Sources */,
 				EC4FC2941D77CEE400BBD050 /* ArticleCommentLayout.m in Sources */,
 				EC4FC41E1D77CEE400BBD050 /* BrowseHistoryStoreListItemModel.m in Sources */,
 				EC4FC4211D77CEE400BBD050 /* KTCBrowseHistoryView.m in Sources */,
 				EC4FC4471D77CEE400BBD050 /* CommentDetailViewStrategyHeaderCell.m in Sources */,
+				EC6FCA8D1DBF94000002DA71 /* ProductDetailView.m in Sources */,
 				EC4FC44F1D77CEE400BBD050 /* CommentListViewCell.m in Sources */,
 				EC4FC24B1D77CEE400BBD050 /* GuideManager.m in Sources */,
 				EC4FC3431D77CEE400BBD050 /* FlashAdvanceSettlementAddressCell.m in Sources */,
@@ -7764,6 +7896,8 @@
 				EC4FC4041D77CEE400BBD050 /* UserAddressEditViewCell.m in Sources */,
 				EC4FC2A71D77CEE400BBD050 /* ActivityViewController.m in Sources */,
 				EC4FC33E1D77CEE400BBD050 /* ServiceDetailRelatedServiceListViewController.m in Sources */,
+				ECBCCEF91DBF2A40001B9571 /* ComposeMd5Data.m in Sources */,
+				ECBCCEF51DBF152E001B9571 /* ComposeButton.m in Sources */,
 				EC4FC6401D78092900BBD050 /* FailureViewManager.m in Sources */,
 				EC4FC29F1D77CEE400BBD050 /* ArticleWeChatSmallCell.m in Sources */,
 				EC4FC4641D77CEE400BBD050 /* CouponListViewCell.m in Sources */,
@@ -7806,6 +7940,7 @@
 				ECF5D0FF1DB8CE3900A1B268 /* TCHomeFloor.m in Sources */,
 				EC4FC2CD1D77CEE400BBD050 /* FDHeaderView.m in Sources */,
 				EC4FC2381D77CEE400BBD050 /* ThirdPartyLoginService.m in Sources */,
+				ECBCCF011DBF2EE9001B9571 /* ComposeViewController.m in Sources */,
 				EC4FC3641D77CEE400BBD050 /* ServiceSettlementModel.m in Sources */,
 				ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */,
 				EC4FC2C11D77CEE400BBD050 /* FDCommentCell.m in Sources */,
@@ -7958,6 +8093,7 @@
 				EC4FC44B1D77CEE400BBD050 /* CommentFoundingView.m in Sources */,
 				EC4FC42B1D77CEE400BBD050 /* StoreListItemModel.m in Sources */,
 				EC4FC31D1D77CEE400BBD050 /* AreaAndAgeModel.m in Sources */,
+				EC6FCA881DBF8E4D0002DA71 /* ProductDetailToolBar.m in Sources */,
 				EC4FC2871D77CEE400BBD050 /* AlbumnModel.m in Sources */,
 				EC4FC4681D77CEE400BBD050 /* CouponUsableListView.m in Sources */,
 				EC4FC2491D77CEE400BBD050 /* GuideViewController.m in Sources */,
@@ -8029,6 +8165,7 @@
 				EC4FBBDA1D77CD8300BBD050 /* main.m in Sources */,
 				EC68C3C31D9BBC8D00D4401A /* HomeActivityModel.m in Sources */,
 				EC4FC4A91D77CEE400BBD050 /* OrderModel.m in Sources */,
+				ECBCCEF21DBF152E001B9571 /* ComposeData.m in Sources */,
 				EC4FC2441D77CEE400BBD050 /* Contacts.m in Sources */,
 				EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */,
 				ECF5D1031DB8CE3900A1B268 /* TCHomeFloorTitleContentLayout.m in Sources */,
@@ -8045,13 +8182,11 @@
 				EC4FC39F1D77CEE400BBD050 /* StoreDetailViewModel.m in Sources */,
 				EC4FC2B81D77CEE400BBD050 /* FooterView.m in Sources */,
 				EC4FC3681D77CEE400BBD050 /* ServiceSettlementCouponCell.m in Sources */,
-				ECBCCEB81DBE19E1001B9571 /* ComposeButton.m in Sources */,
 				EC4FC41F1D77CEE400BBD050 /* BrowseHistoryViewController.m in Sources */,
 				EC4FC3291D77CEE400BBD050 /* ServiceDetailModel.m in Sources */,
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
 				EC4FC3A51D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.m in Sources */,
-				ECBCCEB51DBE18D7001B9571 /* ComposeView.m in Sources */,
 				EC4FC3F31D77CEE400BBD050 /* StrategyDetailServiceItemModel.m in Sources */,
 				EC4FC40F1D77CEE400BBD050 /* AppointmentOrderListCell.m in Sources */,
 				EC4FC46D1D77CEE400BBD050 /* FavourateViewController.m in Sources */,
@@ -8074,6 +8209,7 @@
 				ECAA49341D79A45B00799CBE /* ArticleHomeAlbumCollectionViewCell.m in Sources */,
 				EC7264281D7D279A00AA739B /* ColumnModel.m in Sources */,
 				EC4FC4861D77CEE400BBD050 /* FlashServiceOrderDetailModel.m in Sources */,
+				ECBCCEF31DBF152E001B9571 /* ComposeModel.m in Sources */,
 				EC68C3B61D9BBC5700D4401A /* HomeRefreshModel.m in Sources */,
 				EC0B6D9D1D8E748600EC20EA /* ServiceOrderDetailRemindView.m in Sources */,
 				EC4FC2561D77CEE400BBD050 /* RouteAnnotation.m in Sources */,
@@ -8149,6 +8285,7 @@
 				EC4FC5AA1D77CEEF00BBD050 /* ATCountDown.m in Sources */,
 				EC4FC3951D77CEE400BBD050 /* StoreDetailStrategyCell.m in Sources */,
 				EC4FC4AE1D77CEE400BBD050 /* OrderListViewModel.m in Sources */,
+				EC6FCA841DBF87CE0002DA71 /* ProductDetailBaseCell.m in Sources */,
 				EC4FC37F1D77CEE400BBD050 /* SettlementPickScoreViewController.m in Sources */,
 				EC1E2F8D1D827EA4002381E7 /* ArticleWriteBaseCell.m in Sources */,
 				ECF5D0C71DB8C4FE00A1B268 /* QRCodeScanHistoryTableViewCell.m in Sources */,
@@ -8204,6 +8341,7 @@
 				EC4FC2271D77CEE400BBD050 /* KTCActionView.m in Sources */,
 				EC4FC4CF1D77CEE400BBD050 /* SoftwareSettingModel.m in Sources */,
 				EC4FC34C1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.m in Sources */,
+				ECBCCECE1DBF145C001B9571 /* QRCodeScanBarCodeModel.m in Sources */,
 				EC4FC5E41D77CEEF00BBD050 /* LICENSE.md in Sources */,
 				EC4FC5F41D77CEEF00BBD050 /* ZPTag.m in Sources */,
 				EC7264421D7D739800AA739B /* ArticleHomeClassView.m in Sources */,
@@ -8274,11 +8412,13 @@
 				EC4FC45C1D77CEE400BBD050 /* CouponUsableListViewController.m in Sources */,
 				EC810A611D8FE0C700B4B87A /* ZPDateFormate.m in Sources */,
 				EC4FC2581D77CEE400BBD050 /* AlipayManager.m in Sources */,
+				ECBCCEF11DBF152E001B9571 /* ComposeBtn.m in Sources */,
 				ECF5D0FB1DB8CE3900A1B268 /* TCHomeViewController.m in Sources */,
 				ECAA494B1D79A45B00799CBE /* ArticleHomeNoIconCell.m in Sources */,
 				EC4FC3C61D77CEE400BBD050 /* StrategyViewController.m in Sources */,
 				EC4FC3561D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.m in Sources */,
 				EC4FC4131D77CEE400BBD050 /* AppointmentOrderListViewController.m in Sources */,
+				ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */,
 				EC4FC5DA1D77CEEF00BBD050 /* MWCaptionView.m in Sources */,
 				EC1E2F8E1D827EA4002381E7 /* ArticleWriteBottomView.m in Sources */,
 				EC4FC23A1D77CEE400BBD050 /* RegisterViewController.m in Sources */,
@@ -8292,6 +8432,7 @@
 				EC4FC3B71D77CEE400BBD050 /* StoreDetailServiceCell.m in Sources */,
 				EC4FC4AF1D77CEE400BBD050 /* OrderRefundModel.m in Sources */,
 				EC4FC4831D77CEE400BBD050 /* NotificationCenterViewCell.m in Sources */,
+				ECBCCEF41DBF152E001B9571 /* ComposeManager.m in Sources */,
 				EC4FC4011D77CEE400BBD050 /* AddressPickerViewController.m in Sources */,
 				EC4FC4941D77CEE400BBD050 /* FlashServiceOrderDetailRefundTipCell.m in Sources */,
 				EC4FC3311D77CEE400BBD050 /* ServiceDetailConfigTableHeaderView.m in Sources */,
@@ -8319,6 +8460,7 @@
 				EC4FC4C21D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC4FC22B1D77CEE400BBD050 /* CustomTabBar.m in Sources */,
 				EC4FC31F1D77CEE400BBD050 /* SearchResultFactorShowModelManager.m in Sources */,
+				EC6FCA801DBF87B40002DA71 /* ProductDetailModel.m in Sources */,
 				EC4FC2661D77CEE400BBD050 /* RefreshHeader.m in Sources */,
 				EC4FC21E1D77CEE400BBD050 /* UIImage+Category.m in Sources */,
 				EC4FC4BE1D77CEE400BBD050 /* ServiceOrderDetailPayInfoCell.m in Sources */,

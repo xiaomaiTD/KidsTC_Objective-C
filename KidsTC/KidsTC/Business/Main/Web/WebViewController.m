@@ -85,6 +85,7 @@ typedef enum : NSUInteger {
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     webView.opaque = NO;
     webView.backgroundColor = [UIColor whiteColor];
+    webView.scalesPageToFit = YES;
     webView.delegate = self;
     [self.view addSubview:webView];
     self.webView = webView;

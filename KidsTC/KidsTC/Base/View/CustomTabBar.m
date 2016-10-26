@@ -8,6 +8,9 @@
 
 #import "CustomTabBar.h"
 #import "Macro.h"
+#import "UIButton+WebCache.h"
+#import "ComposeManager.h"
+#import "NSString+Category.h"
 
 #define BTN_TITLE_HEIGHT 10
 #define BTN_TITLE_BOTTOM_MARGIN 4
@@ -32,12 +35,7 @@ CGFloat const titleHight = 18;
     if (type == TabBarItemElementTypeAddLink) {
         return CGRectMake(0, 0, CGRectGetWidth(contentRect), CGRectGetHeight(contentRect));
     } else if (type == TabBarItemElementTypeAddCompose) {
-        CGFloat margin = 4;
-        CGFloat img_x = margin;
-        CGFloat img_y = margin;
-        CGFloat img_w = CGRectGetWidth(contentRect) - img_x * 2;
-        CGFloat img_h = CGRectGetHeight(contentRect) - img_y * 2;
-        return CGRectMake(img_x, img_y, img_w, img_h);
+        return CGRectMake(0, 0, CGRectGetWidth(contentRect), CGRectGetHeight(contentRect));
     }else{
         CGFloat imageX = (CGRectGetWidth(contentRect)-BTN_IMAGE_SIZE)*0.5;
         CGFloat imageY = (CGRectGetHeight(contentRect)-BTN_TITLE_BOTTOM_MARGIN-BTN_TITLE_HEIGHT-BTN_IMAGE_SIZE)*0.5;
@@ -70,19 +68,6 @@ CGFloat const titleHight = 18;
     //3.设置图片
     if (element.image_Nor) [self setImage:element.image_Nor forState:UIControlStateNormal];
     if (element.image_Sel) [self setImage:element.image_Sel forState:UIControlStateSelected];
-    
-    TabBarItemElementType type = self.element.type;
-    CALayer *layer = self.imageView.layer;
-    if (type == TabBarItemElementTypeAddCompose) {
-        layer.cornerRadius = 4;
-        layer.masksToBounds = YES;
-        self.imageView.backgroundColor = COLOR_PINK;
-    }else{
-        layer.cornerRadius = 0;
-        layer.masksToBounds = NO;
-        self.imageView.backgroundColor = [UIColor clearColor];
-    }
-    
 }
 
 @end
@@ -92,6 +77,7 @@ CGFloat const titleHight = 18;
 @property (nonatomic, weak) CustomTabBarButton *currentBtn;
 @property (nonatomic, strong) CustomTabBarButton *addLinkBtn;
 @property (nonatomic, strong) TabBarItemElement *addLinkEle;
+@property (nonatomic, strong) TabBarItemElement *codedEle;
 @end
 
 @implementation CustomTabBar
@@ -171,37 +157,59 @@ CGFloat const titleHight = 18;
 
 - (void)didClickTCButton:(CustomTabBarButton *)btn{
     
-    
-    
     if ([self.delegate respondsToSelector:@selector(customTabBar:didSelectElementType:)]) {
         [self.delegate customTabBar:self didSelectElementType:btn.element.type];
     }
     
-    if (self.addLinkBtn && self.addLinkEle) {
-        TabBarItemElementType type = btn.element.type;
-        if (type == TabBarItemElementTypeArticle ||
-            type == TabBarItemElementTypeAddCompose)
-        {
-            self.addLinkBtn.element = self.codedEle;
-        } else {
-            self.addLinkBtn.element = self.addLinkEle;
-        }
-        [self.addLinkBtn setNeedsLayout];
-        [self.addLinkBtn layoutIfNeeded];
-    }
+    [self dealiWithCompose:btn];
     
     self.currentBtn.selected = NO;
     btn.selected = YES;
     self.currentBtn = btn;
     
+}
+
+- (void)dealiWithCompose:(CustomTabBarButton *)btn{
     
+    if (self.addLinkBtn && self.addLinkEle) {
+        TabBarItemElementType type = btn.element.type;
+        
+        if (type == TabBarItemElementTypeArticle ||
+            type == TabBarItemElementTypeAddCompose)
+        {
+            self.addLinkBtn.element = self.codedEle;
+            [self.addLinkBtn setNeedsLayout];
+            [self.addLinkBtn layoutIfNeeded];
+        } else {
+            self.addLinkBtn.element = self.addLinkEle;
+            [self.addLinkBtn setNeedsLayout];
+            [self.addLinkBtn layoutIfNeeded];
+        }
+    }
 }
 
 - (TabBarItemElement *)codedEle{
-    return [TabBarItemElement addEleWithFImgName:@"tabbar_compose" sImgName:@"tabbar_compose"];
+    if (!_codedEle) {
+        _codedEle = [TabBarItemElement addEleWithFImgName:@"tabbar_compose_weibo" sImgName:@"tabbar_compose_weibo"];
+        ComposeBtn *middleBtn = [ComposeManager shareComposeManager].model.data.data.middleBtn;
+        NSString *imgUrl = middleBtn.iconUrl;
+        ComposeBtnIconType iconCode = middleBtn.iconCode;
+        if (iconCode == ComposeBtnIconTypeUrl &&
+            [imgUrl isNotNull]) {
+            [self.addLinkBtn sd_setImageWithURL:[NSURL URLWithString:imgUrl]
+                                       forState:UIControlStateNormal
+                               placeholderImage:[UIImage imageNamed:@"tabbar_compose_weibo"]
+                                      completed:^(UIImage *image,NSError *error,SDImageCacheType cacheType,NSURL *imageURL)
+             {
+                 _codedEle.image_Nor = image;
+                 _codedEle.image_Sel = image;
+                 [self.addLinkBtn setNeedsLayout];
+                 [self.addLinkBtn layoutIfNeeded];
+             }];
+        }
+    }
+    return _codedEle;
 }
-
-
 
 - (void)makeBadgeIndex:(NSUInteger)index type:(TipButtonBadgeType)type value:(NSUInteger)value{
     if (index>self.btns.count-1) return;
