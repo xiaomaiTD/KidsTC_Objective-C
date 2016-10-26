@@ -78,6 +78,9 @@ pathForResource:path ofType:@"" inDirectory:@"SynchronizedData"]
 #define COLOR_BG RGB(246, 246, 246) //全局背景色
 #define COLOR_BG_CEll RGB(255, 255, 255) //全局背景色
 #define COLOR_TEXT RGB(153, 153, 153)//文本颜色
+//商品详情颜色
+#define PRODUCT_DETAIL_RED [UIColor colorWithRed:0.945 green:0.412 blue:0.400 alpha:1]//红色
+#define PRODUCT_DETAIL_BLUE [UIColor colorWithRed:0.455 green:0.694 blue:0.910 alpha:1]//蓝色
 
 #pragma mark - 站位图片
 #define PLACEHOLDERIMAGE_SMALL ([UIImage imageWithColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.3]])

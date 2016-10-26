@@ -6,8 +6,9 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ProductDetailData.h"
 
 @interface ProductDetailModel : NSObject
-
+@property (nonatomic, assign) NSInteger errNo;
+@property (nonatomic, strong) ProductDetailData *data;
 @end

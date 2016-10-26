@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ProductDetailContentEleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="适用年龄：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCf-dj-8ej">
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="el4-mn-cvl"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u62-jM-jV2">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zCf-dj-8ej" secondAttribute="bottom" constant="4" id="6lI-C0-V46"/>
+                    <constraint firstAttribute="bottom" secondItem="u62-jM-jV2" secondAttribute="bottom" constant="4" id="9Ne-zI-nga"/>
+                    <constraint firstItem="zCf-dj-8ej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="MtA-es-Bd3"/>
+                    <constraint firstItem="u62-jM-jV2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="XNe-Ch-dFw"/>
+                    <constraint firstAttribute="trailing" secondItem="u62-jM-jV2" secondAttribute="trailing" constant="12" id="g66-Ud-hMt"/>
+                    <constraint firstItem="u62-jM-jV2" firstAttribute="leading" secondItem="zCf-dj-8ej" secondAttribute="trailing" id="rgE-3L-pel"/>
+                    <constraint firstItem="zCf-dj-8ej" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="saB-et-nWz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tipL" destination="zCf-dj-8ej" id="O6C-YV-u47"/>
+                <outlet property="valueL" destination="u62-jM-jV2" id="1Kx-zE-3Oc"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

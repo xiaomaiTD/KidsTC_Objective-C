@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailData.h"
 
 typedef enum : NSUInteger {
     ProductDetailViewActionTypeSegue = 1
@@ -20,5 +21,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailView : UIView
+@property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailViewDelegate> delegate;
 @end

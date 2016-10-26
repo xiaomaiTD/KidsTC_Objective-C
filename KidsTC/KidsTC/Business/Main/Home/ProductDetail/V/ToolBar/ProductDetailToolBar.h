@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailData.h"
 
 extern CGFloat const kProductDetailToolBarHeight;
 
@@ -24,7 +25,7 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailToolBar : UIView
-
+@property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailToolBarDelegate> delegate;
 
 @end

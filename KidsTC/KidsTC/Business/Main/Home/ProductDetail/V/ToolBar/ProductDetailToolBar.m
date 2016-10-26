@@ -37,5 +37,10 @@ CGFloat const kProductDetailToolBarHeight = 60;
     }
 }
 
+- (void)setData:(ProductDetailData *)data {
+    _data = data;
+    
+}
+
 
 @end

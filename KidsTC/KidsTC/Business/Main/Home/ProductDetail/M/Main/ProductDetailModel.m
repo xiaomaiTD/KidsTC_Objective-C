@@ -9,5 +9,7 @@
 #import "ProductDetailModel.h"
 
 @implementation ProductDetailModel
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"errNo":@"errno"};
+}
 @end

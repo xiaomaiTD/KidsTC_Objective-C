@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailData.h"
+
+
 
 @interface ProductDetailBaseCell : UITableViewCell
-
+@property (nonatomic, strong) ProductDetailData *data;
 @end

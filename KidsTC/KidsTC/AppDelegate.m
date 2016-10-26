@@ -91,8 +91,6 @@
     
     [self JSPatchRemote:true];
     
-    [self setupUserAgent];
-    
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
     
     [[User shareUser] checkLoginStatusFromServer];
@@ -108,6 +106,8 @@
     [BuryPointManager registerSdk];
     
     [[KTCMapService shareKTCMapService] startService];
+    
+    [self setupUserAgent];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{
@@ -137,6 +137,7 @@
         TCLog(@"newUserAgent:%@",newUserAgent);
         NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:newUserAgent, @"UserAgent", nil];
         [USERDEFAULTS registerDefaults:dictionnary];
+        [USERDEFAULTS synchronize];
     }
 }
 
