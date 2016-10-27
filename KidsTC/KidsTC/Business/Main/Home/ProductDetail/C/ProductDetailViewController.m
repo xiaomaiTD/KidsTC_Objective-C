@@ -14,6 +14,13 @@
 #import "ProductDetailModel.h"
 #import "ProductDetailRecommendModel.h"
 
+#import "SegueMaster.h"
+#import "WebViewController.h"
+#import "CommentDetailViewController.h"
+#import "CommentListViewController.h"
+#import "ProductDetailCalendarViewController.h"
+#import "ProductDetailAddressViewController.h"
+
 @interface ProductDetailViewController ()<ProductDetailViewDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
@@ -104,9 +111,131 @@
                actionType:(ProductDetailViewActionType)type
                     value:(id)value
 {
-    
+    switch (type) {
+        case ProductDetailViewActionTypeSegue://通用跳转
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+        case ProductDetailViewActionTypeDate://显示日期
+        {
+            ProductDetailCalendarViewController *controller = [[ProductDetailCalendarViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case ProductDetailViewActionTypeAddress://显示位置
+        {
+            ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case ProductDetailViewActionTypeReplyConsult://回复咨询
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeMoreConsult://更多咨询
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeStandard://套餐信息
+        {
+            ProductDetailStandard *standard = value;
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:standard.productId channelId:standard.channelId];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case ProductDetailViewActionTypeBuyStandard://购买套餐
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeCoupon://优惠券
+        case ProductDetailViewActionTypeConsult://在线咨询
+        {
+            WebViewController *controller = [[WebViewController alloc]init];
+            controller.urlString = value;
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case ProductDetailViewActionTypeContact://联系商家
+        {
+            NSArray<ProductDetailStore *> *store = value;
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择门店" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+            [store enumerateObjectsUsingBlock:^(ProductDetailStore *obj, NSUInteger idx, BOOL *stop) {
+                UIAlertAction *action = [UIAlertAction actionWithTitle:obj.storeName style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self makePhoneCallWithNumbers:obj.phones];
+                }];
+                [controller addAction:action];
+            }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [controller addAction:cancelAction];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+            break;
+        case ProductDetailViewActionTypeComment://查看评论
+        {
+            ProductDetailView *view = (ProductDetailView *)self.view;
+            ProductDetailData *data = view.data;
+            NSUInteger index = [value integerValue];
+            if (index<data.commentItemsArray.count) {
+                CommentListItemModel *model = data.commentItemsArray[index];
+                model.relationIdentifier = self.productId;
+                CommentDetailViewController *controller =
+                [[CommentDetailViewController alloc] initWithSource:CommentDetailViewSourceServiceOrStore
+                                                       relationType:(CommentRelationType)(data.productType)
+                                                        headerModel:model];
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+        }
+            break;
+        case ProductDetailViewActionTypeMoreComment://查看全部评论
+        {
+            ProductDetailData *data = value;
+            ProductDetailComment *comment = value;
+            NSDictionary *commentNumberDic = @{CommentListTabNumberKeyAll:@(comment.all),
+                                               CommentListTabNumberKeyGood:@(comment.good),
+                                               CommentListTabNumberKeyNormal:@(comment.normal),
+                                               CommentListTabNumberKeyBad:@(comment.bad),
+                                               CommentListTabNumberKeyPicture:@(comment.pic)};
+            CommentListViewController *controller =
+            [[CommentListViewController alloc] initWithIdentifier:self.productId
+                                                     relationType:(CommentRelationType)(data.productType)
+                                                 commentNumberDic:commentNumberDic];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case ProductDetailViewActionTypeRecommend://为您推荐
+        {
+            ProductDetailRecommendItem *item = value;
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.productNo channelId:item.channelId];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+    }
 }
 
-
+- (void)makePhoneCallWithNumbers:(NSArray *)numbers {
+    if (!numbers || ![numbers isKindOfClass:[NSArray class]]) {
+        return;
+    }
+    if ([numbers count] == 0) {
+        return;
+    } else if ([numbers count] == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", [numbers firstObject]]]];
+    } else {
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择联系电话" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        for (NSString *phoneNumber in numbers) {
+            UIAlertAction *action = [UIAlertAction actionWithTitle:phoneNumber style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", phoneNumber]]];
+            }];
+            [controller addAction:action];
+        }
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+}
 
 @end

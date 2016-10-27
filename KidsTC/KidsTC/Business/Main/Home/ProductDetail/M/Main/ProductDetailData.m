@@ -27,9 +27,13 @@
     
     _picRate = _picRate>0?_picRate:0.6;
     
+    _isCanBuy = _status == 1;
+    
     [self setupInfo];
     
     [self setupAttApply];
+    
+    [self setupCommentList:dic];
     
     return YES;
 }
@@ -48,12 +52,6 @@
         attPromote.font = [UIFont systemFontOfSize:17];
         attPromote.color = [UIColor darkGrayColor];
         attPromote.lineSpacing = 4;
-        
-        
-        [_promotionLink enumerateObjectsUsingBlock:^(ProductDetailPromotionLink * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSRange range = [_promote rangeOfString:obj.linkKey];
-            
-        }];
         _attPromote = [[NSAttributedString alloc] initWithAttributedString:attPromote];
     }
     
@@ -81,5 +79,17 @@
         return [[NSAttributedString alloc] initWithAttributedString:attStr];
     }
     return nil;
+}
+
+- (void)setupCommentList:(NSDictionary *)data {
+    NSArray *commentsArray = [data objectForKey:@"commentList"];
+    NSMutableArray *commentItemsTempArray = [[NSMutableArray alloc] init];
+    if ([commentsArray isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *singleDic in commentsArray) {
+            CommentListItemModel *item = [[CommentListItemModel alloc] initWithRawData:singleDic];
+            [commentItemsTempArray addObject:item];
+        }
+    }
+    self.commentItemsArray = [NSArray arrayWithArray:commentItemsTempArray];
 }
 @end

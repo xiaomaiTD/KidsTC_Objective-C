@@ -14,7 +14,7 @@
     
     _address = [_address isNotNull]?_address:@"";
     _distance = [_distance isNotNull]?_distance:@"";
-    _priceStr = [NSString stringWithFormat:@"¥%@",_price];
+    _priceStr = [NSString stringWithFormat:@"¥%@起",_price];
     _process = [_process isNotNull]?_process:@"";
     _locationStr = [NSString stringWithFormat:@"%@ %@",_address,_distance];
     return YES;

@@ -13,14 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tapGR];
-    
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
-}
 
 @end

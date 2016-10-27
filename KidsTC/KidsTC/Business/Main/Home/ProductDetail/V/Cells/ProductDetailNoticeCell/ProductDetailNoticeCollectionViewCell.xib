@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductDetailNoticeCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_50_50" translatesAutoresizingMaskIntoConstraints="NO" id="9eN-fW-snT">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="9eN-fW-snT" secondAttribute="height" multiplier="1:1" id="k3n-VJ-5ub"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26C-Fe-vlZ">
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="ltO-fZ-mMX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="26C-Fe-vlZ" secondAttribute="trailing" id="Hdg-dN-l7B"/>
+                <constraint firstItem="9eN-fW-snT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="Mw9-aX-OZx"/>
+                <constraint firstItem="26C-Fe-vlZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PRp-lv-QcN"/>
+                <constraint firstItem="9eN-fW-snT" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="e83-Fy-YzU"/>
+                <constraint firstItem="26C-Fe-vlZ" firstAttribute="top" secondItem="9eN-fW-snT" secondAttribute="bottom" constant="10" id="myg-1w-Q55"/>
+                <constraint firstAttribute="bottom" secondItem="26C-Fe-vlZ" secondAttribute="bottom" constant="10" id="syY-Vp-aNq"/>
+            </constraints>
+            <size key="customSize" width="141" height="142"/>
+            <connections>
+                <outlet property="imageView" destination="9eN-fW-snT" id="gvO-hw-iM7"/>
+                <outlet property="titleL" destination="26C-Fe-vlZ" id="r6D-L6-CNw"/>
+            </connections>
+            <point key="canvasLocation" x="-105" y="89"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder_50_50" width="50" height="50"/>
+    </resources>
+</document>

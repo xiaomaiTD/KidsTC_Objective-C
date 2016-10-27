@@ -21,6 +21,7 @@
 #import "ProductDetailContentEleCell.h"
 #import "ProductDetailJoinCell.h"
 #import "ProductDetailTwoColumnCell.h"
+#import "ProductDetailTwoColumnBottomBarCell.h"
 #import "ProductDetailStandardCell.h"
 #import "ProductDetailCouponCell.h"
 #import "ProductDetailNoticeCell.h"
@@ -30,7 +31,9 @@
 #import "ProductDetailCommentMoreCell.h"
 #import "ProductDetailRecommendCell.h"
 
-@interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailToolBarDelegate>
+#import "ProductDetailTwoColumnToolBar.h"
+
+@interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) ProductDetailToolBar *toolBar;
 
@@ -40,9 +43,13 @@
 @property (nonatomic, strong) ProductDetailAddressCell     *addressCell;
 @property (nonatomic, strong) ProductDetailJoinCell        *joinCell;
 @property (nonatomic, strong) ProductDetailTwoColumnCell   *twoColumnCell;
+@property (nonatomic, strong) ProductDetailTwoColumnBottomBarCell *twoColumnBottomBarCell;
 @property (nonatomic, strong) ProductDetailCouponCell      *couponCell;
 @property (nonatomic, strong) ProductDetailNoticeCell      *noticeCell;
 @property (nonatomic, strong) ProductDetailContactCell     *contactCell;
+
+@property (nonatomic, assign) NSUInteger twoColumnSection;
+@property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
 
 @property (nonatomic, strong) NSArray<NSArray<ProductDetailBaseCell *> *> *sections;
 @end
@@ -57,8 +64,9 @@
         
         [self setupTableView];
         
-        [self setupToolBar];
+        [self setupTwoColumnToolBar];
         
+        [self setupToolBar];
     }
     return self;
 }
@@ -66,7 +74,10 @@
 - (void)setData:(ProductDetailData *)data {
     _data = data;
     [self setupSections];
+    _toolBar.hidden = NO;
+    _twoColumnToolBar.hidden = NO;
     [self.tableView reloadData];
+    [self scrollViewDidScroll:self.tableView];
 }
 
 #pragma mark - setupTableView
@@ -129,7 +140,11 @@
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
     [section04 addObject:_twoColumnCell];
-    if (section04.count>0) [sections addObject:section04];
+    [section04 addObject:_twoColumnBottomBarCell];
+    _twoColumnSection = sections.count;
+    if (section04.count>0) {
+        [sections addObject:section04];
+    }
     
     
     //套餐明细
@@ -180,7 +195,7 @@
         titleCell08.text = @"活动评价";
         [section08 addObject:titleCell08];
         [_data.commentList enumerateObjectsUsingBlock:^(ProduceDetialCommentItem *obj, NSUInteger idx, BOOL *stop) {
-            if (idx>=2) {
+            if (idx>=5) {
                 [section08 addObject:self.commentMoreCell];
                 *stop = YES;
             }else{
@@ -219,6 +234,7 @@
     _addressCell   = [self viewWithNib:@"ProductDetailAddressCell"];
     _joinCell      = [self viewWithNib:@"ProductDetailJoinCell"];
     _twoColumnCell = [self viewWithNib:@"ProductDetailTwoColumnCell"];
+    _twoColumnBottomBarCell = [self viewWithNib:@"ProductDetailTwoColumnBottomBarCell"];
     _couponCell    = [self viewWithNib:@"ProductDetailCouponCell"];
     _noticeCell    = [self viewWithNib:@"ProductDetailNoticeCell"];
     _contactCell   = [self viewWithNib:@"ProductDetailContactCell"];
@@ -259,6 +275,19 @@
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGFloat offsetY = scrollView.contentOffset.y;
+    
+    CGFloat y = CGRectGetMinY(_twoColumnCell.frame) - CGRectGetHeight(_twoColumnToolBar.bounds) - offsetY;
+    if ( y < 64 && y > 64-CGRectGetHeight(_twoColumnCell.frame) ) {
+        y = 64;
+    }
+    CGRect frame = _twoColumnToolBar.frame;
+    frame.origin.y = y;
+    _twoColumnToolBar.frame = frame;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
 }
@@ -268,6 +297,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == _twoColumnSection) {
+        return CGRectGetHeight(_twoColumnToolBar.bounds);
+    }
     return 0.001;
 }
 
@@ -277,7 +309,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProductDetailBaseCell *cell = self.sections[indexPath.section][indexPath.row];
-    //cell.backgroundColor = RandomColor;
+    cell.delegate = self;
     cell.data = _data;
     return cell;
 }
@@ -285,6 +317,152 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+#pragma mark ProductDetailBaseCellDelegate
+
+- (void)productDetailBaseCell:(ProductDetailBaseCell *)cell
+                   actionType:(ProductDetailBaseCellActionType)type
+                        value:(id)value
+{
+
+    switch (type) {
+        case ProductDetailBaseCellActionTypeSegue://通用跳转
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeSegue value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeShowDate://显示日期
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeDate value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeShowAddress://显示位置
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeAddress value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeReplyConsult://回复咨询
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeReplyConsult value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeMoreConsult://查看更多咨询
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeMoreConsult value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeStandard://套餐信息
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeStandard value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeBuyStandard://购买套餐
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeBuyStandard value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeCoupon://优惠券
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeCoupon value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeConsult://在线咨询
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeConsult value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeContact://联系商家
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeContact value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeComment://查看评论
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeComment value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeMoreComment://查看全部评论
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeMoreComment value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeRecommend://为您推荐
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+                [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeRecommend value:value];
+            }
+        }
+            break;
+        case ProductDetailBaseCellActionTypeOpenWebView://展开detail
+        {
+            _twoColumnCell.webViewHasOpen = YES;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:_twoColumnSection];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+            break;
+    }
+}
+
+#pragma mark - setupTwoColumnToolBar
+
+- (void)setupTwoColumnToolBar {
+    _twoColumnToolBar = [self viewWithNib:@"ProductDetailTwoColumnToolBar"];
+    _twoColumnToolBar.delegate = self;
+    _twoColumnToolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kTwoColumnToolBarH);
+    [self addSubview:_twoColumnToolBar];
+    _twoColumnToolBar.hidden = YES;
+}
+
+
+#pragma mark ProductDetailTwoColumnToolBarDelegate
+
+- (void)productDetailTwoColumnToolBar:(ProductDetailTwoColumnToolBar *)toolBar
+                            ationType:(ProductDetailTwoColumnToolBarActionType)type
+                                value:(id)value
+{
+    switch (type) {
+        case ProductDetailTwoColumnToolBarActionTypeDetail:
+        {
+            _twoColumnCell.showType = ProductDetailTwoColumnShowTypeDetail;
+            _twoColumnBottomBarCell.showType = ProductDetailTwoColumnShowTypeDetail;
+        }
+            break;
+        case ProductDetailTwoColumnToolBarActionTypeConsult:
+        {
+            _twoColumnCell.showType = ProductDetailTwoColumnShowTypeConsult;
+            _twoColumnBottomBarCell.showType = ProductDetailTwoColumnShowTypeConsult;
+        }
+            break;
+    }
+    NSIndexPath *indexPath0 = [NSIndexPath indexPathForRow:0 inSection:_twoColumnSection];
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:0 inSection:_twoColumnSection];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath0,indexPath1] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 
 #pragma mark - setupToolBar
 
@@ -294,12 +472,15 @@
     toolBar.frame = CGRectMake(0, SCREEN_HEIGHT - kProductDetailToolBarHeight, SCREEN_WIDTH, kProductDetailToolBarHeight);
     [self addSubview:toolBar];
     self.toolBar = toolBar;
+    toolBar.hidden = YES;
 }
 
 #pragma mark ProductDetailToolBarDelegate
 
-- (void)productDetailToolBar:(ProductDetailToolBar *)toolBar btnType:(ProductDetailToolBarBtnType)type value:(id)value {
-    
+- (void)productDetailToolBar:(ProductDetailToolBar *)toolBar
+                     btnType:(ProductDetailToolBarBtnType)type
+                       value:(id)value
+{
     switch (type) {
         case ProductDetailToolBarBtnTypeContact:
         {
@@ -321,5 +502,9 @@
     }
     
 }
+
+
+
+
 
 @end

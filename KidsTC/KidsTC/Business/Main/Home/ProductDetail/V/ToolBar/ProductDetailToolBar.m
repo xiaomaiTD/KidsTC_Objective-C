@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailToolBar.h"
+#import "UIButton+Category.h"
 
 CGFloat const kProductDetailToolBarHeight = 60;
 
@@ -29,6 +30,8 @@ CGFloat const kProductDetailToolBarHeight = 60;
     self.attentionBtn.tag = ProductDetailToolBarBtnTypeAttention;
     self.buyBtn.tag = ProductDetailToolBarBtnTypeBuy;
     
+    [self.buyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self.buyBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
 }
 
 - (IBAction)action:(UIButton *)sender {
@@ -39,7 +42,10 @@ CGFloat const kProductDetailToolBarHeight = 60;
 
 - (void)setData:(ProductDetailData *)data {
     _data = data;
-    
+    NSString *imageName = data.isFavor?@"ProductDetail_11":@"ProductDetail_04";
+    [self.attentionBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    self.buyBtn.enabled = data.isCanBuy;
+    [self.buyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
 }
 
 

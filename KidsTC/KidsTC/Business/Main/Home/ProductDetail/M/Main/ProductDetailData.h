@@ -17,6 +17,7 @@
 #import "ProductDetailStore.h"
 #import "ProductDetailTime.h"
 #import "ProductDetailRecommendItem.h"
+#import "CommentListItemModel.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -80,6 +81,12 @@ typedef enum : NSUInteger {
 
 //recommend
 @property (nonatomic, strong) NSArray<ProductDetailRecommendItem *> *recommends;
+
+//canBuy
+@property (nonatomic, assign) BOOL isCanBuy;
+
+//评论详情
+@property (nonatomic, strong) NSArray<CommentListItemModel *> *commentItemsArray;
 
 @end
 

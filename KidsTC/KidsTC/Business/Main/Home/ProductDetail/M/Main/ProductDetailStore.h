@@ -13,4 +13,10 @@
 @property (nonatomic, strong) NSString *storeName;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *mapAddress;
+@property (nonatomic, assign) NSUInteger level;
+@property (nonatomic, strong) NSString *imageUrl;
+@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *distance;
+//selfDefine
+@property (nonatomic, strong) NSArray<NSString *> *phones;
 @end
