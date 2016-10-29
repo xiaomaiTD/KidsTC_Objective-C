@@ -167,7 +167,7 @@
     
     
     //领取优惠券
-    if (_data.coupons.count>0) {
+    if (_data.coupons.count>0 && _data.canProvideCoupon) {
         NSMutableArray *section06 = [NSMutableArray new];
         [section06 addObject:_couponCell];
         if (section06.count>0) [sections addObject:section06];

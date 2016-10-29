@@ -58,12 +58,12 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [BuryPointManager trackBegin:self.pageId];
+    [BuryPointManager trackBegin:self.pageId pageName:self.pageName];
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [BuryPointManager trackEnd:self.pageId];
+    [BuryPointManager trackEnd:self.pageId pageName:self.pageName];
 }
 
 - (BOOL)prefersStatusBarHidden{

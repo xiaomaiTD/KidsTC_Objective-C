@@ -65,7 +65,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeCoupon value:self.data.couponLink];
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeCoupon value:@(self.data.canProvideCoupon)];
     }
 }
 

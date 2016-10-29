@@ -25,6 +25,8 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10502;
+    
     self.navigationItem.title = @"选择优惠券";
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"确定" postion:UIBarButtonPositionRight target:self action:@selector(rightBarButtonItemAction)];

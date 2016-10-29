@@ -76,6 +76,8 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10702;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.title = @"评论列表";

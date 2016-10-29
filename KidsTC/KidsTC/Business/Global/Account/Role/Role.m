@@ -68,10 +68,23 @@
     return role;
 }
 
++ (instancetype)roleWityID:(NSInteger)ID {
+    
+    RoleType roleType;
+    RoleSex roleSex;
+    if (ID%2 == 1) {
+        roleType = (RoleType)ID;
+        roleSex = (roleType==RoleTypeZeroToOne)?RoleSexUnknown:RoleSexMale;
+    }else{
+        roleType = (RoleType)(ID-1);
+        roleSex = RoleSexFemale;
+    }
+    return [Role instanceWithType:roleType sex:roleSex];
+}
+
 + (NSUInteger)roleIdentifierWithType:(RoleType)type sex:(RoleSex)sex {
     NSUInteger identifier = 0;
     if (sex == RoleSexUnknown) {
-        
         identifier = type;
     } else {
         identifier = type + sex - 1;
@@ -86,6 +99,10 @@
 
 - (NSString *)roleIdentifierString {
     return [NSString stringWithFormat:@"%zd", [Role roleIdentifierWithType:self.type sex:self.sex]];
+}
+
+- (NSInteger)roleIdentifier {
+    return [Role roleIdentifierWithType:self.type sex:self.sex];
 }
 
 - (NSString *)statusName{

@@ -74,7 +74,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageId = @"pv_main_article";
+    
+    self.pageId = 10701;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self setupNaviItems];

@@ -64,8 +64,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10501;
+    
     self.navigationItem.title = @"结算";
-    self.pageId = @"pv_orderpalce";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.contentInset = UIEdgeInsetsMake(0, 0, TOOLBAR_HEIGHT, 0);

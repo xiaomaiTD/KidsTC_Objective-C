@@ -23,7 +23,7 @@
 
 @implementation SynchronizeManager
 
-+ (void)synchronize{
++ (void)synchronizeEnterForeground{
     
     //===================== LOCAL SAVE ===========================
     
@@ -47,12 +47,25 @@
     
     [[HomeActivityManager shareHomeActivityManager] synchronize];
     
-    [[AppVersionManager shareAppVersionManager] checkRemote];
-    
     [[HomeRefreshManager shareHomeActivityManager] synchronize];
     
+    [[AppVersionManager shareAppVersionManager] checkRemote];
+    
     [[ComposeManager shareComposeManager] synchronize];
+    
+    [[User shareUser] getUserPopulation];
 }
 
-
++ (void)synchronizeEnterBackground {
+    
+    [[AddTabManager shareAddTabManager] synchronize];
+    
+    [[ThemeManager shareThemeManager] synchronize];
+    
+    [[PosterManager sharePosterManager] synchronize];
+    
+    [[HomeActivityManager shareHomeActivityManager] synchronize];
+    
+    [[HomeRefreshManager shareHomeActivityManager] synchronize];
+}
 @end

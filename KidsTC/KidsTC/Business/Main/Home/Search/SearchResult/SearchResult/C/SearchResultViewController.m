@@ -88,6 +88,9 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.pageId = 10202;
+    
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     

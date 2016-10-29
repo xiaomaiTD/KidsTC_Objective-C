@@ -50,6 +50,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10504;
+    
     self.navigationItem.title = @"结算";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];

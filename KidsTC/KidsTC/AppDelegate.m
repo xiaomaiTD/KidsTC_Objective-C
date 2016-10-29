@@ -48,7 +48,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [SynchronizeManager synchronize];
+    [SynchronizeManager synchronizeEnterForeground];
     [[CoverManager shareCoverManager] showPoster:^{
         [_window makeKeyAndVisible];
     }];
@@ -56,7 +56,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [SynchronizeManager synchronize];
+    [SynchronizeManager synchronizeEnterBackground];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -97,13 +97,13 @@
     
     [[CookieManager shareCookieManager] setCookies];
     
-    [SynchronizeManager synchronize];
+    [SynchronizeManager synchronizeEnterForeground];
     
     [WeChatManager sharedManager];
     
     [NotificationService regiterService];
     
-    [BuryPointManager registerSdk];
+    [BuryPointManager startBuryPoint];
     
     [[KTCMapService shareKTCMapService] startService];
     

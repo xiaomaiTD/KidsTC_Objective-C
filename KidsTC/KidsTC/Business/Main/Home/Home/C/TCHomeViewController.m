@@ -70,6 +70,8 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10101;
+    
     [self setupUI];
     
     [self addObserver];

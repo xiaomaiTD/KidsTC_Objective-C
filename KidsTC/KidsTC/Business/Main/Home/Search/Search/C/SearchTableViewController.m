@@ -152,6 +152,8 @@ static NSString *reuseIdentifier = @"SearchTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10201;
+    
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;

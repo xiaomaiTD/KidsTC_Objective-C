@@ -231,7 +231,12 @@ typedef enum {
     }
     
     RoleSex roleSex = (RoleSex)(self.sexTag+1);
-    [User shareUser].role = [Role instanceWithType:roleType sex:roleSex];;
+    Role *role = [Role instanceWithType:roleType sex:roleSex];
+    if ([role roleIdentifier] != [[User shareUser].role roleIdentifier]) {
+        [User shareUser].role = role;
+        [[User shareUser] updateUserPopulation];
+    }
+    
     [self back];
 }
 

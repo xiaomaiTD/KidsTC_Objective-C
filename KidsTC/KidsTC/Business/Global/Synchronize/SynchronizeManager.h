@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 @interface SynchronizeManager : NSObject
-+ (void)synchronize;
++ (void)synchronizeEnterForeground;
++ (void)synchronizeEnterBackground;
 @end

@@ -15,6 +15,7 @@
 #import "ProductDetailModel.h"
 #import "ProductDetailRecommendModel.h"
 #import "ProductDetailConsultModel.h"
+#import "ProductDetailGetCouponModel.h"
 
 #import "SegueMaster.h"
 #import "WebViewController.h"
@@ -30,12 +31,13 @@
 #import "CommonShareViewController.h"
 #import "ServiceDetailViewController.h"
 #import "StoreDetailViewController.h"
+#import "ProductDetailGetCouponListViewController.h"
 
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
 
 
-@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate>
+@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
 @end
@@ -59,6 +61,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10401;
     
     //self.naviColor = [UIColor whiteColor];
     self.navigationItem.title = @"服务详情";
@@ -335,9 +339,38 @@
 #pragma mark - coupon
 
 - (void)coupon:(id)value {
-    WebViewController *controller = [[WebViewController alloc]init];
-    controller.urlString = value;
-    [self.navigationController pushViewController:controller animated:YES];
+    BOOL canProvideCoupon = [value boolValue];
+    if (canProvideCoupon) {
+        NSDictionary *param = @{@"productId":self.productId};
+        [TCProgressHUD showSVP];
+        [Request startWithName:@"GET_PRODUCT_DETAIL_USER_COUPON" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [TCProgressHUD dismissSVP];
+            ProductDetailGetCouponModel *model = [ProductDetailGetCouponModel modelWithDictionary:dic];
+            if (model.data.count<1) {
+                [[iToast makeText:@"该商品暂无优惠券哦~"] show];
+                return;
+            }
+            ProductDetailGetCouponListViewController *controller = [[ProductDetailGetCouponListViewController alloc] initWithNibName:@"ProductDetailGetCouponListViewController" bundle:nil];
+            controller.coupons = model.data;
+            controller.productId = self.productId;
+            controller.delegate = self;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [TCProgressHUD dismissSVP];
+            [[iToast makeText:@"获取优惠券列表失败，请稍后再试~"] show];
+        }];
+    }
+}
+
+#pragma mark ProductDetailGetCouponListViewControllerDelegate
+
+- (void)productDetailGetCouponListViewController:(ProductDetailGetCouponListViewController *)controller
+                                      actionType:(ProductDetailGetCouponListViewControllerActionType)type
+                                           value:(id)value
+{
+    
 }
 
 #pragma mark - consult

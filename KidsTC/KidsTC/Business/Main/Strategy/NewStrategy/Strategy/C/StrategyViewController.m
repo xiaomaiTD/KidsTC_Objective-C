@@ -38,10 +38,12 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10801;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.title = @"亲子攻略";
-    self.pageId = @"pv_stgys";
+    
     
     StrategyCollectionViewFlowLayout *layout = [[StrategyCollectionViewFlowLayout alloc]init];
     UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];

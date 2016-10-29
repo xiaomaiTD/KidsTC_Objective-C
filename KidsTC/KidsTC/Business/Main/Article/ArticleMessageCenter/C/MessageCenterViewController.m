@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10706;
+    
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;

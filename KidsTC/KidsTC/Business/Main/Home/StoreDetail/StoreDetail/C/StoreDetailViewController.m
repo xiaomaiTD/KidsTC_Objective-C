@@ -62,8 +62,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10402;
+    
     self.navigationItem.title = @"门店详情";
-    self.pageId = @"pv_store_dtl";
+    
     self.hidesBottomBarWhenPushed = YES;
     
     self.detailView.delegate = self;

@@ -25,6 +25,8 @@ static NSString *const ID = @"SettlementPickStoreViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10505;
+    
     self.navigationItem.title = @"选择门店";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];

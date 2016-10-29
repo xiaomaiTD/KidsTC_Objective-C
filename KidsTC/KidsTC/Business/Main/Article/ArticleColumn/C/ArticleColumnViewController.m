@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10708;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.header = [[[NSBundle mainBundle] loadNibNamed:@"ArticleColumnHeader" owner:self options:nil] firstObject];

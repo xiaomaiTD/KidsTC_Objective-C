@@ -78,7 +78,14 @@
     NSString *storeName = [_storeName isNotNull]?_storeName:@"";
     NSString *stoeAddress = [NSString stringWithFormat:@"%@%@",storeName, distance];
     if (stoeAddress.length>0) {
+        
+        NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
+        attachment.image = [UIImage imageNamed:@"ProductDetail_02"];
+        attachment.bounds = CGRectMake(0, -5, 13, 15);
+        NSAttributedString *attachmentStr = [NSAttributedString attributedStringWithAttachment:attachment];
+        
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
+        [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
         attStoreAddress.color = [UIColor lightGrayColor];
         attStoreAddress.font = [UIFont systemFontOfSize:15];

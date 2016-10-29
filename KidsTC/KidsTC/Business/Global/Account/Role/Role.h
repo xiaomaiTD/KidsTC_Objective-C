@@ -29,9 +29,13 @@ typedef enum {
 
 + (instancetype)instanceWithType:(RoleType)type sex:(RoleSex)sex;
 
++ (instancetype)roleWityID:(NSInteger)ID;
+
 + (NSUInteger)roleIdentifierWithType:(RoleType)type sex:(RoleSex)sex;
 
 - (NSString *)roleIdentifierString;
+
+- (NSInteger)roleIdentifier;
 
 - (NSString *)statusName;
 

@@ -55,6 +55,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10704;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.title = @"评论列表";

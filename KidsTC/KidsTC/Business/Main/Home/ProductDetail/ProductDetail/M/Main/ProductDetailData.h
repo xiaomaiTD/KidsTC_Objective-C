@@ -54,7 +54,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL showCountDown;
 @property (nonatomic, assign) NSTimeInterval countDownTime;
 @property (nonatomic, strong) NSArray<ProdectDetailCoupon *> *coupon_provide;
-@property (nonatomic, strong) NSString *couponLink;
+@property (nonatomic, assign) BOOL canProvideCoupon;
 @property (nonatomic, strong) NSString *detailUrl;
 @property (nonatomic, strong) NSArray<NSString *> *fullCut;
 @property (nonatomic, strong) NSArray<NSString *> *coupons;

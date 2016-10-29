@@ -104,6 +104,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10710;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.title = @"编辑心情";

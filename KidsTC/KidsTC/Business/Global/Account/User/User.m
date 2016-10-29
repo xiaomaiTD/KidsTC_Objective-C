@@ -15,6 +15,7 @@
 #import "Constant.h"
 #import "Macro.h"
 #import "NotificationService.h"
+#import "GetUserPopulationModel.h"
 
 //用户uid skey
 static NSString *const USERDEFAULT_UID_KEY = @"UserDefaultUidKey";
@@ -42,6 +43,20 @@ singleM(User)
         [self getRloeLocalSave];
     }
     return self;
+}
+
+- (NSString *)uid {
+    if (!_uid) {
+        _uid = @"";
+    }
+    return _uid;
+}
+
+- (NSString *)skey {
+    if (!_skey) {
+        _skey = @"";
+    }
+    return _skey;
 }
 
 #pragma mark - ===================LOGIN===================
@@ -78,6 +93,7 @@ singleM(User)
             TCLog(@"服务器端已经登录");
             _hasLogin = YES;
             [[CookieManager shareCookieManager] setCookies];
+            [self getUserPopulation];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             TCLog(@"服务器端没有登录");
             [self logoutLocal];
@@ -150,6 +166,36 @@ singleM(User)
 }
 
 #pragma mark - ===================ROLE===================
+
+//获取用户年龄段
+- (void)getUserPopulation {
+    if (!_hasLogin) {
+        TCLog(@"当前没有用户登录，不用同步年龄段！");
+        return;
+    }
+    [Request startWithName:@"GET_USER_POPULATION" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        GetUserPopulationData *data = [GetUserPopulationModel modelWithDictionary:dic].data;
+        Role *role = [Role roleWityID:data.WirelessPopulationType];
+        if (data && role && _role.roleIdentifier != data.WirelessPopulationType) {
+            self.role = role;
+        }else{
+            //当用户没有年龄段的时候，同步本地年龄段到服务器
+            [self updateUserPopulation];
+        }
+    } failure:nil];
+}
+
+//上报用户年龄段
+- (void)updateUserPopulation {
+    if (!_hasLogin) {
+        TCLog(@"当前没有用户登录，不用上报年龄段！");
+        return;
+    }
+    NSDictionary *param = @{@"populationType":_role.roleIdentifierString};
+    [Request startWithName:@"UPDATE_USER_POPULATION" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        
+    } failure:nil];
+}
 
 - (void)setRole:(Role *)role{
     _role = role;

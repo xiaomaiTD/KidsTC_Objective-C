@@ -10,8 +10,16 @@
 #import "Single.h"
 @interface BuryPointManager : NSObject
 singleH(BuryPointManager)
-+ (void)registerSdk;
-+ (void)trackBegin:(NSString *)pageId;
-+ (void)trackEnd:(NSString *)pageId;
-+ (void)trackEvent:(NSString *)event attributes:(NSDictionary *)attributes;
+
++ (void)startBuryPoint;
+
++ (void)trackBegin:(long)pageId
+          pageName:(NSString *)pageName;
+
++ (void)trackEnd:(long)pageId
+        pageName:(NSString *)pageName;
+
++ (void)trackEvent:(NSString *)eventName
+          actionId:(long)actionId
+            params:(NSDictionary *)params;
 @end

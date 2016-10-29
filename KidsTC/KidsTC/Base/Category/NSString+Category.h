@@ -23,4 +23,6 @@
 - (BOOL)isNotNull;
 #pragma mark 最多两位小数的价格字符串
 + (NSString *)priceStr:(CGFloat)price;
+#pragma mark 获取手机的IP地址
++ (NSString *)deviceIPAdress;
 @end

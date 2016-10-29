@@ -88,6 +88,9 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10709;
+    
     self.navigationItem.title = @"评论列表";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];

@@ -687,38 +687,52 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGFloat price_h = price_size.height;
         CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
         
+        CGSize saleNum_s = [obj.attSaleNum size];
+        CGFloat saleNum_w = saleNum_s.width;
+        
+        CGFloat lift_max_x = item_w - (price_w>=saleNum_w?price_w:saleNum_w) - margin;
+        
         CGFloat title_y = CGRectGetMaxY(imgFrame) + margin;
         CGFloat title_x = margin;
-        CGFloat title_w = price_x - title_x - margin;
+        CGFloat title_w = lift_max_x - title_x;
         CGSize title_size = [obj.attTitle boundingRectWithSize:CGSizeMake(title_w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         CGFloat title_h = title_size.height;
         CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
         
-        CGSize saleNum_s = [obj.attSaleNum size];
-        CGFloat saleNum_w = saleNum_s.width;
-        CGFloat saleNum_h = saleNum_s.height;
-        CGFloat saleNum_x = item_w - margin - saleNum_w;
-        CGFloat saleNum_y = CGRectGetMaxY(titleFrame) + margin;
-        CGRect saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
-        
         CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + margin;
         CGFloat subTitle_x = margin;
-        CGFloat subTitle_w = saleNum_x - subTitle_x - margin;
+        CGFloat subTitle_w = lift_max_x - subTitle_x;
         CGFloat subTitle_h = 21;
         CGRect subTtitleFrme = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
+        
+        CGSize storeAddress_s = [obj.attStoreAddress size];
+        CGFloat storeAddress_w = storeAddress_s.width;
+        CGFloat storeAddress_x = margin;
+        CGFloat storeAddress_y = CGRectGetMaxY(subTtitleFrme) + margin;
+        CGFloat storeAddress_h = 21;
         
         CGSize status_size = [obj.attStatus size];
         CGFloat status_w = status_size.width;
         CGFloat status_h = status_size.height;
         CGFloat status_y = CGRectGetMaxY(subTtitleFrme) + margin;
-        CGFloat status_x = item_w - margin - status_w;
+        
+        CGFloat status_x;
+        if ((storeAddress_x + storeAddress_w + margin + status_w)>lift_max_x) {
+            status_x = lift_max_x - status_w - margin;
+            storeAddress_w = status_x - subTitle_x - margin;
+        }else{
+            status_x = storeAddress_x + storeAddress_w + margin;
+        }
+        
+        CGRect storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
+        
         CGRect statusFrame = CGRectMake(status_x, status_y, status_w, status_h);
         
-        CGFloat storeAddress_y = CGRectGetMaxY(subTtitleFrme) + margin;
-        CGFloat storeAddress_x = margin;
-        CGFloat storeAddress_w = status_x - subTitle_x - margin;
-        CGFloat storeAddress_h = 21;
-        CGRect storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
+        CGFloat saleNum_h = saleNum_s.height;
+        CGFloat saleNum_x = item_w - margin - saleNum_w;
+        CGFloat saleNum_y = CGRectGetMaxY(subTtitleFrme) + margin;
+        CGRect saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
+        
         
         CGFloat line_x = 0;
         CGFloat line_h = LINE_H;

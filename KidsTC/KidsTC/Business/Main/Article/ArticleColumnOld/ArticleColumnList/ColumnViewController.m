@@ -25,7 +25,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.pageId = 10707;
     self.navigationItem.title = @"栏目列表";
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     layout.itemSize = CGSizeMake(SCREEN_WIDTH/2.0, 200);

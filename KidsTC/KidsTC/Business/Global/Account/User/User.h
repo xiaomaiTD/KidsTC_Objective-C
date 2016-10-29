@@ -51,6 +51,12 @@ singleH(User)
  */
 - (void)logoutManually:(BOOL)manually withSuccess:(void (^)())success failure:(void (^)(NSError *error))failure;
 
+//获取用户年龄段
+- (void)getUserPopulation;
+
+//上报用户年龄段
+- (void)updateUserPopulation;
+
 /**
  *  检查是否需要选择用户角色
  *

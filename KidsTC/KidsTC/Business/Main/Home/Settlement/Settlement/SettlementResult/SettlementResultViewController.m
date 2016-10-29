@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10506;
+    
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     self.navigationItem.title = @"支付结果";

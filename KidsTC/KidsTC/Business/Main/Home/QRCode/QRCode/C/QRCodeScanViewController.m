@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10301;
+    
     self.navigationItem.title = @"二维码/条形码";
     self.naviColor = [UIColor clearColor];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"newbarcode_historyempty_icon" highImageName:@"newbarcode_historyempty_icon" postion:UIBarButtonPositionRight target:self action:@selector(rightBarButtonItemAction)];

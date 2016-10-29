@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10705;
+    
     self.navigationItem.title = @"我的关注";
     [self setupTableView];
 }
