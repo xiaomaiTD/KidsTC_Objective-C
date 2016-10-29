@@ -190,7 +190,7 @@ CGFloat const titleHight = 18;
 
 - (TabBarItemElement *)codedEle{
     if (!_codedEle) {
-        _codedEle = [TabBarItemElement addEleWithFImgName:@"tabbar_compose_weibo" sImgName:@"tabbar_compose_weibo"];
+        _codedEle = [TabBarItemElement addEleWithFImgName:@"tabBar_compose" sImgName:@"tabBar_compose"];
         ComposeBtn *middleBtn = [ComposeManager shareComposeManager].model.data.data.middleBtn;
         NSString *imgUrl = middleBtn.iconUrl;
         ComposeBtnIconType iconCode = middleBtn.iconCode;
@@ -198,7 +198,7 @@ CGFloat const titleHight = 18;
             [imgUrl isNotNull]) {
             [self.addLinkBtn sd_setImageWithURL:[NSURL URLWithString:imgUrl]
                                        forState:UIControlStateNormal
-                               placeholderImage:[UIImage imageNamed:@"tabbar_compose_weibo"]
+                               placeholderImage:[UIImage imageNamed:@"tabBar_compose"]
                                       completed:^(UIImage *image,NSError *error,SDImageCacheType cacheType,NSURL *imageURL)
              {
                  _codedEle.image_Nor = image;

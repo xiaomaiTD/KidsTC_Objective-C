@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Model.h"
 typedef enum {
     SegueDestinationNone           = 0,     //无跳转
     SegueDestinationH5             = 1,     //H5
@@ -35,7 +36,7 @@ typedef enum {
 //H5
 extern NSString *const kSegueParameterKeyLinkUrl;
 
-@interface SegueModel : NSObject
+@interface SegueModel : Model
 
 @property (nonatomic, readonly) SegueDestination destination;
 

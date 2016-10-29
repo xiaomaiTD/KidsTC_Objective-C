@@ -25,6 +25,9 @@
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
     _item = item;
+    if (item) {
+        self.hidden = NO;
+    }
     self.totalPriceLabel.text = [NSString stringWithFormat:@"总计：¥%0.1f",item.totalPrice];
     NSString *btnTitle = item.totalPrice>0?@"确认支付":@"确认提交";
     [self.commitBtn setTitle:btnTitle forState:UIControlStateNormal];

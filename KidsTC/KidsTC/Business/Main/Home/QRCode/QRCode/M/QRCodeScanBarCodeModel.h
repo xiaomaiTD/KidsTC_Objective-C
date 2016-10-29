@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "SegueModel.h"
 
+@interface QRCodeScanBarCodeProduct : NSObject
+@property (nonatomic, strong) NSString *productNo;
+@property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *productName;
+@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *imageUrl;
+@end
+
 @interface QRCodeScanBarCodeData : NSObject
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
-
+@property (nonatomic, strong) QRCodeScanBarCodeProduct *product;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

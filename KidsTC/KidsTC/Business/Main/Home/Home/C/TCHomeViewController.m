@@ -77,7 +77,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tf.placeholder = self.placeholder;
+    self.tf.text = self.placeholder;
     [self updateIv_activity];
 }
 
@@ -112,17 +112,18 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)setupTf {
     
     UITextField *tf = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 400, 30)];
-    tf.backgroundColor = [UIColor colorWithWhite:1 alpha:0.9];
+    tf.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.4];
     tf.font = [UIFont systemFontOfSize:15];
     tf.borderStyle = UITextBorderStyleNone;
     tf.layer.cornerRadius = 4;
+    tf.textColor = [UIColor whiteColor];
     tf.layer.masksToBounds = YES;
     tf.delegate = self;
     
     UIButton *leftBtn = [UIButton new];
     leftBtn.showsTouchWhenHighlighted = NO;
     leftBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [leftBtn setImage:[UIImage imageNamed:@"home_search"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:@"home_search_wite"] forState:UIControlStateNormal];
     leftBtn.bounds = CGRectMake(0, 0, 30, 30);
     [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     tf.leftView = leftBtn;
@@ -131,7 +132,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     UIButton *rightBtn = [UIButton new];
     rightBtn.showsTouchWhenHighlighted = NO;
     rightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [rightBtn setImage:[UIImage imageNamed:@"home_siri"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"home_siri_wite"] forState:UIControlStateNormal];
     rightBtn.bounds = CGRectMake(0, 0, 30, 30);
     [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [rightBtn addTarget:self action:@selector(speek) forControlEvents:UIControlEventTouchUpInside];

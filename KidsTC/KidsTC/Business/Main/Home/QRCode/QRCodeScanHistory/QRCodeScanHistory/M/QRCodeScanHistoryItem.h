@@ -7,7 +7,7 @@
 //
 
 #import "Model.h"
-
+#import "SegueModel.h"
 typedef enum : NSUInteger {
     QRCodeScanHistoryItemTypeQRCode=1,
     QRCodeScanHistoryItemTypeBarCode,
@@ -22,4 +22,5 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *subTitle;
 @property (nonatomic, assign) NSTimeInterval time;
+@property (nonatomic, strong) SegueModel *segueModel;
 @end

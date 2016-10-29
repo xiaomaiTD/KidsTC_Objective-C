@@ -215,7 +215,7 @@ typedef enum : NSUInteger {
         }
         return NO;
     }
-    self.shareObject     = nil;
+    //self.shareObject     = nil;
     self.callBackJS      = nil;
     _selectedPhotos      = nil;
     _selectedAssets      = nil;

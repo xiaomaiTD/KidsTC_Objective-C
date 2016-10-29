@@ -19,7 +19,7 @@
     self.titleLabel.font = [UIFont systemFontOfSize:15];
     [self setTitleColor:COLOR_PINK forState:UIControlStateNormal];
     [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    //self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect{

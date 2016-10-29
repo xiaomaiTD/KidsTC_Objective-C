@@ -59,6 +59,8 @@
 @property (nonatomic, strong) NSString *storeName;
 @property (nonatomic, strong) NSString *storeNo;
 @property (nonatomic, assign) BOOL isFreightDiscount;
+@property (nonatomic, assign) NSInteger minBuyNum;
+@property (nonatomic, assign) NSInteger maxBuyNum;
 @end
 
 @interface ServiceSettlementModel : NSObject

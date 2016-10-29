@@ -25,12 +25,12 @@
     switch (type) {
         case ComposeButtonTypeCompose:
         {
-            name = @"tabbar_compose_idea";
+            name = @"tabBar_write";
         }
             break;
         case ComposeButtonTypeSign:
         {
-            name = @"tabbar_compose_review";
+            name = @"tabBar_sign";
         }
             break;
     }

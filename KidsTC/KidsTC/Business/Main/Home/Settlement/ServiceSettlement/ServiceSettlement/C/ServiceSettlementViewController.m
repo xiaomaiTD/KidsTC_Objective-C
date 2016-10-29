@@ -13,6 +13,7 @@
 #import "ServiceSettlementAddressCell.h"
 #import "ServiceSettlementServiceInfoCell.h"
 #import "ServiceSettlementStoreInfoCell.h"
+#import "ServiceSettlementBuyNumCell.h"
 #import "ServiceSettlementCouponCell.h"
 #import "ServiceSettlementPayTypeCell.h"
 #import "ServiceSettlementPayInfoCell.h"
@@ -43,6 +44,7 @@
 @property (nonatomic, strong) ServiceSettlementTipAddressCell  *tipAddressCell;
 @property (nonatomic, strong) ServiceSettlementAddressCell     *addressCell;
 @property (nonatomic, strong) ServiceSettlementServiceInfoCell *serViceInfoCell;
+@property (nonatomic, strong) ServiceSettlementBuyNumCell      *buyNumCell;
 @property (nonatomic, strong) ServiceSettlementStoreInfoCell   *storeInfoCell;
 @property (nonatomic, strong) ServiceSettlementCouponCell      *couponCell;
 @property (nonatomic, strong) ServiceSettlementPayTypeCell     *payTypeCell;
@@ -52,7 +54,7 @@
 @property (nonatomic, strong) NSString *couponCode;
 @property (nonatomic, assign) BOOL isCancelCoupon;//是否取消使用优惠券(如果取消[有满减则会使用满减])，默认为NO，不取消
 @property (nonatomic, strong) ServiceSettlementModel *model;
-
+@property (nonatomic, strong) NSString *buyNum;
 
 @property (nonatomic, assign) PayType payType;
 
@@ -81,6 +83,7 @@
     tooBar.frame = CGRectMake(0, SCREEN_HEIGHT-TOOLBAR_HEIGHT, SCREEN_WIDTH, TOOLBAR_HEIGHT);
     [self.view addSubview:tooBar];
     self.tooBar = tooBar;
+    tooBar.hidden = YES;
     tooBar.commitBlock = ^void () {
         [self commit];
     };
@@ -90,12 +93,15 @@
 }
 
 - (void)prepareCells{
+    
     _tipAddressCell           = [self viewWithNib:@"ServiceSettlementTipAddressCell"];
     _tipAddressCell.delegate  = self;
     _addressCell              = [self viewWithNib:@"ServiceSettlementAddressCell"];
     _addressCell.delegate     = self;
     _serViceInfoCell          = [self viewWithNib:@"ServiceSettlementServiceInfoCell"];
     _serViceInfoCell.delegate = self;
+    _buyNumCell               = [self viewWithNib:@"ServiceSettlementBuyNumCell"];
+    _buyNumCell.delegate      = self;
     _storeInfoCell            = [self viewWithNib:@"ServiceSettlementStoreInfoCell"];
     _storeInfoCell.delegate   = self;
     _couponCell               = [self viewWithNib:@"ServiceSettlementCouponCell"];
@@ -112,9 +118,14 @@
 
 - (void)loadShoppingCart{
     NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
+    NSString *buyNum = [self.buyNum isNotNull]?self.buyNum:@"";
+    ServiceSettlementDataItem *item = self.model.data.firstObject;
+    NSString *storeNo = [item.store.storeId isNotNull]?item.store.storeId:@"";
     NSDictionary *param = @{@"couponCode":couponCode,
                             @"scoreNum":@(self.scoreNum),
-                            @"isCancelCoupon":@(self.isCancelCoupon)};
+                            @"isCancelCoupon":@(self.isCancelCoupon),
+                            @"buyNum":buyNum,
+                            @"storeNo":storeNo};
     [TCProgressHUD showSVP];
     [Request startWithName:@"SHOPPINGCART_GET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -155,6 +166,7 @@
     //商品、门店
     NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
     [section01 addObject:_serViceInfoCell];
+    [section01 addObject:_buyNumCell];
     if (item.store && item.store.storeDesc.length>0) {
         [section01 addObject:_storeInfoCell];
     }
@@ -284,6 +296,12 @@
         case ServiceSettlementBaseCellActionTypeChangePayType:
         {
             self.payType = (PayType)[value integerValue];
+        }
+            break;
+        case ServiceSettlementBaseCellActionTypeBuyNumDidChange:
+        {
+            self.buyNum = value;
+            [self loadShoppingCart];
         }
             break;
     }

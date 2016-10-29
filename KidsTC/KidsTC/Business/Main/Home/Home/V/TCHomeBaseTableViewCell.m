@@ -26,7 +26,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         UIImageView *notiImageView = [UIImageView new];
-        notiImageView.contentMode = UIViewContentModeScaleToFill;
+        notiImageView.contentMode = UIViewContentModeScaleAspectFit;
         notiImageView.clipsToBounds = YES;
         [self addSubview:notiImageView];
         self.notiImageView = notiImageView;

@@ -59,33 +59,17 @@
     switch (type) {
         case QRCodeViewActionTypeHasValiteValue:
         {
-            NSDictionary *dic = value;
-            [self addHistoryLocal:dic];
-            [self segue:dic[@"string"]];
+            [self segue:value];
         }
             break;
     }
 }
 
-- (void)addHistoryLocal:(NSDictionary *)dic {
-    NSString *string = [NSString stringWithFormat:@"%@",dic[@"string"]];
-    QRCodeScanHistoryItem *item = [QRCodeScanHistoryItem new];
-    if ([string hasPrefix:@"http"]) {//链接
-        item.title = @"链接";
-        item.type = QRCodeScanHistoryItemTypeQRCode;
-    }else{
-        item.title = @"文本";
-        item.type = QRCodeScanHistoryItemTypeBarCode;
-    }
-    item.subTitle = string;
-    item.time = [NSDate date].timeIntervalSince1970;
-    [[QRCodeScanHistoryDataManager shareQRCodeScanHistoryDataManager] addItem:item];
-}
-
-- (void)segue:(NSString *)string {
+- (void)segue:(NSDictionary *)dic {
     
+    NSString *string = dic[@"string"];
     if ([string hasPrefix:@"http"]) {
-        
+        [self addHistoryLocal:dic];
         NSDictionary *param = @{@"scanChannel":@"1",
                                 @"scanContent":string};
         [Request startWithName:@"UPLOAD_SCAN_HISTORY" param:param progress:nil success:nil failure:nil];
@@ -114,17 +98,52 @@
         NSDictionary *param = @{@"scanChannel":@"1",
                                 @"scanContent":string};
         [TCProgressHUD showSVP];
-        [Request startWithName:@"SCAN_BAR_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [Request startWithName:@"SCAN_BAR_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *data) {
             [TCProgressHUD dismissSVP];
-            QRCodeScanBarCodeModel *model = [QRCodeScanBarCodeModel modelWithDictionary:dic];
+            QRCodeScanBarCodeModel *model = [QRCodeScanBarCodeModel modelWithDictionary:data];
             [SegueMaster makeSegueWithModel:model.data.segueModel fromController:self];
+            [self addHistoryLocal:dic data:model.data];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             [TCProgressHUD dismissSVP];
+            [self addHistoryLocal:dic];
             [[iToast makeText:@"查询失败"] show];
             QRCodeScanTextViewController *controller = [[QRCodeScanTextViewController alloc] initWithNibName:@"QRCodeScanTextViewController" bundle:nil];
             controller.text = string;
             [self.navigationController pushViewController:controller animated:YES];
         }];
+    }
+}
+
+- (void)addHistoryLocal:(NSDictionary *)dic {
+    NSString *string = [NSString stringWithFormat:@"%@",dic[@"string"]];
+    QRCodeScanHistoryItem *item = [QRCodeScanHistoryItem new];
+    if ([string hasPrefix:@"http"]) {//链接
+        item.title = @"链接";
+        item.type = QRCodeScanHistoryItemTypeQRCode;
+    }else{
+        item.title = @"文本";
+        item.type = QRCodeScanHistoryItemTypeBarCode;
+    }
+    item.subTitle = string;
+    item.time = [NSDate date].timeIntervalSince1970;
+    [[QRCodeScanHistoryDataManager shareQRCodeScanHistoryDataManager] addItem:item];
+}
+
+- (void)addHistoryLocal:(NSDictionary *)dic data:(QRCodeScanBarCodeData *)data {
+    
+    if (data.linkType == SegueDestinationServiceDetail && data.product) {//服务详情
+        QRCodeScanBarCodeProduct *product = data.product;
+        QRCodeScanHistoryItem *item = [QRCodeScanHistoryItem new];
+        item.type = QRCodeScanHistoryItemTypeProduct;
+        item.title = product.productName;
+        item.imgUrl = product.imageUrl;
+        item.price = product.price;
+        item.segueModel = data.segueModel;
+        item.subTitle = [NSString stringWithFormat:@"条码号：%@",dic[@"string"]];
+        item.time = [NSDate date].timeIntervalSince1970;
+        [[QRCodeScanHistoryDataManager shareQRCodeScanHistoryDataManager] addItem:item];
+    }else{
+        [self addHistoryLocal:dic];
     }
 }
 

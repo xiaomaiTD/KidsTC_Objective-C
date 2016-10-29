@@ -25,6 +25,15 @@
 {
     return @{@"coupon" : [ServiceSettlementCouponItem class]};
 }
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    if (_minBuyNum<1) {
+        _minBuyNum = 1;
+    }
+    if (_maxBuyNum<_minBuyNum) {
+        _maxBuyNum = _minBuyNum;
+    }
+    return YES;
+}
 @end
 
 @implementation ServiceSettlementModel

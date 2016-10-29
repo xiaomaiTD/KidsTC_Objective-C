@@ -8,6 +8,11 @@
 
 #import "QRCodeScanBarCodeModel.h"
 
+@implementation QRCodeScanBarCodeProduct
+
+
+@end
+
 @implementation QRCodeScanBarCodeData
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_params];

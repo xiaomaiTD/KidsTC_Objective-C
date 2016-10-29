@@ -154,7 +154,7 @@ singleM(AddTabManager)
 - (TabBarItemElement *)codedEle{
     ComposeData *data = [ComposeManager shareComposeManager].model.data.data;
     if (data) {
-        return [TabBarItemElement addEleWithFImgName:@"tabbar_compose_weibo" sImgName:@"tabbar_compose_weibo"];
+        return [TabBarItemElement addEleWithFImgName:@"tabBar_compose" sImgName:@"tabBar_compose"];
     }else{
         return nil;
     }

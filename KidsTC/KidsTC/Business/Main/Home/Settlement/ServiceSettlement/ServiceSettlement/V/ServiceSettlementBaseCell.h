@@ -10,12 +10,13 @@
 #import "ServiceSettlementModel.h"
 
 typedef enum : NSUInteger {
-    ServiceSettlementBaseCellActionTypeTipAddress,
+    ServiceSettlementBaseCellActionTypeTipAddress=1,
     ServiceSettlementBaseCellActionTypeAddress,
     ServiceSettlementBaseCellActionTypeStore,
     ServiceSettlementBaseCellActionTypeCoupon,
     ServiceSettlementBaseCellActionTypeScore,
-    ServiceSettlementBaseCellActionTypeChangePayType
+    ServiceSettlementBaseCellActionTypeChangePayType,
+    ServiceSettlementBaseCellActionTypeBuyNumDidChange,
 } ServiceSettlementBaseCellActionType;
 
 @class ServiceSettlementBaseCell;
