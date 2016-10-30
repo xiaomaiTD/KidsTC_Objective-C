@@ -14,12 +14,14 @@
 typedef enum : NSUInteger {
     GuideTypeHome,
     GuideTypeArticle,
-    GuideTypeOrderDetail
+    GuideTypeOrderDetail,
+    GuideTypeProductDetail
 } GuideType;
 
 extern NSString *const kHomeGuideViewControllerFinishShow;
 extern NSString *const kArticleGuideViewControllerFinishShow;
 extern NSString *const kOrderDetailGuideViewControllerFinishShow;
+extern NSString *const kProductDetailGuideViewControllerFinishShow;
 
 @interface GuideManager : NSObject
 singleH(GuideManager)

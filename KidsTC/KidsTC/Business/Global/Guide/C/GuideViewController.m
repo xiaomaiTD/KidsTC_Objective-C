@@ -101,8 +101,7 @@ static NSString *const GuideViewCellID = @"GuideViewCellID";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     GuideViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:GuideViewCellID forIndexPath:indexPath];
-    GuideDataItem *item = self.datas[indexPath.item];
-    cell.iconImageView.image = [UIImage imageNamed:item.imageName];
+    cell.item = self.datas[indexPath.item];
     return cell;
 }
 

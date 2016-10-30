@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GuideModel.h"
 
 @interface GuideViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-
+@property (nonatomic, strong) GuideDataItem *item;
 @end

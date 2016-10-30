@@ -539,7 +539,6 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (void)checkGuide{
     if (self.navigationController.viewControllers.count==1 &&
-        [PosterManager sharePosterManager].hasShow &&
         !self.presentingViewController)
     {
         [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeHome resultBlock:^{

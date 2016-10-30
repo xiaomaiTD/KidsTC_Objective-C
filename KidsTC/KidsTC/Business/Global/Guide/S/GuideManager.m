@@ -12,11 +12,12 @@
 static NSString *const kGideTypeHome = @"GideTypeHome";
 static NSString *const kGideTypeArticle = @"GideTypeArticle";
 static NSString *const kGideTypeOrderDetail = @"GideTypeOrderDetail";
+static NSString *const kGideTypeProductDetail = @"GideTypeProductDetail";
 
 NSString *const kHomeGuideViewControllerFinishShow = @"HomeGuideViewControllerFinishShow";
 NSString *const kArticleGuideViewControllerFinishShow = @"ArticleGuideViewControllerFinishShow";
 NSString *const kOrderDetailGuideViewControllerFinishShow = @"OrderDetailGuideViewControllerFinishShow";
-
+NSString *const kProductDetailGuideViewControllerFinishShow = @"ProductDetailGuideViewControllerFinishShow";
 @implementation GuideManager
 singleM(GuideManager)
 
@@ -38,16 +39,25 @@ singleM(GuideManager)
             model = [self orderDetailGuideModel];
         }
             break;
+        case GuideTypeProductDetail:
+        {
+            model = [self productDtailGuideModel];
+        }
+            break;
     }
     return model;
 }
 
 - (GuideModel *)homeGuideModel{
-    GuideDataItem *item_0 = [GuideDataItem itemWithImageName:@"guid_home_scroll"
+    GuideDataItem *item_0 = [GuideDataItem itemWithImageName:@"home_guid_01"
                                                   btnCanShow:NO
                                                 btnImageName:nil
                                                     btnFrame:CGRectZero];
-    return [GuideModel modelWithDatas:@[item_0]];
+    GuideDataItem *item_1 = [GuideDataItem itemWithImageName:@"home_guid_02"
+                                                  btnCanShow:NO
+                                                btnImageName:nil
+                                                    btnFrame:CGRectZero];
+    return [GuideModel modelWithDatas:@[item_0,item_1]];
 }
 
 - (GuideModel *)articleGuideModel {
@@ -64,6 +74,18 @@ singleM(GuideManager)
                                                 btnImageName:nil
                                                     btnFrame:CGRectZero];
     return [GuideModel modelWithDatas:@[item_0]];
+}
+
+- (GuideModel *)productDtailGuideModel {
+    GuideDataItem *item_0 = [GuideDataItem itemWithImageName:@"productDetail_guid_01"
+                                                  btnCanShow:NO
+                                                btnImageName:nil
+                                                    btnFrame:CGRectZero];
+    GuideDataItem *item_1 = [GuideDataItem itemWithImageName:@"productDetail_guid_02"
+                                                  btnCanShow:NO
+                                                btnImageName:nil
+                                                    btnFrame:CGRectZero];
+    return [GuideModel modelWithDatas:@[item_0,item_1]];
 }
 
 - (void)checkGuideWithTarget:(UIViewController *)target
@@ -105,6 +127,11 @@ singleM(GuideManager)
             hasShow = [USERDEFAULTS boolForKey:kGideTypeOrderDetail];
         }
             break;
+        case GuideTypeProductDetail:
+        {
+            hasShow = [USERDEFAULTS boolForKey:kGideTypeProductDetail];
+        }
+            break;
     }
     return hasShow;
 }
@@ -127,6 +154,12 @@ singleM(GuideManager)
         {
             [USERDEFAULTS setBool:YES forKey:kGideTypeOrderDetail];
             [NotificationCenter postNotificationName:kOrderDetailGuideViewControllerFinishShow object:nil];
+        }
+            break;
+        case GuideTypeProductDetail:
+        {
+            [USERDEFAULTS setBool:YES forKey:kGideTypeProductDetail];
+            [NotificationCenter postNotificationName:kProductDetailGuideViewControllerFinishShow object:nil];
         }
             break;
     }

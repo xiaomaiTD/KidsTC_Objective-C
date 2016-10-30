@@ -13,6 +13,7 @@
 #import "KTCFavouriteManager.h"
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
+#import "GuideManager.h"
 
 #import "ProductDetailModel.h"
 #import "ProductDetailRecommendModel.h"
@@ -36,6 +37,7 @@
 
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
+
 
 
 @interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate>
@@ -104,6 +106,7 @@
     ProductDetailView *view = (ProductDetailView *)self.view;
     view.data = data;
     self.navigationItem.title = data.simpleName;
+    [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
 }
 
 - (void)loadProductFailure:(NSError *)error {
