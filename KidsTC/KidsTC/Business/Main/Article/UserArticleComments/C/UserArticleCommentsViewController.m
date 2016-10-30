@@ -17,6 +17,7 @@
 #import "UIImage+Category.h"
 #import "UIImageView+WebCache.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #define pageCount 10
 
@@ -173,7 +174,8 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
+    NSDictionary *params = @{@"id":articleSysNo};
+    [BuryPointManager trackEvent:@"event_click_news_evalike" actionId:21301 params:params];
 }
 
 #pragma mark - Table view data source

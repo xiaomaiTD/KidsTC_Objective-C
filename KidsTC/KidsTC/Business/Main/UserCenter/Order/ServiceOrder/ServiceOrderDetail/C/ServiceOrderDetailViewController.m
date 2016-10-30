@@ -43,6 +43,8 @@
 #import "OrderBookingViewController.h"
 #import "ServiceSettlementViewController.h"
 
+#import "BuryPointManager.h"
+
 #define TOOLBAR_HEIGHT 64
 
 @interface ServiceOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceOrderDetailBaseCellDelegate,ServiceOrderDetailToolBarDelegate,OrderRefundViewControllerDelegate,CommentFoundingViewControllerDelegate,ServiceOrderDetailRemindViewDelegate>
@@ -71,6 +73,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (![self.orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    
+    self.pageId = 11002;
     
     self.navigationItem.title = @"订单详情";
     
@@ -385,6 +394,8 @@
         [controller addAction:cancelAction];
         [self presentViewController:controller animated:YES completion:nil];
     }
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_click_order_callmerchant" actionId:21602 params:params];
 }
 
 - (void)booking:(BOOL)mustEdit {
@@ -395,6 +406,9 @@
         [self loadOrderDetailSuccess:nil faliure:nil];
     };
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_skip_order_appoint" actionId:21607 params:params];
 }
 
 #pragma mark - ServiceOrderDetailRemindViewDelegate
@@ -476,6 +490,7 @@
     [controller addAction:cancelAction];
     [controller addAction:confirmAction];
     [self presentViewController:controller animated:YES completion:nil];
+    
 }
 
 - (void)cancelOrderRequest {
@@ -485,14 +500,21 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self cancelOrderFailed:error];
     }];
+    
 }
 
 - (void)cancelOrderSucceed:(NSDictionary *)data {
     [self loadOrderDetailSuccess:nil faliure:nil];
+    NSDictionary *params = @{@"orderId":self.orderId,
+                             @"result":@(1)};
+    [BuryPointManager trackEvent:@"event_result_order_cancel" actionId:21603 params:params];
 }
 
 - (void)cancelOrderFailed:(NSError *)error {
     [[iToast makeText:@"取消订单失败"] show];
+    NSDictionary *params = @{@"orderId":self.orderId,
+                             @"result":@(2)};
+    [BuryPointManager trackEvent:@"event_result_order_cancel" actionId:21603 params:params];
 }
 
 #pragma mark ================立即支付================
@@ -510,6 +532,8 @@
         } faliure:nil];
     };
     [self.navigationController pushViewController:controller animated:YES];
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_skip_order_pay" actionId:21604 params:params];
 }
 
 #pragma mark ================申请退款================
@@ -551,6 +575,8 @@
         }
         [[iToast makeText:errMsg] show];
     }];
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_click_order_getsms" actionId:21606 params:params];
 }
 
 #pragma mark ================发表评论================
@@ -593,6 +619,10 @@
         [TCProgressHUD dismissSVP];
         [self buyAgainFailure:error];
     }];
+    
+    NSDictionary *params = @{@"pid":productid,
+                             @"cid":chid};
+    [BuryPointManager trackEvent:@"event_skip_order_buyagain" actionId:21605 params:params];
 }
 
 - (void)buyAgainSuccess:(id)value {

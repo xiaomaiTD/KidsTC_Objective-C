@@ -17,6 +17,7 @@
 #import "KTCCommentManager.h"
 #import "FailureViewManager.h"
 #import "RefreshHeader.h"
+#import "BuryPointManager.h"
 
 #import "TabBarController.h"
 #import "ColumnViewController.h"
@@ -79,6 +80,19 @@ typedef enum : NSUInteger {
     [self loadData];
     
     [self setupNavigationItems];
+
+    
+}
+
+- (void)checkValiteAndBury {
+    
+    if (![_urlString isNotNull]) {
+        [[iToast makeText:@"网页地址为空"] show];
+        [self back];
+        return;
+    }
+    NSDictionary *params = @{@"url":self.urlString};
+    [BuryPointManager trackEvent:@"event_navi_h5" actionId:30100 params:params];
 }
 
 - (void)setupWebView {
@@ -277,6 +291,10 @@ typedef enum : NSUInteger {
         channelId = [channelId isNotNull]?channelId:@"0";
         ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
         [self makeSegue:controller];
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"pid":serviceId,
+                                 @"cid":channelId};
+        [BuryPointManager trackEvent:@"event_skip_serve_detail" actionId:30001 params:params];
     }else{
         [[iToast makeText:@"服务id为空"] show];
     }
@@ -288,6 +306,9 @@ typedef enum : NSUInteger {
     if ([ID isNotNull]) {
         StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:ID];
         [self makeSegue:controller];
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"sid":ID};
+        [BuryPointManager trackEvent:@"event_skip_store_detail" actionId:30003 params:params];
     }else{
         [[iToast makeText:@"门店id为空"] show];
     }
@@ -299,6 +320,9 @@ typedef enum : NSUInteger {
     if ([ID isNotNull]) {
         ParentingStrategyDetailViewController *controller = [[ParentingStrategyDetailViewController alloc] initWithStrategyIdentifier:ID];
         [self makeSegue:controller];
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"id":ID};
+        [BuryPointManager trackEvent:@"event_skip_stgy_detail" actionId:30004 params:params];
     }else{
         [[iToast makeText:@"攻略id为空"] show];
     }
@@ -311,6 +335,9 @@ typedef enum : NSUInteger {
         ArticleColumnViewController *controller = [[ArticleColumnViewController alloc]init];
         controller.columnSysNo = sysNo;
         [self makeSegue:controller];
+        NSDictionary *paramsDic = @{@"url":self.urlString,
+                                    @"id":sysNo};
+        [BuryPointManager trackEvent:@"event_skip_column_detail" actionId:30014 params:paramsDic];
     }else{
         [[iToast makeText:@"栏目id为空"] show];
     }
@@ -323,6 +350,10 @@ typedef enum : NSUInteger {
         FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
         controller.pid = pid;
         [self makeSegue:controller];
+        
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"pid":pid};
+        [BuryPointManager trackEvent:@"event_skip_flash_detail" actionId:30002 params:params];
     }else{
         [[iToast makeText:@"闪购详情关联id为空"] show];
     }
@@ -336,6 +367,10 @@ typedef enum : NSUInteger {
             ServiceOrderDetailViewController *controller = [[ServiceOrderDetailViewController alloc] init];
             controller.orderId = orderId;
             [self makeSegue:controller];
+            
+            NSDictionary *params = @{@"url":self.urlString,
+                                     @"orderId":orderId};
+            [BuryPointManager trackEvent:@"event_skip_stgy_detail" actionId:30005 params:params];
         }];
     }else{
         [[iToast makeText:@"关联id为空"] show];
@@ -344,6 +379,8 @@ typedef enum : NSUInteger {
 #pragma mark 回到首页
 - (void)home:(NSString *)param {
     [[TabBarController shareTabBarController] selectIndex:0];
+    NSDictionary *params = @{@"url":self.urlString};
+    [BuryPointManager trackEvent:@"event_skip_home" actionId:30008 params:params];
 }
 #pragma mark 优惠券列表
 - (void)couponList:(NSString *)param {
@@ -358,6 +395,9 @@ typedef enum : NSUInteger {
             {
                 CouponListViewController *controller = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
                 [self makeSegue:controller];
+                
+                NSDictionary *params = @{@"url":self.urlString};
+                [BuryPointManager trackEvent:@"event_skip_coupon" actionId:30007 params:params];
             }
                 break;
             default:
@@ -366,6 +406,7 @@ typedef enum : NSUInteger {
             }
                 break;
         }
+        
     }else{
         [[iToast makeText:@"所选优惠券状态为空"] show];
     }
@@ -375,6 +416,8 @@ typedef enum : NSUInteger {
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
         [self reload];
     }];
+    NSDictionary *params = @{@"url":self.urlString};
+    [BuryPointManager trackEvent:@"event_skip_login" actionId:30009 params:params];
 }
 #pragma mark 评论视图
 - (void)evaluate:(NSString *)param {
@@ -393,6 +436,8 @@ typedef enum : NSUInteger {
             [self.keyboardAdhesiveView expand];
             self.callBackJS = [params objectForKey:@"callback"];
         }];
+        NSDictionary *params = @{@"url":self.urlString};
+        [BuryPointManager trackEvent:@"event_skip_serve_evaluate" actionId:30010 params:params];
     }else{
         [[iToast makeText:@"参数为空"] show];
     }
@@ -402,6 +447,8 @@ typedef enum : NSUInteger {
     CommonShareObject *shareObject = [self shareObjWithParam:param];
     if (shareObject) {
         [self shareWithObj:shareObject];
+        NSDictionary *params = @{@"url":self.urlString};
+        [BuryPointManager trackEvent:@"event_click_share" actionId:30011 params:params];
     }else{
         [[iToast makeText:@"无效的分享数据"] show];
     }
@@ -416,6 +463,9 @@ typedef enum : NSUInteger {
     self.callBackJS = [params objectForKey:@"callback"];
     self.maxCount = [[params objectForKey:@"maxCount"] integerValue];
     [self pickImg:WebViewUploadImgTypeNormal];
+    
+    NSDictionary *paramsDic = @{@"url":self.urlString};
+    [BuryPointManager trackEvent:@"event_skip_take_picture" actionId:30012 params:paramsDic];
 }
 #pragma mark 资讯图集
 - (void)showColumnAlbum:(NSString *)param {
@@ -437,6 +487,10 @@ typedef enum : NSUInteger {
         ArticleCommentViewController *controller = [[ArticleCommentViewController alloc] init];
         controller.relationId = sysNo;
         [self makeSegue:controller];
+        
+        NSDictionary *paramsDic = @{@"url":self.urlString,
+                                    @"id":sysNo};
+        [BuryPointManager trackEvent:@"event_skip_news_evaluate" actionId:30013 params:paramsDic];
     }else{
         [[iToast makeText:@"关联资讯id为空"] show];
     }

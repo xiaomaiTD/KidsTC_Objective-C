@@ -22,8 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10915;
+    
     self.navigationItem.title = @"预约订单";
-    self.pageId = @"pv_appoints";
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.listView.delegate = self;

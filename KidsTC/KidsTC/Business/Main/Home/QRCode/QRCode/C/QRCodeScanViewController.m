@@ -16,6 +16,7 @@
 #import "GHeader.h"
 #import "QRCodeScanBarCodeModel.h"
 #import "SegueMaster.h"
+#import "BuryPointManager.h"
 
 
 @interface QRCodeScanViewController ()<QRCodeViewDelegate>
@@ -62,6 +63,8 @@
         case QRCodeViewActionTypeHasValiteValue:
         {
             [self segue:value];
+            NSDictionary *params = @{@"params":[NSString stringWithFormat:@"%@",value[@"string"]]};
+            [BuryPointManager trackEvent:@"event_result_qrcode" actionId:20301 params:params];
         }
             break;
     }

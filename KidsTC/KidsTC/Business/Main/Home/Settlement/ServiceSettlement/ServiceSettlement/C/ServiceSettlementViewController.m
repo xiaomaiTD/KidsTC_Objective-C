@@ -35,6 +35,7 @@
 #import "PayModel.h"
 
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #define TOOLBAR_HEIGHT 60
 
@@ -268,6 +269,8 @@
                 [self.tableView reloadData];
             };
             [self.navigationController pushViewController:controller animated:YES];
+            
+            [BuryPointManager trackEvent:@"event_skip_balance_store" actionId:20701 params:nil];
         }
             break;
         case ServiceSettlementBaseCellActionTypeCoupon:
@@ -280,6 +283,12 @@
                 [self loadShoppingCart];
             };
             [self.navigationController pushViewController:controller animated:YES];
+            
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([self.couponCode isNotNull]) {
+                [params setValue:self.couponCode forKey:@"couponId"];
+            }
+            [BuryPointManager trackEvent:@"event_result_balance_coupon" actionId:20702 params:params];
         }
             break;
         case ServiceSettlementBaseCellActionTypeScore:
@@ -293,6 +302,11 @@
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             controller.modalPresentationStyle = UIModalPresentationCustom;
             [self presentViewController:controller animated:NO completion:nil];
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([self.couponCode isNotNull]) {
+                [params setValue:@(self.scoreNum) forKey:@"num"];
+            }
+            [BuryPointManager trackEvent:@"event_result_balance_score" actionId:20703 params:nil];
         }
             break;
         case ServiceSettlementBaseCellActionTypeChangePayType:
@@ -344,6 +358,8 @@
         [TCProgressHUD dismissSVP];
         [self placeOrderFailure:error];
     }];
+    
+    [BuryPointManager trackEvent:@"event_click_balance_pay" actionId:20704 params:nil];
 }
 
 - (BOOL)checkValite{

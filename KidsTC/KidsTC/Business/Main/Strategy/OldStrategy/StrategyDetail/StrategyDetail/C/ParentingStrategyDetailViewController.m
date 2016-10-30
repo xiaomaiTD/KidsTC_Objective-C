@@ -20,6 +20,8 @@
 #import "User.h"
 #import "iToast.h"
 #import "StoreDetialMapViewController.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 @interface ParentingStrategyDetailViewController () <ParentingStrategyDetailViewDelegate, StrategyDetailBottomViewDelegate>
 
@@ -46,7 +48,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageId = @"pv_stgy";
+    self.pageId = 10803;
 
     [self buildRightBarItems];
     self.detailView.delegate = self;
@@ -171,8 +173,17 @@
 - (void)didClickedCommentButton {
     CommentDetailViewController *controller = [[CommentDetailViewController alloc] initWithSource:CommentDetailViewSourceStrategy relationType:CommentRelationTypeStrategy headerModel:nil];
     [controller setRelationIdentifier:self.viewModel.detailModel.identifier];
-    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self.strategyId isNotNull]) {
+        [params setValue:self.strategyId forKey:@"id"];
+    }
+    NSString  *evaId = self.viewModel.detailModel.identifier;
+    if ([evaId isNotNull]) {
+        [params setValue:evaId forKey:@"evaId"];
+    }
+    [BuryPointManager trackEvent:@"event_result_stgy_eva" actionId:21404 params:params];
 }
 
 - (void)didClickedLikeButton {
@@ -184,17 +195,31 @@
             if (weakSelf.changeLikeBtnStatusBlock) {
                 weakSelf.changeLikeBtnStatusBlock();
             }
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([self.strategyId isNotNull]) {
+                [params setValue:self.strategyId forKey:@"id"];
+                NSInteger type = weakSelf.viewModel.detailModel.isFavourite?1:2;
+                [params setValue:@(type) forKey:@"result"];
+            }
+            [BuryPointManager trackEvent:@"event_result_stgy_favor" actionId:21402 params:params];
         } failure:^(NSError *error) {
             if ([[error userInfo] count] > 0) {
                 [[iToast makeText:[[error userInfo] objectForKey:@"data"]] show];
             }
         }];
     }];
+    
 }
 
 - (void)didClickedShareButton {
     CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.viewModel.detailModel.shareObject sourceType:KTCShareServiceTypeStrategy];
     [self presentViewController:controller animated:YES completion:nil];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self.strategyId isNotNull]) {
+        [params setValue:self.strategyId forKey:@"id"];
+    }
+    [BuryPointManager trackEvent:@"event_result_stgy_share" actionId:21403 params:params];
 }
 
 - (void)resetBottomView {

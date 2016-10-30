@@ -14,6 +14,7 @@
 #import "User.h"
 #import "WebViewController.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #define ProtocalLink (@"http://m.kidstc.com/tools/reg_desc")
 static NSString *const ProtocolLink = @"http://m.kidstc.com/tools/reg_desc";
@@ -45,6 +46,8 @@ static NSString *const ProtocolLink = @"http://m.kidstc.com/tools/reg_desc";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10904;
     
     [self initui];
 }
@@ -156,6 +159,9 @@ static NSString *const ProtocolLink = @"http://m.kidstc.com/tools/reg_desc";
     if ([uid isNotNull] && [skey isNotNull]) {
         [[User shareUser] updateUid:uid skey:skey];
         [self dismissViewControllerAnimated:YES completion:nil];
+        NSDictionary *params = @{@"uid":uid,
+                                 @"result":@(1)};
+        [BuryPointManager trackEvent:@"event_result_register" actionId:21502 params:params];
     }else{
         [self registerFailedWithError:nil];
     }
@@ -170,6 +176,7 @@ static NSString *const ProtocolLink = @"http://m.kidstc.com/tools/reg_desc";
         errMsg = @"注册失败";
     }
     [[iToast makeText:errMsg] show];
+    [BuryPointManager trackEvent:@"event_result_register" actionId:21502 params:nil];
 }
 
 #pragma mark - showPasswod

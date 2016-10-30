@@ -36,11 +36,14 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.pageId = 11005;
+    
     self.navigationItem.title= @"申请退款";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.scrollBGView.alwaysBounceVertical = YES;
     self.scrollBGView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    self.pageId = @"pv_refund";
+    
     self.refundView.delegate = self;
     [self.refundView setMinCount:1 andMaxCount:1];
     

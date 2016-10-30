@@ -19,6 +19,7 @@
 #import "UIView+Category.h"
 #import "BindPhoneViewController.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 CGFloat const ThirdLoginBtnSize = 40;
 CGFloat const ThirdLoginBtnMargin = 30;
@@ -41,6 +42,8 @@ CGFloat const ThirdLoginBtnMargin = 30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10903;
     
     [self initui];
 }
@@ -114,6 +117,9 @@ CGFloat const ThirdLoginBtnMargin = 30;
     }else{
         [[iToast makeText:@"登录失败"] show];
     }
+    NSDictionary *params = @{@"uid":uid,
+                             @"type":@(1)};
+    [BuryPointManager trackEvent:@"event_result_login" actionId:21501 params:params];
 }
 
 - (void)loginFailedWithError:(NSError *)error{
@@ -151,7 +157,7 @@ CGFloat const ThirdLoginBtnMargin = 30;
         case LoginTypeQQ:
         {
             [[ThirdPartyLoginService sharedService] startThirdPartyLoginWithType:ThirdPartyLoginTypeQQ succeed:^(NSDictionary *respData) {
-                [self handleThirdPartyLoginSucceed:respData];
+                [self handleThirdPartyLoginSucceed:respData type:ThirdPartyLoginTypeQQ];
             } failure:^(NSError *error) {
                 [self handleThirdPartyLoginFailure:error];
             }];
@@ -160,7 +166,7 @@ CGFloat const ThirdLoginBtnMargin = 30;
         case LoginTypeWechat:
         {
             [[ThirdPartyLoginService sharedService] startThirdPartyLoginWithType:ThirdPartyLoginTypeWechat succeed:^(NSDictionary *respData) {
-                [self handleThirdPartyLoginSucceed:respData];
+                [self handleThirdPartyLoginSucceed:respData type:ThirdPartyLoginTypeWechat];
             } failure:^(NSError *error) {
                 [self handleThirdPartyLoginFailure:error];
             }];
@@ -169,7 +175,7 @@ CGFloat const ThirdLoginBtnMargin = 30;
         case LoginTypeWeibo:
         {
             [[ThirdPartyLoginService sharedService] startThirdPartyLoginWithType:ThirdPartyLoginTypeWeibo succeed:^(NSDictionary *respData) {
-                [self handleThirdPartyLoginSucceed:respData];
+                [self handleThirdPartyLoginSucceed:respData type:ThirdPartyLoginTypeWeibo];
             } failure:^(NSError *error) {
                 [self handleThirdPartyLoginFailure:error];
             }];
@@ -180,7 +186,7 @@ CGFloat const ThirdLoginBtnMargin = 30;
     }
 }
 
-- (void)handleThirdPartyLoginSucceed:(NSDictionary *)data {
+- (void)handleThirdPartyLoginSucceed:(NSDictionary *)data type:(ThirdPartyLoginType)type {
     
     NSDictionary *userData = [data objectForKey:@"data"];
     if (userData && [userData isKindOfClass:[NSDictionary class]]) {
@@ -188,6 +194,37 @@ CGFloat const ThirdLoginBtnMargin = 30;
         NSString *skey = [userData objectForKey:@"skey"];
         if ([uid isNotNull] && [skey isNotNull]) {
             [self loginSuccessWithUid:uid skey:skey];
+
+            NSInteger buryType = 0;
+            switch (type) {
+                case ThirdPartyLoginTypeQQ:
+                {
+                    buryType = 2;
+                }
+                    break;
+                case ThirdPartyLoginTypeWechat:
+                {
+                    buryType = 3;
+                }
+                    break;
+                case ThirdPartyLoginTypeWeibo:
+                {
+                    buryType = 4;
+                }
+                    break;
+                default:
+                {
+                    buryType = 0;
+                }
+                    break;
+            }
+            if (buryType == 0) {
+                return;
+            }
+            NSDictionary *params = @{@"uid":uid,
+                                     @"type":@(buryType)};
+            [BuryPointManager trackEvent:@"event_result_login" actionId:21501 params:params];
+            
         }else{
             [[iToast makeText:@"登录失败"] show];
         }

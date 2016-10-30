@@ -47,6 +47,8 @@
 #import "KTCMapService.h"
 #import "OnlineCustomerService.h"
 #import "CashierDeskModel.h"
+#import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #define FDSegmentViewHight 40
 #define FDToolBarViewHight 60
@@ -227,12 +229,23 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
             shareObject.followingContent = @"【童成网】";
             CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:shareObject sourceType:KTCShareServiceTypeNews];
             [self presentViewController:controller animated:YES completion:nil] ;
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([_pid isNotNull]) {
+                [params setValue:_pid forKey:@"pid"];
+            }
+            [BuryPointManager trackEvent:@"event_result_flash_share" actionId:20601 params:params];
         }
             break;
         case FDToolBarViewBtnType_BuyNow:
         {
             ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.data.serveId channelId:@"0"];
             [self.navigationController pushViewController:controller animated:YES];
+            
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([_pid isNotNull]) {
+                [params setValue:_pid forKey:@"pid"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_buy_now" actionId:20602 params:params];
         }
             break;
         case FDToolBarViewBtnType_FlashBuy:
@@ -266,6 +279,12 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
                     {
                         //获取闪购商品结算信息
                         [self getOrderConfirmWithConfirmType:2];
+                        
+                        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                        if ([_pid isNotNull]) {
+                            [params setValue:_pid forKey:@"pid"];
+                        }
+                        [BuryPointManager trackEvent:@"event_skip_flash_balance" actionId:20605 params:params];
                         
                     }
                         break;
@@ -319,6 +338,12 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
     }];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([_pid isNotNull]) {
+        [params setValue:_pid forKey:@"pid"];
+    }
+    [BuryPointManager trackEvent:@"event_result_flash_remind" actionId:20604 params:params];
 }
 
 - (void)choosePayChannel{
@@ -614,5 +639,11 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
                                        CommentListTabNumberKeyPicture:@(comment.pic)};
     CommentListViewController *controller = [[CommentListViewController alloc] initWithIdentifier:self.data.serveId relationType:CommentRelationTypeRealProduct commentNumberDic:commentNumberDic];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([_pid isNotNull]) {
+        [params setValue:_pid forKey:@"pid"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_serve_evalist" actionId:20603 params:params];
 }
 @end

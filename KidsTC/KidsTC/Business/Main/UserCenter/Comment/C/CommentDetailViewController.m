@@ -11,9 +11,10 @@
 #import "TZImagePickerController.h"
 #import "MWPhotoBrowser.h"
 #import "KTCImageUploader.h"
-//#import "StoreDetailViewController.h"
 #import "SegueMaster.h"
 #import "GHeader.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 @interface CommentDetailViewController () <CommentDetailViewDelegate, AUIKeyboardAdhesiveViewDelegate,TZImagePickerControllerDelegate, MWPhotoBrowserDelegate>{
     NSMutableArray *_selectedPhotos;
@@ -58,17 +59,17 @@
     switch (self.viewSource) {
         case CommentDetailViewSourceServiceOrStore:
         {
-            self.pageId = @"pv_prod_evaluation_dtl";
+            self.pageId = 0;
         }
             break;
         case CommentDetailViewSourceStrategy:
         {
-            self.pageId = @"pv_stgy_evaluate";
+            self.pageId = 10805;
         }
             break;
         case CommentDetailViewSourceStrategyDetail:
         {
-            self.pageId = @"pv_stgy_dtl";
+            self.pageId = 10804;
         }
             break;
         default:
@@ -122,6 +123,7 @@
         };
         self.commentIdentifier = model.identifier;
     }];
+    
 }
 
 - (void)didTappedOnCommentDetailView:(CommentDetailView *)detailView {
@@ -287,6 +289,15 @@
         [TCProgressHUD dismissSVP];
         [weakSelf submitCommentFailed:error];
     }];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([object.identifier isNotNull]) {
+        [params setValue:object.identifier forKey:@"pid"];
+    }
+    if ([self.commentIdentifier isNotNull]) {
+        [params setValue:self.commentIdentifier forKey:@"reply"];
+    }
+    [BuryPointManager trackEvent:@"event_result_eva_commit" actionId:20802 params:params];
 }
 
 - (void)submitCommentSucceed:(NSDictionary *)data {

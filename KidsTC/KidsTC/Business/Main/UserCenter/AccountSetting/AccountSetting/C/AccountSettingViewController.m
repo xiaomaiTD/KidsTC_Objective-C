@@ -18,7 +18,7 @@
 #import "UIImage+Category.h"
 #import "ActionSheet.h"
 #import "TZImagePickerController.h"
-
+#import "BuryPointManager.h"
 #import "UserAddressManageViewController.h"
 
 @interface AccountSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,TZImagePickerControllerDelegate,ImageTrimViewControllerDelegate,ActionSheetDelegate>
@@ -31,6 +31,8 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10906;
     
     self.navigationItem.title = @"账户设置";
     
@@ -120,6 +122,8 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
     [alert addAction:actionAlbum];
     [alert addAction:actionCancle];
     [self presentViewController:alert animated:YES completion:nil];
+    
+    [BuryPointManager trackEvent:@"event_click_usr_changehead" actionId:21504 params:nil];
 }
 
 -(void)getMediaFromSource:(UIImagePickerControllerSourceType)sourceType
@@ -272,6 +276,8 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
             [TCProgressHUD dismissSVP];
             [[iToast makeText:@"退出登录失败"] show];
         }];
+        NSDictionary *params = @{@"uid":[User shareUser].uid};
+        [BuryPointManager trackEvent:@"event_result_logoff" actionId:21503 params:params];
     }
 }
 

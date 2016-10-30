@@ -16,6 +16,8 @@
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
 #import "UserCenterMessageButton.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 #import "UserCenterBaseCell.h"
 #import "UserCenterHeaderCell.h"
@@ -63,6 +65,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10901;
     
     [self initui];
     
@@ -319,7 +323,9 @@
     UIViewController *toController = nil;
     switch (type) {
         case UserCenterCellActionTypeUnLogin:
-        {}
+        {
+            
+        }
             break;
         case UserCenterCellActionTypeHasLogin:
         {
@@ -333,6 +339,8 @@
         case UserCenterCellActionTypeMyCollection:
         {
             toController = [[FavourateViewController alloc] initWithNibName:@"FavourateViewController" bundle:nil];
+            
+            [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
         case UserCenterCellActionTypeSignup:
@@ -340,26 +348,34 @@
             WebViewController *controller = [[WebViewController alloc]init];
             controller.urlString = self.model.data.radish.linkUrl;
             toController = controller;
+            [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
         }
             break;
         case UserCenterCellActionTypeBrowHistory:
         {
             toController = [[BrowseHistoryViewController alloc]init];
+            [BuryPointManager trackEvent:@"event_skip_usr_history" actionId:21507 params:nil];
         }
             break;
         case UserCenterCellActionTypeAllOrder:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeAll];
+            NSDictionary *params = @{@"type":@(OrderListTypeAll)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case UserCenterCellActionTypeWaitPay:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingPayment];
+            NSDictionary *params = @{@"type":@(OrderListTypeWaitingPayment)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case UserCenterCellActionTypeWaitUse:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingUse];
+            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case UserCenterCellActionTypeMyComment:
@@ -367,21 +383,27 @@
             CommentTableViewController *controller = [[CommentTableViewController alloc]init];
             controller.isHaveWaitToComment = self.model.data.userCount.order_wait_evaluate>0;
             toController = controller;
+            NSDictionary *params = @{@"type":@(OrderListTypeWaitingComment)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case UserCenterCellActionTypeRefund:
         {
             toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeRefund];
+            NSDictionary *params = @{@"type":@(OrderListTypeRefund)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case UserCenterCellActionTypeCoupon:
         {
             toController = [[CouponListViewController alloc] initWithNibName:@"CouponListViewController" bundle:nil];
+            [BuryPointManager trackEvent:@"event_skip_usr_couponlist" actionId:21509 params:nil];
         }
             break;
         case UserCenterCellActionTypePointment:
         {
             toController = [[AppointmentOrderListViewController alloc] initWithNibName:@"AppointmentOrderListViewController" bundle:nil];
+            [BuryPointManager trackEvent:@"event_skip_usr_storelist" actionId:21510 params:nil];
         }
             break;
         case UserCenterCellActionTypeCarrotHistory:
@@ -401,11 +423,13 @@
         case UserCenterCellActionTypeFlashBy:
         {
             toController = [[FlashServiceOrderListViewController alloc]init];
+            [BuryPointManager trackEvent:@"event_skip_usr_flashlist" actionId:21511 params:nil];
         }
             break;
         case UserCenterCellActionTypeHeadLine:
         {
             toController = [[ArticleWeChatTableViewController alloc] init];
+            [BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
         }
             break;
         case UserCenterCellActionTypeConsult:
@@ -426,8 +450,13 @@
             break;
         case UserCenterCellActionTypeBanners:
         {
-            UserCenterBannersItem *item = self.model.data.config.banners[index];
-            [SegueMaster makeSegueWithModel:item.segueModel fromController:self];
+            SegueModel *model = self.model.data.config.banners[index].segueModel;
+            [SegueMaster makeSegueWithModel:model fromController:self];
+            NSMutableDictionary *params = [@{@"type":@(model.destination)} mutableCopy];
+            if (model.segueParam && [model.segueParam isKindOfClass:[NSDictionary class]]) {
+                [params setObject:model.segueParam forKey:@"params"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_usr_banner" actionId:21513 params:params];
         }
             break;
         case UserCenterCellActionTypeProduct:
@@ -441,6 +470,13 @@
                 case UserCenterHotProductTypeNormolProduct:
                 {
                     toController = [[ServiceDetailViewController alloc] initWithServiceId:item.productId channelId:item.channelId];
+                    
+                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                    if ([item.productId isNotNull]) {
+                        [params setObject:item.productId forKey:@"pid"];
+                    }
+                    [params setObject:@(1) forKey:@"type"];
+                    [BuryPointManager trackEvent:@"event_skip_usr_servedetail" actionId:21514 params:params];
                 }
                     break;
                 case UserCenterHotProductTypeCarrot:
@@ -455,6 +491,13 @@
                     FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
                     controller.pid = item.fsSysNo;
                     toController = controller;
+                    
+                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                    if ([item.productId isNotNull]) {
+                        [params setObject:item.fsSysNo forKey:@"pid"];
+                    }
+                    [params setObject:@(2) forKey:@"type"];
+                    [BuryPointManager trackEvent:@"event_skip_usr_servedetail" actionId:21514 params:params];
                 }
                     break;
             }

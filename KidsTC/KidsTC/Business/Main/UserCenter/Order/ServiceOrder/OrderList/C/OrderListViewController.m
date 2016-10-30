@@ -15,6 +15,8 @@
 #import "OrderListViewModel.h"
 #import "GHeader.h"
 #import "ServiceOrderDetailViewController.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 
 @interface OrderListViewController () <OrderListViewDelegate, CommentFoundingViewControllerDelegate, OrderRefundViewControllerDelegate,ServiceOrderDetailViewControllerDelegate>
@@ -41,6 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.pageId = 11001;
     NSString *title;
     switch (self.listType) {
         case OrderListTypeAll:
@@ -70,7 +73,6 @@
             break;
     }
     self.navigationItem.title = title;
-    self.pageId = @"pv_orders";
     
     self.orderListView.delegate = self;
     self.viewModel = [[OrderListViewModel alloc] initWithView:self.orderListView];
@@ -132,6 +134,11 @@
         self.needRefresh = needRefresh;
     };
     [self.navigationController pushViewController:controller animated:YES];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([model.orderId isNotNull]) {
+        [params setValue:model.orderId forKey:@"orderId"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_orderlist_pay" actionId:21601 params:params];
 }
 
 - (void)orderListView:(OrderListView *)listView didClickedCommentButtonAtIndex:(NSUInteger)index {

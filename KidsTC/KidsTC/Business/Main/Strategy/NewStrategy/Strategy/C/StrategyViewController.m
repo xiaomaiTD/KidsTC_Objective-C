@@ -19,6 +19,7 @@
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
 #import "WelfareStoreViewController.h"
+#import "BuryPointManager.h"
 
 #define defaultTagId 0
 #define pageCount 10
@@ -210,6 +211,11 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)strategyToolBar:(StrategyToolBar *)strategyToolBar didSelectedIndex:(NSUInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (self.models.count>index) {
+        [params setValue:@(self.models[index].currentTagId) forKey:@"tagId"];
+    }
+    [BuryPointManager trackEvent:@"event_click_stgy_tag" actionId:21401 params:nil];
 }
 
 #pragma mark - UIScrollViewDelegate

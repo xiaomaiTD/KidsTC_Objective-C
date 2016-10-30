@@ -12,6 +12,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "HomeRoleButton.h"
 #import "Masonry.h"
+#import "BuryPointManager.h"
 
 #import "TCHomeCollectionViewLayout.h"
 #import "TCHomeMainCollectionCell.h"
@@ -150,6 +151,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     SearchTableViewController *controller = [[SearchTableViewController alloc]init];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_home_search" actionId:20101 params:nil];
     return NO;
 }
 
@@ -218,16 +220,19 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)showScan{
     QRCodeScanViewController *controller = [[QRCodeScanViewController alloc]init];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_home_qrcode" actionId:20102 params:nil];
 }
 
 - (void)speek {
     SpeekViewController *controller = [[SpeekViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_home_voice" actionId:20103 params:nil];
 }
 
 - (void)changeRole{
     RoleSelectViewController *controller = [[RoleSelectViewController alloc]initWithNibName:@"RoleSelectViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_home_stage_opt" actionId:20104 params:nil];
 }
 
 #pragma mark setupCollectionView
@@ -299,7 +304,14 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
             break;
         case TCHomeMainCollectionCellActionTypeSegue:
         {
-            [SegueMaster makeSegueWithModel:value fromController:self];
+            SegueModel *model = value;
+            [SegueMaster makeSegueWithModel:model fromController:self];
+            
+            NSMutableDictionary *param = [@{@"type":@(model.destination)} mutableCopy];
+            if (model.segueParam && [model.segueParam isKindOfClass:[NSDictionary class]]) {
+                [param setObject:model.segueParam forKey:@"params"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_home_floor" actionId:20106 params:param];
         }
             break;
         case TCHomeMainCollectionCellActionTypeScroll:

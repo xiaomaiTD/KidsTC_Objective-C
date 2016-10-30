@@ -37,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10905;
+    
     [self initui];
 }
 

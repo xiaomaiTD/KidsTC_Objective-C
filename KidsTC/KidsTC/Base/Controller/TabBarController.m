@@ -23,6 +23,8 @@
 #import "YYFPSLabel.h"
 
 #import "ComposeManager.h"
+#import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 
 
@@ -212,7 +214,15 @@ singleM(TabBarController)
         self.selectedIndex = index;
         UINavigationController *navi = self.viewControllers[index];
         UIViewController *vc = navi.topViewController;
-        if ([vc isKindOfClass:[WebViewController class]])[(WebViewController *)vc reload];
+        if ([vc isKindOfClass:[WebViewController class]]){
+            WebViewController *wvc = (WebViewController *)vc;
+            [wvc reload];
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([wvc.urlString isNotNull]) {
+                [params setValue:wvc.urlString forKey:@"url"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_home_event" actionId:20109 params:params];
+        }
     }
     [customTabBar clearBadgeIndex:index];
 }

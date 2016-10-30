@@ -17,6 +17,7 @@
 #import "SearchResultViewController.h"
 #import "Macro.h"
 #import "UIBarButtonItem+Category.h"
+#import "BuryPointManager.h"
 
 #define SectionHeaderViewHight 40
 #define SectionFooterViewHight 60
@@ -226,6 +227,9 @@ static NSString *reuseIdentifier = @"SearchTableViewCell";
     controller.searchParmsModel = [self searchParmsModelWithItem:item];
     controller.searchType = self.currentSearchType;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [@{@"searchType":@(self.currentSearchType)} mutableCopy];
+    [BuryPointManager trackEvent:@"event_skip_search_list" actionId:20201 params:params];
 }
 
 - (SearchParmsModel *)searchParmsModelWithItem:(SearchHotKeywordsListItem *)item{

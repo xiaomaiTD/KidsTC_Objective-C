@@ -23,6 +23,8 @@ static NSString *SoftwareSettingViewCellID = @"SoftwareSettingViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10907;
+    
     self.navigationItem.title = @"设置";
     
     [self initTableView];

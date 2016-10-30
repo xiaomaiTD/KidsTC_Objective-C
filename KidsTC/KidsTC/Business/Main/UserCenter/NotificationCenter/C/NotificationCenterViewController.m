@@ -30,6 +30,8 @@ static NSString *const NotificationCenterViewCellID = @"NotificationCenterViewCe
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10902;
+    
     self.navigationItem.title = @"消息中心";
     self.navigationItem.rightBarButtonItem =
     [UIBarButtonItem itemWithTitle:@"一键已读"

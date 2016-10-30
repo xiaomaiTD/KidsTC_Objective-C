@@ -16,6 +16,7 @@
 #import "ArticleColumnHeader.h"
 
 #import "ArticleHomeTableView.h"
+#import "BuryPointManager.h"
 
 #define PAGE_COUNT 10
 
@@ -142,6 +143,8 @@
                                  @"likeType":@"1",
                                  @"isLike":isLike};
     [Request startWithName:@"USER_LIKE_COLUMN" param:parameters progress:nil success:nil failure:nil];
+    NSDictionary *params = @{@"id":columnSysNo};
+    [BuryPointManager trackEvent:@"event_result_column_attach" actionId:21001 params:params];
 }
 
 

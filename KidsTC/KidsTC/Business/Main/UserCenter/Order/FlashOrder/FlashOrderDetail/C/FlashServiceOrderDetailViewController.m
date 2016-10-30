@@ -13,6 +13,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "OnlineCustomerService.h"
 #import "GuideManager.h"
+#import "BuryPointManager.h"
 
 #import "FlashServiceOrderDetailBaseCell.h"
 #import "FlashServiceOrderDetailAddressCell.h"
@@ -67,6 +68,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (![self.orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    
+    self.pageId = 11004;
     
     self.navigationItem.title = @"订单详情";
     
@@ -138,6 +146,8 @@
     }else{
         [self makePhoneCallToCS];
     }
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_click_falsh_callmerchant" actionId:21610 params:params];
 }
 
 - (void)contectOnlineCustomerService {
@@ -381,6 +391,8 @@
         [self loadOrderDetail];
     };
     [self.navigationController pushViewController:controller animated:YES];
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_skip_flash_appoint" actionId:21614 params:params];
 }
 
 #pragma mark - FlashServiceOrderDetailRemindViewDelegate
@@ -506,6 +518,8 @@
         }
         [[iToast makeText:errMsg] show];
     }];
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_click_flash_getsms" actionId:21611 params:params];
 }
 
 #pragma mark ================跳转收银台================
@@ -518,6 +532,9 @@
         [self loadOrderDetail];
     };
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_skip_flash_afterpay" actionId:21613 params:params];
 }
 
 #pragma mark 获取订单信息

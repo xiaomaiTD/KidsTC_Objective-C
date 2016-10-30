@@ -32,6 +32,8 @@
 #import "ArticleWritePreviewViewController.h"
 #import "ArticleUserCenterViewController.h"
 #import "TabBarController.h"
+#import "BuryPointManager.h"
+
 
 static int const kBottomViewHeight = 49;
 
@@ -313,6 +315,7 @@ typedef enum : NSUInteger {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self sendFailure];
     }];
+    [BuryPointManager trackEvent:@"event_result_contribute_commit" actionId:21102 params:nil];
 }
 
 - (void)sendSuccess:(ArticleWriteShareModel *)model {
@@ -477,6 +480,7 @@ typedef enum : NSUInteger {
                 controller.models = previewModels;
                 [self.navigationController pushViewController:controller animated:YES];
             }];
+            [BuryPointManager trackEvent:@"event_skip_contribute_preview" actionId:21101 params:nil];
         }
             break;
         default:break;

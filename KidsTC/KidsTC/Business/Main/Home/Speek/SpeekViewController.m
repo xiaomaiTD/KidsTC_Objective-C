@@ -10,6 +10,8 @@
 #import "SpeekView.h"
 #import "SearchHotKeywordsModel.h"
 #import "SearchResultViewController.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 @interface SpeekViewController ()<SpeekViewDelegate>
 @property (nonatomic, strong) SpeekView *speekView;
@@ -45,11 +47,17 @@
     switch (type) {
         case SpeekViewActionTypeRecognizeSuccess:
         {
-            [self addSearchHistoryKeywords:value searchType:SearchType_Product];
+            NSString *text = value;
+            [self addSearchHistoryKeywords:text searchType:SearchType_Product];
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-            controller.searchParmsModel = [self searchParmsModelWithItem:nil searchType:SearchType_Product text:value];
+            controller.searchParmsModel = [self searchParmsModelWithItem:nil searchType:SearchType_Product text:text];
             controller.searchType = SearchType_Product;
             [self.navigationController pushViewController:controller animated:YES];
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            if ([text isNotNull]) {
+                [params setValue:text forKey:@"key"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_voice_serve" actionId:20302 params:params];
         }
             break;
     }

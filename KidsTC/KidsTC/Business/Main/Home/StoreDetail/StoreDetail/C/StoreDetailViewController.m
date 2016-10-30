@@ -25,6 +25,7 @@
 #import "KTCBrowseHistoryManager.h"
 #import "StoreDetialMapViewController.h"
 #import "SegueMaster.h"
+#import "BuryPointManager.h"
 #import "CommentDetailViewController.h"
 #import "StoreDetialMapPoiViewController.h"
 #import "StoreDetailServiceListViewController.h"
@@ -37,6 +38,7 @@
 #import "TabBarController.h"
 #import "UIBarButtonItem+Category.h"
 #import "StoreDetailAppointmentViewController.h"
+#import "NSString+Category.h"
 
 
 @interface StoreDetailViewController () <StoreDetailViewDelegate, StoreDetailBottomViewDelegate, KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate, CommentFoundingViewControllerDelegate,KTCActionViewDelegate>
@@ -92,6 +94,12 @@
     WebViewController * controller = [[WebViewController alloc] init];
     controller.urlString = self.viewModel.detailModel.couponUrlString;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([_storeId isNotNull]) {
+        [params setValue:_storeId forKey:@"sid"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_store_coupon" actionId:20504 params:params];
 }
 
 - (void)didClickedTelephoneOnStoreDetailView:(StoreDetailView *)detailView {
@@ -146,14 +154,41 @@
 - (void)storeDetailView:(StoreDetailView *)detailView didClickedServiceAtIndex:(NSUInteger)index {
     StoreOwnedServiceModel *serviceModel = [self.viewModel.detailModel.serviceModelsArray objectAtIndex:index];
     ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
-    [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([_storeId isNotNull]) {
+        [params setValue:_storeId forKey:@"sid"];
+    }
+    if ([serviceModel.serviceId isNotNull]) {
+        [params setValue:serviceModel.serviceId forKey:@"pid"];
+    }
+    if ([serviceModel.channelId isNotNull]) {
+        [params setValue:serviceModel.serviceId forKey:@"cid"];
+    }
+    [BuryPointManager trackEvent:@"event_result_store_hotserver" actionId:20505 params:params];
 }
 
 - (void)didClickedAllHotRecommendOnStoreDetailView:(StoreDetailView *)detailView {
-    StoreDetailHotRecommendListViewController *controller = [[StoreDetailHotRecommendListViewController alloc] initWithHotRecommendModel:self.viewModel.detailModel.hotRecommedService];
-    [controller setHidesBottomBarWhenPushed:YES];
+    
+    StoreDetailHotRecommendModel *service = self.viewModel.detailModel.hotRecommedService;
+    StoreDetailHotRecommendListViewController *controller = [[StoreDetailHotRecommendListViewController alloc] initWithHotRecommendModel:service];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([_storeId isNotNull]) {
+        [params setValue:_storeId forKey:@"sid"];
+    }
+    if ([service isKindOfClass:[StoreDetailHotRecommendItem class]]) {
+        StoreDetailHotRecommendItem *item = (StoreDetailHotRecommendItem *)service;
+        if ([item.serviceId isNotNull]) {
+            [params setValue:item.serviceId forKey:@"pid"];
+        }
+        if ([item.channelId isNotNull]) {
+            [params setValue:item.serviceId forKey:@"cid"];
+        }
+    }
+    [BuryPointManager trackEvent:@"event_skip_store_proserver" actionId:20506 params:params];
 }
 
 - (void)storeDetailView:(StoreDetailView *)detailView didSelectedHotRecommendAtIndex:(NSUInteger)index {
@@ -193,6 +228,12 @@
     
     CommentListViewController *controller = [[CommentListViewController alloc] initWithIdentifier:self.storeId relationType:CommentRelationTypeStore commentNumberDic:commentNumberDic];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([_storeId isNotNull]) {
+        [params setValue:_storeId forKey:@"sid"];
+    }
+    [BuryPointManager trackEvent:@"event_result_store_evaluations" actionId:20507 params:params];
 }
 
 - (void)storeDetailView:(StoreDetailView *)detailView didClickedReviewAtIndex:(NSUInteger)index {
@@ -210,6 +251,11 @@
             [self.navigationController pushViewController:controller animated:YES];
         }];
     }
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([_storeId isNotNull]) {
+        [params setValue:_storeId forKey:@"sid"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_store_evaluate" actionId:20502 params:params];
 }
 
 - (void)didClickedMoreBrothersStoreOnStoreDetailView:(StoreDetailView *)detailView {
@@ -260,6 +306,11 @@
                 [controller setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:controller animated:YES];
             }];
+            NSMutableDictionary *params = [NSMutableDictionary new];
+            if ([_storeId isNotNull]) {
+                [params setValue:_storeId forKey:@"sid"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_store_evaluate" actionId:20502 params:params];
         }
             break;
         case StoreDetailBottomSubviewTagFavourate:
@@ -277,6 +328,11 @@
                     }
                 }];
             }];
+            NSMutableDictionary *params = [NSMutableDictionary new];
+            if ([_storeId isNotNull]) {
+                [params setValue:_storeId forKey:@"sid"];
+            }
+            [BuryPointManager trackEvent:@"event_result_store_favor" actionId:20501 params:params];
         }
             break;
         case StoreDetailBottomSubviewTagAppointment:
@@ -288,6 +344,12 @@
                 controller.modalPresentationStyle = UIModalPresentationCustom;
                 [self presentViewController:controller animated:NO completion:nil];
             }];
+            
+            NSMutableDictionary *params = [NSMutableDictionary new];
+            if ([_storeId isNotNull]) {
+                [params setValue:_storeId forKey:@"sid"];
+            }
+            [BuryPointManager trackEvent:@"event_result_store_appoint" actionId:20503 params:params];
         }
             break;
         default:
@@ -368,8 +430,13 @@
         case KTCActionViewTagShare:
         {
             CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.viewModel.detailModel.shareObject sourceType:KTCShareServiceTypeStore];
-            
             [self presentViewController:controller animated:YES completion:nil] ;
+            
+            NSMutableDictionary *params = [NSMutableDictionary new];
+            if ([_storeId isNotNull]) {
+                [params setValue:_storeId forKey:@"sid"];
+            }
+            [BuryPointManager trackEvent:@"event_result_store_share" actionId:20508 params:params];
         }
             break;
         default:

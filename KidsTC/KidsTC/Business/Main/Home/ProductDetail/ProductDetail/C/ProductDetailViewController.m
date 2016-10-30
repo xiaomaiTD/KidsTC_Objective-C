@@ -12,6 +12,8 @@
 #import "KTCMapService.h"
 #import "KTCFavouriteManager.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
+
 #import "ProductDetailModel.h"
 #import "ProductDetailRecommendModel.h"
 #import "ProductDetailConsultModel.h"
@@ -78,10 +80,10 @@
         [[iToast makeText:@"商品编号为空！"] show];
         return;
     }
-    NSString *channelId = [_channelId isNotNull]?_channelId:@"0";
+    if (![_channelId isNotNull])_channelId=@"0";
     NSString *location  = [[KTCMapService shareKTCMapService] currentLocationString];
     NSDictionary *param = @{@"pid":_productId,
-                            @"chid":channelId,
+                            @"chid":_channelId,
                             @"mapaddr":location};
     [TCProgressHUD showSVP];
     [Request startWithName:@"PRODUCT_GETDETAIL_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
@@ -334,6 +336,12 @@
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
     }];
+    
+    NSDictionary *params = @{@"pid":_productId,
+                             @"cid":_channelId,
+                             @"num":@(buynum),
+                             @"sid":storeno};
+    [BuryPointManager trackEvent:@"event_result_server_addtocart" actionId:20404 params:params];
 }
 
 #pragma mark - coupon
@@ -379,6 +387,8 @@
     WebViewController *controller = [[WebViewController alloc]init];
     controller.urlString = value;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    [BuryPointManager trackEvent:@"event_click_server_ask" actionId:20407 params:nil];
 }
 
 #pragma mark - Contact
@@ -453,6 +463,10 @@
                                              relationType:(CommentRelationType)(data.productType)
                                          commentNumberDic:commentNumberDic];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSDictionary *params = @{@"pid":_productId,
+                             @"cid":_channelId};
+    [BuryPointManager trackEvent:@"event_skip_server_evalist" actionId:20403 params:params];
 }
 
 #pragma mark - recommend
@@ -461,6 +475,8 @@
     ProductDetailRecommendItem *item = value;
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.productNo channelId:item.channelId];
     [self.navigationController pushViewController:controller animated:YES];
+    
+    [BuryPointManager trackEvent:@"event_skip_server_promserver" actionId:20405 params:nil];
 }
 
 #pragma mark - attention
@@ -485,6 +501,9 @@
             //[[iToast makeText:@"取消关注失败!"] show];
         }];
     }
+    NSDictionary *params = @{@"pid":_productId,
+                             @"cid":_channelId};
+    [BuryPointManager trackEvent:@"event_result_server_favor" actionId:20401 params:params];
 }
 
 #pragma mark - buyNow
@@ -516,6 +535,12 @@
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
     }];
+    
+    NSDictionary *params = @{@"pid":_productId,
+                             @"cid":_channelId,
+                             @"num":@(buynum),
+                             @"sid":storeno};
+    [BuryPointManager trackEvent:@"event_result_server_addtocart" actionId:20404 params:params];
 }
 
 - (void)goSettlement {
@@ -609,7 +634,11 @@
             ProductDetailView *view = (ProductDetailView *)self.view;
             ProductDetailData *data = view.data;
             CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:data.shareObject sourceType:KTCShareServiceTypeService];
-            [self presentViewController:controller animated:YES completion:nil] ;
+            [self presentViewController:controller animated:YES completion:nil];
+            
+            NSDictionary *param = @{@"pid":_productId,
+                                    @"cid":_channelId};
+            [BuryPointManager trackEvent:@"event_result_server_share" actionId:20406 params:param];
         }
             break;
         default:

@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10910;
+    
     if (self.editType == UserAddressEditTypeAdd) {
         self.navigationItem.title = @"新增收货地址";
     }else if (self.editType == UserAddressEditTypeModify){

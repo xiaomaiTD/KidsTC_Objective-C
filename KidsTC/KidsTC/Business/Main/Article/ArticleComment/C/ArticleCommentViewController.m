@@ -22,6 +22,7 @@
 #import "GHeader.h"
 #import "UIButton+Category.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #define pageCount 10
 #define CommentViewHight 44
@@ -515,6 +516,11 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
         UserArticleCommentsViewController *userArticleCommentsVC = [[UserArticleCommentsViewController alloc]init];
         userArticleCommentsVC.userId = userId;
         [self.navigationController pushViewController:userArticleCommentsVC animated:YES];
+        NSMutableDictionary *params = [NSMutableDictionary new];
+        if ([userArticleCommentsVC.userId isNotNull]) {
+            [params setValue:userArticleCommentsVC.userId forKey:@"id"];
+        }
+        [BuryPointManager trackEvent:@"event_skip_news_usrcenter" actionId:21203 params:params];
     };
     cell.nameActionBlock = ^(NSString *userId){
         ArticleCommentViewController *self = weakSelf;
@@ -522,6 +528,11 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
         UserArticleCommentsViewController *userArticleCommentsVC = [[UserArticleCommentsViewController alloc]init];
         userArticleCommentsVC.userId = userId;
         [self.navigationController pushViewController:userArticleCommentsVC animated:YES];
+        NSMutableDictionary *params = [NSMutableDictionary new];
+        if ([userArticleCommentsVC.userId isNotNull]) {
+            [params setValue:userArticleCommentsVC.userId forKey:@"id"];
+        }
+        [BuryPointManager trackEvent:@"event_skip_news_usrcenter" actionId:21203 params:params];
     };
     
     cell.priseActionBlock = ^(NSString *commentSysNo){
@@ -569,7 +580,11 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
             }
             [self.tableView reloadRowsAtIndexPaths:@[self.currentIndexPath] withRowAnimation:UITableViewRowAnimationNone];
         } failure:nil];
+        NSDictionary *params = @{@"id":articleSysNo};
+        [BuryPointManager trackEvent:@"event_click_news_evalike" actionId:21201 params:params];
     }];
+    
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -621,6 +636,11 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
     self.keyboardAdhesiveView.firstFunctionButton.hidden = YES;
     //评论的回复
     self.isComment = NO;
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    if ([self.currentCommentSysNo isNotNull]) {
+        [params setValue:self.currentCommentSysNo forKey:@"id"];
+    }
+    [BuryPointManager trackEvent:@"event_click_news_evareply" actionId:21202 params:params];
 }
 
 

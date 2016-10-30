@@ -47,6 +47,7 @@ static NSString *const myCommentListCellIdentifier = @"myCommentListCellIdentifi
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10914;
     
     self.myCommentListAry = [NSMutableArray new];
     self.waitToCommentListAry = [NSMutableArray new];

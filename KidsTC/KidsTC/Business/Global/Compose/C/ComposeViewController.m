@@ -13,6 +13,8 @@
 #import "WebViewController.h"
 #import "TabBarController.h"
 #import "NavigationController.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 static CGFloat const kAnimationDuration = 0.4;
 static CGFloat const kSleepDuration = 0.2;
@@ -212,6 +214,7 @@ static CGFloat const kBtn_h = 80;
                         NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
                         [target presentViewController:navi animated:YES completion:nil];
                     }];
+                    [BuryPointManager trackEvent:@"event_skip_home_artical" actionId:20107 params:nil];
                 }else{
                     [[iToast makeText:@"暂不支持投稿哟~"] show];
                 }
@@ -222,6 +225,7 @@ static CGFloat const kBtn_h = 80;
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = data.signInPageUrl;
                 [navi pushViewController:controller animated:YES];
+                [BuryPointManager trackEvent:@"event_skip_home_sign" actionId:20108 params:nil];
             }
                 break;
         }

@@ -38,6 +38,19 @@ static NSString *const WelfareStoreLoveHouseCellID = @"WelfareStoreLoveHouseCell
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    switch (self.type) {
+        case WelfareTypeHospital:
+        {
+            self.pageId = 11104;
+        }
+            break;
+        case WelfareTypeLoveHouse:
+        {
+            self.pageId = 11103;
+        }
+            break;
+    }
+    
     self.ary = [NSMutableArray array];
     
     [self initui];

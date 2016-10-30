@@ -31,6 +31,9 @@ static NSString *const kCouponUseRuleUrlString = @"http://m.kidstc.com/tools/cou
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10912;
+    
     self.navigationItem.title = @"优惠券";
     
     self.automaticallyAdjustsScrollViewInsets = NO;

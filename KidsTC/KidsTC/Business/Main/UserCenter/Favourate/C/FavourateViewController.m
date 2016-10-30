@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"我的收藏";
-    self.pageId = @"pv_acct_favors";
+    self.pageId = 10911;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

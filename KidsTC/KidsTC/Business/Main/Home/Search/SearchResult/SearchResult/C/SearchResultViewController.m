@@ -8,6 +8,9 @@
 
 #import "SearchResultViewController.h"
 #import "GHeader.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
+
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "SearchResultFactorView.h"
@@ -581,6 +584,8 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
         default:
             break;
     }
+    NSMutableDictionary *params = [@{@"searchType":@(self.searchType)} mutableCopy];
+    [BuryPointManager trackEvent:@"event_result_search_filter" actionId:20204 params:params];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -777,22 +782,30 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (tableView == self.tv1) {
         SearchResultProductItem *item = self.ary1[indexPath.section];
-        if (item.serveId.length<=0) {
+        if (![item.serveId isNotNull]) {
             [[iToast makeText:@"无效的服务信息"] show];
             return;
         }
+        if (![item.channelId isNotNull]) {
+            item.channelId = @"0";
+        }
         ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.serveId channelId:item.channelId];
-        [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
+        
+        NSDictionary *params = @{@"pid":item.serveId,
+                                 @"cid":item.channelId};
+        [BuryPointManager trackEvent:@"event_skip_search_serve" actionId:20202 params:params];
     }else if (tableView == self.tv2) {
         SearchResultStoreItem *item = self.ary2[indexPath.section];
-        if (item.storeId.length<=0) {
+        if (![item.storeId isNotNull]) {
             [[iToast makeText:@"无效的门店信息"] show];
             return;
         }
         StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeId];
-        [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
+        
+        NSDictionary *params = @{@"sid":item.storeId};
+        [BuryPointManager trackEvent:@"event_skip_search_store" actionId:20203 params:params];
     }else{
         SearchResultArticleItem *item = self.ary3[indexPath.row];
         if (item.linkUrl.length<=0) {

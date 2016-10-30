@@ -27,6 +27,8 @@ static NSString *const ID = @"UserAddressManageViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.pageId = 10909;
+    
     self.navigationItem.title = @"收货地址";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];

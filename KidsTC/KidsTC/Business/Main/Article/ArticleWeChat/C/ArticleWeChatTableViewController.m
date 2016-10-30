@@ -13,6 +13,7 @@
 #import "ArticleWeChatTimeView.h"
 #import "WebViewController.h"
 #import "GHeader.h"
+#import "BuryPointManager.h"
 
 @interface ArticleWeChatTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -36,6 +37,8 @@ static NSString *const timeViewID = @"ArticleWeChatTimeView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10913;
     
     self.navigationItem.title = @"有料头条";
     self.ary = [NSMutableArray array];
@@ -149,6 +152,7 @@ static NSString *const timeViewID = @"ArticleWeChatTimeView";
     WebViewController *controller = [[WebViewController alloc] init];
     controller.urlString = item.linkUrl;
     [self.navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

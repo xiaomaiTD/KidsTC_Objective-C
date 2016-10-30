@@ -26,6 +26,8 @@
 #import "MessageCenterViewController.h"
 #import "ArticleLikeViewController.h"
 
+#import "BuryPointManager.h"
+
 #define PAGE_COUNT 10
 #define CLASSVIEW_HEIGHT 96
 
@@ -141,6 +143,7 @@
         controller.userId = [User shareUser].uid;
         [self.navigationController pushViewController:controller animated:YES];
     }];
+    [BuryPointManager trackEvent:@"event_skip_news_usrcenter" actionId:20904 params:nil];
 }
 
 - (void)writeItemAction {
@@ -162,6 +165,8 @@
             [[iToast makeText:@"暂时不支持投稿哟~"] show];
         }
     }];
+    
+    [BuryPointManager trackEvent:@"event_skip_share_mood" actionId:20901 params:nil];
 }
 
 - (void)likeItemAction {
@@ -169,6 +174,7 @@
         ArticleLikeViewController *controller = [[ArticleLikeViewController alloc]init];
         [self.navigationController pushViewController:controller animated:YES];
     }];
+    [BuryPointManager trackEvent:@"event_skip_news_favor" actionId:20906 params:nil];
 }
 
 - (void)messageItemAction {
@@ -176,6 +182,7 @@
         MessageCenterViewController *controller = [[MessageCenterViewController alloc]init];
         [self.navigationController pushViewController:controller animated:YES];
     }];
+    [BuryPointManager trackEvent:@"event_skip_news_message" actionId:20907 params:nil];
 }
 
 #pragma mark - ArticleHomeClassViewDelegate

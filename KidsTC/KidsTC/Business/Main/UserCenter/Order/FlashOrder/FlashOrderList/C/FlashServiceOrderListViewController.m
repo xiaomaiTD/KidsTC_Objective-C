@@ -18,6 +18,8 @@
 #import "CashierDeskViewController.h"
 #import "FlashBalanceSettlementViewController.h"
 #import "CommentFoundingViewController.h"
+#import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 #define PAGECOUNT 10
 
@@ -37,6 +39,8 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"闪购订单";
+    
+    self.pageId = 11003;
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -201,6 +205,12 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
         [self loadOrderListRefresh:YES];
     };
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([item.orderId isNotNull]) {
+        [params setValue:item.orderId forKey:@"orderId"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_flashlist_afterpay" actionId:21609 params:params];
 }
 
 #pragma mark 获取订单信息

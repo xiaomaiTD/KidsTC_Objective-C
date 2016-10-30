@@ -28,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 11007;
+    
     self.navigationItem.title = @"收银台";
     self.contentView.hidden = YES;
     self.HLineConstraintHeight.constant = LINE_H;
