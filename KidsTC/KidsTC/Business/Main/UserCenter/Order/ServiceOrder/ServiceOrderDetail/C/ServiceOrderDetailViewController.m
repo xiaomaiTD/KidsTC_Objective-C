@@ -34,7 +34,7 @@
 
 #import "ServiceOrderDetailModel.h"
 
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "CashierDeskViewController.h"
 #import "OrderRefundViewController.h"
@@ -369,7 +369,7 @@
 }
 
 - (void)serviceInfo {
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.model.data.serveId channelId:@"0"];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.model.data.serveId channelId:@"0"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

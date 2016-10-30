@@ -40,7 +40,7 @@
 #import "AppointmentOrderListViewController.h"
 #import "FlashServiceOrderListViewController.h"
 #import "FlashDetailViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "WebViewController.h"
 
 #import "TabBarController.h"
@@ -469,7 +469,7 @@
                     break;
                 case UserCenterHotProductTypeNormolProduct:
                 {
-                    toController = [[ServiceDetailViewController alloc] initWithServiceId:item.productId channelId:item.channelId];
+                    toController = [[ProductDetailViewController alloc] initWithServiceId:item.productId channelId:item.channelId];
                     
                     NSMutableDictionary *params = [NSMutableDictionary dictionary];
                     if ([item.productId isNotNull]) {

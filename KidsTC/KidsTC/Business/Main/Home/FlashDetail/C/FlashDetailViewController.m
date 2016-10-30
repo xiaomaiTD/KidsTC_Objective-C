@@ -32,7 +32,7 @@
 #import "CommentListViewController.h"
 #import "StoreDetailViewController.h"
 #import "CommentDetailViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "FDChooseStoreView.h"
 #import "FlashAdvanceSettlementViewController.h"
 #import "FlashBalanceSettlementViewController.h"
@@ -238,7 +238,7 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
             break;
         case FDToolBarViewBtnType_BuyNow:
         {
-            ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.data.serveId channelId:@"0"];
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.data.serveId channelId:@"0"];
             [self.navigationController pushViewController:controller animated:YES];
             
             NSMutableDictionary *params = [NSMutableDictionary dictionary];

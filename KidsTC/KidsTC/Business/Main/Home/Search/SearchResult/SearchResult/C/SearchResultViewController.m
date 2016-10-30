@@ -23,7 +23,7 @@
 #import "SearchParmsModel.h"
 #import "KTCMapService.h"
 #import "MapLocateViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "WebViewController.h"
 #import "KTCEmptyDataView.h"
@@ -789,7 +789,7 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
         if (![item.channelId isNotNull]) {
             item.channelId = @"0";
         }
-        ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.serveId channelId:item.channelId];
+        ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.serveId channelId:item.channelId];
         [self.navigationController pushViewController:controller animated:YES];
         
         NSDictionary *params = @{@"pid":item.serveId,

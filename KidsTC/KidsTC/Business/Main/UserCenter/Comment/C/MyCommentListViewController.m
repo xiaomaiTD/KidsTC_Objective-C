@@ -9,7 +9,7 @@
 #import "MyCommentListViewController.h"
 #import "MyCommentListViewModel.h"
 #import "MWPhotoBrowser.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "WebViewController.h"
 #import "ParentingStrategyDetailViewController.h"
@@ -98,7 +98,7 @@
         default:
         {
             if ([model.relationIdentifier length] > 0) {
-                ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
+                ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
                 [self.navigationController pushViewController:controller animated:YES];
             }
             return;

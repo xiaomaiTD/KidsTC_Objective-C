@@ -60,8 +60,10 @@
     attSaleNum.alignment = NSTextAlignmentRight;
     content.attSaleNum = attSaleNum;
     
-    NSString *processDesc = [NSString stringWithFormat:@" %@",_processDesc];
-    processDesc = [processDesc isNotNull]?processDesc:@" 进行中";
+    NSString *processDesc = @" 进行中";
+    if ([_processDesc isNotNull]) {
+        processDesc = [NSString stringWithFormat:@" %@",_processDesc];
+    }
     NSTextAttachment *imgAtt = [NSTextAttachment new];
     imgAtt.image = [UIImage imageNamed:@"icon_clock"];
     imgAtt.bounds = CGRectMake(0, -2, 15, 15);

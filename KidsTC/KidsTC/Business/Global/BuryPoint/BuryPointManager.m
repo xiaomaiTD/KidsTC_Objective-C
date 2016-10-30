@@ -128,11 +128,7 @@ singleM(BuryPointManager)
         return;
     }
     NSDictionary *param = @{@"reportMsg":reportMsg};
-    [Request startWithName:@"REPORT_DEVICE_INFO" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+    [Request startAndCallBackInChildThreadWithName:@"REPORT_DEVICE_INFO" param:param success:nil failure:nil];
 }
 
 + (void)trackSite:(NSString *)reportMsg {
@@ -140,7 +136,7 @@ singleM(BuryPointManager)
         return;
     }
     NSDictionary *param = @{@"reportMsg":reportMsg};
-    [Request startWithName:@"SITE_STATISTICS_APP" param:param progress:nil success:nil failure:nil];
+    [Request startAndCallBackInChildThreadWithName:@"SITE_STATISTICS_APP" param:param success:nil failure:nil];
 }
 
 - (NSString *)reportMsgCommon {

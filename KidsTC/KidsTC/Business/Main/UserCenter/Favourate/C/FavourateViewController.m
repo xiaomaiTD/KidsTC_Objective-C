@@ -8,7 +8,7 @@
 
 #import "FavourateViewController.h"
 #import "FavourateViewModel.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 //#import "WebViewController.h"  //原接入点在点击事件的 FavourateViewSegmentTagNews处现为segue跳转
@@ -48,7 +48,7 @@
         case FavourateViewSegmentTagService:
         {
             FavouriteServiceItemModel *model = [array objectAtIndex:index];
-            ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

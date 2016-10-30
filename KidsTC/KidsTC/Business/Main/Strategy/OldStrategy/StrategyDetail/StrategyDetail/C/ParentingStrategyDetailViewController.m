@@ -13,7 +13,7 @@
 #import "SegueMaster.h"
 //#import "MapViewController.h"
 #import "StrategyDetailMapViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StrategyDetailRelatedServiceListViewController.h"
 #import "StrategyDetailBottomView.h"
 #import "TCProgressHUD.h"
@@ -103,7 +103,7 @@
 
 - (void)parentingStrategyDetailView:(ParentingStrategyDetailView *)detailView didClickedRelatedServiceAtIndex:(NSUInteger)index {
     StrategyDetailServiceItemModel *serviceModel = [self.viewModel.detailModel.relatedServices objectAtIndex:index];
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
     [self.navigationController pushViewController:controller animated:YES];
 
 }

@@ -8,7 +8,7 @@
 
 #import "CouponUsableServiceViewController.h"
 #import "ServiceListViewCell.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "GHeader.h"
 #import "KTCEmptyDataView.h"
 
@@ -115,7 +115,7 @@ static NSString *const kCellIdentifier = @"ServiceListViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ServiceListItemModel *item = [self.listModels objectAtIndex:indexPath.row];
 
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.identifier channelId:item.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.identifier channelId:item.channelId];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

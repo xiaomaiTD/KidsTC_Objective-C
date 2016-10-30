@@ -15,7 +15,7 @@
 //服务
 #import "ServiceListViewCell.h"
 #import "ServiceListItemModel.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 
 //门店
 #import "StoreListItemModel.h"
@@ -323,7 +323,7 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
     
     if (self.browseHistoryType == KTCBrowseHistoryTypeService) {//服务
         ServiceListItemModel *model = [self.serviceAry objectAtIndex:indexPath.row];
-        ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
+        ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
         [controller setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:controller animated:YES];
 

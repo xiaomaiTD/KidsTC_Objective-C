@@ -8,7 +8,7 @@
 
 #import "StoreDetailHotRecommendListViewController.h"
 #import "StoreDetailHotRecommendCell.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 
 static NSString *const kCellIdentifier = @"kCellIdentifier";
 
@@ -81,7 +81,7 @@ static NSString *const kCellIdentifier = @"kCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     StoreDetailHotRecommendItem *model = [self.hotRecommendModel.recommendItems objectAtIndex:indexPath.row];
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.serviceId channelId:model.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.serviceId channelId:model.channelId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }

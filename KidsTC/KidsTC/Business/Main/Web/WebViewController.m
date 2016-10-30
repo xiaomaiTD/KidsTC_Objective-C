@@ -25,7 +25,7 @@
 #import "ArticleCommentViewController.h"
 #import "MWPhotoBrowser.h"
 #import "ServiceOrderDetailViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
@@ -289,7 +289,7 @@ typedef enum : NSUInteger {
     NSString *channelId = [dic objectForKey:@"chid"];
     if ([serviceId isNotNull]) {
         channelId = [channelId isNotNull]?channelId:@"0";
-        ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+        ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
         [self makeSegue:controller];
         NSDictionary *params = @{@"url":self.urlString,
                                  @"pid":serviceId,

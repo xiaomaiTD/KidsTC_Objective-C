@@ -8,7 +8,7 @@
 
 #import "ActivityViewController.h"
 #import "ActivityViewModel.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "ActivityFilterView.h"
 
 #import "UIBarButtonItem+Category.h"
@@ -63,7 +63,7 @@
 - (void)activityView:(ActivityView *)view didSelectedItemAtIndex:(NSUInteger)index {
     ActivityListItemModel *itemModel = [[self.viewModel resultArray] objectAtIndex:index];
     
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:itemModel.activityId channelId:itemModel.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:itemModel.activityId channelId:itemModel.channelId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }

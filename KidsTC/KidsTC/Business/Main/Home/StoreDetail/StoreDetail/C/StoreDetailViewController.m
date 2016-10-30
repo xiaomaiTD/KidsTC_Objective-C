@@ -14,7 +14,7 @@
 #import "ServiceListItemModel.h"
 #import "StoreListItemModel.h"
 #import "StoreAppointmentViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "SearchTableViewController.h"
 #import "CommentListViewController.h"
 #import "CommentFoundingViewController.h"
@@ -153,7 +153,7 @@
 
 - (void)storeDetailView:(StoreDetailView *)detailView didClickedServiceAtIndex:(NSUInteger)index {
     StoreOwnedServiceModel *serviceModel = [self.viewModel.detailModel.serviceModelsArray objectAtIndex:index];
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
     [self.navigationController pushViewController:controller animated:YES];
     
     NSMutableDictionary *params = [NSMutableDictionary new];
@@ -193,7 +193,7 @@
 
 - (void)storeDetailView:(StoreDetailView *)detailView didSelectedHotRecommendAtIndex:(NSUInteger)index {
     StoreDetailHotRecommendItem *item = [[self.viewModel.detailModel.hotRecommedService recommendItems] objectAtIndex:index];
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:item.serviceId channelId:item.channelId];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.serviceId channelId:item.channelId];
     [controller setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -383,7 +383,7 @@
         case KTCBrowseHistoryTypeService:
         {
             BrowseHistoryServiceListItemModel *model = [array objectAtIndex:index];
-            ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
             [controller setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:controller animated:YES];
         }

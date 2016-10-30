@@ -22,7 +22,7 @@
 #import "OrderBookingRemarksCell.h"
 #import "OrderBookingMakeSureCell.h"
 
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "OrderBookingSelectTimeViewController.h"
 #import "OrderBookingSelectAgeViewController.h"
@@ -217,7 +217,7 @@
 }
 
 - (void)serviceInfo {
-    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:self.data.productInfo.productId channelId:@""];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.data.productInfo.productId channelId:@""];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

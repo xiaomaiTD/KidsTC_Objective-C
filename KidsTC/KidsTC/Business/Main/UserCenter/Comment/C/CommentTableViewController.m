@@ -13,7 +13,7 @@
 #import "CommentEditViewController.h"
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
-#import "ServiceDetailViewController.h"
+#import "ProductDetailViewController.h"
 #import "OrderListModel.h"
 #import "OrderListViewCell.h"
 #import "ServiceOrderDetailViewController.h"
@@ -380,7 +380,7 @@ static NSUInteger pageSize = 10;
             default:
             {
                 if ([model.relationIdentifier length] > 0) {
-                    ServiceDetailViewController *controller = [[ServiceDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
+                    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
                     [self.navigationController pushViewController:controller animated:YES];
                 }
                 return;
