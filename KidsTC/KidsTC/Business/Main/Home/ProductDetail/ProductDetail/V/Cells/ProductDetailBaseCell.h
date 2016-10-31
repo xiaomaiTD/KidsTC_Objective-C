@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeRecommend,//为您推荐
     
     ProductDetailBaseCellActionTypeOpenWebView,//展开detail
-    ProductDetailBaseCellActionTypeReloadConsult,//刷新咨询
+    ProductDetailBaseCellActionTypeReloadWebViewOrConsult,//刷新咨询
 } ProductDetailBaseCellActionType;
 
 @class ProductDetailBaseCell;

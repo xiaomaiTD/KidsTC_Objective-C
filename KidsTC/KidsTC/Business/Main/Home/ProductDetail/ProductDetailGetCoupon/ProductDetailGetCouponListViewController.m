@@ -36,13 +36,15 @@ static CGFloat const kAnimateDuration =  0.2;
     [self.tableView registerNib:[UINib nibWithNibName:@"ProductDetailGetCouponCell" bundle:nil] forCellReuseIdentifier:ID];
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self show];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

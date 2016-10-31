@@ -66,37 +66,67 @@
     }
     NSTextAttachment *imgAtt = [NSTextAttachment new];
     imgAtt.image = [UIImage imageNamed:@"icon_clock"];
-    imgAtt.bounds = CGRectMake(0, -2, 15, 15);
+    imgAtt.bounds = CGRectMake(0, -4, 13, 13);
     NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
     NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
     [attStatus insertAttributedString:imgAttStr atIndex:0];
     attStatus.lineSpacing = 0;
     attStatus.color = [UIColor lightGrayColor];
-    attStatus.font = [UIFont systemFontOfSize:15];
+    attStatus.font = [UIFont systemFontOfSize:14];
     attStatus.alignment = NSTextAlignmentRight;
     content.attStatus = attStatus;
     
     NSString *distance = [_storeDistance isNotNull]?[NSString stringWithFormat:@"距离 %@",_storeDistance]:@"";
     NSString *storeName = [_storeName isNotNull]?_storeName:@"";
-    NSString *stoeAddress = [NSString stringWithFormat:@"%@%@",storeName, distance];
+    NSString *stoeAddress = [NSString stringWithFormat:@" %@%@",storeName, distance];
     if (stoeAddress.length>0) {
         
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         attachment.image = [UIImage imageNamed:@"ProductDetail_02"];
-        attachment.bounds = CGRectMake(0, -5, 13, 15);
+        attachment.bounds = CGRectMake(0, -4, 13, 16);
         NSAttributedString *attachmentStr = [NSAttributedString attributedStringWithAttachment:attachment];
         
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
         [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
         attStoreAddress.color = [UIColor lightGrayColor];
-        attStoreAddress.font = [UIFont systemFontOfSize:15];
+        attStoreAddress.font = [UIFont systemFontOfSize:14];
         attStoreAddress.lineBreakMode = NSLineBreakByTruncatingTail;
         attStoreAddress.alignment = NSTextAlignmentLeft;
         content.attStoreAddress = attStoreAddress;
     }else{
         content.attStoreAddress = nil;
     }
+    
+    NSString *subImgName = nil;
+    if (_promotionIcon) {
+        switch (_promotionIcon.iconType) {
+            case TCHomeRecommendPromotionIconTypeLocal:
+            {
+                subImgName = @"home_sub_01";
+                content.subImgType = TCHomeFloorContentSubImgTypeLocal;
+            }
+                break;
+            case TCHomeRecommendPromotionIconTypeUrl:
+            {
+                if ([_promotionIcon.iconUrl isNotNull]) {
+                    subImgName = _promotionIcon.iconUrl;
+                    content.subImgType = TCHomeFloorContentSubImgTypeUrl;
+                }else{
+                    subImgName = @"home_sub_01";
+                    content.subImgType = TCHomeFloorContentSubImgTypeLocal;
+                }
+            }
+                break;
+            default:
+            {
+                subImgName = nil;
+            }
+                break;
+        }
+    }
+    content.subImgName = subImgName;
+    
     
     TCHomeFloor *floor = [TCHomeFloor new];
     floor.contents = @[content];

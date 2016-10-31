@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UILabel *storeAddressLabel;
 @property (nonatomic, strong) UILabel *saleNumLabel;
+@property (nonatomic, strong) UIImageView *subImageView;
 @property (nonatomic, strong) YYLabel *subTitleLabel;
 @property (nonatomic, strong) UILabel *statusLabel;
 @property (nonatomic, strong) UIView *line;
@@ -57,6 +58,12 @@
         //saleNumLabel.backgroundColor = [UIColor redColor];
         [self addSubview:saleNumLabel];
         self.saleNumLabel = saleNumLabel;
+        
+        UIImageView *subImageView = [UIImageView new];
+        subImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self addSubview:subImageView];
+        //subImageView.backgroundColor = [UIColor redColor];
+        self.subImageView = subImageView;
         
         YYLabel *subTitleLabel = [YYLabel new];
         //subTitleLabel.backgroundColor = [UIColor blueColor];
@@ -115,6 +122,28 @@
     if (!_saleNumLabel.hidden) {
         _saleNumLabel.frame = att.saleNumFrame;
         _saleNumLabel.attributedText = _content.attSaleNum;
+    }
+    
+    _subImageView.hidden = !att.showSubImg;
+    if (!_subImageView.hidden) {
+        _subImageView.frame = att.subImgFrame;
+        switch (_content.subImgType) {
+            case TCHomeFloorContentSubImgTypeLocal:
+            {
+                _subImageView.image = [UIImage imageNamed:_content.subImgName];
+            }
+                break;
+            case TCHomeFloorContentSubImgTypeUrl:
+            {
+                [_subImageView sd_setImageWithURL:[NSURL URLWithString:_content.subImgName] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+            }
+                break;
+            default:
+            {
+                _subImageView.hidden = YES;
+            }
+                break;
+        }
     }
     
     _subTitleLabel.hidden = !att.showSubTitle;

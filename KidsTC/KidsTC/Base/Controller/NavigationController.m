@@ -31,14 +31,6 @@
     //self.hidesBarsOnSwipe = YES;
 }
 
-- (BOOL)prefersStatusBarHidden{
-    return self==nil;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count>0) {
         viewController.hidesBottomBarWhenPushed = YES;
@@ -50,8 +42,6 @@
 
 + (void)setupNavigationBarTheme
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
     UINavigationBar *appearance = [UINavigationBar appearance];
     [appearance setBackgroundImage:[UIImage imageWithColor:COLOR_PINK] forBarMetrics:UIBarMetricsDefault];
     [appearance setShadowImage:[UIImage new]];

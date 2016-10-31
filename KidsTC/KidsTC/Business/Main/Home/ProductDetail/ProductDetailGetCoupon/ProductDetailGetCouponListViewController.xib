@@ -4,13 +4,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailGetCouponListViewController">
             <connections>
                 <outlet property="contentConstraintB" destination="LGm-qq-hlH" id="AgH-Gc-oNt"/>
-                <outlet property="contentConstraintH" destination="qA5-gL-4gG" id="sky-6g-Zrw"/>
                 <outlet property="tableView" destination="fg5-zl-5fe" id="LWl-3j-nLd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -82,7 +82,6 @@
                         <constraint firstItem="fg5-zl-5fe" firstAttribute="leading" secondItem="6Bl-AX-MdK" secondAttribute="leading" id="XrU-Kn-lUe"/>
                         <constraint firstAttribute="trailing" secondItem="fg5-zl-5fe" secondAttribute="trailing" id="ddw-fj-11n"/>
                         <constraint firstItem="3BF-HH-qC4" firstAttribute="top" secondItem="6Bl-AX-MdK" secondAttribute="top" id="q2u-uV-owJ"/>
-                        <constraint firstAttribute="height" constant="400" id="qA5-gL-4gG"/>
                         <constraint firstItem="3BF-HH-qC4" firstAttribute="leading" secondItem="6Bl-AX-MdK" secondAttribute="leading" id="vzM-fj-fLN"/>
                     </constraints>
                 </view>
@@ -90,6 +89,7 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5547410102739726" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="6Bl-AX-MdK" secondAttribute="bottom" id="LGm-qq-hlH"/>
+                <constraint firstItem="6Bl-AX-MdK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.7" id="TJc-gG-R4H"/>
                 <constraint firstItem="6Bl-AX-MdK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oJm-sn-QgK"/>
                 <constraint firstAttribute="trailing" secondItem="6Bl-AX-MdK" secondAttribute="trailing" id="te1-M9-Vgz"/>
             </constraints>

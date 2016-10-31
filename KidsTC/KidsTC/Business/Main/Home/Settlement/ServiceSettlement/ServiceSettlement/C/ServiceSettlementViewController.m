@@ -7,6 +7,9 @@
 //
 
 #import "ServiceSettlementViewController.h"
+#import "NSString+Category.h"
+#import "BuryPointManager.h"
+#import "UIBarButtonItem+Category.h"
 
 #import "ServiceSettlementBaseCell.h"
 #import "ServiceSettlementTipAddressCell.h"
@@ -34,8 +37,7 @@
 #import "KTCPaymentService.h"
 #import "PayModel.h"
 
-#import "NSString+Category.h"
-#import "BuryPointManager.h"
+
 
 #define TOOLBAR_HEIGHT 60
 
@@ -70,6 +72,8 @@
     
     self.navigationItem.title = @"结算";
     
+    [self setupWhiteStyle];
+    
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.contentInset = UIEdgeInsetsMake(0, 0, TOOLBAR_HEIGHT, 0);
     tableView.scrollIndicatorInsets = tableView.contentInset;
@@ -93,6 +97,68 @@
     [self prepareCells];
     
     [self loadShoppingCart];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
+- (void)setupWhiteStyle {
+    
+    self.naviColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        btn.bounds = CGRectMake(0, 0,18, 18);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+    }];
+}
+
+- (void)setupNavigationBarTheme
+{
+    UINavigationBar *appearance = self.navigationController.navigationBar;
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
+    [appearance setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarButtonItemTheme
+{
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+    
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
 }
 
 - (void)prepareCells{

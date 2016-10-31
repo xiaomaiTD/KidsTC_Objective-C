@@ -26,8 +26,11 @@ static Request *_requestManager;
         _requestManager = [[self alloc]init];
         _requestManager.sessionManager = [AFHTTPSessionManager manager];
         _requestManager.sessionManager.responseSerializer =[AFHTTPResponseSerializer serializer];
+        [_requestManager.sessionManager.requestSerializer setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
+        
         _requestManager.downloadSessionManager = [AFHTTPSessionManager manager];
         _requestManager.downloadSessionManager.responseSerializer =[AFHTTPResponseSerializer serializer];
+        [_requestManager.downloadSessionManager.requestSerializer setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
     });
     return _requestManager;
 }
@@ -107,6 +110,7 @@ static Request *_requestManager;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
+    [request addValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
@@ -154,6 +158,7 @@ static Request *_requestManager;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
+    [request addValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
@@ -171,7 +176,7 @@ static Request *_requestManager;
                      success:(void (^)(NSURLSessionDataTask *task,NSData *data))success
                      failure:(void (^)(NSURLSessionDataTask *task,NSError *error))failure
 {
-    AFHTTPSessionManager   *manager = [self shareRequestManager].downloadSessionManager;
+    AFHTTPSessionManager *manager = [self shareRequestManager].downloadSessionManager;
     [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (success) success(task,responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

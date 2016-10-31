@@ -59,24 +59,28 @@ singleM(BuryPointManager)
 }
 
 + (void)trackBegin:(long)pageId
+           pageUid:(NSString *)pageUid
           pageName:(NSString *)pageName
 {
     if([pageName isNotNull])[MobClick beginLogPageView:pageName];
-    [self trackSite:[self reportMsgTrackType:TrackTypePV
-                                     beginPV:YES
-                                    actionId:pageId
-                                      params:nil]];
+    if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV
+                                                 beginPV:YES
+                                                actionId:pageId
+                                                 pageUid:pageUid
+                                                  params:nil]];
     
 }
 
 + (void)trackEnd:(long)pageId
+         pageUid:(NSString *)pageUid
         pageName:(NSString *)pageName
 {
     if([pageName isNotNull])[MobClick endLogPageView:pageName];
-    [self trackSite:[self reportMsgTrackType:TrackTypePV
-                                     beginPV:NO
-                                    actionId:pageId
-                                      params:nil]];
+    if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV
+                                                 beginPV:NO
+                                                actionId:pageId
+                                                 pageUid:pageUid
+                                                  params:nil]];
 }
 
 + (void)trackEvent:(NSString *)eventName
@@ -84,10 +88,11 @@ singleM(BuryPointManager)
             params:(NSDictionary *)params
 {
     if([eventName isNotNull])[MobClick event:eventName attributes:params];
-    [self trackSite:[self reportMsgTrackType:TrackTypeEvent
-                                     beginPV:NO
-                                    actionId:actionId
-                                      params:params]];
+    if(actionId>0)[self trackSite:[self reportMsgTrackType:TrackTypeEvent
+                                                   beginPV:NO
+                                                  actionId:actionId
+                                                   pageUid:nil
+                                                    params:params]];
     
 }
 
@@ -100,8 +105,9 @@ singleM(BuryPointManager)
         NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
         NSString *projectId = @"1";
         NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-        NSString *timeTag = [NSString stringWithFormat:@"%f",timeInterval];
+        NSNumber *timeTag = [NSNumber numberWithLongLong:timeInterval];
         _guid = [NSString stringWithFormat:@"%@#%@#%@",projectId,deviceId,timeTag];
+        _squence = 0;
         if (manager.lastProductGuidTimeInterval>0) {
             [BuryPointManager trackCommon];
         }
@@ -172,15 +178,15 @@ singleM(BuryPointManager)
 }
 
 + (NSString *)reportMsgTrackType:(TrackType)trackType
-                          beginPV:(BOOL)beginPV
+                         beginPV:(BOOL)beginPV
                         actionId:(long)actionId
+                         pageUid:(NSString *)pageUid
                           params:(NSDictionary *)dic
 {
     BuryPointManager *manager = [BuryPointManager shareBuryPointManager];
     NSString *type = [NSString stringWithFormat:@"%zd",trackType];
     NSString *net = [NSString stringWithFormat:@"%zd",[self NetworkStatusTo]];
     NSString *guid = manager.guid;
-    NSString *pageUid = [NSString stringWithFormat:@"%zd",[self getRandomNumber:100000 to:999999]];
     NSString *uid = [User shareUser].uid;
     NSString *squence = [NSString stringWithFormat:@"%zd",manager.squence++];
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
@@ -189,7 +195,6 @@ singleM(BuryPointManager)
                                             @"net":net,
                                             @"guid":guid,
                                             @"actionId":@(actionId),
-                                            @"pageUid":pageUid,
                                             @"uid":uid,
                                             @"squence":squence,
                                             @"deviceId":deviceId,
@@ -201,14 +206,15 @@ singleM(BuryPointManager)
     switch (trackType) {
         case TrackTypePV:
         {
-            NSString *stayTime = @"0";
+            long long stayTime = 0;
             if (beginPV) {
                 manager.lastBeginPvTimeInterval = [[NSDate date] timeIntervalSince1970];
             }else{
                 NSTimeInterval stayTimeInterval = [[NSDate date] timeIntervalSince1970] - manager.lastBeginPvTimeInterval;
-                stayTime = [NSString stringWithFormat:@"%f",stayTimeInterval];
+                stayTime = stayTimeInterval*1000;
             }
-            [reportMsgDic setValue:stayTime forKey:@"stayTime"];
+            [reportMsgDic setValue:@(stayTime) forKey:@"stayTime"];
+            if([pageUid isNotNull])[reportMsgDic setValue:pageUid forKey:@"pageUid"];
         }
             break;
         case TrackTypeEvent:
@@ -217,9 +223,24 @@ singleM(BuryPointManager)
         }
             break;
     }
-    NSString *msg = [NSString zp_stringWithDictory:reportMsgDic];
+    NSArray *ary = @[reportMsgDic];
+    NSString *msg = [manager jsonWithObj:ary];
     if (![msg isNotNull]) msg = @"";
     return msg;
+}
+
+- (NSString *)jsonWithObj:(id)obj{
+    if (obj == nil) {
+        return nil;
+    }
+    NSError *err;
+    NSData *jsonData=[NSJSONSerialization dataWithJSONObject:obj options:0 error:&err];
+    if(err) {
+        NSLog(@"字典转JSON失败：%@",err);
+        return nil;
+    }
+    NSString *jsonString_utf8=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString_utf8;
 }
 
 + (NetType)NetworkStatusTo{
@@ -271,8 +292,6 @@ singleM(BuryPointManager)
     }
 }
 
-+ (int)getRandomNumber:(int)from to:(int)to{
-    return (int)(from + arc4random() % (to - from + 1));
-}
+
 
 @end

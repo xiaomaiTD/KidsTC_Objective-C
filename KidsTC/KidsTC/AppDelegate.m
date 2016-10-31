@@ -89,6 +89,8 @@
 
 - (void)prepareForApplication {
     
+    [self setupUserAgent];
+    
     [self JSPatchRemote:true];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
@@ -106,8 +108,6 @@
     [BuryPointManager startBuryPoint];
     
     [[KTCMapService shareKTCMapService] startService];
-    
-    [self setupUserAgent];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{

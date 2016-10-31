@@ -36,6 +36,8 @@ struct TCHomeContentLayoutAttributes {
     BOOL showPrice;
     BOOL showTitle;
     
+    BOOL showSubImg;
+    
     BOOL showSaleNum;
     BOOL showSubTitle;
     
@@ -49,6 +51,8 @@ struct TCHomeContentLayoutAttributes {
     
     CGRect priceFrame;
     CGRect titleFrame;
+    
+    CGRect subImgFrame;
     
     CGRect saleNumFrame;
     CGRect subTitleFrame;
@@ -66,6 +70,8 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
                                   BOOL showPrice,
                                   BOOL showTitle,
                                   
+                                  BOOL showSubImg,
+                                  
                                   BOOL showSaleNum,
                                   BOOL showSubTitle,
                                   
@@ -79,6 +85,8 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
                                   
                                   CGRect priceFrame,
                                   CGRect titleFrame,
+                                  
+                                  CGRect subImgFrame,
                                   
                                   CGRect saleNumFrame,
                                   CGRect subTitleFrame,
@@ -96,6 +104,8 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
     att.showPrice = showPrice;
     att.showTitle = showTitle;
     
+    att.showSubImg = showSubImg;
+    
     att.showSaleNum = showSaleNum;
     att.showSubTitle = showSubTitle;
     
@@ -110,6 +120,8 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
     att.priceFrame = priceFrame;
     att.titleFrame = titleFrame;
     
+    att.subImgFrame = subImgFrame;
+    
     att.saleNumFrame = saleNumFrame;
     att.subTitleFrame = subTitleFrame;
     
@@ -120,6 +132,11 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
     
     return att;
 }
+
+typedef enum : NSUInteger {
+    TCHomeFloorContentSubImgTypeLocal=1,
+    TCHomeFloorContentSubImgTypeUrl
+} TCHomeFloorContentSubImgType;
 
 @interface TCHomeFloorContent : NSObject
 @property (nonatomic, strong) NSString *imageUrl;
@@ -143,6 +160,8 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
 @property (nonatomic, strong) NSAttributedString *attSaleNum;
 @property (nonatomic, strong) NSAttributedString *attSubTitle;
 @property (nonatomic, strong) NSAttributedString *attStatus;
+@property (nonatomic, strong) NSString *subImgName;
+@property (nonatomic, assign) TCHomeFloorContentSubImgType subImgType;
 @property (nonatomic, strong) NSString *tipImgName;
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, assign) TCHomeContentLayoutAttributes layoutAttributes;

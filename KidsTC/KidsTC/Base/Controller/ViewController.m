@@ -11,6 +11,8 @@
 #import "UIImage+Category.h"
 #import "UIBarButtonItem+Category.h"
 #import "BuryPointManager.h"
+#import "NSString+Category.h"
+
 @interface ViewController ()
 
 @end
@@ -47,6 +49,10 @@
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [self setNavigationBarColor];
     }
+    
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -54,24 +60,77 @@
     [self.view endEditing:YES];
     //防止子类切换页面时造成crash
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [BuryPointManager trackBegin:self.pageId pageName:self.pageName];
+    if (self.pageId>0) {
+        if (![_pageUid isNotNull]) {
+            _pageUid = [NSString stringWithFormat:@"%zd%zd",_pageId,[self getRandomNumber:100000 to:999999]];
+        }
+        [BuryPointManager trackBegin:self.pageId pageUid:_pageUid pageName:self.pageName];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    [BuryPointManager trackEnd:self.pageId pageName:self.pageName];
+    if (self.pageId>0 && ![_pageUid isNotNull]) {
+        [BuryPointManager trackEnd:self.pageId pageUid:_pageUid pageName:self.pageName];
+    }
+}
+
+- (void)setupNavigationBarTheme
+{
+    UINavigationBar *appearance = self.navigationController.navigationBar;
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
+    [appearance setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarButtonItemTheme
+{
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = COLOR_PINK_HIGHLIGHT;
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+    
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = COLOR_PINK_HIGHLIGHT;
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+}
+
+- (int)getRandomNumber:(int)from to:(int)to{
+    return (int)(from + arc4random() % (to - from + 1));
 }
 
 - (BOOL)prefersStatusBarHidden{
     return self.navigationController==nil;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
 #import "GuideManager.h"
+#import "UIBarButtonItem+Category.h"
 
 #import "ProductDetailModel.h"
 #import "ProductDetailRecommendModel.h"
@@ -67,12 +68,75 @@
     
     self.pageId = 10401;
     
-    //self.naviColor = [UIColor whiteColor];
     self.navigationItem.title = @"服务详情";
+    
+    [self setupWhiteStyle];
     
     [self loadData];
     
     [self buildRightBarButtons];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
+- (void)setupWhiteStyle {
+    
+    self.naviColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        btn.bounds = CGRectMake(0, 0,18, 18);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+    }];
+}
+
+- (void)setupNavigationBarTheme
+{
+    UINavigationBar *appearance = self.navigationController.navigationBar;
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
+    [appearance setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarButtonItemTheme
+{
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+    
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
 }
 
 - (void)loadData {
@@ -555,6 +619,7 @@
 #pragma mark - buildRightBarButtons
 
 - (void)buildRightBarButtons {
+    
     CGFloat buttonWidth = 24;
     CGFloat buttonHeight = 24;
     CGFloat buttonGap = 15;
@@ -566,8 +631,8 @@
     UIButton *historyButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [historyButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [historyButton setBackgroundColor:[UIColor clearColor]];
-    [historyButton setImage:[UIImage imageNamed:@"navigation_time"] forState:UIControlStateNormal];
-    [historyButton setImage:[UIImage imageNamed:@"navigation_time"] forState:UIControlStateSelected];
+    historyButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [historyButton setImage:[UIImage imageNamed:@"navi_colock_black"] forState:UIControlStateNormal];
     [historyButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:historyButton];
     
@@ -575,7 +640,8 @@
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [shareButton setBackgroundColor:[UIColor clearColor]];
-    [shareButton setImage:[UIImage imageNamed:@"navigation_more"] forState:UIControlStateNormal];
+    shareButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [shareButton setImage:[UIImage imageNamed:@"navi_more_black"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(showActionView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:shareButton];
     

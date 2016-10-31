@@ -27,20 +27,21 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
 @implementation ProductDetailTwoColumnCell
 
 - (void)awakeFromNib {
+    
     [super awakeFromNib];
     
     [self layoutIfNeeded];
     
     self.showType = ProductDetailTwoColumnShowTypeDetail;
     
-    self.webView.backgroundColor = [UIColor clearColor];
-    self.webView.opaque = YES;
-    self.webView.scrollView.bounces = NO;
-    self.webView.scrollView.scrollEnabled = NO;
-    self.webView.scrollView.scrollsToTop = NO;
-    self.webView.scrollView.showsVerticalScrollIndicator = NO;
-    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-    
+    _webView.opaque = NO;
+    _webView.backgroundColor = [UIColor whiteColor];
+    _webView.scalesPageToFit = YES;
+    _webView.scrollView.bounces = NO;
+    _webView.scrollView.scrollEnabled = NO;
+    _webView.scrollView.scrollsToTop = NO;
+    _webView.scrollView.showsVerticalScrollIndicator = NO;
+    _webView.scrollView.showsHorizontalScrollIndicator = NO;
     
     self.tableView.scrollsToTop = NO;
     self.tableView.scrollEnabled = NO;
@@ -56,6 +57,7 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     switch (_showType) {
         case ProductDetailTwoColumnShowTypeDetail:
         {
+            [self layoutIfNeeded];
             CGFloat webH = self.webView.scrollView.contentSize.height;
             if (_webViewHasOpen) {
                 h = webH;
@@ -70,9 +72,8 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
             break;
         case ProductDetailTwoColumnShowTypeConsult:
         {
-            TCLog(@"_tableView.frame.size.height:%f",_tableView.frame.size.height);
             [self.tableView reloadData];
-            TCLog(@"self.tableView.contentSize.height:%f",self.tableView.contentSize.height);
+            [self layoutIfNeeded];
             h = self.tableView.contentSize.height;
         }
             break;
@@ -112,13 +113,12 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     
     [self.tableView reloadData];
     
-    if (self.data.consults.count>0 && !_tablViewHasload) {
+    if (!_selfHasload) {
         if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeReloadConsult value:nil];
-            _tablViewHasload = YES;
+            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeReloadWebViewOrConsult value:nil];
         }
+        _selfHasload = YES;
     }
-    
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
@@ -150,13 +150,15 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     
     NSMutableArray *section00 = [NSMutableArray array];
     
-    _tipCell.count = self.data.coupons.count;
+    NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
+    
+    _tipCell.count = consults.count;
     [section00 addObject:_tipCell];
     
-    if (self.data.consults.count<1) {
+    if (consults.count<1) {
         [section00 addObject:self.emptyCell];
     }else{
-        [self.data.consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
+        [consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
             ProductDetailTwoColumnTableViewConsultCell *consultCell = self.consultCell;
             consultCell.item = obj;
             [section00 addObject:consultCell];

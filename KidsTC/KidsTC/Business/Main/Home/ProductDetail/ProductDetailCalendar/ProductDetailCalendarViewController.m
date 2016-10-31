@@ -46,7 +46,6 @@
     [self.view addSubview:calendar];
     self.calendar = calendar;
     
-    
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.dateFormat = DF_yMd;
     
@@ -65,7 +64,7 @@
         NSDate *date_e = [NSDate zp_dateWithTimeString:obj.endTime withDateFormat:DF_yMd];
         NSTimeInterval timeInterval_e = [date_e timeIntervalSince1970];
         
-        while (timeInterval_s<timeInterval_e) {
+        while (timeInterval_s<=timeInterval_e) {
             NSString *timeStr = [NSString zp_stringWithTimeInterval:timeInterval_s Format:DF_yMd];
             [fillDefaultColors setObject:COLOR_PINK forKey:timeStr];
             [titleDefaultColors setObject:[UIColor whiteColor] forKey:timeStr];

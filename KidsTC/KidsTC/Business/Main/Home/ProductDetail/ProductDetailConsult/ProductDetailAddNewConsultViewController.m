@@ -80,6 +80,16 @@ static CGFloat const kAnimationDuration = 0.2;
     }];
 }
 
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (textView.text.length>200) {
+        textView.text = [textView.text substringToIndex:200];
+        [[iToast makeText:@"最多只能输入200个文字"] show];
+    }
+}
+
+
 - (void)send {
     if (![self.productId isNotNull]) {
         [[iToast makeText:@"没有关联商品编号！"] show];

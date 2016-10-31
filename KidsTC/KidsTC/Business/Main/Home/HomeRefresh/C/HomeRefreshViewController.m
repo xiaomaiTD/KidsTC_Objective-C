@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
-    
+    self.webView.scrollView.bounces = NO;
     [self setupCloseBtn];
 }
 

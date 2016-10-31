@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +34,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="上海市杨浦区大学路299号701室" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-0j-Q3t">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="上海市杨浦区大学路299号701室" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SF-0j-Q3t">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -56,6 +57,7 @@
                     <constraint firstAttribute="trailing" secondItem="fyT-DR-CcS" secondAttribute="trailing" constant="12" id="iwI-26-UVB"/>
                     <constraint firstAttribute="bottom" secondItem="Y6K-e5-YB6" secondAttribute="bottom" constant="14" id="pLR-Zi-ZCs"/>
                     <constraint firstItem="fyT-DR-CcS" firstAttribute="centerY" secondItem="LX4-cu-6rx" secondAttribute="centerY" id="rPi-ft-IVt"/>
+                    <constraint firstItem="Y6K-e5-YB6" firstAttribute="width" relation="greaterThanOrEqual" secondItem="LX4-cu-6rx" secondAttribute="width" multiplier="0.4" id="tDA-xl-m4w"/>
                     <constraint firstItem="RYo-bf-sTp" firstAttribute="leading" secondItem="LX4-cu-6rx" secondAttribute="leading" id="uZT-V4-kfL"/>
                     <constraint firstItem="heZ-66-ehW" firstAttribute="leading" secondItem="LX4-cu-6rx" secondAttribute="leading" constant="12" id="wuh-TF-BDX"/>
                     <constraint firstAttribute="trailing" secondItem="RYo-bf-sTp" secondAttribute="trailing" id="zTf-Xm-ruo"/>
@@ -65,7 +67,7 @@
                 <outlet property="addressL" destination="6SF-0j-Q3t" id="aeJ-Ni-Ms6"/>
                 <outlet property="nameL" destination="Y6K-e5-YB6" id="i1m-Hd-NYu"/>
             </connections>
-            <point key="canvasLocation" x="-297" y="-12"/>
+            <point key="canvasLocation" x="-203" y="-70"/>
         </tableViewCell>
     </objects>
     <resources>

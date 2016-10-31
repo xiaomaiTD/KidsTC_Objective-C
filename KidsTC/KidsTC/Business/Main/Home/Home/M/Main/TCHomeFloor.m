@@ -9,6 +9,7 @@
 #import "TCHomeFloor.h"
 
 #import "TCHomeCollectionViewBaseLayout.h"
+#import "NSString+Category.h"
 
 int const kTCHomeCollectionViewCellMaxSections = 3;
 
@@ -156,8 +157,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat item_y = margins.top;
     __block CGFloat item_x;
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -191,8 +192,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, NO, YES,NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     CGFloat item_h = title_y + title_h;
     _floorHeight = margins.top + margins.bottom + (item_h + margins.vertical) * rowCount - margins.vertical;//collectionView的高度
@@ -233,8 +234,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
     
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, YES, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, priceFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, YES, NO, NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, priceFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     CGFloat item_h = _contents.count>0?CGRectGetMaxY(priceFrame):0;
     
@@ -291,8 +292,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGRect imgFrame = CGRectMake(0, 0, item_w, item_h);
         
         TCHomeContentLayoutAttributes contentAtt =
-        TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO,
-                                          imgFrame,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+        TCHomeContentLayoutAttributesMake(YES, NO, NO, NO,NO, NO, NO, NO, NO, NO,
+                                          imgFrame,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
         obj.layoutAttributes = contentAtt;
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
@@ -321,8 +322,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, CGRectZero, CGRectZero,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     CGFloat item_h = img_y + img_h;
     _floorHeight = margins.top + margins.bottom + (item_h + margins.vertical) * rowCount - margins.vertical;
@@ -373,8 +374,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGFloat line_w = item_w - 2 * margin;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         
-        obj.layoutAttributes = TCHomeContentLayoutAttributesMake(NO, NO, NO, YES, NO, YES, NO, NO, YES,
-                                                                 CGRectZero, CGRectZero, CGRectZero, title_frame, CGRectZero, subTitle_frame, CGRectZero, CGRectZero, lineFrame);
+        obj.layoutAttributes = TCHomeContentLayoutAttributesMake(NO, NO, NO, YES, NO, NO, YES, NO, NO, YES,
+                                                                 CGRectZero, CGRectZero, CGRectZero, title_frame, CGRectZero, CGRectZero, subTitle_frame, CGRectZero, CGRectZero, lineFrame);
         CGFloat item_h = CGRectGetMaxY(subTitle_frame) + margin;
         CGRect item_frame = CGRectMake(item_x, item_y, item_w, item_h);
         
@@ -436,8 +437,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         title_h = title_h>titleMax_h?titleMax_h:title_h;
         CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
         
-        obj.layoutAttributes = TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, YES, NO, NO, YES,
-                                                                 imgFrame, CGRectZero,CGRectZero, titleFrame, CGRectZero, subTitleFrame, CGRectZero, CGRectZero, lineFrame);
+        obj.layoutAttributes = TCHomeContentLayoutAttributesMake(YES, NO, NO, YES,NO, NO, YES, NO, NO, YES,
+                                                                 imgFrame, CGRectZero,CGRectZero, titleFrame, CGRectZero, CGRectZero, subTitleFrame, CGRectZero, CGRectZero, lineFrame);
         
         item_y = margins.top + (item_h + margins.vertical) * idx;
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
@@ -485,9 +486,9 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         TCHomeContentLayoutAttributes contentAtt;
         if (idx == 0) {
-            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, YES, NO, NO, NO, img_f, CGRectZero, CGRectZero, title_f, CGRectZero, subTitle_f, CGRectZero, CGRectZero, CGRectZero);
+            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, YES, NO, NO, NO, img_f, CGRectZero, CGRectZero, title_f, CGRectZero, CGRectZero, subTitle_f, CGRectZero, CGRectZero, CGRectZero);
         }else{
-            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO, img_f, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+            contentAtt = TCHomeContentLayoutAttributesMake(YES, NO, NO, NO,NO, NO, NO, NO, NO, NO, img_f, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
         }
         obj.layoutAttributes = contentAtt;
         item_x = margins.left + (item_w + margins.horizontal) * idx;
@@ -513,8 +514,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     CGFloat item_h = img_y + img_h;
     _floorHeight = item_h + margins.top + margins.bottom;
@@ -551,8 +552,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat title_x = item_w * 0.2 + margin,title_h = 21, title_y = (item_h - title_h) * 0.5, title_w = item_w - title_x - margin;
     CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(NO, NO, NO, YES, NO, NO, NO, NO, NO,
-                                      CGRectZero, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(NO, NO, NO, YES, NO, NO, NO, NO, NO, NO,
+                                      CGRectZero, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     _floorHeight = item_h;
     CGFloat item_x = margins.left;
@@ -611,8 +612,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         
         obj.layoutAttributes =
-        TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, YES, NO, NO, YES,
-                                          imgFrame, CGRectZero, CGRectZero, title_f, CGRectZero, subTitle_f, CGRectZero, CGRectZero, lineFrame);
+        TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, YES, NO, NO, YES,
+                                          imgFrame, CGRectZero, CGRectZero, title_f, CGRectZero, CGRectZero, subTitle_f, CGRectZero, CGRectZero, lineFrame);
         
         CGFloat item_x = margins.left;
         CGFloat item_y = last_item_y;
@@ -645,8 +646,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
     TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO, NO,
+                                      imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
     
     CGFloat item_h = item_w * _ratio;
     _floorHeight = item_h + margins.top + margins.bottom;
@@ -699,8 +700,19 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGFloat title_h = title_size.height;
         CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
         
+        BOOL subImgShow = [obj.subImgName isNotNull];
+        
+        CGFloat subImg_x = margin;
+        CGFloat subImg_y = CGRectGetMaxY(titleFrame) + margin + 3;
+        CGFloat subImg_w = 15;
+        CGFloat subImg_h = 15;
+        CGRect subImgFrame = CGRectMake(subImg_x, subImg_y, subImg_w, subImg_h);
+        if (!subImgShow) {
+            subImgFrame = CGRectZero;
+        }
+        
         CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + margin;
-        CGFloat subTitle_x = margin;
+        CGFloat subTitle_x = CGRectGetMaxX(subImgFrame) + 4;
         CGFloat subTitle_w = lift_max_x - subTitle_x;
         CGFloat subTitle_h = 21;
         CGRect subTtitleFrme = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
@@ -741,8 +753,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         
         obj.layoutAttributes =
-        TCHomeContentLayoutAttributesMake(YES, obj.tipImgName.length>0, YES, YES, YES, YES, YES, YES, YES,
-                                          imgFrame, tipImgFrame, priceFrame, titleFrame, saleNumFrame, subTtitleFrme, statusFrame, storeAddressFrme, lineFrame);
+        TCHomeContentLayoutAttributesMake(YES, [obj.tipImgName isNotNull], YES, YES, subImgShow, YES, YES, YES, YES,YES,
+                                          imgFrame, tipImgFrame, priceFrame, titleFrame, subImgFrame, saleNumFrame, subTtitleFrme, statusFrame, storeAddressFrme, lineFrame);
         
         _floorHeight = CGRectGetMaxY(lineFrame);
         
@@ -798,8 +810,8 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGRect imgFrame = CGRectMake(0, 0, item_w, item_h);
         
         obj.layoutAttributes =
-        TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO,
-                                          imgFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+        TCHomeContentLayoutAttributesMake(YES, NO, NO, NO, NO, NO, NO, NO, NO, NO,
+                                          imgFrame, CGRectZero, CGRectZero,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
         UICollectionViewLayoutAttributes *att = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];

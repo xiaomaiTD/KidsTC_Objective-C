@@ -11,6 +11,7 @@
 #import "GHeader.h"
 #import "ProductDetailAddNewConsultViewController.h"
 #import "ProductDetailConsultModel.h"
+#import "UIBarButtonItem+Category.h"
 
 static NSString *const ID = @"ProductDetailTwoColumnTableViewConsultCell";
 static CGFloat const kToolBarH = 60;
@@ -33,7 +34,58 @@ static int const pageSize = 10;
     [self setupTableView];
     
     [self setupBtn];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
+    [self setupWhiteStyle];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
+- (void)setupWhiteStyle {
+    
+    self.naviColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        btn.bounds = CGRectMake(0, 0,18, 18);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+    }];
+    
+    [self setupNavigationBarTheme];
+    
+    [self setupBarButtonItemTheme:self.navigationItem.leftBarButtonItem];
+    
+    [self setupBarButtonItemTheme:self.navigationItem.rightBarButtonItem];
+}
+
+- (void)setupNavigationBarTheme
+{
+    UINavigationBar *appearance = self.navigationController.navigationBar;
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
+    [appearance setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarButtonItemTheme:(UIBarButtonItem *)barButtonItem
+{
+    if (!barButtonItem) {
+        return;
+    }
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+    [barButtonItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+    
+    NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+    highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    [barButtonItem setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+    
+    NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+    disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    [barButtonItem setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
 }
 
 - (void)setupTableView {

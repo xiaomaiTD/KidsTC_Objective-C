@@ -33,6 +33,18 @@
     self.subTitleL.text = item.couponName;
     self.timeL.text = item.time;
     self.hasgetImageView.hidden = !item.isProvider;
+    
+    NSString *imgName = @"productDetail_coupon_10";
+    if (item.couponAmt>=50) {//黄色
+        imgName = @"productDetail_coupon_50";
+    }else if (item.couponAmt>=100){//粉红
+        imgName = @"productDetail_coupon_100";
+    }else if (item.couponAmt>=200){//红色
+        imgName = @"productDetail_coupon_200";
+    }else{
+        imgName = @"productDetail_coupon_10";
+    }
+    self.bgImageView.image = [UIImage imageNamed:imgName];
 }
 
 @end

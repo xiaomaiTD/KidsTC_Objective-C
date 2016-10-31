@@ -81,7 +81,6 @@ typedef enum : NSUInteger {
     
     [self setupNavigationItems];
 
-    
 }
 
 - (void)checkValiteAndBury {
@@ -98,7 +97,7 @@ typedef enum : NSUInteger {
 - (void)setupWebView {
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     webView.opaque = NO;
-    webView.backgroundColor = [UIColor whiteColor];
+    webView.backgroundColor = [UIColor clearColor];
     webView.scalesPageToFit = YES;
     webView.delegate = self;
     [self.view addSubview:webView];

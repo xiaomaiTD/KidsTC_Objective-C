@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,16 +27,24 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUD-fy-utW">
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-HN-EO5">
-                                    <state key="normal" title="取消">
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-HN-EO5">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="cld-se-3kD"/>
+                                        <constraint firstAttribute="width" secondItem="9BJ-HN-EO5" secondAttribute="height" multiplier="1:1" id="sxG-8T-QRQ"/>
+                                    </constraints>
+                                    <state key="normal" image="ProductDetail_consult_no">
                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="calcel:" destination="-1" eventType="touchUpInside" id="s3o-o3-eTl"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-lW-cM8">
-                                    <state key="normal" title="确定">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-lW-cM8">
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="xPV-lW-cM8" secondAttribute="height" multiplier="39:28" id="4Vn-IQ-WTQ"/>
+                                        <constraint firstAttribute="height" constant="18" id="saO-r7-m6a"/>
+                                    </constraints>
+                                    <state key="normal" image="ProductDetail_consult_yes">
                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -91,4 +100,8 @@
             <point key="canvasLocation" x="-167.5" y="20.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ProductDetail_consult_no" width="31" height="31"/>
+        <image name="ProductDetail_consult_yes" width="39" height="28"/>
+    </resources>
 </document>

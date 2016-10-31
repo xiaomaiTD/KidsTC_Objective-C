@@ -11,10 +11,12 @@
 @interface ViewController : UIViewController
 @property (nonatomic, strong) UIColor *naviColor;
 @property (nonatomic, assign) long pageId;
+@property (nonatomic, strong) NSString *pageUid;
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 - (void)back;
 #pragma mark Keyboard Notification
 - (void)keyboardWillShow:(NSNotification *)notification;
 - (void)keyboardWillDisappear:(NSNotification *)notification;
+
 @end

@@ -437,7 +437,7 @@
             [self scrollViewDidScroll:self.tableView];
         }
             break;
-        case ProductDetailBaseCellActionTypeReloadConsult://刷新咨询
+        case ProductDetailBaseCellActionTypeReloadWebViewOrConsult://刷新webView或者咨询
         {
             [self.tableView reloadData];
             self.tableView.contentOffset = self.tableViewContentOffset;
@@ -476,7 +476,7 @@
             _twoColumnCell.showType = ProductDetailTwoColumnShowTypeConsult;
             _twoColumnBottomBarCell.showType = ProductDetailTwoColumnShowTypeConsult;
             
-            if (_data.consults.count<1 && !_twoColumnCell.tablViewHasload) {
+            if (_data.consults.count<1) {
                 if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
                     [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeLoadConsult value:value];
                 }
@@ -485,7 +485,9 @@
         }
             break;
     }
+    _twoColumnCell.selfHasload = NO;
     [self.tableView reloadData];
+    [self scrollViewDidScroll:self.tableView];
     self.tableView.contentOffset = self.tableViewContentOffset;
     [self scrollViewDidScroll:self.tableView];
 }

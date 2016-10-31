@@ -17,6 +17,7 @@ static NSString *const kCellIdentifier = @"ServiceListViewCell";
 @interface CouponUsableServiceViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) UINib *cellNib;
 
 @property (nonatomic, strong) NSMutableArray *listModels;

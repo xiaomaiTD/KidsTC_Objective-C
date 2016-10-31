@@ -35,6 +35,8 @@
 #import "AUIFloorNavigationView.h"
 #import "WebViewController.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 
 static CGFloat const kActivityImageViewAnimateDuration = 0.5;
 
@@ -218,15 +220,66 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 }
 
 - (void)showScan{
-    QRCodeScanViewController *controller = [[QRCodeScanViewController alloc]init];
-    [self.navigationController pushViewController:controller animated:YES];
-    [BuryPointManager trackEvent:@"event_skip_home_qrcode" actionId:20102 params:nil];
+    [self requestAccess:AVMediaTypeVideo name:@"相机" callBack:^{
+        QRCodeScanViewController *controller = [[QRCodeScanViewController alloc]init];
+        [self.navigationController pushViewController:controller animated:YES];
+        [BuryPointManager trackEvent:@"event_skip_home_qrcode" actionId:20102 params:nil];
+    }];
 }
 
 - (void)speek {
-    SpeekViewController *controller = [[SpeekViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
-    [BuryPointManager trackEvent:@"event_skip_home_voice" actionId:20103 params:nil];
+    [self requestAccess:AVMediaTypeAudio name:@"麦克风" callBack:^{
+        SpeekViewController *controller = [[SpeekViewController alloc] init];
+        [self.navigationController pushViewController:controller animated:YES];
+        [BuryPointManager trackEvent:@"event_skip_home_voice" actionId:20103 params:nil];
+    }];
+}
+
+- (void)requestAccess:(NSString *)type name:(NSString *)name callBack:(void(^)())callBack {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:type];
+    switch (authStatus) {
+        case AVAuthorizationStatusNotDetermined:
+        {
+            [AVCaptureDevice requestAccessForMediaType:type completionHandler:^(BOOL granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (granted) {
+                        if(callBack)callBack();
+                        TCLog(@"授权成功");
+                    }else{
+                        TCLog(@"授权失败");
+                    }
+                });
+            }];
+        }
+            break;
+        case AVAuthorizationStatusAuthorized:
+        {
+            if(callBack)callBack();
+        }
+            break;
+        default:
+        {
+            [self alertTipWithTarget:self name:name];
+        }
+            break;
+    }
+}
+
+- (void)alertTipWithTarget:(UIViewController *)target name:(NSString *)name{
+    NSString *prodName = [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+    NSString *title = [NSString stringWithFormat:@"%@授权",name];
+    NSString *message = [NSString stringWithFormat:@"您尚未开启%@APP%@授权，不能使用该功能。请到“设置-%@-%@”中开启",prodName,name,prodName,name];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }];
+    [alert addAction:cancle];
+    [alert addAction:sure];
+    [target presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)changeRole{

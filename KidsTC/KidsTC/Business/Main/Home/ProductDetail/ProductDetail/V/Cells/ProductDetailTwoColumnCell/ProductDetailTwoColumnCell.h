@@ -17,5 +17,5 @@ typedef enum : NSUInteger {
 @interface ProductDetailTwoColumnCell : ProductDetailBaseCell
 @property (nonatomic, assign) ProductDetailTwoColumnShowType showType;
 @property (nonatomic, assign) BOOL webViewHasOpen;
-@property (nonatomic, assign) BOOL tablViewHasload;
+@property (nonatomic, assign) BOOL selfHasload;
 @end
