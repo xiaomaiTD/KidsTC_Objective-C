@@ -104,9 +104,9 @@
         case TCHomeFloorTitleContentTypeRecommend:
         {
             CGFloat margin = 8;
-            CGFloat tipImageView_s = (h - 2 * margin);
+            CGFloat tipImageView_s = (h - 2 * margin) - 7;
             CGFloat tipImageView_x = margin;
-            CGFloat tipImageView_y = margin;
+            CGFloat tipImageView_y = (h - tipImageView_s) *0.5;
             _tipImageViewFrame = CGRectMake(tipImageView_x, tipImageView_y, tipImageView_s, tipImageView_s);
             
             CGFloat titleLabel_x = CGRectGetMaxX(_tipImageViewFrame) + margin;

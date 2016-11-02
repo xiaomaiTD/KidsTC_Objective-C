@@ -13,6 +13,7 @@ static NSString *const ID = @"ProductDetailNoticeCollectionViewCell";
 
 static int const columnCount = 4;
 
+
 @interface ProductDetailNoticeCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 

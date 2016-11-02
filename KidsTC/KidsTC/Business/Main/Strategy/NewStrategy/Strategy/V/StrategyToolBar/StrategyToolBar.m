@@ -65,9 +65,9 @@
         self.rightLayer = rightLayer;
         
         UILabel *openTipLabel = [[UILabel alloc]init];
-        openTipLabel.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        openTipLabel.backgroundColor = [UIColor whiteColor];
         [self addSubview:openTipLabel];
-        openTipLabel.font = [UIFont systemFontOfSize:13];
+        openTipLabel.font = [UIFont systemFontOfSize:15];
         openTipLabel.textColor = [UIColor lightGrayColor];
         openTipLabel.alpha = 0;
         openTipLabel.text = OpenTipLabelText;
@@ -77,7 +77,7 @@
         
         UIButton *openBtn = [[UIButton alloc]init];
         [self addSubview:openBtn];
-        //[openBtn setBackgroundColor:[UIColor clearColor] forState:UIControlStateNormal];
+        openBtn.backgroundColor = [UIColor whiteColor];
         [openBtn setImage:[UIImage imageNamed:@"arrow_down"] forState:UIControlStateNormal];
         [openBtn addTarget:self action:@selector(openBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         openBtn.adjustsImageWhenHighlighted = NO;
@@ -193,7 +193,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.openTipLabel.alpha = 1;
         self.openView.frame = CGRectMake(openView_x, openView_y, openView_w, openView_h);
-        self.openBtn.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        //self.openBtn.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.openBtn.imageView setTransform:CGAffineTransformRotate(self.openBtn.imageView.transform, M_PI)];
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
@@ -209,7 +209,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.openTipLabel.alpha = 0;
         self.openView.frame = frame;
-        self.openBtn.backgroundColor = [UIColor whiteColor];
+        //self.openBtn.backgroundColor = [UIColor whiteColor];
         [self.openBtn.imageView setTransform:CGAffineTransformRotate(self.openBtn.imageView.transform, M_PI)];
         
         self.backgroundColor = [UIColor clearColor];

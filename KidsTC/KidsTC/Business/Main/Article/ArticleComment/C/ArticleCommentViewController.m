@@ -91,6 +91,9 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
     [super viewDidLoad];
     
     self.pageId = 10709;
+    if ([self.relationId isNotNull]) {
+        self.trackParams = @{@"id":self.relationId};
+    }
     
     self.navigationItem.title = @"评论列表";
     

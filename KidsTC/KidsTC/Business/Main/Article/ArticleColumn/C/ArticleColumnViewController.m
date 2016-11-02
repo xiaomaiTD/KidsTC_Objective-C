@@ -36,6 +36,9 @@
     [super viewDidLoad];
     
     self.pageId = 10708;
+    if ([self.columnSysNo isNotNull]) {
+        self.trackParams = @{@"id":self.columnSysNo};
+    }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

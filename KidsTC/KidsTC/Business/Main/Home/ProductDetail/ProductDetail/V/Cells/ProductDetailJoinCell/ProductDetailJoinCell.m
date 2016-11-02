@@ -33,6 +33,9 @@
         obj.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         obj.layer.borderWidth = 1;
     }];
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:tapGR];
 }
 
 - (void)setData:(ProductDetailData *)data {
@@ -52,7 +55,9 @@
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
+    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeMoreComment value:self.data];
+    }
 }
 
 @end

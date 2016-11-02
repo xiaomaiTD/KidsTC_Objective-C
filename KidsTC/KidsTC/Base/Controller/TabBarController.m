@@ -25,7 +25,8 @@
 #import "ComposeManager.h"
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
-
+#import "ReachabilityManager.h"
+#import "NetWorkTipView.h"
 
 
 @interface TabBarController ()<CustomTabBarDelegate>
@@ -33,6 +34,9 @@
 #ifdef DEBUG
 @property (nonatomic, strong) YYFPSLabel *fpsLabel;
 #endif
+
+@property (nonatomic, strong) NetWorkTipView *netWorkTipView;
+
 @end
 
 @implementation TabBarController
@@ -47,6 +51,7 @@ singleM(TabBarController)
     [self updataHomeNaviColor:theme.homeNavColor];
     [self setupTabBarWithColor:theme.tabColor elements:elements];
     [NotificationCenter addObserver:self selector:@selector(updataTheme) name:kUpdataThemeNoti object:nil];
+    [NotificationCenter addObserver:self selector:@selector(reachabilityStatusChange:) name:kReachabilityStatusChangeNoti object:nil];
     
 #ifdef DEBUG
 #define YYFPSLabelInset 12
@@ -188,12 +193,12 @@ singleM(TabBarController)
             break;
         case TabBarItemElementTypeStrategy://亲子攻略
         {
-            index = 3;
+            index = self.viewControllers.count-2;
         }
             break;
         case TabBarItemElementTypeUserCenter://我
         {
-            index = 4;
+            index = self.viewControllers.count-1;
         }
             break;
         case TabBarItemElementTypeAddLink://附加-活动
@@ -210,7 +215,7 @@ singleM(TabBarController)
             break;
     }
     
-    if (self.selectedIndex != index) {
+    if (self.selectedIndex != index && index < self.viewControllers.count) {
         self.selectedIndex = index;
         UINavigationController *navi = self.viewControllers[index];
         UIViewController *vc = navi.topViewController;
@@ -272,5 +277,29 @@ singleM(TabBarController)
     controller.naviColor = color;
 }
 
+
+#pragma mark - reachabilityStatusChange
+
+- (void)reachabilityStatusChange:(NSNotification *)noti {
+    
+    AFNetworkReachabilityStatus status = [noti.object integerValue];
+    if (status == AFNetworkReachabilityStatusNotReachable) {
+        if (!_netWorkTipView) {
+            _netWorkTipView = [[NSBundle mainBundle] loadNibNamed:@"NetWorkTipView" owner:self options:nil].firstObject;
+            _netWorkTipView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 50);
+            [self.view addSubview:_netWorkTipView];
+            _netWorkTipView.tapActionBlock = ^(){
+                NSURL *url = [NSURL URLWithString:@"prefs:root="];
+                //NSURL*url =[NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            };
+        }
+        _netWorkTipView.hidden = NO;
+    }else{
+        _netWorkTipView.hidden = YES;
+    }
+}
 
 @end

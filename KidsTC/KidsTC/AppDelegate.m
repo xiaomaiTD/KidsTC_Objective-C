@@ -53,10 +53,18 @@
         [_window makeKeyAndVisible];
     }];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    UIViewController *topVC = [self topVC];
+    if (topVC && [topVC respondsToSelector:@selector(viewDidAppear:)]) {
+        [topVC viewDidAppear:YES];
+    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [SynchronizeManager synchronizeEnterBackground];
+    UIViewController *topVC = [self topVC];
+    if (topVC && [topVC respondsToSelector:@selector(viewDidDisappear:)]) {
+        [topVC viewDidDisappear:YES];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -143,6 +151,61 @@
 
 
 
-
+// 获取当前处于activity状态的view controller
+- (UIViewController *)topVC
+{
+    UIViewController* activityViewController = nil;
+    
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if(window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows)
+        {
+            if(tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    
+    NSArray *viewsArray = [window subviews];
+    if([viewsArray count] > 0)
+    {
+        UIView *frontView = [viewsArray objectAtIndex:0];
+        
+        id nextResponder = [frontView nextResponder];
+        
+        if([nextResponder isKindOfClass:[UIViewController class]])
+        {
+            activityViewController = nextResponder;
+        }
+        else
+        {
+            activityViewController = window.rootViewController;
+        }
+    }
+    
+    UIViewController *topVC = nil;
+    
+    if ([activityViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navi = (UINavigationController *)activityViewController;
+        topVC = navi.topViewController;
+        if (!topVC) {
+            topVC = navi.visibleViewController;
+        }
+    }
+    
+    if (!topVC) {
+        topVC = activityViewController.presentedViewController;
+    }
+    
+    if (!topVC) {
+        topVC = activityViewController;
+    }
+    
+    return topVC;
+}
 
 @end

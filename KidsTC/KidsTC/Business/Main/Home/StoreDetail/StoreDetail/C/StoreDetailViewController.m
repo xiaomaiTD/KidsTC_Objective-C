@@ -64,7 +64,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (![self.storeId isNotNull]) {
+        [[iToast makeText:@"门店编号为空"] show];
+        [self back];
+        return;
+    }
     self.pageId = 10402;
+    self.trackParams = @{@"sid":_storeId};
     
     self.navigationItem.title = @"门店详情";
     

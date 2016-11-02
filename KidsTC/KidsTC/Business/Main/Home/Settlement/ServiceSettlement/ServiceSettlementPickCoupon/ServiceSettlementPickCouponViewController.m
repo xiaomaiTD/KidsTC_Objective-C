@@ -11,6 +11,7 @@
 #import "ServiceSettlementPickCouponViewCell.h"
 #import "ServiceSettlementPickCouponViewHeader.h"
 #import "WebViewController.h"
+#import "NSString+Category.h"
 
 #define ITEM_MARGIN 12
 static NSString *const kCouponUseRuleUrlString = @"http://m.kidstc.com/tools/coupon_desc";
@@ -26,6 +27,17 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
     [super viewDidLoad];
     
     self.pageId = 10502;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (self.settlementModel.data.count>0) {
+        ServiceSettlementDataItem *item = self.settlementModel.data.firstObject;
+        if ([item.serveId isNotNull]) {
+            [params setValue:item.serveId forKey:@"pid"];
+        }
+        if ([item.channelId isNotNull]) {
+            [params setValue:item.serveId forKey:@"cid"];
+        }
+    }
+    self.trackParams = [NSDictionary dictionaryWithDictionary:params];
     
     self.navigationItem.title = @"选择优惠券";
     

@@ -15,6 +15,7 @@
 #import "NSString+ZP.h"
 #import "YYKit.h"
 #import "ReachabilityManager.h"
+#import "CookieManager.h"
 
 //设备类型
 typedef enum : NSUInteger {
@@ -47,40 +48,51 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSTimeInterval lastBeginPvTimeInterval;
 @property (nonatomic, strong) NSString *guid;
 @property (nonatomic, assign) NSUInteger squence;//访问顺序
+@property (nonatomic, assign) BOOL isLanch;
 @end
 @implementation BuryPointManager
 singleM(BuryPointManager)
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _isLanch = YES;
+    }
+    return self;
+}
 
 + (void)startBuryPoint
 {
     [self registerUmeng];
     
-    [self trackCommon];
+    TCLog(@"manager.guid:%@",[BuryPointManager shareBuryPointManager].guid);
 }
 
 + (void)trackBegin:(long)pageId
            pageUid:(NSString *)pageUid
           pageName:(NSString *)pageName
+            params:(NSDictionary *)params
 {
     if([pageName isNotNull])[MobClick beginLogPageView:pageName];
-    if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV
-                                                 beginPV:YES
-                                                actionId:pageId
-                                                 pageUid:pageUid
-                                                  params:nil]];
+    if(pageId>0)[self reportMsgTrackType:TrackTypePV
+                                 beginPV:YES
+                                actionId:pageId
+                                 pageUid:pageUid
+                                  params:params];
     
 }
 
 + (void)trackEnd:(long)pageId
          pageUid:(NSString *)pageUid
         pageName:(NSString *)pageName
+          params:(NSDictionary *)params
 {
     if([pageName isNotNull])[MobClick endLogPageView:pageName];
     if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV
                                                  beginPV:NO
                                                 actionId:pageId
                                                  pageUid:pageUid
-                                                  params:nil]];
+                                                  params:params]];
 }
 
 + (void)trackEvent:(NSString *)eventName
@@ -100,18 +112,16 @@ singleM(BuryPointManager)
 
 - (NSString *)guid{
     BuryPointManager *manager = [BuryPointManager shareBuryPointManager];
-    NSTimeInterval stayTimeInterval = [[NSDate date] timeIntervalSince1970] - manager.lastProductGuidTimeInterval;
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval stayTimeInterval = timeInterval - manager.lastProductGuidTimeInterval;
     if (!_guid || stayTimeInterval > 30 * 60) {
-        NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
-        NSString *projectId = @"1";
-        NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-        NSNumber *timeTag = [NSNumber numberWithLongLong:timeInterval];
-        _guid = [NSString stringWithFormat:@"%@#%@#%@",projectId,deviceId,timeTag];
+        _guid = [UIDevice uuidString];
         _squence = 0;
-        if (manager.lastProductGuidTimeInterval>0) {
+        [[CookieManager shareCookieManager] setCookieWithName:CookieKeyGuid andValue:_guid];
+        manager.lastProductGuidTimeInterval = timeInterval;
+        if (stayTimeInterval>0) {
             [BuryPointManager trackCommon];
         }
-        manager.lastProductGuidTimeInterval = timeInterval;
     }
     return _guid;
 }
@@ -201,7 +211,8 @@ singleM(BuryPointManager)
                                             @"clientIp":clientIp} mutableCopy];
     if (dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
         NSDictionary *params = [NSDictionary dictionaryWithDictionary:dic];
-        [reportMsgDic setValue:params forKey:@"params"];
+        NSString *paramsStr = [manager jsonWithObj:params];
+        if (![paramsStr isNotNull])[reportMsgDic setValue:paramsStr forKey:@"params"];
     }
     switch (trackType) {
         case TrackTypePV:

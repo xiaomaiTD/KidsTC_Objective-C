@@ -50,7 +50,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (![_orderId isNotNull]) {
+        [[iToast makeText:@"闪购订单编号为空"] show];
+        [self back];
+        return;
+    }
+    
     self.pageId = 10504;
+    self.trackParams = @{@"orderId":_orderId};
     
     self.navigationItem.title = @"结算";
     

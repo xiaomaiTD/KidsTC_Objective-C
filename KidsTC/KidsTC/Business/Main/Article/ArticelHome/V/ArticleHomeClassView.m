@@ -7,74 +7,60 @@
 //
 
 #import "ArticleHomeClassView.h"
-#import "ArticleHomeClassCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "ArticleHomeClassButton.h"
 
-static NSString *const ID = @"ArticleHomeClassCollectionViewCellID";
 
-@interface ArticleHomeClassView ()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@interface ArticleHomeClassView ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) NSMutableArray<ArticleHomeClassButton *> *btns;
+@property (nonatomic, strong) ArticleHomeClassButton *selectBtn;
 @end
 
 @implementation ArticleHomeClassView
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    _collectionView.scrollsToTop = NO;
+    
     self.backgroundColor = [UIColor clearColor];
-    _collectionView.backgroundColor = [UIColor clearColor];
-    [_collectionView registerNib:[UINib nibWithNibName:@"ArticleHomeClassCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
+    self.btns = [NSMutableArray array];
 }
 
 - (void)setClazz:(ArticleHomeClass *)clazz {
     _clazz = clazz;
-    _collectionView.backgroundColor = clazz.bgColor;
-    [_collectionView reloadData];
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat h = CGRectGetHeight(collectionView.bounds);
-    return CGSizeMake(SCREEN_WIDTH/4, h);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
-}
-
-
-#pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _clazz.classes.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ArticleHomeClassCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.item = _clazz.classes[indexPath.row];
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ArticleHomeClassItem *item = [self setImageAtIndexpath:indexPath select:YES];
-    if ([self.delegate respondsToSelector:@selector(articleHomeClassView:didSelectItem:)]) {
-        [self.delegate articleHomeClassView:self didSelectItem:item];
+    self.backgroundColor = clazz.bgColor;
+    
+    [self.btns makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.btns removeAllObjects];
+    
+    __block UIButton *lastBtn = nil;
+    CGFloat btn_s = CGRectGetHeight(self.frame);
+    [_clazz.classes enumerateObjectsUsingBlock:^(ArticleHomeClassItem *obj, NSUInteger idx, BOOL *stop) {
+        ArticleHomeClassButton *btn = [ArticleHomeClassButton new];
+        [btn addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+        btn.item = obj;
+        btn.frame = CGRectMake(btn_s * idx, 0, btn_s, btn_s);
+        [self.scrollView addSubview:btn];
+        [self.btns addObject:btn];
+        lastBtn = btn;
+    }];
+    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastBtn.frame), btn_s);
+    
+    if (self.btns.count>0) {
+        ArticleHomeClassButton *btn = self.btns.firstObject;
+        btn.selected = YES;
+        self.selectBtn = btn;
     }
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self setImageAtIndexpath:indexPath select:NO];
-    
-}
 
-- (ArticleHomeClassItem *)setImageAtIndexpath:(NSIndexPath *)indexPath select:(BOOL)select {
-    ArticleHomeClassCollectionViewCell *cell = (ArticleHomeClassCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    ArticleHomeClassItem *item = _clazz.classes[indexPath.row];
-    NSString *imageName = select?item.selectedIcon:item.icon;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-    return item;
+- (void)action:(ArticleHomeClassButton *)btn {
+    self.selectBtn.selected = NO;
+    btn.selected = YES;
+    self.selectBtn = btn;
+    if ([self.delegate respondsToSelector:@selector(articleHomeClassView:didSelectItem:)]) {
+        [self.delegate articleHomeClassView:self didSelectItem:btn.item];
+    }
 }
 
 

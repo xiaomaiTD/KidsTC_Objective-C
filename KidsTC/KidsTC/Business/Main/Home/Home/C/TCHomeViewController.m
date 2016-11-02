@@ -13,6 +13,7 @@
 #import "HomeRoleButton.h"
 #import "Masonry.h"
 #import "BuryPointManager.h"
+#import "NSString+Category.h"
 
 #import "TCHomeCollectionViewLayout.h"
 #import "TCHomeMainCollectionCell.h"
@@ -39,7 +40,6 @@
 
 
 static CGFloat const kActivityImageViewAnimateDuration = 0.5;
-
 
 static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell";
 
@@ -73,7 +73,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pageId = 10101;
+    [self setupParams];
     
     [self setupUI];
     
@@ -89,6 +89,19 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self checkGuide];
+}
+
+- (void)setupParams {
+    self.pageId = 10101;
+    NSString *type = @"0";
+    if (_categorys.count>_currentIndex) {
+        type = _categorys[_currentIndex].sysNo;
+    }
+    if (![type isNotNull]) {
+        type = @"0";
+    }
+    self.trackParams = @{@"stageType":[User shareUser].role.roleIdentifierString,
+                         @"type":type};
 }
 
 #pragma mark - setupUI
@@ -351,6 +364,8 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
                 self.toolBar.tags = [self.categorys valueForKeyPath:@"_name"];
                 [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
             }
+            CGFloat top = self.toolBar.hidden?64:64+StrategyToolBarScrollViewHeight;
+            [[HomeRefreshManager shareHomeRefreshManager] checkHomeRefreshGuideWithTarget:self top:top resultBlock:nil];
             [self.collectionView reloadData];
             [self scrollViewDidScroll:self.collectionView];
         }
@@ -392,11 +407,14 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
                     [self.view layoutIfNeeded];
                 }];
             }
+            
+            [NotificationCenter postNotificationName:kHomeViewControllerDidScroll object:@(y)];
         }
             break;
         case TCHomeMainCollectionCellActionTypeHomeRefresh:
         {
-            [[HomeRefreshManager shareHomeActivityManager] checkHomeRefreshPageWithTarget:self resultBlock:nil];
+            [[HomeRefreshManager shareHomeRefreshManager] checkHomeRefreshPageWithTarget:self resultBlock:nil];
+            [NotificationCenter postNotificationName:kHomeViewControllerDidEndDrag object:nil];
         }
             break;
     }
@@ -576,6 +594,29 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     }
 }
 
+#pragma mark - HomeRefreshGuideViewControllerDelegate
+/*
+- (void)homeRefreshGuideViewController:(HomeRefreshGuideViewController *)controller
+                            actionType:(HomeRefreshGuideViewControllerActionType)type
+                                 value:(id)value
+{
+    switch (type) {
+        case HomeRefreshGuideViewControllerDidScroll:
+        {
+            TCHomeMainCollectionCell *cell = [self.collectionView visibleCells].firstObject;
+            [cell scrollY:[value floatValue]];
+        }
+            break;
+        case HomeRefreshGuideViewControllerDidEndDrag:
+        {
+            TCHomeMainCollectionCell *cell = [self.collectionView visibleCells].firstObject;
+            [cell scrollY:[value floatValue]];
+        }
+            break;
+    }
+}*/
+
+
 #pragma mark - Notification
 
 #pragma mark addObserver
@@ -596,6 +637,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     {
         [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeHome resultBlock:^{
             [[HomeActivityManager shareHomeActivityManager] checkAcitvityWithTarget:self resultBlock:^{
+                
             }];
         }];
     }

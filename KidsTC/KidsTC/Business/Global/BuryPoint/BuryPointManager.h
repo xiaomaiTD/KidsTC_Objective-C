@@ -15,11 +15,13 @@ singleH(BuryPointManager)
 
 + (void)trackBegin:(long)pageId
            pageUid:(NSString *)pageUid
-          pageName:(NSString *)pageName;
+          pageName:(NSString *)pageName
+            params:(NSDictionary *)params;
 
 + (void)trackEnd:(long)pageId
-        pageUid:(NSString *)pageUid
-        pageName:(NSString *)pageName;
+         pageUid:(NSString *)pageUid
+        pageName:(NSString *)pageName
+          params:(NSDictionary *)params;
 
 + (void)trackEvent:(NSString *)eventName
           actionId:(long)actionId

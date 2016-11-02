@@ -57,6 +57,9 @@
     [super viewDidLoad];
     
     self.pageId = 10704;
+    if ([self.userId isNotNull]) {
+        self.trackParams = @{@"uid":self.userId};
+    }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

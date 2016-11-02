@@ -27,6 +27,9 @@ static CGFloat const kAnimationDuration = 0.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor clearColor];
+    self.inputContentConstraintB.constant = - self.inputContentConstraintH.constant;
+    [self.view layoutIfNeeded];
+    self.textView.text = self.consultStr;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -36,6 +39,7 @@ static CGFloat const kAnimationDuration = 0.2;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.textView becomeFirstResponder];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -57,12 +61,10 @@ static CGFloat const kAnimationDuration = 0.2;
 
 - (void)keyboardWillDisappear:(NSNotification *)notification{
     [super keyboardWillDisappear:notification];
-    [self hide];
+    [self hide:NO];
 }
 
 - (void)show {
-    self.inputContentConstraintB.constant = - self.inputContentConstraintH.constant;
-    [self.view layoutIfNeeded];
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
         self.inputContentConstraintB.constant = self.keyboardHeight;
@@ -70,7 +72,7 @@ static CGFloat const kAnimationDuration = 0.2;
     }];
 }
 
-- (void)hide {
+- (void)hide:(BOOL)sendSuccess {
     [UIView animateWithDuration:kAnimationDuration animations:^{
         self.view.backgroundColor = [UIColor clearColor];
         self.inputContentConstraintB.constant = - self.inputContentConstraintH.constant;
@@ -78,6 +80,9 @@ static CGFloat const kAnimationDuration = 0.2;
     } completion:^(BOOL finished) {
         [self dismissViewControllerAnimated:NO completion:nil];
     }];
+    if (self.dellocBlock) {
+        self.dellocBlock(self.textView.text);
+    }
 }
 
 #pragma mark - UITextViewDelegate
@@ -112,7 +117,8 @@ static CGFloat const kAnimationDuration = 0.2;
                                                          actionType:ProductDetailAddNewConsultViewControllerActionTypeReload
                                                               value:nil];
         }
-        [self hide];
+        self.textView.text = nil;
+        [self.textView resignFirstResponder];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"发表失败！"] show];

@@ -10,4 +10,5 @@
 
 @interface ProductDetailConsultViewController : ViewController
 @property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *consultStr;
 @end

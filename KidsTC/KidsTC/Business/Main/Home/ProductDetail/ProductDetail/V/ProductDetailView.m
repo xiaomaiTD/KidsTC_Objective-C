@@ -10,8 +10,10 @@
 
 #import "OnlineCustomerService.h"
 #import "NSString+Category.h"
+#import "NSArray+Category.h"
 
 #import "ProductDetailToolBar.h"
+#import "ProductDetailCountDownView.h"
 
 #import "ProductDetailBaseCell.h"
 #import "ProductDetailBannerCell.h"
@@ -20,6 +22,7 @@
 #import "ProductDetailAddressCell.h"
 #import "ProductDetailTitleCell.h"
 #import "ProductDetailContentEleCell.h"
+#import "ProductDetailContentEleEmptyCell.h"
 #import "ProductDetailJoinCell.h"
 #import "ProductDetailTwoColumnCell.h"
 #import "ProductDetailTwoColumnBottomBarCell.h"
@@ -39,6 +42,7 @@
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, assign) CGPoint tableViewContentOffset;
 @property (nonatomic, weak) ProductDetailToolBar *toolBar;
+@property (nonatomic, strong) ProductDetailCountDownView *countDownView;
 
 @property (nonatomic, strong) ProductDetailBannerCell      *bannerCell;
 @property (nonatomic, strong) ProductDetailInfoCell        *infoCell;
@@ -70,24 +74,28 @@
         [self setupTwoColumnToolBar];
         
         [self setupToolBar];
+        
+        [self setupCountDownLabel];
     }
     return self;
 }
 
 - (void)setData:(ProductDetailData *)data {
     _data = data;
-    _toolBar.data = data;
     [self setupSections];
+    _toolBar.data = data;
+    _countDownView.data = data;
+    _twoColumnToolBar.count = data.advisoryCount;
     
     [self.tableView reloadData];
-    [self scrollViewDidScroll:self.tableView];
     self.tableView.contentOffset = self.tableViewContentOffset;
+    [self scrollViewDidScroll:self.tableView];
 }
 
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -117,18 +125,21 @@
     
     
     //content
-    [_data.buyNotice enumerateObjectsUsingBlock:^(ProductDetailBuyNotice *obj, NSUInteger idx, BOOL *stop) {
+    [_data.buyNotice enumerateObjectsUsingBlock:^(ProductDetailBuyNotice *obj1, NSUInteger idx, BOOL *stop) {
         NSMutableArray *section01 = [NSMutableArray new];
-        if ([obj.title isNotNull]) {
+        if ([obj1.title isNotNull]) {
             ProductDetailTitleCell *titleCell = self.titleCell;
-            titleCell.text = obj.title;
+            titleCell.text = obj1.title;
             [section01 addObject:titleCell];
         }
-        [obj.notice enumerateObjectsUsingBlock:^(ProductDetailNotice *obj, NSUInteger idx, BOOL *stop) {
+        [obj1.notice enumerateObjectsUsingBlock:^(ProductDetailNotice *obj2, NSUInteger idx, BOOL *stop) {
             ProductDetailContentEleCell *contentEleCell = self.contentEleCell;
-            contentEleCell.notice = obj;
+            contentEleCell.notice = obj2;
             [section01 addObject:contentEleCell];
         }];
+        if (obj1.notice.count>0) {
+            [section01 addObject:self.contentEleEmptyCell];
+        }
         if (section01.count>0) [sections addObject:section01];
     }];
     
@@ -224,8 +235,6 @@
         if (section09.count>0) [sections addObject:section09];
     }
     
-    
-    
     self.sections = [NSArray arrayWithArray:sections];
     
 }
@@ -251,6 +260,10 @@
 
 - (ProductDetailContentEleCell *)contentEleCell {
     return [self viewWithNib:@"ProductDetailContentEleCell"];
+}
+
+- (ProductDetailContentEleEmptyCell *)contentEleEmptyCell {
+    return [self viewWithNib:@"ProductDetailContentEleEmptyCell"];
 }
 
 - (ProductDetailStandardCell *)standardCell {
@@ -290,8 +303,8 @@
         _twoColumnToolBar.hidden = YES;
     }else{
         CGFloat y = twoColumnCellY - CGRectGetHeight(_twoColumnToolBar.bounds) - offsetY;
-        if ( y < 64 && y > 64-CGRectGetHeight(_twoColumnCell.frame) ) {
-            y = 64;
+        if ( y < 0 && y > 0-CGRectGetHeight(_twoColumnCell.frame) ) {
+            y = 0;
         }
         CGRect frame = _twoColumnToolBar.frame;
         frame.origin.y = y;
@@ -305,7 +318,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sections[section].count;
+    if (self.sections.count>section) {
+        return self.sections[section].count;
+    }else{
+        return 0;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -316,14 +333,27 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 12;
+    NSInteger count = self.sections.count;
+    if (count > section) {
+        return (count-1 == section && _data.showCountDown)?42:12;
+    }else{
+        return 12;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProductDetailBaseCell *cell = self.sections[indexPath.section][indexPath.row];
-    cell.delegate = self;
-    cell.data = _data;
-    return cell;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (self.sections.count>section) {
+        NSArray<ProductDetailBaseCell *> *rows = [self.sections objectAtIndexCheck:section];
+        if (rows.count>row) {
+            ProductDetailBaseCell *cell = [rows objectAtIndexCheck:row];
+            cell.delegate = self;
+            cell.data = _data;
+            return cell;
+        }
+    }
+    return [UITableViewCell new];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -439,9 +469,9 @@
             break;
         case ProductDetailBaseCellActionTypeReloadWebViewOrConsult://刷新webView或者咨询
         {
-            [self.tableView reloadData];
-            self.tableView.contentOffset = self.tableViewContentOffset;
-            [self scrollViewDidScroll:self.tableView];
+            //[self.tableView reloadData];
+            //self.tableView.contentOffset = self.tableViewContentOffset;
+            //[self scrollViewDidScroll:self.tableView];
         }
             break;
     }
@@ -452,7 +482,7 @@
 - (void)setupTwoColumnToolBar {
     _twoColumnToolBar = [self viewWithNib:@"ProductDetailTwoColumnToolBar"];
     _twoColumnToolBar.delegate = self;
-    _twoColumnToolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kTwoColumnToolBarH);
+    _twoColumnToolBar.frame = CGRectMake(0, 64, CGRectGetWidth(self.frame), kTwoColumnToolBarH);
     [self addSubview:_twoColumnToolBar];
     _twoColumnToolBar.hidden = YES;
 }
@@ -481,15 +511,29 @@
                     [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeLoadConsult value:value];
                 }
             }
-            
+    
+            //[self.tableView reloadData];
+            //self.tableView.contentOffset = self.tableViewContentOffset;
+            //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_twoColumnSection] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            //[self scrollViewDidScroll:self.tableView];
         }
             break;
     }
-    _twoColumnCell.selfHasload = NO;
+    //_twoColumnCell.selfHasload = NO;
     [self.tableView reloadData];
-    [self scrollViewDidScroll:self.tableView];
     self.tableView.contentOffset = self.tableViewContentOffset;
     [self scrollViewDidScroll:self.tableView];
+    
+    /*
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    CGRect tableRect = [self.tableView convertRect:self.tableView.bounds toView:keyWindow];
+    CGRect twoColumnCellRect = [_twoColumnCell convertRect:_twoColumnCell.bounds toView:keyWindow];
+    CGRect insets = CGRectIntersection(tableRect, twoColumnCellRect);
+    BOOL hasInsets = CGRectEqualToRect(insets, CGRectZero);//是否有交集 YES 没有交集  NO 有交集
+    if (hasInsets) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_twoColumnSection] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+     */
 }
 
 
@@ -498,7 +542,7 @@
 - (void)setupToolBar {
     ProductDetailToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"ProductDetailToolBar" owner:self options:nil].firstObject;
     toolBar.delegate = self;
-    toolBar.frame = CGRectMake(0, SCREEN_HEIGHT - kProductDetailToolBarHeight, SCREEN_WIDTH, kProductDetailToolBarHeight);
+    toolBar.frame = CGRectMake(0, CGRectGetHeight(self.frame) - kProductDetailToolBarHeight, CGRectGetWidth(self.frame), kProductDetailToolBarHeight);
     [self addSubview:toolBar];
     self.toolBar = toolBar;
     toolBar.hidden = YES;
@@ -541,7 +585,23 @@
     
 }
 
-
+- (void)setupCountDownLabel {
+    
+    CGFloat h = 30;
+    
+    ProductDetailCountDownView *countDownView = [self viewWithNib:@"ProductDetailCountDownView"];
+    countDownView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - h - kProductDetailToolBarHeight, SCREEN_WIDTH, h);
+    [self addSubview:countDownView];
+    self.countDownView = countDownView;
+    countDownView.hidden = YES;
+    countDownView.countDonwFinishBlock = ^{
+        TCLog(@"商品详情页面倒计时完毕…");
+        if ([self.delegate respondsToSelector:@selector(productDetailView:actionType:value:)]) {
+            [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeLoadData value:nil];
+        }
+    };
+    
+}
 
 
 

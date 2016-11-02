@@ -210,7 +210,7 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
     if ([item.orderId isNotNull]) {
         [params setValue:item.orderId forKey:@"orderId"];
     }
-    [BuryPointManager trackEvent:@"event_skip_flashlist_afterpay" actionId:21609 params:params];
+    [BuryPointManager trackEvent:@"event_skip_flashlist_prepay" actionId:21608 params:params];
 }
 
 #pragma mark 获取订单信息
@@ -219,6 +219,12 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
     FlashBalanceSettlementViewController *controller = [[FlashBalanceSettlementViewController alloc]init];
     controller.orderId = item.orderId;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([item.orderId isNotNull]) {
+        [params setValue:item.orderId forKey:@"orderId"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_flashlist_afterpay" actionId:21609 params:params];
 }
 
 

@@ -10,6 +10,7 @@
 @interface ProductDetailRecommendItem : NSObject
 @property (nonatomic, strong) NSString *productNo;
 @property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *img;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *distance;

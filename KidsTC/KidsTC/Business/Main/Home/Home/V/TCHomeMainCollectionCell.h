@@ -27,4 +27,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSIndexPath *indexPath;
 - (void)backToTop;
 - (void)scrollTo:(NSIndexPath *)indexPath;
+- (void)scrollY:(CGFloat)offsetY;
+- (void)endDragY:(CGFloat)offsetY;
 @end

@@ -51,6 +51,7 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
     
     self.pageId = 10908;
     
+    
     self.serviceAry = [NSMutableArray new];
     self.storeAry = [NSMutableArray new];
     

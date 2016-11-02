@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailTwoColumnCell.h"
+#import "NSArray+Category.h"
 
 #import "ProductDetailTwoColumnTableViewBaseCell.h"
 #import "ProductDetailTwoColumnTableViewTipCell.h"
@@ -72,7 +73,6 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
             break;
         case ProductDetailTwoColumnShowTypeConsult:
         {
-            [self.tableView reloadData];
             [self layoutIfNeeded];
             h = self.tableView.contentSize.height;
         }
@@ -113,12 +113,12 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     
     [self.tableView reloadData];
     
-    if (!_selfHasload) {
-        if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeReloadWebViewOrConsult value:nil];
-        }
-        _selfHasload = YES;
-    }
+    //if (!_selfHasload) {
+        //if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+          //  [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeReloadWebViewOrConsult value:nil];
+        //}
+        //_selfHasload = YES;
+    //}
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
@@ -152,7 +152,7 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     
     NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
     
-    _tipCell.count = consults.count;
+    _tipCell.count = self.data.advisoryCount;
     [section00 addObject:_tipCell];
     
     if (consults.count<1) {
@@ -200,10 +200,17 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ProductDetailTwoColumnTableViewBaseCell *cell = self.sections[indexPath.section][indexPath.row];
-    cell.delegate = self;
-    return cell;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (self.sections.count>section) {
+        NSArray<ProductDetailTwoColumnTableViewBaseCell *> *rows = [self.sections objectAtIndexCheck:section];
+        if (rows.count>row) {
+            ProductDetailTwoColumnTableViewBaseCell *cell = [rows objectAtIndexCheck:row];
+            cell.delegate = self;
+            return cell;
+        }
+    }
+    return [UITableViewCell new];
 }
 
 #pragma mark ProductDetailTwoColumnTableViewBaseCellDelegate

@@ -24,5 +24,6 @@ typedef enum : NSUInteger {
 @interface ProductDetailGetCouponListViewController : ViewController
 @property (nonatomic, strong) NSArray<ProductDetailGetCouponItem *> *coupons;
 @property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, weak) id<ProductDetailGetCouponListViewControllerDelegate> delegate;
 @end

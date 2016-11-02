@@ -56,7 +56,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     }
     [self scrollViewDidScroll:self.tableView];
     [self.tableView reloadData];
-    [self dealWithBG];
+    self.tableView.backgroundView = nil;
 }
 
 - (void)backToTop {
@@ -65,6 +65,20 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 - (void)scrollTo:(NSIndexPath *)indexPath {
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+- (void)scrollY:(CGFloat)offsetY {
+    CGPoint offset = self.tableView.contentOffset;
+    offset.y = offsetY;
+    [self.tableView setContentOffset:offset animated:NO];
+    [self scrollViewDidScroll:self.tableView];
+}
+
+- (void)endDragY:(CGFloat)offsetY {
+    CGPoint offset = self.tableView.contentOffset;
+    offset.y = offsetY;
+    [self.tableView setContentOffset:offset animated:NO];
+    [self scrollViewDidEndDragging:self.tableView willDecelerate:YES];
 }
 
 - (void)setupTableView {

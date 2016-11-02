@@ -32,6 +32,7 @@
                                         <constraint firstAttribute="height" constant="20" id="cld-se-3kD"/>
                                         <constraint firstAttribute="width" secondItem="9BJ-HN-EO5" secondAttribute="height" multiplier="1:1" id="sxG-8T-QRQ"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                     <state key="normal" image="ProductDetail_consult_no">
                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -44,6 +45,7 @@
                                         <constraint firstAttribute="width" secondItem="xPV-lW-cM8" secondAttribute="height" multiplier="39:28" id="4Vn-IQ-WTQ"/>
                                         <constraint firstAttribute="height" constant="18" id="saO-r7-m6a"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                     <state key="normal" image="ProductDetail_consult_yes">
                                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -69,9 +71,9 @@
                                 <constraint firstItem="9BJ-HN-EO5" firstAttribute="leading" secondItem="wUD-fy-utW" secondAttribute="leading" constant="12" id="rtQ-cZ-L3U"/>
                             </constraints>
                         </view>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TiZ-wR-zjU">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiZ-wR-zjU">
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="1fg-eo-waO"/>
@@ -97,7 +99,7 @@
                 <constraint firstAttribute="trailing" secondItem="uNQ-nn-LYV" secondAttribute="trailing" id="JxK-CX-TOH"/>
                 <constraint firstItem="uNQ-nn-LYV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qbx-43-IEp"/>
             </constraints>
-            <point key="canvasLocation" x="-167.5" y="20.5"/>
+            <point key="canvasLocation" x="-158" y="26"/>
         </view>
     </objects>
     <resources>

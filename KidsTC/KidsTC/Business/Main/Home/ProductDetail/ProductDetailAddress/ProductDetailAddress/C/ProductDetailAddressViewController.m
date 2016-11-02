@@ -50,6 +50,8 @@
     [self setupBarButtonItemTheme];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
+    [self addNaviShadow];
 }
 
 - (void)setupWhiteStyle {
@@ -105,6 +107,22 @@
     }];
 }
 
+- (void)addNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+    layer.shadowOffset = CGSizeMake(0, 4);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+}
+
+- (void)removeNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor clearColor].CGColor;
+    layer.shadowOffset = CGSizeZero;
+    layer.shadowRadius = 0;
+    layer.shadowOpacity = 0;
+}
+
 - (id)viewWithNib:(NSString *)nib{
     return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
 }
@@ -113,6 +131,7 @@
     [super viewWillDisappear:animated];
     [self.mapView viewWillDisappear];
     self.mapView.delegate = nil;
+    [self removeNaviShadow];
 }
 
 - (void)dealloc {
@@ -128,6 +147,8 @@
         [KTCMapUtil cleanMap:self.mapView];
         [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
         [self setDestinationAnnotationCoordinate:self.store[_currentIndex].location.location.coordinate];
+        
+        [KTCMapUtil resetMapView:self.mapView toFitLocations:@[self.store[_currentIndex].location.location]];
     }
 }
 
@@ -184,6 +205,8 @@
     [self.mapView setCompassPosition:CGPointMake(SCREEN_WIDTH - 50, 70)];
     [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
     [self setDestinationAnnotationCoordinate:self.store[_currentIndex].location.location.coordinate];
+    
+    [KTCMapUtil resetMapView:mapView toFitLocations:@[self.store[_currentIndex].location.location]];
 }
 
 static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseIndentifier";

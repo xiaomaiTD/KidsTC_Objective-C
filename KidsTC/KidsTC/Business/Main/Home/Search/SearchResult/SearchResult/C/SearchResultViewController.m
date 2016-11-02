@@ -10,6 +10,7 @@
 #import "GHeader.h"
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
+#import "NSString+ZP.h"
 
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
@@ -93,6 +94,11 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
     [super viewDidLoad];
     
     self.pageId = 10202;
+    NSString *params = [NSString zp_stringWithDictory:self.factorDic];
+    NSMutableDictionary *dic = [@{@"searchType":@(self.searchType)} mutableCopy];
+    if ([params isNotNull]) [dic setValue:params forKey:@"params"];
+    self.trackParams = [NSDictionary dictionaryWithDictionary:dic];
+    
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.automaticallyAdjustsScrollViewInsets = NO;

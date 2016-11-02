@@ -673,12 +673,12 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     
     CGFloat margin = 8;
     
-    CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = margin * 2, img_x = 0;
+    CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = margin * 2 + 2, img_x = 0;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
     CGRect tipImgFrame = CGRectMake(margin, img_y - 3.6, 51, 41);
     
-    CGFloat price_y = CGRectGetMaxY(imgFrame) + margin;
+    CGFloat price_y = CGRectGetMaxY(imgFrame) + margin * 2 - 2;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         
@@ -693,7 +693,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         
         CGFloat lift_max_x = item_w - (price_w>=saleNum_w?price_w:saleNum_w) - margin;
         
-        CGFloat title_y = CGRectGetMaxY(imgFrame) + margin;
+        CGFloat title_y = price_y;
         CGFloat title_x = margin;
         CGFloat title_w = lift_max_x - title_x;
         CGSize title_size = [obj.attTitle boundingRectWithSize:CGSizeMake(title_w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
@@ -703,7 +703,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         BOOL subImgShow = [obj.subImgName isNotNull];
         
         CGFloat subImg_x = margin;
-        CGFloat subImg_y = CGRectGetMaxY(titleFrame) + margin + 3;
+        CGFloat subImg_y = CGRectGetMaxY(titleFrame) + 19;
         CGFloat subImg_w = 15;
         CGFloat subImg_h = 15;
         CGRect subImgFrame = CGRectMake(subImg_x, subImg_y, subImg_w, subImg_h);
@@ -711,7 +711,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
             subImgFrame = CGRectZero;
         }
         
-        CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + margin;
+        CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + 16;
         CGFloat subTitle_x = CGRectGetMaxX(subImgFrame) + 4;
         CGFloat subTitle_w = lift_max_x - subTitle_x;
         CGFloat subTitle_h = 21;
@@ -720,13 +720,13 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGSize storeAddress_s = [obj.attStoreAddress size];
         CGFloat storeAddress_w = storeAddress_s.width;
         CGFloat storeAddress_x = margin;
-        CGFloat storeAddress_y = CGRectGetMaxY(subTtitleFrme) + margin;
+        CGFloat storeAddress_y = CGRectGetMaxY(subTtitleFrme) + 9;
         CGFloat storeAddress_h = 21;
         
         CGSize status_size = [obj.attStatus size];
         CGFloat status_w = status_size.width;
         CGFloat status_h = status_size.height;
-        CGFloat status_y = CGRectGetMaxY(subTtitleFrme) + margin;
+        CGFloat status_y = CGRectGetMaxY(subTtitleFrme) + 11;
         
         CGFloat status_x;
         if ((storeAddress_x + storeAddress_w + margin + status_w)>lift_max_x) {
@@ -742,13 +742,13 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         
         CGFloat saleNum_h = saleNum_s.height;
         CGFloat saleNum_x = item_w - margin - saleNum_w;
-        CGFloat saleNum_y = CGRectGetMaxY(subTtitleFrme) + margin;
+        CGFloat saleNum_y = CGRectGetMaxY(subTtitleFrme) + 9;
         CGRect saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
         
         
         CGFloat line_x = 0;
         CGFloat line_h = LINE_H;
-        CGFloat line_y = CGRectGetMaxY(storeAddressFrme) + margin * 2 - line_h;
+        CGFloat line_y = CGRectGetMaxY(storeAddressFrme) + 15 - line_h;
         CGFloat line_w = item_w - 2 * line_x;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         

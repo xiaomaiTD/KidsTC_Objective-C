@@ -13,6 +13,7 @@
 #import "CouponUsableServiceViewController.h"
 #import "TabBarController.h"
 #import "ProductDetailGetCouponModel.h"
+#import "BuryPointManager.h"
 
 static NSString *const ID = @"ProductDetailGetCouponCell";
 static CGFloat const kAnimateDuration =  0.2;
@@ -28,6 +29,13 @@ static CGFloat const kAnimateDuration =  0.2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (![_productId isNotNull]) {
+        [[iToast makeText:@"商品编号为空！"] show];
+        [self back];
+        return;
+    }
+    if (![_channelId isNotNull])_channelId=@"0";
     
     self.view.backgroundColor = [UIColor clearColor];
     self.tableView.estimatedRowHeight = 100;
@@ -47,6 +55,7 @@ static CGFloat const kAnimateDuration =  0.2;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self hide];
 }
@@ -60,7 +69,7 @@ static CGFloat const kAnimateDuration =  0.2;
     [self.view layoutIfNeeded];
     [UIView animateWithDuration:kAnimateDuration animations:^{
         self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
-        self.contentConstraintB.constant = self.keyboardHeight;
+        self.contentConstraintB.constant = 0;
         [self.view layoutIfNeeded];
     }];
 }
@@ -105,6 +114,11 @@ static CGFloat const kAnimateDuration =  0.2;
                 [TCProgressHUD dismissSVP];
                 [[iToast makeText:@"领取优惠券失败，请稍后再试~"] show];
             }];
+            
+            NSDictionary *trackParams = @{@"pid":_productId,
+                                          @"cid":_channelId};
+            [BuryPointManager trackEvent:@"event_skip_server_coupon" actionId:20402 params:trackParams];
+            
         }else{
             if (item.canRedirect) {
                 CouponUsableServiceViewController *controller = [[CouponUsableServiceViewController alloc] initWithCouponBatchIdentifier:item.batchNo];

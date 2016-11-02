@@ -25,4 +25,5 @@ typedef enum : NSUInteger {
 
 @interface ProductDetailTwoColumnToolBar : UIView
 @property (nonatomic, weak) id<ProductDetailTwoColumnToolBarDelegate> delegate;
+@property (nonatomic, assign) NSInteger count;
 @end

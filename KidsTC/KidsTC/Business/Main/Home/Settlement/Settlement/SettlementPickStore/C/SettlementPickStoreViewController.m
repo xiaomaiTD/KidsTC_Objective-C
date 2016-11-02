@@ -25,7 +25,14 @@ static NSString *const ID = @"SettlementPickStoreViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (![_serveId isNotNull]) {
+        [[iToast makeText:@"商品编号为空"] show];
+        [self back];
+        return;
+    }
+    
     self.pageId = 10505;
+    self.trackParams = @{@"pid":_serveId};
     
     self.navigationItem.title = @"选择门店";
     

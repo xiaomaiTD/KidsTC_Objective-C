@@ -10,6 +10,7 @@
 #import "ProduceDetialCommentItem.h"
 #import "NSAttributedString+YYText.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 @implementation ProduceDetialCommentItem
 + (NSDictionary *)modelCustomPropertyMapper {
@@ -29,11 +30,9 @@
     if ([_content isNotNull]) {
         NSMutableAttributedString *attContent = [[NSMutableAttributedString alloc] initWithString:_content];
         attContent.lineSpacing = 6;
-        attContent.color = [UIColor lightGrayColor];
-        attContent.font = [UIFont systemFontOfSize:17];
+        attContent.color = [UIColor colorFromHexString:@"#666666"];
+        attContent.font = [UIFont systemFontOfSize:19];
         _attContent = [[NSAttributedString alloc] initWithAttributedString:attContent];
     }
-    
-    
 }
 @end

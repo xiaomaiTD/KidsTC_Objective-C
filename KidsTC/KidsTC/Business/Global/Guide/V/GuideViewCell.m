@@ -19,13 +19,6 @@
 
 - (void)setItem:(GuideDataItem *)item {
     _item = item;
-    
-//    UIImage *image = [UIImage imageNamed:item.imageName];
-//    if (!image) {
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:item.imageName ofType:nil];
-//        NSData *imageData = [NSData dataWithContentsOfFile:filePath];
-//        image = [UIImage sd_animatedGIFWithData:imageData];
-//    }
     self.iconImageView.image = [UIImage sd_animatedGIFNamed:item.imageName];
 }
 

@@ -11,7 +11,7 @@
 #import "KTCPaymentService.h"
 #import "SettlementResultViewController.h"
 #import "NavigationController.h"
-
+#import "NSString+Category.h"
 #import "WeChatManager.h"
 
 @interface CashierDeskViewController ()
@@ -30,6 +30,9 @@
     [super viewDidLoad];
     
     self.pageId = 11007;
+    if ([self.orderId isNotNull]) {
+        self.trackParams = @{@"orderId":_orderId};
+    }
     
     self.navigationItem.title = @"收银台";
     self.contentView.hidden = YES;

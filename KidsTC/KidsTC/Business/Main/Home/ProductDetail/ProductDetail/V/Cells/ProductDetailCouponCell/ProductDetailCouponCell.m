@@ -36,7 +36,7 @@
         [_labels removeAllObjects];
     }
     
-    CGFloat margin = 8;
+    CGFloat margin = 15;
     
     __block CGRect lastFrame = self.tipL.frame;
     CGFloat label_h = 21;

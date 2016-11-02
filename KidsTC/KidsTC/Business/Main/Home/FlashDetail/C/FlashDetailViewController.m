@@ -126,7 +126,13 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if (![_pid isNotNull]) {
+        [[iToast makeText:@"闪购编号为空"] show];
+        [self back];
+        return;
+    }
     self.pageId = 10403;
+    self.trackParams = @{@"pid":_pid};
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

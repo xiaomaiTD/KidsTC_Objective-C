@@ -114,6 +114,7 @@
 }
 
 - (BOOL)isNotNull{
+    
     return (self &&
             [self isKindOfClass:[NSString class]] &&
             self.length>0 &&

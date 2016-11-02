@@ -8,6 +8,7 @@
 
 #import "SpeekView.h"
 #import "iflyMSC/IFlyMSC.h"
+#import "NSAttributedString+YYText.h"
 
 @interface SpeekView ()<IFlySpeechRecognizerDelegate>
 @property (nonatomic, strong) IFlySpeechRecognizer *iFlySpeechRecognizer;
@@ -181,18 +182,37 @@
 }
 
 - (void)recognizeSuccess {
-    self.tipLabel.text = self.result;
+    self.tipLabel.attributedText = self.attResult;
     [self.animateIv stopAnimating];
-    self.speekBtn.hidden = NO;
-    if ([self.delegate respondsToSelector:@selector(speekView:actionTyp:value:)]) {
-        [self.delegate speekView:self actionTyp:SpeekViewActionTypeRecognizeSuccess value:self.result];
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([self.delegate respondsToSelector:@selector(speekView:actionTyp:value:)]) {
+            [self.delegate speekView:self actionTyp:SpeekViewActionTypeRecognizeSuccess value:self.result];
+        }
+        self.tipLabel.text = nil;
+        self.speekBtn.hidden = NO;
+    });
 }
 
 - (void)recognizeFailed {
     self.tipLabel.text = @"未识别出您说出的话\n请点击话筒的重说";
     [self.animateIv stopAnimating];
     self.speekBtn.hidden = NO;
+}
+
+- (NSAttributedString *)attResult {
+
+    NSMutableAttributedString *prefix = [[NSMutableAttributedString alloc] initWithString:@"  正在搜索:\n"];
+    prefix.color = [UIColor darkGrayColor];
+    
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"  %@",self.result]];
+    result.color = COLOR_PINK;
+    
+    [prefix appendAttributedString:result];
+    
+    prefix.font = [UIFont systemFontOfSize:19];
+    prefix.lineSpacing = 8;
+    
+    return [[NSAttributedString alloc] initWithAttributedString:prefix];
 }
 
 #pragma mark - IFlySpeechRecognizerDelegate

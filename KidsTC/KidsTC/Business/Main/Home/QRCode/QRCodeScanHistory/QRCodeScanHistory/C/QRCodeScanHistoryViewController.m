@@ -16,6 +16,7 @@
 #import "QRCodeScanBarCodeModel.h"
 #import "SegueMaster.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 static NSString *const kQRCodeScanHistoryTableViewCellID = @"QRCodeScanHistoryTableViewCell";
 
@@ -31,19 +32,24 @@ static NSString *const kQRCodeScanHistoryTableViewCellID = @"QRCodeScanHistoryTa
     
     self.navigationItem.title = @"扫描历史";
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"清空" postion:UIBarButtonPositionRight target:self action:@selector(rightBarButtonItemAction)];
-    
     self.items = [QRCodeScanHistoryDataManager shareQRCodeScanHistoryDataManager].items;
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.backgroundColor = [UIColor colorWithRed:0.988 green:0.981 blue:0.972 alpha:1];
+    tableView.backgroundColor = [UIColor colorFromHexString:@"#f2f3f5"];
     tableView.estimatedRowHeight = 44;
     [tableView registerNib:[UINib nibWithNibName:@"QRCodeScanHistoryTableViewCell" bundle:nil] forCellReuseIdentifier:kQRCodeScanHistoryTableViewCellID];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    if (self.items.count>0) {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"清空" postion:UIBarButtonPositionRight target:self action:@selector(rightBarButtonItemAction)];
+    }else{
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) image:nil description:@"啥都咩有呀"];
+    }
+    
 }
 
 - (void)rightBarButtonItemAction {

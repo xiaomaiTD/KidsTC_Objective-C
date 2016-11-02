@@ -16,6 +16,7 @@
 
 #import "GHeader.h"
 #import "SettlementResultShareModel.h"
+#import "NSString+Category.h"
 
 
 @interface SettlementResultViewController ()
@@ -31,6 +32,14 @@
     [super viewDidLoad];
     
     self.pageId = 10506;
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([_orderId isNotNull]) {
+        [dic setValue:_orderId forKey:@"orderId"];
+    }
+    NSNumber *type = @(_paid?1:2);
+    [dic setValue:type forKey:@"result"];
+    self.trackParams = [NSDictionary dictionaryWithDictionary:dic];
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     

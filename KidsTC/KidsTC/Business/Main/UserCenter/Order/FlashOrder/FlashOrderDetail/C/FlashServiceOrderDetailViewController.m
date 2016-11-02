@@ -75,6 +75,9 @@
     }
     
     self.pageId = 11004;
+    if ([self.orderId isNotNull]) {
+        self.trackParams = @{@"orderId":_orderId};
+    }
     
     self.navigationItem.title = @"订单详情";
     
@@ -532,9 +535,8 @@
         [self loadOrderDetail];
     };
     [self.navigationController pushViewController:controller animated:YES];
-    
     NSDictionary *params = @{@"orderId":self.orderId};
-    [BuryPointManager trackEvent:@"event_skip_flash_afterpay" actionId:21613 params:params];
+    [BuryPointManager trackEvent:@"event_skip_flash_prepay" actionId:21612 params:params];
 }
 
 #pragma mark 获取订单信息
@@ -543,6 +545,8 @@
     FlashBalanceSettlementViewController *controller = [[FlashBalanceSettlementViewController alloc]init];
     controller.orderId = self.data.orderId;
     [self.navigationController pushViewController:controller animated:YES];
+    NSDictionary *params = @{@"orderId":self.orderId};
+    [BuryPointManager trackEvent:@"event_skip_flash_afterpay" actionId:21613 params:params];
 }
 
 

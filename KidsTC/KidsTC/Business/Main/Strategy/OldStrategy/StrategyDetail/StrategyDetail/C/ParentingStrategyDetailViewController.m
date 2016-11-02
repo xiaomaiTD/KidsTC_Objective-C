@@ -49,7 +49,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pageId = 10803;
-
+    if ([self.strategyId isNotNull]) {
+        self.trackParams = @{@"id":self.strategyId};
+    }
     [self buildRightBarItems];
     self.detailView.delegate = self;
     self.viewModel = [[ParentingStrategyDetailViewModel alloc] initWithView:self.detailView];

@@ -37,6 +37,7 @@
     
     if (_index<data.recommends.count) {
         ProductDetailRecommendItem *item = data.recommends[_index];
+        self.nameL.text = item.productName;
         [self.productImg sd_setImageWithURL:[NSURL URLWithString:item.img] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
         self.priceL.text = item.priceStr;
         self.addressL.text = item.locationStr;

@@ -44,6 +44,7 @@
 @interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) ProductDetailView *detailView;
 @end
 
 @implementation ProductDetailViewController
@@ -57,16 +58,26 @@
     return self;
 }
 
-- (void)loadView {
-    ProductDetailView *view = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    view.delegate = self;
-    self.view = view;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    ProductDetailView *view = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    view.delegate = self;
+    [self.view addSubview:view];
+    self.detailView = view;
+    
+    if (![_productId isNotNull]) {
+        [[iToast makeText:@"商品编号为空！"] show];
+        [self back];
+        return;
+    }
+    if (![_channelId isNotNull])_channelId=@"0";
+    
     self.pageId = 10401;
+    self.trackParams = @{@"pid":_productId,
+                         @"cid":_channelId};
     
     self.navigationItem.title = @"服务详情";
     
@@ -84,6 +95,14 @@
     [self setupBarButtonItemTheme];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
+    [self addNaviShadow];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self removeNaviShadow];
+    
 }
 
 - (void)setupWhiteStyle {
@@ -139,13 +158,24 @@
     }];
 }
 
+- (void)addNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+    layer.shadowOffset = CGSizeMake(0, 4);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+}
+
+- (void)removeNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor clearColor].CGColor;
+    layer.shadowOffset = CGSizeZero;
+    layer.shadowRadius = 0;
+    layer.shadowOpacity = 0;
+}
+
 - (void)loadData {
     
-    if (![_productId isNotNull]) {
-        [[iToast makeText:@"商品编号为空！"] show];
-        return;
-    }
-    if (![_channelId isNotNull])_channelId=@"0";
     NSString *location  = [[KTCMapService shareKTCMapService] currentLocationString];
     NSDictionary *param = @{@"pid":_productId,
                             @"chid":_channelId,
@@ -167,7 +197,7 @@
 }
 
 - (void)loadProductSuccess:(ProductDetailData *)data{
-    ProductDetailView *view = (ProductDetailView *)self.view;
+    ProductDetailView *view = (ProductDetailView *)self.detailView;
     view.data = data;
     self.navigationItem.title = data.simpleName;
     [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
@@ -184,7 +214,7 @@
     [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         ProductDetailRecommendModel *model = [ProductDetailRecommendModel modelWithDictionary:dic];
         if (model.data.count>0) {
-            ProductDetailView *view = (ProductDetailView *)self.view;
+            ProductDetailView *view = (ProductDetailView *)self.detailView;
             ProductDetailData *data = view.data;
             data.recommends = model.data;
             view.data = data;
@@ -203,6 +233,11 @@
         case ProductDetailViewActionTypeSegue://通用跳转
         {
             [self segue:value];
+        }
+            break;
+        case ProductDetailViewActionTypeLoadData://加载商品详情数据
+        {
+            [self loadData];
         }
             break;
         case ProductDetailViewActionTypeDate://显示日期
@@ -321,7 +356,7 @@
     [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         ProductDetailConsultModel *model = [ProductDetailConsultModel modelWithDictionary:dic];
-        ProductDetailView *view = (ProductDetailView *)self.view;
+        ProductDetailView *view = (ProductDetailView *)self.detailView;
         ProductDetailData *data = view.data;
         data.consults = model.items;
         view.data = data;
@@ -338,6 +373,10 @@
         ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
         controller.productId = self.productId;
         controller.delegate = self;
+        controller.consultStr = self.consultStr;
+        controller.dellocBlock = ^(NSString *consultStr){
+            self.consultStr = consultStr;
+        };
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         controller.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:controller animated:NO completion:nil];
@@ -361,6 +400,7 @@
 - (void)moreConsult:(id)value {
     ProductDetailConsultViewController *controller = [[ProductDetailConsultViewController alloc] init];
     controller.productId = self.productId;
+    controller.consultStr = self.consultStr;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -427,6 +467,7 @@
             ProductDetailGetCouponListViewController *controller = [[ProductDetailGetCouponListViewController alloc] initWithNibName:@"ProductDetailGetCouponListViewController" bundle:nil];
             controller.coupons = model.data;
             controller.productId = self.productId;
+            controller.channelId = self.channelId;
             controller.delegate = self;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -461,6 +502,7 @@
 
 - (void)contact:(id)value {
     NSArray<ProductDetailStore *> *store = value;
+
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择门店" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [store enumerateObjectsUsingBlock:^(ProductDetailStore *obj, NSUInteger idx, BOOL *stop) {
         UIAlertAction *action = [UIAlertAction actionWithTitle:obj.storeName style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -470,7 +512,12 @@
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [controller addAction:cancelAction];
-    [self presentViewController:controller animated:YES completion:nil];
+    if (controller.actions.count>0) {
+        [self presentViewController:controller animated:YES completion:nil];
+    }else{
+        [[iToast makeText:@"暂无商户电话哦，您可选择在线咨询~"] show];
+    }
+    
 }
 
 - (void)makePhoneCallWithNumbers:(NSArray *)numbers {
@@ -500,7 +547,7 @@
 #pragma mark - Comment
 
 - (void)comment:(id)value {
-    ProductDetailView *view = (ProductDetailView *)self.view;
+    ProductDetailView *view = (ProductDetailView *)self.detailView;
     ProductDetailData *data = view.data;
     NSUInteger index = [value integerValue];
     if (index<data.commentItemsArray.count) {
@@ -699,7 +746,7 @@
             break;
         case KTCActionViewTagShare:
         {
-            ProductDetailView *view = (ProductDetailView *)self.view;
+            ProductDetailView *view = (ProductDetailView *)self.detailView;
             ProductDetailData *data = view.data;
             CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:data.shareObject sourceType:KTCShareServiceTypeService];
             [self presentViewController:controller animated:YES completion:nil];

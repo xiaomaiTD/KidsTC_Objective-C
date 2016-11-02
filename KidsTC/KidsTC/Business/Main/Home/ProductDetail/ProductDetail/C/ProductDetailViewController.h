@@ -10,4 +10,5 @@
 
 @interface ProductDetailViewController : ViewController
 - (instancetype)initWithServiceId:(NSString *)serviceId channelId:(NSString *)channelId;
+@property (nonatomic, strong) NSString *consultStr;
 @end

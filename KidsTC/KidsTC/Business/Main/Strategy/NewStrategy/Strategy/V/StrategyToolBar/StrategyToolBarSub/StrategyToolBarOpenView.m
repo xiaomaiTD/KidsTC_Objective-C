@@ -62,11 +62,13 @@
     btn.adjustsImageWhenHighlighted = NO;
     btn.layer.cornerRadius = 4;
     btn.layer.masksToBounds = YES;
+    btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    btn.layer.borderWidth = 1;
     [btn addTarget:self action:@selector(btnClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [btn setBackgroundColor:[UIColor groupTableViewBackgroundColor] forState:UIControlStateNormal];
+    [btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
     [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
     return btn;
@@ -82,8 +84,10 @@
 - (void)selectedBtnIndex:(NSUInteger)index{
     
     self.selectedBtn.selected = NO;
+    self.selectedBtn.layer.borderColor = [UIColor lightGrayColor].CGColor;
     UIButton *btn = self.tagBtns[index];
     btn.selected = YES;
+    btn.layer.borderColor = [UIColor clearColor].CGColor;
     self.selectedBtn = btn;
 }
 

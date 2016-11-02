@@ -243,7 +243,7 @@
             self.currentClassItem.sections = [NSArray arrayWithArray:mutableSections];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (refresh && (![_currentClassItem.ID isNotNull])) {
+            if (refresh && (![_currentClassItem.ID isNotNull] || [_currentClassItem.ID isEqualToString:@"0"])) {
                 self.classView.clazz = model.data.clazz;
             }
             [self dealWithLoadResult];

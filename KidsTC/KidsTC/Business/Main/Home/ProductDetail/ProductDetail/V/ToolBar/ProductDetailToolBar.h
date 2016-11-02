@@ -27,5 +27,5 @@ typedef enum : NSUInteger {
 @interface ProductDetailToolBar : UIView
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailToolBarDelegate> delegate;
-
+@property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
 @end

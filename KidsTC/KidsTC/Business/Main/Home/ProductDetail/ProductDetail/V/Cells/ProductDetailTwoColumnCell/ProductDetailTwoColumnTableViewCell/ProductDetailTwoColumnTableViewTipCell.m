@@ -27,7 +27,12 @@
 
 - (void)setCount:(NSInteger)count {
     _count = count;
-    self.tipNumL.text = [NSString stringWithFormat:@"活动咨询(%zd)",count];
+    
+    if (count>0) {
+        self.tipNumL.text = [NSString stringWithFormat:@"活动咨询(%zd)",count];
+    }else{
+        self.tipNumL.text = @"活动咨询";
+    }
 }
 
 - (IBAction)action:(UIButton *)sender {

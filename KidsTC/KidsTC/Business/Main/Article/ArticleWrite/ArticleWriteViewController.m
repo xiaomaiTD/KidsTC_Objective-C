@@ -223,6 +223,7 @@ typedef enum : NSUInteger {
 - (void)uploadImgFailure:(NSError *)error {
     [TCProgressHUD dismissSVP];
     [[iToast makeText:@"图片上传失败，请重试！"] show];
+    [self trackFailure];
 }
 
 - (NSDictionary *)paramWith:(NSArray *)imageUrlStrings {
@@ -315,7 +316,6 @@ typedef enum : NSUInteger {
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self sendFailure];
     }];
-    [BuryPointManager trackEvent:@"event_result_contribute_commit" actionId:21102 params:nil];
 }
 
 - (void)sendSuccess:(ArticleWriteShareModel *)model {
@@ -328,11 +328,31 @@ typedef enum : NSUInteger {
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.modalPresentationStyle = UIModalPresentationCustom;
     [self presentViewController:controller animated:NO completion:nil];
+    [self trackSuccecss];
 }
 
 - (void)sendFailure {
     [TCProgressHUD dismissSVP];
     [[iToast makeText:@"发表失败!"] show];
+    [self trackFailure];
+}
+
+- (void)trackSuccecss {
+    NSMutableDictionary *trackParams = [@{@"result":@"1"} mutableCopy];
+    NSString *articleClass = _selectedClassItem.ID;
+    if ([articleClass isNotNull]) {
+        [trackParams setValue:articleClass forKey:@"tagId"];
+    }
+    [BuryPointManager trackEvent:@"event_result_contribute_commit" actionId:21102 params:trackParams];
+}
+
+- (void)trackFailure {
+    NSMutableDictionary *trackParams = [@{@"result":@"2"} mutableCopy];
+    NSString *articleClass = _selectedClassItem.ID;
+    if ([articleClass isNotNull]) {
+        [trackParams setValue:articleClass forKey:@"tagId"];
+    }
+    [BuryPointManager trackEvent:@"event_result_contribute_commit" actionId:21102 params:trackParams];
 }
 
 

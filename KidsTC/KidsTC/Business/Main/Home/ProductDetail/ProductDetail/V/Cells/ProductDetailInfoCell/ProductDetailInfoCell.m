@@ -14,10 +14,12 @@
 
 @interface ProductDetailInfoCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *placeHolderL;
 @property (weak, nonatomic) IBOutlet YYLabel *contentL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *commentNumL;
 @property (weak, nonatomic) IBOutlet UILabel *saleNumL;
+@property (weak, nonatomic) IBOutlet UILabel *priceNameL;
 @end
 
 @implementation ProductDetailInfoCell
@@ -28,12 +30,14 @@
     self.commentNumL.textColor = PRODUCT_DETAIL_BLUE;
     self.saleNumL.textColor = PRODUCT_DETAIL_BLUE;
     self.contentL.numberOfLines = 0;
+    self.priceNameL.textColor = COLOR_PINK;
 }
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
     self.nameL.attributedText = data.attServeName;
     self.priceL.text = data.priceStr;
+    self.priceNameL.text = data.priceSortName;
     self.commentNumL.text = [NSString stringWithFormat:@"%zd",data.evaluate];
     self.saleNumL.text = [NSString stringWithFormat:@"%zd",data.saleCount];
     WeakSelf(self)
@@ -53,7 +57,8 @@
                                     }
                                 }];
     }];
-    self.contentL.attributedText = [[NSAttributedString alloc] initWithAttributedString:attPromote];
+    self.contentL.attributedText = attPromote;
+    self.placeHolderL.attributedText = attPromote;
 }
 
 

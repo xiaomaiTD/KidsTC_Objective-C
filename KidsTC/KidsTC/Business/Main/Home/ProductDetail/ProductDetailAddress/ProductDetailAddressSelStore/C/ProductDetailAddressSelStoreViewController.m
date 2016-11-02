@@ -37,6 +37,11 @@ static CGFloat const kAnimateDuration =  0.2;
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
 - (BOOL)prefersStatusBarHidden {
     return NO;
 }
@@ -44,6 +49,7 @@ static CGFloat const kAnimateDuration =  0.2;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self show];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

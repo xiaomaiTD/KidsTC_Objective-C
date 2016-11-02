@@ -11,6 +11,7 @@
 
 typedef enum : NSUInteger {
     ProductDetailViewActionTypeSegue = 1,
+    ProductDetailViewActionTypeLoadData,//加载商品详情数据
     ProductDetailViewActionTypeDate,//显示日期
     ProductDetailViewActionTypeAddress,//显示位置
     ProductDetailViewActionTypeLoadConsult,//当没有咨询的时候加载更多的咨询
@@ -30,9 +31,7 @@ typedef enum : NSUInteger {
 
 @class ProductDetailView;
 @protocol ProductDetailViewDelegate <NSObject>
-
 - (void)productDetailView:(ProductDetailView *)view actionType:(ProductDetailViewActionType)type value:(id)value;
-
 @end
 
 @interface ProductDetailView : UIView

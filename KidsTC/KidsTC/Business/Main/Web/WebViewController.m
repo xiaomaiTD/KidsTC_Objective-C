@@ -35,7 +35,6 @@
 #import "AUIKeyboardAdhesiveView.h"
 #import "ArticleColumnViewController.h"
 
-static NSString *const CloseWindow    = @"HackCloseWindowFramePrefix";
 static NSString *const Prefix         = @"hook::";            //前缀
 typedef enum : NSUInteger {
     WebViewOptNavBarTypeShow=1,//显示
@@ -208,10 +207,7 @@ typedef enum : NSUInteger {
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString *absoluteString = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     TCLog(@"WebView-request-absoluteString-ALL-:\n%@\n",absoluteString);
-    if ([absoluteString hasPrefix:CloseWindow]) {
-        [self closeWindow];
-        return NO;
-    }else if ([absoluteString hasPrefix:Prefix]) {
+    if ([absoluteString hasPrefix:Prefix]) {
         NSString *hook = [absoluteString substringFromIndex:Prefix.length];
         NSArray *hooks = [hook componentsSeparatedByString:@"::"];
         NSString *meth = [[hooks firstObject] stringByAppendingString:@":"];
@@ -229,9 +225,9 @@ typedef enum : NSUInteger {
         return NO;
     }
     //self.shareObject     = nil;
-    self.callBackJS      = nil;
-    _selectedPhotos      = nil;
-    _selectedAssets      = nil;
+    //self.callBackJS      = nil;
+    //_selectedPhotos      = nil;
+    //_selectedAssets      = nil;
     self.urlString       = absoluteString;
     TCLog(@"WebView-request-absoluteString-YES-:\n%@\n",absoluteString);
     return YES;
@@ -265,7 +261,7 @@ typedef enum : NSUInteger {
 - (void)setNaviTitle{
     if(!self.navigationController) return;
     NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    self.navigationItem.title = [title isNotNull]?title:@"童成网";
+    self.navigationItem.title = [title isNotNull]?title:@"";
 }
 
 - (void)setHideLeftBarButtonItems{
@@ -278,7 +274,7 @@ typedef enum : NSUInteger {
 
 #pragma mark - ==============actions==============
 #pragma mark 关闭窗口
-- (void)closeWindow{
+- (void)close_activity:(NSString *)param{
     [self webClose];
 }
 #pragma mark 服务详情
@@ -522,7 +518,7 @@ typedef enum : NSUInteger {
 - (void)setTitle:(NSString *)param {
     NSRange range = [param rangeOfString:@"title="];
     NSString *title = [param substringFromIndex:(range.location+range.length)];
-    title = [title isNotNull]?title:@"童成网";
+    title = [title isNotNull]?title:@"";
     self.navigationItem.title = title;
 }
 #pragma mark 隐藏/显示/透明导航栏

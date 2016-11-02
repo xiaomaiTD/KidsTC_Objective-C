@@ -17,6 +17,8 @@
 
 @interface UIDevice (IdentifierAddition)
 
++ (NSString *)uuidString;
+
 /*
  * @method uniqueDeviceIdentifier
  * @description use this method when you need a unique identifier in one app.

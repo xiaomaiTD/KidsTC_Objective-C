@@ -12,7 +12,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
-
+#import "TCProgressHUD.h"
 @interface ViewController ()
 
 @end
@@ -58,6 +58,10 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
+    
+    [TCProgressHUD dismissSVP];
+    [TCProgressHUD dismiss];
+    
     //防止子类切换页面时造成crash
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
@@ -72,14 +76,14 @@
         if (![_pageUid isNotNull]) {
             _pageUid = [NSString stringWithFormat:@"%zd%zd",_pageId,[self getRandomNumber:100000 to:999999]];
         }
-        [BuryPointManager trackBegin:self.pageId pageUid:_pageUid pageName:self.pageName];
+        [BuryPointManager trackBegin:_pageId pageUid:_pageUid pageName:_pageName params:_trackParams];
     }
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    if (self.pageId>0 && ![_pageUid isNotNull]) {
-        [BuryPointManager trackEnd:self.pageId pageUid:_pageUid pageName:self.pageName];
+    if (self.pageId>0 && [_pageUid isNotNull]) {
+        [BuryPointManager trackEnd:_pageId pageUid:_pageUid pageName:_pageName params:_trackParams];
     }
 }
 

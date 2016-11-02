@@ -14,6 +14,7 @@
 #import "NSDate+ZP.h"
 #import "ZPDateFormate.h"
 #import "NSString+ZP.h"
+#import "UIBarButtonItem+Category.h"
 
 @interface ProductDetailCalendarViewController ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance>
 @property (nonatomic, strong) FSCalendar *calendar;
@@ -66,13 +67,100 @@
         
         while (timeInterval_s<=timeInterval_e) {
             NSString *timeStr = [NSString zp_stringWithTimeInterval:timeInterval_s Format:DF_yMd];
-            [fillDefaultColors setObject:COLOR_PINK forKey:timeStr];
+            [fillDefaultColors setObject:[COLOR_PINK colorWithAlphaComponent:0.8] forKey:timeStr];
             [titleDefaultColors setObject:[UIColor whiteColor] forKey:timeStr];
             timeInterval_s += 24*60*60;
         }
     }];
     self.fillDefaultColors = [NSDictionary dictionaryWithDictionary:fillDefaultColors];
     self.titleDefaultColors = [NSDictionary dictionaryWithDictionary:titleDefaultColors];
+    
+    [self setupWhiteStyle];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
+    [self addNaviShadow];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self removeNaviShadow];
+}
+
+- (void)setupWhiteStyle {
+    
+    self.naviColor = [UIColor whiteColor];
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        btn.bounds = CGRectMake(0, 0,18, 18);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+    }];
+}
+
+- (void)setupNavigationBarTheme
+{
+    UINavigationBar *appearance = self.navigationController.navigationBar;
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
+    [appearance setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarButtonItemTheme
+{
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+    
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+}
+
+- (void)addNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+    layer.shadowOffset = CGSizeMake(0, 4);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+}
+
+- (void)removeNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor clearColor].CGColor;
+    layer.shadowOffset = CGSizeZero;
+    layer.shadowRadius = 0;
+    layer.shadowOpacity = 0;
 }
 
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar

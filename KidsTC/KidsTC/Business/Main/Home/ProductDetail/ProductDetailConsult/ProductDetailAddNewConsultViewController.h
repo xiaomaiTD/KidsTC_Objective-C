@@ -21,5 +21,7 @@ typedef enum : NSUInteger {
 
 @interface ProductDetailAddNewConsultViewController : ViewController
 @property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *consultStr;
 @property (nonatomic, weak) id<ProductDetailAddNewConsultViewControllerDelegate> delegate;
+@property (nonatomic, copy) void (^dellocBlock)(NSString *consultStr);
 @end

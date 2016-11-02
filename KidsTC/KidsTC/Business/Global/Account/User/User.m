@@ -16,6 +16,7 @@
 #import "Macro.h"
 #import "NotificationService.h"
 #import "GetUserPopulationModel.h"
+#import "TabBarController.h"
 
 //用户uid skey
 static NSString *const USERDEFAULT_UID_KEY = @"UserDefaultUidKey";
@@ -78,6 +79,9 @@ singleM(User)
     if (_hasLogin) {
         if(resultBlock) resultBlock(_uid,nil);
     }else{
+        if (!target) {
+            target = [TabBarController shareTabBarController].selectedViewController;
+        }
         LoginViewController *controller = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
         controller.resultBlock = resultBlock;
         NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];

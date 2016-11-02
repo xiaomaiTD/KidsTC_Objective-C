@@ -10,6 +10,8 @@
 #import "OrderRefundViewModel.h"
 #import "iToast.h"
 #import "TCProgressHUD.h"
+#import "NSString+Category.h"
+
 @interface OrderRefundViewController () <OrderRefundViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollBGView;
@@ -38,6 +40,10 @@
     [super viewDidLoad];
     
     self.pageId = 11005;
+    
+    if ([self.orderId isNotNull]) {
+        self.trackParams = @{@"orderId":_orderId};
+    }
     
     self.navigationItem.title= @"申请退款";
     self.automaticallyAdjustsScrollViewInsets = NO;

@@ -10,15 +10,16 @@
 #import "User.h"
 #import "KTCMapService.h"
 
-static NSString *const CookieDomain         = @".kidstc.com";
-static NSString *const CookieKey_uid        = @"uid";
-static NSString *const CookieKey_skey       = @"skey";
-static NSString *const CookieKey_appversion = @"appversion";      //app的版本号
-static NSString *const CookieKey_deviceid   = @"deviceId";
-static NSString *const CookieKey_appsource  = @"appsource";
-static NSString *const CookieKey_app        = @"app";
-static NSString *const CookieKey_mapaddr    = @"mapaddr";         //地理位置信息
-static NSString *const CookieKeyUserRole    = @"population_type"; //用户角色
+NSString *const CookieDomain         = @".kidstc.com";
+NSString *const CookieKey_uid        = @"uid";
+NSString *const CookieKey_skey       = @"skey";
+NSString *const CookieKey_appversion = @"appversion";      //app的版本号
+NSString *const CookieKey_deviceid   = @"deviceId";
+NSString *const CookieKey_appsource  = @"appsource";
+NSString *const CookieKey_app        = @"app";
+NSString *const CookieKey_mapaddr    = @"mapaddr";         //地理位置信息
+NSString *const CookieKeyUserRole    = @"population_type"; //用户角色
+NSString *const CookieKeyGuid        = @"guid";
 
 @implementation CookieManager
 singleM(CookieManager)

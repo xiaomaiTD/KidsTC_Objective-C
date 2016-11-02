@@ -8,12 +8,12 @@
 
 #import "ProductDetailToolBar.h"
 #import "UIButton+Category.h"
+#import "User.h"
 
 CGFloat const kProductDetailToolBarHeight = 60;
 
 @interface ProductDetailToolBar ()
 @property (weak, nonatomic) IBOutlet UIButton *contactBtn;
-@property (weak, nonatomic) IBOutlet UIButton *attentionBtn;
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintH;
 @end
@@ -35,13 +35,16 @@ CGFloat const kProductDetailToolBarHeight = 60;
 }
 
 - (IBAction)action:(UIButton *)sender {
+    
     ProductDetailToolBarBtnType type = (ProductDetailToolBarBtnType)sender.tag;
     if ([self.delegate respondsToSelector:@selector(productDetailToolBar:btnType:value:)]) {
         [self.delegate productDetailToolBar:self btnType:type value:self.data];
         if (type == ProductDetailToolBarBtnTypeAttention) {
-            self.data.isFavor = !self.data.isFavor;
-            NSString *imageName = self.data.isFavor?@"ProductDetail_11":@"ProductDetail_04";
-            [self.attentionBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
+                self.data.isFavor = !self.data.isFavor;
+                NSString *imageName = self.data.isFavor?@"ProductDetail_11":@"ProductDetail_04";
+                [self.attentionBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            }];
         }
     }
 }

@@ -398,7 +398,7 @@
     ServiceSettlementDataItem *item = self.model.data.firstObject;
     ServiceSettlementCouponItem *maxCoupon = item.maxCoupon;
     NSString *couponCode = maxCoupon.code.length>0?maxCoupon.code:@"";
-    BOOL isFullCut = couponCode.length<=0;
+    BOOL isFullCut = (couponCode.length<=0 && item.promotion.fiftyamt>0);
     NSString *soleid = [self.model.soleid isNotNull]?self.model.soleid:@"";
     NSString *addressId = [item.userAddress.ID isNotNull]?item.userAddress.ID:@"";
     NSString *storeId = [item.store.storeId isNotNull]?item.store.storeId:@"";

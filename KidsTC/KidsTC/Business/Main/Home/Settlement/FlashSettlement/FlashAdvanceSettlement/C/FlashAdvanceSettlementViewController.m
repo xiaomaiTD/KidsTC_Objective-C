@@ -57,8 +57,10 @@
     [super viewDidLoad];
     
     self.pageId = 10503;
+    //self.trackParams = @{@"pid":_orderId};
     
     self.navigationItem.title = @"结算";
+    
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.contentInset = UIEdgeInsetsMake(0, 0, TOOLBAR_HEIGHT, 0);

@@ -34,13 +34,24 @@ static int const pageSize = 10;
     [self setupTableView];
     
     [self setupBtn];
+    
+    [self setupWhiteStyle];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self setupWhiteStyle];
+    [self setupNavigationBarTheme];
+    [self setupBarButtonItemTheme];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    
+    [self addNaviShadow];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self removeNaviShadow];
 }
 
 - (void)setupWhiteStyle {
@@ -52,12 +63,6 @@ static int const pageSize = 10;
         btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
     }];
-    
-    [self setupNavigationBarTheme];
-    
-    [self setupBarButtonItemTheme:self.navigationItem.leftBarButtonItem];
-    
-    [self setupBarButtonItemTheme:self.navigationItem.rightBarButtonItem];
 }
 
 - (void)setupNavigationBarTheme
@@ -69,23 +74,53 @@ static int const pageSize = 10;
     [appearance setTitleTextAttributes:textAttrs];
 }
 
-- (void)setupBarButtonItemTheme:(UIBarButtonItem *)barButtonItem
+- (void)setupBarButtonItemTheme
 {
-    if (!barButtonItem) {
-        return;
-    }
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-    [barButtonItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
     
-    NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-    highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-    [barButtonItem setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
-    
-    NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-    disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-    [barButtonItem setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+        
+        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
+        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
+        
+        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
+        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
+    }];
+}
+
+- (void)addNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+    layer.shadowOffset = CGSizeMake(0, 4);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+}
+
+- (void)removeNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor clearColor].CGColor;
+    layer.shadowOffset = CGSizeZero;
+    layer.shadowRadius = 0;
+    layer.shadowOpacity = 0;
 }
 
 - (void)setupTableView {
@@ -190,6 +225,10 @@ static int const pageSize = 10;
         ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
         controller.productId = self.productId;
         controller.delegate = self;
+        controller.consultStr = self.consultStr;
+        controller.dellocBlock = ^(NSString *consultStr){
+            self.consultStr = consultStr;
+        };
         controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         controller.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:controller animated:NO completion:nil];

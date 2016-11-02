@@ -71,7 +71,7 @@
     [self setTitle:@"松开得惊喜" forState:MJRefreshStatePulling];
     [self setTitle:@"正在拉惊喜..." forState:MJRefreshStateRefreshing];
     
-    //[self setupSubViews];
+    [self setupSubViews];
     
     [NotificationCenter addObserver:self selector:@selector(setupSubViews) name:kHomeRefreshNewDataNoti object:nil];
 }
@@ -151,9 +151,9 @@
 
 - (void)setupSubViews {
     
-    NSString *imgUrl = [HomeRefreshManager shareHomeActivityManager].model.data.imgUrl;
+    HomeRefreshManager *manager = [HomeRefreshManager shareHomeRefreshManager];
     
-    _hasSuprise = [imgUrl isNotNull];
+    _hasSuprise = manager.hasSuprise;
     
     //小兔子
     self.gifView.hidden = _hasSuprise;
@@ -164,11 +164,20 @@
     self.loadingView.hidden = !_hasSuprise;
     
     if (_hasSuprise) {
+        NSString *imgUrl = manager.model.data.imgUrl;
         [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            CGSize size = image.size;
-            CGFloat ratio = size.height/size.width;
-            CGFloat imageView_h = SCREEN_WIDTH * ratio;
-            self.bgImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds)-imageView_h, SCREEN_WIDTH, imageView_h);
+            if (image && !error) {
+                CGSize size = image.size;
+                CGFloat ratio = 1;
+                if (size.width>0 && size.height>0) {
+                    ratio = size.height/size.width;
+                }
+                CGFloat imageView_h = SCREEN_WIDTH * ratio;
+                self.bgImageView.frame = CGRectMake(0, CGRectGetHeight(self.bounds)-imageView_h, SCREEN_WIDTH, imageView_h);
+            }else{
+                [self.bgImageView removeFromSuperview];
+                self.bgImageView = nil;
+            }
         }];
     }else{
         [self.bgImageView removeFromSuperview];

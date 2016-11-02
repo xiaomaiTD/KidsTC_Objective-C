@@ -23,7 +23,6 @@ static NSString *const ID = @"ProductDetailCommentCellCollectionViewCell";
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *commentCountL;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountL;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewConstraintH;
 @property (nonatomic, strong) ProduceDetialCommentItem *comment;
 @end
@@ -37,6 +36,7 @@ static NSString *const ID = @"ProductDetailCommentCellCollectionViewCell";
     self.headerImgView.layer.masksToBounds = YES;
     self.headerImgView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.headerImgView.layer.borderWidth = LINE_H;
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailCommentCellCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];

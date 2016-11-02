@@ -75,6 +75,9 @@
         default:
             break;
     }
+    if ([self.relationIdentifier isNotNull]) {
+        self.trackParams = @{@"id":self.relationIdentifier};
+    }
     // Do any additional setup after loading the view from its nib.
     self.detailView.delegate = self;
     self.viewModel = [[CommentDetailViewModel alloc] initWithView:self.detailView];
@@ -142,7 +145,6 @@
 
 - (void)didClickedRelationInfoOnCommentDetailView:(CommentDetailView *)detailView {
     
-#warning TODO...
 //    ParentingStrategyDetailCellModel *model = self.headerModel;
 //    [SegueMaster makeSegueWithModel:model.relatedInfoModel fromController:self];
 }

@@ -200,9 +200,10 @@ static NSString *const ArticleHomeBannerCollectionViewTwoCellID  = @"ArticleHome
         nextSection++;
     }
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
-    
-    // 3.通过动画滚动到下一个位置
-    [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    if (nextSection<MAX_SECTIONS && nextItem<self.item.banners.count) {
+        // 3.通过动画滚动到下一个位置
+        [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    }
 }
 - (NSIndexPath *)resetIndexPath
 {

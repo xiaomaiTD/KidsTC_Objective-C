@@ -47,7 +47,7 @@
     
     [[HomeActivityManager shareHomeActivityManager] synchronize];
     
-    [[HomeRefreshManager shareHomeActivityManager] synchronize];
+    [[HomeRefreshManager shareHomeRefreshManager] synchronize];
     
     [[AppVersionManager shareAppVersionManager] checkRemote];
     
@@ -66,6 +66,6 @@
     
     [[HomeActivityManager shareHomeActivityManager] synchronize];
     
-    [[HomeRefreshManager shareHomeActivityManager] synchronize];
+    [[HomeRefreshManager shareHomeRefreshManager] synchronize];
 }
 @end

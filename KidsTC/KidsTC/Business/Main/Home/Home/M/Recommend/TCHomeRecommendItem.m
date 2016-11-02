@@ -66,13 +66,13 @@
     }
     NSTextAttachment *imgAtt = [NSTextAttachment new];
     imgAtt.image = [UIImage imageNamed:@"icon_clock"];
-    imgAtt.bounds = CGRectMake(0, -4, 13, 13);
+    imgAtt.bounds = CGRectMake(0, -2, 13, 13);
     NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
     NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
     [attStatus insertAttributedString:imgAttStr atIndex:0];
     attStatus.lineSpacing = 0;
     attStatus.color = [UIColor lightGrayColor];
-    attStatus.font = [UIFont systemFontOfSize:14];
+    attStatus.font = [UIFont systemFontOfSize:13];
     attStatus.alignment = NSTextAlignmentRight;
     content.attStatus = attStatus;
     
@@ -82,15 +82,15 @@
     if (stoeAddress.length>0) {
         
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-        attachment.image = [UIImage imageNamed:@"ProductDetail_02"];
-        attachment.bounds = CGRectMake(0, -4, 13, 16);
+        attachment.image = [UIImage imageNamed:@"home_recommend_local"];
+        attachment.bounds = CGRectMake(0, -2, 11, 14);
         NSAttributedString *attachmentStr = [NSAttributedString attributedStringWithAttachment:attachment];
         
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
         [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
         attStoreAddress.color = [UIColor lightGrayColor];
-        attStoreAddress.font = [UIFont systemFontOfSize:14];
+        attStoreAddress.font = [UIFont systemFontOfSize:13];
         attStoreAddress.lineBreakMode = NSLineBreakByTruncatingTail;
         attStoreAddress.alignment = NSTextAlignmentLeft;
         content.attStoreAddress = attStoreAddress;

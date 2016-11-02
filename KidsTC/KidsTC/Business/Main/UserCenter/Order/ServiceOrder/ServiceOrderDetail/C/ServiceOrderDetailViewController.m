@@ -80,6 +80,9 @@
     }
     
     self.pageId = 11002;
+    if ([self.orderId isNotNull]) {
+        self.trackParams = @{@"orderId":_orderId};
+    }
     
     self.navigationItem.title = @"订单详情";
     

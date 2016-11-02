@@ -29,3 +29,8 @@ static NSString *const kUserLocationHasChangedNotification = @"UserLocationHasCh
 
 //需要同步的数据的文件夹
 static NSString *const kSynchronizedData                   = @"SynchronizedData";
+
+//首页下拉刷活动--引导页面
+static NSString *const kHomeViewControllerDidScroll        = @"HomeViewControllerDidScroll";
+static NSString *const kHomeViewControllerDidEndDrag       = @"HomeViewControllerDidEndDrag";
+

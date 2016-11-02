@@ -8,6 +8,7 @@
 
 #import "TCHomeFloorContent.h"
 #import "NSAttributedString+YYText.h"
+#import "Colours.h"
 
 @implementation TCHomeFloorContent
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -152,7 +153,7 @@
                 
                 NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
                 attSubTitle.lineSpacing = 0;
-                attSubTitle.color = [UIColor lightGrayColor];
+                attSubTitle.color = [UIColor colorFromHexString:@"#606060"];
                 attSubTitle.font = [UIFont systemFontOfSize:15];
                 attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
                 attSubTitle.alignment = NSTextAlignmentLeft;
