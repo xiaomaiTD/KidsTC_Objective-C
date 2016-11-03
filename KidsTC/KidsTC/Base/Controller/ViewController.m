@@ -27,7 +27,18 @@
 
 - (UIColor *)naviColor{
     if (!_naviColor) {
-        _naviColor = COLOR_PINK;
+        switch (_naviTheme) {
+            case NaviThemePink:
+            {
+                _naviColor = COLOR_PINK;
+            }
+                break;
+            case NaviThemeWihte:
+            {
+                _naviColor = [UIColor whiteColor];
+            }
+                break;
+        }
     }
     return _naviColor;
 }
@@ -36,7 +47,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setupBackItem];
+    
+    self.naviTheme = NaviThemePink;
     
     //keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -45,14 +57,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.navigationController) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-        [self setNavigationBarColor];
-    }
     
-    [self setupNavigationBarTheme];
-    [self setupBarButtonItemTheme];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [self setupNaviTheme:_naviTheme];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -64,10 +70,6 @@
     
     //防止子类切换页面时造成crash
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-    
-    [self setupNavigationBarTheme];
-    [self setupBarButtonItemTheme];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -87,46 +89,135 @@
     }
 }
 
-- (void)setupNavigationBarTheme
+- (void)setupNaviTheme:(NaviTheme)theme
 {
-    UINavigationBar *appearance = self.navigationController.navigationBar;
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
-    [appearance setTitleTextAttributes:textAttrs];
+    UIStatusBarStyle style;
+    UIColor *titleColor;
+    UIColor *normalColor, *highlightColor, *disabledColor;
+    NSString *backImageName, *backHighImageName;
+    switch (theme) {
+        case NaviThemePink:
+        {
+            style = UIStatusBarStyleLightContent;
+            
+            titleColor = [UIColor whiteColor];
+            
+            normalColor = [UIColor whiteColor];
+            highlightColor = COLOR_PINK_HIGHLIGHT;
+            disabledColor = [UIColor lightGrayColor];
+            
+            [self removeNaviShadow];
+            
+            backImageName = @"navigation_back_n";
+            backHighImageName = @"navigation_back_n";
+        }
+            break;
+        case NaviThemeWihte:
+        {
+            style = UIStatusBarStyleDefault;
+            
+            titleColor = [UIColor blackColor];
+            
+            normalColor = [UIColor blackColor];
+            highlightColor = [UIColor blackColor];
+            disabledColor = [UIColor lightGrayColor];
+            
+            [self addNaviShadow];
+            
+            backImageName = @"navi_back_black";
+            backHighImageName = @"navi_back_black";
+        }
+            break;
+    }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:style animated:YES];
+    
+    [self setupNaviBar:titleColor];
+    
+    [self setupBarItems:self.navigationItem.rightBarButtonItems
+            normalColor:normalColor
+         highlightColor:highlightColor
+          disabledColor:disabledColor];
+    
+    [self setupBarItems:self.navigationItem.leftBarButtonItems
+            normalColor:normalColor
+         highlightColor:highlightColor
+          disabledColor:disabledColor];
+    
+    [self setNavigationBarColor];
+    
+    [self setupBackItem:backImageName highImageName:backHighImageName];
 }
 
-- (void)setupBarButtonItemTheme
+- (void)setupNaviBar:(UIColor *)titleColor
 {
-    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-        textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:titleColor,NSFontAttributeName:[UIFont systemFontOfSize:19]};
+    [navigationBar setTitleTextAttributes:textAttrs];
+}
+
+- (void)setupBarItems:(NSArray<UIBarButtonItem *> *)items
+          normalColor:(UIColor *)normalColor
+       highlightColor:(UIColor *)highlightColor
+        disabledColor:(UIColor *)disabledColor
+{
+    [items enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSDictionary *textAttrs = @{NSForegroundColorAttributeName:normalColor,NSFontAttributeName:[UIFont systemFontOfSize:15]};
         [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
         
-        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        highTextAttrs[NSForegroundColorAttributeName] = COLOR_PINK_HIGHLIGHT;
+        NSDictionary *highTextAttrs = @{NSForegroundColorAttributeName:highlightColor};
         [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
         
-        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+        NSDictionary *disableTextAttrs = @{NSForegroundColorAttributeName:disabledColor};
         [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
-    }];
-    
-    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-        textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
-        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
         
-        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        highTextAttrs[NSForegroundColorAttributeName] = COLOR_PINK_HIGHLIGHT;
-        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
-        
-        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
     }];
+}
+
+- (void)addNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+    layer.shadowOffset = CGSizeMake(0, 4);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+}
+
+- (void)removeNaviShadow {
+    CALayer *layer = self.navigationController.navigationBar.layer;
+    layer.shadowColor = [UIColor clearColor].CGColor;
+    layer.shadowOffset = CGSizeZero;
+    layer.shadowRadius = 0;
+    layer.shadowOpacity = 0;
+}
+
+- (void)setNavigationBarColor{
+    if (self.navigationController) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:self.naviColor] forBarMetrics:UIBarMetricsDefault];
+    }
+}
+
+- (void)setupBackItem:(NSString *)imageName
+        highImageName:(NSString *)highImageName
+{
+    if (self.navigationController.viewControllers.count > 1) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:imageName
+                                                                     highImageName:highImageName
+                                                                           postion:UIBarButtonPositionLeft
+                                                                            target:self
+                                                                            action:@selector(back)];
+        self.hidesBottomBarWhenPushed = YES;
+    }
+}
+
+- (void)back{
+    if (self.navigationController.viewControllers.count>1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (int)getRandomNumber:(int)from to:(int)to{
@@ -147,32 +238,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark -
-
-- (void)setNavigationBarColor{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:self.naviColor] forBarMetrics:UIBarMetricsDefault];
-}
-
-- (void)setupBackItem{
-    if (self.navigationController.viewControllers.count > 1) {
-        self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigation_back_n"
-                                                                     highImageName:@"navigation_back_h"
-                                                                           postion:UIBarButtonPositionLeft
-                                                                            target:self
-                                                                            action:@selector(back)];
-        self.hidesBottomBarWhenPushed = YES;
-    }
-}
-
-- (void)back{
-    if (self.navigationController.viewControllers.count>1) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 #pragma mark Keyboard Notification

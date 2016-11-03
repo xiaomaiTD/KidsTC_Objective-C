@@ -130,7 +130,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)setupTf {
     
     UITextField *tf = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 400, 30)];
-    tf.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.4];
+    tf.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
     tf.font = [UIFont systemFontOfSize:15];
     tf.borderStyle = UITextBorderStyleNone;
     tf.layer.cornerRadius = 4;

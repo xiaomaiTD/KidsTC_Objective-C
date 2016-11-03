@@ -79,12 +79,13 @@ singleM(ComposeManager)
     return true;
 }
 
-- (void)showCompose {
+- (void)showCompose:(void(^)())resultBlock{
     UIViewController *target = [TabBarController shareTabBarController];
     ComposeViewController *controller = [[ComposeViewController alloc] init];
     controller.modalPresentationStyle = UIModalPresentationCustom;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.model = self.model;
+    controller.resultBlock = resultBlock;
     [target presentViewController:controller animated:NO completion:nil];
 }
 

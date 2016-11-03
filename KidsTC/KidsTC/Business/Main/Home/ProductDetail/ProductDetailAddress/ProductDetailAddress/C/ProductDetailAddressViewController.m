@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupWhiteStyle];
+    self.naviTheme = NaviThemeWihte;
     
     [KTCMapService shareKTCMapService].needToCheckServiceOnLine = YES;
     
@@ -41,97 +41,20 @@
     self.currentIndex = 0;
 }
 
+- (id)viewWithNib:(NSString *)nib{
+    return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.mapView viewWillAppear];
     self.mapView.delegate = self;
-    
-    [self setupNavigationBarTheme];
-    [self setupBarButtonItemTheme];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    
-    [self addNaviShadow];
-}
-
-- (void)setupWhiteStyle {
-    
-    self.naviColor = [UIColor whiteColor];
-    
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
-        btn.bounds = CGRectMake(0, 0,18, 18);
-        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
-    }];
-}
-
-- (void)setupNavigationBarTheme
-{
-    UINavigationBar *appearance = self.navigationController.navigationBar;
-    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-    textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:19];
-    [appearance setTitleTextAttributes:textAttrs];
-}
-
-- (void)setupBarButtonItemTheme
-{
-    [self.navigationItem.rightBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-        
-        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
-        
-        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
-    }];
-    
-    [self.navigationItem.leftBarButtonItems enumerateObjectsUsingBlock:^(UIBarButtonItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-        textAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-        textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:15];
-        [obj setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
-        
-        NSMutableDictionary *highTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        highTextAttrs[NSForegroundColorAttributeName] = [UIColor blackColor];
-        [obj setTitleTextAttributes:highTextAttrs forState:UIControlStateHighlighted];
-        
-        NSMutableDictionary *disableTextAttrs = [NSMutableDictionary dictionaryWithDictionary:textAttrs];
-        disableTextAttrs[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
-        [obj setTitleTextAttributes:disableTextAttrs forState:UIControlStateDisabled];
-    }];
-}
-
-- (void)addNaviShadow {
-    CALayer *layer = self.navigationController.navigationBar.layer;
-    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
-    layer.shadowOffset = CGSizeMake(0, 4);
-    layer.shadowRadius = 2;
-    layer.shadowOpacity = 0.5;
-}
-
-- (void)removeNaviShadow {
-    CALayer *layer = self.navigationController.navigationBar.layer;
-    layer.shadowColor = [UIColor clearColor].CGColor;
-    layer.shadowOffset = CGSizeZero;
-    layer.shadowRadius = 0;
-    layer.shadowOpacity = 0;
-}
-
-- (id)viewWithNib:(NSString *)nib{
-    return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.mapView viewWillDisappear];
     self.mapView.delegate = nil;
-    [self removeNaviShadow];
 }
 
 - (void)dealloc {
@@ -373,6 +296,7 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
                         coordinate endCoord:self.destinationAnnotation.coordinate
                                         andTransitRouteResult:result
                                                autoResetToFit:YES];
+        
     } else if ([result isKindOfClass:[BMKWalkingRouteResult class]]) {
         
         //步行

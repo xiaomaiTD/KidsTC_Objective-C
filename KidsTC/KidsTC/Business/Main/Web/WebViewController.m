@@ -401,7 +401,6 @@ typedef enum : NSUInteger {
             }
                 break;
         }
-        
     }else{
         [[iToast makeText:@"所选优惠券状态为空"] show];
     }

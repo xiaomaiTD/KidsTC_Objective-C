@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *reduceBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addBtn;
 @property (weak, nonatomic) IBOutlet UITextField *tf;
-
+@property (weak, nonatomic) IBOutlet UILabel *buyLimitL;
 @end
 
 @implementation ServiceSettlementBuyNumCell
@@ -39,6 +39,7 @@
     [super setItem:item];
     
     self.tf.text = [NSString stringWithFormat:@"%zd",item.count];
+    self.buyLimitL.text = [NSString stringWithFormat:@"限购%zd件",item.maxBuyNum];
     
     [self setupEnable];
 }

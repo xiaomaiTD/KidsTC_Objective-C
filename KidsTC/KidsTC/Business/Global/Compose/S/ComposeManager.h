@@ -14,5 +14,5 @@
 singleH(ComposeManager)
 @property (nonatomic, strong) ComposeModel *model;
 - (void)synchronize;
-- (void)showCompose;
+- (void)showCompose:(void(^)())resultBlock;
 @end

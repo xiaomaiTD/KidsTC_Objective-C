@@ -191,6 +191,7 @@ static CGFloat const kBtn_h = 80;
         } completion:^(BOOL finished) {
             [self dismissViewControllerAnimated:NO completion:^{
                 if (completeBlock) completeBlock();
+                if (self.resultBlock) self.resultBlock();
             }];
         }];
     });

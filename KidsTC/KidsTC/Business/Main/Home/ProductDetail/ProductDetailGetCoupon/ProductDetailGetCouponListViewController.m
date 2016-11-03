@@ -30,6 +30,8 @@ static CGFloat const kAnimateDuration =  0.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
+    
     if (![_productId isNotNull]) {
         [[iToast makeText:@"商品编号为空！"] show];
         [self back];
@@ -47,14 +49,7 @@ static CGFloat const kAnimateDuration =  0.2;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self show];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-}
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self hide];

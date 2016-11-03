@@ -96,11 +96,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="限购1件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqo-72-Uzo">
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="8f8-xo-LqC" secondAttribute="trailing" id="92C-lZ-Rn2"/>
                     <constraint firstItem="a2t-kn-ddd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="F0s-5d-z8a"/>
                     <constraint firstAttribute="bottom" secondItem="8f8-xo-LqC" secondAttribute="bottom" id="Kp6-d0-Dj1"/>
+                    <constraint firstItem="Zqo-72-Uzo" firstAttribute="leading" secondItem="mjp-qr-GhF" secondAttribute="trailing" constant="8" id="Vvr-vw-Qf9"/>
+                    <constraint firstItem="Zqo-72-Uzo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XPV-co-EqV"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mjp-qr-GhF" secondAttribute="bottom" constant="12" id="cdz-iI-1cs"/>
                     <constraint firstItem="8f8-xo-LqC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jsM-fw-dWA"/>
                     <constraint firstItem="a2t-kn-ddd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oAJ-Dy-sbm"/>
@@ -111,6 +118,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="addBtn" destination="xJp-QA-T1a" id="B66-7O-97p"/>
+                <outlet property="buyLimitL" destination="Zqo-72-Uzo" id="LgC-OR-8H6"/>
                 <outlet property="container" destination="mjp-qr-GhF" id="Fi0-hk-UC4"/>
                 <outlet property="reduceBtn" destination="NeY-eq-28h" id="4LB-A3-gjh"/>
                 <outlet property="tf" destination="eLP-zQ-NJ9" id="5bw-0K-sQm"/>

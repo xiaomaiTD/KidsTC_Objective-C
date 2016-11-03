@@ -190,7 +190,7 @@ CGFloat const titleHight = 18;
 
 - (TabBarItemElement *)codedEle{
     if (!_codedEle) {
-        _codedEle = [TabBarItemElement addEleWithFImgName:@"tabBar_compose" sImgName:@"tabBar_compose"];
+        _codedEle = [TabBarItemElement addEleWithFImgName:@"tabBar_compose" sImgName:@"tabBar_compose_cancle"];
         ComposeBtn *middleBtn = [ComposeManager shareComposeManager].model.data.data.middleBtn;
         NSString *imgUrl = middleBtn.iconUrl;
         ComposeBtnIconType iconCode = middleBtn.iconCode;

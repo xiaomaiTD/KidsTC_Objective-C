@@ -11,4 +11,5 @@
 
 @interface ComposeViewController : ViewController
 @property (nonatomic, strong) ComposeModel *model;
+@property (nonatomic, copy) void(^resultBlock)();
 @end

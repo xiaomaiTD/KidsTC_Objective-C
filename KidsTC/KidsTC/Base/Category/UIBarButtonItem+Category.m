@@ -12,6 +12,15 @@
 @property (nonatomic, assign) UIBarButtonPosition postion;
 @end
 @implementation UIBarButton
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return self;
+}
+
 - (UIEdgeInsets)alignmentRectInsets
 {
     UIEdgeInsets insets;

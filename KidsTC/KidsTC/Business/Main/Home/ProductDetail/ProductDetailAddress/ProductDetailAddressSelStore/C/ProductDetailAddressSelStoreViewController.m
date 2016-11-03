@@ -22,6 +22,8 @@ static CGFloat const kAnimateDuration =  0.2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
+    
     self.view.backgroundColor = [UIColor clearColor];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - SCREEN_HEIGHT * 0.7, SCREEN_WIDTH, SCREEN_HEIGHT * 0.7)
@@ -37,11 +39,6 @@ static CGFloat const kAnimateDuration =  0.2;
     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-}
-
 - (BOOL)prefersStatusBarHidden {
     return NO;
 }
@@ -49,7 +46,6 @@ static CGFloat const kAnimateDuration =  0.2;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self show];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

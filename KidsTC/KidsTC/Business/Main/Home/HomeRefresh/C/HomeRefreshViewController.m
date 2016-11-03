@@ -55,14 +55,17 @@
 }
 
 - (void)back{
+    /*
     [UIView animateWithDuration:1.0 animations:^{
         self.view.alpha = 0;
         self.view.transform = CGAffineTransformMakeScale(1.5, 1.5);
     } completion:^(BOOL finished) {
-        self.view.hidden = YES;
-        if (self.resultBlock) self.resultBlock();
-        [super back];
-    }];
+        //self.view.hidden = YES;
+        self.view.transform = CGAffineTransformIdentity;
+        
+    }];*/
+    if (self.resultBlock) self.resultBlock();
+    [super back];
 }
 
 

@@ -233,7 +233,9 @@ singleM(TabBarController)
 }
 
 - (void)showCompose {
-    [[ComposeManager shareComposeManager] showCompose];
+    [[ComposeManager shareComposeManager] showCompose:^{
+        [self.customTabBar selectIndex:self.selectedIndex];
+    }];
 }
 
 
