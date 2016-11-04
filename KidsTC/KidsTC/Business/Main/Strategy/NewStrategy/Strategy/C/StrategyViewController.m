@@ -65,6 +65,12 @@ static NSString * const reuseIdentifier = @"Cell";
     self.toolBar = toolBar;
     
     self.models = [NSMutableArray array];
+    
+    WeakSelf(self)
+    self.failurePageActionBlock = ^(){
+        StrongSelf(self)
+        [self loadDataWithStrategyCell:nil loadDataRefresh:YES];
+    };
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -127,6 +133,9 @@ static NSString * const reuseIdentifier = @"Cell";
         }else if (strategyCell) {
             [strategyCell headerEndRefreshing];
             [strategyCell footerEndRefreshing];
+        }
+        if (self.models.count<1) {
+            [self loadDataFailureAction:NO];
         }
     }];
 }

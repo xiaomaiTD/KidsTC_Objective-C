@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FailureViewLoadData">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHr-wJ-OIs">
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_failed" translatesAutoresizingMaskIntoConstraints="NO" id="W64-Mf-vfB"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-Jz-5d0">
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4Q-xZ-RId">
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_WiFi" translatesAutoresizingMaskIntoConstraints="NO" id="zRF-ot-5zZ">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="zRF-ot-5zZ" secondAttribute="height" multiplier="1:1" id="Mja-9u-Efw"/>
+                                                <constraint firstAttribute="width" constant="50" id="mJf-ue-NUP"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="检查网络" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3g-4L-hPl">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="G3g-4L-hPl" firstAttribute="top" secondItem="zRF-ot-5zZ" secondAttribute="bottom" constant="8" id="Hu1-1A-nUZ"/>
+                                        <constraint firstItem="zRF-ot-5zZ" firstAttribute="top" secondItem="P4Q-xZ-RId" secondAttribute="top" constant="8" id="IIP-cL-igz"/>
+                                        <constraint firstAttribute="width" constant="90" id="LBB-yI-l5Q"/>
+                                        <constraint firstAttribute="bottom" secondItem="G3g-4L-hPl" secondAttribute="bottom" constant="8" id="aHW-u8-upW"/>
+                                        <constraint firstAttribute="height" constant="90" id="q8h-dw-qMF"/>
+                                        <constraint firstItem="zRF-ot-5zZ" firstAttribute="centerX" secondItem="P4Q-xZ-RId" secondAttribute="centerX" id="s3c-nX-OE3"/>
+                                        <constraint firstItem="G3g-4L-hPl" firstAttribute="centerX" secondItem="P4Q-xZ-RId" secondAttribute="centerX" id="ufG-bW-zAi"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axw-1g-iRa">
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_refresh" translatesAutoresizingMaskIntoConstraints="NO" id="Fxa-Ok-orJ">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="nY4-3U-pUZ"/>
+                                                <constraint firstAttribute="width" secondItem="Fxa-Ok-orJ" secondAttribute="height" multiplier="1:1" id="ufj-8q-8Vd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="刷新页面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uN6-r8-Jgc">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="uN6-r8-Jgc" firstAttribute="top" secondItem="Fxa-Ok-orJ" secondAttribute="bottom" constant="8" id="LXF-xl-t90"/>
+                                        <constraint firstItem="uN6-r8-Jgc" firstAttribute="centerX" secondItem="Axw-1g-iRa" secondAttribute="centerX" id="SKJ-TV-QBF"/>
+                                        <constraint firstAttribute="height" constant="90" id="YK6-No-zq6"/>
+                                        <constraint firstItem="Fxa-Ok-orJ" firstAttribute="top" secondItem="Axw-1g-iRa" secondAttribute="top" constant="8" id="YmL-8O-Y0w"/>
+                                        <constraint firstItem="Fxa-Ok-orJ" firstAttribute="centerX" secondItem="Axw-1g-iRa" secondAttribute="centerX" id="sEM-hS-IB1"/>
+                                        <constraint firstAttribute="width" constant="90" id="w3s-6r-k8p"/>
+                                        <constraint firstAttribute="bottom" secondItem="uN6-r8-Jgc" secondAttribute="bottom" constant="8" id="zKa-Sf-hYL"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Axw-1g-iRa" firstAttribute="top" secondItem="Nwk-Jz-5d0" secondAttribute="top" id="4j4-7V-zWc"/>
+                                <constraint firstAttribute="bottom" secondItem="Axw-1g-iRa" secondAttribute="bottom" id="Asr-33-rx8"/>
+                                <constraint firstAttribute="bottom" secondItem="P4Q-xZ-RId" secondAttribute="bottom" id="D7H-v3-FMo"/>
+                                <constraint firstItem="Axw-1g-iRa" firstAttribute="leading" secondItem="P4Q-xZ-RId" secondAttribute="trailing" constant="40" id="Niq-dl-opu"/>
+                                <constraint firstAttribute="trailing" secondItem="Axw-1g-iRa" secondAttribute="trailing" id="Ugx-VK-1dY"/>
+                                <constraint firstItem="P4Q-xZ-RId" firstAttribute="leading" secondItem="Nwk-Jz-5d0" secondAttribute="leading" id="lGe-az-qXn"/>
+                                <constraint firstItem="P4Q-xZ-RId" firstAttribute="top" secondItem="Nwk-Jz-5d0" secondAttribute="top" id="ng3-kz-bxO"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哎哟，网络出错啦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqa-zk-JWM">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Nwk-Jz-5d0" secondAttribute="trailing" id="FQy-Ap-RFq"/>
+                        <constraint firstItem="Nwk-Jz-5d0" firstAttribute="leading" secondItem="eHr-wJ-OIs" secondAttribute="leading" id="FdD-5P-c0d"/>
+                        <constraint firstItem="W64-Mf-vfB" firstAttribute="centerX" secondItem="eHr-wJ-OIs" secondAttribute="centerX" id="JZt-4I-JqE"/>
+                        <constraint firstItem="W64-Mf-vfB" firstAttribute="top" secondItem="eHr-wJ-OIs" secondAttribute="top" id="RSY-jc-ZXE"/>
+                        <constraint firstItem="Lqa-zk-JWM" firstAttribute="centerX" secondItem="eHr-wJ-OIs" secondAttribute="centerX" id="f4C-Gi-YdW"/>
+                        <constraint firstItem="Lqa-zk-JWM" firstAttribute="top" secondItem="W64-Mf-vfB" secondAttribute="bottom" id="gFf-bv-naQ"/>
+                        <constraint firstAttribute="bottom" secondItem="Nwk-Jz-5d0" secondAttribute="bottom" id="hE2-rO-LQ1"/>
+                        <constraint firstItem="Nwk-Jz-5d0" firstAttribute="top" secondItem="Lqa-zk-JWM" secondAttribute="bottom" constant="24" id="u8e-Zn-5O1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="eHr-wJ-OIs" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2fv-2A-vY9"/>
+                <constraint firstItem="eHr-wJ-OIs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zcs-Dc-WMg"/>
+            </constraints>
+            <connections>
+                <outlet property="networkBtn" destination="P4Q-xZ-RId" id="e5Q-f9-Uvc"/>
+                <outlet property="networkLogo" destination="zRF-ot-5zZ" id="4ej-Cw-3u2"/>
+                <outlet property="refreshBtn" destination="Axw-1g-iRa" id="BkG-Az-rgL"/>
+                <outlet property="refreshLogo" destination="Fxa-Ok-orJ" id="cG7-UN-sxx"/>
+            </connections>
+            <point key="canvasLocation" x="246" y="-67"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="empty_failed" width="100" height="100"/>
+        <image name="menu_WiFi" width="48" height="48"/>
+        <image name="menu_refresh" width="48" height="48"/>
+    </resources>
+</document>

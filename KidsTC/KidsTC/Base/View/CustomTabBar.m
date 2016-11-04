@@ -148,6 +148,7 @@ CGFloat const titleHight = 18;
         }else{
             btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
         }
+        [btn layoutIfNeeded];
     }
 }
 

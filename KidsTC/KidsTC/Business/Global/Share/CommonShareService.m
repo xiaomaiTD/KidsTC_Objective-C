@@ -91,18 +91,15 @@ static CommonShareService *_sharedInstance = nil;
         }
         return NO;
     }
-    if (!object.thumbImage && object.thumbImageUrl) {
-        //[TCProgressHUD showSVP];
+    if (!object.thumbImage && object.thumbImageUrl) {//没有图片 但是有Url
         [Request dowloadImgWithUrlStr:object.thumbImageUrl.absoluteString success:^(NSURLSessionDataTask *task, NSData *data) {
             UIImage *compressedImage = [[UIImage imageWithData:data] imageByScalingToSize:CGSizeMake(100, 100) retinaFit:NO];
             CommonShareObject *refreshedObject = [object copyObject];
             refreshedObject.thumbImage = compressedImage;
             [self shareWithType:type object:refreshedObject succeed:succeed failure:failure];
-            //[TCProgressHUD dismissSVP];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"Download share thumb image failed.");
             [self shareWithType:type object:object succeed:succeed failure:failure];
-            //[TCProgressHUD dismissSVP];
         }];
         
     } else {
@@ -114,24 +111,34 @@ static CommonShareService *_sharedInstance = nil;
 - (BOOL)shareWithType:(CommonShareType)type
                object:(CommonShareObject *)object
               succeed:(void (^)())succeed
-              failure:(void (^)(NSError *))failure {
+              failure:(void (^)(NSError *))failure
+{
     BOOL retValue = NO;
     switch (type) {
         case CommonShareTypeWechatSession:
         {
-            WeChatWebPageShareObject *shareObject = [WeChatWebPageShareObject webPageShareObjectWithTitle:object.title description:object.shareDescription thumbImage:object.thumbImage webPageUrlString:object.webPageUrlString];
+            WeChatWebPageShareObject *shareObject = [WeChatWebPageShareObject webPageShareObjectWithTitle:object.title
+                                                                                              description:object.shareDescription
+                                                                                               thumbImage:object.thumbImage
+                                                                                         webPageUrlString:object.webPageUrlString];
             retValue = [[WeChatManager sharedManager] sendShareRequestToScene:WechatShareSceneSession WithObject:shareObject succeed:succeed failure:failure];
         }
             break;
         case CommonShareTypeWechatTimeLine:
         {
-            WeChatWebPageShareObject *shareObject = [WeChatWebPageShareObject webPageShareObjectWithTitle:object.title description:object.shareDescription thumbImage:object.thumbImage webPageUrlString:object.webPageUrlString];
+            WeChatWebPageShareObject *shareObject = [WeChatWebPageShareObject webPageShareObjectWithTitle:object.title
+                                                                                              description:object.shareDescription
+                                                                                               thumbImage:object.thumbImage
+                                                                                         webPageUrlString:object.webPageUrlString];
             retValue = [[WeChatManager sharedManager] sendShareRequestToScene:WechatShareSceneTimeline WithObject:shareObject succeed:succeed failure:failure];
         }
             break;
         case CommonShareTypeWeibo:
         {
-            WeiboWebPageShareObject *shareObject = [WeiboWebPageShareObject webPageShareObjectWithFollowingContent:object.followingContent identifier:object.identifier title:object.title urlString:object.webPageUrlString];
+            WeiboWebPageShareObject *shareObject = [WeiboWebPageShareObject webPageShareObjectWithFollowingContent:object.followingContent
+                                                                                                        identifier:object.identifier
+                                                                                                             title:object.title
+                                                                                                         urlString:object.webPageUrlString];
             shareObject.thumbnailImage = object.thumbImage;
             shareObject.pageDescription = object.shareDescription;
             retValue = [[WeiboManager sharedManager] sendShareRequestWithObject:shareObject succeed:succeed failure:failure];
@@ -139,7 +146,11 @@ static CommonShareService *_sharedInstance = nil;
             break;
         case CommonShareTypeQQ:
         {
-            TencentWebPageShareObject *shareObject = [TencentWebPageShareObject webPageShareObjectWithTitle:object.title shareDescription:object.shareDescription pageUrlString:object.webPageUrlString thumbImage:object.thumbImage thumbImageUrlString:nil];
+            TencentWebPageShareObject *shareObject = [TencentWebPageShareObject webPageShareObjectWithTitle:object.title
+                                                                                           shareDescription:object.shareDescription
+                                                                                              pageUrlString:object.webPageUrlString
+                                                                                                 thumbImage:object.thumbImage
+                                                                                        thumbImageUrlString:nil];
             retValue = [[TencentManager sharedManager] sendShareRequestToScene:TencentShareSceneQQ WithObject:shareObject succeed:succeed failure:failure];
         }
             break;
@@ -155,4 +166,71 @@ static CommonShareService *_sharedInstance = nil;
     return retValue;
 }
 
+- (BOOL)startThirdPartyShareImageWithType:(CommonShareType)type
+                                   object:(CommonShareObject *)object
+                                  succeed:(void(^)())succeed
+                                  failure:(void(^)(NSError *error))failure {
+    NSLog(@"objectobject:%@",object);
+    if (!object) {
+        NSError *error = [NSError errorWithDomain:@"Common Share" code:-1 userInfo:[NSDictionary dictionaryWithObject:@"无效的分享内容" forKey:kErrMsgKey]];
+        if (failure) {
+            failure(error);
+        }
+        return NO;
+    }
+    return [self shareImageWithType:type object:object succeed:succeed failure:failure];
+}
+
+- (BOOL)shareImageWithType:(CommonShareType)type
+                    object:(CommonShareObject *)object
+                   succeed:(void (^)())succeed
+                   failure:(void (^)(NSError *))failure {
+    BOOL retValue = NO;
+    switch (type) {
+        case CommonShareTypeWechatSession:
+        {
+            WeChatImageShareObject *shareObject = [WeChatImageShareObject imageShareObjectWithTitle:object.title
+                                                                                        description:object.shareDescription
+                                                                                         thumbImage:object.thumbImage
+                                                                                         shareImage:object.thumbImage
+                                                                                shareImageUrlString:nil];
+            retValue = [[WeChatManager sharedManager] sendShareRequestToScene:WechatShareSceneSession WithObject:shareObject succeed:succeed failure:failure];
+        }
+            break;
+        case CommonShareTypeWechatTimeLine:
+        {
+            WeChatImageShareObject *shareObject = [WeChatImageShareObject imageShareObjectWithTitle:object.title
+                                                                                        description:object.shareDescription
+                                                                                         thumbImage:object.thumbImage
+                                                                                         shareImage:object.thumbImage
+                                                                                shareImageUrlString:nil];
+            retValue = [[WeChatManager sharedManager] sendShareRequestToScene:WechatShareSceneTimeline WithObject:shareObject succeed:succeed failure:failure];
+        }
+            break;
+        case CommonShareTypeWeibo:
+        {
+            WeiboImageShareObject *shareObject = [WeiboImageShareObject imageShareObjectWithFollowingContent:object.followingContent
+                                                                                                       image:object.thumbImage];
+            retValue = [[WeiboManager sharedManager] sendShareRequestWithObject:shareObject succeed:succeed failure:failure];
+        }
+            break;
+        case CommonShareTypeQQ:
+        {
+            TencentImageShareObject *shareObject = [TencentImageShareObject imageShareObjectWithTitle:object.title
+                                                                                     shareDescription:object.shareDescription
+                                                                                           shareImage:object.thumbImage
+                                                                                           thumbImage:object.thumbImage];
+            retValue = [[TencentManager sharedManager] sendShareRequestToScene:TencentShareSceneQQ WithObject:shareObject succeed:succeed failure:failure];
+        }
+            break;
+        case CommonShareTypeQZone:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+    return retValue;
+}
 @end

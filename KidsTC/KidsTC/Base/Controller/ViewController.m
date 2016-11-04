@@ -13,8 +13,9 @@
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
 #import "TCProgressHUD.h"
-@interface ViewController ()
 
+
+@interface ViewController ()
 @end
 
 @implementation ViewController
@@ -50,15 +51,18 @@
     
     self.naviTheme = NaviThemePink;
     
-    //keyboard
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(reachabilityStatusChange:) name:kReachabilityStatusChangeNoti object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
     [self setupNaviTheme:_naviTheme];
+    
+    [self checkNetWork];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -234,19 +238,62 @@
 
 - (void)dealloc{
     TCLog(@"%@挂掉了...",NSStringFromClass([self class]));
+    [NotificationCenter removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [NotificationCenter removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    [NotificationCenter removeObserver:self name:kReachabilityStatusChangeNoti object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-#pragma mark Keyboard Notification
-- (void)keyboardWillShow:(NSNotification *)notification {
-    NSDictionary *info = [notification userInfo];
+#pragma mark Notification
+- (void)keyboardWillShow:(NSNotification *)noti {
+    NSDictionary *info = [noti userInfo];
     _keyboardHeight = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
 }
 
-- (void)keyboardWillDisappear:(NSNotification *)notification {
+- (void)keyboardWillDisappear:(NSNotification *)noti {
+}
+
+- (void)reachabilityStatusChange:(NSNotification *)noti {
+    [self checkNetWork];
+}
+
+- (void)checkNetWork {
+    if (!_showFailurePage) {
+        return;
+    }
+    [self loadDataFailureAction:YES];
+}
+
+- (void)loadDataFailureAction:(BOOL)needCheckNetwork{
+    
+    if (needCheckNetwork) {
+        AFNetworkReachabilityStatus status = [ReachabilityManager shareReachabilityManager].status;
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:
+            {
+                [self showFailureView];
+            }
+                break;
+            default:break;
+        }
+    }else{
+        [self showFailureView];
+    }
+}
+
+- (void)showFailureView {
+    [[FailureViewManager shareFailureViewManager] showType:FailureViewTypeLoadData
+                                                    inView:self.view
+                                               actionBlock:^(FailureViewManagerActionType type, id obj) {
+                                                   if (self.failurePageActionBlock) {
+                                                       self.failurePageActionBlock();
+                                                   }else{
+                                                       [self checkNetWork];
+                                                   }
+                                               }];
 }
 
 @end

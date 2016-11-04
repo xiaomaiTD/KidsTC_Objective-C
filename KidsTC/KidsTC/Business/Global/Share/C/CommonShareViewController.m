@@ -128,12 +128,34 @@
         [self.qzoneButton setEnabled:NO];
         [self.qzoneTitleLabel setAlpha:0.4];
     }
+    
+    if (self.shareObject.sourceType == CommonShareSourceTypePhoto) {
+        [self.qzoneButton setEnabled:NO];
+        [self.qzoneTitleLabel setAlpha:0.4];
+    }
 }
 
-- (IBAction)didClickedShareButton:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    CommonShareType type = (CommonShareType)button.tag;
+- (IBAction)didClickedShareButton:(UIButton *)sender {
     CommonShareObject *object = [self.shareObject copyObject];
+    CommonShareType type = (CommonShareType)sender.tag;
+    
+    switch (object.sourceType) {
+        case CommonShareSourceTypeLink:
+        {
+            [self shareLink:type obj:object];
+        }
+            break;
+        case CommonShareSourceTypePhoto:
+        {
+            [self shareImage:type obj:object];
+        }
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)shareLink:(CommonShareType)type obj:(CommonShareObject *)object {
     [[CommonShareService sharedService] startThirdPartyShareWithType:type object:object succeed:^{
         [[iToast makeText:@"分享成功"] show];
         NSString *name = @"";
@@ -150,8 +172,27 @@
         }
         [[iToast makeText:errMsg] show];
     }];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)shareImage:(CommonShareType)type obj:(CommonShareObject *)object {
+    [[CommonShareService sharedService] startThirdPartyShareImageWithType:type object:object succeed:^{
+        [[iToast makeText:@"分享成功"] show];
+        NSString *name = @"";
+        if (object.shareName) {
+            name = object.shareName;
+        }else{
+            name = object.title;
+        }
+        [[KTCShareService service] sendShareSucceedFeedbackToServerWithIdentifier:object.identifier channel:type + 1 type:self.sourceType title:name];
+    } failure:^(NSError *error) {
+        NSString *errMsg = [error.userInfo objectForKey:kErrMsgKey];
+        if ([errMsg length] == 0) {
+            errMsg = @"分享失败";
+        }
+        [[iToast makeText:errMsg] show];
+    }];
+}
+
 
 - (IBAction)didClickedCancelButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

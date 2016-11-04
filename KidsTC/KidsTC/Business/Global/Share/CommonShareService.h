@@ -38,4 +38,8 @@ extern NSString *const kCommonShareTypeQZoneKey;
                              succeed:(void(^)())succeed
                              failure:(void(^)(NSError *error))failure;
 
+- (BOOL)startThirdPartyShareImageWithType:(CommonShareType)type
+                                   object:(CommonShareObject *)object
+                                  succeed:(void(^)())succeed
+                                  failure:(void(^)(NSError *error))failure;
 @end

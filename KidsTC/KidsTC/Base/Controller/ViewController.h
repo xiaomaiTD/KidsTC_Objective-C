@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ReachabilityManager.h"
+#import "FailureViewManager.h"
 
 typedef enum : NSUInteger {
     NaviThemePink = 1,//默认粉色调
@@ -21,9 +23,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *pageName;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, assign) NaviTheme naviTheme;
+@property (nonatomic, assign) BOOL showFailurePage;
+@property (nonatomic, copy) void(^failurePageActionBlock)();
 - (void)back;
-#pragma mark Keyboard Notification
-- (void)keyboardWillShow:(NSNotification *)notification;
-- (void)keyboardWillDisappear:(NSNotification *)notification;
-
+#pragma mark Notification
+- (void)keyboardWillShow:(NSNotification *)noti;
+- (void)keyboardWillDisappear:(NSNotification *)noti;
+- (void)loadDataFailureAction:(BOOL)needCheckNetwork;
 @end

@@ -15,6 +15,7 @@
 #import "TCHomeRecommendModel.h"
 #import "NSString+Category.h"
 #import "TCHomeFloor.h"
+#import "FailureViewManager.h"
 
 
 static CGRect tableViewFrame;
@@ -142,6 +143,8 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     NSMutableArray<TCHomeCategory *> *categorys = [NSMutableArray array];
     NSMutableArray<TCHomeModule *> *modules = [NSMutableArray array];
     NSMutableArray<TCHomeFloor *> *mainFloors = [NSMutableArray array];
+    __block BOOL mainFail = NO;
+    __block BOOL recommendFail = NO;
     dispatch_group_async(group, queue, ^{
         NSDictionary *param = @{@"type":type,
                                 @"category":category};
@@ -155,7 +158,9 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
                     [modules addObject:obj];
                 }
             }];
-        } failure:nil];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            mainFail = YES;
+        }];
     });
     
     NSMutableArray<TCHomeFloor *> *recommendFloors = [NSMutableArray array];
@@ -169,7 +174,9 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
             TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
             [recommendFloors addObjectsFromArray:model.floors];
             recommendCount = recommendFloors.count;
-        } failure:nil];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            recommendFail = YES;
+        }];
     });
     
     dispatch_group_notify(group, queue, ^{
@@ -188,34 +195,51 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
         }
         [allFloors addObjectsFromArray:recommendFloors];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (updateCategorys) {
-                if (![self.delegate respondsToSelector:@selector(tcHomeMainCollectionCell:actionType:value:)]) {
-                    [self dealWitMJ:0 totalCount:allFloors.count];
-                    return;
+            
+            if (mainFail && recommendFail) {
+                if (self.category.floors.count<1) {
+                    [[FailureViewManager shareFailureViewManager] showType:FailureViewTypeLoadData inView:self actionBlock:^(FailureViewManagerActionType type, id obj) {
+                        switch (type) {
+                            case FailureViewManagerActionTypeRefrech:
+                            {
+                                [self.tableView.mj_header beginRefreshing];
+                            }
+                                break;
+                            default:break;
+                        }
+                    }];
                 }
-                TCHomeCategory *category;
-                BOOL showCategory;
-                if (categorys.count<1) {
-                    category = [TCHomeCategory new];
-                    [categorys addObject:category];
-                    showCategory = false;
-                    tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49);
-                }else{
-                    category = categorys[0];
-                    showCategory = true;
-                    tableViewFrame = CGRectMake(0, 64 + 40, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 40 - 49);
-                }
-                self.tableView.frame = tableViewFrame;
-                
-                category.floors = [NSArray arrayWithArray:allFloors];
-                category.modules = [NSArray arrayWithArray:modules];
-                NSDictionary *dic = @{@"categorys":categorys,
-                                      @"showCategory":@(showCategory)};
-                [self.delegate tcHomeMainCollectionCell:self actionType:TCHomeMainCollectionCellActionTypeLoadData value:dic];
             }else{
-                self.category.floors = [NSArray arrayWithArray:allFloors];
-                self.category.modules = [NSArray arrayWithArray:modules];
-                [self.tableView reloadData];
+                if (updateCategorys) {
+                    if (![self.delegate respondsToSelector:@selector(tcHomeMainCollectionCell:actionType:value:)]) {
+                        [self dealWitMJ:0 totalCount:allFloors.count];
+                        return;
+                    }
+                    TCHomeCategory *category;
+                    BOOL showCategory;
+                    if (categorys.count<1) {
+                        category = [TCHomeCategory new];
+                        [categorys addObject:category];
+                        showCategory = false;
+                        tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49);
+                    }else{
+                        category = categorys[0];
+                        showCategory = true;
+                        tableViewFrame = CGRectMake(0, 64 + 40, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 40 - 49);
+                    }
+                    self.tableView.frame = tableViewFrame;
+                    
+                    category.floors = [NSArray arrayWithArray:allFloors];
+                    category.modules = [NSArray arrayWithArray:modules];
+                    NSDictionary *dic = @{@"categorys":categorys,
+                                          @"showCategory":@(showCategory)};
+                    [self.delegate tcHomeMainCollectionCell:self actionType:TCHomeMainCollectionCellActionTypeLoadData value:dic];
+                }else{
+                    self.category.floors = [NSArray arrayWithArray:allFloors];
+                    self.category.modules = [NSArray arrayWithArray:modules];
+                    [self.tableView reloadData];
+                }
+                
             }
             [self dealWitMJ:recommendCount totalCount:allFloors.count];
         });

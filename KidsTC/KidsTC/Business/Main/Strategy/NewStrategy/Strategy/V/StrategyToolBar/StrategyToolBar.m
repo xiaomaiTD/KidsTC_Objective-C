@@ -9,6 +9,7 @@
 #import "StrategyToolBar.h"
 #import "StrategyToolBarOpenView.h"
 #import "Macro.h"
+#import "NSString+Category.h"
 #define GradientLayerWidth 20
 #define OpenTipLabelText @"    切换栏目"
 
@@ -95,13 +96,21 @@
 
 
 - (void)setTags:(NSArray<NSString *> *)tags{
-    _tags = tags;
     
-    self.scrollView.tags = tags;
+    NSMutableArray *tagsAry = [NSMutableArray array];
+    [tags enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *title = [NSString stringWithFormat:@"%@",obj];
+        if ([title isNotNull]) {
+            [tagsAry addObject:title];
+        }
+    }];
+    _tags = [NSArray arrayWithArray:tagsAry];
     
-    self.line.hidden = tags.count<=0;
+    self.scrollView.tags = _tags;
     
-    self.openView.tags = tags;
+    self.line.hidden = _tags.count<=0;
+    
+    self.openView.tags = _tags;
     
     [self layoutSubviews];
 }

@@ -79,6 +79,7 @@
     return object;
 }
 
+
 - (NSString *)identifier {
     if (!_identifier) {
         _identifier = @"noneId";
@@ -98,6 +99,7 @@
     retObj.webPageUrlString = self.webPageUrlString;
     retObj.followingContent = self.followingContent;
     retObj.shareName = self.shareName;
+    retObj.sourceType = self.sourceType;
     return retObj;
 }
 

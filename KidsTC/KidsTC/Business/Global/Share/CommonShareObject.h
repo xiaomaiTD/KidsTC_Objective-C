@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    CommonShareSourceTypeLink,//分享链接
+    CommonShareSourceTypePhoto,//分享图片
+} CommonShareSourceType;
+
 @interface CommonShareObject : NSObject
+
+@property (nonatomic, assign) CommonShareSourceType sourceType;
 
 /** 分享ID，微博分享必填
  * @note 长度不能超过255个字符
@@ -55,6 +62,8 @@
 + (instancetype)shareObjectWithRawData:(NSDictionary *)data;
 
 + (instancetype)defaultShareObjWithTitle:(NSString *)title url:(NSString *)urlString;
+
++ (instancetype)shareObjectWithImage:(UIImage *)image;
 
 - (CommonShareObject *)copyObject;
 

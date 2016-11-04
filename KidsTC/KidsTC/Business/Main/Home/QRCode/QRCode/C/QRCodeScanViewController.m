@@ -38,6 +38,8 @@
     qrCodeView.delegate = self;
     [self.view addSubview:qrCodeView];
     self.qrCodeView = qrCodeView;
+    
+    self.showFailurePage = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

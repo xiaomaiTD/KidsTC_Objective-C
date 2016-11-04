@@ -594,28 +594,6 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     }
 }
 
-#pragma mark - HomeRefreshGuideViewControllerDelegate
-/*
-- (void)homeRefreshGuideViewController:(HomeRefreshGuideViewController *)controller
-                            actionType:(HomeRefreshGuideViewControllerActionType)type
-                                 value:(id)value
-{
-    switch (type) {
-        case HomeRefreshGuideViewControllerDidScroll:
-        {
-            TCHomeMainCollectionCell *cell = [self.collectionView visibleCells].firstObject;
-            [cell scrollY:[value floatValue]];
-        }
-            break;
-        case HomeRefreshGuideViewControllerDidEndDrag:
-        {
-            TCHomeMainCollectionCell *cell = [self.collectionView visibleCells].firstObject;
-            [cell scrollY:[value floatValue]];
-        }
-            break;
-    }
-}*/
-
 
 #pragma mark - Notification
 

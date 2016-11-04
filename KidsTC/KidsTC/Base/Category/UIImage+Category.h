@@ -30,6 +30,15 @@
 #pragma mark - 获取图片大小（单位：字节）
 + (NSUInteger)byteCountOfImage:(UIImage *)image;
 
+#pragma mark - 压缩图片到制定Kb
+
++(UIImage *)compressedImage:(UIImage *)image toKb:(NSInteger)kb;
+
+#pragma mark - 压缩图片到制定Kb
++ (void)compressedImage:(UIImage *)image
+                imageKB:(CGFloat)fImageKBytes
+             imageBlock:(void(^)(UIImage *image))block;
+
 #pragma mark - 缩放图片
 - (UIImage *)imageByScalingToSize:(CGSize)targetSize retinaFit:(BOOL)needFit;
 

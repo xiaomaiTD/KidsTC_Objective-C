@@ -11,12 +11,13 @@
 
 typedef enum : NSUInteger {
     FailureViewTypeWebView=1,
-    FailureViewTypeOther
+    FailureViewTypeLoadData
 } FailureViewType;
 
 typedef enum : NSUInteger {
     FailureViewManagerActionTypeWebView=1,
-    FailureViewManagerActionTypeOther
+    FailureViewManagerActionTypeCheckNetwork,
+    FailureViewManagerActionTypeRefrech
 } FailureViewManagerActionType;
 
 @interface FailureViewManager : NSObject

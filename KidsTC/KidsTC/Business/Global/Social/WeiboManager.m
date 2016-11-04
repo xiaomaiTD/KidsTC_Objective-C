@@ -111,9 +111,9 @@ static WeiboManager *_sharedInstance = nil;
             
             if (imageShareObj.image) {
                 NSUInteger byteCount = [UIImage byteCountOfImage:imageShareObj.image];
-                if (byteCount >= 32 * 1024 * 8) {
-                    return nil;
-                }
+                //if (byteCount >= 32 * 1024 * 8) {
+                    //imageShareObj.image = [imageShareObj.image imageByScalingToSize:CGSizeMake(100, 100) retinaFit:NO];
+                //}
                 
                 WBImageObject *imageObj = [WBImageObject object];
                 [imageObj setImageData:UIImageJPEGRepresentation(imageShareObj.image, 0)];

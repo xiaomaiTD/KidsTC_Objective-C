@@ -29,6 +29,8 @@
     [self.view addSubview:speekView];
     self.speekView = speekView;
     [speekView start];
+    
+    self.showFailurePage = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

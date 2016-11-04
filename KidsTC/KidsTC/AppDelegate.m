@@ -24,6 +24,7 @@
 #import "SchemeManager.h"
 #import "CoverManager.h"
 #import "SynchronizeManager.h"
+#import "ScreenshotManager.h"
 
 #import "TabBarController.h"
 
@@ -116,6 +117,8 @@
     [BuryPointManager startBuryPoint];
     
     [[KTCMapService shareKTCMapService] startService];
+    
+    [[ScreenshotManager shareScreenshotManager] startService];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{

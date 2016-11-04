@@ -80,6 +80,11 @@ typedef enum : NSUInteger {
     
     [self setupNavigationItems];
 
+    WeakSelf(self)
+    self.failurePageActionBlock = ^(){
+        StrongSelf(self)
+        [self loadData];
+    };
 }
 
 - (void)checkValiteAndBury {
@@ -242,12 +247,7 @@ typedef enum : NSUInteger {
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     TCLog(@"");
     [self dealWithFinishLoad];
-    [[FailureViewManager shareFailureViewManager] showType:FailureViewTypeWebView
-                                                    inView:self.view
-                                               actionBlock:^(FailureViewManagerActionType type, id obj)
-     {
-         [self loadData];
-     }];
+    [self loadDataFailureAction:YES];
 }
 
 #pragma mark UIWebViewDelegate helpers

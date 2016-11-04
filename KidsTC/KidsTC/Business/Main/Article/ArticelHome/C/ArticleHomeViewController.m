@@ -27,6 +27,7 @@
 #import "ArticleLikeViewController.h"
 
 #import "BuryPointManager.h"
+#import "FailureViewManager.h"
 
 #define PAGE_COUNT 10
 #define CLASSVIEW_HEIGHT 96
@@ -84,6 +85,12 @@
     [self setupNaviItems];
     
     [self setupTableView];
+    
+    WeakSelf(self)
+    self.failurePageActionBlock = ^(){
+        StrongSelf(self)
+        [self.tableView.mj_header beginRefreshing];
+    };
 }
 
 
@@ -255,6 +262,9 @@
 - (void)loadDataFailure{
     [self dealWithLoadResult];
     [self.tableView noMoreData];
+    if (self.currentClassItem.sections.count<1) {
+        [self loadDataFailureAction:NO];
+    }
 }
 
 - (void)dealWithLoadResult{

@@ -154,7 +154,6 @@
 		EC4FC2711D77CEE400BBD050 /* KTCShareService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCD71D77CEE300BBD050 /* KTCShareService.m */; };
 		EC4FC2721D77CEE400BBD050 /* TencentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCDA1D77CEE300BBD050 /* TencentManager.m */; };
 		EC4FC2731D77CEE400BBD050 /* WeChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCDC1D77CEE300BBD050 /* WeChatManager.m */; };
-		EC4FC2741D77CEE400BBD050 /* WeChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCDE1D77CEE300BBD050 /* WeChatModel.m */; };
 		EC4FC2751D77CEE400BBD050 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCE01D77CEE300BBD050 /* WeiboManager.m */; };
 		EC4FC2761D77CEE400BBD050 /* AddTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCE51D77CEE300BBD050 /* AddTabModel.m */; };
 		EC4FC2771D77CEE400BBD050 /* AddTabManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBCE81D77CEE300BBD050 /* AddTabManager.m */; };
@@ -776,6 +775,9 @@
 		EC630DBC1DCA045B0088145E /* NetWorkTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC630DBA1DCA045B0088145E /* NetWorkTipView.m */; };
 		EC630DBD1DCA045B0088145E /* NetWorkTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC630DBB1DCA045B0088145E /* NetWorkTipView.xib */; };
 		EC630DC11DCA0CA00088145E /* home_guid_01.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC630DC01DCA0CA00088145E /* home_guid_01.gif */; };
+		EC630DEA1DCB81610088145E /* ScreenshotManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC630DE91DCB81610088145E /* ScreenshotManager.m */; };
+		EC630DED1DCC72030088145E /* FailureViewLoadData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC630DEC1DCC72030088145E /* FailureViewLoadData.m */; };
+		EC630DEF1DCC72100088145E /* FailureViewLoadData.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC630DEE1DCC72100088145E /* FailureViewLoadData.xib */; };
 		EC68C3A81D9BA89800D4401A /* ReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3A71D9BA89800D4401A /* ReachabilityManager.m */; };
 		EC68C3B51D9BBC5700D4401A /* HomeRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3AB1D9BBC5600D4401A /* HomeRefreshViewController.m */; };
 		EC68C3B61D9BBC5700D4401A /* HomeRefreshModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC68C3AE1D9BBC5600D4401A /* HomeRefreshModel.m */; };
@@ -1363,8 +1365,6 @@
 		EC4FBCDA1D77CEE300BBD050 /* TencentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentManager.m; sourceTree = "<group>"; };
 		EC4FBCDB1D77CEE300BBD050 /* WeChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatManager.h; sourceTree = "<group>"; };
 		EC4FBCDC1D77CEE300BBD050 /* WeChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatManager.m; sourceTree = "<group>"; };
-		EC4FBCDD1D77CEE300BBD050 /* WeChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatModel.h; sourceTree = "<group>"; };
-		EC4FBCDE1D77CEE300BBD050 /* WeChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatModel.m; sourceTree = "<group>"; };
 		EC4FBCDF1D77CEE300BBD050 /* WeiboManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboManager.h; sourceTree = "<group>"; };
 		EC4FBCE01D77CEE300BBD050 /* WeiboManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 		EC4FBCE41D77CEE300BBD050 /* AddTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTabModel.h; sourceTree = "<group>"; };
@@ -2384,6 +2384,11 @@
 		EC630DBA1DCA045B0088145E /* NetWorkTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkTipView.m; sourceTree = "<group>"; };
 		EC630DBB1DCA045B0088145E /* NetWorkTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetWorkTipView.xib; sourceTree = "<group>"; };
 		EC630DC01DCA0CA00088145E /* home_guid_01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = home_guid_01.gif; sourceTree = "<group>"; };
+		EC630DE81DCB81610088145E /* ScreenshotManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotManager.h; sourceTree = "<group>"; };
+		EC630DE91DCB81610088145E /* ScreenshotManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotManager.m; sourceTree = "<group>"; };
+		EC630DEB1DCC72030088145E /* FailureViewLoadData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailureViewLoadData.h; sourceTree = "<group>"; };
+		EC630DEC1DCC72030088145E /* FailureViewLoadData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailureViewLoadData.m; sourceTree = "<group>"; };
+		EC630DEE1DCC72100088145E /* FailureViewLoadData.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FailureViewLoadData.xib; sourceTree = "<group>"; };
 		EC68C3A61D9BA89800D4401A /* ReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityManager.h; sourceTree = "<group>"; };
 		EC68C3A71D9BA89800D4401A /* ReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityManager.m; sourceTree = "<group>"; };
 		EC68C3AA1D9BBC5600D4401A /* HomeRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRefreshViewController.h; sourceTree = "<group>"; };
@@ -3269,6 +3274,7 @@
 		EC4FBC3E1D77CEE300BBD050 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				EC630DE71DCB7DB00088145E /* Screenshot */,
 				ECBCCECF1DBF14F8001B9571 /* Compose */,
 				EC31CF621DA9DB9300C49E29 /* Notification */,
 				EC31CF5E1DA9233C00C49E29 /* BuryPoint */,
@@ -3672,8 +3678,6 @@
 				EC4FBCDA1D77CEE300BBD050 /* TencentManager.m */,
 				EC4FBCDB1D77CEE300BBD050 /* WeChatManager.h */,
 				EC4FBCDC1D77CEE300BBD050 /* WeChatManager.m */,
-				EC4FBCDD1D77CEE300BBD050 /* WeChatModel.h */,
-				EC4FBCDE1D77CEE300BBD050 /* WeChatModel.m */,
 				EC4FBCDF1D77CEE300BBD050 /* WeiboManager.h */,
 				EC4FBCE01D77CEE300BBD050 /* WeiboManager.m */,
 			);
@@ -6865,6 +6869,9 @@
 			children = (
 				EC630DB81DCA045B0088145E /* NetWorkTipView */,
 				EC4FC63C1D78092900BBD050 /* WebFailureView */,
+				EC630DEB1DCC72030088145E /* FailureViewLoadData.h */,
+				EC630DEC1DCC72030088145E /* FailureViewLoadData.m */,
+				EC630DEE1DCC72100088145E /* FailureViewLoadData.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -6887,6 +6894,15 @@
 				EC630DBB1DCA045B0088145E /* NetWorkTipView.xib */,
 			);
 			path = NetWorkTipView;
+			sourceTree = "<group>";
+		};
+		EC630DE71DCB7DB00088145E /* Screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				EC630DE81DCB81610088145E /* ScreenshotManager.h */,
+				EC630DE91DCB81610088145E /* ScreenshotManager.m */,
+			);
+			path = Screenshot;
 			sourceTree = "<group>";
 		};
 		EC68C3A51D9BA87F00D4401A /* Reachability */ = {
@@ -8428,6 +8444,7 @@
 				EC4FC35F1D77CEE400BBD050 /* FlashBalanceSettlementStoreInfoCell.xib in Resources */,
 				EC4FC5B91D77CEEF00BBD050 /* ImageError.png in Resources */,
 				EC4FC4E71D77CEE400BBD050 /* UserCenterProductCell.xib in Resources */,
+				EC630DEF1DCC72100088145E /* FailureViewLoadData.xib in Resources */,
 				ECFFC7261DC363C1002DBFB9 /* ProductDetailTitleCell.xib in Resources */,
 				ECFFC71A1DC363C1002DBFB9 /* ProductDetailInfoCell.xib in Resources */,
 				EC4FC2CA1D77CEE400BBD050 /* FDChooseStoreCell.xib in Resources */,
@@ -8879,7 +8896,6 @@
 				EC4FC5E01D77CEEF00BBD050 /* MWTapDetectingView.m in Sources */,
 				EC9CC51F1DC30E7F0093DCED /* FSCalendarAnimator.m in Sources */,
 				EC76B8CD1DC65FC6006518DE /* ServiceCommentListViewHeaderCell.m in Sources */,
-				EC4FC2741D77CEE400BBD050 /* WeChatModel.m in Sources */,
 				ECFFC7191DC363C1002DBFB9 /* ProductDetailInfoCell.m in Sources */,
 				EC4FC34E1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.m in Sources */,
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
@@ -9084,6 +9100,7 @@
 				ECFFC7111DC363C1002DBFB9 /* ProductDetailContactCell.m in Sources */,
 				EC4FC39F1D77CEE400BBD050 /* StoreDetailViewModel.m in Sources */,
 				EC4FC2B81D77CEE400BBD050 /* FooterView.m in Sources */,
+				EC630DED1DCC72030088145E /* FailureViewLoadData.m in Sources */,
 				EC4FC3681D77CEE400BBD050 /* ServiceSettlementCouponCell.m in Sources */,
 				EC4FC41F1D77CEE400BBD050 /* BrowseHistoryViewController.m in Sources */,
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
@@ -9193,6 +9210,7 @@
 				EC4FC36A1D77CEE400BBD050 /* ServiceSettlementPayInfoCell.m in Sources */,
 				ECF5D1181DB8CF9000A1B268 /* AUIFloorNavigationView.m in Sources */,
 				EC4FC21C1D77CEE400BBD050 /* UIColor+Category.m in Sources */,
+				EC630DEA1DCB81610088145E /* ScreenshotManager.m in Sources */,
 				ECFFC7371DC363C1002DBFB9 /* ProductDetailToolBarButton.m in Sources */,
 				EC4FC3DC1D77CEE400BBD050 /* ParentingStrategyViewController.m in Sources */,
 				EC4FC5AA1D77CEEF00BBD050 /* ATCountDown.m in Sources */,

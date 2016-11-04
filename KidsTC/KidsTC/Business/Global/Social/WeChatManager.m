@@ -89,8 +89,12 @@ static WeChatManager *_sharedInstance = nil;
     message.description = object.shareDescription;
     if (object.thumbImage) {
         NSUInteger byteCount = [UIImage byteCountOfImage:object.thumbImage];
-        if (byteCount >=  32 * 1024 * 8) {
-            return nil;
+        if (byteCount >=  32 * 1024 * 8) {//32kb
+            //[UIImage compressedImage:object.thumbImage imageKB:32 imageBlock:^(UIImage *image) {
+                //object.thumbImage = image;
+            //}];
+            object.thumbImage = [object.thumbImage imageByScalingToSize:CGSizeMake(100, 100)];
+            //return nil;
         }
         [message setThumbImage:object.thumbImage];
     }
@@ -112,7 +116,7 @@ static WeChatManager *_sharedInstance = nil;
                 imageObj.imageData = UIImageJPEGRepresentation(shareObj.image, 0);
             }
 #warning ....
-            //imageObj.imageUrl = shareObj.imageUrlString;
+            //message.imageUrl = shareObj.imageUrlString;
             
             message.mediaObject = imageObj;
         }
@@ -196,11 +200,13 @@ static WeChatManager *_sharedInstance = nil;
 
 #pragma mark Public methods
 
-+ (BOOL)canShare {
++ (BOOL)canShare
+{
     return [[WeChatManager sharedManager] isOnline];
 }
 
-- (BOOL)getOnline {
+- (BOOL)getOnline
+{
     _isOnline = [WXApi registerApp:kWeChatAppKey];
     if (_isOnline) {
         _isOnline = [WXApi isWXAppInstalled];
@@ -211,11 +217,14 @@ static WeChatManager *_sharedInstance = nil;
     return _isOnline;
 }
 
-- (BOOL)handleOpenURL:(NSURL *)url {
+- (BOOL)handleOpenURL:(NSURL *)url
+{
     return [WXApi handleOpenURL:url delegate:self];
 }
 
-- (BOOL)sendLoginRequestWithSucceed:(void (^)(NSString *, NSString *))succeed failure:(void (^)(NSError *))failure {
+- (BOOL)sendLoginRequestWithSucceed:(void (^)(NSString *, NSString *))succeed
+                            failure:(void (^)(NSError *))failure
+{
     if (!_isOnline) {
         return NO;
     }
@@ -231,7 +240,8 @@ static WeChatManager *_sharedInstance = nil;
 - (BOOL)sendShareRequestToScene:(WechatShareScene)scene
                      WithObject:(WeChatShareObject *)object
                         succeed:(void (^)())succeed
-                        failure:(void (^)(NSError *))failure {
+                        failure:(void (^)(NSError *))failure
+{
     self.shareSuccessBlock = succeed;
     self.shareFailureBlock = failure;
     //判断是否可分享
@@ -265,7 +275,10 @@ static WeChatManager *_sharedInstance = nil;
     return [WXApi sendReq:request];
 }
 
-- (BOOL)sendPay:(PayInfo *)info succeed:(void (^)())succeed failure:(void (^)(NSError *))failure {
+- (BOOL)sendPay:(PayInfo *)info
+        succeed:(void (^)())succeed
+        failure:(void (^)(NSError *))failure
+{
     self.paySuccessBlock = succeed;
     self.payFailureBlock = failure;
     //判断是否支持支付
@@ -329,7 +342,8 @@ static WeChatManager *_sharedInstance = nil;
                               description:(NSString *)des
                                thumbImage:(UIImage *)thumb
                                shareImage:(UIImage *)image
-                      shareImageUrlString:(NSString *)urlString {
+                      shareImageUrlString:(NSString *)urlString
+{
     if (!image && !urlString) {
         return nil;
     }
