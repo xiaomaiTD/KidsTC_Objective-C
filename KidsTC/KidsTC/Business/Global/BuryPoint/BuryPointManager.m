@@ -201,30 +201,24 @@ singleM(BuryPointManager)
     NSString *squence = [NSString stringWithFormat:@"%zd",manager.squence++];
     NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     NSString *clientIp = [NSString deviceIPAdress];
-    NSMutableDictionary *reportMsgDic =  [@{@"type":type,
-                                            @"net":net,
-                                            @"guid":guid,
-                                            @"actionId":@(actionId),
-                                            @"uid":uid,
-                                            @"squence":squence,
-                                            @"deviceId":deviceId,
-                                            @"clientIp":clientIp} mutableCopy];
+    NSNumber *actionID = [NSNumber numberWithLong:actionId];
+    NSMutableDictionary *reportMsgDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:type,@"type",net,@"net" ,guid,@"guid",actionID,@"actionId",uid,@"uid",squence,@"squence",deviceId,@"deviceId",clientIp,@"clientIp",nil];
     if (dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
         NSDictionary *params = [NSDictionary dictionaryWithDictionary:dic];
         NSString *paramsStr = [manager jsonWithObj:params];
-        if (![paramsStr isNotNull])[reportMsgDic setValue:paramsStr forKey:@"params"];
+        if ([paramsStr isNotNull])[reportMsgDic setValue:paramsStr forKey:@"params"];
     }
     switch (trackType) {
         case TrackTypePV:
         {
-            long long stayTime = 0;
+            NSNumber *stayTime = [NSNumber numberWithLongLong:0];
             if (beginPV) {
                 manager.lastBeginPvTimeInterval = [[NSDate date] timeIntervalSince1970];
             }else{
                 NSTimeInterval stayTimeInterval = [[NSDate date] timeIntervalSince1970] - manager.lastBeginPvTimeInterval;
-                stayTime = stayTimeInterval*1000;
+                stayTime = [NSNumber numberWithLongLong:stayTimeInterval*1000];
             }
-            [reportMsgDic setValue:@(stayTime) forKey:@"stayTime"];
+            [reportMsgDic setValue:stayTime forKey:@"stayTime"];
             if([pageUid isNotNull])[reportMsgDic setValue:pageUid forKey:@"pageUid"];
         }
             break;
@@ -234,7 +228,7 @@ singleM(BuryPointManager)
         }
             break;
     }
-    NSArray *ary = @[reportMsgDic];
+    NSArray *ary = [NSArray arrayWithObject:reportMsgDic];
     NSString *msg = [manager jsonWithObj:ary];
     if (![msg isNotNull]) msg = @"";
     return msg;

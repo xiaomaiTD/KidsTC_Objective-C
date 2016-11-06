@@ -110,7 +110,7 @@ static Request *_requestManager;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
-    [request addValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
@@ -158,7 +158,7 @@ static Request *_requestManager;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
-    [request addValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
+    [request setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
     
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {

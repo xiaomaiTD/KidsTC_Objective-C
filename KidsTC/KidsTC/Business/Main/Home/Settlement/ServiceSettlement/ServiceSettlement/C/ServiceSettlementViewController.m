@@ -292,6 +292,10 @@
             if ([self.couponCode isNotNull]) {
                 [params setValue:self.couponCode forKey:@"couponId"];
             }
+            NSString *pid = self.model.data.firstObject.serveId;
+            if ([pid isNotNull]) {
+                [params setValue:pid forKey:@"pid"];
+            }
             [BuryPointManager trackEvent:@"event_result_balance_coupon" actionId:20702 params:params];
         }
             break;
@@ -310,7 +314,11 @@
             if ([self.couponCode isNotNull]) {
                 [params setValue:@(self.scoreNum) forKey:@"num"];
             }
-            [BuryPointManager trackEvent:@"event_result_balance_score" actionId:20703 params:nil];
+            NSString *pid = self.model.data.firstObject.serveId;
+            if ([pid isNotNull]) {
+                [params setValue:pid forKey:@"pid"];
+            }
+            [BuryPointManager trackEvent:@"event_result_balance_score" actionId:20703 params:params];
         }
             break;
         case ServiceSettlementBaseCellActionTypeChangePayType:
@@ -362,8 +370,12 @@
         [TCProgressHUD dismissSVP];
         [self placeOrderFailure:error];
     }];
-    
-    [BuryPointManager trackEvent:@"event_click_balance_pay" actionId:20704 params:nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *pid = self.model.data.firstObject.serveId;
+    if ([pid isNotNull]) {
+        [params setValue:pid forKey:@"pid"];
+    }
+    [BuryPointManager trackEvent:@"event_click_balance_pay" actionId:20704 params:params];
 }
 
 - (BOOL)checkValite{

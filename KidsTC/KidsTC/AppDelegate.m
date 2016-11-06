@@ -100,7 +100,7 @@
     
     [self setupUserAgent];
     
-    [self JSPatchRemote:true];
+    [self JSPatchRemote:YES];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
     
@@ -129,7 +129,7 @@
         [JSPatch setupLogger:^(NSString *msg) {
             TCLog(@"JSPatch-TCLog-:\n====\n\n%@\n\n=====", msg);
         }];
-        [JSPatch startWithAppKey:@"20c782609295b915"];
+        [JSPatch startWithAppKey:@"5e2b0e78134a2551"];
 #ifdef DEBUG
         [JSPatch setupDevelopment];
 #endif

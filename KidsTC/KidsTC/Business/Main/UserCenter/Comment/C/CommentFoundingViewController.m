@@ -13,6 +13,8 @@
 #import "KTCImageUploader.h"
 #import "iToast.h"
 #import "GHeader.h"
+#import "NSString+Category.h"
+
 @interface CommentFoundingViewController () <CommentFoundingViewDelegate, TZImagePickerControllerDelegate, MWPhotoBrowserDelegate>{
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
@@ -40,7 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"评价";
-    // Do any additional setup after loading the view from its nib.
+    self.pageId = 10601;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([self.commentModel.relationSysNo isNotNull]) {
+        [dic setValue:self.commentModel.relationSysNo forKey:@"relationNo"];
+    }
+    self.trackParams = [NSDictionary dictionaryWithDictionary:dic];
+    
     [self.commentView setCommentModel:self.commentModel];
     self.commentView.delegate = self;
     __weak CommentFoundingViewController *weakSelf = self;

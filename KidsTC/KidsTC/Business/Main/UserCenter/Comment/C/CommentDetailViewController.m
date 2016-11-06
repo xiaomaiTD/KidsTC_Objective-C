@@ -59,7 +59,7 @@
     switch (self.viewSource) {
         case CommentDetailViewSourceServiceOrStore:
         {
-            self.pageId = 0;
+            self.pageId = 10603;
         }
             break;
         case CommentDetailViewSourceStrategy:
@@ -76,7 +76,7 @@
             break;
     }
     if ([self.relationIdentifier isNotNull]) {
-        self.trackParams = @{@"id":self.relationIdentifier};
+        self.trackParams = @{@"relationNo":self.relationIdentifier};
     }
     // Do any additional setup after loading the view from its nib.
     self.detailView.delegate = self;

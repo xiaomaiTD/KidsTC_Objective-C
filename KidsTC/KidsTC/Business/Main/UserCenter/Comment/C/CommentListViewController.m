@@ -9,6 +9,7 @@
 #import "CommentListViewController.h"
 #import "MWPhotoBrowser.h"
 #import "CommentDetailViewController.h"
+#import "NSString+Category.h"
 
 @interface CommentListViewController () <CommentListViewDelegate>
 
@@ -41,8 +42,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"用户评价";
-    self.pageId = @"pv_prod_evaluations";
-    
+    self.pageId = 10602;
+    if ([self.identifier isNotNull]) {
+        self.trackParams = @{@"relationNo":self.identifier};
+    }
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.listView.delegate = self;

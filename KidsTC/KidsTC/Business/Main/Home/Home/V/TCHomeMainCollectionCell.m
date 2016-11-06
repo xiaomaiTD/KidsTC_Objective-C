@@ -251,7 +251,9 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     NSString *type = [User shareUser].role.roleIdentifierString;
     NSString *category = self.category.sysNo;
     category = [category isNotNull]?category:@"";
-    
+    if (self.category.page<1) {
+        self.category.page = 1;
+    }
     NSMutableArray<TCHomeFloor *> *allFloors = [NSMutableArray arrayWithArray:self.category.floors];
     __block NSUInteger recommendCount = 0;
     NSDictionary *param = @{@"populationType":type,
