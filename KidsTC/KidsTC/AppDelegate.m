@@ -118,7 +118,7 @@
     
     [[KTCMapService shareKTCMapService] startService];
     
-    [[ScreenshotManager shareScreenshotManager] startService];
+    //[[ScreenshotManager shareScreenshotManager] startService];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{

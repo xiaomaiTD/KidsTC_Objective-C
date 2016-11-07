@@ -13,6 +13,8 @@
 #import "WebViewController.h"
 #import "TCProgressHUD.h"
 #import "iToast.h"
+#import "SoftwareSettingHeader.h"
+
 @interface SoftwareSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSArray<SoftwareSettingModel *> *ary;
@@ -42,6 +44,10 @@ static NSString *SoftwareSettingViewCellID = @"SoftwareSettingViewCellID";
     [tableView registerNib:[UINib nibWithNibName:@"SoftwareSettingViewCell" bundle:nil] forCellReuseIdentifier:SoftwareSettingViewCellID];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    SoftwareSettingHeader *header = [[NSBundle mainBundle] loadNibNamed:@"SoftwareSettingHeader" owner:self options:nil].firstObject;
+    header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 150);
+    tableView.tableHeaderView = header;
 }
 
 #ifdef DEBUG
@@ -67,7 +73,7 @@ static NSString *SoftwareSettingViewCellID = @"SoftwareSettingViewCellID";
                                                                subTitle:nil
                                                               showArrow:YES
                                                                     sel:@selector(contactUs)];
-    self.ary = @[model0,model1,model2,model3];
+    self.ary = @[model0,model2,model3];
     
     [self.tableView reloadData];
 }

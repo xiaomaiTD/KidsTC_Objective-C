@@ -469,9 +469,7 @@
             break;
         case ProductDetailBaseCellActionTypeReloadWebViewOrConsult://刷新webView或者咨询
         {
-            //[self.tableView reloadData];
-            //self.tableView.contentOffset = self.tableViewContentOffset;
-            //[self scrollViewDidScroll:self.tableView];
+            
         }
             break;
     }
@@ -511,11 +509,6 @@
                     [self.delegate productDetailView:self actionType:ProductDetailViewActionTypeLoadConsult value:value];
                 }
             }
-    
-            //[self.tableView reloadData];
-            //self.tableView.contentOffset = self.tableViewContentOffset;
-            //[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_twoColumnSection] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-            //[self scrollViewDidScroll:self.tableView];
         }
             break;
     }
@@ -523,17 +516,6 @@
     [self.tableView reloadData];
     self.tableView.contentOffset = self.tableViewContentOffset;
     [self scrollViewDidScroll:self.tableView];
-    
-    /*
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    CGRect tableRect = [self.tableView convertRect:self.tableView.bounds toView:keyWindow];
-    CGRect twoColumnCellRect = [_twoColumnCell convertRect:_twoColumnCell.bounds toView:keyWindow];
-    CGRect insets = CGRectIntersection(tableRect, twoColumnCellRect);
-    BOOL hasInsets = CGRectEqualToRect(insets, CGRectZero);//是否有交集 YES 没有交集  NO 有交集
-    if (hasInsets) {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_twoColumnSection] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    }
-     */
 }
 
 

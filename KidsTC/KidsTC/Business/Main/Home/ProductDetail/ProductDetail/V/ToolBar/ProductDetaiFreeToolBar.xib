@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductDetaiFreeToolBar">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pww-XH-2HM">
+                    <rect key="frame" x="281" y="0.0" width="94" height="60"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="分享"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SL-RT-FSh">
+                    <rect key="frame" x="0.0" y="0.0" width="93" height="60"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="收藏"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hp-Jt-fwD">
+                    <rect key="frame" x="93.5" y="0.0" width="187.5" height="60"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <state key="normal" title="我要报名">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="pww-XH-2HM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0kg-eQ-UNv"/>
+                <constraint firstAttribute="bottom" secondItem="pww-XH-2HM" secondAttribute="bottom" id="FFS-ov-BSB"/>
+                <constraint firstItem="pww-XH-2HM" firstAttribute="leading" secondItem="0Hp-Jt-fwD" secondAttribute="trailing" id="Hgb-jz-tmp"/>
+                <constraint firstItem="0Hp-Jt-fwD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IfE-Qk-i9T"/>
+                <constraint firstAttribute="bottom" secondItem="0Hp-Jt-fwD" secondAttribute="bottom" id="MFM-fY-5eW"/>
+                <constraint firstItem="9SL-RT-FSh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VoC-4O-eFl"/>
+                <constraint firstAttribute="trailing" secondItem="pww-XH-2HM" secondAttribute="trailing" id="VsM-4y-1B0"/>
+                <constraint firstItem="0Hp-Jt-fwD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="dyH-7u-ZJi"/>
+                <constraint firstItem="0Hp-Jt-fwD" firstAttribute="leading" secondItem="9SL-RT-FSh" secondAttribute="trailing" id="nBt-I2-sQu"/>
+                <constraint firstAttribute="bottom" secondItem="9SL-RT-FSh" secondAttribute="bottom" id="ogz-wR-fgk"/>
+                <constraint firstItem="0Hp-Jt-fwD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ufe-GJ-CZc"/>
+                <constraint firstItem="9SL-RT-FSh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yrW-7o-bRn"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="5" y="28"/>
+        </view>
+    </objects>
+</document>

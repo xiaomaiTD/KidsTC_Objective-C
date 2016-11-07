@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AccountCenterHeader">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="userCenter_bg" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Dn-YeR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-B5-XOg">
+                    <rect key="frame" x="155" y="68" width="64" height="64"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-bN-ac5">
+                            <rect key="frame" x="2" y="2" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="3NO-eU-s2H"/>
+                                <constraint firstAttribute="height" constant="60" id="nfo-UV-Iwk"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="WTD-bN-ac5" secondAttribute="trailing" constant="2" id="D8P-qD-azk"/>
+                        <constraint firstItem="WTD-bN-ac5" firstAttribute="leading" secondItem="Mep-B5-XOg" secondAttribute="leading" constant="2" id="Pec-Hg-94F"/>
+                        <constraint firstAttribute="bottom" secondItem="WTD-bN-ac5" secondAttribute="bottom" constant="2" id="VbW-ub-FPu"/>
+                        <constraint firstItem="WTD-bN-ac5" firstAttribute="top" secondItem="Mep-B5-XOg" secondAttribute="top" constant="2" id="k1v-gs-BRO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="n5F-Dn-YeR" secondAttribute="trailing" id="CE2-Cj-xAc"/>
+                <constraint firstAttribute="bottom" secondItem="n5F-Dn-YeR" secondAttribute="bottom" id="Jzk-6j-Iss"/>
+                <constraint firstItem="Mep-B5-XOg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="agc-ow-NNW"/>
+                <constraint firstItem="n5F-Dn-YeR" firstAttribute="top" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="fxh-Pq-qfD"/>
+                <constraint firstItem="n5F-Dn-YeR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ssY-6J-sni"/>
+                <constraint firstItem="Mep-B5-XOg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ulB-Ft-hF5"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-219" y="-181"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="userCenter_bg" width="750" height="1030"/>
+    </resources>
+</document>
