@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navigationItem.title = @"活动日期";
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     calendar.dataSource = self;
@@ -52,12 +53,16 @@
     
     ProductDetailTimeItem *firstItem = self.times.firstObject;
     ProductDetailTimeItem *lastItem = self.times.lastObject;
-    self.minimumDate = [self.dateFormatter dateFromString:firstItem.startTime];
-    self.maximumDate = [self.dateFormatter dateFromString:lastItem.endTime];
+    NSDate *minimumDate = [self.dateFormatter dateFromString:firstItem.startTime];
+    NSDate *maximumDate = [self.dateFormatter dateFromString:lastItem.endTime];
+    NSTimeInterval minNum = [minimumDate timeIntervalSince1970] - 30 * 24 * 60 * 60;
+    NSTimeInterval maxNum = [maximumDate timeIntervalSince1970] + 30 * 24 * 60 * 60;
+    self.minimumDate = [NSDate dateWithTimeIntervalSince1970:minNum];
+    self.maximumDate = [NSDate dateWithTimeIntervalSince1970:maxNum];
     
     NSMutableDictionary *fillDefaultColors = [NSMutableDictionary dictionary];
     NSMutableDictionary *titleDefaultColors = [NSMutableDictionary dictionary];
-    [_times enumerateObjectsUsingBlock:^(ProductDetailTimeItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [_times enumerateObjectsUsingBlock:^(ProductDetailTimeItem *obj, NSUInteger idx, BOOL *stop) {
         
         NSDate *date_s = [NSDate zp_dateWithTimeString:obj.startTime withDateFormat:DF_yMd];
         NSTimeInterval timeInterval_s = [date_s timeIntervalSince1970];
@@ -77,7 +82,6 @@
     
     self.naviTheme = NaviThemeWihte;
 }
-
 
 - (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar
 {

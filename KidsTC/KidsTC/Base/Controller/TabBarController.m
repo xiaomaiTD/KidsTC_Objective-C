@@ -13,7 +13,7 @@
 #import "TCHomeViewController.h"
 #import "ArticleHomeViewController.h"
 #import "StrategyViewController.h"
-#import "UserCenterViewController.h"
+#import "AccountCenterViewController.h"
 #import "WebViewController.h"
 
 #import "ThemeManager.h"
@@ -113,7 +113,7 @@ singleM(TabBarController)
                 break;
             case TabBarItemElementTypeUserCenter:
             {
-                controller = [[UserCenterViewController alloc]init];
+                controller = [[AccountCenterViewController alloc]init];
             }
                 break;
             case TabBarItemElementTypeAddLink:

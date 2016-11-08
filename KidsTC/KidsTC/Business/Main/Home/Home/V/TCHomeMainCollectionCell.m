@@ -355,7 +355,10 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
 
 #pragma mark - TCHomeBaseTableViewCellDelegate
 
-- (void)tcHomeBaseTableViewCell:(TCHomeBaseTableViewCell *)cell actionType:(TCHomeBaseTableViewCellActionType)type value:(id)value {
+- (void)tcHomeBaseTableViewCell:(TCHomeBaseTableViewCell *)cell
+                     actionType:(TCHomeBaseTableViewCellActionType)type
+                          value:(id)value
+{
     switch (type) {
         case TCHomeBaseTableViewCellActionTypeSegue:
         {

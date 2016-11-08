@@ -229,29 +229,34 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
     
     // 1.马上显示回最中间那组的数据
     NSIndexPath *currentIndexPathReset = [self resetIndexPath];
-    
-    // 2.计算出下一个需要展示的位置
-    NSInteger nextItem = currentIndexPathReset.item + 1;
-    NSInteger nextSection = currentIndexPathReset.section;
-    if (nextItem == count) {
-        nextItem = 0;
-        nextSection++;
-    }
-    if (nextItem<count && nextSection<kTCHomeCollectionViewCellMaxSections) {
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
-        // 3.通过动画滚动到下一个位置
-        [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    if (currentIndexPathReset) {
+        // 2.计算出下一个需要展示的位置
+        NSInteger nextItem = currentIndexPathReset.item + 1;
+        NSInteger nextSection = currentIndexPathReset.section;
+        if (nextItem == count) {
+            nextItem = 0;
+            nextSection++;
+        }
+        if (nextItem<count && nextSection<kTCHomeCollectionViewCellMaxSections) {
+            NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
+            // 3.通过动画滚动到下一个位置
+            [self.collectionView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        }
     }
 }
 - (NSIndexPath *)resetIndexPath
 {
     // 当前正在展示的位置
-    NSIndexPath *currentIndexPath = [[self.collectionView indexPathsForVisibleItems] lastObject];
-    
-    // 马上显示回最中间那组的数据
-    NSIndexPath *currentIndexPathReset = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:kTCHomeCollectionViewCellMaxSections/2];
-    [self.collectionView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-    return currentIndexPathReset;
+    NSArray *indexs = [self.collectionView indexPathsForVisibleItems];
+    if (indexs.count>0) {
+        NSIndexPath *currentIndexPath = [[self.collectionView indexPathsForVisibleItems] lastObject];
+        
+        // 马上显示回最中间那组的数据
+        NSIndexPath *currentIndexPathReset = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:kTCHomeCollectionViewCellMaxSections/2];
+        [self.collectionView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        return currentIndexPathReset;
+    }
+    return nil;
 }
 
 #pragma mark  - UIScrollViewDelegate
