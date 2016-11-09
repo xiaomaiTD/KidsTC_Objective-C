@@ -107,13 +107,17 @@
     // 1.马上显示回最中间那组的数据
     NSIndexPath *currentIndexPathReset = [self resetIndexPath];
 
+    NSUInteger count = self.items.count;
     
     // 2.计算出下一个需要展示的位置
     NSInteger nextItem = currentIndexPathReset.item + 1;
     NSInteger nextSection = currentIndexPathReset.section;
-    if (nextItem == self.items.count) {
+    if (nextItem >= count) {
         nextItem = 0;
         nextSection++;
+    }
+    if (nextSection >= AutoRollViewMaxSections) {
+        nextSection = 0;
     }
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:nextItem inSection:nextSection];
     

@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface AccountCenterUserCount : NSObject
-@property (nonatomic, strong) NSString *appointment_wait_arrive;
-@property (nonatomic, strong) NSString *order_wait_pay;
-@property (nonatomic, strong) NSString *order_wait_use;
-@property (nonatomic, strong) NSString *order_wait_evaluate;
-@property (nonatomic, strong) NSString *unReadMsgCount;
-@property (nonatomic, strong) NSString *score_num;
-@property (nonatomic, strong) NSString *userRadishNum;
-@property (nonatomic, strong) NSString *userGrowthValue;
+@property (nonatomic, assign) NSInteger appointment_wait_arrive;
+@property (nonatomic, assign) NSUInteger order_wait_pay;
+@property (nonatomic, assign) NSUInteger order_wait_use;
+@property (nonatomic, assign) NSUInteger order_wait_evaluate;
+@property (nonatomic, assign) NSInteger unReadMsgCount;
+@property (nonatomic, assign) NSInteger score_num;
+@property (nonatomic, assign) NSInteger userRadishNum;
+@property (nonatomic, assign) NSInteger userGrowthValue;
 @property (nonatomic, assign) BOOL userHasNewCoupon;
 @end

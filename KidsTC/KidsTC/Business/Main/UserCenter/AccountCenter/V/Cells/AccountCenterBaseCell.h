@@ -11,7 +11,7 @@
 
 typedef enum : NSUInteger {
     
-    AccountCenterCellActionTypeCollectionProduct = 1,
+    AccountCenterCellActionTypeCollectionProduct = 100,
     AccountCenterCellActionTypeCollectionStore,
     AccountCenterCellActionTypeCollectionContent,
     AccountCenterCellActionTypeCollectionPeople,
@@ -37,6 +37,8 @@ typedef enum : NSUInteger {
     AccountCenterCellActionTypeBringUpHeadline,
     AccountCenterCellActionTypeCustomerServices,
     AccountCenterCellActionTypeOpinion,
+    
+    AccountCenterCellActionTypeSegue,
     
 } AccountCenterCellActionType;
 

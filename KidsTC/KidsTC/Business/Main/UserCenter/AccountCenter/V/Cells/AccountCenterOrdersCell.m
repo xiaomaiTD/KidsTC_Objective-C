@@ -10,8 +10,9 @@
 
 #import "TipButton.h"
 #define BTN_TITLE_HEIGHT 13
-#define BTN_TITLE_BOTTOM_MARGIN 8
+#define BTN_TITLE_BOTTOM_MARGIN 18
 #define BTN_IMAGE_SIZE 24
+#define BTN_TOP_MARGIN 18
 @interface AccountCenterOrderButton : TipButton
 @end
 @implementation AccountCenterOrderButton
@@ -21,8 +22,7 @@
 }
 - (CGRect)imageRectForContentRect:(CGRect)contentRect{
     CGFloat imageX = (CGRectGetWidth(contentRect)-BTN_IMAGE_SIZE)*0.5;
-    CGFloat imageY = (CGRectGetHeight(contentRect)-BTN_TITLE_BOTTOM_MARGIN-BTN_TITLE_HEIGHT-BTN_IMAGE_SIZE)*0.5;
-    return CGRectMake(imageX, imageY, BTN_IMAGE_SIZE, BTN_IMAGE_SIZE);
+    return CGRectMake(imageX, BTN_TOP_MARGIN, BTN_IMAGE_SIZE, BTN_IMAGE_SIZE);
 }
 - (CGRect)titleRectForContentRect:(CGRect)contentRect{
     CGFloat titleW = CGRectGetWidth(contentRect);
@@ -35,20 +35,18 @@
 @property (weak, nonatomic) IBOutlet UIView *allOrderBGView;
 @property (weak, nonatomic) IBOutlet UIView *HLine;
 @property (weak, nonatomic) IBOutlet UIView *OrdersBGView;
-@property (weak, nonatomic) IBOutlet AccountCenterOrderButton *allOrderBtn;
+@property (weak, nonatomic) IBOutlet UIButton *allOrderBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitPayBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitUseBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitReceiptBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitCommentBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *refundBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintHeight;
 @end
 
 @implementation AccountCenterOrdersCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.HLineConstraintHeight.constant = LINE_H;
     self.allOrderBtn.tag = AccountCenterCellActionTypeAllOrder;
     self.waitPayBtn.tag = AccountCenterCellActionTypeWaitPay;
     self.waitUseBtn.tag = AccountCenterCellActionTypeWaitUse;
@@ -65,6 +63,12 @@
 
 - (void)setModel:(AccountCenterModel *)model {
     [super setModel:model];
+    
+    AccountCenterUserCount *userCount = model.data.userCount;
+    
+    self.waitPayBtn.badgeValue = userCount.order_wait_pay;
+    self.waitUseBtn.badgeValue = userCount.order_wait_use;
+    self.waitCommentBtn.badgeValue = userCount.order_wait_evaluate;
 }
 
 

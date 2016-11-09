@@ -1,23 +1,23 @@
 //
-//  StrategyToolBarScrollView.m
+//  MultiItemsToolBarScrollView.m
 //  KidsTC
 //
 //  Created by zhanping on 7/11/16.
 //  Copyright © 2016 KidsTC. All rights reserved.
 //
 
-#import "StrategyToolBarScrollView.h"
+#import "MultiItemsToolBarScrollView.h"
 
 #define BtnMargin 20
 #define TipViewHeight 2
 
-@interface StrategyToolBarScrollView ()
+@interface MultiItemsToolBarScrollView ()
 @property (nonatomic, strong) NSMutableArray<UIButton *> *tagBtns;
 @property (nonatomic, weak) UIView *tipView;
 
 @end
 
-@implementation StrategyToolBarScrollView
+@implementation MultiItemsToolBarScrollView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -44,8 +44,6 @@
     
     [tags enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = [self btnWithTitle:obj tag:idx];
-        //UIColor *randomColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1];
-        //[btn setBackgroundColor:randomColor forState:UIControlStateNormal];
         [self addSubview:btn];
         [self.tagBtns addObject:btn];
     }];
@@ -58,13 +56,52 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
+    NSUInteger tagsCount = self.tagBtns.count;
+    
+    if (tagsCount>4) {
+        [self setupLayoutsOne];
+    }else{
+        [self setupLayoutsTwo];
+    }
+}
+
+- (void)setupLayoutsOne {
+    
     __block CGFloat currentWidth = BtnMargin;
     [self.tagBtns enumerateObjectsUsingBlock:^(UIButton * _Nonnull btn, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat btn_w = [btn.currentTitle sizeWithAttributes:@{NSFontAttributeName:btn.titleLabel.font}].width;
-        btn.frame = CGRectMake(currentWidth, 0, btn_w, StrategyToolBarScrollViewHeight);
+        btn.frame = CGRectMake(currentWidth, 0, btn_w, MultiItemsToolBarScrollViewHeight);
         currentWidth += (btn_w+BtnMargin);
     }];
-    self.contentSize = CGSizeMake(currentWidth, StrategyToolBarScrollViewHeight);
+    self.contentSize = CGSizeMake(currentWidth, MultiItemsToolBarScrollViewHeight);
+}
+
+- (void)setupLayoutsTwo {
+    
+    NSUInteger tagsCount = self.tagBtns.count;
+    CGFloat self_w = CGRectGetWidth(self.bounds);
+    __block CGFloat totalBtnsWidth = 0;
+    NSMutableArray *btn_ws = [NSMutableArray array];
+    [self.tagBtns enumerateObjectsUsingBlock:^(UIButton * _Nonnull btn, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat btn_w = [btn.currentTitle sizeWithAttributes:@{NSFontAttributeName:btn.titleLabel.font}].width;
+        totalBtnsWidth += btn_w ;
+        [btn_ws addObject:@(btn_w)];
+    }];
+    CGFloat needWith = totalBtnsWidth + BtnMargin * (tagsCount + 1);
+    if (needWith >self_w) {
+        [self setupLayoutsOne];
+    }else{
+        CGFloat margin = (self_w - totalBtnsWidth)/(tagsCount+1);
+        __block CGFloat currentWidth = margin;
+        [btn_ws enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGFloat btn_w = [obj floatValue];
+            if (idx<tagsCount) {
+                UIButton *btn = self.tagBtns[idx];
+                btn.frame = CGRectMake(currentWidth, 0, btn_w, MultiItemsToolBarScrollViewHeight);
+                currentWidth += (btn_w + margin);
+            }
+        }];
+    }
 }
 
 - (UIButton *)btnWithTitle:(NSString *)title tag:(NSUInteger)tag{
@@ -83,8 +120,8 @@
 
 - (void)selectedAction:(UIButton *)btn{
     
-    if ([self.clickDelegate respondsToSelector:@selector(strategyToolBarScrollView:didSelectedIndex:)]) {
-        [self.clickDelegate strategyToolBarScrollView:self didSelectedIndex:btn.tag];
+    if ([self.clickDelegate respondsToSelector:@selector(multiItemsToolBarScrollView:didSelectedIndex:)]) {
+        [self.clickDelegate multiItemsToolBarScrollView:self didSelectedIndex:btn.tag];
     }
 }
 

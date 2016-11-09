@@ -9,5 +9,9 @@
 #import "AccountCenterBanner.h"
 
 @implementation AccountCenterBanner
-
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    _Ratio = _Ratio>0?_Ratio:0.4;
+    _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_params];
+    return YES;
+}
 @end

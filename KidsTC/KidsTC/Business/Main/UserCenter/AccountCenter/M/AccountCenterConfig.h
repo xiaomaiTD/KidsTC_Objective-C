@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSArray<NSString *> *icons;
 @property (nonatomic, strong) NSArray<AccountCenterBanner *> *banners;
 @property (nonatomic, strong) AccountCenterHotProduct *hotProduct;
+@property (nonatomic, assign) CGFloat bannerHeight;
 @end

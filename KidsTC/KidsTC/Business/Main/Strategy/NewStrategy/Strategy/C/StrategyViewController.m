@@ -15,7 +15,7 @@
 #import "SegueMaster.h"
 #import "KTCEmptyDataView.h"
 #import "StrategyTagColumnTableViewController.h"
-#import "StrategyToolBar.h"
+#import "MultiItemsToolBar.h"
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
 #import "WelfareStoreViewController.h"
@@ -24,9 +24,9 @@
 #define defaultTagId 0
 #define pageCount 10
 
-@interface StrategyViewController ()<StrategyCollectionViewCellDelegate,StrategyToolBarDelegate,UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface StrategyViewController ()<StrategyCollectionViewCellDelegate,MultiItemsToolBarDelegate,UIScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray<StrategyShowModel *> *models;
-@property (nonatomic, strong) StrategyToolBar *toolBar;
+@property (nonatomic, strong) MultiItemsToolBar *toolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, assign) UIEdgeInsets tablViewInset;
 @end
@@ -58,7 +58,7 @@ static NSString * const reuseIdentifier = @"Cell";
     collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView = collectionView;
     
-    StrategyToolBar *toolBar = [[StrategyToolBar alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, StrategyToolBarScrollViewHeight)];
+    MultiItemsToolBar *toolBar = [[MultiItemsToolBar alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
     toolBar.delegate = self;
     [self.view addSubview:toolBar];
     toolBar.hidden = YES;
@@ -171,7 +171,7 @@ static NSString * const reuseIdentifier = @"Cell";
             self.collectionView.backgroundView = nil;
         }
         self.toolBar.hidden = NO;
-        self.tablViewInset = UIEdgeInsetsMake(64+StrategyToolBarScrollViewHeight, 0, 49, 0);
+        self.tablViewInset = UIEdgeInsetsMake(64+MultiItemsToolBarScrollViewHeight, 0, 49, 0);
     }
     [self.collectionView reloadData];
     
@@ -215,9 +215,9 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - StrategyToolBarDelegate
+#pragma mark - MultiItemsToolBarDelegate
 
-- (void)strategyToolBar:(StrategyToolBar *)strategyToolBar didSelectedIndex:(NSUInteger)index{
+- (void)multiItemsToolBar:(MultiItemsToolBar *)multiItemsToolBar didSelectedIndex:(NSUInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

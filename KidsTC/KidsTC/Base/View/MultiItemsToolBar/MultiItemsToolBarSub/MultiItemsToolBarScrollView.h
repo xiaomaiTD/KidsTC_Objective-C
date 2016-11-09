@@ -1,5 +1,5 @@
 //
-//  StrategyToolBarScrollView.h
+//  MultiItemsToolBarScrollView.h
 //  KidsTC
 //
 //  Created by zhanping on 7/11/16.
@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-#define StrategyToolBarScrollViewHeight 40
-@class StrategyToolBarScrollView;
-@protocol StrategyToolBarScrollViewDelegate <NSObject>
-- (void)strategyToolBarScrollView:(StrategyToolBarScrollView *)strategyToolBarScrollView didSelectedIndex:(NSUInteger)index;
+#define MultiItemsToolBarScrollViewHeight 40
+@class MultiItemsToolBarScrollView;
+@protocol MultiItemsToolBarScrollViewDelegate <NSObject>
+- (void)multiItemsToolBarScrollView:(MultiItemsToolBarScrollView *)multiItemsToolBarScrollView didSelectedIndex:(NSUInteger)index;
 @end
 
-@interface StrategyToolBarScrollView : UIScrollView
+@interface MultiItemsToolBarScrollView : UIScrollView
 @property (nonatomic, strong) NSArray<NSString *> *tags;
 @property (nonatomic, weak) UIButton *selectedBtn;
-@property (nonatomic, weak) id<StrategyToolBarScrollViewDelegate> clickDelegate;
+@property (nonatomic, weak) id<MultiItemsToolBarScrollViewDelegate> clickDelegate;
 - (void)changeTipPlaceWithSmallIndex:(NSUInteger)smallIndex
                             bigIndex:(NSUInteger)bigIndex
                             progress:(CGFloat)progress

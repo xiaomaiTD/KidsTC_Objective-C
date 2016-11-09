@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
 } TipButtonBadgeType;
 
 @interface TipButton : UIButton
-@property (nonatomic, weak) UILabel *tipLabel;
+@property (nonatomic, strong) UILabel *tipLabel;
 @property (nonatomic, assign) TipButtonBadgeType badgeType;
 @property (nonatomic, assign) NSUInteger badgeValue;
 @end

@@ -32,7 +32,7 @@
 #import "SpeekViewController.h"
 #import "SearchTableViewController.h"
 #import "CategoryViewController.h"
-#import "StrategyToolBar.h"
+#import "MultiItemsToolBar.h"
 #import "AUIFloorNavigationView.h"
 #import "WebViewController.h"
 
@@ -43,11 +43,11 @@ static CGFloat const kActivityImageViewAnimateDuration = 0.5;
 
 static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell";
 
-@interface TCHomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,StrategyToolBarDelegate,TCHomeMainCollectionCellDelegate,AUIFloorNavigationViewDelegate,AUIFloorNavigationViewDataSource>
+@interface TCHomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,MultiItemsToolBarDelegate,TCHomeMainCollectionCellDelegate,AUIFloorNavigationViewDelegate,AUIFloorNavigationViewDataSource>
 @property (nonatomic, strong) HomeRoleButton *roleBtn;
 @property (nonatomic, weak) UITextField *tf;
 
-@property (nonatomic, strong) StrategyToolBar *toolBar;
+@property (nonatomic, strong) MultiItemsToolBar *toolBar;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray<TCHomeCategory *> *categorys;
 @property (nonatomic, assign) NSUInteger currentIndex;
@@ -364,7 +364,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
                 self.toolBar.tags = [self.categorys valueForKeyPath:@"_name"];
                 [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
             }
-            CGFloat top = self.toolBar.hidden?64:64+StrategyToolBarScrollViewHeight;
+            CGFloat top = self.toolBar.hidden?64:64+MultiItemsToolBarScrollViewHeight;
             [[HomeRefreshManager shareHomeRefreshManager] checkHomeRefreshGuideWithTarget:self top:top resultBlock:nil];
             [self.collectionView reloadData];
             [self scrollViewDidScroll:self.collectionView];
@@ -423,16 +423,16 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 #pragma mark setupToolBar
 
 - (void)setupToolBar {
-    StrategyToolBar *toolBar = [[StrategyToolBar alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, StrategyToolBarScrollViewHeight)];
+    MultiItemsToolBar *toolBar = [[MultiItemsToolBar alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
     toolBar.delegate = self;
     [self.view addSubview:toolBar];
     toolBar.hidden = YES;
     self.toolBar = toolBar;
 }
 
-#pragma mark - StrategyToolBarDelegate
+#pragma mark - MultiItemsToolBarDelegate
 
-- (void)strategyToolBar:(StrategyToolBar *)strategyToolBar didSelectedIndex:(NSUInteger)index{
+- (void)multiItemsToolBar:(MultiItemsToolBar *)multiItemsToolBar didSelectedIndex:(NSUInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }

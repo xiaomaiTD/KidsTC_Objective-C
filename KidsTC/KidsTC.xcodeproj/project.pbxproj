@@ -56,7 +56,6 @@
 		EC13B51E1DD1F6110040F760 /* AccountCenterBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = EC13B51D1DD1F6110040F760 /* AccountCenterBanner.m */; };
 		EC13B5211DD1F6250040F760 /* AccountCenterHotProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC13B5201DD1F6250040F760 /* AccountCenterHotProduct.m */; };
 		EC13B5241DD1F6920040F760 /* AccountCenterHotProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC13B5231DD1F6920040F760 /* AccountCenterHotProductItem.m */; };
-		EC13B5271DD1FF820040F760 /* AccountCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC13B5261DD1FF820040F760 /* AccountCenterView.m */; };
 		EC154D491D87D269007137E8 /* ArticleWriteShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC154D481D87D269007137E8 /* ArticleWriteShareModel.m */; };
 		EC154D4D1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC154D4B1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.m */; };
 		EC154D4E1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC154D4C1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.xib */; };
@@ -80,6 +79,20 @@
 		EC1E2FAE1D8286EC002381E7 /* ArticleWriteCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1E2FAC1D8286EC002381E7 /* ArticleWriteCoverCell.xib */; };
 		EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC1E2FB01D8286F9002381E7 /* ArticleWriteImageCell.m */; };
 		EC1E2FB31D8286F9002381E7 /* ArticleWriteImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1E2FB11D8286F9002381E7 /* ArticleWriteImageCell.xib */; };
+		EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F257E1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m */; };
+		EC2F25811DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F257F1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib */; };
+		EC2F25851DD31CE600B67BBA /* AccountCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25841DD31CE600B67BBA /* AccountCenterView.m */; };
+		EC2F259A1DD325E500B67BBA /* CollectProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25961DD325E500B67BBA /* CollectProductViewController.m */; };
+		EC2F25A61DD3265900B67BBA /* CollectProductAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25A51DD3265900B67BBA /* CollectProductAllViewController.m */; };
+		EC2F25A91DD3266E00B67BBA /* CollectProductCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25A81DD3266E00B67BBA /* CollectProductCategoryViewController.m */; };
+		EC2F25AC1DD3267F00B67BBA /* CollectProductReduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25AB1DD3267F00B67BBA /* CollectProductReduceViewController.m */; };
+		EC2F25B51DD3383C00B67BBA /* MultiItemsToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25AF1DD3383C00B67BBA /* MultiItemsToolBar.m */; };
+		EC2F25BD1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25BA1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m */; };
+		EC2F25BE1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25BC1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m */; };
+		EC2F25C11DD3506200B67BBA /* CollectProductAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */; };
+		EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C41DD3584800B67BBA /* CollectProductCategoryView.m */; };
+		EC2F25C91DD3587400B67BBA /* CollectProductReduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C81DD3587400B67BBA /* CollectProductReduceView.m */; };
+		EC2F25CD1DD35BD000B67BBA /* CollectProductBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */; };
 		EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF601DA9239800C49E29 /* BuryPointManager.m */; };
 		EC31CF651DA9DBA300C49E29 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF641DA9DBA300C49E29 /* NotificationService.m */; };
 		EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF671DA9E2D100C49E29 /* UIAlertView+Category.m */; };
@@ -442,9 +455,6 @@
 		EC4FC3D11D77CEE400BBD050 /* StrategyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFE71D77CEE400BBD050 /* StrategyTableViewCell.m */; };
 		EC4FC3D21D77CEE400BBD050 /* StrategyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBFE81D77CEE400BBD050 /* StrategyTableViewCell.xib */; };
 		EC4FC3D31D77CEE400BBD050 /* StrategyLikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFEB1D77CEE400BBD050 /* StrategyLikeButton.m */; };
-		EC4FC3D41D77CEE400BBD050 /* StrategyToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFEE1D77CEE400BBD050 /* StrategyToolBar.m */; };
-		EC4FC3D51D77CEE400BBD050 /* StrategyToolBarOpenView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFF11D77CEE400BBD050 /* StrategyToolBarOpenView.m */; };
-		EC4FC3D61D77CEE400BBD050 /* StrategyToolBarScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFF31D77CEE400BBD050 /* StrategyToolBarScrollView.m */; };
 		EC4FC3D71D77CEE400BBD050 /* StrategyDetailAnnotationTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFF61D77CEE400BBD050 /* StrategyDetailAnnotationTipView.m */; };
 		EC4FC3D81D77CEE400BBD050 /* StrategyDetailAnnotationTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBFF71D77CEE400BBD050 /* StrategyDetailAnnotationTipView.xib */; };
 		EC4FC3D91D77CEE400BBD050 /* StrategyDetailMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBFF91D77CEE400BBD050 /* StrategyDetailMapViewController.m */; };
@@ -1230,8 +1240,6 @@
 		EC13B5201DD1F6250040F760 /* AccountCenterHotProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterHotProduct.m; sourceTree = "<group>"; };
 		EC13B5221DD1F6920040F760 /* AccountCenterHotProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterHotProductItem.h; sourceTree = "<group>"; };
 		EC13B5231DD1F6920040F760 /* AccountCenterHotProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterHotProductItem.m; sourceTree = "<group>"; };
-		EC13B5251DD1FF820040F760 /* AccountCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterView.h; sourceTree = "<group>"; };
-		EC13B5261DD1FF820040F760 /* AccountCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterView.m; sourceTree = "<group>"; };
 		EC154D471D87D269007137E8 /* ArticleWriteShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteShareModel.h; sourceTree = "<group>"; };
 		EC154D481D87D269007137E8 /* ArticleWriteShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteShareModel.m; sourceTree = "<group>"; };
 		EC154D4A1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteAlertSuccessResultViewController.h; sourceTree = "<group>"; };
@@ -1271,6 +1279,33 @@
 		EC1E2FAF1D8286F9002381E7 /* ArticleWriteImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleWriteImageCell.h; sourceTree = "<group>"; };
 		EC1E2FB01D8286F9002381E7 /* ArticleWriteImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleWriteImageCell.m; sourceTree = "<group>"; };
 		EC1E2FB11D8286F9002381E7 /* ArticleWriteImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleWriteImageCell.xib; sourceTree = "<group>"; };
+		EC2F257D1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterBannersCollectionViewCell.h; sourceTree = "<group>"; };
+		EC2F257E1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterBannersCollectionViewCell.m; sourceTree = "<group>"; };
+		EC2F257F1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountCenterBannersCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC2F25831DD31CE600B67BBA /* AccountCenterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterView.h; sourceTree = "<group>"; };
+		EC2F25841DD31CE600B67BBA /* AccountCenterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterView.m; sourceTree = "<group>"; };
+		EC2F25951DD325E500B67BBA /* CollectProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductViewController.h; sourceTree = "<group>"; };
+		EC2F25961DD325E500B67BBA /* CollectProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductViewController.m; sourceTree = "<group>"; };
+		EC2F25A41DD3265900B67BBA /* CollectProductAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductAllViewController.h; sourceTree = "<group>"; };
+		EC2F25A51DD3265900B67BBA /* CollectProductAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductAllViewController.m; sourceTree = "<group>"; };
+		EC2F25A71DD3266E00B67BBA /* CollectProductCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductCategoryViewController.h; sourceTree = "<group>"; };
+		EC2F25A81DD3266E00B67BBA /* CollectProductCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductCategoryViewController.m; sourceTree = "<group>"; };
+		EC2F25AA1DD3267F00B67BBA /* CollectProductReduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductReduceViewController.h; sourceTree = "<group>"; };
+		EC2F25AB1DD3267F00B67BBA /* CollectProductReduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductReduceViewController.m; sourceTree = "<group>"; };
+		EC2F25AE1DD3383C00B67BBA /* MultiItemsToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiItemsToolBar.h; sourceTree = "<group>"; };
+		EC2F25AF1DD3383C00B67BBA /* MultiItemsToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiItemsToolBar.m; sourceTree = "<group>"; };
+		EC2F25B91DD3384C00B67BBA /* MultiItemsToolBarOpenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiItemsToolBarOpenView.h; sourceTree = "<group>"; };
+		EC2F25BA1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiItemsToolBarOpenView.m; sourceTree = "<group>"; };
+		EC2F25BB1DD3384C00B67BBA /* MultiItemsToolBarScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiItemsToolBarScrollView.h; sourceTree = "<group>"; };
+		EC2F25BC1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiItemsToolBarScrollView.m; sourceTree = "<group>"; };
+		EC2F25BF1DD3506200B67BBA /* CollectProductAllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductAllView.h; sourceTree = "<group>"; };
+		EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductAllView.m; sourceTree = "<group>"; };
+		EC2F25C31DD3584800B67BBA /* CollectProductCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductCategoryView.h; sourceTree = "<group>"; };
+		EC2F25C41DD3584800B67BBA /* CollectProductCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductCategoryView.m; sourceTree = "<group>"; };
+		EC2F25C71DD3587400B67BBA /* CollectProductReduceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductReduceView.h; sourceTree = "<group>"; };
+		EC2F25C81DD3587400B67BBA /* CollectProductReduceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductReduceView.m; sourceTree = "<group>"; };
+		EC2F25CB1DD35BD000B67BBA /* CollectProductBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductBaseView.h; sourceTree = "<group>"; };
+		EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductBaseView.m; sourceTree = "<group>"; };
 		EC31CF5F1DA9239800C49E29 /* BuryPointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuryPointManager.h; sourceTree = "<group>"; };
 		EC31CF601DA9239800C49E29 /* BuryPointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuryPointManager.m; sourceTree = "<group>"; };
 		EC31CF631DA9DBA300C49E29 /* NotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
@@ -1897,12 +1932,6 @@
 		EC4FBFE81D77CEE400BBD050 /* StrategyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrategyTableViewCell.xib; sourceTree = "<group>"; };
 		EC4FBFEA1D77CEE400BBD050 /* StrategyLikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyLikeButton.h; sourceTree = "<group>"; };
 		EC4FBFEB1D77CEE400BBD050 /* StrategyLikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyLikeButton.m; sourceTree = "<group>"; };
-		EC4FBFED1D77CEE400BBD050 /* StrategyToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyToolBar.h; sourceTree = "<group>"; };
-		EC4FBFEE1D77CEE400BBD050 /* StrategyToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyToolBar.m; sourceTree = "<group>"; };
-		EC4FBFF01D77CEE400BBD050 /* StrategyToolBarOpenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyToolBarOpenView.h; sourceTree = "<group>"; };
-		EC4FBFF11D77CEE400BBD050 /* StrategyToolBarOpenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyToolBarOpenView.m; sourceTree = "<group>"; };
-		EC4FBFF21D77CEE400BBD050 /* StrategyToolBarScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyToolBarScrollView.h; sourceTree = "<group>"; };
-		EC4FBFF31D77CEE400BBD050 /* StrategyToolBarScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyToolBarScrollView.m; sourceTree = "<group>"; };
 		EC4FBFF51D77CEE400BBD050 /* StrategyDetailAnnotationTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrategyDetailAnnotationTipView.h; sourceTree = "<group>"; };
 		EC4FBFF61D77CEE400BBD050 /* StrategyDetailAnnotationTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrategyDetailAnnotationTipView.m; sourceTree = "<group>"; };
 		EC4FBFF71D77CEE400BBD050 /* StrategyDetailAnnotationTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StrategyDetailAnnotationTipView.xib; sourceTree = "<group>"; };
@@ -3160,10 +3189,9 @@
 		EC13B4CD1DD1F3430040F760 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				EC13B4CE1DD1F3430040F760 /* Cells */,
+				EC2F25821DD31CE600B67BBA /* View */,
 				EC13B4E91DD1F3430040F760 /* Header */,
-				EC13B5251DD1FF820040F760 /* AccountCenterView.h */,
-				EC13B5261DD1FF820040F760 /* AccountCenterView.m */,
+				EC13B4CE1DD1F3430040F760 /* Cells */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -3177,6 +3205,9 @@
 				EC13B4D21DD1F3430040F760 /* AccountCenterBannersCell.h */,
 				EC13B4D31DD1F3430040F760 /* AccountCenterBannersCell.m */,
 				EC13B4D41DD1F3430040F760 /* AccountCenterBannersCell.xib */,
+				EC2F257D1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.h */,
+				EC2F257E1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m */,
+				EC2F257F1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib */,
 				EC13B4D51DD1F3430040F760 /* AccountCenterBaseCell.h */,
 				EC13B4D61DD1F3430040F760 /* AccountCenterBaseCell.m */,
 				EC13B4D71DD1F3430040F760 /* AccountCenterCollectionsCell.h */,
@@ -3286,6 +3317,219 @@
 				EC154D4C1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.xib */,
 			);
 			path = ArticleWrite;
+			sourceTree = "<group>";
+		};
+		EC2F25821DD31CE600B67BBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25831DD31CE600B67BBA /* AccountCenterView.h */,
+				EC2F25841DD31CE600B67BBA /* AccountCenterView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC2F25861DD321B800B67BBA /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25871DD321C400B67BBA /* Product */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		EC2F25871DD321C400B67BBA /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25931DD325E500B67BBA /* Main */,
+				EC2F25911DD325E500B67BBA /* All */,
+				EC2F25921DD325E500B67BBA /* Category */,
+				EC2F25991DD325E500B67BBA /* Reduce */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		EC2F25911DD325E500B67BBA /* All */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F259B1DD3262700B67BBA /* C */,
+				EC2F259C1DD3262700B67BBA /* M */,
+				EC2F259D1DD3262700B67BBA /* V */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
+		EC2F25921DD325E500B67BBA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F259E1DD3262F00B67BBA /* C */,
+				EC2F259F1DD3262F00B67BBA /* M */,
+				EC2F25A01DD3262F00B67BBA /* V */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		EC2F25931DD325E500B67BBA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25941DD325E500B67BBA /* C */,
+				EC2F25971DD325E500B67BBA /* M */,
+				EC2F25981DD325E500B67BBA /* V */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EC2F25941DD325E500B67BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25951DD325E500B67BBA /* CollectProductViewController.h */,
+				EC2F25961DD325E500B67BBA /* CollectProductViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC2F25971DD325E500B67BBA /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC2F25981DD325E500B67BBA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25CA1DD35BC200B67BBA /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC2F25991DD325E500B67BBA /* Reduce */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25A11DD3263700B67BBA /* C */,
+				EC2F25A21DD3263700B67BBA /* M */,
+				EC2F25A31DD3263700B67BBA /* V */,
+			);
+			path = Reduce;
+			sourceTree = "<group>";
+		};
+		EC2F259B1DD3262700B67BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25A41DD3265900B67BBA /* CollectProductAllViewController.h */,
+				EC2F25A51DD3265900B67BBA /* CollectProductAllViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC2F259C1DD3262700B67BBA /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC2F259D1DD3262700B67BBA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25BF1DD3506200B67BBA /* CollectProductAllView.h */,
+				EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC2F259E1DD3262F00B67BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25A71DD3266E00B67BBA /* CollectProductCategoryViewController.h */,
+				EC2F25A81DD3266E00B67BBA /* CollectProductCategoryViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC2F259F1DD3262F00B67BBA /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC2F25A01DD3262F00B67BBA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25C21DD3583D00B67BBA /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC2F25A11DD3263700B67BBA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25AA1DD3267F00B67BBA /* CollectProductReduceViewController.h */,
+				EC2F25AB1DD3267F00B67BBA /* CollectProductReduceViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC2F25A21DD3263700B67BBA /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC2F25A31DD3263700B67BBA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25C61DD3585C00B67BBA /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC2F25AD1DD3383C00B67BBA /* MultiItemsToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25AE1DD3383C00B67BBA /* MultiItemsToolBar.h */,
+				EC2F25AF1DD3383C00B67BBA /* MultiItemsToolBar.m */,
+				EC2F25B81DD3384C00B67BBA /* MultiItemsToolBarSub */,
+			);
+			path = MultiItemsToolBar;
+			sourceTree = "<group>";
+		};
+		EC2F25B81DD3384C00B67BBA /* MultiItemsToolBarSub */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25B91DD3384C00B67BBA /* MultiItemsToolBarOpenView.h */,
+				EC2F25BA1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m */,
+				EC2F25BB1DD3384C00B67BBA /* MultiItemsToolBarScrollView.h */,
+				EC2F25BC1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m */,
+			);
+			path = MultiItemsToolBarSub;
+			sourceTree = "<group>";
+		};
+		EC2F25C21DD3583D00B67BBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25C31DD3584800B67BBA /* CollectProductCategoryView.h */,
+				EC2F25C41DD3584800B67BBA /* CollectProductCategoryView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC2F25C61DD3585C00B67BBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25C71DD3587400B67BBA /* CollectProductReduceView.h */,
+				EC2F25C81DD3587400B67BBA /* CollectProductReduceView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC2F25CA1DD35BC200B67BBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25CB1DD35BD000B67BBA /* CollectProductBaseView.h */,
+				EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EC31CF5E1DA9233C00C49E29 /* BuryPoint */ = {
@@ -3448,6 +3692,7 @@
 		EC4FBC251D77CEE300BBD050 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F25AD1DD3383C00B67BBA /* MultiItemsToolBar */,
 				EC4FBC261D77CEE300BBD050 /* ActionView */,
 				EC4FBC2A1D77CEE300BBD050 /* AUIBannerScrollView */,
 				EC4FBC2E1D77CEE300BBD050 /* CustomTabBar.h */,
@@ -5441,7 +5686,6 @@
 			isa = PBXGroup;
 			children = (
 				EC4FBFD31D77CEE400BBD050 /* StrategyCollectionViewCell */,
-				EC4FBFEC1D77CEE400BBD050 /* StrategyToolBar */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -5517,27 +5761,6 @@
 				EC4FBFEB1D77CEE400BBD050 /* StrategyLikeButton.m */,
 			);
 			path = StrategyTableViewCellSub;
-			sourceTree = "<group>";
-		};
-		EC4FBFEC1D77CEE400BBD050 /* StrategyToolBar */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBFED1D77CEE400BBD050 /* StrategyToolBar.h */,
-				EC4FBFEE1D77CEE400BBD050 /* StrategyToolBar.m */,
-				EC4FBFEF1D77CEE400BBD050 /* StrategyToolBarSub */,
-			);
-			path = StrategyToolBar;
-			sourceTree = "<group>";
-		};
-		EC4FBFEF1D77CEE400BBD050 /* StrategyToolBarSub */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBFF01D77CEE400BBD050 /* StrategyToolBarOpenView.h */,
-				EC4FBFF11D77CEE400BBD050 /* StrategyToolBarOpenView.m */,
-				EC4FBFF21D77CEE400BBD050 /* StrategyToolBarScrollView.h */,
-				EC4FBFF31D77CEE400BBD050 /* StrategyToolBarScrollView.m */,
-			);
-			path = StrategyToolBarSub;
 			sourceTree = "<group>";
 		};
 		EC4FBFF41D77CEE400BBD050 /* StrategyDetailMap */ = {
@@ -5751,6 +5974,7 @@
 		EC4FC03B1D77CEE400BBD050 /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F25861DD321B800B67BBA /* Collection */,
 				EC13B4C81DD1F3430040F760 /* AccountCenter */,
 				EC4FC03C1D77CEE400BBD050 /* AccountSetting */,
 				EC4FC06A1D77CEE400BBD050 /* Appointment */,
@@ -8623,6 +8847,7 @@
 				EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */,
 				EC7264391D7D27BC00AA739B /* ArticleColumnHeader.xib in Resources */,
 				EC4FC2AE1D77CEE400BBD050 /* ActivityView.xib in Resources */,
+				EC2F25811DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib in Resources */,
 				EC4FC5D11D77CEEF00BBD050 /* UIBarButtonItemArrowRight.png in Resources */,
 				ECAA494C1D79A45B00799CBE /* ArticleHomeNoIconCell.xib in Resources */,
 				EC97C0201DD060D4001E1246 /* ProductDetailCountDownView.xib in Resources */,
@@ -9016,6 +9241,7 @@
 				EC4FC2AB1D77CEE400BBD050 /* ActivityFilterView.m in Sources */,
 				EC154D551D88303D007137E8 /* ArticleUserCenterViewController.m in Sources */,
 				EC4FC3B91D77CEE400BBD050 /* StoreDetialMapPoiAnnotationView.m in Sources */,
+				EC2F25CD1DD35BD000B67BBA /* CollectProductBaseView.m in Sources */,
 				EC4FC3601D77CEE400BBD050 /* FlashBalanceSettlementToolBar.m in Sources */,
 				EC4FC5AE1D77CEEF00BBD050 /* AUIPickerView.m in Sources */,
 				EC4FC3F11D77CEE400BBD050 /* StrategyDetailRelatedServiceListViewController.m in Sources */,
@@ -9039,7 +9265,6 @@
 				EC4FC3131D77CEE400BBD050 /* SearchResultViewController.m in Sources */,
 				EC4FC3BC1D77CEE400BBD050 /* WelfareStoreViewController.m in Sources */,
 				EC13B51E1DD1F6110040F760 /* AccountCenterBanner.m in Sources */,
-				EC4FC3D41D77CEE400BBD050 /* StrategyToolBar.m in Sources */,
 				EC4FC2941D77CEE400BBD050 /* ArticleCommentLayout.m in Sources */,
 				EC4FC41E1D77CEE400BBD050 /* BrowseHistoryStoreListItemModel.m in Sources */,
 				EC4FC4211D77CEE400BBD050 /* KTCBrowseHistoryView.m in Sources */,
@@ -9121,12 +9346,13 @@
 				ECF5D1211DB8D77C00A1B268 /* AUIStackView.m in Sources */,
 				EC68C3A81D9BA89800D4401A /* ReachabilityManager.m in Sources */,
 				EC4FC47A1D77CEE400BBD050 /* FavouriteViewServiceCell.m in Sources */,
-				EC4FC3D61D77CEE400BBD050 /* StrategyToolBarScrollView.m in Sources */,
+				EC2F25A91DD3266E00B67BBA /* CollectProductCategoryViewController.m in Sources */,
 				EC76B8DF1DC65FC6006518DE /* ServiceDetailViewModel.m in Sources */,
 				EC4FC42C1D77CEE400BBD050 /* StoreListViewCell.m in Sources */,
 				EC4FC3F41D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.m in Sources */,
 				EC4FC3E91D77CEE400BBD050 /* StrategyDetailRelatedStoreItemModel.m in Sources */,
 				EC4FC2651D77CEE400BBD050 /* RefreshFooter.m in Sources */,
+				EC2F25BE1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m in Sources */,
 				EC4FC3C71D77CEE400BBD050 /* StrategyCollectionViewFlowLayout.m in Sources */,
 				EC4FC2A91D77CEE400BBD050 /* ActivityFilterModel.m in Sources */,
 				EC4FC4D41D77CEE400BBD050 /* UserCenterBannerAutoRoleCell.m in Sources */,
@@ -9245,6 +9471,7 @@
 				EC1E2F941D827EA4002381E7 /* ArticleWriteModel.m in Sources */,
 				EC4FC5ED1D77CEEF00BBD050 /* iToast.m in Sources */,
 				EC4FC27B1D77CEE400BBD050 /* WelcomeViewController.m in Sources */,
+				EC2F25B51DD3383C00B67BBA /* MultiItemsToolBar.m in Sources */,
 				EC13B4F91DD1F3430040F760 /* AccountCenterOrdersCell.m in Sources */,
 				EC4FC3E61D77CEE400BBD050 /* ParentingStrategyDetailViewController.m in Sources */,
 				EC4FC4E81D77CEE400BBD050 /* UserCenterMessageButton.m in Sources */,
@@ -9289,6 +9516,7 @@
 				EC4FC4BA1D77CEE400BBD050 /* ServiceOrderDetailInsuranceCell.m in Sources */,
 				EC4FC44B1D77CEE400BBD050 /* CommentFoundingView.m in Sources */,
 				EC4FC42B1D77CEE400BBD050 /* StoreListItemModel.m in Sources */,
+				EC2F25AC1DD3267F00B67BBA /* CollectProductReduceViewController.m in Sources */,
 				EC4FC31D1D77CEE400BBD050 /* AreaAndAgeModel.m in Sources */,
 				EC4FC2871D77CEE400BBD050 /* AlbumnModel.m in Sources */,
 				EC630DBC1DCA045B0088145E /* NetWorkTipView.m in Sources */,
@@ -9299,6 +9527,7 @@
 				EC4FC5E91D77CEEF00BBD050 /* UIImage+MWPhotoBrowser.m in Sources */,
 				EC4FC2B61D77CEE400BBD050 /* CategoryItemCell.m in Sources */,
 				EC4FC2971D77CEE400BBD050 /* ArticleCommentHeader.m in Sources */,
+				EC2F25C11DD3506200B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC2711D77CEE400BBD050 /* KTCShareService.m in Sources */,
 				ECF5D1081DB8CE3900A1B268 /* TCHomeRecommendModel.m in Sources */,
 				EC4FC2931D77CEE400BBD050 /* ArticleMoreCommentsViewController.m in Sources */,
@@ -9307,7 +9536,6 @@
 				EC4FC22D1D77CEE400BBD050 /* KTCEmptyDataView.m in Sources */,
 				ECAA49451D79A45B00799CBE /* ArticleHomeColumnTitleCell.m in Sources */,
 				EC4FC4571D77CEE400BBD050 /* CommentDetailViewModel.m in Sources */,
-				EC13B5271DD1FF820040F760 /* AccountCenterView.m in Sources */,
 				ECFFC6F11DC363C1002DBFB9 /* ProductDetailComment.m in Sources */,
 				ECAA49511D79A45B00799CBE /* ArticleHomeVideoCell.m in Sources */,
 				EC4FC4EC1D77CEE400BBD050 /* UserCenterProductAutoRollViewLayout.m in Sources */,
@@ -9375,6 +9603,7 @@
 				EC68C3C31D9BBC8D00D4401A /* HomeActivityModel.m in Sources */,
 				EC4FC4A91D77CEE400BBD050 /* OrderModel.m in Sources */,
 				ECBCCEF21DBF152E001B9571 /* ComposeData.m in Sources */,
+				EC2F259A1DD325E500B67BBA /* CollectProductViewController.m in Sources */,
 				EC4FC2441D77CEE400BBD050 /* Contacts.m in Sources */,
 				EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */,
 				ECFFC7251DC363C1002DBFB9 /* ProductDetailTitleCell.m in Sources */,
@@ -9396,6 +9625,7 @@
 				EC4FC3681D77CEE400BBD050 /* ServiceSettlementCouponCell.m in Sources */,
 				EC4FC41F1D77CEE400BBD050 /* BrowseHistoryViewController.m in Sources */,
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
+				EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
 				EC7FBC101DC4D074007B326C /* ProductDetailGetCouponCell.m in Sources */,
 				EC13B4FD1DD1F3430040F760 /* AccountCenterTipsCell.m in Sources */,
@@ -9511,16 +9741,17 @@
 				EC4FC5AA1D77CEEF00BBD050 /* ATCountDown.m in Sources */,
 				EC4FC3951D77CEE400BBD050 /* StoreDetailStrategyCell.m in Sources */,
 				EC4FC4AE1D77CEE400BBD050 /* OrderListViewModel.m in Sources */,
+				EC2F25C91DD3587400B67BBA /* CollectProductReduceView.m in Sources */,
 				EC9CC5211DC30E7F0093DCED /* FSCalendarCell.m in Sources */,
 				EC9CC5201DC30E7F0093DCED /* FSCalendarAppearance.m in Sources */,
 				EC4FC37F1D77CEE400BBD050 /* SettlementPickScoreViewController.m in Sources */,
+				EC2F25851DD31CE600B67BBA /* AccountCenterView.m in Sources */,
 				EC1E2F8D1D827EA4002381E7 /* ArticleWriteBaseCell.m in Sources */,
 				ECF5D0C71DB8C4FE00A1B268 /* QRCodeScanHistoryTableViewCell.m in Sources */,
 				EC4FC5AF1D77CEEF00BBD050 /* AUISegmentView.m in Sources */,
 				ECB3E7861D92C82E0059267D /* OrderBookingStoreInfoCell.m in Sources */,
 				ECB3E7981D92C96B0059267D /* FlashServiceOrderListCell.m in Sources */,
 				ECFFC73E1DC363C1002DBFB9 /* ProductDetailAddressSelStoreCell.m in Sources */,
-				EC4FC3D51D77CEE400BBD050 /* StrategyToolBarOpenView.m in Sources */,
 				EC4FC3101D77CEE400BBD050 /* SearchTableTextField.m in Sources */,
 				EC4FC2201D77CEE400BBD050 /* UILabel+Additions.m in Sources */,
 				ECB3E7961D92C96B0059267D /* FlashServiceOrderListViewController.m in Sources */,
@@ -9618,6 +9849,7 @@
 				EC810A661D8FE53400B4B87A /* NSNumber+ZP.m in Sources */,
 				EC4FC25F1D77CEE400BBD050 /* PosterViewCell.m in Sources */,
 				EC4FC38D1D77CEE400BBD050 /* StoreDetailViewController.m in Sources */,
+				EC2F25A61DD3265900B67BBA /* CollectProductAllViewController.m in Sources */,
 				EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */,
 				ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */,
 				EC4FC4321D77CEE400BBD050 /* CommentFoundingViewController.m in Sources */,
@@ -9672,6 +9904,7 @@
 				ECAA494B1D79A45B00799CBE /* ArticleHomeNoIconCell.m in Sources */,
 				EC4FC3C61D77CEE400BBD050 /* StrategyViewController.m in Sources */,
 				EC4FC3561D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.m in Sources */,
+				EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */,
 				EC4FC4131D77CEE400BBD050 /* AppointmentOrderListViewController.m in Sources */,
 				ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */,
 				EC4FC5DA1D77CEEF00BBD050 /* MWCaptionView.m in Sources */,
@@ -9692,6 +9925,7 @@
 				EC4FC4831D77CEE400BBD050 /* NotificationCenterViewCell.m in Sources */,
 				ECBCCEF41DBF152E001B9571 /* ComposeManager.m in Sources */,
 				EC4FC4011D77CEE400BBD050 /* AddressPickerViewController.m in Sources */,
+				EC2F25BD1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m in Sources */,
 				EC4FC4941D77CEE400BBD050 /* FlashServiceOrderDetailRefundTipCell.m in Sources */,
 				ECFFC73B1DC363C1002DBFB9 /* ProductDetailAddressTitleView.m in Sources */,
 				EC4FC3F81D77CEE400BBD050 /* AccountSettingLogoutView.m in Sources */,

@@ -1,29 +1,29 @@
 //
-//  StrategyToolBar.m
+//  MultiItemsToolBar.m
 //  KidsTC
 //
 //  Created by zhanping on 7/11/16.
 //  Copyright © 2016 KidsTC. All rights reserved.
 //
 
-#import "StrategyToolBar.h"
-#import "StrategyToolBarOpenView.h"
+#import "MultiItemsToolBar.h"
+#import "MultiItemsToolBarOpenView.h"
 #import "Macro.h"
 #import "NSString+Category.h"
 #define GradientLayerWidth 20
 #define OpenTipLabelText @"    切换栏目"
 
-@interface StrategyToolBar ()<StrategyToolBarScrollViewDelegate,StrategyToolBarOpenViewDelegate>
-@property (nonatomic, weak) StrategyToolBarScrollView *scrollView;
+@interface MultiItemsToolBar ()<MultiItemsToolBarScrollViewDelegate,MultiItemsToolBarOpenViewDelegate>
+@property (nonatomic, weak) MultiItemsToolBarScrollView *scrollView;
 @property (nonatomic, weak) UIView *line;
 @property (nonatomic, weak) CAGradientLayer *leftLayer;
 @property (nonatomic, weak) CAGradientLayer *rightLayer;
 @property (nonatomic, weak) UILabel *openTipLabel;
 @property (nonatomic, weak) UIButton *openBtn;
-@property (nonatomic, weak) StrategyToolBarOpenView *openView;
+@property (nonatomic, weak) MultiItemsToolBarOpenView *openView;
 @end
 
-@implementation StrategyToolBar
+@implementation MultiItemsToolBar
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -32,13 +32,13 @@
         self.backgroundColor = [UIColor whiteColor];
         self.clipsToBounds = YES;
         
-        StrategyToolBarOpenView *openView = [[StrategyToolBarOpenView alloc]init];
+        MultiItemsToolBarOpenView *openView = [[MultiItemsToolBarOpenView alloc]init];
         [self addSubview:openView];
         openView.delegate = self;
         openView.hidden = YES;
         self.openView = openView;
         
-        StrategyToolBarScrollView *scrollView = [[StrategyToolBarScrollView alloc]init];
+        MultiItemsToolBarScrollView *scrollView = [[MultiItemsToolBarScrollView alloc]init];
         scrollView.clickDelegate = self;
         [self addSubview:scrollView];
         self.scrollView = scrollView;
@@ -121,7 +121,7 @@
     CGFloat self_w = CGRectGetWidth(self.frame);
     
     CGFloat scrollView_w = self_w;
-    CGFloat scrollView_h = StrategyToolBarScrollViewHeight;
+    CGFloat scrollView_h = MultiItemsToolBarScrollViewHeight;
     BOOL opBtnShow = self.scrollView.contentSize.width>self_w;
     if (opBtnShow) scrollView_w -= scrollView_h;
     self.scrollView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
@@ -130,7 +130,7 @@
     self.openBtn.frame = CGRectMake(scrollView_w, 0, scrollView_h, scrollView_h);
     self.openBtn.hidden = !opBtnShow;
     
-    self.openTipLabel.frame = CGRectMake(0, 0, self_w, StrategyToolBarScrollViewHeight);
+    self.openTipLabel.frame = CGRectMake(0, 0, self_w, MultiItemsToolBarScrollViewHeight);
     
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
@@ -163,18 +163,18 @@
     }
 }
 
-#pragma mark - StrategyToolBarScrollViewDelegate
+#pragma mark - MultiItemsToolBarScrollViewDelegate
 
-- (void)strategyToolBarScrollView:(StrategyToolBarScrollView *)strategyToolBarScrollView didSelectedIndex:(NSUInteger)index{
-    if ([self.delegate respondsToSelector:@selector(strategyToolBar:didSelectedIndex:)]) {
-        [self.delegate strategyToolBar:self didSelectedIndex:index];
+- (void)multiItemsToolBarScrollView:(MultiItemsToolBarScrollView *)multiItemsToolBarScrollView didSelectedIndex:(NSUInteger)index{
+    if ([self.delegate respondsToSelector:@selector(multiItemsToolBar:didSelectedIndex:)]) {
+        [self.delegate multiItemsToolBar:self didSelectedIndex:index];
     }
 }
 
-#pragma mark - StrategyToolBarOpenViewDelegate
+#pragma mark - MultiItemsToolBarOpenViewDelegate
 
-- (void)strategyToolBarOpenView:(StrategyToolBarOpenView *)strategyToolBarOpenView didSelectedIndex:(NSUInteger)index{
-    [self strategyToolBarScrollView:self.scrollView didSelectedIndex:index];
+- (void)multiItemsToolBarOpenView:(MultiItemsToolBarOpenView *)multiItemsToolBarOpenView didSelectedIndex:(NSUInteger)index{
+    [self multiItemsToolBarScrollView:self.scrollView didSelectedIndex:index];
     [self openBtnAction:self.openBtn];
 }
 
@@ -202,7 +202,6 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.openTipLabel.alpha = 1;
         self.openView.frame = CGRectMake(openView_x, openView_y, openView_w, openView_h);
-        //self.openBtn.backgroundColor = [UIColor groupTableViewBackgroundColor];
         [self.openBtn.imageView setTransform:CGAffineTransformRotate(self.openBtn.imageView.transform, M_PI)];
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
@@ -218,12 +217,11 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.openTipLabel.alpha = 0;
         self.openView.frame = frame;
-        //self.openBtn.backgroundColor = [UIColor whiteColor];
         [self.openBtn.imageView setTransform:CGAffineTransformRotate(self.openBtn.imageView.transform, M_PI)];
         
         self.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
-        self.frame = CGRectMake(0, 64, SCREEN_WIDTH, StrategyToolBarScrollViewHeight);
+        self.frame = CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight);
         self.openTipLabel.hidden = YES;
         self.openView.hidden = YES;
     }];

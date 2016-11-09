@@ -14,4 +14,14 @@
     return @{@"icons" : [NSString class],
              @"banners":[AccountCenterBanner class]};
 }
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    CGFloat ratio = 140.0/320;
+    if (_banners.count>0) {
+        ratio = _banners.firstObject.Ratio;
+    }
+    _bannerHeight = ratio * (SCREEN_WIDTH - 24) + 24;
+    
+    return YES;
+}
 @end

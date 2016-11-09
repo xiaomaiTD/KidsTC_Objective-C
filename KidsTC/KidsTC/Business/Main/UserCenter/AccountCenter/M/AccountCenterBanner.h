@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *ImageUrl;
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
+//selfDefine
+@property (nonatomic, strong) SegueModel *segueModel;
 @end

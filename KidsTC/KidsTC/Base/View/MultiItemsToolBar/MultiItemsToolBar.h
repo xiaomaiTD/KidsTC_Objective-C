@@ -1,5 +1,5 @@
 //
-//  StrategyToolBar.h
+//  MultiItemsToolBar.h
 //  KidsTC
 //
 //  Created by zhanping on 7/11/16.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-#import "StrategyToolBarScrollView.h"
-@class StrategyToolBar;
-@protocol StrategyToolBarDelegate <NSObject>
-- (void)strategyToolBar:(StrategyToolBar *)strategyToolBar didSelectedIndex:(NSUInteger)index;
+#import "MultiItemsToolBarScrollView.h"
+@class MultiItemsToolBar;
+@protocol MultiItemsToolBarDelegate <NSObject>
+- (void)multiItemsToolBar:(MultiItemsToolBar *)multiItemsToolBar didSelectedIndex:(NSUInteger)index;
 @end
 
-@interface StrategyToolBar : UIView
+@interface MultiItemsToolBar : UIView
 @property (nonatomic, strong) NSArray<NSString *> *tags;
-@property (nonatomic, weak) id<StrategyToolBarDelegate> delegate;
+@property (nonatomic, weak) id<MultiItemsToolBarDelegate> delegate;
 - (void)changeTipPlaceWithSmallIndex:(NSUInteger)smallIndex
                             bigIndex:(NSUInteger)bigIndex
                             progress:(CGFloat)progress

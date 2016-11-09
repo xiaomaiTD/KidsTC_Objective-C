@@ -9,6 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "AccountCenterModel.h"
 
+typedef enum : NSUInteger {
+    AccountCenterHeaderActionTypeSoftwareSetting=1,
+    AccountCenterHeaderActionTypeMessageCenter,
+    AccountCenterHeaderActionTypeLogin,
+    AccountCenterHeaderActionTypeAccountSetting,
+} AccountCenterHeaderActionType;
+
+@class AccountCenterHeader;
+@protocol AccountCenterHeaderDelegate <NSObject>
+- (void)accountCenterHeader:(AccountCenterHeader *)header actionType:(AccountCenterHeaderActionType)type value:(id)value;
+@end
+
 @interface AccountCenterHeader : UIView
 @property (nonatomic, strong) AccountCenterModel *model;
+@property (nonatomic, weak) id<AccountCenterHeaderDelegate> delegate;
 @end

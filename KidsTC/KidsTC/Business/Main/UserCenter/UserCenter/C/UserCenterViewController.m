@@ -339,7 +339,6 @@
         case UserCenterCellActionTypeMyCollection:
         {
             toController = [[FavourateViewController alloc] initWithNibName:@"FavourateViewController" bundle:nil];
-            
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;

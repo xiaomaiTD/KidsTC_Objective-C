@@ -65,13 +65,7 @@ static KTCFavouriteManager *_sharedInstance = nil;
             
         }
             break;
-            
-        default:
-            break;
     }
-    
-    
-    
 }
 
 - (void)loadFavouriteWithType:(KTCFavouriteType)type
@@ -100,16 +94,13 @@ static KTCFavouriteManager *_sharedInstance = nil;
             break;
         case KTCFavouriteTypeNews:
         {
-            NSDictionary *parameters = @{@"page":[NSString stringWithFormat:@"%lu",page],@"pageCount":[NSString stringWithFormat:@"%lu",pageSize]};
+            NSDictionary *parameters = @{@"page":[NSString stringWithFormat:@"%zd",page],@"pageCount":[NSString stringWithFormat:@"%zd",pageSize]};
             [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
                 if (succeed) succeed(dic);
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 if (failure) failure(error);
             }];
         }
-            break;
-            
-        default:
             break;
     }
 }

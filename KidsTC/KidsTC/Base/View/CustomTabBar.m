@@ -115,6 +115,7 @@ CGFloat const titleHight = 18;
     TabBarItemElement *addLinkEle = nil;
     for (TabBarItemElement *element in elements) {
         CustomTabBarButton *btn = [[CustomTabBarButton alloc]init];
+        btn.badgeType = TipButtonBadgeTypeIcon;
         btn.element = element;
         [self addSubview:btn];
         [btns addObject:btn];
@@ -215,7 +216,7 @@ CGFloat const titleHight = 18;
 - (void)makeBadgeIndex:(NSUInteger)index type:(TipButtonBadgeType)type value:(NSUInteger)value{
     if (index>self.btns.count-1) return;
     CustomTabBarButton *btn = self.btns[index];
-    btn.badgeType = type; btn.badgeValue = value;
+    btn.badgeValue = value;
 }
 
 - (void)clearBadgeIndex:(NSUInteger)index{

@@ -43,6 +43,13 @@
 
 - (void)setModel:(AccountCenterModel *)model {
     [super setModel:model];
+    
+    AccountCenterUserCount *userCount = model.data.userCount;
+    
+    self.scoreL.text = [NSString stringWithFormat:@"%zd",userCount.score_num];
+    self.radishL.text = [NSString stringWithFormat:@"%zd",userCount.userRadishNum];
+    //self.couponL.text = [NSString stringWithFormat:@"%zd",userCount.userHasNewCoupon];
+    
 }
 
 @end

@@ -18,11 +18,12 @@
 - (UILabel *)tipLabel{
     if (!_tipLabel) {
         UILabel *tipLabel = [[UILabel alloc]init];
-        tipLabel.backgroundColor = COLOR_PINK;
+        //tipLabel.backgroundColor = COLOR_PINK;
         tipLabel.font = [UIFont systemFontOfSize:11];
         tipLabel.textColor = [UIColor whiteColor];
         tipLabel.textAlignment = NSTextAlignmentCenter;
         tipLabel.hidden = YES;
+        
         [self addSubview:tipLabel];
         _tipLabel = tipLabel;
     }
@@ -32,14 +33,14 @@
 - (void)setBadgeValue:(NSUInteger)badgeValue{
     _badgeValue = badgeValue;
     self.tipLabel.hidden = badgeValue<=0;
-    if (!self.tipLabel.hidden) [self layoutSubviews];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
     
     if (!self.tipLabel.hidden) {
-        
         switch (self.badgeType) {
             case TipButtonBadgeTypeNum:
             {
@@ -71,8 +72,19 @@
     self.tipLabel.frame = CGRectMake(tipLabelX, tipLabelY, tipLabelW, tipLabelH);
     self.tipLabel.text = tipStr;
     
-    self.tipLabel.layer.cornerRadius = tipLabelH*0.5;
-    self.tipLabel.layer.masksToBounds = YES;
+    CALayer *layer = self.tipLabel.layer;
+    layer.cornerRadius = tipLabelH*0.5;
+    //layer.masksToBounds = YES;
+    layer.backgroundColor = COLOR_PINK.CGColor;
+    
+    layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    layer.borderWidth = 1;
+    
+    layer.shadowColor = [UIColor blackColor].CGColor;
+    layer.shadowOffset = CGSizeMake(2, 2);
+    layer.shadowRadius = 2;
+    layer.shadowOpacity = 0.5;
+    
 }
 
 - (void)makeIconBadge{
@@ -82,8 +94,11 @@
     CGFloat tipLabelY = CGRectGetMinY(self.imageView.frame)-tipLabelSize*0.5;
     self.tipLabel.frame = CGRectMake(tipLabelX, tipLabelY, tipLabelSize, tipLabelSize);
     self.tipLabel.text = @"";
-    self.tipLabel.layer.cornerRadius = tipLabelSize*0.5;
-    self.tipLabel.layer.masksToBounds = YES;
+    
+    CALayer *layer = self.tipLabel.layer;
+    layer.cornerRadius = tipLabelSize*0.5;
+    //layer.masksToBounds = YES;
+    layer.backgroundColor = COLOR_PINK.CGColor;
 }
 
 

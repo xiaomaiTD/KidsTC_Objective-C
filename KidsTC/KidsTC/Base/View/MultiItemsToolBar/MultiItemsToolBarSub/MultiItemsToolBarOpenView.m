@@ -1,20 +1,20 @@
 //
-//  StrategyToolBarOpenView.m
+//  MultiItemsToolBarOpenView.m
 //  KidsTC
 //
 //  Created by zhanping on 7/11/16.
 //  Copyright © 2016 KidsTC. All rights reserved.
 //
 
-#import "StrategyToolBarOpenView.h"
+#import "MultiItemsToolBarOpenView.h"
 #import "UIButton+Category.h"
 
-@interface StrategyToolBarOpenView ()
+@interface MultiItemsToolBarOpenView ()
 @property (nonatomic, strong) NSMutableArray<UIButton *> *tagBtns;
 @property (nonatomic, weak) UIButton *selectedBtn;
 @end
 
-@implementation StrategyToolBarOpenView
+@implementation MultiItemsToolBarOpenView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -75,8 +75,8 @@
 }
 
 - (void)btnClickAction:(UIButton *)btn{
-    if ([self.delegate respondsToSelector:@selector(strategyToolBarOpenView:didSelectedIndex:)]) {
-        [self.delegate strategyToolBarOpenView:self didSelectedIndex:btn.tag];
+    if ([self.delegate respondsToSelector:@selector(multiItemsToolBarOpenView:didSelectedIndex:)]) {
+        [self.delegate multiItemsToolBarOpenView:self didSelectedIndex:btn.tag];
     }
     [self selectedBtnIndex:btn.tag];
 }
