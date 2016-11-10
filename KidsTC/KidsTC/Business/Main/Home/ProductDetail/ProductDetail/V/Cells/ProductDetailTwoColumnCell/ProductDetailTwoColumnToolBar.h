@@ -11,16 +11,14 @@
 extern CGFloat const kTwoColumnToolBarH;
 
 typedef enum : NSUInteger {
-    ProductDetailTwoColumnToolBarActionTypeDetail=1,
-    ProductDetailTwoColumnToolBarActionTypeConsult=2
+    ProductDetailTwoColumnToolBarActionTypeDetail = 100,//商品H5详情
+    ProductDetailTwoColumnToolBarActionTypeConsult//商品咨询
 } ProductDetailTwoColumnToolBarActionType;
 
 @class ProductDetailTwoColumnToolBar;
 
 @protocol ProductDetailTwoColumnToolBarDelegate <NSObject>
-
 - (void)productDetailTwoColumnToolBar:(ProductDetailTwoColumnToolBar *)toolBar ationType:(ProductDetailTwoColumnToolBarActionType)type value:(id)value;
-
 @end
 
 @interface ProductDetailTwoColumnToolBar : UIView

@@ -10,13 +10,14 @@
 #import "ProductDetailData.h"
 
 typedef enum : NSUInteger {
+    
+    //cells
     ProductDetailViewActionTypeSegue = 1,
-    ProductDetailViewActionTypeLoadData,//加载商品详情数据
-    ProductDetailViewActionTypeDate,//显示日期
-    ProductDetailViewActionTypeAddress,//显示位置
-    ProductDetailViewActionTypeLoadConsult,//当没有咨询的时候加载更多的咨询
+    ProductDetailViewActionTypeShowDate,//显示日期
+    ProductDetailViewActionTypeShowAddress,//显示位置
+    ProductDetailViewActionTypeOpenWebView,//展开detail
     ProductDetailViewActionTypeAddNewConsult,//新增咨询
-    ProductDetailViewActionTypeMoreConsult,//更多咨询
+    ProductDetailViewActionTypeMoreConsult,//查看更多咨询
     ProductDetailViewActionTypeStandard,//套餐信息
     ProductDetailViewActionTypeBuyStandard,//购买套餐
     ProductDetailViewActionTypeCoupon,//优惠券
@@ -25,8 +26,19 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeComment,//查看评论
     ProductDetailViewActionTypeMoreComment,//查看全部评论
     ProductDetailViewActionTypeRecommend,//为您推荐
-    ProductDetailViewActionTypeAttention,//关注
-    ProductDetailViewActionTypeBuyNow,//立即购买
+    
+    //twoColumnToolBar
+    ProductDetailViewActionTypeTwoColumnToolBarDetail = 100,//展示商品H5详情
+    ProductDetailViewActionTypeTwoColumnToolBarConsult,//展示商品咨询
+    
+    //countDownView
+    ProductDetailViewActionTypeCountDonwFinished = 200,//倒计时结束
+    
+    //tooBar
+    ProductDetailViewActionTypeToolBarConsult = 300,//在线咨询
+    ProductDetailViewActionTypeToolBarAttention,//(添加/取消)关注
+    ProductDetailViewActionTypeToolBarBuyNow,//立即购买
+    
 } ProductDetailViewActionType;
 
 @class ProductDetailView;
@@ -35,6 +47,7 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailView : UIView
+@property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailViewDelegate> delegate;
 @end

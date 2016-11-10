@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "ProductDetailData.h"
 
 @interface ProductDetailViewController : ViewController
 - (instancetype)initWithServiceId:(NSString *)serviceId channelId:(NSString *)channelId;
+@property (nonatomic, assign) ProductDetailType type;
+@property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, strong) NSString *consultStr;
 @end

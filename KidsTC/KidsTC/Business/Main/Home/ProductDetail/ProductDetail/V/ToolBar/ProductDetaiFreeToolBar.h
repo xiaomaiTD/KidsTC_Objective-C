@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ProductDetailBaseToolBar.h"
 
-@interface ProductDetaiFreeToolBar : UIView
+@interface ProductDetaiFreeToolBar : ProductDetailBaseToolBar
 
 @end

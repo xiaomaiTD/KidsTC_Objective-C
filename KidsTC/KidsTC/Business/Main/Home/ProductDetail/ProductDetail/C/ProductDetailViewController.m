@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
 #import "GuideManager.h"
+#import "OnlineCustomerService.h"
 #import "UIBarButtonItem+Category.h"
 
 #import "ProductDetailModel.h"
@@ -39,8 +40,6 @@
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
 
-
-
 @interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
@@ -63,11 +62,6 @@
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    ProductDetailView *view = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
-    view.delegate = self;
-    [self.view addSubview:view];
-    self.detailView = view;
-    
     if (![_productId isNotNull]) {
         [[iToast makeText:@"商品编号为空！"] show];
         [self back];
@@ -88,6 +82,15 @@
     [self buildRightBarButtons];
 }
 
+- (ProductDetailView *)detailView {
+    if (!_detailView) {
+        _detailView = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _detailView.delegate = self;
+        [self.view addSubview:_detailView];
+    }
+    return _detailView;
+}
+
 - (void)loadData {
     
     NSString *location  = [[KTCMapService shareKTCMapService] currentLocationString];
@@ -101,6 +104,7 @@
         if (model.data) {
             [self loadProductSuccess:model.data];
             [self loadRecommend];
+            [self loadConsult];
         }else{
             [self loadProductFailure:nil];
         }
@@ -111,8 +115,8 @@
 }
 
 - (void)loadProductSuccess:(ProductDetailData *)data{
-    ProductDetailView *view = (ProductDetailView *)self.detailView;
-    view.data = data;
+    _data = data;
+    self.detailView.data = data;
     self.navigationItem.title = data.simpleName;
     [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
 }
@@ -122,19 +126,32 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - loadRecommend
+
 - (void)loadRecommend {
-    
     NSDictionary *param = @{@"pid":_productId};
     [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         ProductDetailRecommendModel *model = [ProductDetailRecommendModel modelWithDictionary:dic];
         if (model.data.count>0) {
-            ProductDetailView *view = (ProductDetailView *)self.detailView;
-            ProductDetailData *data = view.data;
-            data.recommends = model.data;
-            view.data = data;
+            _data.recommends = model.data;
+            self.detailView.data = _data;
         }
     } failure:nil];
     
+}
+
+#pragma mark - loadConsult
+
+- (void)loadConsult {
+    NSDictionary *param = @{@"relationNo":self.productId,
+                            @"advisoryType":@"1",
+                            @"pageIndex":@(1),
+                            @"pageSize":@(20)};
+    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        ProductDetailConsultModel *model = [ProductDetailConsultModel modelWithDictionary:dic];
+        _data.consults = model.items;
+        self.detailView.data = _data;
+    } failure:nil];
 }
 
 #pragma mark - ProductDetailViewDelegate
@@ -149,29 +166,24 @@
             [self segue:value];
         }
             break;
-        case ProductDetailViewActionTypeLoadData://加载商品详情数据
-        {
-            [self loadData];
-        }
-            break;
-        case ProductDetailViewActionTypeDate://显示日期
+        case ProductDetailViewActionTypeShowDate://显示日期
         {
             [self showDate:value];
         }
             break;
-        case ProductDetailViewActionTypeAddress://显示位置
+        case ProductDetailViewActionTypeShowAddress://显示位置
         {
             [self showAddress:value];
         }
             break;
-        case ProductDetailViewActionTypeLoadConsult://加载咨询
-        {
-            [self loadConsult:value];
-        }
+        case ProductDetailViewActionTypeOpenWebView://展开detail
+        {}
             break;
         case ProductDetailViewActionTypeAddNewConsult://新增咨询
         {
-            [self addNewConsult:value];
+            [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+                [self addNewConsult:value];
+            }];
         }
             break;
         case ProductDetailViewActionTypeMoreConsult://更多咨询
@@ -221,12 +233,30 @@
             [self recommend:value];
         }
             break;
-        case ProductDetailViewActionTypeAttention://关注
+        case ProductDetailViewActionTypeTwoColumnToolBarDetail://展示商品H5详情
+        {}
+            break;
+        case ProductDetailViewActionTypeTwoColumnToolBarConsult://展示商品咨询
+        {}
+            break;
+            
+        case ProductDetailViewActionTypeCountDonwFinished://倒计时结束
+        {
+            [self loadData];
+        }
+            break;
+            
+        case ProductDetailViewActionTypeToolBarConsult://300,//在线咨询
+        {
+            [self consult:value];
+        }
+            break;
+        case ProductDetailViewActionTypeToolBarAttention://(添加/取消)关注
         {
             [self attention:value];
         }
             break;
-        case ProductDetailViewActionTypeBuyNow://立即购买
+        case ProductDetailViewActionTypeToolBarBuyNow://立即购买
         {
             [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
                 [self buyNow:value];
@@ -234,6 +264,7 @@
         }
             break;
     }
+
 }
 
 #pragma mark - segue 
@@ -253,48 +284,24 @@
 #pragma mark - showAddress
 
 - (void)showAddress:(id)value{
-    
     ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
     controller.store = value;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - loadConsult
-
-- (void)loadConsult:(id)value {
-    NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@"1",
-                            @"pageIndex":@(1),
-                            @"pageSize":@(20)};
-    [TCProgressHUD showSVP];
-    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
-        ProductDetailConsultModel *model = [ProductDetailConsultModel modelWithDictionary:dic];
-        ProductDetailView *view = (ProductDetailView *)self.detailView;
-        ProductDetailData *data = view.data;
-        data.consults = model.items;
-        view.data = data;
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"获取咨询信息失败"] show];
-    }];
-}
-
 #pragma mark - addNewConsult
 
 - (void)addNewConsult:(id)value {
-    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
-        controller.productId = self.productId;
-        controller.delegate = self;
-        controller.consultStr = self.consultStr;
-        controller.dellocBlock = ^(NSString *consultStr){
-            self.consultStr = consultStr;
-        };
-        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        controller.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:controller animated:NO completion:nil];
-    }];
+    ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
+    controller.productId = self.productId;
+    controller.delegate = self;
+    controller.consultStr = self.consultStr;
+    controller.dellocBlock = ^(NSString *consultStr){
+        self.consultStr = consultStr;
+    };
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
 }
 
 #pragma mark ProductDetailAddNewConsultViewControllerDelegate
@@ -303,7 +310,7 @@
     switch (type) {
         case ProductDetailAddNewConsultViewControllerActionTypeReload:
         {
-            [self loadConsult:nil];
+            [self loadConsult];
         }
             break;
     }
@@ -405,11 +412,13 @@
 #pragma mark - consult
 
 - (void)consult:(id)value {
-    WebViewController *controller = [[WebViewController alloc]init];
-    controller.urlString = value;
-    [self.navigationController pushViewController:controller animated:YES];
-    
-    [BuryPointManager trackEvent:@"event_click_server_ask" actionId:20407 params:nil];
+    NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
+    if (str.length>0) {
+        WebViewController *controller = [[WebViewController alloc]init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
+        [BuryPointManager trackEvent:@"event_click_server_ask" actionId:20407 params:nil];
+    }
 }
 
 #pragma mark - Contact
@@ -461,15 +470,13 @@
 #pragma mark - Comment
 
 - (void)comment:(id)value {
-    ProductDetailView *view = (ProductDetailView *)self.detailView;
-    ProductDetailData *data = view.data;
     NSUInteger index = [value integerValue];
-    if (index<data.commentItemsArray.count) {
-        CommentListItemModel *model = data.commentItemsArray[index];
+    if (index<_data.commentItemsArray.count) {
+        CommentListItemModel *model = _data.commentItemsArray[index];
         model.relationIdentifier = self.productId;
         CommentDetailViewController *controller =
         [[CommentDetailViewController alloc] initWithSource:CommentDetailViewSourceServiceOrStore
-                                               relationType:(CommentRelationType)(data.productType)
+                                               relationType:(CommentRelationType)(_data.productType)
                                                 headerModel:model];
         [self.navigationController pushViewController:controller animated:YES];
     }
@@ -478,8 +485,7 @@
 #pragma mark - MoreComment
 
 - (void)moreComment:(id)value {
-    ProductDetailData *data = value;
-    ProductDetailComment *comment = data.comment;
+    ProductDetailComment *comment = _data.comment;
     NSDictionary *commentNumberDic = @{CommentListTabNumberKeyAll:@(comment.all),
                                        CommentListTabNumberKeyGood:@(comment.good),
                                        CommentListTabNumberKeyNormal:@(comment.normal),
@@ -487,7 +493,7 @@
                                        CommentListTabNumberKeyPicture:@(comment.pic)};
     CommentListViewController *controller =
     [[CommentListViewController alloc] initWithIdentifier:self.productId
-                                             relationType:(CommentRelationType)(data.productType)
+                                             relationType:(CommentRelationType)(_data.productType)
                                          commentNumberDic:commentNumberDic];
     [self.navigationController pushViewController:controller animated:YES];
     
@@ -509,24 +515,10 @@
 #pragma mark - attention
 
 - (void)attention:(id)value {
-    ProductDetailData *data = value;
-    NSString *identifier = data.serveId;
-    KTCFavouriteType type = KTCFavouriteTypeService;
-    //WeakSelf(self)
-    if (data.isFavor) {
-        [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:identifier type:type succeed:^(NSDictionary *dic) {
-            //StrongSelf(self)
-            //data.isFavor = NO;
-        } failure:^(NSError *error) {
-            //[[iToast makeText:@"添加关注失败!"] show];
-        }];
+    if (_data.isFavor) {
+        [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:_data.serveId type:KTCFavouriteTypeService succeed:nil failure:nil];
     } else {
-        [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:identifier type:type succeed:^(NSDictionary *dic) {
-            //StrongSelf(self)
-            //data.isFavor = YES;
-        } failure:^(NSError *error) {
-            //[[iToast makeText:@"取消关注失败!"] show];
-        }];
+        [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:_data.serveId type:KTCFavouriteTypeService succeed:nil failure:nil];
     }
     NSDictionary *params = @{@"pid":_productId,
                              @"cid":_channelId};
@@ -536,19 +528,18 @@
 #pragma mark - buyNow
 
 - (void)buyNow:(id)value {
-    ProductDetailData *data = value;
-    NSString *storeno = data.store.firstObject.storeId;
+    NSString *storeno = _data.store.firstObject.storeId;
     if (![storeno isNotNull]) {
         [[iToast makeText:@"门店编号为空！"] show];
         return;
     }
-    NSString *productid = data.serveId;
+    NSString *productid = _data.serveId;
     if (![productid isNotNull]) {
         [[iToast makeText:@"服务编号为空！"] show];
         return;
     }
-    NSString *chid = [data.chId isNotNull]?data.chId:@"0";
-    NSInteger buynum = data.buyMinNum>0?data.buyMinNum:1;
+    NSString *chid = [_data.chId isNotNull]?_data.chId:@"0";
+    NSInteger buynum = _data.buyMinNum>0?_data.buyMinNum:1;
     
     NSDictionary *param = @{@"storeno":storeno,
                             @"productid":productid,
@@ -660,9 +651,7 @@
             break;
         case KTCActionViewTagShare:
         {
-            ProductDetailView *view = (ProductDetailView *)self.detailView;
-            ProductDetailData *data = view.data;
-            CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:data.shareObject sourceType:KTCShareServiceTypeService];
+            CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObject sourceType:KTCShareServiceTypeService];
             [self presentViewController:controller animated:YES completion:nil];
             
             NSDictionary *param = @{@"pid":_productId,

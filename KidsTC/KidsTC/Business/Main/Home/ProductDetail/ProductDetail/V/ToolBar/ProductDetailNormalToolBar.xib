@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductDetailToolBar">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductDetailNormalToolBar">
             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4t-x6-GpH">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                     <state key="normal" title="立即购买">
@@ -23,8 +27,10 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PAc-gd-Nls">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTq-X1-irr" customClass="ProductDetailToolBarButton">
+                            <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="在线咨询" image="ProductDetail_05">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,6 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-jh-ISR" customClass="ProductDetailToolBarButton">
+                            <rect key="frame" x="94" y="0.0" width="93.5" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="关注" image="ProductDetail_04">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -56,6 +63,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFk-IK-WSg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="Qdr-sd-qDG"/>
@@ -84,11 +92,11 @@
                 <outlet property="buyBtn" destination="c4t-x6-GpH" id="6ic-6o-Bly"/>
                 <outlet property="contactBtn" destination="lTq-X1-irr" id="CV1-Vu-F0E"/>
             </connections>
-            <point key="canvasLocation" x="-252" y="-132"/>
+            <point key="canvasLocation" x="-517" y="-121"/>
         </view>
     </objects>
     <resources>
-        <image name="ProductDetail_04" width="46" height="44"/>
-        <image name="ProductDetail_05" width="51" height="54"/>
+        <image name="ProductDetail_04" width="21" height="20"/>
+        <image name="ProductDetail_05" width="23" height="24"/>
     </resources>
 </document>

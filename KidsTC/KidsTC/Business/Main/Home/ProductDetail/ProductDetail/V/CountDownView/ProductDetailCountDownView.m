@@ -10,6 +10,8 @@
 #import "ATCountDown.h"
 #import "ToolBox.h"
 
+CGFloat const kProductDetailCountDownViewHeight = 30;
+
 @interface ProductDetailCountDownView ()
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
@@ -34,7 +36,6 @@
         self.hidden = NO;
         [self startCountDown:data.countDownTime];
     }
-    
 }
 
 - (void)startCountDown:(NSTimeInterval)time {
@@ -48,8 +49,9 @@
         [self.countdownLabel setText:string];
     } completion:^{
         [self stopCountDown];
-        if (self.countDonwFinishBlock) self.countDonwFinishBlock();
-        self.countDonwFinishBlock = nil;
+        if ([self.delegate respondsToSelector:@selector(productDetailCountDownView:actionType:value:)]) {
+            [self.delegate productDetailCountDownView:self actionType:ProductDetailCountDownViewActionTypeCountDonwFinished value:nil];
+        }
     }];
 }
 

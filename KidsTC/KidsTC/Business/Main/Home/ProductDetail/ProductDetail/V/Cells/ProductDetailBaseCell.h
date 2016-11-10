@@ -10,9 +10,11 @@
 #import "ProductDetailData.h"
 
 typedef enum : NSUInteger {
+    
     ProductDetailBaseCellActionTypeSegue = 1,
     ProductDetailBaseCellActionTypeShowDate,//显示日期
     ProductDetailBaseCellActionTypeShowAddress,//显示位置
+    ProductDetailBaseCellActionTypeOpenWebView,//展开detail
     ProductDetailBaseCellActionTypeAddNewConsult,//新增咨询
     ProductDetailBaseCellActionTypeMoreConsult,//查看更多咨询
     ProductDetailBaseCellActionTypeStandard,//套餐信息
@@ -24,8 +26,6 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeMoreComment,//查看全部评论
     ProductDetailBaseCellActionTypeRecommend,//为您推荐
     
-    ProductDetailBaseCellActionTypeOpenWebView,//展开detail
-    ProductDetailBaseCellActionTypeReloadWebViewOrConsult,//刷新咨询
 } ProductDetailBaseCellActionType;
 
 @class ProductDetailBaseCell;

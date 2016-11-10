@@ -7,7 +7,7 @@
 //
 
 #import "ProductDetailContactCell.h"
-#import "OnlineCustomerService.h"
+
 
 @interface ProductDetailContactCell ()
 @property (weak, nonatomic) IBOutlet UIButton *consultBtn;
@@ -36,11 +36,8 @@
 }
 
 - (IBAction)consult:(UIButton *)sender {
-    NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
-    if (str.length>0) {
-        if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeConsult value:str];
-        }
+    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeConsult value:nil];
     }
 }
 

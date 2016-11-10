@@ -56,7 +56,7 @@
     }else{
         self.headBgView.tag = AccountCenterHeaderActionTypeLogin;
         self.headImageView.image = [UIImage imageNamed:@"userCenter_header_noLogin"];
-        self.nameL.text = @"点击登录";
+        self.nameL.text = @"";
     }
     
     AccountCenterUserCount *userCount = model.data.userCount;

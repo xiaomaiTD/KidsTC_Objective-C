@@ -89,10 +89,12 @@
 		EC2F25B51DD3383C00B67BBA /* MultiItemsToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25AF1DD3383C00B67BBA /* MultiItemsToolBar.m */; };
 		EC2F25BD1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25BA1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m */; };
 		EC2F25BE1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25BC1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m */; };
-		EC2F25C11DD3506200B67BBA /* CollectProductAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */; };
 		EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C41DD3584800B67BBA /* CollectProductCategoryView.m */; };
 		EC2F25C91DD3587400B67BBA /* CollectProductReduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25C81DD3587400B67BBA /* CollectProductReduceView.m */; };
 		EC2F25CD1DD35BD000B67BBA /* CollectProductBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */; };
+		EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25D01DD40DDD00B67BBA /* CollectProductAllView.m */; };
+		EC2F25D81DD442D000B67BBA /* ProductDetailSubViewsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25D71DD442D000B67BBA /* ProductDetailSubViewsProvider.m */; };
+		EC2F25DB1DD44A2000B67BBA /* ProductDetailBaseToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25DA1DD44A2000B67BBA /* ProductDetailBaseToolBar.m */; };
 		EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF601DA9239800C49E29 /* BuryPointManager.m */; };
 		EC31CF651DA9DBA300C49E29 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF641DA9DBA300C49E29 /* NotificationService.m */; };
 		EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC31CF671DA9E2D100C49E29 /* UIAlertView+Category.m */; };
@@ -1113,8 +1115,8 @@
 		ECFFC7321DC363C1002DBFB9 /* ProductDetailTwoColumnToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6CC1DC363C1002DBFB9 /* ProductDetailTwoColumnToolBar.m */; };
 		ECFFC7331DC363C1002DBFB9 /* ProductDetailTwoColumnToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFFC6CD1DC363C1002DBFB9 /* ProductDetailTwoColumnToolBar.xib */; };
 		ECFFC7341DC363C1002DBFB9 /* ProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6CF1DC363C1002DBFB9 /* ProductDetailView.m */; };
-		ECFFC7351DC363C1002DBFB9 /* ProductDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6D21DC363C1002DBFB9 /* ProductDetailToolBar.m */; };
-		ECFFC7361DC363C1002DBFB9 /* ProductDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFFC6D31DC363C1002DBFB9 /* ProductDetailToolBar.xib */; };
+		ECFFC7351DC363C1002DBFB9 /* ProductDetailNormalToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6D21DC363C1002DBFB9 /* ProductDetailNormalToolBar.m */; };
+		ECFFC7361DC363C1002DBFB9 /* ProductDetailNormalToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECFFC6D31DC363C1002DBFB9 /* ProductDetailNormalToolBar.xib */; };
 		ECFFC7371DC363C1002DBFB9 /* ProductDetailToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6D51DC363C1002DBFB9 /* ProductDetailToolBarButton.m */; };
 		ECFFC7381DC363C1002DBFB9 /* ProductDetailAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6DA1DC363C1002DBFB9 /* ProductDetailAddressViewController.m */; };
 		ECFFC7391DC363C1002DBFB9 /* ProductDetailAddressAnnoView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECFFC6DD1DC363C1002DBFB9 /* ProductDetailAddressAnnoView.m */; };
@@ -1298,14 +1300,19 @@
 		EC2F25BA1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiItemsToolBarOpenView.m; sourceTree = "<group>"; };
 		EC2F25BB1DD3384C00B67BBA /* MultiItemsToolBarScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiItemsToolBarScrollView.h; sourceTree = "<group>"; };
 		EC2F25BC1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiItemsToolBarScrollView.m; sourceTree = "<group>"; };
-		EC2F25BF1DD3506200B67BBA /* CollectProductAllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductAllView.h; sourceTree = "<group>"; };
-		EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductAllView.m; sourceTree = "<group>"; };
 		EC2F25C31DD3584800B67BBA /* CollectProductCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductCategoryView.h; sourceTree = "<group>"; };
 		EC2F25C41DD3584800B67BBA /* CollectProductCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductCategoryView.m; sourceTree = "<group>"; };
 		EC2F25C71DD3587400B67BBA /* CollectProductReduceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductReduceView.h; sourceTree = "<group>"; };
 		EC2F25C81DD3587400B67BBA /* CollectProductReduceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductReduceView.m; sourceTree = "<group>"; };
 		EC2F25CB1DD35BD000B67BBA /* CollectProductBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductBaseView.h; sourceTree = "<group>"; };
 		EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductBaseView.m; sourceTree = "<group>"; };
+		EC2F25CF1DD40DDD00B67BBA /* CollectProductAllView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductAllView.h; sourceTree = "<group>"; };
+		EC2F25D01DD40DDD00B67BBA /* CollectProductAllView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductAllView.m; sourceTree = "<group>"; };
+		EC2F25D61DD442D000B67BBA /* ProductDetailSubViewsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSubViewsProvider.h; sourceTree = "<group>"; };
+		EC2F25D71DD442D000B67BBA /* ProductDetailSubViewsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSubViewsProvider.m; sourceTree = "<group>"; };
+		EC2F25D91DD44A2000B67BBA /* ProductDetailBaseToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailBaseToolBar.h; sourceTree = "<group>"; };
+		EC2F25DA1DD44A2000B67BBA /* ProductDetailBaseToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailBaseToolBar.m; sourceTree = "<group>"; };
+		EC2F25DC1DD45DEC00B67BBA /* GEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEnum.h; sourceTree = "<group>"; };
 		EC31CF5F1DA9239800C49E29 /* BuryPointManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuryPointManager.h; sourceTree = "<group>"; };
 		EC31CF601DA9239800C49E29 /* BuryPointManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuryPointManager.m; sourceTree = "<group>"; };
 		EC31CF631DA9DBA300C49E29 /* NotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
@@ -3024,9 +3031,9 @@
 		ECFFC6CD1DC363C1002DBFB9 /* ProductDetailTwoColumnToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTwoColumnToolBar.xib; sourceTree = "<group>"; };
 		ECFFC6CE1DC363C1002DBFB9 /* ProductDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailView.h; sourceTree = "<group>"; };
 		ECFFC6CF1DC363C1002DBFB9 /* ProductDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailView.m; sourceTree = "<group>"; };
-		ECFFC6D11DC363C1002DBFB9 /* ProductDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailToolBar.h; sourceTree = "<group>"; };
-		ECFFC6D21DC363C1002DBFB9 /* ProductDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailToolBar.m; sourceTree = "<group>"; };
-		ECFFC6D31DC363C1002DBFB9 /* ProductDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailToolBar.xib; sourceTree = "<group>"; };
+		ECFFC6D11DC363C1002DBFB9 /* ProductDetailNormalToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailNormalToolBar.h; sourceTree = "<group>"; };
+		ECFFC6D21DC363C1002DBFB9 /* ProductDetailNormalToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailNormalToolBar.m; sourceTree = "<group>"; };
+		ECFFC6D31DC363C1002DBFB9 /* ProductDetailNormalToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailNormalToolBar.xib; sourceTree = "<group>"; };
 		ECFFC6D41DC363C1002DBFB9 /* ProductDetailToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailToolBarButton.h; sourceTree = "<group>"; };
 		ECFFC6D51DC363C1002DBFB9 /* ProductDetailToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailToolBarButton.m; sourceTree = "<group>"; };
 		ECFFC6D91DC363C1002DBFB9 /* ProductDetailAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailAddressViewController.h; sourceTree = "<group>"; };
@@ -3430,8 +3437,7 @@
 		EC2F259D1DD3262700B67BBA /* V */ = {
 			isa = PBXGroup;
 			children = (
-				EC2F25BF1DD3506200B67BBA /* CollectProductAllView.h */,
-				EC2F25C01DD3506200B67BBA /* CollectProductAllView.m */,
+				EC2F25CE1DD40DDD00B67BBA /* View */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -3530,6 +3536,24 @@
 				EC2F25CC1DD35BD000B67BBA /* CollectProductBaseView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EC2F25CE1DD40DDD00B67BBA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25CF1DD40DDD00B67BBA /* CollectProductAllView.h */,
+				EC2F25D01DD40DDD00B67BBA /* CollectProductAllView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC2F25D21DD4428600B67BBA /* S */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F25D61DD442D000B67BBA /* ProductDetailSubViewsProvider.h */,
+				EC2F25D71DD442D000B67BBA /* ProductDetailSubViewsProvider.m */,
+			);
+			path = S;
 			sourceTree = "<group>";
 		};
 		EC31CF5E1DA9233C00C49E29 /* BuryPoint */ = {
@@ -6926,6 +6950,7 @@
 				EC4FC4F01D77CEEE00BBD050 /* GHeader.h */,
 				EC4FC4F11D77CEEE00BBD050 /* Macro.h */,
 				EC4FC4F21D77CEEE00BBD050 /* Single.h */,
+				EC2F25DC1DD45DEC00B67BBA /* GEnum.h */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -8273,6 +8298,7 @@
 		ECFFC6411DC363C1002DBFB9 /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
+				EC2F25D21DD4428600B67BBA /* S */,
 				ECFFC6421DC363C1002DBFB9 /* C */,
 				ECFFC6451DC363C1002DBFB9 /* M */,
 				ECFFC6701DC363C1002DBFB9 /* V */,
@@ -8593,9 +8619,11 @@
 		ECFFC6D01DC363C1002DBFB9 /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
-				ECFFC6D11DC363C1002DBFB9 /* ProductDetailToolBar.h */,
-				ECFFC6D21DC363C1002DBFB9 /* ProductDetailToolBar.m */,
-				ECFFC6D31DC363C1002DBFB9 /* ProductDetailToolBar.xib */,
+				EC2F25D91DD44A2000B67BBA /* ProductDetailBaseToolBar.h */,
+				EC2F25DA1DD44A2000B67BBA /* ProductDetailBaseToolBar.m */,
+				ECFFC6D11DC363C1002DBFB9 /* ProductDetailNormalToolBar.h */,
+				ECFFC6D21DC363C1002DBFB9 /* ProductDetailNormalToolBar.m */,
+				ECFFC6D31DC363C1002DBFB9 /* ProductDetailNormalToolBar.xib */,
 				ECFFC6D41DC363C1002DBFB9 /* ProductDetailToolBarButton.h */,
 				ECFFC6D51DC363C1002DBFB9 /* ProductDetailToolBarButton.m */,
 				EC97C0301DD0814D001E1246 /* ProductDetailTicketToolBar.h */,
@@ -9106,7 +9134,7 @@
 				EC4FC4971D77CEE400BBD050 /* FlashServiceOrderDetailRemarksCell.xib in Resources */,
 				EC4FC4101D77CEE400BBD050 /* AppointmentOrderListCell.xib in Resources */,
 				EC4FC3D21D77CEE400BBD050 /* StrategyTableViewCell.xib in Resources */,
-				ECFFC7361DC363C1002DBFB9 /* ProductDetailToolBar.xib in Resources */,
+				ECFFC7361DC363C1002DBFB9 /* ProductDetailNormalToolBar.xib in Resources */,
 				EC4FC2C61D77CEE400BBD050 /* FDServeDetailCell.xib in Resources */,
 				EC4FC3EB1D77CEE400BBD050 /* ParentingStrategyDetailView.xib in Resources */,
 				EC4FC3FB1D77CEE400BBD050 /* AccountSettingViewCell.xib in Resources */,
@@ -9316,6 +9344,7 @@
 				EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */,
 				ECF5D10C1DB8CE3900A1B268 /* TCHomeMainCollectionCell.m in Sources */,
 				EC4FC3DB1D77CEE400BBD050 /* StrategyTagColumnModel.m in Sources */,
+				EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC3481D77CEE400BBD050 /* FlashAdvanceSettlementReadRuleCell.m in Sources */,
 				EC4FC4341D77CEE400BBD050 /* CommentListViewController.m in Sources */,
 				EC4FC3B11D77CEE400BBD050 /* StoreDetailRelatedStrategyListViewController.m in Sources */,
@@ -9438,7 +9467,7 @@
 				EC4FC3E81D77CEE400BBD050 /* ParentingStrategyDetailModel.m in Sources */,
 				EC4FC3971D77CEE400BBD050 /* StoreDetailTitleCell.m in Sources */,
 				ECFFC72E1DC363C1002DBFB9 /* ProductDetailTwoColumnTableViewEmptyCell.m in Sources */,
-				ECFFC7351DC363C1002DBFB9 /* ProductDetailToolBar.m in Sources */,
+				ECFFC7351DC363C1002DBFB9 /* ProductDetailNormalToolBar.m in Sources */,
 				EC4FC2421D77CEE400BBD050 /* AppVersionManager.m in Sources */,
 				EC4FC3901D77CEE400BBD050 /* StoreDetailNearbyModel.m in Sources */,
 				EC4FC2241D77CEE400BBD050 /* TabBarController.m in Sources */,
@@ -9527,7 +9556,6 @@
 				EC4FC5E91D77CEEF00BBD050 /* UIImage+MWPhotoBrowser.m in Sources */,
 				EC4FC2B61D77CEE400BBD050 /* CategoryItemCell.m in Sources */,
 				EC4FC2971D77CEE400BBD050 /* ArticleCommentHeader.m in Sources */,
-				EC2F25C11DD3506200B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC2711D77CEE400BBD050 /* KTCShareService.m in Sources */,
 				ECF5D1081DB8CE3900A1B268 /* TCHomeRecommendModel.m in Sources */,
 				EC4FC2931D77CEE400BBD050 /* ArticleMoreCommentsViewController.m in Sources */,
@@ -9738,6 +9766,7 @@
 				EC630DEA1DCB81610088145E /* ScreenshotManager.m in Sources */,
 				ECFFC7371DC363C1002DBFB9 /* ProductDetailToolBarButton.m in Sources */,
 				EC4FC3DC1D77CEE400BBD050 /* ParentingStrategyViewController.m in Sources */,
+				EC2F25DB1DD44A2000B67BBA /* ProductDetailBaseToolBar.m in Sources */,
 				EC4FC5AA1D77CEEF00BBD050 /* ATCountDown.m in Sources */,
 				EC4FC3951D77CEE400BBD050 /* StoreDetailStrategyCell.m in Sources */,
 				EC4FC4AE1D77CEE400BBD050 /* OrderListViewModel.m in Sources */,
@@ -9810,6 +9839,7 @@
 				EC4FC4D21D77CEE400BBD050 /* UserCenterViewController.m in Sources */,
 				EC4FC2271D77CEE400BBD050 /* KTCActionView.m in Sources */,
 				ECFFC6EF1DC363C1002DBFB9 /* ProduceDetialCommentItem.m in Sources */,
+				EC2F25D81DD442D000B67BBA /* ProductDetailSubViewsProvider.m in Sources */,
 				EC4FC4CF1D77CEE400BBD050 /* SoftwareSettingModel.m in Sources */,
 				EC4FC34C1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.m in Sources */,
 				ECBCCECE1DBF145C001B9571 /* QRCodeScanBarCodeModel.m in Sources */,

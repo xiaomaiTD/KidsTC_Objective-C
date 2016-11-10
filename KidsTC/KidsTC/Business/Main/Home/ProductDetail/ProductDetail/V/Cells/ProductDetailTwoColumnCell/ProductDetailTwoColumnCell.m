@@ -112,13 +112,6 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     [self setupSections];
     
     [self.tableView reloadData];
-    
-    //if (!_selfHasload) {
-        //if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-          //  [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeReloadWebViewOrConsult value:nil];
-        //}
-        //_selfHasload = YES;
-    //}
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
