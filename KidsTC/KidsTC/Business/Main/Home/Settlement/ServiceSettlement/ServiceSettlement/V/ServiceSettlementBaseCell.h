@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     ServiceSettlementBaseCellActionTypeScore,
     ServiceSettlementBaseCellActionTypeChangePayType,
     ServiceSettlementBaseCellActionTypeBuyNumDidChange,
+    ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange,
 } ServiceSettlementBaseCellActionType;
 
 @class ServiceSettlementBaseCell;

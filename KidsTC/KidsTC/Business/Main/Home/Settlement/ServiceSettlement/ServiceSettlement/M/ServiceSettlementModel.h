@@ -10,6 +10,11 @@
 #import "UserAddressManageModel.h"
 #import "SettlementPickStoreModel.h"
 
+typedef enum : NSUInteger {
+    TicketGetTypeCar,
+    TicketGetTypeSelf,
+} TicketGetType;
+
 @interface ServiceSettlementCouponItem : NSObject
 @property (nonatomic, strong) NSString  *name;
 @property (nonatomic, strong) NSString  *code;
@@ -61,6 +66,8 @@
 @property (nonatomic, assign) BOOL isFreightDiscount;
 @property (nonatomic, assign) NSInteger minBuyNum;
 @property (nonatomic, assign) NSInteger maxBuyNum;
+
+@property (nonatomic, assign) TicketGetType ticketGetType;
 @end
 
 @interface ServiceSettlementModel : NSObject

@@ -15,6 +15,7 @@
 #import "ParentingStrategyDetailViewController.h"
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
+#import "NSString+Category.h"
 
 #define pageCount 10
 
@@ -31,6 +32,9 @@ static NSString *ID = @"StrategyTableViewCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pageId = 10802;
+    self.trackParams = @{@"tagId":@(self.tagId)};
     
     self.ary = [NSMutableArray array];
     

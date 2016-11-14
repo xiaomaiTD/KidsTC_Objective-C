@@ -9,6 +9,8 @@
 #import "ProductDetailSubViewsProvider.h"
 #import "NSString+Category.h"
 
+#import "ProductDetailViewTicketHeader.h"
+
 #import "ProductDetailBannerCell.h"
 #import "ProductDetailInfoCell.h"
 #import "ProductDetailDateCell.h"
@@ -27,6 +29,11 @@
 #import "ProductDetailCommentCell.h"
 #import "ProductDetailCommentMoreCell.h"
 #import "ProductDetailRecommendCell.h"
+#import "ProductDetailTicketInfoCell.h"
+#import "ProductDetailTicketDesCell.h"
+#import "ProductDetailTicketPromiseCell.h"
+#import "ProductDetailTicketActorCell.h"
+#import "ProductDetaiFreeInfoCell.h"
 
 #import "ProductDetailNormalToolBar.h"
 #import "ProductDetailTicketToolBar.h"
@@ -35,23 +42,45 @@
 @implementation ProductDetailSubViewsProvider
 singleM(ProductDetailSubViewsProvider)
 
+- (ProductDetailViewBaseHeader *)header {
+    ProductDetailViewBaseHeader *header = nil;
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            header = self.ticketHeader;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            header = self.ticketHeader;
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            header = nil;
+        }
+            break;
+    }
+    return header;
+}
+
 - (NSArray<NSArray<ProductDetailBaseCell *> *> *)sections {
     
     NSArray<NSArray<ProductDetailBaseCell *> *> *sections = nil;
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            sections = [self normalSections];
+            sections = [self ticketSections];
         }
             break;
         case ProductDetailTypeTicket:
         {
-            sections = [self normalSections];
+            sections = [self ticketSections];
         }
             break;
         case ProductDetailTypeFree:
         {
-            sections = [self normalSections];
+            sections = [self freeSections];
         }
             break;
     }
@@ -192,6 +221,153 @@ singleM(ProductDetailSubViewsProvider)
     return [NSArray arrayWithArray:sections];
 }
 
+- (NSArray<NSArray<ProductDetailBaseCell *> *> *)ticketSections {
+    NSMutableArray *sections = [NSMutableArray array];
+    
+    //info
+    NSMutableArray *section00 = [NSMutableArray array];
+    [section00 addObject:self.ticketInfoCell];
+    [section00 addObject:self.ticketDesCell];
+    if (section00.count>0) [sections addObject:section00];
+    
+    //address
+    NSMutableArray *section01 = [NSMutableArray array];
+    if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
+        [section01 addObject:self.dateCell];
+    }
+    if (_data.store.count>0) {
+        [section01 addObject:self.addressCell];
+    }
+    [section01 addObject:self.ticketPromiseCell];
+    if (section01.count>0) [sections addObject:section01];
+    
+    
+    //content
+    [_data.buyNotice enumerateObjectsUsingBlock:^(ProductDetailBuyNotice *obj1, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section02 = [NSMutableArray new];
+        if ([obj1.title isNotNull]) {
+            ProductDetailTitleCell *titleCell = self.titleCell;
+            titleCell.text = obj1.title;
+            [section02 addObject:titleCell];
+        }
+        [obj1.notice enumerateObjectsUsingBlock:^(ProductDetailNotice *obj2, NSUInteger idx, BOOL *stop) {
+            ProductDetailContentEleCell *contentEleCell = self.contentEleCell;
+            contentEleCell.notice = obj2;
+            [section02 addObject:contentEleCell];
+        }];
+        if (obj1.notice.count>0) {
+            [section02 addObject:self.contentEleEmptyCell];
+        }
+        if (section02.count>0) [sections addObject:section02];
+    }];
+    
+    //actor
+    NSMutableArray *section03 = [NSMutableArray array];
+    [section03 addObject:self.ticketActorCell];
+    if (section03.count>0) [sections addObject:section03];
+    
+    //detail
+    NSMutableArray *section04 = [NSMutableArray new];
+    _twoColumnCellUsed = self.twoColumnCell;
+    _twoColumnBottomBarCellUsed = self.twoColumnBottomBarCell;
+    [section04 addObject:_twoColumnCellUsed];
+    [section04 addObject:_twoColumnBottomBarCellUsed];
+    _twoColumnSectionUsed = sections.count;
+    if (section04.count>0) {
+        [sections addObject:section04];
+    }
+    
+    //套餐明细
+    if (_data.product_standards.count>0) {
+        NSMutableArray *section05 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell = self.titleCell;
+        titleCell.text = @"套餐明细";
+        [section05 addObject:titleCell];
+        [_data.product_standards enumerateObjectsUsingBlock:^(ProductDetailStandard *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailStandardCell *standardCell = self.standardCell;
+            standardCell.index = idx;
+            [section05 addObject:standardCell];
+        }];
+        if (section05.count>0) [sections addObject:section05];
+    }
+    
+    
+    //领取优惠券
+    if (_data.coupons.count>0 && _data.canProvideCoupon) {
+        NSMutableArray *section06 = [NSMutableArray new];
+        [section06 addObject:self.couponCell];
+        if (section06.count>0) [sections addObject:section06];
+    }
+    
+    //购买须知
+    NSMutableArray *section07 = [NSMutableArray new];
+    ProductDetailTitleCell *titleCell07 = self.titleCell;
+    titleCell07.text = @"购买须知";
+    [section07 addObject:titleCell07];
+    if (_data.insurance.items.count>0) {
+        [section07 addObject:self.noticeCell];
+    }
+    if (_data.attApply.count>0) {
+        [_data.attApply enumerateObjectsUsingBlock:^(NSAttributedString *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailApplyCell *applyCell = self.applyCell;
+            applyCell.attStr = obj;
+            [section07 addObject:applyCell];
+        }];
+    }
+    [section07 addObject:self.contactCell];
+    if (section07.count>0) [sections addObject:section07];
+    
+    
+    //活动评价
+    if (_data.commentList.count>0) {
+        NSMutableArray *section08 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell08 = self.titleCell;
+        titleCell08.text = @"活动评价";
+        [section08 addObject:titleCell08];
+        [_data.commentList enumerateObjectsUsingBlock:^(ProduceDetialCommentItem *obj, NSUInteger idx, BOOL *stop) {
+            if (idx>=5) {
+                *stop = YES;
+            }else{
+                ProductDetailCommentCell *commentCell = self.commentCell;
+                commentCell.index = idx;
+                [section08 addObject:commentCell];
+            }
+        }];
+        [section08 addObject:self.commentMoreCell];
+        if (section08.count>0) [sections addObject:section08];
+    }
+    
+    if (_data.recommends.count>0) {
+        NSMutableArray *section09 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell09 = self.titleCell;
+        titleCell09.text = @"为您推荐";
+        [section09 addObject:titleCell09];
+        [_data.recommends enumerateObjectsUsingBlock:^(ProductDetailRecommendItem *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailRecommendCell *recommendCell = self.recommendCell;
+            recommendCell.index = idx;
+            [section09 addObject:recommendCell];
+        }];
+        if (section09.count>0) [sections addObject:section09];
+    }
+    
+    return [NSArray arrayWithArray:sections];
+}
+
+- (NSArray<NSArray<ProductDetailBaseCell *> *> *)freeSections {
+    NSMutableArray *sections = [NSMutableArray array];
+    
+    NSMutableArray *section00 = [NSMutableArray array];
+    if (section00.count>0) [sections addObject:section00];
+    
+    return [NSArray arrayWithArray:sections];
+}
+
+#pragma mark - header
+
+- (ProductDetailViewTicketHeader *)ticketHeader {
+    return [self viewWithNib:@"ProductDetailViewTicketHeader"];
+}
+
 #pragma mark - cells
 
 - (ProductDetailBannerCell *)bannerCell {
@@ -266,6 +442,26 @@ singleM(ProductDetailSubViewsProvider)
     return [self viewWithNib:@"ProductDetailRecommendCell"];
 }
 
+- (ProductDetailTicketInfoCell *)ticketInfoCell {
+    return [self viewWithNib:@"ProductDetailTicketInfoCell"];
+}
+
+- (ProductDetailTicketDesCell *)ticketDesCell {
+    return [self viewWithNib:@"ProductDetailTicketDesCell"];
+}
+
+- (ProductDetailTicketPromiseCell *)ticketPromiseCell {
+    return [self viewWithNib:@"ProductDetailTicketPromiseCell"];
+}
+
+- (ProductDetailTicketActorCell *)ticketActorCell {
+    return [self viewWithNib:@"ProductDetailTicketActorCell"];
+}
+
+- (ProductDetaiFreeInfoCell *)freeInfoCell {
+    return [self viewWithNib:@"ProductDetaiFreeInfoCell"];
+}
+
 #pragma mark - toolBar
 
 - (ProductDetailTwoColumnToolBar *)twoColumnToolBar {
@@ -282,22 +478,34 @@ singleM(ProductDetailSubViewsProvider)
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            toolBar = [self viewWithNib:@"ProductDetailNormalToolBar"];
+            toolBar = self.ticketToolBar;
         }
             break;
         case ProductDetailTypeTicket:
         {
-            toolBar = [self viewWithNib:@"ProductDetailTicketToolBar"];
+            toolBar = self.ticketToolBar;
         }
             break;
         case ProductDetailTypeFree:
         {
-            toolBar = [self viewWithNib:@"ProductDetaiFreeToolBar"];
+            toolBar = self.freeToolBar;
         }
             break;
     }
     
     return toolBar;
+}
+
+- (ProductDetailNormalToolBar *)normalToolBar {
+    return [self viewWithNib:@"ProductDetailNormalToolBar"];
+}
+
+- (ProductDetailTicketToolBar *)ticketToolBar {
+    return [self viewWithNib:@"ProductDetailTicketToolBar"];
+}
+
+- (ProductDetaiFreeToolBar *)freeToolBar {
+    return [self viewWithNib:@"ProductDetaiFreeToolBar"];
 }
 
 #pragma mark - viewWithNib

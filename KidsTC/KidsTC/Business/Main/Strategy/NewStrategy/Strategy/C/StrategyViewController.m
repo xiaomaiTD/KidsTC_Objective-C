@@ -224,7 +224,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if (self.models.count>index) {
         [params setValue:@(self.models[index].currentTagId) forKey:@"tagId"];
     }
-    [BuryPointManager trackEvent:@"event_click_stgy_tag" actionId:21401 params:nil];
+    [BuryPointManager trackEvent:@"event_click_stgy_tag" actionId:21401 params:params];
 }
 
 #pragma mark - UIScrollViewDelegate

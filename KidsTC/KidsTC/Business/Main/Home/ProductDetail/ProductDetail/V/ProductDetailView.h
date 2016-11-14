@@ -26,6 +26,9 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeComment,//查看评论
     ProductDetailViewActionTypeMoreComment,//查看全部评论
     ProductDetailViewActionTypeRecommend,//为您推荐
+    ProductDetailViewActionTypeTicketLike,//票务 - 想看
+    ProductDetailViewActionTypeTicketStar,//票务 - 评分
+    ProductDetailViewActionTypeTicketOpenDes,//票务 - 展开描述
     
     //twoColumnToolBar
     ProductDetailViewActionTypeTwoColumnToolBarDetail = 100,//展示商品H5详情
@@ -38,6 +41,13 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeToolBarConsult = 300,//在线咨询
     ProductDetailViewActionTypeToolBarAttention,//(添加/取消)关注
     ProductDetailViewActionTypeToolBarBuyNow,//立即购买
+    ProductDetailViewActionTypeTicketToolBarComment,//票务 - 评价
+    ProductDetailViewActionTypeTicketToolBarStar,//票务 - 想看
+    ProductDetailViewActionTypeTicketToolBarSelectSeat,//票务 - 选座购票
+    
+    //header
+    ProductDetailViewActionTypeTicketHeaderLike = 400,//票务 - 想看
+    ProductDetailViewActionTypeTicketHeaderStar,//票务 - 评分
     
 } ProductDetailViewActionType;
 

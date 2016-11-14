@@ -9,8 +9,8 @@
 #import "ProductDetailToolBarButton.h"
 
 static CGFloat const kTitle_h = 17;
-static CGFloat const kTitle_b = 2;
-static CGFloat const kImage_s = 30;
+static CGFloat const kTitle_b = 4;
+static CGFloat const kImage_s = 26;
 
 @implementation ProductDetailToolBarButton
 

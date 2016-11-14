@@ -41,8 +41,7 @@
         if (type == ProductDetailBaseToolBarActionTypeAttention) {
             [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
                 self.data.isFavor = !self.data.isFavor;
-                NSString *imageName = self.data.isFavor?@"ProductDetail_11":@"ProductDetail_04";
-                [self.attentionBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+                self.attentionBtn.selected = self.data.isFavor;
             }];
         }
     }
@@ -50,9 +49,7 @@
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    if (data) self.hidden = NO;
-    NSString *imageName = data.isFavor?@"ProductDetail_11":@"ProductDetail_04";
-    [self.attentionBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    self.attentionBtn.selected = self.data.isFavor;
     self.buyBtn.enabled = data.isCanBuy;
     [self.buyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
 }

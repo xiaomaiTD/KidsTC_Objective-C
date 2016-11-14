@@ -25,6 +25,9 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeComment,//查看评论
     ProductDetailBaseCellActionTypeMoreComment,//查看全部评论
     ProductDetailBaseCellActionTypeRecommend,//为您推荐
+    ProductDetailBaseCellActionTypeTicketLike,//票务 - 想看
+    ProductDetailBaseCellActionTypeTicketStar,//票务 - 评分
+    ProductDetailBaseCellActionTypeTicketOpenDes,//票务 - 展开描述
     
 } ProductDetailBaseCellActionType;
 

@@ -16,23 +16,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOa-0Q-Pn8">
-                        <rect key="frame" x="126" y="12" width="95.5" height="20"/>
+                        <rect key="frame" x="109.5" y="14" width="79.5" height="16"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4O9-HD-cUf">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_promise_1" translatesAutoresizingMaskIntoConstraints="NO" id="4O9-HD-cUf">
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="4uj-k5-zi6"/>
+                                    <constraint firstAttribute="width" constant="16" id="4uj-k5-zi6"/>
                                     <constraint firstAttribute="width" secondItem="4O9-HD-cUf" secondAttribute="height" multiplier="1:1" id="fkw-Dg-LNu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全交易" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7w-JW-upH">
-                                <rect key="frame" x="26" y="0.0" width="69.5" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="18" y="0.0" width="61.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -41,7 +40,7 @@
                         <constraints>
                             <constraint firstItem="4O9-HD-cUf" firstAttribute="leading" secondItem="ZOa-0Q-Pn8" secondAttribute="leading" id="7no-el-jRk"/>
                             <constraint firstAttribute="bottom" secondItem="z7w-JW-upH" secondAttribute="bottom" id="AOf-c9-uzP"/>
-                            <constraint firstItem="z7w-JW-upH" firstAttribute="leading" secondItem="4O9-HD-cUf" secondAttribute="trailing" constant="6" id="DZK-2t-hKu"/>
+                            <constraint firstItem="z7w-JW-upH" firstAttribute="leading" secondItem="4O9-HD-cUf" secondAttribute="trailing" constant="2" id="DZK-2t-hKu"/>
                             <constraint firstAttribute="trailing" secondItem="z7w-JW-upH" secondAttribute="trailing" id="GwZ-Zj-AjV"/>
                             <constraint firstItem="4O9-HD-cUf" firstAttribute="top" secondItem="ZOa-0Q-Pn8" secondAttribute="top" id="PgH-WQ-QGw"/>
                             <constraint firstItem="z7w-JW-upH" firstAttribute="top" secondItem="ZOa-0Q-Pn8" secondAttribute="top" id="eFX-oe-nXV"/>
@@ -49,19 +48,18 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0g-3G-GlP">
-                        <rect key="frame" x="233.5" y="11" width="95.5" height="20"/>
+                        <rect key="frame" x="201" y="13" width="79.5" height="16"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-UJ-cbN">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_promise_2" translatesAutoresizingMaskIntoConstraints="NO" id="RVn-UJ-cbN">
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RVn-UJ-cbN" secondAttribute="height" multiplier="1:1" id="KJZ-DY-YCd"/>
-                                    <constraint firstAttribute="width" constant="20" id="Nl2-kr-130"/>
+                                    <constraint firstAttribute="width" constant="16" id="Nl2-kr-130"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无票赔付" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIT-30-tBM">
-                                <rect key="frame" x="26" y="0.0" width="69.5" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="18" y="0.0" width="61.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,23 +72,22 @@
                             <constraint firstItem="mIT-30-tBM" firstAttribute="top" secondItem="b0g-3G-GlP" secondAttribute="top" id="U5N-5J-I4L"/>
                             <constraint firstAttribute="bottom" secondItem="mIT-30-tBM" secondAttribute="bottom" id="gJW-Ve-6EW"/>
                             <constraint firstItem="RVn-UJ-cbN" firstAttribute="leading" secondItem="b0g-3G-GlP" secondAttribute="leading" id="mKO-JB-Tno"/>
-                            <constraint firstItem="mIT-30-tBM" firstAttribute="leading" secondItem="RVn-UJ-cbN" secondAttribute="trailing" constant="6" id="t47-2j-DxC"/>
+                            <constraint firstItem="mIT-30-tBM" firstAttribute="leading" secondItem="RVn-UJ-cbN" secondAttribute="trailing" constant="2" id="t47-2j-DxC"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Or6-Z6-WuZ">
-                        <rect key="frame" x="12" y="11" width="102" height="20"/>
+                        <rect key="frame" x="12" y="13" width="85.5" height="16"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fe7-4d-iuh">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_promise_0" translatesAutoresizingMaskIntoConstraints="NO" id="fe7-4d-iuh">
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fe7-4d-iuh" secondAttribute="height" multiplier="1:1" id="Mmx-V4-R8u"/>
-                                    <constraint firstAttribute="width" constant="20" id="gZ8-qS-dLn"/>
+                                    <constraint firstAttribute="width" constant="16" id="gZ8-qS-dLn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%真票" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YX-1T-S8R">
-                                <rect key="frame" x="26" y="0.0" width="76" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="18" y="0.0" width="67.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -101,7 +98,7 @@
                             <constraint firstAttribute="bottom" secondItem="4YX-1T-S8R" secondAttribute="bottom" id="Ui9-GV-B22"/>
                             <constraint firstItem="fe7-4d-iuh" firstAttribute="leading" secondItem="Or6-Z6-WuZ" secondAttribute="leading" id="lcD-Gv-T6A"/>
                             <constraint firstAttribute="bottom" secondItem="fe7-4d-iuh" secondAttribute="bottom" id="q3B-nB-B7e"/>
-                            <constraint firstItem="4YX-1T-S8R" firstAttribute="leading" secondItem="fe7-4d-iuh" secondAttribute="trailing" constant="6" id="rXV-SE-tGr"/>
+                            <constraint firstItem="4YX-1T-S8R" firstAttribute="leading" secondItem="fe7-4d-iuh" secondAttribute="trailing" constant="2" id="rXV-SE-tGr"/>
                             <constraint firstItem="fe7-4d-iuh" firstAttribute="top" secondItem="Or6-Z6-WuZ" secondAttribute="top" id="sMb-yh-z2g"/>
                             <constraint firstAttribute="trailing" secondItem="4YX-1T-S8R" secondAttribute="trailing" id="yEG-ra-Ln1"/>
                         </constraints>
@@ -116,7 +113,12 @@
                     <constraint firstItem="Or6-Z6-WuZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="jMC-FW-GZB"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="52.5" y="52"/>
+            <point key="canvasLocation" x="-102" y="14"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ticket_promise_0" width="28" height="33"/>
+        <image name="ticket_promise_1" width="28" height="33"/>
+        <image name="ticket_promise_2" width="28" height="33"/>
+    </resources>
 </document>

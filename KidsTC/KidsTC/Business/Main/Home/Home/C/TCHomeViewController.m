@@ -333,6 +333,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     
     if (smallIndex * w == offsetX) {
         self.currentCategory = self.categorys[smallIndex];
+        [BuryPointManager trackEvent:@"event_change_home_category" actionId:20105 params:nil];
     }
 }
 
@@ -435,6 +436,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)multiItemsToolBar:(MultiItemsToolBar *)multiItemsToolBar didSelectedIndex:(NSUInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    [BuryPointManager trackEvent:@"event_change_home_category" actionId:20105 params:nil];
 }
 
 #pragma mark setupBackToTop

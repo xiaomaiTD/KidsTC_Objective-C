@@ -521,7 +521,7 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
         [self.navigationController pushViewController:userArticleCommentsVC animated:YES];
         NSMutableDictionary *params = [NSMutableDictionary new];
         if ([userArticleCommentsVC.userId isNotNull]) {
-            [params setValue:userArticleCommentsVC.userId forKey:@"id"];
+            [params setValue:userArticleCommentsVC.userId forKey:@"uid"];
         }
         [BuryPointManager trackEvent:@"event_skip_news_usrcenter" actionId:21203 params:params];
     };
@@ -533,7 +533,7 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
         [self.navigationController pushViewController:userArticleCommentsVC animated:YES];
         NSMutableDictionary *params = [NSMutableDictionary new];
         if ([userArticleCommentsVC.userId isNotNull]) {
-            [params setValue:userArticleCommentsVC.userId forKey:@"id"];
+            [params setValue:userArticleCommentsVC.userId forKey:@"uid"];
         }
         [BuryPointManager trackEvent:@"event_skip_news_usrcenter" actionId:21203 params:params];
     };

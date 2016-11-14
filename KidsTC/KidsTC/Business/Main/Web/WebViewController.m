@@ -365,7 +365,7 @@ typedef enum : NSUInteger {
             
             NSDictionary *params = @{@"url":self.urlString,
                                      @"orderId":orderId};
-            [BuryPointManager trackEvent:@"event_skip_stgy_detail" actionId:30005 params:params];
+            [BuryPointManager trackEvent:@"event_skip_order_detail" actionId:30005 params:params];
         }];
     }else{
         [[iToast makeText:@"关联id为空"] show];

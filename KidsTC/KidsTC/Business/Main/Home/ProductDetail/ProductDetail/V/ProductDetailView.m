@@ -13,15 +13,18 @@
 #import "NSArray+Category.h"
 
 #import "ProductDetailSubViewsProvider.h"
+#import "ProductDetailViewBaseHeader.h"
 #import "ProductDetailTwoColumnToolBar.h"
 #import "ProductDetailBaseToolBar.h"
 #import "ProductDetailCountDownView.h"
 
 static NSString *const ID = @"UITableViewCell";
+static CGFloat const kTicketHeaderH = 274;
 
-@interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
+@interface ProductDetailView ()<ProductDetailViewBaseHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
 @property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ProductDetailViewBaseHeader *header;
 @property (nonatomic, strong) NSArray<NSArray<ProductDetailBaseCell *> *> *sections;
 @property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
 @property (nonatomic, strong) ProductDetailCountDownView *countDownView;
@@ -55,6 +58,7 @@ static NSString *const ID = @"UITableViewCell";
     CGFloat self_w = CGRectGetWidth(self.bounds);
     CGFloat self_h = CGRectGetHeight(self.bounds);
     
+    
     _tableView.frame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
     [self setupTwoColumnToolBarFrame];
     CGFloat countDownView_y = self_h - kProductDetailCountDownViewHeight - kProductDetailBaseToolBarHeight;
@@ -68,6 +72,7 @@ static NSString *const ID = @"UITableViewCell";
     
     _subViewProvider.data = data;
     _sections = _subViewProvider.sections;
+    _header.data = data;
     _twoColumnToolBar.count = data.advisoryCount;
     _countDownView.data = data;
     _toolBar.data = data;
@@ -153,6 +158,31 @@ static NSString *const ID = @"UITableViewCell";
         _subViewProvider.twoColumnCellUsed.webViewHasOpen = YES;
         [self reload];
     }
+}
+
+#pragma mark - setupHeader
+
+//- (void)setupHeader {
+//    _header = _subViewProvider.header;
+//    _header.delegate = self;
+//    _header.bounds = CGRectMake(0, 0, SCREEN_WIDTH, kTicketHeaderH);
+//    //_tableView.tableHeaderView = _header;
+//    //_header.hidden = YES;
+//}
+//
+//- (void)setupHeaderFrame {
+//    CGFloat offsetY = _tableViewContentOffset.y;
+//    if (offsetY<=0) {
+//        CGRect frame = _header.frame;
+//        frame.size.height =  kTicketHeaderH - offsetY;
+//        _twoColumnToolBar.frame = frame;
+//    }
+//}
+
+#pragma mark ProductDetailViewBaseHeaderDelegate
+
+- (void)productDetailViewBaseHeader:(ProductDetailViewBaseHeader *)header actionType:(ProductDetailViewBaseHeaderActionType)type value:(id)value {
+    [self action:(ProductDetailViewActionType)type value:value];
 }
 
 #pragma mark - setupTwoColumnToolBar

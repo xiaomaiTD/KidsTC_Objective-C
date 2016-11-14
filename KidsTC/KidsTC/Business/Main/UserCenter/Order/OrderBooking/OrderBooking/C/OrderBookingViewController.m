@@ -49,6 +49,14 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"在线预约";
+    if (![_orderNo isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        [self back];
+        return;
+    }
+    
+    self.pageId = 11006;
+    self.trackParams = @{@"orderId":_orderNo};
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;

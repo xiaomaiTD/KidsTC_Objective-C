@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface ServiceSettlementViewController : ViewController
-
+@property (nonatomic, assign) ProductDetailType type;
 @end

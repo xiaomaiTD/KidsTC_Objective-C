@@ -11,10 +11,12 @@
 
 #import "ProductDetailData.h"
 
+#import "ProductDetailViewBaseHeader.h"
 #import "ProductDetailBaseCell.h"
 #import "ProductDetailTwoColumnToolBar.h"
 #import "ProductDetailCountDownView.h"
 #import "ProductDetailBaseToolBar.h"
+
 #import "ProductDetailTwoColumnCell.h"
 #import "ProductDetailTwoColumnBottomBarCell.h"
 
@@ -26,6 +28,8 @@ singleH(ProductDetailSubViewsProvider)
 @property (nonatomic, strong) ProductDetailTwoColumnCell *twoColumnCellUsed;
 @property (nonatomic, strong) ProductDetailTwoColumnBottomBarCell *twoColumnBottomBarCellUsed;
 @property (nonatomic, assign) NSUInteger twoColumnSectionUsed;
+
+- (ProductDetailViewBaseHeader *)header;
 
 - (NSArray<NSArray<ProductDetailBaseCell *> *> *)sections;
 

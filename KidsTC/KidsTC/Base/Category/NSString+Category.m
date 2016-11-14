@@ -115,6 +115,10 @@
 
 - (BOOL)isNotNull{
     
+    if ([self isKindOfClass:[NSNull class]]) {
+        return false;
+    }
+    
     return (self &&
             [self isKindOfClass:[NSString class]] &&
             self.length>0 &&

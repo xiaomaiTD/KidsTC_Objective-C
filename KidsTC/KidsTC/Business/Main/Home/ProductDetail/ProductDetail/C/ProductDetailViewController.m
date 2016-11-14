@@ -17,9 +17,7 @@
 #import "OnlineCustomerService.h"
 #import "UIBarButtonItem+Category.h"
 
-#import "ProductDetailModel.h"
-#import "ProductDetailRecommendModel.h"
-#import "ProductDetailConsultModel.h"
+#import "ProductDetailDataManager.h"
 #import "ProductDetailGetCouponModel.h"
 
 #import "SegueMaster.h"
@@ -36,6 +34,7 @@
 #import "CommonShareViewController.h"
 #import "StoreDetailViewController.h"
 #import "ProductDetailGetCouponListViewController.h"
+#import "ProductDetailTicketSelectSeatViewController.h"
 
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
@@ -44,6 +43,7 @@
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) ProductDetailView *detailView;
+@property (nonatomic, strong) ProductDetailDataManager *dataManager;
 @end
 
 @implementation ProductDetailViewController
@@ -77,6 +77,11 @@
     
     self.naviTheme = NaviThemeWihte;
     
+    _dataManager = [ProductDetailDataManager shareProductDetailDataManager];
+    _dataManager.type = _type;
+    _dataManager.productId = _productId;
+    _dataManager.channelId = _channelId;
+    
     [self loadData];
     
     [self buildRightBarButtons];
@@ -92,36 +97,26 @@
 }
 
 - (void)loadData {
-    
-    NSString *location  = [[KTCMapService shareKTCMapService] currentLocationString];
-    NSDictionary *param = @{@"pid":_productId,
-                            @"chid":_channelId,
-                            @"mapaddr":location};
     [TCProgressHUD showSVP];
-    [Request startWithName:@"PRODUCT_GETDETAIL_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [_dataManager loadDataWithSuccessBlock:^(ProductDetailData *data) {
         [TCProgressHUD dismissSVP];
-        ProductDetailModel *model = [ProductDetailModel modelWithDictionary:dic];
-        if (model.data) {
-            [self loadProductSuccess:model.data];
-            [self loadRecommend];
-            [self loadConsult];
-        }else{
-            [self loadProductFailure:nil];
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self loadDataSuccess:data];
+    } failureBlock:^(NSError *error) {
         [TCProgressHUD dismissSVP];
-        [self loadProductFailure:error];
+        [self loadDataFailure:error];
     }];
 }
 
-- (void)loadProductSuccess:(ProductDetailData *)data{
+- (void)loadDataSuccess:(ProductDetailData *)data{
     _data = data;
     self.detailView.data = data;
     self.navigationItem.title = data.simpleName;
     [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
+    [self loadRecommend];
+    [self loadConsult];
 }
 
-- (void)loadProductFailure:(NSError *)error {
+- (void)loadDataFailure:(NSError *)error {
     [[iToast makeText:@"商品信息查询失败"] show];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -129,29 +124,19 @@
 #pragma mark - loadRecommend
 
 - (void)loadRecommend {
-    NSDictionary *param = @{@"pid":_productId};
-    [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        ProductDetailRecommendModel *model = [ProductDetailRecommendModel modelWithDictionary:dic];
-        if (model.data.count>0) {
-            _data.recommends = model.data;
-            self.detailView.data = _data;
-        }
-    } failure:nil];
-    
+    [_dataManager loadRecommendSuccessBlock:^(NSArray<ProductDetailRecommendItem *> *recommends) {
+        _data.recommends = recommends;
+        self.detailView.data = _data;
+    } failureBlock:nil];
 }
 
 #pragma mark - loadConsult
 
 - (void)loadConsult {
-    NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@"1",
-                            @"pageIndex":@(1),
-                            @"pageSize":@(20)};
-    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        ProductDetailConsultModel *model = [ProductDetailConsultModel modelWithDictionary:dic];
-        _data.consults = model.items;
+    [_dataManager loadConsultSuccessBlock:^(NSArray<ProductDetailConsultItem *> *items) {
+        _data.consults = items;
         self.detailView.data = _data;
-    } failure:nil];
+    } failureBlock:nil];
 }
 
 #pragma mark - ProductDetailViewDelegate
@@ -233,6 +218,21 @@
             [self recommend:value];
         }
             break;
+        case ProductDetailViewActionTypeTicketLike://票务 - 想看
+        {
+        
+        }
+            break;
+        case ProductDetailViewActionTypeTicketStar://票务 - 评分
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeTicketOpenDes://票务 - 展开描述
+        {
+            
+        }
+            break;
         case ProductDetailViewActionTypeTwoColumnToolBarDetail://展示商品H5详情
         {}
             break;
@@ -261,6 +261,31 @@
             [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
                 [self buyNow:value];
             }];
+        }
+            break;
+        case ProductDetailViewActionTypeTicketToolBarComment://票务 - 评价
+        {
+        
+        }
+            break;
+        case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeTicketToolBarSelectSeat://票务 - 选座购票
+        {
+            [self ticketSelectSeat:value];
+        }
+            break;
+        case ProductDetailViewActionTypeTicketHeaderLike://票务 - 想看
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeTicketHeaderStar://票务 - 评分
+        {
+            
         }
             break;
     }
@@ -562,10 +587,15 @@
 }
 
 - (void)goSettlement {
-    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
-        [self.navigationController pushViewController:controller animated:YES];
-    }];
+    ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - ticketSelectSeat
+
+- (void)ticketSelectSeat:(id)value {
+    ProductDetailTicketSelectSeatViewController *controller = [[ProductDetailTicketSelectSeatViewController alloc] initWithNibName:@"ProductDetailTicketSelectSeatViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - buildRightBarButtons

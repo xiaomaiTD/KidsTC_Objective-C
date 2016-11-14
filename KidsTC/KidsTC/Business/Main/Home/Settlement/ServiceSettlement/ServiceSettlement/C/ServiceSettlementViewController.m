@@ -20,6 +20,9 @@
 #import "ServiceSettlementCouponCell.h"
 #import "ServiceSettlementPayTypeCell.h"
 #import "ServiceSettlementPayInfoCell.h"
+#import "ServiceSettlementTicketPriceCell.h"
+#import "ServiceSettlementTicketGetCell.h"
+#import "ServiceSettlementTicketGetSelfCell.h"
 
 #import "ServiceSettlementToolBar.h"
 
@@ -42,15 +45,17 @@
 #define TOOLBAR_HEIGHT 60
 
 @interface ServiceSettlementViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceSettlementBaseCellDelegate>
-@property (nonatomic,   weak) UITableView                      *tableView;
-@property (nonatomic,   weak) ServiceSettlementToolBar         *tooBar;
-@property (nonatomic, strong) ServiceSettlementTipAddressCell  *tipAddressCell;
-@property (nonatomic, strong) ServiceSettlementAddressCell     *addressCell;
-@property (nonatomic, strong) ServiceSettlementServiceInfoCell *serViceInfoCell;
-@property (nonatomic, strong) ServiceSettlementBuyNumCell      *buyNumCell;
-@property (nonatomic, strong) ServiceSettlementStoreInfoCell   *storeInfoCell;
-@property (nonatomic, strong) ServiceSettlementCouponCell      *couponCell;
-@property (nonatomic, strong) ServiceSettlementPayTypeCell     *payTypeCell;
+@property (nonatomic,   weak) UITableView                           *tableView;
+@property (nonatomic,   weak) ServiceSettlementToolBar              *tooBar;
+@property (nonatomic, strong) ServiceSettlementTipAddressCell       *tipAddressCell;
+@property (nonatomic, strong) ServiceSettlementAddressCell          *addressCell;
+@property (nonatomic, strong) ServiceSettlementServiceInfoCell      *serViceInfoCell;
+@property (nonatomic, strong) ServiceSettlementBuyNumCell           *buyNumCell;
+@property (nonatomic, strong) ServiceSettlementStoreInfoCell        *storeInfoCell;
+@property (nonatomic, strong) ServiceSettlementCouponCell           *couponCell;
+@property (nonatomic, strong) ServiceSettlementPayTypeCell          *payTypeCell;
+@property (nonatomic, strong) ServiceSettlementTicketGetCell        *ticketGetCell;
+@property (nonatomic, strong) ServiceSettlementTicketGetSelfCell    *ticketGetSelfCell;
 @property (nonatomic, strong) NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections;
 
 @property (nonatomic, assign) NSUInteger scoreNum;
@@ -101,20 +106,24 @@
 
 - (void)prepareCells{
     
-    _tipAddressCell           = [self viewWithNib:@"ServiceSettlementTipAddressCell"];
-    _tipAddressCell.delegate  = self;
-    _addressCell              = [self viewWithNib:@"ServiceSettlementAddressCell"];
-    _addressCell.delegate     = self;
-    _serViceInfoCell          = [self viewWithNib:@"ServiceSettlementServiceInfoCell"];
-    _serViceInfoCell.delegate = self;
-    _buyNumCell               = [self viewWithNib:@"ServiceSettlementBuyNumCell"];
-    _buyNumCell.delegate      = self;
-    _storeInfoCell            = [self viewWithNib:@"ServiceSettlementStoreInfoCell"];
-    _storeInfoCell.delegate   = self;
-    _couponCell               = [self viewWithNib:@"ServiceSettlementCouponCell"];
-    _couponCell.delegate      = self;
-    _payTypeCell              = [self viewWithNib:@"ServiceSettlementPayTypeCell"];
-    _payTypeCell.delegate     = self;
+    _tipAddressCell             = [self viewWithNib:@"ServiceSettlementTipAddressCell"];
+    _tipAddressCell.delegate    = self;
+    _addressCell                = [self viewWithNib:@"ServiceSettlementAddressCell"];
+    _addressCell.delegate       = self;
+    _serViceInfoCell            = [self viewWithNib:@"ServiceSettlementServiceInfoCell"];
+    _serViceInfoCell.delegate   = self;
+    _buyNumCell                 = [self viewWithNib:@"ServiceSettlementBuyNumCell"];
+    _buyNumCell.delegate        = self;
+    _storeInfoCell              = [self viewWithNib:@"ServiceSettlementStoreInfoCell"];
+    _storeInfoCell.delegate     = self;
+    _couponCell                 = [self viewWithNib:@"ServiceSettlementCouponCell"];
+    _couponCell.delegate        = self;
+    _payTypeCell                = [self viewWithNib:@"ServiceSettlementPayTypeCell"];
+    _payTypeCell.delegate       = self;
+    _ticketGetCell              = [self viewWithNib:@"ServiceSettlementTicketGetCell"];
+    _ticketGetCell.delegate     = self;
+    _ticketGetSelfCell          = [self viewWithNib:@"ServiceSettlementTicketGetSelfCell"];
+    _ticketGetSelfCell.delegate = self;
 }
 
 - (id)viewWithNib:(NSString *)nib{
@@ -153,11 +162,38 @@
             self.model = model;
             self.tooBar.item = item;
             [self.tableView reloadData];
+            
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            NSString *pid = self.model.data.firstObject.serveId;
+            if ([pid isNotNull]) {
+                [params setValue:pid forKey:@"pid"];
+            }
+            NSString *cid = self.model.data.firstObject.channelId;
+            if ([cid isNotNull]) {
+                [params setValue:cid forKey:@"cid"];
+            }
         }
     }
 }
 
 - (void)setupSections:(ServiceSettlementModel *)model{
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            [self setupTicketSections:model];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            [self setupTicketSections:model];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)setupNormalSections:(ServiceSettlementModel *)model{
     ServiceSettlementDataItem *item = model.data.firstObject;
     NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
     //收货地址
@@ -188,17 +224,17 @@
     [sections addObject:section03];
     //结算信息
     NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
-    ServiceSettlementPayInfoCell *pricePayInfoCell = [self viewWithNib:@"ServiceSettlementPayInfoCell"];
+    ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
     pricePayInfoCell.type = ServiceSettlementPayInfoCellTypePrice;
     [section04 addObject:pricePayInfoCell];
-    ServiceSettlementPayInfoCell *promotionPayInfoCell = [self viewWithNib:@"ServiceSettlementPayInfoCell"];
+    ServiceSettlementPayInfoCell *promotionPayInfoCell = self.payInfoCell;
     promotionPayInfoCell.type = ServiceSettlementPayInfoCellTypePromotion;
     [section04 addObject:promotionPayInfoCell];
-    ServiceSettlementPayInfoCell *scorePayInfoCell = [self viewWithNib:@"ServiceSettlementPayInfoCell"];
+    ServiceSettlementPayInfoCell *scorePayInfoCell = self.payInfoCell;
     scorePayInfoCell.type = ServiceSettlementPayInfoCellTypeScore;
     [section04 addObject:scorePayInfoCell];
     if (item.transportationExpenses>0) {
-        ServiceSettlementPayInfoCell *transportationExpensesPayInfoCell = [self viewWithNib:@"ServiceSettlementPayInfoCell"];
+        ServiceSettlementPayInfoCell *transportationExpensesPayInfoCell = self.payInfoCell;
         transportationExpensesPayInfoCell.type = ServiceSettlementPayInfoCellTypeTransportationExpenses;
         [section04 addObject:transportationExpensesPayInfoCell];
     }
@@ -207,7 +243,76 @@
     self.sections = sections;
 }
 
+- (void)setupTicketSections:(ServiceSettlementModel *)model{
+    ServiceSettlementDataItem *item = model.data.firstObject;
+    NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
+    
+    //商品、价格
+    NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
+    [section01 addObject:_serViceInfoCell];
+    [section01 addObject:self.ticketPriceCell];
+    [section01 addObject:self.ticketPriceCell];
+    [sections addObject:section01];
+    
+    //取票方式
+    NSMutableArray<ServiceSettlementBaseCell *> *section00 = [NSMutableArray array];
+    [section00 addObject:self.ticketGetCell];
+    switch (item.ticketGetType) {
+        case TicketGetTypeCar:
+        {
+            if (item.userAddress) {
+                [section00 addObject:_addressCell];
+            }else{
+                [section00 addObject:_tipAddressCell];
+            }
+        }
+            break;
+        case TicketGetTypeSelf:
+        {
+            [section00 addObject:_ticketGetSelfCell];
+        }
+            break;
+    }
+    
+    [sections addObject:section00];
+    
+    //优惠券、积分
+    NSMutableArray<ServiceSettlementBaseCell *> *section02 = [NSMutableArray array];
+    [section02 addObject:_couponCell];
+    [sections addObject:section02];
+    //选择支付类型
+    NSMutableArray<ServiceSettlementBaseCell *> *section03 = [NSMutableArray array];
+    [section03 addObject:_payTypeCell];
+    [sections addObject:section03];
+    //结算信息
+    NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
+    ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
+    pricePayInfoCell.type = ServiceSettlementPayInfoCellTypePrice;
+    [section04 addObject:pricePayInfoCell];
+    ServiceSettlementPayInfoCell *promotionPayInfoCell = self.payInfoCell;
+    promotionPayInfoCell.type = ServiceSettlementPayInfoCellTypePromotion;
+    [section04 addObject:promotionPayInfoCell];
+    ServiceSettlementPayInfoCell *scorePayInfoCell = self.payInfoCell;
+    scorePayInfoCell.type = ServiceSettlementPayInfoCellTypeScore;
+    [section04 addObject:scorePayInfoCell];
+    if (item.transportationExpenses>0) {
+        ServiceSettlementPayInfoCell *transportationExpensesPayInfoCell = self.payInfoCell;
+        transportationExpensesPayInfoCell.type = ServiceSettlementPayInfoCellTypeTransportationExpenses;
+        [section04 addObject:transportationExpensesPayInfoCell];
+    }
+    [sections addObject:section04];
+    
+    
+    self.sections = sections;
+}
 
+- (ServiceSettlementPayInfoCell *)payInfoCell {
+    return [self viewWithNib:@"ServiceSettlementPayInfoCell"];
+}
+
+- (ServiceSettlementTicketPriceCell *)ticketPriceCell {
+    return [self viewWithNib:@"ServiceSettlementTicketPriceCell"];
+}
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
@@ -273,8 +378,12 @@
                 [self.tableView reloadData];
             };
             [self.navigationController pushViewController:controller animated:YES];
-            
-            [BuryPointManager trackEvent:@"event_skip_balance_store" actionId:20701 params:nil];
+            NSMutableDictionary *params = [NSMutableDictionary dictionary];
+            NSString *pid = self.model.data.firstObject.serveId;
+            if ([pid isNotNull]) {
+                [params setValue:pid forKey:@"pid"];
+            }
+            [BuryPointManager trackEvent:@"event_skip_balance_store" actionId:20701 params:params];
         }
             break;
         case ServiceSettlementBaseCellActionTypeCoupon:
@@ -330,6 +439,12 @@
         {
             self.buyNum = value;
             [self loadShoppingCart];
+        }
+            break;
+        case ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange:
+        {
+            [self setupSections:_model];
+            [self.tableView reloadData];
         }
             break;
     }

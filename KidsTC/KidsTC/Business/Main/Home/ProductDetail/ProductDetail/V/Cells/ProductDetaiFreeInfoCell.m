@@ -15,5 +15,8 @@
     
 }
 
+- (void)setData:(ProductDetailData *)data {
+    [super setData:data];
+}
 
 @end

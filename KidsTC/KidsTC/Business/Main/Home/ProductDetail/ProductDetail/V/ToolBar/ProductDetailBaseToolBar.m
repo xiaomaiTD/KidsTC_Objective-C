@@ -12,4 +12,9 @@ CGFloat const kProductDetailBaseToolBarHeight = 60;
 
 @implementation ProductDetailBaseToolBar
 
+- (void)setData:(ProductDetailData *)data {
+    _data = data;
+    self.hidden = data==nil;
+}
+
 @end
