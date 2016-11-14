@@ -47,7 +47,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     _ratio = _ratio>0?_ratio:0.6;
     _showTitleContainer = _hasTitle && _titleContent;
     _showBgImageView = _contentType == TCHomeFloorContentTypeTwinklingElf;
-    _showPageControl = _contentType == TCHomeFloorContentTypeBanner;
+    _showPageControl = _contentType == TCHomeFloorContentTypeBanner && _contents.count>0;
     _canAddYYTimer = (_contentType == TCHomeFloorContentTypeBanner ||
                       _contentType == TCHomeFloorContentTypeNotice) && (_contents.count>1);
     _showNotiImageView = _contentType == TCHomeFloorContentTypeNotice;

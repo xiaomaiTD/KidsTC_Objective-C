@@ -9,6 +9,7 @@
 #import "CollectProductViewController.h"
 
 #import "MultiItemsToolBar.h"
+#import "UIBarButtonItem+Category.h"
 
 #import "CollectProductAllViewController.h"
 #import "CollectProductCategoryViewController.h"
@@ -19,6 +20,7 @@
 @interface CollectProductViewController ()<UIScrollViewDelegate,MultiItemsToolBarDelegate>
 @property (nonatomic, strong) MultiItemsToolBar *toolBar;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIButton *naviRightBtn;
 @end
 
 @implementation CollectProductViewController
@@ -28,6 +30,12 @@
     
     self.navigationItem.title = @"收藏服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.naviTheme = NaviThemeWihte;
+    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"编辑" postion:UIBarButtonPositionRight target:self action:@selector(edit) andGetButton:^(UIButton *btn) {
+        [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        self.naviRightBtn = btn;
+    }];
     
     MultiItemsToolBar *toolBar = [[MultiItemsToolBar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
     toolBar.delegate =  self;
@@ -67,6 +75,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
+}
+
+- (void)edit {
+    TCLog(@"---");
 }
 
 #pragma mark - MultiItemsToolBarDelegate

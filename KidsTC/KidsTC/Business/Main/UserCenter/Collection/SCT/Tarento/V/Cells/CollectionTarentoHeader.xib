@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CollectionTarentoHeader">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-Kz-hlA">
+                    <rect key="frame" x="12" y="12" width="80" height="80"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Adf-Kz-hlA" secondAttribute="height" multiplier="1:1" id="qZF-EW-V1A"/>
+                        <constraint firstAttribute="width" constant="80" id="zGl-lB-A3h"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="喜欢 321  阅读 1111  " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2t-U6-cjO">
+                    <rect key="frame" x="242.5" y="22.5" width="120.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="青桔柠檬🍋茶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AA8-r5-0lK">
+                    <rect key="frame" x="100" y="20" width="138.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="今天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2m-Uh-VQO">
+                    <rect key="frame" x="328" y="47.5" width="35" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是帅哥，我是吃货达人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a51-2D-UAZ">
+                    <rect key="frame" x="100" y="49" width="224" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Adf-Kz-hlA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="01l-fc-YoV"/>
+                <constraint firstItem="L2m-Uh-VQO" firstAttribute="leading" secondItem="a51-2D-UAZ" secondAttribute="trailing" constant="4" id="1CL-im-9Em"/>
+                <constraint firstItem="u2t-U6-cjO" firstAttribute="leading" secondItem="AA8-r5-0lK" secondAttribute="trailing" constant="4" id="2ba-Qm-Qok"/>
+                <constraint firstItem="Adf-Kz-hlA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="4cC-pv-r2z"/>
+                <constraint firstAttribute="trailing" secondItem="u2t-U6-cjO" secondAttribute="trailing" constant="12" id="6B1-F7-P56"/>
+                <constraint firstAttribute="trailing" secondItem="L2m-Uh-VQO" secondAttribute="trailing" constant="12" id="BlB-3f-dRb"/>
+                <constraint firstItem="L2m-Uh-VQO" firstAttribute="centerY" secondItem="a51-2D-UAZ" secondAttribute="centerY" id="FeO-Kw-SP2"/>
+                <constraint firstItem="AA8-r5-0lK" firstAttribute="leading" secondItem="Adf-Kz-hlA" secondAttribute="trailing" constant="8" id="GbG-rX-06Q"/>
+                <constraint firstItem="a51-2D-UAZ" firstAttribute="leading" secondItem="Adf-Kz-hlA" secondAttribute="trailing" constant="8" id="LZd-BI-d3p"/>
+                <constraint firstItem="u2t-U6-cjO" firstAttribute="centerY" secondItem="AA8-r5-0lK" secondAttribute="centerY" id="WTV-Fk-SSW"/>
+                <constraint firstItem="AA8-r5-0lK" firstAttribute="top" secondItem="Adf-Kz-hlA" secondAttribute="top" constant="8" id="dWb-Zh-9iw"/>
+                <constraint firstAttribute="bottom" secondItem="Adf-Kz-hlA" secondAttribute="bottom" constant="12" id="hFP-p7-gGz"/>
+                <constraint firstItem="a51-2D-UAZ" firstAttribute="top" secondItem="AA8-r5-0lK" secondAttribute="bottom" constant="8" id="ncA-yh-2wh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="Adf-Kz-hlA" id="qhq-Dd-20n"/>
+                <outlet property="nameL" destination="AA8-r5-0lK" id="P5g-Jw-zhl"/>
+                <outlet property="numL" destination="u2t-U6-cjO" id="OCe-nv-sfz"/>
+                <outlet property="signL" destination="a51-2D-UAZ" id="cha-4T-Zmj"/>
+                <outlet property="timeL" destination="L2m-Uh-VQO" id="yc9-4L-Fgu"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="252"/>
+        </view>
+    </objects>
+</document>

@@ -9,7 +9,7 @@
 #import "CollectProductReduceViewController.h"
 #import "CollectProductReduceView.h"
 
-@interface CollectProductReduceViewController ()<CollectProductBaseViewActionTypeDelegate>
+@interface CollectProductReduceViewController ()<CollectProductBaseViewDelegate>
 @property (nonatomic, strong) CollectProductReduceView *reduceView;
 @end
 
@@ -24,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blueColor];
 }
 
 #pragma mark - CollectProductBaseViewActionTypeDelegate
@@ -43,7 +42,12 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [NSThread sleepForTimeInterval:2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.reduceView endRefresh:NO];
+        });
+    });
 }
 
 @end

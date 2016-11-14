@@ -22,6 +22,7 @@
 #import "AccountSettingViewController.h"
 
 #import "CollectProductViewController.h"
+#import "CollectionSCTViewController.h"
 #import "FavourateViewController.h"
 #import "OrderListViewController.h"
 #import "CommentTableViewController.h"
@@ -31,6 +32,7 @@
 #import "AppointmentOrderListViewController.h"
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
+
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
 @property (nonatomic, strong) AccountCenterModel *model;
@@ -128,6 +130,7 @@
         case AccountCenterViewActionTypeCustomerServices:
         case AccountCenterViewActionTypeOpinion:
         case AccountCenterViewActionTypeSegue:
+        case AccountCenterViewActionTypeLoadRecommend:
         {
             if(resultBlock)resultBlock();
         }
@@ -170,19 +173,19 @@
             break;
         case AccountCenterViewActionTypeCollectionStore:
         {
-            toController = [[FavourateViewController alloc] initWithNibName:@"FavourateViewController" bundle:nil];
+            toController = [[CollectionSCTViewController alloc] init];
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
         case AccountCenterViewActionTypeCollectionContent:
         {
-            toController = [[FavourateViewController alloc] initWithNibName:@"FavourateViewController" bundle:nil];
+            toController = [[CollectionSCTViewController alloc] init];
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
         case AccountCenterViewActionTypeCollectionPeople:
         {
-            toController = [[FavourateViewController alloc] initWithNibName:@"FavourateViewController" bundle:nil];
+            toController = [[CollectionSCTViewController alloc] init];
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
@@ -317,9 +320,24 @@
             }
             [BuryPointManager trackEvent:@"event_skip_usr_banner" actionId:21513 params:params];
         }
+            break;
+        case AccountCenterViewActionTypeLoadRecommend:
+        {
+            [self loadRecommend];
+        }
+            break;
     }
     if (toController) [self.navigationController pushViewController:toController animated:YES];
     
+}
+
+- (void)loadRecommend {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [NSThread sleepForTimeInterval:2];
+       dispatch_async(dispatch_get_main_queue(), ^{
+           [self.accountCenterView endRefresh:NO];
+       });
+    });
 }
 
 

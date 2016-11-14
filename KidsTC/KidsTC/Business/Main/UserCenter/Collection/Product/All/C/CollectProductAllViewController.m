@@ -9,7 +9,7 @@
 #import "CollectProductAllViewController.h"
 #import "CollectProductAllView.h"
 
-@interface CollectProductAllViewController ()<CollectProductBaseViewActionTypeDelegate>
+@interface CollectProductAllViewController ()<CollectProductBaseViewDelegate>
 @property (nonatomic, strong) CollectProductAllView *allView;
 @end
 
@@ -22,12 +22,6 @@
     self.allView = allView;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor redColor];
-    
-}
 
 #pragma mark - CollectProductBaseViewActionTypeDelegate
 
@@ -45,7 +39,12 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [NSThread sleepForTimeInterval:2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.allView endRefresh:NO];
+        });
+    });
 }
 
 @end

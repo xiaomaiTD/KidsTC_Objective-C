@@ -35,6 +35,7 @@
 #import "StoreDetailViewController.h"
 #import "ProductDetailGetCouponListViewController.h"
 #import "ProductDetailTicketSelectSeatViewController.h"
+#import "ProductDetailFreeApplyViewController.h"
 
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
@@ -286,6 +287,21 @@
         case ProductDetailViewActionTypeTicketHeaderStar://票务 - 评分
         {
             
+        }
+            break;
+        case ProductDetailViewActionTypeFreeToolBarLike://免费商详 - 喜欢、收藏
+        {
+            
+        }
+            break;
+        case ProductDetailViewActionTypeFreeToolBarApply://免费商详 - 我要报名
+        {
+            [self freeToolBarApply:value];
+        }
+            break;
+        case ProductDetailViewActionTypeFreeToolBarShare://免费商详 - 分享
+        {
+            [self freeToolBarShare:value]; 
         }
             break;
     }
@@ -598,6 +614,19 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark - FreeToolBarApply
+
+- (void)freeToolBarApply:(id)value {
+    ProductDetailFreeApplyViewController *controller = [[ProductDetailFreeApplyViewController alloc] initWithNibName:@"ProductDetailFreeApplyViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - FreeToolBarShare
+
+- (void)freeToolBarShare:(id)value {
+    [self share];
+}
+
 #pragma mark - buildRightBarButtons
 
 - (void)buildRightBarButtons {
@@ -681,17 +710,21 @@
             break;
         case KTCActionViewTagShare:
         {
-            CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObject sourceType:KTCShareServiceTypeService];
-            [self presentViewController:controller animated:YES completion:nil];
-            
-            NSDictionary *param = @{@"pid":_productId,
-                                    @"cid":_channelId};
-            [BuryPointManager trackEvent:@"event_result_server_share" actionId:20406 params:param];
+            [self share];
         }
             break;
         default:
             break;
     }
+}
+
+- (void)share {
+    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObject sourceType:KTCShareServiceTypeService];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+    NSDictionary *param = @{@"pid":_productId,
+                            @"cid":_channelId};
+    [BuryPointManager trackEvent:@"event_result_server_share" actionId:20406 params:param];
 }
 
 #pragma mark KTCBrowseHistoryViewDataSource & KTCBrowseHistoryViewDelegate

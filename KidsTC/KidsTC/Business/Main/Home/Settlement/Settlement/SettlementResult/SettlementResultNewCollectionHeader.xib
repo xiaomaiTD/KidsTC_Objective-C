@@ -57,10 +57,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gh-x3-WxF">
-                    <rect key="frame" x="60" y="116" width="200" height="38"/>
+                    <rect key="frame" x="22" y="116" width="276" height="38"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3d3-m8-nGu">
-                            <rect key="frame" x="0.0" y="0.0" width="94" height="38"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="38"/>
                             <state key="normal" title=" 去首页 ">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -69,7 +69,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Gm-T9-67B">
-                            <rect key="frame" x="106" y="0.0" width="94" height="38"/>
+                            <rect key="frame" x="156" y="0.0" width="120" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="9Ls-We-BtX"/>
+                            </constraints>
                             <state key="normal" title="    查看报名    ">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -82,7 +85,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="6Bs-Xr-lDs"/>
                         <constraint firstItem="7Gm-T9-67B" firstAttribute="top" secondItem="5Gh-x3-WxF" secondAttribute="top" id="6Xt-rv-gjo"/>
-                        <constraint firstItem="7Gm-T9-67B" firstAttribute="leading" secondItem="3d3-m8-nGu" secondAttribute="trailing" constant="12" id="75b-T0-rW2"/>
+                        <constraint firstItem="7Gm-T9-67B" firstAttribute="leading" secondItem="3d3-m8-nGu" secondAttribute="trailing" constant="36" id="75b-T0-rW2"/>
                         <constraint firstItem="3d3-m8-nGu" firstAttribute="top" secondItem="5Gh-x3-WxF" secondAttribute="top" id="BXl-Eh-scu"/>
                         <constraint firstItem="7Gm-T9-67B" firstAttribute="width" secondItem="3d3-m8-nGu" secondAttribute="width" id="GfO-Kw-jlm"/>
                         <constraint firstAttribute="trailing" secondItem="7Gm-T9-67B" secondAttribute="trailing" id="PBD-f6-l8d"/>
@@ -160,7 +163,7 @@
                 <outlet property="timeL" destination="cfs-ig-PND" id="JQk-KT-d1A"/>
                 <outlet property="tipL" destination="Ub2-IC-0hY" id="58I-UH-uZw"/>
             </connections>
-            <point key="canvasLocation" x="-94" y="-38"/>
+            <point key="canvasLocation" x="-241" y="-33"/>
         </collectionReusableView>
     </objects>
 </document>

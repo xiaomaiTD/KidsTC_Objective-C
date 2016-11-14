@@ -21,6 +21,9 @@ typedef enum : NSUInteger {
     ProductDetailBaseToolBarActionTypeTicketToolBarStar,//票务 - 想看
     ProductDetailBaseToolBarActionTypeTicketToolBarSelectSeat,//票务 - 选座购票
     
+    ProductDetailBaseToolBarActionTypeFreeToolBarLike,//免费商详 - 喜欢、收藏
+    ProductDetailBaseToolBarActionTypeFreeToolBarApply,//免费商详 - 我要报名
+    ProductDetailBaseToolBarActionTypeFreeToolBarShare,//免费商详 - 分享
     
 } ProductDetailBaseToolBarActionType;
 

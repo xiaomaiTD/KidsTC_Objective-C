@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="KGk-i7-Jjw" customClass="CollectionStoreCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eyj-R3-NeT">
+                        <rect key="frame" x="12" y="12" width="130" height="99.5"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="iqO-oe-7gY"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dS3-eP-o9N">
+                        <rect key="frame" x="0.0" y="123.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="jEV-54-faA"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="¥10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFZ-Ch-Mhn">
+                        <rect key="frame" x="150" y="90" width="158" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="圣诞节狂欢派对买二送一，爸妈与萌宝轻松度过美好的圣诞夜快来报名~" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLT-SD-Vdh">
+                        <rect key="frame" x="150" y="12" width="158" height="70"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JFZ-Ch-Mhn" firstAttribute="top" secondItem="JLT-SD-Vdh" secondAttribute="bottom" constant="8" id="2mb-Uw-tqo"/>
+                    <constraint firstAttribute="trailing" secondItem="JLT-SD-Vdh" secondAttribute="trailing" constant="12" id="8un-di-zF0"/>
+                    <constraint firstAttribute="trailing" secondItem="dS3-eP-o9N" secondAttribute="trailing" id="EiT-Zu-oUj"/>
+                    <constraint firstItem="Eyj-R3-NeT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Fwi-Io-Ic2"/>
+                    <constraint firstAttribute="bottom" secondItem="dS3-eP-o9N" secondAttribute="bottom" id="L9K-vC-tUO"/>
+                    <constraint firstItem="JFZ-Ch-Mhn" firstAttribute="bottom" secondItem="Eyj-R3-NeT" secondAttribute="bottom" id="PFO-B4-00W"/>
+                    <constraint firstItem="JFZ-Ch-Mhn" firstAttribute="leading" secondItem="Eyj-R3-NeT" secondAttribute="trailing" constant="8" id="bJP-8z-0Nl"/>
+                    <constraint firstAttribute="trailing" secondItem="JFZ-Ch-Mhn" secondAttribute="trailing" constant="12" id="fJn-ke-m5J"/>
+                    <constraint firstItem="dS3-eP-o9N" firstAttribute="top" secondItem="Eyj-R3-NeT" secondAttribute="bottom" constant="12" id="ffi-bb-JLk"/>
+                    <constraint firstItem="JLT-SD-Vdh" firstAttribute="leading" secondItem="Eyj-R3-NeT" secondAttribute="trailing" constant="8" id="izX-uG-5A0"/>
+                    <constraint firstItem="dS3-eP-o9N" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mLA-Jv-59c"/>
+                    <constraint firstItem="JLT-SD-Vdh" firstAttribute="top" secondItem="Eyj-R3-NeT" secondAttribute="top" id="rOI-yb-HEX"/>
+                    <constraint firstItem="Eyj-R3-NeT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="t1e-pf-I5e"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="icon" destination="Eyj-R3-NeT" id="P9M-Rh-TaY"/>
+                <outlet property="nameL" destination="JLT-SD-Vdh" id="d7c-Y4-0EV"/>
+                <outlet property="priceL" destination="JFZ-Ch-Mhn" id="bwo-ce-Pn8"/>
+            </connections>
+            <point key="canvasLocation" x="-246" y="-157.5"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -7,6 +7,8 @@
 //
 
 #import "AccountCenterView.h"
+#import "RefreshFooter.h"
+
 
 #import "AccountCenterHeader.h"
 #import "AccountCenterBaseCell.h"
@@ -44,6 +46,12 @@ static NSString *const ID = @"UITableViewCell";
         self.tableView = tableView;
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
         
+        WeakSelf(self)
+        RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
+            StrongSelf(self)
+            [self loadRecommend];
+        }];
+        tableView.mj_footer = footer;
     }
     return self;
 }
@@ -53,6 +61,20 @@ static NSString *const ID = @"UITableViewCell";
     self.header.model = model;
     [self setupMainSections];
     [self.tableView reloadData];
+}
+
+- (void)endRefresh:(BOOL)noMoreData {
+    if (noMoreData) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }else{
+        [self.tableView.mj_footer endRefreshing];
+    }
+}
+
+- (void)loadRecommend {
+    if ([self.delegate respondsToSelector:@selector(accountCenterView:actionType:value:)]) {
+        [self.delegate accountCenterView:self actionType:AccountCenterViewActionTypeLoadRecommend value:nil];
+    }
 }
 
 - (id)viewWithNib:(NSString *)nib {

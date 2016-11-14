@@ -45,6 +45,8 @@ typedef enum : NSUInteger {
     
     AccountCenterViewActionTypeSegue,
     
+    AccountCenterViewActionTypeLoadRecommend,
+    
 } AccountCenterViewActionType;
 
 @class AccountCenterView;
@@ -55,4 +57,5 @@ typedef enum : NSUInteger {
 @interface AccountCenterView : UIView
 @property (nonatomic, strong) AccountCenterModel *model;
 @property (nonatomic, weak) id<AccountCenterViewDelegate> delegate;
+- (void)endRefresh:(BOOL)noMoreData;
 @end

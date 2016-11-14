@@ -13,11 +13,13 @@ typedef enum : NSUInteger {
 } CollectProductBaseViewActionType;
 
 @class CollectProductBaseView;
-@protocol CollectProductBaseViewActionTypeDelegate <NSObject>
+@protocol CollectProductBaseViewDelegate <NSObject>
 - (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value;
 @end
 
 @interface CollectProductBaseView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, weak) id<CollectProductBaseViewActionTypeDelegate> delegate;
+//这里修饰delegate的关键字必须为strong，原因是controller不被navi栈强引用，如果delegate不为strong，则delegate为nil
+@property (nonatomic, strong) id<CollectProductBaseViewDelegate> delegate;
+- (void)endRefresh:(BOOL)noMoreData;
 @end

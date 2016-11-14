@@ -34,6 +34,8 @@
 #import "ProductDetailTicketPromiseCell.h"
 #import "ProductDetailTicketActorCell.h"
 #import "ProductDetaiFreeInfoCell.h"
+#import "ProductDetaiFreeStoreInfoCell.h"
+#import "ProductDetaiFreeLifeTipCell.h"
 
 #import "ProductDetailNormalToolBar.h"
 #import "ProductDetailTicketToolBar.h"
@@ -70,17 +72,17 @@ singleM(ProductDetailSubViewsProvider)
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            sections = [self ticketSections];
+            sections = self.freeSections;
         }
             break;
         case ProductDetailTypeTicket:
         {
-            sections = [self ticketSections];
+            sections = self.ticketSections;
         }
             break;
         case ProductDetailTypeFree:
         {
-            sections = [self freeSections];
+            sections = self.freeSections;
         }
             break;
     }
@@ -354,10 +356,142 @@ singleM(ProductDetailSubViewsProvider)
 }
 
 - (NSArray<NSArray<ProductDetailBaseCell *> *> *)freeSections {
-    NSMutableArray *sections = [NSMutableArray array];
     
-    NSMutableArray *section00 = [NSMutableArray array];
+    NSMutableArray *sections = [NSMutableArray new];
+    
+    NSMutableArray *section00 = [NSMutableArray new];
+    if (_data.narrowImg.count>0) {
+        [section00 addObject:self.bannerCell];
+    }
+    [section00 addObject:self.freeInfoCell];
     if (section00.count>0) [sections addObject:section00];
+    
+    //content
+    [_data.buyNotice enumerateObjectsUsingBlock:^(ProductDetailBuyNotice *obj1, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section01 = [NSMutableArray new];
+        if ([obj1.title isNotNull]) {
+            ProductDetailTitleCell *titleCell = self.titleCell;
+            titleCell.text = obj1.title;
+            [section01 addObject:titleCell];
+        }
+        [obj1.notice enumerateObjectsUsingBlock:^(ProductDetailNotice *obj2, NSUInteger idx, BOOL *stop) {
+            ProductDetailContentEleCell *contentEleCell = self.contentEleCell;
+            contentEleCell.notice = obj2;
+            [section01 addObject:contentEleCell];
+        }];
+        if (obj1.notice.count>0) {
+            [section01 addObject:self.contentEleEmptyCell];
+        }
+        if (section01.count>0) [sections addObject:section01];
+    }];
+    
+    NSMutableArray *section02 = [NSMutableArray new];
+    if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
+        [section02 addObject:self.dateCell];
+    }
+    if (_data.store.count>0) {
+        [section02 addObject:self.addressCell];
+    }
+    if (section02.count>0) [sections addObject:section02];
+    
+    //他们已参加
+    if (_data.comment.userHeadImgs.count>0) {
+        NSMutableArray *section03 = [NSMutableArray new];
+        [section03 addObject:self.joinCell];
+        if (section03.count>0) [sections addObject:section03];
+    }
+    
+    //detail
+    NSMutableArray *section04 = [NSMutableArray new];
+    _twoColumnCellUsed = self.twoColumnCell;
+    _twoColumnBottomBarCellUsed = self.twoColumnBottomBarCell;
+    [section04 addObject:_twoColumnCellUsed];
+    [section04 addObject:_twoColumnBottomBarCellUsed];
+    _twoColumnSectionUsed = sections.count;
+    if (section04.count>0) {
+        [sections addObject:section04];
+    }
+    
+    //套餐明细
+    if (_data.product_standards.count>0) {
+        NSMutableArray *section05 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell = self.titleCell;
+        titleCell.text = @"套餐明细";
+        [section05 addObject:titleCell];
+        [_data.product_standards enumerateObjectsUsingBlock:^(ProductDetailStandard *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailStandardCell *standardCell = self.standardCell;
+            standardCell.index = idx;
+            [section05 addObject:standardCell];
+        }];
+        if (section05.count>0) [sections addObject:section05];
+    }
+    
+    
+    //领取优惠券
+    if (_data.coupons.count>0 && _data.canProvideCoupon) {
+        NSMutableArray *section06 = [NSMutableArray new];
+        [section06 addObject:self.couponCell];
+        if (section06.count>0) [sections addObject:section06];
+    }
+    
+    //购买须知
+    NSMutableArray *section07 = [NSMutableArray new];
+    ProductDetailTitleCell *titleCell07 = self.titleCell;
+    titleCell07.text = @"购买须知";
+    [section07 addObject:titleCell07];
+    if (_data.insurance.items.count>0) {
+        [section07 addObject:self.noticeCell];
+    }
+    if (_data.attApply.count>0) {
+        [_data.attApply enumerateObjectsUsingBlock:^(NSAttributedString *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailApplyCell *applyCell = self.applyCell;
+            applyCell.attStr = obj;
+            [section07 addObject:applyCell];
+        }];
+    }
+    [section07 addObject:self.contactCell];
+    if (section07.count>0) [sections addObject:section07];
+    
+    
+    //活动评价
+    if (_data.commentList.count>0) {
+        NSMutableArray *section08 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell08 = self.titleCell;
+        titleCell08.text = @"活动评价";
+        [section08 addObject:titleCell08];
+        [_data.commentList enumerateObjectsUsingBlock:^(ProduceDetialCommentItem *obj, NSUInteger idx, BOOL *stop) {
+            if (idx>=5) {
+                *stop = YES;
+            }else{
+                ProductDetailCommentCell *commentCell = self.commentCell;
+                commentCell.index = idx;
+                [section08 addObject:commentCell];
+            }
+        }];
+        [section08 addObject:self.commentMoreCell];
+        if (section08.count>0) [sections addObject:section08];
+    }
+    
+    NSMutableArray *section09 = [NSMutableArray new];
+    [section09 addObject:self.freeStoreInfoCell];
+    if (section09.count>0) [sections addObject:section09];
+    
+    NSMutableArray *section10 = [NSMutableArray new];
+    [section10 addObject:self.freeLifeTipCell];
+    if (section10.count>0) [sections addObject:section10];
+    
+    if (_data.recommends.count>0) {
+        NSMutableArray *section11 = [NSMutableArray new];
+        ProductDetailTitleCell *titleCell09 = self.titleCell;
+        titleCell09.text = @"为您推荐";
+        [section11 addObject:titleCell09];
+        [_data.recommends enumerateObjectsUsingBlock:^(ProductDetailRecommendItem *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailRecommendCell *recommendCell = self.recommendCell;
+            recommendCell.index = idx;
+            [section11 addObject:recommendCell];
+        }];
+        if (section11.count>0) [sections addObject:section11];
+    }
     
     return [NSArray arrayWithArray:sections];
 }
@@ -462,6 +596,14 @@ singleM(ProductDetailSubViewsProvider)
     return [self viewWithNib:@"ProductDetaiFreeInfoCell"];
 }
 
+- (ProductDetaiFreeStoreInfoCell *)freeStoreInfoCell {
+    return [self viewWithNib:@"ProductDetaiFreeStoreInfoCell"];
+}
+
+- (ProductDetaiFreeLifeTipCell *)freeLifeTipCell {
+    return [self viewWithNib:@"ProductDetaiFreeLifeTipCell"];
+}
+
 #pragma mark - toolBar
 
 - (ProductDetailTwoColumnToolBar *)twoColumnToolBar {
@@ -478,7 +620,7 @@ singleM(ProductDetailSubViewsProvider)
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            toolBar = self.ticketToolBar;
+            toolBar = self.freeToolBar;
         }
             break;
         case ProductDetailTypeTicket:

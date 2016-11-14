@@ -15,6 +15,10 @@
 @end
 
 @interface MultiItemsToolBar : UIView
+@property (nonatomic, weak) MultiItemsToolBarScrollView *scrollView;
+@property (nonatomic, weak) UIView *line;
+@property (nonatomic, weak) CAGradientLayer *leftLayer;
+@property (nonatomic, weak) CAGradientLayer *rightLayer;
 @property (nonatomic, strong) NSArray<NSString *> *tags;
 @property (nonatomic, weak) id<MultiItemsToolBarDelegate> delegate;
 - (void)changeTipPlaceWithSmallIndex:(NSUInteger)smallIndex

@@ -39,8 +39,6 @@ static NSString *const ID = @"UITableViewCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60;
-    tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-    tableView.scrollIndicatorInsets = tableView.contentInset;
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
@@ -63,8 +61,18 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)loadData:(BOOL)refresh {
+    TCLog(@"self.delegate:%@",self.delegate);
     if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
         [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeLoadData value:@(refresh)];
+    }
+}
+
+- (void)endRefresh:(BOOL)noMoreData {
+    [self.tableView.mj_header endRefreshing];
+    if (noMoreData) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    } else {
+        [self.tableView.mj_footer endRefreshing];
     }
 }
 
@@ -88,6 +96,10 @@ static NSString *const ID = @"UITableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

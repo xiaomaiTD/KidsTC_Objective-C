@@ -14,10 +14,6 @@
 #define OpenTipLabelText @"    切换栏目"
 
 @interface MultiItemsToolBar ()<MultiItemsToolBarScrollViewDelegate,MultiItemsToolBarOpenViewDelegate>
-@property (nonatomic, weak) MultiItemsToolBarScrollView *scrollView;
-@property (nonatomic, weak) UIView *line;
-@property (nonatomic, weak) CAGradientLayer *leftLayer;
-@property (nonatomic, weak) CAGradientLayer *rightLayer;
 @property (nonatomic, weak) UILabel *openTipLabel;
 @property (nonatomic, weak) UIButton *openBtn;
 @property (nonatomic, weak) MultiItemsToolBarOpenView *openView;

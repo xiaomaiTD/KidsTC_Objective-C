@@ -7,23 +7,37 @@
 //
 
 #import "CollectProductReduceView.h"
+#import "CollectProductReduceCell.h"
+
+static NSString *const ID = @"CollectProductReduceCell";
+
 @interface CollectProductReduceView ()
 @end
 
 @implementation CollectProductReduceView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self.tableView registerNib:[UINib nibWithNibName:@"CollectProductReduceCell" bundle:nil] forCellReuseIdentifier:ID];
+    }
+    return self;
+}
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    CollectProductReduceCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
+    return cell;
 }
 
 @end
