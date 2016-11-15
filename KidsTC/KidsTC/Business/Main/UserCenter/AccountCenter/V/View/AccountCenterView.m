@@ -8,7 +8,7 @@
 
 #import "AccountCenterView.h"
 #import "RefreshFooter.h"
-
+#import "Colours.h"
 
 #import "AccountCenterHeader.h"
 #import "AccountCenterBaseCell.h"
@@ -42,6 +42,7 @@ static NSString *const ID = @"UITableViewCell";
         tableView.estimatedRowHeight = 60;
         tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
         tableView.scrollIndicatorInsets = tableView.contentInset;
+        tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
         [self addSubview:tableView];
         self.tableView = tableView;
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
@@ -84,7 +85,7 @@ static NSString *const ID = @"UITableViewCell";
 - (AccountCenterHeader *)header{
     if (!_header) {
         _header = [self viewWithNib:@"AccountCenterHeader"];
-        _header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 220);
+        _header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
         _header.delegate = self;
         self.tableView.tableHeaderView = _header;
     }
@@ -201,7 +202,7 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 8;
+    return 12;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

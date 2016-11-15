@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UIView *headBgView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgRatio;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgH;
 @end
 
 @implementation AccountCenterHeader
@@ -37,6 +37,15 @@
     
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.headBgView addGestureRecognizer:tapGR];
+    
+    UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
+    CGSize bgSize = bgImage.size;
+    CGFloat bgImageW = bgSize.width;
+    CGFloat bgImageH = bgSize.height;
+    if (bgImageW !=0 && bgImageH != 0) {
+        self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
+        [self layoutIfNeeded];
+    }
 }
 
 - (void)setupLayer:(CALayer *)layer {

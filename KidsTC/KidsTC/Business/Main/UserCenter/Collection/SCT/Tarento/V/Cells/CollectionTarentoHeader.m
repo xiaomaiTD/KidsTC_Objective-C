@@ -23,6 +23,8 @@
     [super awakeFromNib];
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.icon.layer.borderWidth = LINE_H;
+    self.icon.layer.cornerRadius = CGRectGetWidth(self.icon.bounds) * 0.5;
+    self.icon.layer.masksToBounds = YES;
     
 }
 

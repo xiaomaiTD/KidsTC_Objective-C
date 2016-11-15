@@ -7,6 +7,7 @@
 //
 
 #import "AccountCenterCollectionsCell.h"
+#import "Colours.h"
 
 @interface AccountCenterCollectionsCell ()
 @property (weak, nonatomic) IBOutlet UIButton *productBtn;
@@ -29,6 +30,24 @@
     self.storeBtn.tag = AccountCenterCellActionTypeCollectionStore;
     self.contentBtn.tag = AccountCenterCellActionTypeCollectionContent;
     self.peopleBtn.tag = AccountCenterCellActionTypeCollectionPeople;
+    
+    [self setBtnColor:self.productBtn];
+    [self setBtnColor:self.storeBtn];
+    [self setBtnColor:self.contentBtn];
+    [self setBtnColor:self.peopleBtn];
+    
+    [self setLabelColor:self.productNumL];
+    [self setLabelColor:self.storeNumL];
+    [self setLabelColor:self.contentNumL];
+    [self setLabelColor:self.peopleNumL];
+}
+
+- (void)setBtnColor:(UIButton *)btn {
+    [btn setTitleColor:[UIColor colorFromHexString:@"444444"] forState:UIControlStateNormal];
+}
+
+- (void)setLabelColor:(UILabel *)label {
+    label.textColor = [UIColor colorFromHexString:@"222222"];
 }
 
 - (IBAction)action:(UIButton *)sender {

@@ -8,6 +8,7 @@
 
 #import "UserAddressManageModel.h"
 #import "UserAddressEditModel.h"
+#import "NSString+Category.h"
 
 @implementation UserAddressManageDataItem
 + (NSDictionary *)modelCustomPropertyMapper {
@@ -19,11 +20,11 @@
 }
 - (void)setupAddressDesc{
     NSMutableString *addressDescription = [NSMutableString string];
-    if (_provinceName.length>0) [addressDescription appendString:_provinceName];
-    if (_cityName.length>0) [addressDescription appendString:_cityName];
-    if (_districtName.length>0) [addressDescription appendString:_districtName];
-    if (_streetName.length>0) [addressDescription appendString:_streetName];
-    if (_address.length>0) [addressDescription appendString:_address];
+    if ([_provinceName isNotNull]) [addressDescription appendString:_provinceName];
+    if ([_cityName isNotNull]) [addressDescription appendString:_cityName];
+    if ([_districtName isNotNull]) [addressDescription appendString:_districtName];
+    if ([_streetName isNotNull]) [addressDescription appendString:_streetName];
+    if ([_address isNotNull]) [addressDescription appendString:_address];
     _addressDescription = addressDescription;
 }
 

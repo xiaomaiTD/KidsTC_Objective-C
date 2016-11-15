@@ -13,14 +13,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AccountCenterHeader">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userCenter_bg" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Dn-YeR">
-                    <rect key="frame" x="0.0" y="-295" width="375" height="515"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_bg" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Dn-YeR">
+                    <rect key="frame" x="0.0" y="-228" width="375" height="428"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="n5F-Dn-YeR" secondAttribute="height" multiplier="75:103" id="C28-3P-hqg"/>
-                        <constraint firstAttribute="width" constant="375" id="TXn-tU-BWR"/>
+                        <constraint firstAttribute="height" constant="428" id="2jY-1o-39x"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-6J-HT2">
@@ -29,13 +28,14 @@
                         <constraint firstAttribute="width" constant="44" id="07z-Pt-fnj"/>
                         <constraint firstAttribute="width" secondItem="fYf-6J-HT2" secondAttribute="height" multiplier="1:1" id="ttc-Zt-2Xv"/>
                     </constraints>
-                    <state key="normal" image="nav_setting_icon"/>
+                    <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <state key="normal" image="accountCenter_setting"/>
                     <connections>
                         <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="Jpy-vs-XeX"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-B5-XOg">
-                    <rect key="frame" x="144" y="67" width="86" height="86"/>
+                    <rect key="frame" x="144" y="57" width="86" height="86"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userCenter_header_noLogin" translatesAutoresizingMaskIntoConstraints="NO" id="WTD-bN-ac5">
                             <rect key="frame" x="3" y="3" width="80" height="80"/>
@@ -54,7 +54,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsC-cc-qTj">
-                    <rect key="frame" x="12" y="161" width="351" height="0.0"/>
+                    <rect key="frame" x="12" y="151" width="351" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -65,7 +65,8 @@
                         <constraint firstAttribute="width" constant="40" id="n1K-aY-fGG"/>
                         <constraint firstAttribute="width" secondItem="ySS-ow-W8i" secondAttribute="height" multiplier="1:1" id="zyD-ox-HGg"/>
                     </constraints>
-                    <state key="normal" image="nav_message_icon"/>
+                    <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                    <state key="normal" image="accountCenter_message"/>
                     <connections>
                         <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="bpY-yi-rA8"/>
                     </connections>
@@ -90,8 +91,8 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bgH" destination="2jY-1o-39x" id="TxY-h4-sho"/>
                 <outlet property="bgImageView" destination="n5F-Dn-YeR" id="ipx-PO-glj"/>
-                <outlet property="bgRatio" destination="C28-3P-hqg" id="kv2-Jl-AnN"/>
                 <outlet property="headBgView" destination="Mep-B5-XOg" id="vg3-6Q-bbF"/>
                 <outlet property="headImageView" destination="WTD-bN-ac5" id="5AT-Ri-jeM"/>
                 <outlet property="messageBtn" destination="ySS-ow-W8i" id="3Ca-sR-sYf"/>
@@ -102,9 +103,9 @@
         </view>
     </objects>
     <resources>
-        <image name="nav_message_icon" width="20" height="20"/>
-        <image name="nav_setting_icon" width="20" height="20"/>
-        <image name="userCenter_bg" width="750" height="1030"/>
+        <image name="accountCenter_bg" width="1563" height="1769"/>
+        <image name="accountCenter_message" width="90" height="90"/>
+        <image name="accountCenter_setting" width="97" height="94"/>
         <image name="userCenter_header_noLogin" width="94" height="94"/>
     </resources>
 </document>

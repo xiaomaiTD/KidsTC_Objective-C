@@ -7,12 +7,18 @@
 //
 
 #import "AccountCenterTipsCell.h"
+#import "Colours.h"
+
+@interface AccountCenterTipsCell ()
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
+
+@end
 
 @implementation AccountCenterTipsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.tipL.textColor = [UIColor colorFromHexString:@"555555"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

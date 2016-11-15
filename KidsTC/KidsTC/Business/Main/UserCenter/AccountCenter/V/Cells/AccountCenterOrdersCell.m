@@ -7,9 +7,10 @@
 //
 
 #import "AccountCenterOrdersCell.h"
+#import "Colours.h"
 
 #import "TipButton.h"
-#define BTN_TITLE_HEIGHT 13
+#define BTN_TITLE_HEIGHT 12
 #define BTN_TITLE_BOTTOM_MARGIN 18
 #define BTN_IMAGE_SIZE 24
 #define BTN_TOP_MARGIN 18
@@ -18,7 +19,10 @@
 @implementation AccountCenterOrderButton
 - (void)awakeFromNib{
     [super awakeFromNib];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.imageView.clipsToBounds = NO;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self setTitleColor:[UIColor colorFromHexString:@"444444"] forState:UIControlStateNormal];
 }
 - (CGRect)imageRectForContentRect:(CGRect)contentRect{
     CGFloat imageX = (CGRectGetWidth(contentRect)-BTN_IMAGE_SIZE)*0.5;
@@ -33,6 +37,8 @@
 
 @interface AccountCenterOrdersCell ()
 @property (weak, nonatomic) IBOutlet UIView *allOrderBGView;
+@property (weak, nonatomic) IBOutlet UILabel *allOrderTipL;
+@property (weak, nonatomic) IBOutlet UILabel *allOrderShowL;
 @property (weak, nonatomic) IBOutlet UIView *HLine;
 @property (weak, nonatomic) IBOutlet UIView *OrdersBGView;
 @property (weak, nonatomic) IBOutlet UIButton *allOrderBtn;
@@ -41,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitReceiptBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *waitCommentBtn;
 @property (weak, nonatomic) IBOutlet AccountCenterOrderButton *refundBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
 @end
 
 @implementation AccountCenterOrdersCell
@@ -53,6 +60,12 @@
     self.waitReceiptBtn.tag = AccountCenterCellActionTypeWaitReceipt;
     self.waitCommentBtn.tag = AccountCenterCellActionTypeWaitComment;
     self.refundBtn.tag = AccountCenterCellActionTypeRefund;
+    
+    self.allOrderTipL.textColor = [UIColor colorFromHexString:@"222222"];
+    self.allOrderShowL.textColor = [UIColor colorFromHexString:@"666666"];
+    
+    self.lineH.constant = LINE_H;
+    [self layoutIfNeeded];
 }
 
 - (IBAction)action:(AccountCenterOrderButton *)sender {

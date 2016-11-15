@@ -179,31 +179,32 @@
             break;
         case SegueDestinationCouponList:
         {
-            CouponStatus status = (CouponStatus)[[NSString stringWithFormat:@"%@",model.segueParam[@"type"]] integerValue];
-            CouponListViewTag tag = CouponListViewTagUnused;
-            switch (status) {
-                case CouponStatusUnused:
-                {
-                    tag = CouponListViewTagUnused;
-                }
-                    break;
-                case CouponStatusHasUsed:
-                {
-                    tag = CouponListViewTagHasUsed;
-                }
-                    break;
-                case CouponStatusHasOverTime:
-                {
-                    tag = CouponListViewTagHasOverTime;
-                }
-                    break;
-                default:
-                {
-                    tag = CouponListViewTagUnused;
-                }
-                    break;
-            }
-            toController = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
+#warning TODO...
+//            CouponStatus status = (CouponStatus)[[NSString stringWithFormat:@"%@",model.segueParam[@"type"]] integerValue];
+//            CouponListViewTag tag = CouponListViewTagUnused;
+//            switch (status) {
+//                case CouponStatusUnused:
+//                {
+//                    tag = CouponListViewTagUnused;
+//                }
+//                    break;
+//                case CouponStatusHasUsed:
+//                {
+//                    tag = CouponListViewTagHasUsed;
+//                }
+//                    break;
+//                case CouponStatusHasOverTime:
+//                {
+//                    tag = CouponListViewTagHasOverTime;
+//                }
+//                    break;
+//                default:
+//                {
+//                    tag = CouponListViewTagUnused;
+//                }
+//                    break;
+//            }
+//            toController = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
         }
             break;
         case SegueDestinationOrderDetail:

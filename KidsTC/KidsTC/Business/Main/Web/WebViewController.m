@@ -190,9 +190,27 @@ typedef enum : NSUInteger {
 
 - (CommonShareObject *)defaultShareObj {
     NSString *urlString = [self.urlString isNotNull]?self.urlString:@"http://m.kidstc.com/";
-    CommonShareObject *shareObj = [CommonShareObject shareObjectWithTitle:self.navigationItem.title description:@"童成与您分享" thumbImage:[UIImage imageNamed:@"Icon-60"] urlString:urlString];
+    NSString *productName = [[NSBundle mainBundle] infoDictionary][@"CFBundleDisplayName"];
+    NSString *desc = [NSString stringWithFormat:@"%@与您分享",productName];
+    UIImage *image = [UIImage imageNamed:[self getAppIconName]];
+    
+    CommonShareObject *shareObj = [CommonShareObject shareObjectWithTitle:self.navigationItem.title description:desc thumbImage:image urlString:urlString];
     shareObj.followingContent = @"【童成网】";
     return shareObj;
+}
+
+- (NSString *)getAppIconName{
+    
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    
+    //获取app中所有icon名字数组
+    NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+    //取最后一个icon的名字
+    NSString *iconLastName = nil;
+    if (iconsArr.count>0) {
+        iconLastName = [iconsArr lastObject];
+    }
+    return iconLastName;
 }
 
 - (void)makeSegue:(ViewController *)controller {
@@ -382,25 +400,26 @@ typedef enum : NSUInteger {
     NSRange range = [param rangeOfString:@"status="];
     NSString *status = [param substringFromIndex:(range.location+range.length)];
     if ([status isNotNull]) {
-        CouponListViewTag tag = (CouponListViewTag)[status integerValue];
-        switch (tag) {
-            case CouponListViewTagUnused:
-            case CouponListViewTagHasUsed:
-            case CouponListViewTagHasOverTime:
-            {
-                CouponListViewController *controller = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
-                [self makeSegue:controller];
-                
-                NSDictionary *params = @{@"url":self.urlString};
-                [BuryPointManager trackEvent:@"event_skip_coupon" actionId:30007 params:params];
-            }
-                break;
-            default:
-            {
-                [[iToast makeText:@"所选优惠券状态不正确"] show];
-            }
-                break;
-        }
+#warning TODO..
+//        CouponListViewTag tag = (CouponListViewTag)[status integerValue];
+//        switch (tag) {
+//            case CouponListViewTagUnused:
+//            case CouponListViewTagHasUsed:
+//            case CouponListViewTagHasOverTime:
+//            {
+//                CouponListViewController *controller = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
+//                [self makeSegue:controller];
+//                
+//                NSDictionary *params = @{@"url":self.urlString};
+//                [BuryPointManager trackEvent:@"event_skip_coupon" actionId:30007 params:params];
+//            }
+//                break;
+//            default:
+//            {
+//                [[iToast makeText:@"所选优惠券状态不正确"] show];
+//            }
+//                break;
+//        }
     }else{
         [[iToast makeText:@"所选优惠券状态为空"] show];
     }

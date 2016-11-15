@@ -10,7 +10,7 @@
 #import "ProductDetailGetCouponCell.h"
 #import "GHeader.h"
 #import "NSString+Category.h"
-#import "CouponUsableServiceViewController.h"
+//#import "CouponUsableServiceViewController.h"
 #import "TabBarController.h"
 #import "ProductDetailGetCouponModel.h"
 #import "BuryPointManager.h"
@@ -116,9 +116,10 @@ static CGFloat const kAnimateDuration =  0.2;
             
         }else{
             if (item.canRedirect) {
-                CouponUsableServiceViewController *controller = [[CouponUsableServiceViewController alloc] initWithCouponBatchIdentifier:item.batchNo];
-                UINavigationController *navi = [TabBarController shareTabBarController].selectedViewController;
-                [navi pushViewController:controller animated:YES];
+#warning TODO...
+//                CouponUsableServiceViewController *controller = [[CouponUsableServiceViewController alloc] initWithCouponBatchIdentifier:item.batchNo];
+//                UINavigationController *navi = [TabBarController shareTabBarController].selectedViewController;
+//                [navi pushViewController:controller animated:YES];
                 [self hide];
             }else{
                 [[iToast makeText:@"您已领取该优惠券，不能重复领取~"]show];

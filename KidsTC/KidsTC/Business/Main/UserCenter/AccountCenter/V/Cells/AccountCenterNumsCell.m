@@ -7,6 +7,7 @@
 //
 
 #import "AccountCenterNumsCell.h"
+#import "Colours.h"
 
 @interface AccountCenterNumsCell ()
 @property (weak, nonatomic) IBOutlet UIButton *scoreBtn;
@@ -32,8 +33,27 @@
     self.couponBtn.tag = AccountCenterCellActionTypeCoupon;
     self.eCardBtn.tag = AccountCenterCellActionTypeECard;
     self.balanceBtn.tag = AccountCenterCellActionTypeBalance;
+    
+    [self setBtnColor:self.scoreBtn];
+    [self setBtnColor:self.radishBtn];
+    [self setBtnColor:self.couponBtn];
+    [self setBtnColor:self.eCardBtn];
+    [self setBtnColor:self.balanceBtn];
+    
+    [self setLabelColor:self.scoreL];
+    [self setLabelColor:self.radishL];
+    [self setLabelColor:self.couponL];
+    [self setLabelColor:self.eCardL];
+    [self setLabelColor:self.balanceL];
 }
 
+- (void)setBtnColor:(UIButton *)btn {
+    [btn setTitleColor:[UIColor colorFromHexString:@"444444"] forState:UIControlStateNormal];
+}
+
+- (void)setLabelColor:(UILabel *)label {
+    label.textColor = [UIColor colorFromHexString:@"222222"];
+}
 
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(accountCenterBaseCell:actionType:value:)]) {

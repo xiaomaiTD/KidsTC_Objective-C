@@ -243,7 +243,7 @@
             break;
         case AccountCenterViewActionTypeCoupon:
         {
-            toController = [[CouponListViewController alloc] initWithNibName:@"CouponListViewController" bundle:nil];
+            toController = [[CouponListViewController alloc] init];
             [BuryPointManager trackEvent:@"event_skip_usr_couponlist" actionId:21509 params:nil];
         }
             break;
