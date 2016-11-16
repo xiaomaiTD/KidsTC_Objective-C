@@ -14,9 +14,13 @@
     
     _address = [_address isNotNull]?_address:@"";
     _distance = [_distance isNotNull]?_distance:@"";
+    
+    _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
     _priceStr = [NSString stringWithFormat:@"¥%@起",_price];
     _process = [_process isNotNull]?_process:@"";
     _locationStr = [NSString stringWithFormat:@"%@ %@",_address,_distance];
     return YES;
 }
+
+
 @end

@@ -9,14 +9,13 @@
 #import "AccountCenterBannersCell.h"
 #import "AccountCenterBannersCollectionViewCell.h"
 #import "YYKit.h"
-#import "StyledPageControl.h"
 
 static NSInteger const maxSections = 11;
 static NSString *const ID = @"AccountCenterBannersCollectionViewCell";
 
 @interface AccountCenterBannersCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (nonatomic,strong)StyledPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSArray<AccountCenterBanner *> *banners;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 @property (nonatomic, strong) YYTimer *timer;
@@ -27,19 +26,8 @@ static NSString *const ID = @"AccountCenterBannersCollectionViewCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.collectionView registerNib:[UINib nibWithNibName:@"AccountCenterBannersCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    
-    StyledPageControl *pageControl=[[StyledPageControl alloc]init];
-    pageControl.userInteractionEnabled = NO;
-    pageControl.hidesForSinglePage = YES;
-    pageControl.gapWidth = 6;
-    CGSize imageSize = CGSizeMake(8, 2);
-    UIImage *pageImage = [UIImage imageWithColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.3] size:imageSize];
-    UIImage *currentPageImage = [UIImage imageWithColor:COLOR_PINK size:imageSize];
-    pageControl.pageControlStyle = PageControlStyleThumb;
-    [pageControl setThumbImage:pageImage];
-    [pageControl setSelectedThumbImage:currentPageImage];
-    [self addSubview:pageControl];
-    self.pageControl = pageControl;
+    self.pageControl.currentPageIndicatorTintColor = COLOR_PINK;
+
 }
 
 - (void)layoutSubviews{
@@ -52,7 +40,7 @@ static NSString *const ID = @"AccountCenterBannersCollectionViewCell";
     [super setModel:model];
     self.banners = self.model.data.config.banners;
     CGFloat height = self.model.data.config.bannerHeight;
-    if (height<=0) height = 90;
+    if (height<=0) height = 80;
     self.height.constant = height;
     self.pageControl.numberOfPages = self.banners.count;
     [self.collectionView reloadData];

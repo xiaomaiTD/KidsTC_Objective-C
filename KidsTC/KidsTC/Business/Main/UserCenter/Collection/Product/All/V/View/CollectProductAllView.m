@@ -35,7 +35,6 @@ static NSString *const ID = @"CollectProductAllCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CollectProductAllCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     return cell;

@@ -18,8 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.imageView.layer.borderWidth = LINE_H;
-    self.imageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+
 }
 
 - (void)setBanner:(AccountCenterBanner *)banner {

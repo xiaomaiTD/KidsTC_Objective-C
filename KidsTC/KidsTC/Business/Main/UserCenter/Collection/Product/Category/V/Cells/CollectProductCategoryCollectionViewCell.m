@@ -20,6 +20,8 @@
     [super awakeFromNib];
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.icon.layer.borderWidth = LINE_H;
+    self.icon.layer.cornerRadius = 4;
+    self.icon.layer.masksToBounds = YES;
 }
 
 - (void)setImgUrl:(NSString *)imgUrl {

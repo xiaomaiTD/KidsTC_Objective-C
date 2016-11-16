@@ -194,7 +194,7 @@ static Request *_requestManager;
                                 failure:(FailureBlock)failure
 
 {
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
     if ([dic[@"errno"] respondsToSelector:@selector(integerValue)]) {
         NSInteger errNo = [dic[@"errno"] integerValue];
         if (errNo == 0) {//如果errNo为0，则为请求成功

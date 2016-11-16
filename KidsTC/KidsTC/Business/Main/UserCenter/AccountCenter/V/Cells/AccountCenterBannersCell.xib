@@ -35,19 +35,29 @@
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="DcN-dy-myX"/>
                         </connections>
                     </collectionView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="rja-Ut-0IT">
+                        <rect key="frame" x="141" y="81" width="39" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="Gt2-FD-er8"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="rja-Ut-0IT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="74L-Jh-vzH"/>
                     <constraint firstAttribute="bottom" secondItem="eKb-J4-4PJ" secondAttribute="bottom" id="LhS-nn-sxp"/>
+                    <constraint firstAttribute="bottom" secondItem="rja-Ut-0IT" secondAttribute="bottom" id="Lsa-4S-g6p"/>
                     <constraint firstItem="eKb-J4-4PJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SKx-05-Q8S"/>
                     <constraint firstAttribute="trailing" secondItem="eKb-J4-4PJ" secondAttribute="trailing" id="eYm-vT-Mxy"/>
                     <constraint firstItem="eKb-J4-4PJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lZB-dV-TH9"/>
+                    <constraint firstItem="eKb-J4-4PJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qh8-ls-BOG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="eKb-J4-4PJ" id="jpO-n0-cl2"/>
                 <outlet property="height" destination="DwR-AT-iZn" id="GRf-tr-olb"/>
+                <outlet property="pageControl" destination="rja-Ut-0IT" id="Edp-ZR-s45"/>
             </connections>
-            <point key="canvasLocation" x="-203" y="-70"/>
+            <point key="canvasLocation" x="-592" y="-58"/>
         </tableViewCell>
     </objects>
 </document>

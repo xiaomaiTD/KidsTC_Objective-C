@@ -1,49 +1,49 @@
 //
-//  MyTracksViewController.m
+//  ProductOrderListViewController.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/15.
+//  Created by 詹平 on 2016/11/16.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "MyTracksViewController.h"
+#import "ProductOrderListViewController.h"
 #import "UIBarButtonItem+Category.h"
 
-#import "MyTracksView.h"
+#import "ProductOrderListView.h"
 
-@interface MyTracksViewController ()<MyTracksViewDelegate>
-@property (nonatomic, strong) MyTracksView *tracksView;
+@interface ProductOrderListViewController ()<ProductOrderListViewDelegate>
+@property (nonatomic, strong) ProductOrderListView *listView;
 @end
 
-@implementation MyTracksViewController
+@implementation ProductOrderListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"我的足迹👣";
+    self.navigationItem.title = @"订单列表";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
-    
-    MyTracksView *tracksView = [[MyTracksView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
-    tracksView.delegate = self;
-    [self.view addSubview:tracksView];
-    self.tracksView = tracksView;
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"编辑" postion:UIBarButtonPositionRight target:self action:@selector(edit) andGetButton:^(UIButton *btn) {
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     }];
     
+    ProductOrderListView *listView = [[ProductOrderListView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    listView.delegate = self;
+    [self.view addSubview:listView];
+    self.listView = listView;
 }
+
 
 - (void)edit {
     TCLog(@"---");
 }
 
-#pragma mark - MyTracksViewDelegate
+#pragma mark - ProductOrderListViewDelegate
 
-- (void)myTracksView:(MyTracksView *)view actionType:(MyTracksViewActionType)type value:(id)value {
+- (void)productOrderListView:(ProductOrderListView *)view actionType:(ProductOrderListViewActionType)type value:(id)value {
     switch (type) {
-        case MyTracksViewActionTypeLoadData:
+        case ProductOrderListViewActionTypeLoadData:
         {
             [self loadData:[value boolValue]];
         }
@@ -58,10 +58,9 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [NSThread sleepForTimeInterval:2];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tracksView endRefresh:NO];
+            [self.listView endRefresh:NO];
         });
     });
 }
-
 
 @end

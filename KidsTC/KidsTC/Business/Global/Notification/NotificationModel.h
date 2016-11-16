@@ -41,7 +41,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *pushId;
 @property (nonatomic, strong) NSString *remindId;
 @property (nonatomic, assign) RemindType remindType;
-@property (nonatomic, strong) NSArray<NSString *> *medias;
+@property (nonatomic, strong) NSArray<NSString *> *tcMedias;
 
 /**SelfDefine*/
 @property (nonatomic, strong) NSString *ID;

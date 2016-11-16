@@ -1,34 +1,26 @@
 //
-//  MyTracksView.m
+//  ProductOrderListView.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/15.
+//  Created by 詹平 on 2016/11/16.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "MyTracksView.h"
+#import "ProductOrderListView.h"
+#import "ProductOrderListCell.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 
-#import "MyTracksHeader.h"
-#import "MyTracksCell.h"
-#import "MyTracksFooter.h"
+static NSString *const CellID = @"ProductOrderListCell";
 
-static NSString *const HeadID = @"MyTracksHeader";
-static NSString *const CellID = @"MyTracksCell";
-static NSString *const FootID = @"MyTracksFooter";
-
-@interface MyTracksView ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
-@end
-
-@implementation MyTracksView
+@implementation ProductOrderListView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         
         [self setupTableView];
+        
     }
     return self;
 }
@@ -44,14 +36,9 @@ static NSString *const FootID = @"MyTracksFooter";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60;
-    tableView.estimatedSectionHeaderHeight = 40;
-    tableView.estimatedSectionFooterHeight = 40;
     [self addSubview:tableView];
     self.tableView = tableView;
-    
-    [tableView registerNib:[UINib nibWithNibName:@"MyTracksHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
-    [tableView registerNib:[UINib nibWithNibName:@"MyTracksCell" bundle:nil] forCellReuseIdentifier:CellID];
-    [tableView registerNib:[UINib nibWithNibName:@"MyTracksFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListCell" bundle:nil] forCellReuseIdentifier:CellID];
     
     [self setupMJ];
 }
@@ -71,8 +58,8 @@ static NSString *const FootID = @"MyTracksFooter";
 }
 
 - (void)loadData:(BOOL)refresh {
-    if ([self.delegate respondsToSelector:@selector(myTracksView:actionType:value:)]) {
-        [self.delegate myTracksView:self actionType:MyTracksViewActionTypeLoadData value:@(refresh)];
+    if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
+        [self.delegate productOrderListView:self actionType:ProductOrderListViewActionTypeLoadData value:@(refresh)];
     }
 }
 
@@ -88,33 +75,29 @@ static NSString *const FootID = @"MyTracksFooter";
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.001;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyTracksCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+    ProductOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    MyTracksHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
-    
-    return header;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    MyTracksFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
-    
-    return footer;
 }
 
 @end

@@ -233,6 +233,7 @@ singleM(NotificationService)
     
     UNMutableNotificationContent *content = [self notiContent:model];
     [self getAttachments:model resuleBlock:^(NSArray<UNNotificationAttachment *> *attachments, NSString *logStr) {
+        content.attachments = attachments;
 #ifdef DEBUG
         content.body = [NSString stringWithFormat:@"%@%@",content.body,logStr];
 #endif
@@ -241,10 +242,48 @@ singleM(NotificationService)
 }
 
 - (UNMutableNotificationContent *)notiContent:(NotificationModel *)model{
+
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-    content.body = model.body;
     content.categoryIdentifier = @"categoryIdentifier";
+    content.body = model.body;
     content.title = model.title;
+    
+    NSMutableDictionary *alert = [NSMutableDictionary dictionary];
+    if([model.title isNotNull]){
+        [alert setObject:model.title forKey:@"title"];
+    }
+    if([model.body isNotNull]){
+        [alert setObject:model.body forKey:@"body"];
+    }
+    NSMutableDictionary *aps = [NSMutableDictionary dictionary];
+    if (alert.count>0) {
+        [aps setObject:alert forKey:@"alert"];
+    }
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if([model.content isNotNull]){
+        [userInfo setObject:model.content forKey:@"content"];
+    }
+    [userInfo setObject:@(model.open) forKey:@"open"];
+    [userInfo setObject:@(model.linkType) forKey:@"linkType"];
+    if([model.params isNotNull]){
+        [userInfo setObject:model.params forKey:@"params"];
+    }
+    if([model.pushId isNotNull]){
+        [userInfo setObject:model.pushId forKey:@"pushId"];
+    }
+    if([model.remindId isNotNull]){
+        [userInfo setObject:model.remindId forKey:@"remindId"];
+    }
+    [userInfo setObject:@(model.remindType) forKey:@"remindType"];
+    if(model.tcMedias.count>0){
+        [userInfo setObject:model.tcMedias forKey:@"tcMedias"];
+        [aps setObject:@(1) forKey:@"mutable-content"];
+    }
+    if (aps.count>0) {
+        [userInfo setObject:aps forKey:@"aps"];
+    }
+    
+    content.userInfo = userInfo;
     return content;
 }
 
@@ -252,6 +291,7 @@ singleM(NotificationService)
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
     NSString *requestWithIdentifier = @"requestWithIdentifier";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestWithIdentifier content:content trigger:trigger];
+    
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
         if (!error) {
@@ -263,7 +303,7 @@ singleM(NotificationService)
 }
 
 - (void)getAttachments:(NotificationModel *)model resuleBlock:(void(^)(NSArray<UNNotificationAttachment *> *attachments, NSString *logStr))resultBlock {
-    NSArray<NSString *> *urlStrs = model.medias;
+    NSArray<NSString *> *urlStrs = model.tcMedias;
 #ifdef DEBUG
     NSMutableString *totalLogStr = [NSMutableString stringWithString:@"\n\n\n【标注：以下全部为日志信息，只有在debug调试状态下才会出现】"];
     NSString *urlStrsInfo = @"urlStrs为空";
@@ -339,7 +379,7 @@ singleM(NotificationService)
                     [logStr appendFormat:@"fileUrl有值(%@)-->\n",fileUrl];
                     NSString *identifier = [NSString stringWithFormat:@"%zd",index];
                     NSError *attError = nil;
-                    attachment = [UNNotificationAttachment attachmentWithIdentifier:identifier URL:fileUrl options:nil error:nil];
+                    attachment = [UNNotificationAttachment attachmentWithIdentifier:identifier URL:fileUrl options:nil error:&attError];
                     if (!attError && attachment) {
                         [logStr appendFormat:@"attachment创建成功(attachment:%@)-->\n",attachment];
                     }else{

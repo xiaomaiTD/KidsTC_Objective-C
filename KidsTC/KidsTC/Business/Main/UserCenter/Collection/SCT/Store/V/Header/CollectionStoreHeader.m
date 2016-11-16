@@ -17,7 +17,8 @@ static CGFloat const margin = 12;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineOneH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineTwoH;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewH;
@@ -34,11 +35,11 @@ static CGFloat const margin = 12;
     self.enterBtn.layer.borderColor = COLOR_PINK.CGColor;
     self.enterBtn.layer.borderWidth = 1;
     [self.enterBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
-    self.lineH.constant = LINE_H;
-    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionStoreHeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID
-     ];
+    self.lineOneH.constant = LINE_H;
+    self.lineTwoH.constant = LINE_H;
+    [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionStoreHeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     _collectionViewCellW = (SCREEN_WIDTH - 4 * margin) / 3;
-    self.collectionViewH.constant = _collectionViewCellW * 0.6;
+    self.collectionViewH.constant = _collectionViewCellW * 0.4;
     
     [self layoutIfNeeded];
 }

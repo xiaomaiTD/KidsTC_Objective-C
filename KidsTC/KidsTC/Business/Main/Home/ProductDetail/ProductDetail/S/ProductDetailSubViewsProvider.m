@@ -72,7 +72,7 @@ singleM(ProductDetailSubViewsProvider)
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            sections = self.freeSections;
+            sections = self.normalSections;
         }
             break;
         case ProductDetailTypeTicket:
@@ -620,7 +620,7 @@ singleM(ProductDetailSubViewsProvider)
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            toolBar = self.freeToolBar;
+            toolBar = self.normalToolBar;
         }
             break;
         case ProductDetailTypeTicket:

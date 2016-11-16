@@ -77,14 +77,14 @@
     //layer.masksToBounds = YES;
     layer.backgroundColor = COLOR_PINK.CGColor;
     
-    layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    layer.borderColor = [UIColor whiteColor].CGColor;
     layer.borderWidth = 1;
-    
-    layer.shadowColor = [UIColor blackColor].CGColor;
-    layer.shadowOffset = CGSizeMake(2, 2);
-    layer.shadowRadius = 2;
-    layer.shadowOpacity = 0.5;
-    
+    /*
+     layer.shadowColor = [UIColor blackColor].CGColor;
+     layer.shadowOffset = CGSizeMake(2, 2);
+     layer.shadowRadius = 2;
+     layer.shadowOpacity = 0.5;
+     */
 }
 
 - (void)makeIconBadge{

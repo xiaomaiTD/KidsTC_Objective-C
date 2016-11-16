@@ -11,29 +11,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyTracksHeader">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="47"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyTracksFooter">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="12"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmF-ey-gRN">
-                    <rect key="frame" x="12" y="12" width="35" height="23"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyq-Cr-2U4">
+                    <rect key="frame" x="12" y="0.0" width="22.5" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="vpr-eA-rlc"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="UmF-ey-gRN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="7Vw-yk-1Ez"/>
-                <constraint firstItem="UmF-ey-gRN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="7sR-PC-7V3"/>
-                <constraint firstAttribute="bottom" secondItem="UmF-ey-gRN" secondAttribute="bottom" constant="12" id="CSI-Rh-psf"/>
+                <constraint firstAttribute="bottom" secondItem="Lyq-Cr-2U4" secondAttribute="bottom" id="PYT-0L-Zyc"/>
+                <constraint firstItem="Lyq-Cr-2U4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="T6a-Ka-uZj"/>
+                <constraint firstItem="Lyq-Cr-2U4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="f34-lC-Ksh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="timeL" destination="UmF-ey-gRN" id="ybv-pH-0UM"/>
-            </connections>
-            <point key="canvasLocation" x="-345" y="105"/>
+            <point key="canvasLocation" x="-203.5" y="1"/>
         </view>
     </objects>
 </document>

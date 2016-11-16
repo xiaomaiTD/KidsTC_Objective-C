@@ -18,6 +18,10 @@
 @end
 
 @implementation NotificationModel
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return @{@"tcMedias" : [NSString class]};
+}
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
     if ([_content isNotNull]) {

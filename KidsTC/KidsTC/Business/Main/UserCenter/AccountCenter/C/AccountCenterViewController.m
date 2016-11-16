@@ -24,10 +24,10 @@
 #import "CollectProductViewController.h"
 #import "CollectionSCTViewController.h"
 #import "FavourateViewController.h"
-#import "OrderListViewController.h"
+#import "ProductOrderListViewController.h"
 #import "CommentTableViewController.h"
 #import "CouponListViewController.h"
-#import "BrowseHistoryViewController.h"
+#import "MyTracksViewController.h"
 #import "FlashServiceOrderListViewController.h"
 #import "AppointmentOrderListViewController.h"
 #import "ArticleWeChatTableViewController.h"
@@ -191,23 +191,23 @@
             break;
         case AccountCenterViewActionTypeAllOrder:
         {
-            toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeAll];
-            NSDictionary *params = @{@"type":@(OrderListTypeAll)};
-            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            toController = [[ProductOrderListViewController alloc] init];
+//            NSDictionary *params = @{@"type":@(OrderListTypeAll)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitPay:
         {
-            toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingPayment];
-            NSDictionary *params = @{@"type":@(OrderListTypeWaitingPayment)};
-            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            toController = [[ProductOrderListViewController alloc] init];
+//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingPayment)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitUse:
         {
-            toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeWaitingUse];
-            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
-            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            toController = [[ProductOrderListViewController alloc] init];
+//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitReceipt:
@@ -220,15 +220,15 @@
             CommentTableViewController *controller = [[CommentTableViewController alloc]init];
             controller.isHaveWaitToComment = self.model.data.userCount.order_wait_evaluate>0;
             toController = controller;
-            NSDictionary *params = @{@"type":@(OrderListTypeWaitingComment)};
-            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingComment)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeRefund:
         {
-            toController = [[OrderListViewController alloc] initWithOrderListType:OrderListTypeRefund];
-            NSDictionary *params = @{@"type":@(OrderListTypeRefund)};
-            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            toController = [[ProductOrderListViewController alloc] init];
+//            NSDictionary *params = @{@"type":@(OrderListTypeRefund)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeScore:
@@ -259,7 +259,7 @@
             break;
         case AccountCenterViewActionTypeHistory:
         {
-            toController = [[BrowseHistoryViewController alloc]init];
+            toController = [[MyTracksViewController alloc]init];
             [BuryPointManager trackEvent:@"event_skip_usr_history" actionId:21507 params:nil];
         }
             break;

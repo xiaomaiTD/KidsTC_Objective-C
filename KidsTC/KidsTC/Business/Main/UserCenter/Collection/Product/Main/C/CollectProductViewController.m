@@ -7,7 +7,7 @@
 //
 
 #import "CollectProductViewController.h"
-
+#import "Colours.h"
 #import "MultiItemsToolBar.h"
 #import "UIBarButtonItem+Category.h"
 
@@ -31,6 +31,7 @@
     self.navigationItem.title = @"收藏服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
+    self.view.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"编辑" postion:UIBarButtonPositionRight target:self action:@selector(edit) andGetButton:^(UIButton *btn) {
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -53,6 +54,7 @@
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     

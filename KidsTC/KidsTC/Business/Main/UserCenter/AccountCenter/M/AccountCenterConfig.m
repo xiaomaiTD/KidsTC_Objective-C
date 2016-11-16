@@ -20,7 +20,7 @@
     if (_banners.count>0) {
         ratio = _banners.firstObject.Ratio;
     }
-    _bannerHeight = ratio * (SCREEN_WIDTH - 24) + 24;
+    _bannerHeight = ratio * SCREEN_WIDTH;
     
     return YES;
 }

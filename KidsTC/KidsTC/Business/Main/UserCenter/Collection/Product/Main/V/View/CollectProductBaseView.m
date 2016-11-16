@@ -7,6 +7,7 @@
 //
 
 #import "CollectProductBaseView.h"
+#import "Colours.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 
@@ -38,7 +39,8 @@ static NSString *const ID = @"UITableViewCell";
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.estimatedRowHeight = 60;
+    tableView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    tableView.estimatedRowHeight = 100;
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
@@ -61,7 +63,6 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)loadData:(BOOL)refresh {
-    TCLog(@"self.delegate:%@",self.delegate);
     if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
         [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeLoadData value:@(refresh)];
     }
@@ -87,11 +88,11 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.001;
+    return section == 0 ? 12 : 0.001;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 8;
+    return 12;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

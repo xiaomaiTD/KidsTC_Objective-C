@@ -51,6 +51,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     if (self) {
         self.tableView.backgroundColor = [UIColor whiteColor];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
+        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoCell" bundle:nil] forCellReuseIdentifier:CellID];
         [self registerCells];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
     }
