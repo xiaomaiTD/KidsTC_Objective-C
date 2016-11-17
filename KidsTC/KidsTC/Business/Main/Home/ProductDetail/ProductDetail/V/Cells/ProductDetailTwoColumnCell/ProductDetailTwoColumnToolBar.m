@@ -8,7 +8,7 @@
 
 #import "ProductDetailTwoColumnToolBar.h"
 
-CGFloat const kTwoColumnToolBarH = 50;
+CGFloat const kTwoColumnToolBarH = 46;
 
 @interface ProductDetailTwoColumnToolBar ()
 @property (weak, nonatomic) IBOutlet UIButton *detailBtn;

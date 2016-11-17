@@ -12,7 +12,7 @@
 #import "CollectProductCategoryCollectionViewCell.h"
 
 static NSString *const ID = @"CollectProductCategoryCollectionViewCell";
-static CGFloat const margin = 12;
+static CGFloat const margin = 10;
 
 @interface CollectProductCategoryCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *bgView;

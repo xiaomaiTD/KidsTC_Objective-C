@@ -153,10 +153,6 @@
 		EC2F26B91DD9BAF100B67BBA /* CollectionContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26B71DD9BAF100B67BBA /* CollectionContentCell.xib */; };
 		EC2F26BD1DD9BF8300B67BBA /* CollectionStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26BB1DD9BF8300B67BBA /* CollectionStoreCell.m */; };
 		EC2F26BE1DD9BF8300B67BBA /* CollectionStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26BC1DD9BF8300B67BBA /* CollectionStoreCell.xib */; };
-		EC2F26D01DD9FE3800B67BBA /* CollectionTarentoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26CF1DD9FE3800B67BBA /* CollectionTarentoHeader.m */; };
-		EC2F26D21DD9FE4300B67BBA /* CollectionTarentoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26D11DD9FE4300B67BBA /* CollectionTarentoHeader.xib */; };
-		EC2F26D51DDAF8A000B67BBA /* CollectionTarentoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26D41DDAF8A000B67BBA /* CollectionTarentoFooter.m */; };
-		EC2F26D71DDAF8AC00B67BBA /* CollectionTarentoFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26D61DDAF8AC00B67BBA /* CollectionTarentoFooter.xib */; };
 		EC2F26DE1DDB09BC00B67BBA /* MyTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26DD1DDB09BC00B67BBA /* MyTracksViewController.m */; };
 		EC2F26F21DDB0AE500B67BBA /* MyTracksCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26EB1DDB0AE500B67BBA /* MyTracksCell.m */; };
 		EC2F26F31DDB0AE500B67BBA /* MyTracksCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26EC1DDB0AE500B67BBA /* MyTracksCell.xib */; };
@@ -1000,6 +996,10 @@
 		ECA95AD51DDC9FA500990AAE /* CollectionStoreHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA95ACE1DDC9FA500990AAE /* CollectionStoreHeader.xib */; };
 		ECA95AD61DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA95AD01DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.m */; };
 		ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA95AD11DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib */; };
+		ECA95AE01DDD59DF00990AAE /* CollectionTarentoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA95ADA1DDD59DF00990AAE /* CollectionTarentoFooter.m */; };
+		ECA95AE11DDD59DF00990AAE /* CollectionTarentoFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA95ADB1DDD59DF00990AAE /* CollectionTarentoFooter.xib */; };
+		ECA95AE21DDD59DF00990AAE /* CollectionTarentoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA95ADE1DDD59DF00990AAE /* CollectionTarentoHeader.m */; };
+		ECA95AE31DDD59DF00990AAE /* CollectionTarentoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA95ADF1DDD59DF00990AAE /* CollectionTarentoHeader.xib */; };
 		ECAA49301D79A45B00799CBE /* ArticleHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48F81D79A45B00799CBE /* ArticleHomeViewController.m */; };
 		ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48FB1D79A45B00799CBE /* ArticleHomeModel.m */; };
 		ECAA49321D79A45B00799CBE /* ArticleHomeAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAA48FE1D79A45B00799CBE /* ArticleHomeAlbumCell.m */; };
@@ -1478,12 +1478,6 @@
 		EC2F26BA1DD9BF8300B67BBA /* CollectionStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreCell.h; sourceTree = "<group>"; };
 		EC2F26BB1DD9BF8300B67BBA /* CollectionStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreCell.m; sourceTree = "<group>"; };
 		EC2F26BC1DD9BF8300B67BBA /* CollectionStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionStoreCell.xib; sourceTree = "<group>"; };
-		EC2F26CE1DD9FE3800B67BBA /* CollectionTarentoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoHeader.h; sourceTree = "<group>"; };
-		EC2F26CF1DD9FE3800B67BBA /* CollectionTarentoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoHeader.m; sourceTree = "<group>"; };
-		EC2F26D11DD9FE4300B67BBA /* CollectionTarentoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTarentoHeader.xib; sourceTree = "<group>"; };
-		EC2F26D31DDAF8A000B67BBA /* CollectionTarentoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoFooter.h; sourceTree = "<group>"; };
-		EC2F26D41DDAF8A000B67BBA /* CollectionTarentoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoFooter.m; sourceTree = "<group>"; };
-		EC2F26D61DDAF8AC00B67BBA /* CollectionTarentoFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTarentoFooter.xib; sourceTree = "<group>"; };
 		EC2F26DC1DDB09BC00B67BBA /* MyTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksViewController.h; sourceTree = "<group>"; };
 		EC2F26DD1DDB09BC00B67BBA /* MyTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTracksViewController.m; sourceTree = "<group>"; };
 		EC2F26EA1DDB0AE500B67BBA /* MyTracksCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksCell.h; sourceTree = "<group>"; };
@@ -2904,6 +2898,12 @@
 		ECA95ACF1DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreHeaderCollectionViewCell.h; sourceTree = "<group>"; };
 		ECA95AD01DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreHeaderCollectionViewCell.m; sourceTree = "<group>"; };
 		ECA95AD11DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionStoreHeaderCollectionViewCell.xib; sourceTree = "<group>"; };
+		ECA95AD91DDD59DF00990AAE /* CollectionTarentoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoFooter.h; sourceTree = "<group>"; };
+		ECA95ADA1DDD59DF00990AAE /* CollectionTarentoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoFooter.m; sourceTree = "<group>"; };
+		ECA95ADB1DDD59DF00990AAE /* CollectionTarentoFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTarentoFooter.xib; sourceTree = "<group>"; };
+		ECA95ADD1DDD59DF00990AAE /* CollectionTarentoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoHeader.h; sourceTree = "<group>"; };
+		ECA95ADE1DDD59DF00990AAE /* CollectionTarentoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoHeader.m; sourceTree = "<group>"; };
+		ECA95ADF1DDD59DF00990AAE /* CollectionTarentoHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionTarentoHeader.xib; sourceTree = "<group>"; };
 		ECAA48F71D79A45B00799CBE /* ArticleHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeViewController.h; sourceTree = "<group>"; };
 		ECAA48F81D79A45B00799CBE /* ArticleHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeViewController.m; sourceTree = "<group>"; };
 		ECAA48FA1D79A45B00799CBE /* ArticleHomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeModel.h; sourceTree = "<group>"; };
@@ -4055,6 +4055,8 @@
 		EC2F26921DD9B77A00B67BBA /* V */ = {
 			isa = PBXGroup;
 			children = (
+				ECA95AD81DDD59DF00990AAE /* Footer */,
+				ECA95ADC1DDD59DF00990AAE /* Header */,
 				EC2F26931DD9B77A00B67BBA /* Cells */,
 				EC2F26941DD9B77A00B67BBA /* View */,
 			);
@@ -4067,12 +4069,6 @@
 				EC2F26AB1DD9BA8700B67BBA /* CollectionTarentoCell.h */,
 				EC2F26AC1DD9BA8700B67BBA /* CollectionTarentoCell.m */,
 				EC2F26AD1DD9BA8700B67BBA /* CollectionTarentoCell.xib */,
-				EC2F26CE1DD9FE3800B67BBA /* CollectionTarentoHeader.h */,
-				EC2F26CF1DD9FE3800B67BBA /* CollectionTarentoHeader.m */,
-				EC2F26D11DD9FE4300B67BBA /* CollectionTarentoHeader.xib */,
-				EC2F26D31DDAF8A000B67BBA /* CollectionTarentoFooter.h */,
-				EC2F26D41DDAF8A000B67BBA /* CollectionTarentoFooter.m */,
-				EC2F26D61DDAF8AC00B67BBA /* CollectionTarentoFooter.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -8714,6 +8710,26 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		ECA95AD81DDD59DF00990AAE /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				ECA95AD91DDD59DF00990AAE /* CollectionTarentoFooter.h */,
+				ECA95ADA1DDD59DF00990AAE /* CollectionTarentoFooter.m */,
+				ECA95ADB1DDD59DF00990AAE /* CollectionTarentoFooter.xib */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
+		ECA95ADC1DDD59DF00990AAE /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				ECA95ADD1DDD59DF00990AAE /* CollectionTarentoHeader.h */,
+				ECA95ADE1DDD59DF00990AAE /* CollectionTarentoHeader.m */,
+				ECA95ADF1DDD59DF00990AAE /* CollectionTarentoHeader.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		ECAA48F51D79A45B00799CBE /* ArticelHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -9862,7 +9878,6 @@
 				EC4FC4C31D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.xib in Resources */,
 				EC4FC5CA1D77CEEF00BBD050 /* PlayButtonOverlayLarge@3x.png in Resources */,
 				ECAA49461D79A45B00799CBE /* ArticleHomeColumnTitleCell.xib in Resources */,
-				EC2F26D21DD9FE4300B67BBA /* CollectionTarentoHeader.xib in Resources */,
 				EC4FC3181D77CEE400BBD050 /* SearchResultProductCell.xib in Resources */,
 				EC4FC5BC1D77CEEF00BBD050 /* ImageSelectedOff.png in Resources */,
 				EC2F26F51DDB0AE500B67BBA /* MyTracksHeader.xib in Resources */,
@@ -9906,6 +9921,7 @@
 				EC4FC44E1D77CEE400BBD050 /* CommentListView.xib in Resources */,
 				EC4FC5C11D77CEEF00BBD050 /* ImageSelectedOn@3x.png in Resources */,
 				EC4FC2A81D77CEE400BBD050 /* ActivityViewController.xib in Resources */,
+				ECA95AE31DDD59DF00990AAE /* CollectionTarentoHeader.xib in Resources */,
 				EC4FC5E61D77CEEF00BBD050 /* LICENSE in Resources */,
 				EC4FC4D91D77CEE400BBD050 /* UserCenterBannerCell.xib in Resources */,
 				EC4FC4991D77CEE400BBD050 /* FlashServiceOrderDetailServiceInfoCell.xib in Resources */,
@@ -10022,7 +10038,7 @@
 				EC4FC4241D77CEE400BBD050 /* KTCBrowseHistoryViewServiceCell.xib in Resources */,
 				EC4FC2601D77CEE400BBD050 /* PosterViewCell.xib in Resources */,
 				EC4FC2311D77CEE400BBD050 /* TCProgressHUD.xib in Resources */,
-				EC2F26D71DDAF8AC00B67BBA /* CollectionTarentoFooter.xib in Resources */,
+				ECA95AE11DDD59DF00990AAE /* CollectionTarentoFooter.xib in Resources */,
 				ECB3E77F1D92C82E0059267D /* OrderBookingMakeSureCell.xib in Resources */,
 				EC2F26311DD719B700B67BBA /* SettlementResultNewViewController.xib in Resources */,
 				EC13B4F61DD1F3430040F760 /* AccountCenterItemsCell.xib in Resources */,
@@ -10516,6 +10532,7 @@
 				EC0B6DBA1D8EC87C00EC20EA /* FlashServiceOrderDetailBookingCell.m in Sources */,
 				EC13B4FF1DD1F3430040F760 /* AccountCenterHeader.m in Sources */,
 				ECB3E7581D9264DB0059267D /* AppVersionViewController.m in Sources */,
+				ECA95AE01DDD59DF00990AAE /* CollectionTarentoFooter.m in Sources */,
 				EC4FC39B1D77CEE400BBD050 /* StoreDetailViewActiveCell.m in Sources */,
 				EC4FC3721D77CEE400BBD050 /* ServiceSettlementTipAddressCell.m in Sources */,
 				ECF5D1041DB8CE3900A1B268 /* TCHomeFloorTitleContentShowpiece.m in Sources */,
@@ -10597,6 +10614,7 @@
 				ECFFC7211DC363C1002DBFB9 /* ProductDetailRecommendCell.m in Sources */,
 				EC4FC3AE1D77CEE400BBD050 /* StoreDetailAnnotationTipView.m in Sources */,
 				EC4FC2C01D77CEE400BBD050 /* FlashDetailAutoRollViewCell.m in Sources */,
+				ECA95AE21DDD59DF00990AAE /* CollectionTarentoHeader.m in Sources */,
 				EC4FC3911D77CEE400BBD050 /* StoreDetailBottomView.m in Sources */,
 				EC13B5121DD1F4320040F760 /* AccountCenterExHistory.m in Sources */,
 				ECF5D11E1DB8D6EA00A1B268 /* TextSegueModel.m in Sources */,
@@ -10996,7 +11014,6 @@
 				EC4FC29C1D77CEE400BBD050 /* ArticleWeChatModel.m in Sources */,
 				ECA95ABE1DDC6EB200990AAE /* ProductOrderListViewController.m in Sources */,
 				ECF5D1071DB8CE3900A1B268 /* TCHomeRecommendItem.m in Sources */,
-				EC2F26D51DDAF8A000B67BBA /* CollectionTarentoFooter.m in Sources */,
 				EC4FC2CF1D77CEE400BBD050 /* FDToolBarView.m in Sources */,
 				ECFFC7381DC363C1002DBFB9 /* ProductDetailAddressViewController.m in Sources */,
 				EC4FC4DE1D77CEE400BBD050 /* UserCenterFlashCell.m in Sources */,
@@ -11041,7 +11058,6 @@
 				EC9CC5291DC30E7F0093DCED /* FSCalendarStickyHeader.m in Sources */,
 				EC4FC5B71D77CEEF00BBD050 /* Insurance.m in Sources */,
 				ECFFC7291DC363C1002DBFB9 /* ProductDetailTwoColumnCell.m in Sources */,
-				EC2F26D01DD9FE3800B67BBA /* CollectionTarentoHeader.m in Sources */,
 				EC4FC2391D77CEE400BBD050 /* RegisterModel.m in Sources */,
 				EC4FC4CC1D77CEE400BBD050 /* SreviceOrderDetailRemarksCell.m in Sources */,
 				EC4FC2261D77CEE400BBD050 /* Model.m in Sources */,

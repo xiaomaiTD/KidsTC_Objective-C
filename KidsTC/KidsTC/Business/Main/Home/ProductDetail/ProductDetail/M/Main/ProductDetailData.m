@@ -9,6 +9,7 @@
 #import "ProductDetailData.h"
 #import "NSAttributedString+YYText.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 @implementation ProductDetailData
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -50,16 +51,16 @@
     
     if ([_serveName isNotNull]) {
         NSMutableAttributedString *attServeName = [[NSMutableAttributedString alloc] initWithString:_serveName];
-        attServeName.font = [UIFont systemFontOfSize:19];
-        attServeName.color = [UIColor blackColor];
-        attServeName.lineSpacing = 6;
+        attServeName.font = [UIFont systemFontOfSize:17];
+        attServeName.color = [UIColor colorFromHexString:@"222222"];
+        attServeName.lineSpacing = 8;
         _attServeName = [[NSAttributedString alloc] initWithAttributedString:attServeName];
     }
     if ([_promote isNotNull]) {
         NSMutableAttributedString *attPromote = [[NSMutableAttributedString alloc] initWithString:_promote];
-        attPromote.font = [UIFont systemFontOfSize:17];
-        attPromote.color = [UIColor darkGrayColor];
-        attPromote.lineSpacing = 4;
+        attPromote.font = [UIFont systemFontOfSize:12];
+        attPromote.color = [UIColor colorFromHexString:@"777777"];
+        attPromote.lineSpacing = 6;
         _attPromote = [[NSAttributedString alloc] initWithAttributedString:attPromote];
     }
     
@@ -82,8 +83,8 @@
     if ([str isNotNull]) {
         NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:str];
         attStr.lineSpacing = 4;
-        attStr.color = [UIColor darkGrayColor];
-        attStr.font = [UIFont systemFontOfSize:17];
+        attStr.color = [UIColor colorFromHexString:@"666666"];
+        attStr.font = [UIFont systemFontOfSize:14];
         return [[NSAttributedString alloc] initWithAttributedString:attStr];
     }
     return nil;

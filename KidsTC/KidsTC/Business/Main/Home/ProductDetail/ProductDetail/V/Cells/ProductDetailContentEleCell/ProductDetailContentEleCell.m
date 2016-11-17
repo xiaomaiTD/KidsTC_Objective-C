@@ -18,7 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.tipL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
 }
 
 - (void)setData:(ProductDetailData *)data {

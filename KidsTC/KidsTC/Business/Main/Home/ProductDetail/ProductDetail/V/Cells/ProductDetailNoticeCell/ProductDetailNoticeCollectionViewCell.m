@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailNoticeCollectionViewCell.h"
+#import "Colours.h"
 
 @interface ProductDetailNoticeCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -17,7 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.titleL.textColor = [UIColor colorFromHexString:@"222222"];
 }
 
 - (void)setItem:(ProductDetailInsuranceItem *)item {

@@ -21,6 +21,8 @@
     
     [self layoutIfNeeded];
     
+    self.tipL.textColor = [UIColor colorFromHexString:@"222222"];
+    
     _labels = [NSMutableArray array];
     
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
@@ -39,9 +41,9 @@
     CGFloat margin = 15;
     
     __block CGRect lastFrame = self.tipL.frame;
-    CGFloat label_h = 21;
+    CGFloat label_h = 18;
     CGFloat label_y = (CGRectGetHeight(self.bounds) - label_h) * 0.5;
-    UIFont *font = [UIFont systemFontOfSize:17];
+    UIFont *font = [UIFont systemFontOfSize:14];
     CGFloat maxX = CGRectGetMinX(self.arrowImgView.frame) - margin;
     [data.coupons enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat label_w = [obj sizeWithAttributes:@{NSFontAttributeName:font}].width + 10;

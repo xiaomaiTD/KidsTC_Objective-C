@@ -17,8 +17,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.nameL.textColor = [UIColor colorFromHexString:@"222222"];
+    self.addressL.textColor = [UIColor colorFromHexString:@"B4B4B4"];
+    
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tapGR];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)setData:(ProductDetailData *)data {

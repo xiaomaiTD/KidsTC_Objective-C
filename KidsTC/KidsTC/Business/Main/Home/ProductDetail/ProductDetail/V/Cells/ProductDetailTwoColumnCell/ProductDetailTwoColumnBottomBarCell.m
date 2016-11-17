@@ -27,7 +27,7 @@
     
     self.showType = ProductDetailTwoColumnShowTypeDetail;
     
-    self.moreConsultBtn.layer.borderWidth = 1;
+    self.moreConsultBtn.layer.borderWidth = LINE_H;
     self.moreConsultBtn.layer.borderColor = PRODUCT_DETAIL_BLUE.CGColor;
     [self.moreConsultBtn setTitleColor:PRODUCT_DETAIL_BLUE forState:UIControlStateNormal];
     self.openDetailL.textColor = PRODUCT_DETAIL_BLUE;

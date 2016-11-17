@@ -19,41 +19,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-hg-3od">
-                        <rect key="frame" x="12" y="0.0" width="296" height="276.5"/>
+                        <rect key="frame" x="10" y="0.0" width="300" height="276.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWD-Xy-HWr">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="亲子户外活动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J50-uA-T8V">
-                                        <rect key="frame" x="12" y="12" width="104" height="21"/>
+                                        <rect key="frame" x="15" y="12" width="104" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" text="10个活动" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Off-aj-sp6">
-                                        <rect key="frame" x="222" y="14" width="62" height="18"/>
+                                        <rect key="frame" x="223" y="13" width="62" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Off-aj-sp6" secondAttribute="trailing" constant="12" id="ABm-sW-pme"/>
+                                    <constraint firstAttribute="trailing" secondItem="Off-aj-sp6" secondAttribute="trailing" constant="15" id="ABm-sW-pme"/>
                                     <constraint firstItem="Off-aj-sp6" firstAttribute="centerY" secondItem="QWD-Xy-HWr" secondAttribute="centerY" id="HU8-fx-0pq"/>
                                     <constraint firstItem="J50-uA-T8V" firstAttribute="centerY" secondItem="QWD-Xy-HWr" secondAttribute="centerY" id="XrV-XB-EDd"/>
-                                    <constraint firstItem="J50-uA-T8V" firstAttribute="leading" secondItem="QWD-Xy-HWr" secondAttribute="leading" constant="12" id="lbl-uL-PYT"/>
+                                    <constraint firstItem="J50-uA-T8V" firstAttribute="leading" secondItem="QWD-Xy-HWr" secondAttribute="leading" constant="15" id="lbl-uL-PYT"/>
                                     <constraint firstAttribute="height" constant="44" id="pya-Zq-Pmz"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x6J-MZ-Pd2">
-                                <rect key="frame" x="0.0" y="44" width="296" height="120"/>
+                                <rect key="frame" x="0.0" y="44" width="300" height="120"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="njc-1P-tEJ"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-Ea-Fyx">
-                                <rect key="frame" x="0.0" y="180" width="296" height="80"/>
+                                <rect key="frame" x="0.0" y="180" width="300" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="s4m-8n-TtB"/>
@@ -88,9 +88,9 @@
                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="JSN-hg-3od" secondAttribute="bottom" id="CB8-sT-4X0"/>
-                    <constraint firstAttribute="trailing" secondItem="JSN-hg-3od" secondAttribute="trailing" constant="12" id="LZy-3q-VCl"/>
+                    <constraint firstAttribute="trailing" secondItem="JSN-hg-3od" secondAttribute="trailing" constant="10" id="LZy-3q-VCl"/>
                     <constraint firstItem="JSN-hg-3od" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="h5Y-nO-3y8"/>
-                    <constraint firstItem="JSN-hg-3od" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="jzd-b9-XVX"/>
+                    <constraint firstItem="JSN-hg-3od" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="jzd-b9-XVX"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

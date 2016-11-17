@@ -9,6 +9,7 @@
 #import "ProductDetailTwoColumnTableViewConsultCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
+#import "Colours.h"
 
 @interface ProductDetailTwoColumnTableViewConsultCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -23,10 +24,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.headImageView.layer.cornerRadius = 25;
+    self.headImageView.layer.cornerRadius = CGRectGetWidth(self.headImageView.bounds) * 0.5;
     self.headImageView.layer.masksToBounds = YES;
     self.headImageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.headImageView.layer.borderWidth = LINE_H;
+    
+    self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
+    self.timeL.textColor = [UIColor colorFromHexString:@"AFAFAF"];
+    self.contentL.textColor = [UIColor colorFromHexString:@"666666"];
     
 }
 

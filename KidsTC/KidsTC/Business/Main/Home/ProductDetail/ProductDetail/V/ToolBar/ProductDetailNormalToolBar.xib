@@ -32,7 +32,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTq-X1-irr" customClass="ProductDetailToolBarButton">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="在线咨询" image="ProductDetail_05">
+                            <state key="normal" title="在线咨询" image="ProductDetail_normalToolBar_contact">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -42,10 +42,10 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8S-jh-ISR" customClass="ProductDetailToolBarButton">
                             <rect key="frame" x="94" y="0.0" width="93.5" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="关注" image="ProductDetail_04">
+                            <state key="normal" title="关注" image="ProductDetail_normalToolBar_love_n">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="selected" image="ProductDetail_11"/>
+                            <state key="selected" image="ProductDetail_normalToolBar_love_y"/>
                             <connections>
                                 <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="eiT-wB-sly"/>
                             </connections>
@@ -97,8 +97,8 @@
         </view>
     </objects>
     <resources>
-        <image name="ProductDetail_04" width="21" height="20"/>
-        <image name="ProductDetail_05" width="23" height="24"/>
-        <image name="ProductDetail_11" width="21" height="20"/>
+        <image name="ProductDetail_normalToolBar_contact" width="96" height="104"/>
+        <image name="ProductDetail_normalToolBar_love_n" width="90" height="83"/>
+        <image name="ProductDetail_normalToolBar_love_y" width="90" height="83"/>
     </resources>
 </document>

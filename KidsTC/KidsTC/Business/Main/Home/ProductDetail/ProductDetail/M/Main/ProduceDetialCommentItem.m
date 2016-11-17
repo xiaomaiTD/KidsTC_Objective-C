@@ -29,9 +29,9 @@
 - (void)setupContent {
     if ([_content isNotNull]) {
         NSMutableAttributedString *attContent = [[NSMutableAttributedString alloc] initWithString:_content];
-        attContent.lineSpacing = 6;
+        attContent.lineSpacing = 4;
         attContent.color = [UIColor colorFromHexString:@"#666666"];
-        attContent.font = [UIFont systemFontOfSize:19];
+        attContent.font = [UIFont systemFontOfSize:12];
         _attContent = [[NSAttributedString alloc] initWithAttributedString:attContent];
     }
 }

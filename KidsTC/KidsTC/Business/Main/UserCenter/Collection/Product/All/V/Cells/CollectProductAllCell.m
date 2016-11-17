@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
+@property (weak, nonatomic) IBOutlet UILabel *statusL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerIconH;
 @end
@@ -32,15 +33,16 @@
     self.priceL.textColor = COLOR_PINK;
     self.icon.layer.cornerRadius = CGRectGetWidth(self.icon.bounds) * 0.5;
     self.icon.layer.masksToBounds = YES;
-    self.icon.layer.borderWidth = LINE_H;
+    self.icon.layer.borderWidth = 1;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.bannerIcon.layer.borderWidth = 1;
     self.bannerIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
+    self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.addressL.textColor = [UIColor colorFromHexString:@"999999"];
+    self.statusL.textColor = [UIColor colorFromHexString:@"999999"];
     self.priceL.textColor = [UIColor colorFromHexString:@"F36863"];
-    self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
 }
 
 

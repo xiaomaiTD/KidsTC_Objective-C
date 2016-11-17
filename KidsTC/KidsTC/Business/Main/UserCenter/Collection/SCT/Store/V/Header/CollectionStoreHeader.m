@@ -7,7 +7,9 @@
 //
 
 #import "CollectionStoreHeader.h"
+#import "Colours.h"
 #import "CollectionStoreHeaderCollectionViewCell.h"
+
 
 static NSString *const ID = @"CollectionStoreHeaderCollectionViewCell";
 
@@ -32,14 +34,22 @@ static CGFloat const margin = 12;
     
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.icon.layer.borderWidth = LINE_H;
+    
     self.enterBtn.layer.borderColor = COLOR_PINK.CGColor;
     self.enterBtn.layer.borderWidth = 1;
+    self.enterBtn.layer.cornerRadius = 4;
+    self.enterBtn.layer.masksToBounds = YES;
     [self.enterBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
+    
     self.lineOneH.constant = LINE_H;
     self.lineTwoH.constant = LINE_H;
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionStoreHeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    _collectionViewCellW = (SCREEN_WIDTH - 4 * margin) / 3;
-    self.collectionViewH.constant = _collectionViewCellW * 0.4;
+    _collectionViewCellW = (SCREEN_WIDTH - 2*15 - 2*10) / 3;
+    self.collectionViewH.constant = _collectionViewCellW * 0.48;
+    
+    self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
+    self.numL.textColor = [UIColor colorFromHexString:@"888888"];
     
     [self layoutIfNeeded];
 }
@@ -52,11 +62,11 @@ static CGFloat const margin = 12;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 12;
+    return 10;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 12;
+    return 10;
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource

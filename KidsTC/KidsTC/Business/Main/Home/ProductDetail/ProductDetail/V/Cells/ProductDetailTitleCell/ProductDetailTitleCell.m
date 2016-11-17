@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.titleL.textColor = [UIColor colorFromHexString:@"222222"];
 }
 
 - (void)setData:(ProductDetailData *)data {

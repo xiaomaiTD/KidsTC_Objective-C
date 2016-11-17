@@ -23,17 +23,20 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self layoutIfNeeded];
-    self.numL.layer.cornerRadius = 25;
+    
+    CGFloat radius = CGRectGetWidth(self.numL.bounds) * 0.5;
+    
+    self.numL.layer.cornerRadius = radius;
     self.numL.layer.masksToBounds = YES;
     self.numL.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    self.numL.layer.borderWidth = 1;
+    self.numL.layer.borderWidth = LINE_H;
     [self.icons enumerateObjectsUsingBlock:^(UIImageView  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.layer.cornerRadius = 25;
+        obj.layer.cornerRadius = radius;
         obj.layer.masksToBounds = YES;
         obj.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        obj.layer.borderWidth = 1;
+        obj.layer.borderWidth = LINE_H;
     }];
-    
+    self.tipL.textColor = [UIColor colorFromHexString:@"555555"];
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tapGR];
 }

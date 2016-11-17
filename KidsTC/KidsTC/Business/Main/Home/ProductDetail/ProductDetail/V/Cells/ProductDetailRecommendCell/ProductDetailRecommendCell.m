@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
 @property (weak, nonatomic) IBOutlet UILabel *statusL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
 @end
 
 @implementation ProductDetailRecommendCell
@@ -28,6 +29,11 @@
     self.productImg.layer.masksToBounds = YES;
     self.priceL.textColor = PRODUCT_DETAIL_RED;
     
+    self.nameL.textColor = [UIColor colorFromHexString:@"222222"];
+    self.addressL.textColor = [UIColor colorFromHexString:@"666666"];
+    self.statusL.textColor = [UIColor colorFromHexString:@"666666"];
+    self.lineH.constant = LINE_H;
+    [self layoutIfNeeded];
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tapGR];
 }

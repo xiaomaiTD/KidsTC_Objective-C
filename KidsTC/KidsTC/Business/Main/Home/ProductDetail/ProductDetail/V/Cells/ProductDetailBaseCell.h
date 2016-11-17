@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductDetailData.h"
+#import "Colours.h"
 
 typedef enum : NSUInteger {
     

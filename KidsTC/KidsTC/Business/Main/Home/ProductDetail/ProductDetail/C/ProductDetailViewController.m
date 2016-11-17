@@ -643,7 +643,7 @@
     [historyButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [historyButton setBackgroundColor:[UIColor clearColor]];
     historyButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [historyButton setImage:[UIImage imageNamed:@"navi_colock_black"] forState:UIControlStateNormal];
+    [historyButton setImage:[UIImage imageNamed:@"ProductDetail_navi_clock"] forState:UIControlStateNormal];
     [historyButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:historyButton];
     
@@ -652,7 +652,7 @@
     [shareButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [shareButton setBackgroundColor:[UIColor clearColor]];
     shareButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [shareButton setImage:[UIImage imageNamed:@"navi_more_black"] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage imageNamed:@"ProductDetail_navi_more"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(showActionView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:shareButton];
     

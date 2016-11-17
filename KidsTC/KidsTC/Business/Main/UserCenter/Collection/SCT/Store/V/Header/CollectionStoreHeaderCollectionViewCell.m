@@ -11,8 +11,8 @@
 @interface CollectionStoreHeaderCollectionViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
-@property (weak, nonatomic) IBOutlet UILabel *tipL;
-
+@property (weak, nonatomic) IBOutlet UILabel *fullL;
+@property (weak, nonatomic) IBOutlet UILabel *disL;
 @end
 
 @implementation CollectionStoreHeaderCollectionViewCell

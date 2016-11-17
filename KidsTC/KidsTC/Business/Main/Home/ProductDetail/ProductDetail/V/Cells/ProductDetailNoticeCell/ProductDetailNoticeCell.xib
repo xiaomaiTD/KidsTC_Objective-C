@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="231" id="KGk-i7-Jjw" customClass="ProductDetailNoticeCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="231"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="212" id="KGk-i7-Jjw" customClass="ProductDetailNoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="230"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-Nv-OsD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="220.5" id="ezj-8h-FsJ"/>
+                            <constraint firstAttribute="height" constant="220" id="R6G-L4-Wok"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SVb-Mk-eMj">
                             <size key="itemSize" width="50" height="50"/>
@@ -32,27 +36,29 @@
                         </connections>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEm-yt-jdJ">
+                        <rect key="frame" x="0.0" y="219" width="320" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="0.5" id="Vec-4k-fMX"/>
+                            <constraint firstAttribute="height" constant="0.5" id="cbB-oN-27R"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jEm-yt-jdJ" firstAttribute="top" secondItem="T2b-Nv-OsD" secondAttribute="bottom" constant="10" id="17b-hm-cQt"/>
-                    <constraint firstAttribute="trailing" secondItem="T2b-Nv-OsD" secondAttribute="trailing" id="5h6-I4-bZt"/>
-                    <constraint firstItem="jEm-yt-jdJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="KyJ-O4-IX1"/>
-                    <constraint firstAttribute="trailing" secondItem="jEm-yt-jdJ" secondAttribute="trailing" id="M47-Es-BPZ"/>
-                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RAx-sh-yKi"/>
-                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bs2-h4-eft"/>
-                    <constraint firstAttribute="bottom" secondItem="jEm-yt-jdJ" secondAttribute="bottom" id="vdv-2r-P7D"/>
+                    <constraint firstAttribute="bottom" secondItem="jEm-yt-jdJ" secondAttribute="bottom" id="1jn-yQ-Kh7"/>
+                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GFk-44-mNk"/>
+                    <constraint firstAttribute="bottom" secondItem="T2b-Nv-OsD" secondAttribute="bottom" id="K7g-65-pcx"/>
+                    <constraint firstItem="jEm-yt-jdJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lw4-S6-bef"/>
+                    <constraint firstAttribute="trailing" secondItem="T2b-Nv-OsD" secondAttribute="trailing" id="aLp-B1-id4"/>
+                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nWt-2v-fhd"/>
+                    <constraint firstAttribute="trailing" secondItem="jEm-yt-jdJ" secondAttribute="trailing" id="xWs-y2-pFl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="collectionConstraintH" destination="ezj-8h-FsJ" id="mwv-RY-VJ8"/>
+                <outlet property="collectionConstraintH" destination="R6G-L4-Wok" id="E37-zf-6Md"/>
                 <outlet property="collectionView" destination="T2b-Nv-OsD" id="uUU-mc-daz"/>
+                <outlet property="lineH" destination="cbB-oN-27R" id="7AN-Mz-wGt"/>
             </connections>
-            <point key="canvasLocation" x="59" y="-23"/>
+            <point key="canvasLocation" x="-177" y="-25"/>
         </tableViewCell>
     </objects>
 </document>

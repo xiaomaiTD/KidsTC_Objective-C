@@ -32,7 +32,7 @@ static NSString *const ID = @"ProductDetailCommentCellCollectionViewCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self layoutIfNeeded];
-    self.headerImgView.layer.cornerRadius = 25;
+    self.headerImgView.layer.cornerRadius = CGRectGetWidth(self.headerImgView.bounds) * 0.5;
     self.headerImgView.layer.masksToBounds = YES;
     self.headerImgView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.headerImgView.layer.borderWidth = LINE_H;
@@ -59,11 +59,12 @@ static NSString *const ID = @"ProductDetailCommentCellCollectionViewCell";
         
         CGFloat constant = 0;
         if (comment.imageUrl.count>0) {
-            constant = (SCREEN_WIDTH - 6*12)/4.5;
+            constant = (SCREEN_WIDTH - 4*12 - 2*15)/4.5;
         }
         self.collectionViewConstraintH.constant = constant;
         [self.collectionView reloadData];
     }
+    [self layoutIfNeeded];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {

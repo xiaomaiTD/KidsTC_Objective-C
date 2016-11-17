@@ -31,6 +31,9 @@
     [self.buyBtn setBackgroundColor:PRODUCT_DETAIL_RED forState:UIControlStateNormal];
     [self.buyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
+    self.nameL.textColor = [UIColor colorFromHexString:@"222222"];
+    self.contentL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
+    
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tapGR];
 }

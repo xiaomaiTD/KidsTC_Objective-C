@@ -25,7 +25,6 @@ static NSString *const kTcMedias = @"tcMedias";
     NSDictionary *dic = self.bestAttemptContent.userInfo;
     NSArray<NSString *> *urlStrs = dic[kTcMedias];
 #ifdef DEBUG
-    self.bestAttemptContent.body = @"DEBUG -- xxxx";
     NSMutableString *totalLogStr = [NSMutableString stringWithString:@"\n\n\n【标注：以下全部为日志信息，只有在debug调试状态下才会出现】"];
     NSString *urlStrsInfo = @"urlStrs为空";
     if (urlStrs.count>0) {

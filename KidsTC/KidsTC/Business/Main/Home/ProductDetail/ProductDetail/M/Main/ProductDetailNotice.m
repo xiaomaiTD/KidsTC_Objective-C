@@ -9,6 +9,7 @@
 #import "ProductDetailNotice.h"
 #import "NSAttributedString+YYText.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 @implementation ProductDetailNotice
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -18,8 +19,8 @@
     if ([_notice isNotNull]) {
         NSMutableAttributedString *attNotice = [[NSMutableAttributedString alloc] initWithString:_notice];
         attNotice.lineSpacing = 4;
-        attNotice.color = [UIColor darkGrayColor];
-        attNotice.font = [UIFont systemFontOfSize:17];
+        attNotice.color = [UIColor colorFromHexString:@"555555"];
+        attNotice.font = [UIFont systemFontOfSize:14];
         _attNotice = [[NSAttributedString alloc] initWithAttributedString:attNotice];
     }
     

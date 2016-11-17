@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,28 +15,30 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9m-if-B9C">
+                        <rect key="frame" x="0.0" y="43" width="320" height="0.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="nqc-dk-WaN"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题文字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvi-Pg-vVE">
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="15" y="16" width="290" height="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="K9m-if-B9C" secondAttribute="bottom" id="771-7d-4ra"/>
-                    <constraint firstAttribute="trailing" secondItem="zvi-Pg-vVE" secondAttribute="trailing" constant="12" id="O8k-7y-pae"/>
-                    <constraint firstItem="K9m-if-B9C" firstAttribute="top" secondItem="zvi-Pg-vVE" secondAttribute="bottom" constant="12" id="Tae-s1-31U"/>
+                    <constraint firstAttribute="trailing" secondItem="zvi-Pg-vVE" secondAttribute="trailing" constant="15" id="O8k-7y-pae"/>
+                    <constraint firstItem="K9m-if-B9C" firstAttribute="top" secondItem="zvi-Pg-vVE" secondAttribute="bottom" constant="16" id="Tae-s1-31U"/>
                     <constraint firstItem="K9m-if-B9C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="X2R-SJ-UBx"/>
-                    <constraint firstItem="zvi-Pg-vVE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="pAU-8S-e71"/>
-                    <constraint firstItem="zvi-Pg-vVE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="slx-YA-1r8"/>
+                    <constraint firstItem="zvi-Pg-vVE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="pAU-8S-e71"/>
+                    <constraint firstItem="zvi-Pg-vVE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="slx-YA-1r8"/>
                     <constraint firstAttribute="trailing" secondItem="K9m-if-B9C" secondAttribute="trailing" id="vSl-Fs-3uv"/>
                 </constraints>
             </tableViewCellContentView>

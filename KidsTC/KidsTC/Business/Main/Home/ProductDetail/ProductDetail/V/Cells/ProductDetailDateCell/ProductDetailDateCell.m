@@ -8,8 +8,10 @@
 
 #import "ProductDetailDateCell.h"
 
+
 @interface ProductDetailDateCell ()
 @property (weak, nonatomic) IBOutlet UILabel *dateL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
 
 @end
 
@@ -17,8 +19,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.lineH.constant = LINE_H;
+    self.dateL.textColor = [UIColor colorFromHexString:@"222222"];
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self addGestureRecognizer:tapGR];
+    [self layoutIfNeeded];
 }
 
 - (void)setData:(ProductDetailData *)data {

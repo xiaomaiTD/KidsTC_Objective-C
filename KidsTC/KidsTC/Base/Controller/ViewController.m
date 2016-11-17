@@ -207,11 +207,12 @@
 {
     if (self.navigationController.viewControllers.count > 1) {
         self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
-        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:imageName
-                                                                     highImageName:highImageName
-                                                                           postion:UIBarButtonPositionLeft
-                                                                            target:self
-                                                                            action:@selector(back)];
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+            [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:highImageName] forState:UIControlStateHighlighted];
+            btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
+            btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        }];
         self.hidesBottomBarWhenPushed = YES;
     }
 }
