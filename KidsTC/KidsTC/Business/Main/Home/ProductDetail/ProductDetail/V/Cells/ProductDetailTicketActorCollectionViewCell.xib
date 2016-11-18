@@ -11,52 +11,49 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductDetailTicketActorCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="212"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductDetailTicketActorCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="352"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="80" height="212"/>
+                <rect key="frame" x="0.0" y="0.0" width="80" height="352"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_page1_640_960" translatesAutoresizingMaskIntoConstraints="NO" id="9IF-dB-cG6">
-                        <rect key="frame" x="0.0" y="12" width="80" height="141"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9IF-dB-cG6">
+                        <rect key="frame" x="0.0" y="16" width="80" height="273"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="260" verticalCompressionResistancePriority="760" text="黄晓明" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dA-wb-0bH">
-                        <rect key="frame" x="17" y="161" width="46" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="0.0" y="301" width="80" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="饰 俞敏洪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAH-5w-OEF">
-                        <rect key="frame" x="0.0" y="187" width="80" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <rect key="frame" x="0.0" y="325.5" width="80" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="SAH-5w-OEF" firstAttribute="top" secondItem="1dA-wb-0bH" secondAttribute="bottom" constant="8" id="C2y-Ba-Vgj"/>
+                <constraint firstItem="SAH-5w-OEF" firstAttribute="top" secondItem="1dA-wb-0bH" secondAttribute="bottom" constant="10" id="C2y-Ba-Vgj"/>
                 <constraint firstAttribute="trailing" secondItem="9IF-dB-cG6" secondAttribute="trailing" id="CCI-sN-JBM"/>
-                <constraint firstItem="1dA-wb-0bH" firstAttribute="top" secondItem="9IF-dB-cG6" secondAttribute="bottom" constant="8" id="Fd6-3a-KZZ"/>
-                <constraint firstItem="1dA-wb-0bH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Iep-bY-mZ1"/>
+                <constraint firstItem="1dA-wb-0bH" firstAttribute="top" secondItem="9IF-dB-cG6" secondAttribute="bottom" constant="12" id="Fd6-3a-KZZ"/>
                 <constraint firstItem="9IF-dB-cG6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="T0k-gY-sE4"/>
-                <constraint firstItem="SAH-5w-OEF" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="VJO-Ak-x1b"/>
-                <constraint firstAttribute="bottom" secondItem="SAH-5w-OEF" secondAttribute="bottom" constant="8" id="aZl-Kb-UF5"/>
-                <constraint firstItem="9IF-dB-cG6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="hEs-SA-qfB"/>
+                <constraint firstAttribute="bottom" secondItem="SAH-5w-OEF" secondAttribute="bottom" constant="12" id="aZl-Kb-UF5"/>
+                <constraint firstItem="1dA-wb-0bH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="d1E-Nn-lYH"/>
+                <constraint firstAttribute="trailing" secondItem="1dA-wb-0bH" secondAttribute="trailing" id="fYU-c7-w9c"/>
+                <constraint firstItem="9IF-dB-cG6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="hEs-SA-qfB"/>
                 <constraint firstItem="SAH-5w-OEF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lAK-eL-3Hk"/>
                 <constraint firstAttribute="trailing" secondItem="SAH-5w-OEF" secondAttribute="trailing" id="orq-IV-Jll"/>
             </constraints>
-            <size key="customSize" width="94" height="239"/>
+            <size key="customSize" width="94" height="379"/>
             <connections>
                 <outlet property="actorL" destination="SAH-5w-OEF" id="33a-ca-hXq"/>
                 <outlet property="icon" destination="9IF-dB-cG6" id="9rR-gS-rXK"/>
                 <outlet property="nameL" destination="1dA-wb-0bH" id="Sj8-72-2BM"/>
             </connections>
-            <point key="canvasLocation" x="-118" y="43.5"/>
+            <point key="canvasLocation" x="-118" y="-27"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="welcome_page1_640_960" width="640" height="960"/>
-    </resources>
 </document>

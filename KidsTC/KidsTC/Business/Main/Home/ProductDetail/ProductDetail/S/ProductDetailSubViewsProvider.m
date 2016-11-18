@@ -31,6 +31,7 @@
 #import "ProductDetailRecommendCell.h"
 #import "ProductDetailTicketInfoCell.h"
 #import "ProductDetailTicketDesCell.h"
+#import "ProductDetailTicketDesBtnCell.h"
 #import "ProductDetailTicketPromiseCell.h"
 #import "ProductDetailTicketActorCell.h"
 #import "ProductDetaiFreeInfoCell.h"
@@ -229,7 +230,10 @@ singleM(ProductDetailSubViewsProvider)
     //info
     NSMutableArray *section00 = [NSMutableArray array];
     [section00 addObject:self.ticketInfoCell];
-    [section00 addObject:self.ticketDesCell];
+    if (_data.attSynopsis.length>0) {
+        [section00 addObject:self.ticketDesCell];
+        [section00 addObject:self.ticketDesBtnCell];
+    }
     if (section00.count>0) [sections addObject:section00];
     
     //address
@@ -582,6 +586,10 @@ singleM(ProductDetailSubViewsProvider)
 
 - (ProductDetailTicketDesCell *)ticketDesCell {
     return [self viewWithNib:@"ProductDetailTicketDesCell"];
+}
+
+- (ProductDetailTicketDesBtnCell *)ticketDesBtnCell {
+    return [self viewWithNib:@"ProductDetailTicketDesBtnCell"];
 }
 
 - (ProductDetailTicketPromiseCell *)ticketPromiseCell {

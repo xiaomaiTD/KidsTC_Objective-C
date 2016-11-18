@@ -7,12 +7,17 @@
 //
 
 #import "ProductDetailTicketSelectSeatCollectionViewFooter.h"
+#import "Colours.h"
+@interface ProductDetailTicketSelectSeatCollectionViewFooter ()
+@property (weak, nonatomic) IBOutlet UILabel *bottomL;
+
+@end
 
 @implementation ProductDetailTicketSelectSeatCollectionViewFooter
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.bottomL.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
 }
 
 @end

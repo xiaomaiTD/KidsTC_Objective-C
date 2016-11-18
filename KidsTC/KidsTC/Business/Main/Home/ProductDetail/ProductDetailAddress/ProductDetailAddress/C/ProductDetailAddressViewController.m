@@ -146,10 +146,15 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
         annotationView.image = [KTCMapUtil startAnnotationImage];
     }else if (annotation == self.destinationAnnotation){
         if (self.store.count>_currentIndex) {
+            ProductDetailStore *store = self.store[_currentIndex];
             ProductDetailAddressAnnoView *tipView = [[[NSBundle mainBundle] loadNibNamed:@"ProductDetailAddressAnnoView" owner:self options:nil] firstObject];
-            tipView.frame = CGRectMake(0, 0, 316, 94);
+            CGSize size = [store.location.moreDescription sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+            CGFloat min_w = 177;
+            CGFloat self_w = size.width + 77;
+            self_w = self_w<min_w?min_w:self_w;
+            tipView.frame = CGRectMake(0, 0, self_w, 44);
             tipView.delegate = self;
-            tipView.store = self.store[_currentIndex];
+            tipView.store = store;
             annotationView.paopaoView = [[BMKActionPaopaoView alloc]initWithCustomView:tipView];
             //设置是否可以拖拽
             annotationView.draggable = NO;

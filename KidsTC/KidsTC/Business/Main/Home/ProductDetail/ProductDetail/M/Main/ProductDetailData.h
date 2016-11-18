@@ -20,6 +20,9 @@
 #import "CommentListItemModel.h"
 #import "ProductDetailConsultItem.h"
 #import "CommonShareObject.h"
+#import "ProductDetailActor.h"
+#import "ProductDetailTheater.h"
+#import "ProductDetailPromise.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -60,6 +63,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray<NSString *> *coupons;
 @property (nonatomic, strong) NSString *originalPrice;
 @property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *priceDesc;
 @property (nonatomic, strong) ProductDetailInsurance *insurance;
 @property (nonatomic, strong) ProductDetailNote *note;
 @property (nonatomic, strong) ProductDetailShare *share;
@@ -69,6 +73,16 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray<ProductDetailStore *> *store;
 @property (nonatomic, assign) NSUInteger advisoryCount;
 @property (nonatomic, strong) ProductDetailTime *time;
+@property (nonatomic, strong) NSString *synopsis;
+@property (nonatomic, assign) NSInteger seeNum;
+@property (nonatomic, assign) NSInteger wantSeeNum;
+@property (nonatomic, strong) NSString *img;
+@property (nonatomic, strong) NSArray<ProductDetailActor *> *actors;
+@property (nonatomic, strong) ProductDetailTheater *theater;
+@property (nonatomic, strong) ProductDetailPromise *promise;
+@property (nonatomic, strong) NSString *kind;
+@property (nonatomic, strong) NSString *ticketTime;
+@property (nonatomic, strong) NSString *city;
 
 #pragma mark - selfDefine
 
@@ -95,6 +109,15 @@ typedef enum : NSUInteger {
 
 //shareObj
 @property (nonatomic, strong) CommonShareObject *shareObject;
+
+//ticket
+@property (nonatomic, strong) NSAttributedString *attTicketContent;
+
+@property (nonatomic, strong) NSAttributedString *attSynopsis;
+
+@property (nonatomic, strong) NSAttributedString *attTicketPromise;
+
+@property (nonatomic, assign) BOOL synopsisOpen;
 
 @end
 

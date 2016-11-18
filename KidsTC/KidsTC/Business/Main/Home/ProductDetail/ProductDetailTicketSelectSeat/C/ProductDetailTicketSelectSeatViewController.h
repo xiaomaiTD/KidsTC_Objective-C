@@ -9,5 +9,6 @@
 #import "ViewController.h"
 
 @interface ProductDetailTicketSelectSeatViewController : ViewController
-
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *channelId;
 @end

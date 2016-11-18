@@ -14,7 +14,7 @@
 #import "UIBarButtonItem+Category.h"
 
 static NSString *const ID = @"ProductDetailTwoColumnTableViewConsultCell";
-static CGFloat const kToolBarH = 60;
+static CGFloat const kToolBarH = 49;
 static int const pageSize = 10;
 
 @interface ProductDetailConsultViewController ()<UITableViewDelegate,UITableViewDataSource,ProductDetailAddNewConsultViewControllerDelegate>

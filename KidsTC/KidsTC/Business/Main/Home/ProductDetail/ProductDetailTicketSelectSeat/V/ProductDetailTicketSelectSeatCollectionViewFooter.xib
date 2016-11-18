@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR">
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ProductDetailTicketSelectSeatCollectionViewFooter">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="miV-UO-QeI">
-                    <rect key="frame" x="0.0" y="38" width="320" height="12"/>
+                    <rect key="frame" x="0.0" y="40" width="320" height="10"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="12" id="bgo-FC-JKG"/>
+                        <constraint firstAttribute="height" constant="10" id="bgo-FC-JKG"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -32,6 +32,9 @@
                 <constraint firstAttribute="trailing" secondItem="miV-UO-QeI" secondAttribute="trailing" id="dm5-GU-fIl"/>
                 <constraint firstItem="miV-UO-QeI" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="lxa-MB-eaf"/>
             </constraints>
+            <connections>
+                <outlet property="bottomL" destination="miV-UO-QeI" id="ce9-R1-6ga"/>
+            </connections>
         </collectionReusableView>
     </objects>
 </document>

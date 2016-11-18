@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ProductDetailActor.h"
 @interface ProductDetailTicketActorCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) ProductDetailActor *actor;
 @end

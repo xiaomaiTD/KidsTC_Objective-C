@@ -8,7 +8,7 @@
 
 #import "ProductDetailBaseToolBar.h"
 
-CGFloat const kProductDetailBaseToolBarHeight = 54;
+CGFloat const kProductDetailBaseToolBarHeight = 49;
 
 @implementation ProductDetailBaseToolBar
 

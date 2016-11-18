@@ -14,16 +14,23 @@
 @property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *commentBtn;
 @property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *starBtn;
 @property (weak, nonatomic) IBOutlet UIButton *selectSeatBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+
 @end
 
 @implementation ProductDetailTicketToolBar
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.VLineH.constant = LINE_H;
+    self.HLineH.constant = LINE_H;
     self.selectSeatBtn.backgroundColor = COLOR_PINK;
     self.commentBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarComment;
     self.starBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarStar;
     self.selectSeatBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarSelectSeat;
+    [self layoutIfNeeded];
+    [NotificationCenter addObserver:self selector:@selector(ticketLike) name:kProductDetaiTicketLike object:nil];
 }
 
 - (void)setData:(ProductDetailData *)data {
@@ -38,10 +45,18 @@
         if (type == ProductDetailBaseToolBarActionTypeTicketToolBarStar) {
             [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
                 self.data.isFavor = !self.data.isFavor;
-                self.starBtn.selected = self.data.isFavor;
+                [NotificationCenter postNotificationName:kProductDetaiTicketLike object:nil];
             }];
         }
     }
+}
+
+- (void)ticketLike {
+    self.starBtn.selected = self.data.isFavor;
+}
+
+- (void)dealloc {
+    [NotificationCenter removeObserver:self name:kProductDetaiTicketLike object:nil];
 }
 
 @end

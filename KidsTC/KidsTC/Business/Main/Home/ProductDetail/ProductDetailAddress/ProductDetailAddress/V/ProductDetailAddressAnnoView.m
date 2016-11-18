@@ -19,6 +19,8 @@
 - (void)setStore:(ProductDetailStore *)store {
     _store = store;
     self.label.text = store.location.moreDescription;
+    
+    
 }
 
 

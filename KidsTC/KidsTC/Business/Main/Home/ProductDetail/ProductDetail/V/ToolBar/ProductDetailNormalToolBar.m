@@ -15,7 +15,8 @@
 @interface ProductDetailNormalToolBar ()
 @property (weak, nonatomic) IBOutlet UIButton *contactBtn;
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineH;
 @end
 
 @implementation ProductDetailNormalToolBar
@@ -23,7 +24,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.HLineConstraintH.constant = LINE_H;
+    self.HLineH.constant = LINE_H;
+    self.VLineH.constant = LINE_H;
     self.buyBtn.backgroundColor = COLOR_PINK;
     
     self.contactBtn.tag = ProductDetailBaseToolBarActionTypeConsult;
@@ -32,6 +34,8 @@
     
     [self.buyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self.buyBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
+    
+    [self layoutIfNeeded];
 }
 
 - (IBAction)action:(UIButton *)sender {

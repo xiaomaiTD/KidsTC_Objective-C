@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailTicketSelectSeatCollectionViewHeader.h"
+#import "Colours.h"
 
 @interface ProductDetailTicketSelectSeatCollectionViewHeader ()
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
@@ -16,11 +17,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.titleL.textColor = [UIColor colorFromHexString:@"222222"];
 }
 
 - (void)setTitle:(NSString *)title {
-
     _title = title;
     self.titleL.text = title;
 }

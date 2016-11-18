@@ -7,22 +7,29 @@
 //
 
 #import "ProductDetailTicketSelectSeatViewController.h"
+#import "GHeader.h"
+
+#import "ProductDetailTicketSelectSeatModel.h"
+
 #import "ProductDetailTicketSelectSeatCollectionViewCell.h"
 #import "ProductDetailTicketSelectSeatCollectionViewHeader.h"
 #import "ProductDetailTicketSelectSeatCollectionViewFooter.h"
+#import "ProductDetailTicketSelectSeatCollectionViewNumFooter.h"
 
 #import "SettlementResultNewViewController.h"
 
 static NSString *const ID = @"ProductDetailTicketSelectSeatCollectionViewCell";
 static NSString *const HeaderId = @"ProductDetailTicketSelectSeatCollectionViewHeader";
 static NSString *const FooterId = @"ProductDetailTicketSelectSeatCollectionViewFooter";
+static NSString *const NumFooterId = @"ProductDetailTicketSelectSeatCollectionViewNumFooter";
 
-static CGFloat kSelectSeatMargin = 12;
+static CGFloat kSelectSeatMargin = 15;
 
 @interface ProductDetailTicketSelectSeatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *selectDoneBtn;
-
+@property (nonatomic, strong) ProductDetailTicketSelectSeatData *data;
+@property (nonatomic, assign) NSInteger selectIndex;;
 @end
 
 @implementation ProductDetailTicketSelectSeatViewController
@@ -38,7 +45,34 @@ static CGFloat kSelectSeatMargin = 12;
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewHeader" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:HeaderId ];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewFooter" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:FooterId ];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewNumFooter" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NumFooterId ];
     self.selectDoneBtn.backgroundColor = COLOR_PINK;
+    
+    [self loadData];
+}
+
+- (void)loadData {
+    NSDictionary *param = @{@"pid":_productId,
+                            @"chid":_channelId};
+    [Request startWithName:@"GET_TICKET_PRODUCT_SELECT_SEAT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        ProductDetailTicketSelectSeatData *data = [ProductDetailTicketSelectSeatModel modelWithDictionary:dic].data;
+        if (data.seatTimes.count>0) {
+            [self loadDataSuccess:data];
+        }else{
+            [self loadDataFailure:nil];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self loadDataFailure:error];
+    }];
+}
+
+- (void)loadDataSuccess:(ProductDetailTicketSelectSeatData *)data {
+    self.data = data;
+    [self.collectionView reloadData];
+}
+
+- (void)loadDataFailure:(NSError *)error {
+    
 }
 
 - (IBAction)selectDone:(UIButton *)sender {
@@ -63,10 +97,14 @@ static CGFloat kSelectSeatMargin = 12;
     return kSelectSeatMargin;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(SCREEN_WIDTH, 44);
+    return CGSizeMake(SCREEN_WIDTH, 49);
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    return CGSizeMake(SCREEN_WIDTH, kSelectSeatMargin * 2);
+    if (section == 0) {
+        return CGSizeMake(SCREEN_WIDTH, 25);
+    }else{
+        return CGSizeMake(SCREEN_WIDTH, 84);
+    }
 }
 
 
@@ -77,7 +115,11 @@ static CGFloat kSelectSeatMargin = 12;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    if (section==0) {
+        return self.data.seatTimes.count;
+    }else{
+        return self.data.seatTimes[self.selectIndex].seats.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,18 +134,20 @@ static CGFloat kSelectSeatMargin = 12;
         ProductDetailTicketSelectSeatCollectionViewHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:HeaderId forIndexPath:indexPath];
         if (indexPath.section == 0) {
             headerView.title = @"选择时间";
-        }else if (indexPath.section == 1) {
-            headerView.title = @"选择套餐";
         }else {
-            headerView.title = nil;
+            headerView.title = @"选择套餐";
         }
         return  headerView;
     }
     
     if (kind == UICollectionElementKindSectionFooter) {
-        ProductDetailTicketSelectSeatCollectionViewFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:FooterId forIndexPath:indexPath];
-        
-        return  footerView;
+        if (indexPath.section == 0) {
+            ProductDetailTicketSelectSeatCollectionViewFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:FooterId forIndexPath:indexPath];
+            return  footerView;
+        }else{
+            ProductDetailTicketSelectSeatCollectionViewNumFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:NumFooterId forIndexPath:indexPath];
+            return  footerView;
+        }
     }
     return nil;
 }

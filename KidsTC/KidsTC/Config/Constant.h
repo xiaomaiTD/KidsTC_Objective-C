@@ -34,3 +34,5 @@ static NSString *const kSynchronizedData                   = @"SynchronizedData"
 static NSString *const kHomeViewControllerDidScroll        = @"HomeViewControllerDidScroll";
 static NSString *const kHomeViewControllerDidEndDrag       = @"HomeViewControllerDidEndDrag";
 
+//票务详情 - 想看
+static NSString *const kProductDetaiTicketLike             = @"ProductDetaiTicketLike";

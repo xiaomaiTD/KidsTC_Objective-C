@@ -114,10 +114,6 @@ static NSString *const ID = @"ProductDetailTwoColumnTableViewBaseCell";
     [self.tableView reloadData];
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
-}
-
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

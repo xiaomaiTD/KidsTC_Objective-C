@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-ue-Voz" customClass="FiveStarsView">
-                        <rect key="frame" x="278" y="12" width="30" height="20"/>
+                        <rect key="frame" x="275" y="16" width="30" height="20"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="H8Q-NZ-Vjz"/>
@@ -41,13 +41,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdo-GK-bzY">
-                        <rect key="frame" x="15" y="62" width="290" height="23"/>
+                        <rect key="frame" x="15" y="62" width="290" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RMi-Jx-ZXG">
-                        <rect key="frame" x="15" y="93" width="290" height="80"/>
+                        <rect key="frame" x="15" y="92" width="290" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="sXV-pg-w42"/>
@@ -64,7 +64,7 @@
                         </connections>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uns-gz-A3C">
-                        <rect key="frame" x="0.0" y="185" width="320" height="21"/>
+                        <rect key="frame" x="0.0" y="184" width="320" height="21"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-10-07" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIA-3x-xfb">
                                 <rect key="frame" x="15" y="3" width="62" height="14"/>
@@ -128,7 +128,7 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Seh-wl-BYe">
-                        <rect key="frame" x="0.0" y="217" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="216" width="320" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="Mme-62-ifa"/>
@@ -141,7 +141,7 @@
                     <constraint firstAttribute="bottom" secondItem="uns-gz-A3C" secondAttribute="bottom" constant="12" id="FIG-Xn-Yg7"/>
                     <constraint firstAttribute="trailing" secondItem="uns-gz-A3C" secondAttribute="trailing" id="ILh-Js-FGg"/>
                     <constraint firstItem="RMi-Jx-ZXG" firstAttribute="top" secondItem="vdo-GK-bzY" secondAttribute="bottom" constant="8" id="IzI-FK-Adi"/>
-                    <constraint firstItem="sPn-ue-Voz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ReO-xv-dYr"/>
+                    <constraint firstItem="sPn-ue-Voz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ReO-xv-dYr"/>
                     <constraint firstItem="RMi-Jx-ZXG" firstAttribute="trailing" secondItem="vdo-GK-bzY" secondAttribute="trailing" id="SRB-bt-OOJ"/>
                     <constraint firstItem="vdo-GK-bzY" firstAttribute="leading" secondItem="WR8-gV-tSx" secondAttribute="leading" id="aWn-GC-SoI"/>
                     <constraint firstItem="kKN-de-pN6" firstAttribute="leading" secondItem="WR8-gV-tSx" secondAttribute="trailing" constant="8" id="bGB-cc-InK"/>
@@ -154,7 +154,7 @@
                     <constraint firstItem="kKN-de-pN6" firstAttribute="centerY" secondItem="WR8-gV-tSx" secondAttribute="centerY" id="reO-tE-sSu"/>
                     <constraint firstAttribute="bottom" secondItem="Seh-wl-BYe" secondAttribute="bottom" id="rxi-ad-pAN"/>
                     <constraint firstItem="WR8-gV-tSx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="soW-YQ-xZq"/>
-                    <constraint firstAttribute="trailing" secondItem="sPn-ue-Voz" secondAttribute="trailing" constant="12" id="y8Y-VF-7l1"/>
+                    <constraint firstAttribute="trailing" secondItem="sPn-ue-Voz" secondAttribute="trailing" constant="15" id="y8Y-VF-7l1"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -168,7 +168,7 @@
                 <outlet property="starsView" destination="sPn-ue-Voz" id="Ydo-ab-OW6"/>
                 <outlet property="timeL" destination="lIA-3x-xfb" id="b1E-Xl-PX5"/>
             </connections>
-            <point key="canvasLocation" x="-686" y="145"/>
+            <point key="canvasLocation" x="-883" y="123"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -7,17 +7,20 @@
 //
 
 #import "ProductDetailToolBarButton.h"
+#import "Colours.h"
 
-static CGFloat const kTitle_h = 17;
-static CGFloat const kTitle_b = 4;
-static CGFloat const kImage_s = 26;
+static CGFloat const kTitle_h = 11;
+static CGFloat const kTitle_b = 5;
+static CGFloat const kImage_s = 20;
 
 @implementation ProductDetailToolBarButton
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.titleLabel.font = [UIFont systemFontOfSize:11];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self setTitleColor:[UIColor colorFromHexString:@"666666"] forState:UIControlStateNormal];
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
@@ -27,7 +30,7 @@ static CGFloat const kImage_s = 26;
 
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
     CGFloat image_x = (CGRectGetWidth(contentRect) - kImage_s) * 0.5;
-    CGFloat image_y = (CGRectGetHeight(contentRect) - kTitle_h - kTitle_b - kImage_s) * 0.5;
+    CGFloat image_y = (CGRectGetHeight(contentRect) - kTitle_h - kTitle_b - kImage_s) * 0.5 + 1;
     return CGRectMake(image_x, image_y, kImage_s, kImage_s);
 }
 

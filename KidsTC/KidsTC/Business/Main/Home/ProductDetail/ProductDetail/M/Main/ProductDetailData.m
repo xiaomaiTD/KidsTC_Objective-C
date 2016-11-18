@@ -22,7 +22,8 @@
              @"fullCut":[NSString class],
              @"coupons":[NSString class],
              @"product_standards":[ProductDetailStandard class],
-             @"store":[ProductDetailStore class]};
+             @"store":[ProductDetailStore class],
+             @"actors":[ProductDetailActor class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
@@ -31,6 +32,8 @@
     _isCanBuy = _status == 1;
     
     _simpleName = [_simpleName isNotNull]?_simpleName:@"服务详情";
+    
+    _priceSort = [NSString stringWithFormat:@"%@",@(_priceSort.floatValue)];
     
     _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
     
@@ -43,6 +46,12 @@
     [self setupCommentList:dic];
     
     [self setupShareObj:dic];
+    
+    [self setupTicketInfo];
+    
+    [self setupSynopsis];
+    
+    [self setupTicketPromise];
     
     return YES;
 }
@@ -108,6 +117,129 @@
         self.shareObject.identifier = _serveId;
         self.shareObject.followingContent = @"【童成】";
     }
+}
+
+- (void)setupTicketInfo {
+    
+    NSMutableAttributedString *attTicketContent = [[NSMutableAttributedString alloc] init];
+    
+    if ([_serveName isNotNull]) {
+        NSMutableAttributedString *attServeName = [[NSMutableAttributedString alloc] initWithString:_serveName];
+        attServeName.font = [UIFont systemFontOfSize:18];
+        attServeName.color = [UIColor colorFromHexString:@"FFFFFF"];
+        attServeName.lineSpacing = 8;
+        [attTicketContent appendAttributedString:attServeName];
+    }
+    
+    if (attTicketContent.length>0) {
+        [attTicketContent appendAttributedString:self.lineFeedAttStr];
+    }
+    
+    NSMutableAttributedString *attTicketInfo = [[NSMutableAttributedString alloc] init];
+    
+    if ([_theater.theaterName isNotNull]) {
+        NSAttributedString *attTheaterName = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"场馆：%@",_theater.theaterName]];
+        [attTicketInfo appendAttributedString:attTheaterName];
+    }
+    
+    if (attTicketInfo.length>0) {
+        [attTicketInfo appendAttributedString:self.lineFeedAttStr];
+    }
+    
+    NSMutableString *localStr = [NSMutableString string];
+    if ([_city isNotNull]) {
+        [localStr appendString:[NSString stringWithFormat:@"%@/",_city]];
+    }
+    if ([_kind isNotNull]) {
+        [localStr appendString:[NSString stringWithFormat:@"%@/",_kind]];
+    }
+    if ([_ticketTime isNotNull]) {
+        [localStr appendString:_ticketTime];
+    }
+    if ([localStr isNotNull]) {
+        NSAttributedString *attLocalStr = [[NSAttributedString alloc] initWithString:localStr];
+        [attTicketInfo appendAttributedString:attLocalStr];
+    }
+    
+    if (attTicketInfo.length>0) {
+        [attTicketInfo appendAttributedString:self.lineFeedAttStr];
+    }
+    
+    NSString *seeNumStr = [NSString stringWithFormat:@"%zd人想看 %zd人已看过",_wantSeeNum,_seeNum];
+    NSAttributedString *attSeeNumStr = [[NSAttributedString alloc] initWithString:seeNumStr];
+    [attTicketInfo appendAttributedString:attSeeNumStr];
+    
+    attTicketInfo.lineSpacing = 6;
+    attTicketInfo.font = [UIFont systemFontOfSize:13];
+    attTicketInfo.color = [[UIColor colorFromHexString:@"FFFFFF"] colorWithAlphaComponent:0.7];
+    
+    if (attTicketInfo.length>0) {
+        [attTicketContent appendAttributedString:attTicketInfo];
+    }
+    
+    if (attTicketContent.length>0) {
+        [attTicketContent appendAttributedString:self.lineFeedAttStr];
+    }
+    
+    if ([_priceDesc isNotNull]) {
+        NSMutableAttributedString *attPriceDesc = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%@",_priceDesc]];
+        attPriceDesc.font = [UIFont boldSystemFontOfSize:19];
+        attPriceDesc.color = COLOR_PINK;
+        [attTicketContent appendAttributedString:attPriceDesc];
+    }
+    
+    _attTicketContent = attTicketContent;
+}
+
+- (NSAttributedString *)lineFeedAttStr {
+    return [[NSAttributedString alloc] initWithString:@"\n"];
+}
+
+- (void)setupSynopsis {
+    if ([_synopsis isNotNull]) {
+        NSMutableAttributedString *attSynopsis = [[NSMutableAttributedString alloc] initWithString:_synopsis];
+        attSynopsis.lineSpacing = 10;
+        attSynopsis.color = [UIColor colorFromHexString:@"555555"];
+        attSynopsis.font = [UIFont systemFontOfSize:14];
+        _attSynopsis = attSynopsis;
+    }
+}
+
+- (void)setupTicketPromise {
+    NSMutableAttributedString *attTicketPromise = [[NSMutableAttributedString alloc] init];
+    if (_promise.isShowReal) {
+        NSAttributedString *real = [self ticketPromise:@"ProductDetail_ticket_promise_real" tip:@"100%真票"];
+        [attTicketPromise appendAttributedString:real];
+    }
+    if (_promise.isShowSafe) {
+        NSAttributedString *safe = [self ticketPromise:@"ProductDetail_ticket_promise_safe" tip:@"安全交易"];
+        [attTicketPromise appendAttributedString:safe];
+    }
+    if (_promise.isShowPayback) {
+        NSAttributedString *payback = [self ticketPromise:@"ProductDetail_ticket_promise_payback" tip:@"无票赔付"];
+        [attTicketPromise appendAttributedString:payback];
+    }
+    _attTicketPromise = attTicketPromise;
+}
+
+- (NSAttributedString *)ticketPromise:(NSString *)imageName tip:(NSString *)tip  {
+    if ([imageName isNotNull] && [tip isNotNull]) {
+        NSMutableAttributedString *attPromise = [[NSMutableAttributedString alloc] init];
+        
+        NSTextAttachment *attach = [[NSTextAttachment alloc] init];
+        attach.image = [UIImage imageNamed:imageName];
+        attach.bounds = CGRectMake(0, -2, 14, 14);
+        NSAttributedString *attachStr = [NSAttributedString attributedStringWithAttachment:attach];
+        [attPromise appendAttributedString:attachStr];
+        
+        NSMutableAttributedString *attTip = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@   ",tip]];
+        attTip.color = [UIColor colorFromHexString:@"555555"];
+        attTip.font = [UIFont systemFontOfSize:14];
+        [attPromise appendAttributedString:attTip];
+        
+        return attPromise;
+    }
+    return nil;
 }
 
 @end

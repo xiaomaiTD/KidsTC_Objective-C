@@ -18,6 +18,7 @@
 #import "UIBarButtonItem+Category.h"
 
 #import "ProductDetailDataManager.h"
+#import "ProductDetailSubViewsProvider.h"
 #import "ProductDetailGetCouponModel.h"
 
 #import "SegueMaster.h"
@@ -45,6 +46,7 @@
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) ProductDetailView *detailView;
 @property (nonatomic, strong) ProductDetailDataManager *dataManager;
+@property (nonatomic, strong) ProductDetailSubViewsProvider *subViewsProvider;
 @end
 
 @implementation ProductDetailViewController
@@ -60,6 +62,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _type = ProductDetailTypeTicket;
+    _productId = @"100001";
+    _channelId = @"0";
+    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -78,10 +85,31 @@
     
     self.naviTheme = NaviThemeWihte;
     
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            self.naviColor = [UIColor clearColor];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            
+        }
+            break;
+    }
+    
     _dataManager = [ProductDetailDataManager shareProductDetailDataManager];
     _dataManager.type = _type;
     _dataManager.productId = _productId;
     _dataManager.channelId = _channelId;
+    
+    _subViewsProvider = [ProductDetailSubViewsProvider shareProductDetailSubViewsProvider];
+    _subViewsProvider.type = _type;
     
     [self loadData];
     
@@ -92,6 +120,7 @@
     if (!_detailView) {
         _detailView = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _detailView.delegate = self;
+        _detailView.type = _type;
         [self.view addSubview:_detailView];
     }
     return _detailView;
@@ -211,7 +240,7 @@
             break;
         case ProductDetailViewActionTypeMoreComment://查看全部评论
         {
-            [self moreComment:value];
+            [self moreComment:value];                  
         }
             break;
         case ProductDetailViewActionTypeRecommend://为您推荐
@@ -221,7 +250,7 @@
             break;
         case ProductDetailViewActionTypeTicketLike://票务 - 想看
         {
-        
+            [self attention:value];
         }
             break;
         case ProductDetailViewActionTypeTicketStar://票务 - 评分
@@ -271,7 +300,7 @@
             break;
         case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
         {
-            
+            [self attention:value];
         }
             break;
         case ProductDetailViewActionTypeTicketToolBarSelectSeat://票务 - 选座购票
@@ -281,7 +310,7 @@
             break;
         case ProductDetailViewActionTypeTicketHeaderLike://票务 - 想看
         {
-            
+            [self attention:value];
         }
             break;
         case ProductDetailViewActionTypeTicketHeaderStar://票务 - 评分
@@ -611,6 +640,8 @@
 
 - (void)ticketSelectSeat:(id)value {
     ProductDetailTicketSelectSeatViewController *controller = [[ProductDetailTicketSelectSeatViewController alloc] initWithNibName:@"ProductDetailTicketSelectSeatViewController" bundle:nil];
+    controller.productId = self.productId;
+    controller.channelId = self.channelId;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -630,6 +661,7 @@
 #pragma mark - buildRightBarButtons
 
 - (void)buildRightBarButtons {
+    
     
     CGFloat buttonWidth = 24;
     CGFloat buttonHeight = 24;

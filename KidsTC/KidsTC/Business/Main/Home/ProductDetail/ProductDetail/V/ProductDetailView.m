@@ -19,7 +19,6 @@
 #import "ProductDetailCountDownView.h"
 
 static NSString *const ID = @"UITableViewCell";
-static CGFloat const kTicketHeaderH = 274;
 
 @interface ProductDetailView ()<ProductDetailViewBaseHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
 @property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
@@ -39,7 +38,6 @@ static CGFloat const kTicketHeaderH = 274;
     if (self) {
         
         _subViewProvider = [ProductDetailSubViewsProvider shareProductDetailSubViewsProvider];
-        _subViewProvider.type = _type;
         
         [self setupSubViews];
     }
@@ -58,8 +56,26 @@ static CGFloat const kTicketHeaderH = 274;
     CGFloat self_w = CGRectGetWidth(self.bounds);
     CGFloat self_h = CGRectGetHeight(self.bounds);
     
+    CGRect tableViewFrame;
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            tableViewFrame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            tableViewFrame = CGRectMake(0, 0, self_w, self_h - kProductDetailBaseToolBarHeight);
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            tableViewFrame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
+        }
+            break;
+    }
     
-    _tableView.frame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
+    _tableView.frame = tableViewFrame;
     [self setupTwoColumnToolBarFrame];
     CGFloat countDownView_y = self_h - kProductDetailCountDownViewHeight - kProductDetailBaseToolBarHeight;
     _countDownView.frame = CGRectMake(0, countDownView_y, self_w, kProductDetailCountDownViewHeight);
@@ -98,6 +114,7 @@ static CGFloat const kTicketHeaderH = 274;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60.0f;
+    tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
@@ -154,9 +171,21 @@ static CGFloat const kTicketHeaderH = 274;
 #pragma mark ProductDetailBaseCellDelegate
 - (void)productDetailBaseCell:(ProductDetailBaseCell *)cell actionType:(ProductDetailBaseCellActionType)type value:(id)value {
     [self action:(ProductDetailViewActionType)type value:value];
-    if (type == ProductDetailViewActionTypeOpenWebView) {
-        _subViewProvider.twoColumnCellUsed.webViewHasOpen = YES;
-        [self reload];
+    
+    switch (type) {
+        case ProductDetailViewActionTypeOpenWebView:
+        {
+            _subViewProvider.twoColumnCellUsed.webViewHasOpen = YES;
+            [self reload];
+        }
+            break;
+        case ProductDetailViewActionTypeTicketOpenDes:
+        {
+            [self reload];
+        }
+            break;
+        default:
+            break;
     }
 }
 
@@ -196,17 +225,40 @@ static CGFloat const kTicketHeaderH = 274;
 
 - (void)setupTwoColumnToolBarFrame {
     CGFloat offsetY = _tableViewContentOffset.y;
-    CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCellUsed.frame) + 64;
-    if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
-        _twoColumnToolBar.hidden = YES;
-    }else{
-        CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-        if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCellUsed.frame) ) y = 64;
-        CGRect frame = _twoColumnToolBar.frame;
-        frame.origin.y = y;
-        _twoColumnToolBar.frame = frame;
-        _twoColumnToolBar.hidden = NO;
+    switch (_type) {
+        case ProductDetailTypeNormal:
+            case ProductDetailTypeFree:
+        {
+            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCellUsed.frame) + 64;
+            if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
+                _twoColumnToolBar.hidden = YES;
+            }else{
+                CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
+                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCellUsed.frame) ) y = 64;
+                CGRect frame = _twoColumnToolBar.frame;
+                frame.origin.y = y;
+                _twoColumnToolBar.frame = frame;
+                _twoColumnToolBar.hidden = NO;
+            }
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCellUsed.frame);
+            if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
+                _twoColumnToolBar.hidden = YES;
+            }else{
+                CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
+                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCellUsed.frame) ) y = 64;
+                CGRect frame = _twoColumnToolBar.frame;
+                frame.origin.y = y;
+                _twoColumnToolBar.frame = frame;
+                _twoColumnToolBar.hidden = NO;
+            }
+        }
+            break;
     }
+    
 }
 
 - (void)resetTwoColumnToolBarShowType:(ProductDetailTwoColumnToolBarActionType)type {

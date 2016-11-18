@@ -16,15 +16,15 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-JZ-ikB">
-                    <rect key="frame" x="12" y="15" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="15" y="16.5" width="35.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
                 <constraint firstItem="L8W-JZ-ikB" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="8kt-NX-eou"/>
-                <constraint firstItem="L8W-JZ-ikB" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="12" id="Lsy-e6-2PE"/>
+                <constraint firstItem="L8W-JZ-ikB" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="15" id="Lsy-e6-2PE"/>
             </constraints>
             <connections>
                 <outlet property="titleL" destination="L8W-JZ-ikB" id="E3R-zU-8Bv"/>
