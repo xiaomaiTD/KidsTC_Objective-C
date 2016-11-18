@@ -18,7 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.bgOne.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
-    self.bgOne.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
+    self.bgTwo.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
 }
 
 @end
