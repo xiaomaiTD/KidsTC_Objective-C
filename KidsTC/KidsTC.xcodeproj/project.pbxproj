@@ -107,8 +107,8 @@
 		EC2F26021DD6BB4800B67BBA /* ProductDetailTicketInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26001DD6BB4800B67BBA /* ProductDetailTicketInfoCell.xib */; };
 		EC2F260D1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F260B1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.m */; };
 		EC2F260E1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F260C1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.xib */; };
-		EC2F26121DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.m */; };
-		EC2F26131DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.xib */; };
+		EC2F26121DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m */; };
+		EC2F26131DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib */; };
 		EC2F26171DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26151DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m */; };
 		EC2F26181DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26161DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.xib */; };
 		EC2F261C1DD6CDFF00B67BBA /* ProductDetailTicketSelectSeatCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F261A1DD6CDFF00B67BBA /* ProductDetailTicketSelectSeatCollectionViewFooter.m */; };
@@ -952,6 +952,10 @@
 		EC84861E1DDF2A6F0039E9D3 /* ProductDetailTicketSelectSeatSeat.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84861D1DDF2A6F0039E9D3 /* ProductDetailTicketSelectSeatSeat.m */; };
 		EC8486221DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8486201DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m */; };
 		EC8486231DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8486211DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib */; };
+		EC889D061DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D041DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m */; };
+		EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */; };
+		EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */; };
+		EC889D0E1DE069610054355C /* ServiceSettlementSubViewsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */; };
 		EC97C01F1DD060D4001E1246 /* ProductDetailCountDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97C01D1DD060D4001E1246 /* ProductDetailCountDownView.m */; };
 		EC97C0201DD060D4001E1246 /* ProductDetailCountDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC97C01E1DD060D4001E1246 /* ProductDetailCountDownView.xib */; };
 		EC97C0291DD076B9001E1246 /* ProductDetailTicketPromiseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97C0271DD076B9001E1246 /* ProductDetailTicketPromiseCell.m */; };
@@ -1416,9 +1420,9 @@
 		EC2F260A1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatViewController.h; sourceTree = "<group>"; };
 		EC2F260B1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatViewController.m; sourceTree = "<group>"; };
 		EC2F260C1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatViewController.xib; sourceTree = "<group>"; };
-		EC2F260F1DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewCell.h; sourceTree = "<group>"; };
-		EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewCell.m; sourceTree = "<group>"; };
-		EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC2F260F1DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewTimeCell.h; sourceTree = "<group>"; };
+		EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewTimeCell.m; sourceTree = "<group>"; };
+		EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewTimeCell.xib; sourceTree = "<group>"; };
 		EC2F26141DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewHeader.h; sourceTree = "<group>"; };
 		EC2F26151DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewHeader.m; sourceTree = "<group>"; };
 		EC2F26161DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewHeader.xib; sourceTree = "<group>"; };
@@ -2832,6 +2836,13 @@
 		EC84861F1DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.h; sourceTree = "<group>"; };
 		EC8486201DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.m; sourceTree = "<group>"; };
 		EC8486211DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.xib; sourceTree = "<group>"; };
+		EC889D031DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.h; sourceTree = "<group>"; };
+		EC889D041DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.m; sourceTree = "<group>"; };
+		EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.xib; sourceTree = "<group>"; };
+		EC889D091DE0693C0054355C /* ServiceSettlementDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementDataManager.h; sourceTree = "<group>"; };
+		EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementDataManager.m; sourceTree = "<group>"; };
+		EC889D0C1DE069610054355C /* ServiceSettlementSubViewsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementSubViewsProvider.h; sourceTree = "<group>"; };
+		EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementSubViewsProvider.m; sourceTree = "<group>"; };
 		EC8FD0D01DAA528900570884 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EC97C01C1DD060D4001E1246 /* ProductDetailCountDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailCountDownView.h; sourceTree = "<group>"; };
@@ -3837,9 +3848,12 @@
 		EC2F26061DD6BE8D00B67BBA /* V */ = {
 			isa = PBXGroup;
 			children = (
-				EC2F260F1DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.h */,
-				EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.m */,
-				EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.xib */,
+				EC2F260F1DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.h */,
+				EC2F26101DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m */,
+				EC2F26111DD6C1F700B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib */,
+				EC889D031DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.h */,
+				EC889D041DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m */,
+				EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */,
 				EC2F26141DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.h */,
 				EC2F26151DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m */,
 				EC2F26161DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.xib */,
@@ -6046,6 +6060,7 @@
 		EC4FBEF91D77CEE400BBD050 /* ServiceSettlement */ = {
 			isa = PBXGroup;
 			children = (
+				EC889D081DE069240054355C /* S */,
 				EC4FBEFA1D77CEE400BBD050 /* C */,
 				EC4FBEFD1D77CEE400BBD050 /* M */,
 				EC4FBF001D77CEE400BBD050 /* V */,
@@ -8594,6 +8609,17 @@
 			path = Speek;
 			sourceTree = "<group>";
 		};
+		EC889D081DE069240054355C /* S */ = {
+			isa = PBXGroup;
+			children = (
+				EC889D091DE0693C0054355C /* ServiceSettlementDataManager.h */,
+				EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */,
+				EC889D0C1DE069610054355C /* ServiceSettlementSubViewsProvider.h */,
+				EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */,
+			);
+			path = S;
+			sourceTree = "<group>";
+		};
 		EC97C01B1DD060D4001E1246 /* CountDownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -9901,7 +9927,7 @@
 				EC4FC4AD1D77CEE400BBD050 /* OrderListViewCell.xib in Resources */,
 				EC4FC3E71D77CEE400BBD050 /* ParentingStrategyDetailViewController.xib in Resources */,
 				EC4FC4561D77CEE400BBD050 /* MyCommentListViewCell.xib in Resources */,
-				EC2F26131DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.xib in Resources */,
+				EC2F26131DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib in Resources */,
 				EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */,
 				ECA95A7D1DDB2A5F00990AAE /* CouponListExpiredCell.xib in Resources */,
 				EC7264391D7D27BC00AA739B /* ArticleColumnHeader.xib in Resources */,
@@ -10072,6 +10098,7 @@
 				EC4FC4911D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
 				EC4FC2341D77CEE400BBD050 /* BindPhoneViewController.xib in Resources */,
 				EC4FC34D1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.xib in Resources */,
+				EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */,
 				EC13B4F81DD1F3430040F760 /* AccountCenterNumsCell.xib in Resources */,
 				EC4FC3571D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.xib in Resources */,
 				EC4FC34B1D77CEE400BBD050 /* FlashAdvanceSettlementServiceInfoCell.xib in Resources */,
@@ -10374,6 +10401,7 @@
 				EC4FC3BB1D77CEE400BBD050 /* StoreDetialMapPoiViewController.m in Sources */,
 				EC4FC37B1D77CEE400BBD050 /* CashierDeskViewController.m in Sources */,
 				EC4FC3B31D77CEE400BBD050 /* StoreRelatedStrategyModel.m in Sources */,
+				EC889D0E1DE069610054355C /* ServiceSettlementSubViewsProvider.m in Sources */,
 				EC4FC3871D77CEE400BBD050 /* SettlementResultShareViewController.m in Sources */,
 				EC4FC5E51D77CEEF00BBD050 /* README.md in Sources */,
 				EC13B50F1DD1F41A0040F760 /* AccountCenterRadish.m in Sources */,
@@ -10411,6 +10439,7 @@
 				EC4FC3821D77CEE400BBD050 /* SettlementPickStoreModel.m in Sources */,
 				EC4FC5A81D77CEEF00BBD050 /* SheetCell.m in Sources */,
 				EC4FC5E81D77CEEF00BBD050 /* README.mdown in Sources */,
+				EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */,
 				ECFFC6F41DC363C1002DBFB9 /* ProductDetailInsurance.m in Sources */,
 				ECAA49321D79A45B00799CBE /* ArticleHomeAlbumCell.m in Sources */,
 				EC84860A1DDED4FD0039E9D3 /* ProductDetailTheater.m in Sources */,
@@ -10571,7 +10600,7 @@
 				EC1E2F941D827EA4002381E7 /* ArticleWriteModel.m in Sources */,
 				EC4FC5ED1D77CEEF00BBD050 /* iToast.m in Sources */,
 				EC4FC27B1D77CEE400BBD050 /* WelcomeViewController.m in Sources */,
-				EC2F26121DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewCell.m in Sources */,
+				EC2F26121DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m in Sources */,
 				EC2F25B51DD3383C00B67BBA /* MultiItemsToolBar.m in Sources */,
 				EC13B4F91DD1F3430040F760 /* AccountCenterOrdersCell.m in Sources */,
 				EC4FC3E61D77CEE400BBD050 /* ParentingStrategyDetailViewController.m in Sources */,
@@ -10962,6 +10991,7 @@
 				ECAA493C1D79A45B00799CBE /* ArticleHomeBannerCollectionViewBaseCell.m in Sources */,
 				EC2F26491DD95D6400B67BBA /* ProductDetaiFreeStoreInfoCell.m in Sources */,
 				EC154D581D88316C007137E8 /* ArticleUserCenterToolBar.m in Sources */,
+				EC889D061DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m in Sources */,
 				EC7FBBC51DC49F8A007B326C /* ProductDetailConsultModel.m in Sources */,
 				EC1202DF1DB8621A000942C3 /* SpeekView.m in Sources */,
 				EC4FC3461D77CEE400BBD050 /* FlashAdvanceSettlementPayTypeCell.m in Sources */,

@@ -182,7 +182,7 @@ singleM(BuryPointManager)
                                    @"mapAddr":mapAddr,
                                    @"ip":ip,
                                    @"deviceInfo":deviceInfo};
-    NSString *msg = [NSString zp_stringWithDictory:reportMsgDic];
+    NSString *msg = [NSString zp_stringWithJsonObj:reportMsgDic];
     if (![msg isNotNull]) msg = @"";
     return msg;
 }

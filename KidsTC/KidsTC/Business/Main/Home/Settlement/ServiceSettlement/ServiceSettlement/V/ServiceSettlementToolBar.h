@@ -8,6 +8,8 @@
 
 #import "ServiceSettlementModel.h"
 
+extern CGFloat const kServiceSettlementToolBarH;
+
 @interface ServiceSettlementToolBar : UIView
 @property (nonatomic, weak) ServiceSettlementDataItem *item;
 @property (nonatomic, copy) void (^commitBlock)();

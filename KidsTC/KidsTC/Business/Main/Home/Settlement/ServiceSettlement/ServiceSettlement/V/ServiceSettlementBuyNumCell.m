@@ -49,7 +49,7 @@
     [self resetText];
     [self setupEnable];
     [self checkTextFieldChange];
-    [self.container layoutIfNeeded];
+    [self layoutIfNeeded];
 }
 - (IBAction)add:(UIButton *)sender {
     NSInteger count = self.tf.text.integerValue;
@@ -57,7 +57,7 @@
     [self resetText];
     [self setupEnable];
     [self checkTextFieldChange];
-    [self.container layoutIfNeeded];
+    [self layoutIfNeeded];
 }
 
 - (void)setupEnable {
@@ -100,7 +100,7 @@
     }
     if (count>self.item.maxBuyNum) {
         iToast *toast = [iToast makeText:@"您所填写的数量大于该商品最大购买数量限制，小童已为您置为最大购买数量，请留意相应支付价格的变化哦~"];
-        [toast setDuration:5000];
+        [toast setDuration:3000];
         [toast show];
         self.tf.text = [NSString stringWithFormat:@"%zd",self.item.maxBuyNum];
     }
@@ -119,7 +119,7 @@
     [self resetText];
     [self setupEnable];
     [self checkTextFieldChange];
-    [self.container layoutIfNeeded];
+    [self layoutIfNeeded];
 }
 
 #pragma mark - ServiceSettlementBuyNumTfInputViewDelegate

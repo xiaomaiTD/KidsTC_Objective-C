@@ -32,6 +32,8 @@
     if (_maxBuyNum<_minBuyNum) {
         _maxBuyNum = _minBuyNum;
     }
+    _ticketGetType = TicketGetTypeCar;
+    
     return YES;
 }
 @end

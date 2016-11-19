@@ -75,7 +75,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEQ-VU-tit">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="0.5"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="HSs-Lg-gCF"/>
@@ -86,11 +86,11 @@
             <constraints>
                 <constraint firstItem="CEQ-VU-tit" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0ap-mS-CGo"/>
                 <constraint firstItem="CEQ-VU-tit" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1lA-qg-vVq"/>
-                <constraint firstAttribute="trailing" secondItem="CEQ-VU-tit" secondAttribute="trailing" id="B7a-y2-8e4"/>
                 <constraint firstAttribute="trailing" secondItem="que-0A-eAq" secondAttribute="trailing" id="EcB-7d-T1q"/>
                 <constraint firstAttribute="bottom" secondItem="Gop-lA-wLl" secondAttribute="bottom" id="QOi-u6-dqP"/>
                 <constraint firstAttribute="bottom" secondItem="que-0A-eAq" secondAttribute="bottom" id="Tgc-BG-ZwH"/>
                 <constraint firstItem="que-0A-eAq" firstAttribute="leading" secondItem="Gop-lA-wLl" secondAttribute="trailing" id="YZI-Kr-2zH"/>
+                <constraint firstItem="que-0A-eAq" firstAttribute="leading" secondItem="CEQ-VU-tit" secondAttribute="trailing" id="ZG0-x5-609"/>
                 <constraint firstItem="que-0A-eAq" firstAttribute="width" secondItem="Gop-lA-wLl" secondAttribute="width" id="egr-4C-Xei"/>
                 <constraint firstItem="Gop-lA-wLl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mFz-Ue-WAd"/>
                 <constraint firstItem="que-0A-eAq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qQl-Pr-Tlg"/>

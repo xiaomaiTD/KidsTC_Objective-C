@@ -13,4 +13,9 @@
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *seat;
 @property (nonatomic, assign) NSInteger maxBuyNum;
+//selfDefine
+@property (nonatomic, assign) NSInteger minBuyNum;
+@property (nonatomic, assign) NSInteger count;;
+@property (nonatomic, strong) NSAttributedString *attInfoStr;
+@property (nonatomic, assign) BOOL selected;
 @end

@@ -11,15 +11,15 @@
 
 @implementation NSString (ZP)
 
-#pragma mark 字典转JSON
-+(NSString *)zp_stringWithDictory:(NSDictionary *)dic{
-    if (dic == nil) {
+#pragma mark 转JSON
++(NSString *)zp_stringWithJsonObj:(id)jsonObj{
+    if (jsonObj == nil) {
         return nil;
     }
     NSError *err;
-    NSData *jsonData=[NSJSONSerialization dataWithJSONObject:dic options:0 error:&err];
+    NSData *jsonData=[NSJSONSerialization dataWithJSONObject:jsonObj options:0 error:&err];
     if(err) {
-        NSLog(@"字典转JSON失败：%@",err);
+        NSLog(@"转JSON失败：%@",err);
         return nil;
     }
     NSString *jsonString_utf8=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];

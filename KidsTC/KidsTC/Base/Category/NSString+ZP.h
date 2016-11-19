@@ -10,8 +10,8 @@
 
 @interface NSString (ZP)
 
-#pragma mark 字典转JSON
-+(NSString *)zp_stringWithDictory:(NSDictionary *)dic;
+#pragma mark 转JSON
++(NSString *)zp_stringWithJsonObj:(id)jsonObj;
 #pragma mark NSDate 转换成Str
 +(instancetype)zp_stringWithDate:(NSDate *)date Format:(NSString *)format;
 #pragma mark NSNumber 转换成Str

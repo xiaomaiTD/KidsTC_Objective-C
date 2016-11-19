@@ -94,7 +94,7 @@ static NSString *const articleCellReuseIndentifier = @"SearchResultArticleCell";
     [super viewDidLoad];
     
     self.pageId = 10202;
-    NSString *params = [NSString zp_stringWithDictory:self.factorDic];
+    NSString *params = [NSString zp_stringWithJsonObj:self.factorDic];
     NSMutableDictionary *dic = [@{@"searchType":@(self.searchType)} mutableCopy];
     if ([params isNotNull]) [dic setValue:params forKey:@"params"];
     self.trackParams = [NSDictionary dictionaryWithDictionary:dic];

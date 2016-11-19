@@ -14,4 +14,7 @@
 @property (nonatomic, strong) NSString *dayOfWeek;
 @property (nonatomic, strong) NSString *minuteTime;
 @property (nonatomic, strong) NSArray<ProductDetailTicketSelectSeatSeat *> *seats;
+//selfDefine
+@property (nonatomic, strong) NSAttributedString *attInfoStr;
+@property (nonatomic, assign) BOOL selected;
 @end

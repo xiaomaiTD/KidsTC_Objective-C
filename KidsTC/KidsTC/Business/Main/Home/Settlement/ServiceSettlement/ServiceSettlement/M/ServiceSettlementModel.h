@@ -11,7 +11,7 @@
 #import "SettlementPickStoreModel.h"
 
 typedef enum : NSUInteger {
-    TicketGetTypeCar,
+    TicketGetTypeCar = 1,
     TicketGetTypeSelf,
 } TicketGetType;
 

@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailTicketSelectSeatSeat.h"
+
+typedef enum : NSUInteger {
+    ProductDetailNumFooterActionTypeBuyCountDidChange = 1,
+} ProductDetailNumFooterActionType;
+@class ProductDetailTicketSelectSeatCollectionViewNumFooter;
+@protocol ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate <NSObject>
+- (void)ProductDetailTicketSelectSeatCollectionViewNumFooter:(ProductDetailTicketSelectSeatCollectionViewNumFooter *)footer actionType:(ProductDetailNumFooterActionType)type value:(id)value;
+@end
 
 @interface ProductDetailTicketSelectSeatCollectionViewNumFooter : UICollectionReusableView
-
+@property (nonatomic, weak) id<ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate> delegate;
+@property (nonatomic, strong) ProductDetailTicketSelectSeatSeat *seat;
 @end

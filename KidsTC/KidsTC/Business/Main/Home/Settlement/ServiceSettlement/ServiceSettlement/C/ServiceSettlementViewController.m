@@ -11,18 +11,8 @@
 #import "BuryPointManager.h"
 #import "UIBarButtonItem+Category.h"
 
-#import "ServiceSettlementBaseCell.h"
-#import "ServiceSettlementTipAddressCell.h"
-#import "ServiceSettlementAddressCell.h"
-#import "ServiceSettlementServiceInfoCell.h"
-#import "ServiceSettlementStoreInfoCell.h"
-#import "ServiceSettlementBuyNumCell.h"
-#import "ServiceSettlementCouponCell.h"
-#import "ServiceSettlementPayTypeCell.h"
-#import "ServiceSettlementPayInfoCell.h"
-#import "ServiceSettlementTicketPriceCell.h"
-#import "ServiceSettlementTicketGetCell.h"
-#import "ServiceSettlementTicketGetSelfCell.h"
+#import "ServiceSettlementSubViewsProvider.h"
+#import "ServiceSettlementDataManager.h"
 
 #import "ServiceSettlementToolBar.h"
 
@@ -40,24 +30,10 @@
 #import "KTCPaymentService.h"
 #import "PayModel.h"
 
-
-
-#define TOOLBAR_HEIGHT 60
-
 @interface ServiceSettlementViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceSettlementBaseCellDelegate>
 @property (nonatomic,   weak) UITableView                           *tableView;
 @property (nonatomic,   weak) ServiceSettlementToolBar              *tooBar;
-@property (nonatomic, strong) ServiceSettlementTipAddressCell       *tipAddressCell;
-@property (nonatomic, strong) ServiceSettlementAddressCell          *addressCell;
-@property (nonatomic, strong) ServiceSettlementServiceInfoCell      *serViceInfoCell;
-@property (nonatomic, strong) ServiceSettlementBuyNumCell           *buyNumCell;
-@property (nonatomic, strong) ServiceSettlementStoreInfoCell        *storeInfoCell;
-@property (nonatomic, strong) ServiceSettlementCouponCell           *couponCell;
-@property (nonatomic, strong) ServiceSettlementPayTypeCell          *payTypeCell;
-@property (nonatomic, strong) ServiceSettlementTicketGetCell        *ticketGetCell;
-@property (nonatomic, strong) ServiceSettlementTicketGetSelfCell    *ticketGetSelfCell;
-@property (nonatomic, strong) NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections;
-
+@property (nonatomic, strong) NSArray<NSArray<ServiceSettlementBaseCell *> *> *sections;
 @property (nonatomic, assign) NSUInteger scoreNum;
 @property (nonatomic, strong) NSString *couponCode;
 @property (nonatomic, assign) BOOL isCancelCoupon;//是否取消使用优惠券(如果取消[有满减则会使用满减])，默认为NO，不取消
@@ -66,6 +42,9 @@
 
 @property (nonatomic, assign) PayType payType;
 
+@property (nonatomic, assign) ServiceSettlementSubViewsProvider *provider;
+@property (nonatomic, strong) ServiceSettlementDataManager *dataManager;
+
 @end
 
 @implementation ServiceSettlementViewController
@@ -73,14 +52,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _provider = [ServiceSettlementSubViewsProvider shareServiceSettlementSubViewsProvider];
+    _provider.type = _type;
+    
+    _dataManager = [ServiceSettlementDataManager shareServiceSettlementDataManager];
+    _dataManager.type = _type;
+    
     self.pageId = 10501;
     
     self.navigationItem.title = @"结算";
     
     self.naviTheme = NaviThemeWihte;
     
+    [self setupTableView];
+    
+    [self setupToolBar];
+    
+    [self loadShoppingCart];
+}
+
+- (void)setupTableView {
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
-    tableView.contentInset = UIEdgeInsetsMake(0, 0, TOOLBAR_HEIGHT, 0);
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, kServiceSettlementToolBarH, 0);
     tableView.scrollIndicatorInsets = tableView.contentInset;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -90,67 +83,64 @@
     tableView.rowHeight = UITableViewAutomaticDimension;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-    
-    ServiceSettlementToolBar *tooBar = [self viewWithNib:@"ServiceSettlementToolBar"];
-    tooBar.frame = CGRectMake(0, SCREEN_HEIGHT-TOOLBAR_HEIGHT, SCREEN_WIDTH, TOOLBAR_HEIGHT);
-    [self.view addSubview:tooBar];
-    self.tooBar = tooBar;
-    tooBar.hidden = YES;
-    tooBar.commitBlock = ^void () {
+}
+
+- (void)setupToolBar {
+    _tooBar = _provider.tooBar;
+    _tooBar.frame = CGRectMake(0, SCREEN_HEIGHT-kServiceSettlementToolBarH, SCREEN_WIDTH, kServiceSettlementToolBarH);
+    [self.view addSubview:_tooBar];
+    _tooBar.hidden = YES;
+    _tooBar.commitBlock = ^void () {
         [self commit];
     };
-    [self prepareCells];
-    
-    [self loadShoppingCart];
-}
-
-- (void)prepareCells{
-    
-    _tipAddressCell             = [self viewWithNib:@"ServiceSettlementTipAddressCell"];
-    _tipAddressCell.delegate    = self;
-    _addressCell                = [self viewWithNib:@"ServiceSettlementAddressCell"];
-    _addressCell.delegate       = self;
-    _serViceInfoCell            = [self viewWithNib:@"ServiceSettlementServiceInfoCell"];
-    _serViceInfoCell.delegate   = self;
-    _buyNumCell                 = [self viewWithNib:@"ServiceSettlementBuyNumCell"];
-    _buyNumCell.delegate        = self;
-    _storeInfoCell              = [self viewWithNib:@"ServiceSettlementStoreInfoCell"];
-    _storeInfoCell.delegate     = self;
-    _couponCell                 = [self viewWithNib:@"ServiceSettlementCouponCell"];
-    _couponCell.delegate        = self;
-    _payTypeCell                = [self viewWithNib:@"ServiceSettlementPayTypeCell"];
-    _payTypeCell.delegate       = self;
-    _ticketGetCell              = [self viewWithNib:@"ServiceSettlementTicketGetCell"];
-    _ticketGetCell.delegate     = self;
-    _ticketGetSelfCell          = [self viewWithNib:@"ServiceSettlementTicketGetSelfCell"];
-    _ticketGetSelfCell.delegate = self;
-}
-
-- (id)viewWithNib:(NSString *)nib{
-    return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
 }
 
 #pragma mark - 从购物车获取商品结算信息
 
+- (NSDictionary *)param {
+
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            ServiceSettlementDataItem *item = self.model.data.firstObject;
+            NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
+            NSString *buyNum = [self.buyNum isNotNull]?self.buyNum:@"";
+            NSString *storeNo = [item.store.storeId isNotNull]?item.store.storeId:@"";
+            NSDictionary *param = @{@"couponCode":couponCode,
+                                    @"scoreNum":@(self.scoreNum),
+                                    @"isCancelCoupon":@(self.isCancelCoupon),
+                                    @"buyNum":buyNum,
+                                    @"storeNo":storeNo};
+            return param;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            ServiceSettlementDataItem *item = self.model.data.firstObject;
+            NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
+            NSDictionary *param = @{@"couponCode":couponCode,
+                                    @"scoreNum":@(self.scoreNum),
+                                    @"isCancelCoupon":@(self.isCancelCoupon),
+                                    @"takeTicketWay":@(item.ticketGetType)};
+            return param;
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            return nil;
+        }
+            break;
+    }
+}
+
 - (void)loadShoppingCart{
-    NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
-    NSString *buyNum = [self.buyNum isNotNull]?self.buyNum:@"";
-    ServiceSettlementDataItem *item = self.model.data.firstObject;
-    NSString *storeNo = [item.store.storeId isNotNull]?item.store.storeId:@"";
-    NSDictionary *param = @{@"couponCode":couponCode,
-                            @"scoreNum":@(self.scoreNum),
-                            @"isCancelCoupon":@(self.isCancelCoupon),
-                            @"buyNum":buyNum,
-                            @"storeNo":storeNo};
     [TCProgressHUD showSVP];
-    [Request startWithName:@"SHOPPINGCART_GET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [_dataManager loadDataWithParam:self.param successBlock:^(ServiceSettlementModel *model) {
         [TCProgressHUD dismissSVP];
-        ServiceSettlementModel *model = [ServiceSettlementModel modelWithDictionary:dic];
         [self loadShoppingCartSuccess:model];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    } failureBlock:^(NSError *error) {
         [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"获取商品结算信息失败"] show];
-        [self back];
+        [self loadShoppingCartFailure:error];
     }];
 }
 
@@ -158,7 +148,8 @@
     if (model.data.count>0) {
         ServiceSettlementDataItem *item = model.data.firstObject;
         if (item) {
-            [self setupSections:model];
+            _provider.model = model;
+            _sections = _provider.sections;
             self.model = model;
             self.tooBar.item = item;
             [self.tableView reloadData];
@@ -176,142 +167,9 @@
     }
 }
 
-- (void)setupSections:(ServiceSettlementModel *)model{
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            [self setupTicketSections:model];
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            [self setupTicketSections:model];
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)setupNormalSections:(ServiceSettlementModel *)model{
-    ServiceSettlementDataItem *item = model.data.firstObject;
-    NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
-    //收货地址
-    if (item.hasUserAddress) {
-        NSMutableArray<ServiceSettlementBaseCell *> *section00 = [NSMutableArray array];
-        if (item.userAddress) {
-            [section00 addObject:_addressCell];
-        }else{
-            [section00 addObject:_tipAddressCell];
-        }
-        [sections addObject:section00];
-    }
-    //商品、门店
-    NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
-    [section01 addObject:_serViceInfoCell];
-    [section01 addObject:_buyNumCell];
-    if (item.store && item.store.storeDesc.length>0) {
-        [section01 addObject:_storeInfoCell];
-    }
-    [sections addObject:section01];
-    //优惠券、积分
-    NSMutableArray<ServiceSettlementBaseCell *> *section02 = [NSMutableArray array];
-    [section02 addObject:_couponCell];
-    [sections addObject:section02];
-    //选择支付类型
-    NSMutableArray<ServiceSettlementBaseCell *> *section03 = [NSMutableArray array];
-    [section03 addObject:_payTypeCell];
-    [sections addObject:section03];
-    //结算信息
-    NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
-    ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
-    pricePayInfoCell.type = ServiceSettlementPayInfoCellTypePrice;
-    [section04 addObject:pricePayInfoCell];
-    ServiceSettlementPayInfoCell *promotionPayInfoCell = self.payInfoCell;
-    promotionPayInfoCell.type = ServiceSettlementPayInfoCellTypePromotion;
-    [section04 addObject:promotionPayInfoCell];
-    ServiceSettlementPayInfoCell *scorePayInfoCell = self.payInfoCell;
-    scorePayInfoCell.type = ServiceSettlementPayInfoCellTypeScore;
-    [section04 addObject:scorePayInfoCell];
-    if (item.transportationExpenses>0) {
-        ServiceSettlementPayInfoCell *transportationExpensesPayInfoCell = self.payInfoCell;
-        transportationExpensesPayInfoCell.type = ServiceSettlementPayInfoCellTypeTransportationExpenses;
-        [section04 addObject:transportationExpensesPayInfoCell];
-    }
-    [sections addObject:section04];
-    
-    self.sections = sections;
-}
-
-- (void)setupTicketSections:(ServiceSettlementModel *)model{
-    ServiceSettlementDataItem *item = model.data.firstObject;
-    NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
-    
-    //商品、价格
-    NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
-    [section01 addObject:_serViceInfoCell];
-    [section01 addObject:self.ticketPriceCell];
-    [section01 addObject:self.ticketPriceCell];
-    [sections addObject:section01];
-    
-    //取票方式
-    NSMutableArray<ServiceSettlementBaseCell *> *section00 = [NSMutableArray array];
-    [section00 addObject:self.ticketGetCell];
-    switch (item.ticketGetType) {
-        case TicketGetTypeCar:
-        {
-            if (item.userAddress) {
-                [section00 addObject:_addressCell];
-            }else{
-                [section00 addObject:_tipAddressCell];
-            }
-        }
-            break;
-        case TicketGetTypeSelf:
-        {
-            [section00 addObject:_ticketGetSelfCell];
-        }
-            break;
-    }
-    
-    [sections addObject:section00];
-    
-    //优惠券、积分
-    NSMutableArray<ServiceSettlementBaseCell *> *section02 = [NSMutableArray array];
-    [section02 addObject:_couponCell];
-    [sections addObject:section02];
-    //选择支付类型
-    NSMutableArray<ServiceSettlementBaseCell *> *section03 = [NSMutableArray array];
-    [section03 addObject:_payTypeCell];
-    [sections addObject:section03];
-    //结算信息
-    NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
-    ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
-    pricePayInfoCell.type = ServiceSettlementPayInfoCellTypePrice;
-    [section04 addObject:pricePayInfoCell];
-    ServiceSettlementPayInfoCell *promotionPayInfoCell = self.payInfoCell;
-    promotionPayInfoCell.type = ServiceSettlementPayInfoCellTypePromotion;
-    [section04 addObject:promotionPayInfoCell];
-    ServiceSettlementPayInfoCell *scorePayInfoCell = self.payInfoCell;
-    scorePayInfoCell.type = ServiceSettlementPayInfoCellTypeScore;
-    [section04 addObject:scorePayInfoCell];
-    if (item.transportationExpenses>0) {
-        ServiceSettlementPayInfoCell *transportationExpensesPayInfoCell = self.payInfoCell;
-        transportationExpensesPayInfoCell.type = ServiceSettlementPayInfoCellTypeTransportationExpenses;
-        [section04 addObject:transportationExpensesPayInfoCell];
-    }
-    [sections addObject:section04];
-    
-    
-    self.sections = sections;
-}
-
-- (ServiceSettlementPayInfoCell *)payInfoCell {
-    return [self viewWithNib:@"ServiceSettlementPayInfoCell"];
-}
-
-- (ServiceSettlementTicketPriceCell *)ticketPriceCell {
-    return [self viewWithNib:@"ServiceSettlementTicketPriceCell"];
+- (void)loadShoppingCartFailure:(NSError *)error {
+    [[iToast makeText:@"获取购物车信息失败，请稍后重试！"] show];
+    [self back];
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
@@ -443,7 +301,7 @@
             break;
         case ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange:
         {
-            [self setupSections:_model];
+            _sections = _provider.sections;
             [self.tableView reloadData];
         }
             break;
@@ -551,5 +409,9 @@
     }];
 }
 
+
+- (void)dealloc {
+    [_provider nilCells];
+}
 
 @end

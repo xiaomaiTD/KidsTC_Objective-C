@@ -74,7 +74,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFk-IK-WSg">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="0.5"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="Qdr-sd-qDG"/>
@@ -86,10 +86,10 @@
                 <constraint firstItem="c4t-x6-GpH" firstAttribute="width" secondItem="PAc-gd-Nls" secondAttribute="width" id="31d-nf-13F"/>
                 <constraint firstItem="c4t-x6-GpH" firstAttribute="leading" secondItem="PAc-gd-Nls" secondAttribute="trailing" id="D15-3a-e6h"/>
                 <constraint firstItem="c4t-x6-GpH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="G1n-3T-biM"/>
+                <constraint firstItem="c4t-x6-GpH" firstAttribute="leading" secondItem="OFk-IK-WSg" secondAttribute="trailing" id="OmN-vW-JmB"/>
                 <constraint firstItem="PAc-gd-Nls" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="W9k-qS-NxS"/>
                 <constraint firstAttribute="bottom" secondItem="c4t-x6-GpH" secondAttribute="bottom" id="ZgG-or-UM8"/>
                 <constraint firstItem="OFk-IK-WSg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bIF-OI-hR1"/>
-                <constraint firstAttribute="trailing" secondItem="OFk-IK-WSg" secondAttribute="trailing" id="d09-6a-99u"/>
                 <constraint firstItem="PAc-gd-Nls" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hdB-9M-pJf"/>
                 <constraint firstAttribute="bottom" secondItem="PAc-gd-Nls" secondAttribute="bottom" id="hnY-kX-Owg"/>
                 <constraint firstItem="OFk-IK-WSg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lAK-3c-WLt"/>

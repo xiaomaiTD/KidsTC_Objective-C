@@ -12,4 +12,11 @@
 + (NSDictionary *)modelContainerPropertyGenericClass{
     return @{@"seatTimes":[ProductDetailTicketSelectSeatTime class]};
 }
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    if (_seatTimes.count>0) {
+        _seatTimes.firstObject.selected = YES;
+    }
+    
+    return YES;
+}
 @end

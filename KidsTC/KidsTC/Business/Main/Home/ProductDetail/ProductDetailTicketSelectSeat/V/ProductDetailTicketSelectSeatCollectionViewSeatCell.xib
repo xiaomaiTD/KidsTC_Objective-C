@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VgR-3T-IZT" customClass="ProductDetailTicketSelectSeatCollectionViewSeatCell">
+            <rect key="frame" x="0.0" y="0.0" width="109" height="132"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="109" height="132"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGT-YK-WE2">
+                        <rect key="frame" x="0.0" y="0.0" width="109" height="132"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal">
+                            <string key="title">2017-09-14
+周二 19:15</string>
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="action:" destination="VgR-3T-IZT" eventType="touchUpInside" id="1l1-OQ-HzB"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KGT-YK-WE2" secondAttribute="bottom" id="8tH-6o-2Av"/>
+                <constraint firstAttribute="trailing" secondItem="KGT-YK-WE2" secondAttribute="trailing" id="JFR-FP-5b1"/>
+                <constraint firstItem="KGT-YK-WE2" firstAttribute="leading" secondItem="VgR-3T-IZT" secondAttribute="leading" id="See-oB-taF"/>
+                <constraint firstItem="KGT-YK-WE2" firstAttribute="top" secondItem="VgR-3T-IZT" secondAttribute="top" id="xrw-YY-Fcl"/>
+            </constraints>
+            <size key="customSize" width="109" height="132"/>
+            <connections>
+                <outlet property="btn" destination="KGT-YK-WE2" id="yKM-u4-xjh"/>
+            </connections>
+            <point key="canvasLocation" x="-194.5" y="90"/>
+        </collectionViewCell>
+    </objects>
+</document>
