@@ -75,6 +75,8 @@
     }
     if (self.reduceBtn.enabled==NO && self.addBtn.enabled == NO) {
         self.tf.enabled = NO;
+    }else{
+        self.tf.enabled = YES;
     }
 }
 
@@ -93,15 +95,11 @@
     
     NSInteger count = self.tf.text.integerValue;
     if (count<self.item.minBuyNum) {
-        iToast *toast = [iToast makeText:@"您所填写的数量低于该商品最小购买数量限制，小童已为您置为最小购买数量，请留意相应支付价格的变化哦~"];
-        [toast setDuration:3000];
-        [toast show];
+        [[iToast makeText:[NSString stringWithFormat:@"最小购买数量%zd",self.item.minBuyNum]] show];
         self.tf.text = [NSString stringWithFormat:@"%zd",self.item.minBuyNum];
     }
     if (count>self.item.maxBuyNum) {
-        iToast *toast = [iToast makeText:@"您所填写的数量大于该商品最大购买数量限制，小童已为您置为最大购买数量，请留意相应支付价格的变化哦~"];
-        [toast setDuration:3000];
-        [toast show];
+        [[iToast makeText:[NSString stringWithFormat:@"最大购买数量%zd",self.item.maxBuyNum]] show];
         self.tf.text = [NSString stringWithFormat:@"%zd",self.item.maxBuyNum];
     }
 }

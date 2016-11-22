@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-static CGFloat const img_h = 28;
-static CGFloat const title_h = 17;
+static CGFloat const img_h = 20;
+static CGFloat const title_h = 13;
 static CGFloat const title_b = 4;
 
 @interface ServiceSettlementTicketGetButton : UIButton
@@ -35,6 +35,7 @@ static CGFloat const title_b = 4;
 #import "ServiceSettlementTicketGetCell.h"
 
 @interface ServiceSettlementTicketGetCell ()
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
 @property (weak, nonatomic) IBOutlet ServiceSettlementTicketGetButton *carBtn;
 @property (weak, nonatomic) IBOutlet ServiceSettlementTicketGetButton *selfBtn;
 @property (nonatomic, strong) UIButton *selectBtn;
@@ -47,21 +48,24 @@ static CGFloat const title_b = 4;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _lineH.constant = LINE_H;
+    self.tipL.textColor = [UIColor colorFromHexString:@"222222"];
+    [self.carBtn setTitleColor:[UIColor colorFromHexString:@"D5D5D5"] forState:UIControlStateNormal];
     [self.carBtn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
+    [self.selfBtn setTitleColor:[UIColor colorFromHexString:@"D5D5D5"] forState:UIControlStateNormal];
     [self.selfBtn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
+    _lineH.constant = LINE_H;
     [self selectedBtn:_carBtn];
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
     [super setItem:item];
-    switch (item.ticketGetType) {
-        case TicketGetTypeCar:
+    switch (item.takeTicketWay) {
+        case ServiceSettlementTakeTicketWayCar:
         {
             [self selectedBtn:_carBtn];
         }
             break;
-        case TicketGetTypeSelf:
+        case ServiceSettlementTakeTicketWaySelf:
         {
             [self selectedBtn:_selfBtn];
         }
@@ -74,6 +78,7 @@ static CGFloat const title_b = 4;
         return;
     }
     [self selectedBtn:sender];
+    
     if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
         [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange value:nil];
     }
@@ -82,10 +87,10 @@ static CGFloat const title_b = 4;
 - (void)selectedBtn:(ServiceSettlementTicketGetButton *)sender {
     if (sender == _carBtn) {
         _upImgCenterX.constant = 0;
-        self.item.ticketGetType = TicketGetTypeCar;
+        self.item.takeTicketWay = ServiceSettlementTakeTicketWayCar;
     }else if (sender == _selfBtn) {
-        _upImgCenterX.constant = 80;
-        self.item.ticketGetType = TicketGetTypeSelf;
+        _upImgCenterX.constant = 78;
+        self.item.takeTicketWay = ServiceSettlementTakeTicketWaySelf;
     }
     [self layoutIfNeeded];
     _selectBtn.selected = NO;

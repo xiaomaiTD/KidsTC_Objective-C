@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Single.h"
 #import "ServiceSettlementModel.h"
+#import "PayModel.h"
 
 @interface ServiceSettlementDataManager : NSObject
 singleH(ServiceSettlementDataManager)
@@ -16,4 +17,8 @@ singleH(ServiceSettlementDataManager)
 - (void)loadDataWithParam:(NSDictionary *)param
              successBlock:(void(^)(ServiceSettlementModel *model))successBlock
              failureBlock:(void(^)(NSError *error))failureBlock;
+
+- (void)placeOrderWithParam:(NSDictionary *)param
+               successBlock:(void(^)(PayModel *model))successBlock
+               failureBlock:(void(^)(NSError *error))failureBlock;
 @end

@@ -29,7 +29,7 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
     self.pageId = 10502;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     if (self.settlementModel.data.count>0) {
-        ServiceSettlementDataItem *item = self.settlementModel.data.firstObject;
+        ServiceSettlementDataItem *item = self.settlementModel.data;
         if ([item.serveId isNotNull]) {
             [params setValue:item.serveId forKey:@"pid"];
         }
@@ -63,7 +63,7 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
     tableView.tableHeaderView = header;
     [tableView registerNib:[UINib nibWithNibName:@"ServiceSettlementPickCouponViewCell" bundle:nil] forCellReuseIdentifier:ID];
 
-    [self setSelectedCoupon:self.settlementModel.data.firstObject.maxCoupon model:self.settlementModel];
+    [self setSelectedCoupon:self.settlementModel.data.maxCoupon model:self.settlementModel];
 }
 
 - (void)rightBarButtonItemAction {
@@ -80,19 +80,19 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSArray *coupons = self.settlementModel.data.firstObject.coupon;
+    NSArray *coupons = self.settlementModel.data.coupon;
     return coupons.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ServiceSettlementPickCouponViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    NSArray *coupons = self.settlementModel.data.firstObject.coupon;
+    NSArray *coupons = self.settlementModel.data.coupon;
     cell.item = coupons[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ServiceSettlementCouponItem *coupon = self.settlementModel.data.firstObject.coupon[indexPath.row];
+    ServiceSettlementCouponItem *coupon = self.settlementModel.data.coupon[indexPath.row];
     [self setSelectedCoupon:coupon model:self.settlementModel];
     [tableView reloadData];
 }
@@ -100,7 +100,7 @@ static NSString *const ID = @"ServiceSettlementPickCouponViewCellID";
 #pragma mark - helpers
 
 - (void)setSelectedCoupon:(ServiceSettlementCouponItem *)coupon model:(ServiceSettlementModel *)model {
-    [model.data.firstObject.coupon enumerateObjectsUsingBlock:^(ServiceSettlementCouponItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [model.data.coupon enumerateObjectsUsingBlock:^(ServiceSettlementCouponItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.code == coupon.code) {
             obj.selected = !obj.selected;
             self.selectedCoupon = obj.selected?obj:nil;

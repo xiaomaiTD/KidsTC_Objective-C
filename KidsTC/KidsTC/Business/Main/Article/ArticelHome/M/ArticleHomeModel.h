@@ -13,15 +13,15 @@
 #import "Model.h"
 
 typedef enum : NSUInteger {
-    ArticleHomeListTemplateIcon=1,//文章带图标
-    ArticleHomeListTemplateNoIcon,//不带图标
-    ArticleHomeListTemplateBigImg,//文章带大图，可能带浮层，副标题，描述信息
-    ArticleHomeListTemplateTagImg,//带标签大图
-    ArticleHomeListTemplateBanner,//banner
-    ArticleHomeListTemplateVideo, //视频
-    ArticleHomeListTemplateAlbum, //图集
-    ArticleHomeListTemplateUserAlbum,   //用户图集
-    ArticleHomeListTemplateUserArticle, //用户资讯
+    ArticleHomeListTemplateIcon = 1,//文章带图标
+    ArticleHomeListTemplateNoIcon = 2,//不带图标
+    ArticleHomeListTemplateBigImg = 3,//文章带大图，可能带浮层，副标题，描述信息
+    ArticleHomeListTemplateTagImg = 4,//带标签大图
+    ArticleHomeListTemplateBanner = 5,//banner
+    ArticleHomeListTemplateVideo = 6, //视频
+    ArticleHomeListTemplateAlbum = 7, //图集
+    ArticleHomeListTemplateUserAlbum = 8,   //用户图集
+    ArticleHomeListTemplateUserArticle = 9, //用户资讯
     
     ArticleHomeListTemplateHeadBanner  = 1000,//头部bannber
     ArticleHomeListTemplateColumnTitle = 1001,//头部标题

@@ -7,43 +7,23 @@
 //
 
 #import "ServiceSettlementModel.h"
-
-@implementation ServiceSettlementCouponItem
-
-@end
-
-@implementation ServiceSettlementPayType
-
-@end
-
-@implementation ServiceSettlementPromotion
-
-@end
-
-@implementation ServiceSettlementDataItem
-+ (NSDictionary *)modelContainerPropertyGenericClass
-{
-    return @{@"coupon" : [ServiceSettlementCouponItem class]};
-}
-- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    if (_minBuyNum<1) {
-        _minBuyNum = 1;
-    }
-    if (_maxBuyNum<_minBuyNum) {
-        _maxBuyNum = _minBuyNum;
-    }
-    _ticketGetType = TicketGetTypeCar;
-    
-    return YES;
-}
-@end
+#import "YYKit.h"
 
 @implementation ServiceSettlementModel
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};
 }
-+ (NSDictionary *)modelContainerPropertyGenericClass
-{
-    return @{@"data" : [ServiceSettlementDataItem class]};
+
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+
+    //考虑到普通服务
+    if (!_data) {
+        NSArray *datas = dic[@"data"];
+        if (datas.count>0) {
+            _data = [ServiceSettlementDataItem modelWithDictionary:datas.firstObject];
+        }
+    }
+    
+    return YES;
 }
 @end

@@ -477,11 +477,15 @@ singleM(ProductDetailSubViewsProvider)
     }
     
     NSMutableArray *section09 = [NSMutableArray new];
-    [section09 addObject:self.freeStoreInfoCell];
+    if (_data.store.count>0){
+        [section09 addObject:self.freeStoreInfoCell];
+    }
     if (section09.count>0) [sections addObject:section09];
     
     NSMutableArray *section10 = [NSMutableArray new];
-    [section10 addObject:self.freeLifeTipCell];
+    if (_data.tricks.count>0) {
+        [section10 addObject:self.freeLifeTipCell];
+    }
     if (section10.count>0) [sections addObject:section10];
     
     if (_data.recommends.count>0) {

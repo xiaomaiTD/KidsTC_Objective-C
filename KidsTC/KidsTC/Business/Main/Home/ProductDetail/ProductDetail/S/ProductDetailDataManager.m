@@ -27,7 +27,7 @@ singleM(ProductDetailDataManager)
             break;
         case ProductDetailTypeFree:
         {
-            
+            [self loadFreeProductDataSuccessBlock:successBlock failureBlock:failureBlock];
         }
             break;
     }
@@ -50,7 +50,7 @@ singleM(ProductDetailDataManager)
             break;
         case ProductDetailTypeFree:
         {
-            
+            [self loadFreeRecommendSuccessBlock:successBlock failureBlock:failureBlock];
         }
             break;
     }
@@ -72,7 +72,7 @@ singleM(ProductDetailDataManager)
             break;
         case ProductDetailTypeFree:
         {
-            
+            [self loadFreeConsultSuccessBlock:successBlock failureBlock:failureBlock];
         }
             break;
     }
@@ -174,6 +174,62 @@ singleM(ProductDetailDataManager)
 
 - (void)loadTicketConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
                          failureBlock:(void(^)(NSError *error))failureBlock
+{
+    NSDictionary *param = @{@"relationNo":_productId,
+                            @"advisoryType":@"1",
+                            @"pageIndex":@(1),
+                            @"pageSize":@(20)};
+    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<ProductDetailConsultItem *> *items = [ProductDetailConsultModel modelWithDictionary:dic].items;
+        if (items.count>0) {
+            if (successBlock) successBlock(items);
+        }else{
+            if (failureBlock) failureBlock(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failureBlock) failureBlock(error);
+    }];
+}
+
+#pragma mark - free
+
+- (void)loadFreeProductDataSuccessBlock:(void(^)(ProductDetailData *data))successBlock
+                           failureBlock:(void(^)(NSError *error))failureBlock
+{
+    NSString *location  = [[KTCMapService shareKTCMapService] currentLocationString];
+    NSDictionary *param = @{@"pid":_productId,
+                            @"chid":_channelId,
+                            @"mapaddr":location};
+    [Request startWithName:@"GET_FREE_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        ProductDetailData *data = [ProductDetailModel modelWithDictionary:dic].data;
+        if (data) {
+            if (successBlock) successBlock(data);
+        }else{
+            if (failureBlock) failureBlock(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failureBlock) failureBlock(error);
+    }];
+}
+
+- (void)loadFreeRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
+                         failureBlock:(void(^)(NSError *error))failureBlock
+{
+    NSDictionary *param = @{@"pid":_productId};
+    [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<ProductDetailRecommendItem *> *recommends = [ProductDetailRecommendModel modelWithDictionary:dic].data;
+        if (recommends.count>0) {
+            if (successBlock) successBlock(recommends);
+        }else{
+            if (failureBlock) failureBlock(nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failureBlock) failureBlock(error);
+    }];
+}
+
+- (void)loadFreeConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
+                       failureBlock:(void(^)(NSError *error))failureBlock
 {
     NSDictionary *param = @{@"relationNo":_productId,
                             @"advisoryType":@"1",

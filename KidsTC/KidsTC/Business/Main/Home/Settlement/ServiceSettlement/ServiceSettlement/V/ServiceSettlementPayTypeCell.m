@@ -12,14 +12,15 @@
 
 @interface ServiceSettlementPayTypeCell ()
 @property (weak, nonatomic) IBOutlet UILabel *choosePayTypeTipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *aliTipL;
+@property (weak, nonatomic) IBOutlet UILabel *weChatTipL;
+@property (weak, nonatomic) IBOutlet UILabel *weChatTipSubL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HOneLineConstraintHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HTwoLineConstraintHeight;
 @property (weak, nonatomic) IBOutlet UIView *aliBGView;
 @property (weak, nonatomic) IBOutlet UIView *weChatBGView;
 @property (weak, nonatomic) IBOutlet UIButton *aliBtn;
 @property (weak, nonatomic) IBOutlet UIButton *weChatBtn;
-@property (weak, nonatomic) IBOutlet UILabel *weChatTipLabel;
-
 @end
 
 
@@ -27,6 +28,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.choosePayTypeTipLabel.textColor = [UIColor colorFromHexString:@"222222"];
+    self.aliTipL.textColor = [UIColor colorFromHexString:@"616161"];
+    self.weChatTipL.textColor = [UIColor colorFromHexString:@"616161"];
+    self.weChatTipSubL.textColor = [UIColor colorFromHexString:@"616161"];
+    
     self.HOneLineConstraintHeight.constant = LINE_H;
     self.HTwoLineConstraintHeight.constant = LINE_H;
     
@@ -38,6 +45,7 @@
     [self.weChatBGView addGestureRecognizer:weChatTapGR];
     self.weChatBGView.tag = PayTypeWeChat;
     
+    [self layoutIfNeeded];
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item{
@@ -47,7 +55,7 @@
     BOOL aliEnable = pay_type && pay_type.ali && item.totalPrice>0;
     BOOL weChatEnable = pay_type && pay_type.WeChat && item.totalPrice>0 && [WeChatManager sharedManager].isOnline;
     
-    self.weChatTipLabel.text = [WeChatManager sharedManager].isOnline?@"":@"（未安装）";
+    self.weChatTipSubL.text = [WeChatManager sharedManager].isOnline?@"":@"（未安装）";
     
     self.aliBGView.userInteractionEnabled = aliEnable;
     self.weChatBGView.userInteractionEnabled = weChatEnable;

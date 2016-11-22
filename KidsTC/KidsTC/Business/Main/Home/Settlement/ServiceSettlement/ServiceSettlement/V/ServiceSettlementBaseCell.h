@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ServiceSettlementModel.h"
+#import "Colours.h"
 
 typedef enum : NSUInteger {
     ServiceSettlementBaseCellActionTypeTipAddress=1,

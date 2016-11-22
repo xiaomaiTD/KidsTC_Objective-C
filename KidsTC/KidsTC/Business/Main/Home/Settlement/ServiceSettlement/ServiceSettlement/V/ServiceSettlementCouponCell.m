@@ -9,9 +9,12 @@
 #import "ServiceSettlementCouponCell.h"
 
 @interface ServiceSettlementCouponCell ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIView *tipView;
 @property (weak, nonatomic) IBOutlet UIView *couponBGView;
 @property (weak, nonatomic) IBOutlet UIView *couponDescBGView;
+@property (weak, nonatomic) IBOutlet UILabel *couponTipL;
 @property (weak, nonatomic) IBOutlet UILabel *promotionTipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreTipL;
 
 @property (weak, nonatomic) IBOutlet UILabel *couponDescLabel;
 @property (weak, nonatomic) IBOutlet UILabel *couponPriceTipLabel;
@@ -28,8 +31,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.tipView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
+    self.couponTipL.textColor = [UIColor colorFromHexString:@"222222"];
+    self.scoreTipL.textColor = [UIColor colorFromHexString:@"222222"];
     self.promotionTipLabel.textColor = COLOR_YELL;
+    self.useScoreTipLabel.textColor = [UIColor colorFromHexString:@"555555"];
     
     self.couponDescBGView.backgroundColor = COLOR_PINK;
     self.couponDescBGView.layer.cornerRadius = 2;
@@ -44,6 +50,8 @@
     
     UITapGestureRecognizer *couponTapGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGRAction:)];
     [self.couponBGView addGestureRecognizer:couponTapGR];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item{

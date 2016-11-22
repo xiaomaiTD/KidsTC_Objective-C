@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,23 +21,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceSettle_store_08" translatesAutoresizingMaskIntoConstraints="NO" id="82r-me-YC8">
-                        <rect key="frame" x="8" y="14" width="24" height="24"/>
+                        <rect key="frame" x="15" y="16" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="82r-me-YC8" secondAttribute="height" multiplier="1:1" id="suh-Ai-Ttn"/>
-                            <constraint firstAttribute="width" constant="24" id="zBW-SP-O2B"/>
+                            <constraint firstAttribute="width" constant="20" id="zBW-SP-O2B"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请先填写收货地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8y-Fr-wn6">
-                        <rect key="frame" x="40" y="12" width="136" height="27"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="50" y="12" width="114.5" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_r" translatesAutoresizingMaskIntoConstraints="NO" id="cuI-dq-va0">
-                        <rect key="frame" x="299" y="19" width="13" height="13"/>
+                        <rect key="frame" x="293" y="19.5" width="12" height="12"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="cuI-dq-va0" secondAttribute="height" multiplier="1:1" id="HWe-Ei-Gbw"/>
-                            <constraint firstAttribute="width" constant="13" id="kgB-gr-TH5"/>
+                            <constraint firstAttribute="width" constant="12" id="kgB-gr-TH5"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -41,11 +45,10 @@
                     <constraint firstItem="82r-me-YC8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Dqc-R0-GPe"/>
                     <constraint firstItem="r8y-Fr-wn6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="HeM-nE-G59"/>
                     <constraint firstItem="r8y-Fr-wn6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="JOl-8r-kEs"/>
-                    <constraint firstItem="r8y-Fr-wn6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jui-7r-0WW"/>
-                    <constraint firstItem="r8y-Fr-wn6" firstAttribute="leading" secondItem="82r-me-YC8" secondAttribute="trailing" constant="8" id="Ngl-eK-sjz"/>
-                    <constraint firstAttribute="trailing" secondItem="cuI-dq-va0" secondAttribute="trailing" constant="8" id="OCX-Yf-iIk"/>
+                    <constraint firstItem="r8y-Fr-wn6" firstAttribute="leading" secondItem="82r-me-YC8" secondAttribute="trailing" constant="15" id="Ngl-eK-sjz"/>
+                    <constraint firstAttribute="trailing" secondItem="cuI-dq-va0" secondAttribute="trailing" constant="15" id="OCX-Yf-iIk"/>
                     <constraint firstItem="cuI-dq-va0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Sv6-JZ-xxD"/>
-                    <constraint firstItem="82r-me-YC8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XA0-Ha-TKO"/>
+                    <constraint firstItem="82r-me-YC8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="XA0-Ha-TKO"/>
                     <constraint firstAttribute="bottom" secondItem="r8y-Fr-wn6" secondAttribute="bottom" constant="12" id="auK-Rl-tXd"/>
                     <constraint firstAttribute="bottomMargin" secondItem="r8y-Fr-wn6" secondAttribute="bottom" constant="8" id="u5J-ZK-PaQ"/>
                 </constraints>
@@ -56,7 +59,7 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="579" y="412"/>
+            <point key="canvasLocation" x="198" y="207"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -9,5 +9,5 @@
 #import "ServiceSettlementBaseCell.h"
 
 @interface ServiceSettlementTicketPriceCell : ServiceSettlementBaseCell
-
+@property (nonatomic, strong) ServiceSettlementSeat *seat;
 @end

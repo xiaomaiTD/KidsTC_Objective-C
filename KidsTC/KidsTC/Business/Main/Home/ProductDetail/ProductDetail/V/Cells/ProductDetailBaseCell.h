@@ -29,7 +29,8 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeTicketLike,//票务 - 想看
     ProductDetailBaseCellActionTypeTicketStar,//票务 - 评分
     ProductDetailBaseCellActionTypeTicketOpenDes,//票务 - 展开描述
-    
+    ProductDetailBaseCellActionTypeFreeStoreDetail,//免费 - 门店详情
+    ProductDetailBaseCellActionTypeFreeMoreTricks,//免费 - 更多生活小窍门
 } ProductDetailBaseCellActionType;
 
 @class ProductDetailBaseCell;

@@ -2,15 +2,25 @@
 //  ServiceSettlementToolBar.h
 //  KidsTC
 //
-//  Created by zhanping on 8/12/16.
-//  Copyright © 2016 詹平. All rights reserved.
+//  Created by 詹平 on 2016/11/21.
+//  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "ServiceSettlementModel.h"
+#import <UIKit/UIKit.h>
+#import "ServiceSettlementDataItem.h"
 
 extern CGFloat const kServiceSettlementToolBarH;
 
+typedef enum : NSUInteger {
+    ServiceSettlementToolBarActionTypeCommit = 1,//提交订单
+} ServiceSettlementToolBarActionType;
+
+@class ServiceSettlementToolBar;
+@protocol ServiceSettlementToolBarDelegate <NSObject>
+- (void)serviceSettlementToolBar:(ServiceSettlementToolBar *)toolBar actionType:(ServiceSettlementToolBarActionType)type value:(id)value;
+@end
+
 @interface ServiceSettlementToolBar : UIView
-@property (nonatomic, weak) ServiceSettlementDataItem *item;
-@property (nonatomic, copy) void (^commitBlock)();
+@property (nonatomic, weak) id<ServiceSettlementToolBarDelegate> delegate;
+@property (nonatomic, strong) ServiceSettlementDataItem *item;
 @end

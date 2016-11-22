@@ -7,6 +7,7 @@
 //
 
 #import "ServiceSettlementTicketPriceCell.h"
+#import "Colours.h"
 
 @interface ServiceSettlementTicketPriceCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
@@ -18,9 +19,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.titleL.textColor = [UIColor colorFromHexString:@"555555"];
     self.priceL.textColor = COLOR_PINK;
 }
 
-
+- (void)setSeat:(ServiceSettlementSeat *)seat {
+    _seat = seat;
+    
+    self.titleL.text = _seat.seat;
+    self.priceL.text = [NSString stringWithFormat:@"%@元",_seat.price];
+}
 
 @end

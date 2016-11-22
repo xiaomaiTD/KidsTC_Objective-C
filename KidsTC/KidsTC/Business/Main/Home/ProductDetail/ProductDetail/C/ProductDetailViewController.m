@@ -37,6 +37,7 @@
 #import "ProductDetailGetCouponListViewController.h"
 #import "ProductDetailTicketSelectSeatViewController.h"
 #import "ProductDetailFreeApplyViewController.h"
+#import "StoreDetailViewController.h"
 
 #import "KTCBrowseHistoryView.h"
 #import "KTCActionView.h"
@@ -63,10 +64,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type = ProductDetailTypeTicket;
-    _productId = @"100001";
+    _type = ProductDetailTypeFree;
+    _productId = @"3000000008";
     _channelId = @"0";
-    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -250,7 +250,7 @@
             break;
         case ProductDetailViewActionTypeTicketLike://票务 - 想看
         {
-            [self attention:value];
+            [self attentionType:KTCFavouriteTypeTicketService value:value];
         }
             break;
         case ProductDetailViewActionTypeTicketStar://票务 - 评分
@@ -261,6 +261,16 @@
         case ProductDetailViewActionTypeTicketOpenDes://票务 - 展开描述
         {
             
+        }
+            break;
+        case ProductDetailViewActionTypeFreeStoreDetail://免费 - 门店详情
+        {
+            [self freeStoreDetail:value];
+        }
+            break;
+        case ProductDetailViewActionTypeFreeMoreTricks://免费 - 更多生活小窍门
+        {
+            [self freeMoreTricks:value];
         }
             break;
         case ProductDetailViewActionTypeTwoColumnToolBarDetail://展示商品H5详情
@@ -283,7 +293,7 @@
             break;
         case ProductDetailViewActionTypeToolBarAttention://(添加/取消)关注
         {
-            [self attention:value];
+            [self attentionType:KTCFavouriteTypeService value:value];
         }
             break;
         case ProductDetailViewActionTypeToolBarBuyNow://立即购买
@@ -300,7 +310,7 @@
             break;
         case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
         {
-            [self attention:value];
+            [self attentionType:KTCFavouriteTypeTicketService value:value];
         }
             break;
         case ProductDetailViewActionTypeTicketToolBarSelectSeat://票务 - 选座购票
@@ -310,7 +320,7 @@
             break;
         case ProductDetailViewActionTypeTicketHeaderLike://票务 - 想看
         {
-            [self attention:value];
+            [self attentionType:KTCFavouriteTypeTicketService value:value];
         }
             break;
         case ProductDetailViewActionTypeTicketHeaderStar://票务 - 评分
@@ -320,7 +330,7 @@
             break;
         case ProductDetailViewActionTypeFreeToolBarLike://免费商详 - 喜欢、收藏
         {
-            
+            [self attentionType:KTCFavouriteTypeFreeService value:value];
         }
             break;
         case ProductDetailViewActionTypeFreeToolBarApply://免费商详 - 我要报名
@@ -584,7 +594,7 @@
 
 #pragma mark - attention
 
-- (void)attention:(id)value {
+- (void)attentionType:(KTCFavouriteType)type value:(id)value {
     if (_data.isFavor) {
         [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:_data.serveId type:KTCFavouriteTypeService succeed:nil failure:nil];
     } else {
@@ -593,6 +603,21 @@
     NSDictionary *params = @{@"pid":_productId,
                              @"cid":_channelId};
     [BuryPointManager trackEvent:@"event_result_server_favor" actionId:20401 params:params];
+}
+
+#pragma mark - freeStoreDetail
+
+- (void)freeStoreDetail:(id)value {
+    NSArray<ProductDetailStore *> *stores = self.data.store;
+    if (stores.count<1) return;
+    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:stores.firstObject.storeId];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - freeMoreTricks
+
+- (void)freeMoreTricks:(id)value {
+    
 }
 
 #pragma mark - buyNow
@@ -648,7 +673,8 @@
 #pragma mark - FreeToolBarApply
 
 - (void)freeToolBarApply:(id)value {
-    ProductDetailFreeApplyViewController *controller = [[ProductDetailFreeApplyViewController alloc] initWithNibName:@"ProductDetailFreeApplyViewController" bundle:nil];
+    ProductDetailFreeApplyViewController *controller = [[ProductDetailFreeApplyViewController alloc] init];
+    controller.data = self.data;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

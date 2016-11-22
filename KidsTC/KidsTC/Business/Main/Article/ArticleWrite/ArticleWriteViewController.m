@@ -429,6 +429,10 @@ typedef enum : NSUInteger {
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.models.count;
 }
@@ -559,27 +563,29 @@ typedef enum : NSUInteger {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"将此照片从文章中删除？" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *makeSure = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        NSInteger row = indexPath.row;
         
-        ArticleWriteModel *topContentModel = self.models[indexPath.row-1];
-        ArticleWriteModel *bottomContentModel = self.models[indexPath.row+1];
-        NSMutableAttributedString *words = [[NSMutableAttributedString alloc]init];
-        if (topContentModel.words.length>0) {
-            [words appendAttributedString:topContentModel.words];
+        if (row>=self.models.count) {
+            return;
         }
-        if (bottomContentModel.words) {
-            [words appendAttributedString:bottomContentModel.words];
+        
+        if (row == 0) {
+            [_models removeObjectsInRange:NSMakeRange(row, 1)];
+        }else if (row >= 1 && row < self.models.count - 1){
+            ArticleWriteModel *topContentModel = self.models[indexPath.row-1];
+            if (indexPath.row + 1<self.models.count) {
+                ArticleWriteModel *bottomContentModel = self.models[indexPath.row+1];
+                NSMutableAttributedString *words = [[NSMutableAttributedString alloc]init];
+                if (topContentModel.words.length>0) [words appendAttributedString:topContentModel.words];
+                if (bottomContentModel.words.length>0) [words appendAttributedString:bottomContentModel.words];
+                topContentModel.words = [[NSAttributedString alloc] initWithAttributedString:words];
+            }
+            [self.models removeObjectsInRange:NSMakeRange(indexPath.row, 2)];
+        }else if (row == self.models.count - 1){
+            [_models removeObjectsInRange:NSMakeRange(row, 1)];
         }
-        topContentModel.words = words;
         
-        
-        [self.models removeObjectsInRange:NSMakeRange(indexPath.row, 2)];
-        
-        NSIndexPath *cellIndex = indexPath;
-        NSIndexPath *bottomIndex = [NSIndexPath indexPathForRow:cellIndex.row+1 inSection:cellIndex.section];
-        [_tableview deleteRowsAtIndexPaths:@[cellIndex,bottomIndex] withRowAnimation:UITableViewRowAnimationLeft];
-        
-        NSIndexPath *topIndex = [NSIndexPath indexPathForRow:cellIndex.row-1 inSection:cellIndex.section];
-        [_tableview reloadRowAtIndexPath:topIndex withRowAnimation:UITableViewRowAnimationNone];
+        [_tableview reloadData];
     }];
     [alertController addAction:cancle];
     [alertController addAction:makeSure];

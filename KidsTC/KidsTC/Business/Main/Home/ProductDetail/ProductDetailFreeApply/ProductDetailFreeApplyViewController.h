@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ProductDetailData.h"
 
 @interface ProductDetailFreeApplyViewController : ViewController
-
+@property (nonatomic, strong) ProductDetailData *data;
 @end

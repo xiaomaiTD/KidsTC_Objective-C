@@ -23,12 +23,24 @@
 #import "ProductDetailActor.h"
 #import "ProductDetailTheater.h"
 #import "ProductDetailPromise.h"
+#import "ProductDetailOnlineBespeak.h"
+#import "ProductDetailEnrollInfo.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
     TCProductTypeActivity = 2,//活动
     TCProductTypeMaterialObject = 3//实物
 } TCProductType;
+
+typedef enum : NSUInteger {
+    ProductDetailUseValidTimeTypeLong = 1,//长期有效
+    ProductDetailUseValidTimeTypePartTime,//时间区间有效
+} ProductDetailUseValidTimeType;
+
+typedef enum : NSUInteger {
+    ProductDetailFreeTypeJoin = 1,//报名-【我要参加】
+    ProductDetailFreeTypeApply,//申请-【我想免单】
+} ProductDetailFreeType;
 
 @interface ProductDetailData : NSObject
 @property (nonatomic, strong) NSString *serveId;
@@ -83,6 +95,20 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *kind;
 @property (nonatomic, strong) NSString *ticketTime;
 @property (nonatomic, strong) NSString *city;
+@property (nonatomic, assign) NSInteger favorCount;
+@property (nonatomic, strong) NSString *xiaoBianNote;
+@property (nonatomic, assign) ProductDetailFreeType freeType;
+//@property (nonatomic, strong) <#type#> *productCombo;
+@property (nonatomic, strong) NSString *productText;
+@property (nonatomic, strong) NSString *trickName;
+@property (nonatomic, strong) NSArray<NSString *> *tricks;
+@property (nonatomic, strong) NSString *useValidStartTime;
+@property (nonatomic, strong) NSString *useValidEndTime;
+@property (nonatomic, assign) ProductDetailUseValidTimeType useValidTimeType;
+@property (nonatomic, strong) NSString *useValidTimeDesc;
+@property (nonatomic, strong) ProductDetailOnlineBespeak *onlineBespeak;
+@property (nonatomic, strong) ProductDetailEnrollInfo *enrollInfo;
+@property (nonatomic, assign) BOOL isEnrolled;
 
 #pragma mark - selfDefine
 
@@ -118,6 +144,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSAttributedString *attTicketPromise;
 
 @property (nonatomic, assign) BOOL synopsisOpen;
+
+@property (nonatomic, strong) NSAttributedString *attTrickStr;
 
 @end
 

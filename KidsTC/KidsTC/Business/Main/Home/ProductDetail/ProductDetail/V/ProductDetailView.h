@@ -29,6 +29,8 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeTicketLike,//票务 - 想看
     ProductDetailViewActionTypeTicketStar,//票务 - 评分
     ProductDetailViewActionTypeTicketOpenDes,//票务 - 展开描述
+    ProductDetailViewActionTypeFreeStoreDetail,//免费 - 门店详情
+    ProductDetailViewActionTypeFreeMoreTricks,//免费 - 更多生活小窍门
     
     //twoColumnToolBar
     ProductDetailViewActionTypeTwoColumnToolBarDetail = 100,//展示商品H5详情

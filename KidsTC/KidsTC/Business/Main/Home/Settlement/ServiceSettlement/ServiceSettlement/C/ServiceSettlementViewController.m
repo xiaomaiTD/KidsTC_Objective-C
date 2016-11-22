@@ -10,6 +10,7 @@
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
 #import "UIBarButtonItem+Category.h"
+#import "NSString+ZP.h"
 
 #import "ServiceSettlementSubViewsProvider.h"
 #import "ServiceSettlementDataManager.h"
@@ -30,9 +31,9 @@
 #import "KTCPaymentService.h"
 #import "PayModel.h"
 
-@interface ServiceSettlementViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceSettlementBaseCellDelegate>
-@property (nonatomic,   weak) UITableView                           *tableView;
-@property (nonatomic,   weak) ServiceSettlementToolBar              *tooBar;
+@interface ServiceSettlementViewController ()<UITableViewDelegate,UITableViewDataSource,ServiceSettlementBaseCellDelegate,ServiceSettlementToolBarDelegate>
+@property (nonatomic,   weak) UITableView *tableView;
+@property (nonatomic,   weak) ServiceSettlementToolBar *tooBar;
 @property (nonatomic, strong) NSArray<NSArray<ServiceSettlementBaseCell *> *> *sections;
 @property (nonatomic, assign) NSUInteger scoreNum;
 @property (nonatomic, strong) NSString *couponCode;
@@ -42,7 +43,7 @@
 
 @property (nonatomic, assign) PayType payType;
 
-@property (nonatomic, assign) ServiceSettlementSubViewsProvider *provider;
+@property (nonatomic, assign) ServiceSettlementSubViewsProvider *subViewsProvider;
 @property (nonatomic, strong) ServiceSettlementDataManager *dataManager;
 
 @end
@@ -52,8 +53,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _provider = [ServiceSettlementSubViewsProvider shareServiceSettlementSubViewsProvider];
-    _provider.type = _type;
+    _subViewsProvider = [ServiceSettlementSubViewsProvider shareServiceSettlementSubViewsProvider];
+    _subViewsProvider.type = _type;
     
     _dataManager = [ServiceSettlementDataManager shareServiceSettlementDataManager];
     _dataManager.type = _type;
@@ -61,6 +62,7 @@
     self.pageId = 10501;
     
     self.navigationItem.title = @"结算";
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.naviTheme = NaviThemeWihte;
     
@@ -72,37 +74,38 @@
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
-    tableView.contentInset = UIEdgeInsetsMake(0, 0, kServiceSettlementToolBarH, 0);
-    tableView.scrollIndicatorInsets = tableView.contentInset;
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kServiceSettlementToolBarH) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tableView.estimatedRowHeight = 44.0f;
     tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
 
 - (void)setupToolBar {
-    _tooBar = _provider.tooBar;
+    _tooBar = _subViewsProvider.tooBar;
     _tooBar.frame = CGRectMake(0, SCREEN_HEIGHT-kServiceSettlementToolBarH, SCREEN_WIDTH, kServiceSettlementToolBarH);
-    [self.view addSubview:_tooBar];
+    _tooBar.delegate = self;
     _tooBar.hidden = YES;
-    _tooBar.commitBlock = ^void () {
-        [self commit];
-    };
+    [self.view addSubview:_tooBar];
+}
+
+- (id)viewWithNib:(NSString *)nib{
+    return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
 }
 
 #pragma mark - 从购物车获取商品结算信息
 
-- (NSDictionary *)param {
+- (NSDictionary *)loadShoppingCartParam {
 
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            ServiceSettlementDataItem *item = self.model.data.firstObject;
+            ServiceSettlementDataItem *item = self.model.data;
             NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
             NSString *buyNum = [self.buyNum isNotNull]?self.buyNum:@"";
             NSString *storeNo = [item.store.storeId isNotNull]?item.store.storeId:@"";
@@ -116,12 +119,12 @@
             break;
         case ProductDetailTypeTicket:
         {
-            ServiceSettlementDataItem *item = self.model.data.firstObject;
+            ServiceSettlementDataItem *item = self.model.data;
             NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
             NSDictionary *param = @{@"couponCode":couponCode,
                                     @"scoreNum":@(self.scoreNum),
                                     @"isCancelCoupon":@(self.isCancelCoupon),
-                                    @"takeTicketWay":@(item.ticketGetType)};
+                                    @"takeTicketWay":@(item.takeTicketWay)};
             return param;
         }
             break;
@@ -134,8 +137,11 @@
 }
 
 - (void)loadShoppingCart{
+    NSDictionary *param = self.loadShoppingCartParam;
+    if (!param) return;
+    
     [TCProgressHUD showSVP];
-    [_dataManager loadDataWithParam:self.param successBlock:^(ServiceSettlementModel *model) {
+    [_dataManager loadDataWithParam:param successBlock:^(ServiceSettlementModel *model) {
         [TCProgressHUD dismissSVP];
         [self loadShoppingCartSuccess:model];
     } failureBlock:^(NSError *error) {
@@ -145,25 +151,22 @@
 }
 
 - (void)loadShoppingCartSuccess:(ServiceSettlementModel *)model {
-    if (model.data.count>0) {
-        ServiceSettlementDataItem *item = model.data.firstObject;
-        if (item) {
-            _provider.model = model;
-            _sections = _provider.sections;
-            self.model = model;
-            self.tooBar.item = item;
-            [self.tableView reloadData];
-            
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            NSString *pid = self.model.data.firstObject.serveId;
-            if ([pid isNotNull]) {
-                [params setValue:pid forKey:@"pid"];
-            }
-            NSString *cid = self.model.data.firstObject.channelId;
-            if ([cid isNotNull]) {
-                [params setValue:cid forKey:@"cid"];
-            }
-        }
+    ServiceSettlementDataItem *item = model.data;
+    item.type = _type;
+    _subViewsProvider.model = model;
+    _sections = _subViewsProvider.sections;
+    _model = model;
+    _tooBar.item = item;
+    [_tableView reloadData];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *pid = self.model.data.serveId;
+    if ([pid isNotNull]) {
+        [params setValue:pid forKey:@"pid"];
+    }
+    NSString *cid = self.model.data.channelId;
+    if ([cid isNotNull]) {
+        [params setValue:cid forKey:@"cid"];
     }
 }
 
@@ -183,17 +186,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return (section==0)?8:0.01;
+    return (section==0)?10:0.01;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 8;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ServiceSettlementBaseCell *cell = self.sections[indexPath.section][indexPath.row];
-    cell.item = self.model.data.firstObject;
     cell.indexPath = indexPath;
+    cell.delegate = self;
+    cell.item = self.model.data;
     return cell;
 }
 
@@ -218,7 +222,7 @@
             UserAddressManageViewController *controller = [[UserAddressManageViewController alloc]init];
             controller.fromeType = UserAddressManageFromTypeSettlement;
             controller.pickeAddressBlock = ^void (UserAddressManageDataItem *item){
-                self.model.data.firstObject.userAddress = item;
+                self.model.data.userAddress = item;
                 [self.tableView reloadData];
             };
             [self.navigationController pushViewController:controller animated:YES];
@@ -226,18 +230,18 @@
             break;
         case ServiceSettlementBaseCellActionTypeStore:
         {
-            ServiceSettlementDataItem *item = self.model.data.firstObject;
+            ServiceSettlementDataItem *item = self.model.data;
             SettlementPickStoreViewController *controller = [[SettlementPickStoreViewController alloc]init];
             controller.serveId = item.serveId;
             controller.channelId = item.channelId;
             controller.storeId = item.store.storeId;
             controller.pickStoreBlock = ^void (SettlementPickStoreDataItem *store){
-                self.model.data.firstObject.store = store;
+                self.model.data.store = store;
                 [self.tableView reloadData];
             };
             [self.navigationController pushViewController:controller animated:YES];
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            NSString *pid = self.model.data.firstObject.serveId;
+            NSString *pid = self.model.data.serveId;
             if ([pid isNotNull]) {
                 [params setValue:pid forKey:@"pid"];
             }
@@ -259,7 +263,7 @@
             if ([self.couponCode isNotNull]) {
                 [params setValue:self.couponCode forKey:@"couponId"];
             }
-            NSString *pid = self.model.data.firstObject.serveId;
+            NSString *pid = self.model.data.serveId;
             if ([pid isNotNull]) {
                 [params setValue:pid forKey:@"pid"];
             }
@@ -273,7 +277,7 @@
                 self.scoreNum = scoreNum;
                 [self loadShoppingCart];
             };
-            controller.scoreNum = self.model.data.firstObject.scorenum;
+            controller.scoreNum = self.model.data.scorenum;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             controller.modalPresentationStyle = UIModalPresentationCustom;
             [self presentViewController:controller animated:NO completion:nil];
@@ -281,7 +285,7 @@
             if ([self.couponCode isNotNull]) {
                 [params setValue:@(self.scoreNum) forKey:@"num"];
             }
-            NSString *pid = self.model.data.firstObject.serveId;
+            NSString *pid = self.model.data.serveId;
             if ([pid isNotNull]) {
                 [params setValue:pid forKey:@"pid"];
             }
@@ -301,67 +305,267 @@
             break;
         case ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange:
         {
-            _sections = _provider.sections;
+            _sections = _subViewsProvider.sections;
             [self.tableView reloadData];
         }
             break;
     }
 }
 
+
+#pragma mark - ServiceSettlementToolBarDelegate
+
+- (void)serviceSettlementToolBar:(ServiceSettlementToolBar *)toolBar actionType:(ServiceSettlementToolBarActionType)type value:(id)value {
+    
+    switch (type) {
+        case ServiceSettlementToolBarActionTypeCommit:
+        {
+            [self placeOrder:value];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - 下单
 
-- (void)commit{
-    
-    if (![self checkValite]) return;
-    
-    ServiceSettlementDataItem *item = self.model.data.firstObject;
-    ServiceSettlementCouponItem *maxCoupon = item.maxCoupon;
-    NSString *couponCode = maxCoupon.code.length>0?maxCoupon.code:@"";
-    BOOL isFullCut = (couponCode.length<=0 && item.promotion.fiftyamt>0);
-    NSString *soleid = [self.model.soleid isNotNull]?self.model.soleid:@"";
-    NSString *addressId = [item.userAddress.ID isNotNull]?item.userAddress.ID:@"";
-    NSString *storeId = [item.store.storeId isNotNull]?item.store.storeId:@"";
-    NSString *priceStr = [NSString priceStr:item.totalPrice];
-    NSDictionary *param = @{@"paytype"   : @(self.payType),     //支付方式
-                            @"soleid"    : soleid,              //密等id
-                            @"couponCode": couponCode,          //优惠券
-                            @"point"     : @(item.usescorenum), //积分
-                            @"isFullCut" : @(isFullCut),        //是否使用满减（1：是，0：否）
-                            @"price"     : priceStr,            //付款总额（这里用来和后台进行校验）
-                            @"addressId" : addressId,           //地址id
-                            @"storeId"   : storeId              /**门店id*/};
-    [TCProgressHUD showSVP];
-    [Request startWithName:@"ORDER_PLACE_ORDER_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
-        PayModel *model = [PayModel modelWithDictionary:dic];
-        if (model.data.orderNo>0) {
-            [self placeOrderSucceed:model];
-        }else{
-            [self placeOrderFailure:nil];
+- (NSDictionary *)placeOrderParam {
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            NSMutableDictionary *param = [NSMutableDictionary dictionary];
+            
+            ServiceSettlementDataItem *item = self.model.data;
+            
+            //支付方式
+            PayType payType = _payType;
+            [param setObject:@(payType) forKey:@"paytype"];
+            
+            //密等id
+            NSString *soleid = self.model.soleid;
+            if (![soleid isNotNull]) {
+                soleid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
+            }
+            [param setObject:soleid forKey:@"soleid"];
+            
+            //优惠券
+            ServiceSettlementCouponItem *maxCoupon = item.maxCoupon;
+            NSString *couponCode = maxCoupon.code.length>0?maxCoupon.code:@"";
+            [param setObject:couponCode forKey:@"couponCode"];
+            
+            //是否使用满减（1：是，0：否）
+            BOOL isFullCut = (couponCode.length<=0 && item.promotion.fiftyamt>0);
+            [param setObject:@(isFullCut) forKey:@"isFullCut"];
+            
+            //积分
+            NSUInteger point = item.usescorenum;
+            [param setObject:@(point) forKey:@"point"];
+            
+            //付款总额（这里用来和后台进行校验）
+            NSString *price = item.totalPrice;
+            if (![price isNotNull]) {
+                [[iToast makeText:@"支付金额为空，请稍后再试！"] show];
+                return nil;
+            }
+            [param setObject:price forKey:@"price"];
+            
+            //地址id
+            if (item.hasUserAddress) {//地址为必填
+                
+                NSString *addressId = item.userAddress.ID;
+                
+                if (!item.userAddress) {
+                    [[iToast makeText:@"请新增收货地址"] show];
+                    return nil;
+                }
+                if (![addressId isNotNull]) {
+                    [[iToast makeText:@"收货地址编号为空"] show];
+                    return nil;
+                }
+                [param setObject:addressId forKey:@"addressId"];
+            }
+            
+            /**门店id*/
+            NSString *storeId = item.store.storeId;
+            if (![storeId isNotNull]) {
+                storeId = @"";
+            }
+            [param setObject:storeId forKey:@"storeId"];
+
+            return param;
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            break;
+        case ProductDetailTypeTicket:
+        {
+            NSMutableDictionary *param = [NSMutableDictionary dictionary];
+            
+            ServiceSettlementDataItem *item = self.model.data;
+            
+            //票务详情编号
+            NSString *productId = item.serveId;
+            if (![productId isNotNull]) {
+                [[iToast makeText:@"商品编号为空，请稍后再试！"] show];
+                return nil;
+            }
+            [param setObject:productId forKey:@"productId"];
+            
+            //多价编号
+            NSString *chId = item.channelId;
+            if (![productId isNotNull]) {
+                chId = @"0";
+            }
+            [param setObject:chId forKey:@"chId"];
+            
+            //支付方式
+            PayType payType = _payType;
+            [param setObject:@(payType) forKey:@"paytype"];
+            
+            //密等id
+            NSString *soleid = self.model.soleid;
+            if (![soleid isNotNull]) {
+                soleid = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
+            }
+            [param setObject:soleid forKey:@"soleid"];
+            
+            //优惠券
+            ServiceSettlementCouponItem *maxCoupon = item.maxCoupon;
+            NSString *couponCode = maxCoupon.code.length>0?maxCoupon.code:@"";
+            [param setObject:couponCode forKey:@"couponCode"];
+            
+            //积分
+            NSUInteger point = item.usescorenum;
+            [param setObject:@(point) forKey:@"point"];
+            
+            //付款总额（这里用来和后台进行校验）
+            NSString *price = item.payPrice;
+            if (![price isNotNull]) {
+                [[iToast makeText:@"支付金额为空，请稍后再试！"] show];
+                return nil;
+            }
+            [param setObject:price forKey:@"price"];
+            
+            //选座信息 json字符串
+            NSArray<ServiceSettlementSeat *> *seats = self.model.data.seats;
+            if (seats.count<1) {
+                [[iToast makeText:@"座位信息为空，请稍后再试！"] show];
+                return nil;
+            }
+            
+            NSMutableArray *skuAry = [NSMutableArray array];
+            [seats enumerateObjectsUsingBlock:^(ServiceSettlementSeat * seat, NSUInteger idx, BOOL *stop) {
+                if (!seat) {
+                    [[iToast makeText:@"座位信息不合法，请稍后再试！"] show];
+                    return;
+                }
+                NSString *SkuId = seat.skuId;
+                if (![SkuId isNotNull]) {
+                    [[iToast makeText:@"座位信息编号不合法，请稍后再试！"] show];
+                    return;
+                }
+                NSDictionary *skuDic = @{@"SkuId":SkuId,
+                                         @"BuyNum":@(seat.num)};
+                if (skuDic) {
+                    [skuAry appendObject:skuDic];
+                }
+            }];
+            if (skuAry.count < 1) {
+                [[iToast makeText:@"所有的座位信息为空，请稍后再试！"] show];
+                return nil;
+            }
+
+            NSString *skus = [NSString zp_stringWithJsonObj:skuAry];
+            
+            if (![skus isNotNull]) {
+                [[iToast makeText:@"App内部出错，请重试"] show];
+                return nil;
+            }
+            [param setObject:skus forKey:@"skus"];
+            
+            
+            //取票方式，1=快递 2=上门自取
+            ServiceSettlementTakeTicketWay takeTicketWay = item.takeTicketWay;
+            switch (takeTicketWay) {
+                case ServiceSettlementTakeTicketWayCar:
+                {
+                    //地址id
+                    NSString *addressId = item.userAddress.ID;
+                    
+                    if (!item.userAddress) {
+                        [[iToast makeText:@"请新增收货地址"] show];
+                        return nil;
+                    }
+                    if (![addressId isNotNull]) {
+                        [[iToast makeText:@"收货地址编号为空"] show];
+                        return nil;
+                    }
+                    [param setObject:addressId forKey:@"addressId"];
+                }
+                    break;
+                case ServiceSettlementTakeTicketWaySelf:
+                {
+                    //上门自取用户信息，json字符串
+                    
+                    NSString *UserName = item.ticketUserName;
+                    if (![UserName isNotNull]) {
+                        [[iToast makeText:@"请填写上门自取人姓名"] show];
+                        return nil;
+                    }
+                    NSString *UserMobile = item.ticketUserMobile;
+                    if (![UserMobile isNotNull]) {
+                        [[iToast makeText:@"请填写上门自取人联系方式"] show];
+                        return nil;
+                    }
+                    
+                    NSDictionary *ticketUserDic = @{@"UserName":UserName,
+                                                    @"UserMobile":UserMobile};
+                    NSString *ticketUser = [NSString zp_stringWithJsonObj:ticketUserDic];
+                    if (![ticketUser isNotNull]) {
+                        [[iToast makeText:@"App内部出错，请重试"] show];
+                        return nil;
+                    }
+                    [param setObject:ticketUser forKey:@"ticketUser"];
+                }
+                    break;
+                default:
+                {
+                    [[iToast makeText:@"非法的取票方式"] show];
+                    return nil;
+                }
+                    break;
+            }
+            [param setObject:@(takeTicketWay) forKey:@"takeTicketWay"];
+            
+            return [NSDictionary dictionaryWithDictionary:param];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            
+        }
+            break;
+    }
+    return nil;
+}
+
+- (void)placeOrder:(id)value{
+    
+    NSDictionary *param = self.placeOrderParam;
+    if (!param) return;
+    [TCProgressHUD showSVP];
+    [_dataManager placeOrderWithParam:param successBlock:^(PayModel *model) {
+        [TCProgressHUD dismissSVP];
+        [self placeOrderSucceed:model];
+    } failureBlock:^(NSError *error) {
         [TCProgressHUD dismissSVP];
         [self placeOrderFailure:error];
     }];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    NSString *pid = self.model.data.firstObject.serveId;
+    NSString *pid = self.model.data.serveId;
     if ([pid isNotNull]) {
         [params setValue:pid forKey:@"pid"];
     }
     [BuryPointManager trackEvent:@"event_click_balance_pay" actionId:20704 params:params];
-}
-
-- (BOOL)checkValite{
-    ServiceSettlementDataItem *item = self.model.data.firstObject;
-    if (item.hasUserAddress) {
-        if (item.userAddress.ID.length>0) {
-            return YES;
-        }else{
-            [[iToast makeText:@"请填写收货地址"] show];
-            return NO;
-        }
-    };
-    return YES;
 }
 
 #pragma mark - 下单结果
@@ -373,17 +577,13 @@
     
     [KTCPaymentService startPay:model.data.payInfo succeed:^{
         [self settlementPaid:YES orderId:orderId];
-        
         [[iToast makeText:@"结算成功"] show];
-
     } failure:^(NSError *error) {
         [self settlementPaid:NO orderId:orderId];
-        
         NSString *errMsg = @"结算失败";
         NSString *text = [[error userInfo] objectForKey:kErrMsgKey];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
-
     }];
 }
 
@@ -409,9 +609,8 @@
     }];
 }
 
-
 - (void)dealloc {
-    [_provider nilCells];
+    [_subViewsProvider nilCells];
 }
 
 @end

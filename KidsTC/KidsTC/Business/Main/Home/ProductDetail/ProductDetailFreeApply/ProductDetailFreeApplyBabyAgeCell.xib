@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lAh-ZM-kbk" customClass="ProductDetailFreeApplyBabyAgeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAh-ZM-kbk" id="7If-p7-bW2">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝宝年龄：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Oa-8v-ltY">
+                        <rect key="frame" x="32" y="16" width="72" height="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您宝宝的年龄" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJ8-vC-Juo">
+                        <rect key="frame" x="104" y="12.5" width="184" height="17"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="lAh-ZM-kbk" id="FGv-EJ-EZM"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fJ8-vC-Juo" firstAttribute="leading" secondItem="6Oa-8v-ltY" secondAttribute="trailing" id="QOZ-mE-w2m"/>
+                    <constraint firstAttribute="trailing" secondItem="fJ8-vC-Juo" secondAttribute="trailing" constant="32" id="R3h-b8-b6b"/>
+                    <constraint firstItem="fJ8-vC-Juo" firstAttribute="centerY" secondItem="7If-p7-bW2" secondAttribute="centerY" id="Wgh-z0-1Mk"/>
+                    <constraint firstAttribute="bottom" secondItem="6Oa-8v-ltY" secondAttribute="bottom" constant="16" id="mWB-QC-QNk"/>
+                    <constraint firstItem="6Oa-8v-ltY" firstAttribute="top" secondItem="7If-p7-bW2" secondAttribute="top" constant="16" id="nf0-4U-kbx"/>
+                    <constraint firstItem="6Oa-8v-ltY" firstAttribute="leading" secondItem="7If-p7-bW2" secondAttribute="leading" constant="32" id="y9d-1R-Soo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tf" destination="fJ8-vC-Juo" id="TCB-EW-CGI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

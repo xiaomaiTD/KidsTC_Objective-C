@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -17,45 +21,45 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海上海市嘉定区周家桥街道龙井路1208弄190号12号楼8楼803室" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9k-ZM-cft">
-                        <rect key="frame" x="27" y="37" width="272" height="33"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="45" y="41" width="247" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="serviceSettle_store_03" translatesAutoresizingMaskIntoConstraints="NO" id="6KI-vN-fK4">
-                        <rect key="frame" x="8" y="46" width="15" height="15"/>
+                        <rect key="frame" x="15" y="45" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="6KI-vN-fK4" secondAttribute="height" multiplier="1:1" id="TOM-JB-epz"/>
                             <constraint firstAttribute="width" constant="15" id="rnK-ax-T38"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_r" translatesAutoresizingMaskIntoConstraints="NO" id="yJx-1J-744">
-                        <rect key="frame" x="299" y="33" width="13" height="13"/>
+                        <rect key="frame" x="292" y="33" width="13" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="yJx-1J-744" secondAttribute="height" multiplier="1:1" id="WN0-Rs-Wwf"/>
                             <constraint firstAttribute="width" constant="13" id="kgB-9z-ees"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="顾晶晶  13916539506" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCB-5E-jac">
-                        <rect key="frame" x="27" y="8" width="272" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="45" y="14" width="247" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="H9k-ZM-cft" firstAttribute="leading" secondItem="6KI-vN-fK4" secondAttribute="trailing" constant="4" id="0b6-Qp-nSG"/>
-                    <constraint firstAttribute="bottom" secondItem="H9k-ZM-cft" secondAttribute="bottom" constant="8" id="9bn-i8-j0P"/>
+                    <constraint firstItem="H9k-ZM-cft" firstAttribute="leading" secondItem="6KI-vN-fK4" secondAttribute="trailing" constant="15" id="0b6-Qp-nSG"/>
+                    <constraint firstAttribute="bottom" secondItem="H9k-ZM-cft" secondAttribute="bottom" constant="16" id="9bn-i8-j0P"/>
                     <constraint firstItem="yJx-1J-744" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="A9h-lc-NCs"/>
-                    <constraint firstItem="H9k-ZM-cft" firstAttribute="top" secondItem="pCB-5E-jac" secondAttribute="bottom" constant="8" id="BIG-Bu-1rj"/>
+                    <constraint firstItem="H9k-ZM-cft" firstAttribute="top" secondItem="pCB-5E-jac" secondAttribute="bottom" constant="10" id="BIG-Bu-1rj"/>
                     <constraint firstItem="6KI-vN-fK4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="BvY-kk-iX3"/>
                     <constraint firstItem="H9k-ZM-cft" firstAttribute="trailing" secondItem="pCB-5E-jac" secondAttribute="trailing" id="MrB-xK-5r7"/>
-                    <constraint firstItem="6KI-vN-fK4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Rwu-VB-bYg"/>
-                    <constraint firstItem="pCB-5E-jac" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="TfK-Ct-m4p"/>
+                    <constraint firstItem="6KI-vN-fK4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Rwu-VB-bYg"/>
+                    <constraint firstItem="pCB-5E-jac" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="TfK-Ct-m4p"/>
                     <constraint firstItem="H9k-ZM-cft" firstAttribute="centerY" secondItem="6KI-vN-fK4" secondAttribute="centerY" id="ZpI-Sk-oeP"/>
                     <constraint firstItem="pCB-5E-jac" firstAttribute="width" secondItem="H9k-ZM-cft" secondAttribute="width" id="baF-Ga-BV2"/>
                     <constraint firstItem="yJx-1J-744" firstAttribute="leading" secondItem="H9k-ZM-cft" secondAttribute="trailing" id="jWO-H1-1nC"/>
-                    <constraint firstAttribute="trailing" secondItem="yJx-1J-744" secondAttribute="trailing" constant="8" id="lnz-l1-NXB"/>
+                    <constraint firstAttribute="trailing" secondItem="yJx-1J-744" secondAttribute="trailing" constant="15" id="lnz-l1-NXB"/>
                     <constraint firstItem="H9k-ZM-cft" firstAttribute="leading" secondItem="pCB-5E-jac" secondAttribute="leading" id="pzO-IR-cgX"/>
                 </constraints>
                 <variation key="default">

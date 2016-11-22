@@ -15,6 +15,7 @@
 #import "ZPDateFormate.h"
 #import "NSString+ZP.h"
 #import "UIBarButtonItem+Category.h"
+#import "iToast.h"
 
 @interface ProductDetailCalendarViewController ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance>
 @property (nonatomic, strong) FSCalendar *calendar;
@@ -31,6 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.times.count<1) {
+        [[iToast makeText:@"时间为空"] show];
+        [self back];
+        return;
+    }
     
     self.navigationItem.title = @"活动日期";
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];

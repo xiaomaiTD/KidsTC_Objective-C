@@ -53,6 +53,8 @@
     
     [self setupTicketPromise];
     
+    [self setupTricks];
+    
     return YES;
 }
 
@@ -118,6 +120,8 @@
         self.shareObject.followingContent = @"【童成】";
     }
 }
+
+#pragma mark - Ticket
 
 - (void)setupTicketInfo {
     
@@ -241,5 +245,23 @@
     }
     return nil;
 }
+
+#pragma mark - Free
+
+- (void)setupTricks {
+    NSMutableString *trick = [NSMutableString string];
+    [_tricks enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx != 0) {
+            [trick appendString:@"\n"];
+        }
+        [trick appendString:obj];
+    }];
+    NSMutableAttributedString *attTrick = [[NSMutableAttributedString alloc] initWithString:trick];
+    attTrick.lineSpacing = 12;
+    attTrick.font = [UIFont systemFontOfSize:14];
+    attTrick.color = [UIColor colorFromHexString:@"666666"];
+    _attTrickStr = [[NSAttributedString alloc] initWithAttributedString:attTrick];
+}
+
 
 @end

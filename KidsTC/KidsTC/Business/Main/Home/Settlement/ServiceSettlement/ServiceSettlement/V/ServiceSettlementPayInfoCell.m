@@ -20,6 +20,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.tipLabel.textColor = [UIColor colorFromHexString:@"222222"];
     self.subLabel.textColor = COLOR_YELL;
     self.priceLabel.textColor = COLOR_PINK;
     self.HLineConstraintHeight.constant = LINE_H;
@@ -33,7 +34,7 @@
         {
             tip = @"商品金额";
             sub = nil;
-            price = [NSString stringWithFormat:@"¥%.1f",item.price * item.count];
+            price = [NSString stringWithFormat:@"¥%.1f",[item.price floatValue] * item.count];
         }
             break;
         case ServiceSettlementPayInfoCellTypePromotion:

@@ -11,3 +11,9 @@ typedef enum : NSUInteger {
     ProductDetailTypeTicket,//票务商详
     ProductDetailTypeFree,//免费商详
 } ProductDetailType;//商详类型
+
+typedef enum : NSUInteger {
+    TCSexTypeUnkonw,//未知
+    TCSexTypeBoy,//男
+    TCSexTypeGirl,//女
+} TCSexType;

@@ -36,6 +36,8 @@
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
     self.starBtn.selected = data.isFavor;
+    self.selectSeatBtn.enabled = data.isCanBuy;
+    [self.selectSeatBtn setTitle:data.statusDesc forState:UIControlStateNormal];
 }
 
 - (IBAction)action:(UIButton *)sender {

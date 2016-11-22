@@ -61,11 +61,11 @@ singleM(ServiceSettlementSubViewsProvider)
 
 - (NSArray<NSArray<ServiceSettlementBaseCell *> *> *)normalSections{
     
-    if (self.model.data.count<1) {
+    if (!self.model.data) {
         return nil;
     }
     
-    ServiceSettlementDataItem *item = self.model.data.firstObject;
+    ServiceSettlementDataItem *item = self.model.data;
     NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
     //收货地址
     if (item.hasUserAddress) {
@@ -115,24 +115,27 @@ singleM(ServiceSettlementSubViewsProvider)
 }
 
 - (NSArray<NSArray<ServiceSettlementBaseCell *> *> *)ticketSections{
-    if (self.model.data.count<1) {
+    if (!self.model.data) {
         return nil;
     }
-    ServiceSettlementDataItem *item = self.model.data.firstObject;
+    ServiceSettlementDataItem *item = self.model.data;
     NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> *sections = [NSMutableArray<NSMutableArray<ServiceSettlementBaseCell *> *> array];
     
     //商品、价格
     NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
     [section01 addObject:self.serviceInfoCell];
-    [section01 addObject:self.ticketPriceCell];
-    [section01 addObject:self.ticketPriceCell];
+    [item.seats enumerateObjectsUsingBlock:^(ServiceSettlementSeat *obj, NSUInteger idx, BOOL *stop) {
+        ServiceSettlementTicketPriceCell *ticketPriceCell = self.ticketPriceCell;
+        ticketPriceCell.seat = obj;
+        [section01 addObject:ticketPriceCell];
+    }];
     [sections addObject:section01];
     
     //取票方式
     NSMutableArray<ServiceSettlementBaseCell *> *section00 = [NSMutableArray array];
     [section00 addObject:self.ticketGetCell];
-    switch (item.ticketGetType) {
-        case TicketGetTypeCar:
+    switch (item.takeTicketWay) {
+        case ServiceSettlementTakeTicketWayCar:
         {
             if (item.userAddress) {
                 [section00 addObject:self.addressCell];
@@ -141,13 +144,12 @@ singleM(ServiceSettlementSubViewsProvider)
             }
         }
             break;
-        case TicketGetTypeSelf:
+        case ServiceSettlementTakeTicketWaySelf:
         {
             [section00 addObject:self.ticketGetSelfCell];
         }
             break;
     }
-    
     [sections addObject:section00];
     
     //优惠券、积分
@@ -225,7 +227,6 @@ singleM(ServiceSettlementSubViewsProvider)
     return [self viewWithNib:@"ServiceSettlementPayInfoCell"];
 }
 - (ServiceSettlementTicketPriceCell *)ticketPriceCell {
-
     return [self viewWithNib:@"ServiceSettlementTicketPriceCell"];
 }
 - (ServiceSettlementTicketGetCell *)ticketGetCell {

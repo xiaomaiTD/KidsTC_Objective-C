@@ -130,7 +130,6 @@
 		EC2F264E1DD95F7300B67BBA /* ProductDetaiFreeLifeTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F264C1DD95F7300B67BBA /* ProductDetaiFreeLifeTipCell.m */; };
 		EC2F264F1DD95F7300B67BBA /* ProductDetaiFreeLifeTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F264D1DD95F7300B67BBA /* ProductDetaiFreeLifeTipCell.xib */; };
 		EC2F26541DD966FD00B67BBA /* ProductDetailFreeApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26521DD966FD00B67BBA /* ProductDetailFreeApplyViewController.m */; };
-		EC2F26551DD966FD00B67BBA /* ProductDetailFreeApplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26531DD966FD00B67BBA /* ProductDetailFreeApplyViewController.xib */; };
 		EC2F26631DD9803B00B67BBA /* CollectProductAllCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26611DD9803B00B67BBA /* CollectProductAllCell.m */; };
 		EC2F26641DD9803B00B67BBA /* CollectProductAllCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F26621DD9803B00B67BBA /* CollectProductAllCell.xib */; };
 		EC2F266A1DD9808900B67BBA /* CollectProductCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F26681DD9808900B67BBA /* CollectProductCategoryCell.m */; };
@@ -426,8 +425,6 @@
 		EC4FC3711D77CEE400BBD050 /* ServiceSettlementStoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBF141D77CEE400BBD050 /* ServiceSettlementStoreInfoCell.xib */; };
 		EC4FC3721D77CEE400BBD050 /* ServiceSettlementTipAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBF161D77CEE400BBD050 /* ServiceSettlementTipAddressCell.m */; };
 		EC4FC3731D77CEE400BBD050 /* ServiceSettlementTipAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBF171D77CEE400BBD050 /* ServiceSettlementTipAddressCell.xib */; };
-		EC4FC3741D77CEE400BBD050 /* ServiceSettlementToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBF191D77CEE400BBD050 /* ServiceSettlementToolBar.m */; };
-		EC4FC3751D77CEE400BBD050 /* ServiceSettlementToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBF1A1D77CEE400BBD050 /* ServiceSettlementToolBar.xib */; };
 		EC4FC3761D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBF1D1D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.m */; };
 		EC4FC3771D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBF1E1D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib */; };
 		EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBF201D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m */; };
@@ -952,6 +949,17 @@
 		EC84861E1DDF2A6F0039E9D3 /* ProductDetailTicketSelectSeatSeat.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84861D1DDF2A6F0039E9D3 /* ProductDetailTicketSelectSeatSeat.m */; };
 		EC8486221DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8486201DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m */; };
 		EC8486231DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8486211DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib */; };
+		EC84C3A11DE2998600A42515 /* ServiceSettlementDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3A01DE2998600A42515 /* ServiceSettlementDataItem.m */; };
+		EC84C3A41DE2999900A42515 /* ServiceSettlementPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3A31DE2999900A42515 /* ServiceSettlementPromotion.m */; };
+		EC84C3A71DE299A600A42515 /* ServiceSettlementPayType.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3A61DE299A600A42515 /* ServiceSettlementPayType.m */; };
+		EC84C3AA1DE299B400A42515 /* ServiceSettlementCouponItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3A91DE299B400A42515 /* ServiceSettlementCouponItem.m */; };
+		EC84C3AD1DE2A1F800A42515 /* ServiceSettlementSeat.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3AC1DE2A1F800A42515 /* ServiceSettlementSeat.m */; };
+		EC84C3B01DE2A25D00A42515 /* ServiceSettlementShowTime.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3AF1DE2A25D00A42515 /* ServiceSettlementShowTime.m */; };
+		EC84C3B31DE2C79000A42515 /* ServiceSettlementToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3B21DE2C79000A42515 /* ServiceSettlementToolBar.m */; };
+		EC84C3B51DE2C79900A42515 /* ServiceSettlementToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC84C3B41DE2C79900A42515 /* ServiceSettlementToolBar.xib */; };
+		EC84C3B81DE3380700A42515 /* ProductDetailProductCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3B71DE3380700A42515 /* ProductDetailProductCombo.m */; };
+		EC84C3BE1DE3386000A42515 /* ProductDetailOnlineBespeak.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3BD1DE3386000A42515 /* ProductDetailOnlineBespeak.m */; };
+		EC84C3C11DE3392900A42515 /* ProductDetailEnrollInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC84C3C01DE3392900A42515 /* ProductDetailEnrollInfo.m */; };
 		EC889D061DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D041DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m */; };
 		EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */; };
 		EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */; };
@@ -984,6 +992,37 @@
 		EC9CC5281DC30E7F0093DCED /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC5181DC30E7F0093DCED /* FSCalendarScopeHandle.m */; };
 		EC9CC5291DC30E7F0093DCED /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC51A1DC30E7F0093DCED /* FSCalendarStickyHeader.m */; };
 		EC9CC52A1DC30E7F0093DCED /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC9CC51B1DC30E7F0093DCED /* Info.plist */; };
+		ECA40F261DE411F7001B087F /* ProductDetailFreeApplyBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F251DE411F7001B087F /* ProductDetailFreeApplyBaseCell.m */; };
+		ECA40F2A1DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F281DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.m */; };
+		ECA40F2B1DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F291DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.xib */; };
+		ECA40F2F1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F2D1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.m */; };
+		ECA40F301DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F2E1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.xib */; };
+		ECA40F341DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F321DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.m */; };
+		ECA40F351DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F331DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.xib */; };
+		ECA40F391DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F371DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.m */; };
+		ECA40F3A1DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F381DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.xib */; };
+		ECA40F3E1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F3C1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.m */; };
+		ECA40F3F1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F3D1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.xib */; };
+		ECA40F471DE41A9B001B087F /* ProductDetailFreeApplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F461DE41A9B001B087F /* ProductDetailFreeApplyView.m */; };
+		ECA40F4B1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F491DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.m */; };
+		ECA40F4C1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F4A1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.xib */; };
+		ECA40F501DE42556001B087F /* ProductDetailFreeApplyParentNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F4E1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.m */; };
+		ECA40F511DE42556001B087F /* ProductDetailFreeApplyParentNameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F4F1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.xib */; };
+		ECA40F551DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F531DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.m */; };
+		ECA40F561DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F541DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.xib */; };
+		ECA40F5A1DE42631001B087F /* ProductDetailFreeApplyBabySexCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F581DE42631001B087F /* ProductDetailFreeApplyBabySexCell.m */; };
+		ECA40F5B1DE42631001B087F /* ProductDetailFreeApplyBabySexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F591DE42631001B087F /* ProductDetailFreeApplyBabySexCell.xib */; };
+		ECA40F641DE43166001B087F /* ProductDetailFreeApplyFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F621DE43166001B087F /* ProductDetailFreeApplyFooterView.m */; };
+		ECA40F651DE43166001B087F /* ProductDetailFreeApplyFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F631DE43166001B087F /* ProductDetailFreeApplyFooterView.xib */; };
+		ECA40F681DE437B5001B087F /* ProductDetailFreeApplyShowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F671DE437B5001B087F /* ProductDetailFreeApplyShowModel.m */; };
+		ECA40F6C1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F6A1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.m */; };
+		ECA40F6D1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F6B1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.xib */; };
+		ECA40F711DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F6F1DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.m */; };
+		ECA40F721DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F701DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.xib */; };
+		ECA40F761DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F741DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.m */; };
+		ECA40F771DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F751DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.xib */; };
+		ECA40F7B1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA40F791DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.m */; };
+		ECA40F7C1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA40F7A1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.xib */; };
 		ECA628671DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA628661DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m */; };
 		ECA628691DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA628681DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib */; };
 		ECA95A681DDB29B800990AAE /* CouponListUnusedView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA95A671DDB29B800990AAE /* CouponListUnusedView.m */; };
@@ -1455,7 +1494,6 @@
 		EC2F264D1DD95F7300B67BBA /* ProductDetaiFreeLifeTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetaiFreeLifeTipCell.xib; sourceTree = "<group>"; };
 		EC2F26511DD966FD00B67BBA /* ProductDetailFreeApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyViewController.h; sourceTree = "<group>"; };
 		EC2F26521DD966FD00B67BBA /* ProductDetailFreeApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyViewController.m; sourceTree = "<group>"; };
-		EC2F26531DD966FD00B67BBA /* ProductDetailFreeApplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyViewController.xib; sourceTree = "<group>"; };
 		EC2F26601DD9803B00B67BBA /* CollectProductAllCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductAllCell.h; sourceTree = "<group>"; };
 		EC2F26611DD9803B00B67BBA /* CollectProductAllCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductAllCell.m; sourceTree = "<group>"; };
 		EC2F26621DD9803B00B67BBA /* CollectProductAllCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectProductAllCell.xib; sourceTree = "<group>"; };
@@ -1975,9 +2013,6 @@
 		EC4FBF151D77CEE400BBD050 /* ServiceSettlementTipAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementTipAddressCell.h; sourceTree = "<group>"; };
 		EC4FBF161D77CEE400BBD050 /* ServiceSettlementTipAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementTipAddressCell.m; sourceTree = "<group>"; };
 		EC4FBF171D77CEE400BBD050 /* ServiceSettlementTipAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementTipAddressCell.xib; sourceTree = "<group>"; };
-		EC4FBF181D77CEE400BBD050 /* ServiceSettlementToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementToolBar.h; sourceTree = "<group>"; };
-		EC4FBF191D77CEE400BBD050 /* ServiceSettlementToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementToolBar.m; sourceTree = "<group>"; };
-		EC4FBF1A1D77CEE400BBD050 /* ServiceSettlementToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementToolBar.xib; sourceTree = "<group>"; };
 		EC4FBF1C1D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementPickCouponViewCell.h; sourceTree = "<group>"; };
 		EC4FBF1D1D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementPickCouponViewCell.m; sourceTree = "<group>"; };
 		EC4FBF1E1D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementPickCouponViewCell.xib; sourceTree = "<group>"; };
@@ -2836,6 +2871,27 @@
 		EC84861F1DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.h; sourceTree = "<group>"; };
 		EC8486201DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.m; sourceTree = "<group>"; };
 		EC8486211DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewNumFooter.xib; sourceTree = "<group>"; };
+		EC84C39F1DE2998600A42515 /* ServiceSettlementDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementDataItem.h; sourceTree = "<group>"; };
+		EC84C3A01DE2998600A42515 /* ServiceSettlementDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementDataItem.m; sourceTree = "<group>"; };
+		EC84C3A21DE2999900A42515 /* ServiceSettlementPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementPromotion.h; sourceTree = "<group>"; };
+		EC84C3A31DE2999900A42515 /* ServiceSettlementPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementPromotion.m; sourceTree = "<group>"; };
+		EC84C3A51DE299A600A42515 /* ServiceSettlementPayType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementPayType.h; sourceTree = "<group>"; };
+		EC84C3A61DE299A600A42515 /* ServiceSettlementPayType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementPayType.m; sourceTree = "<group>"; };
+		EC84C3A81DE299B400A42515 /* ServiceSettlementCouponItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementCouponItem.h; sourceTree = "<group>"; };
+		EC84C3A91DE299B400A42515 /* ServiceSettlementCouponItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementCouponItem.m; sourceTree = "<group>"; };
+		EC84C3AB1DE2A1F800A42515 /* ServiceSettlementSeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementSeat.h; sourceTree = "<group>"; };
+		EC84C3AC1DE2A1F800A42515 /* ServiceSettlementSeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementSeat.m; sourceTree = "<group>"; };
+		EC84C3AE1DE2A25D00A42515 /* ServiceSettlementShowTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementShowTime.h; sourceTree = "<group>"; };
+		EC84C3AF1DE2A25D00A42515 /* ServiceSettlementShowTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementShowTime.m; sourceTree = "<group>"; };
+		EC84C3B11DE2C79000A42515 /* ServiceSettlementToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementToolBar.h; sourceTree = "<group>"; };
+		EC84C3B21DE2C79000A42515 /* ServiceSettlementToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementToolBar.m; sourceTree = "<group>"; };
+		EC84C3B41DE2C79900A42515 /* ServiceSettlementToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementToolBar.xib; sourceTree = "<group>"; };
+		EC84C3B61DE3380700A42515 /* ProductDetailProductCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailProductCombo.h; sourceTree = "<group>"; };
+		EC84C3B71DE3380700A42515 /* ProductDetailProductCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailProductCombo.m; sourceTree = "<group>"; };
+		EC84C3BC1DE3386000A42515 /* ProductDetailOnlineBespeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailOnlineBespeak.h; sourceTree = "<group>"; };
+		EC84C3BD1DE3386000A42515 /* ProductDetailOnlineBespeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailOnlineBespeak.m; sourceTree = "<group>"; };
+		EC84C3BF1DE3392900A42515 /* ProductDetailEnrollInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailEnrollInfo.h; sourceTree = "<group>"; };
+		EC84C3C01DE3392900A42515 /* ProductDetailEnrollInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailEnrollInfo.m; sourceTree = "<group>"; };
 		EC889D031DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.h; sourceTree = "<group>"; };
 		EC889D041DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.m; sourceTree = "<group>"; };
 		EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailTicketSelectSeatCollectionViewSeatCell.xib; sourceTree = "<group>"; };
@@ -2894,6 +2950,54 @@
 		EC9CC5191DC30E7F0093DCED /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
 		EC9CC51A1DC30E7F0093DCED /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
 		EC9CC51B1DC30E7F0093DCED /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECA40F241DE411F7001B087F /* ProductDetailFreeApplyBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyBaseCell.h; sourceTree = "<group>"; };
+		ECA40F251DE411F7001B087F /* ProductDetailFreeApplyBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyBaseCell.m; sourceTree = "<group>"; };
+		ECA40F271DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyUserPhoneCell.h; sourceTree = "<group>"; };
+		ECA40F281DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyUserPhoneCell.m; sourceTree = "<group>"; };
+		ECA40F291DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyUserPhoneCell.xib; sourceTree = "<group>"; };
+		ECA40F2C1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyActivityDateCell.h; sourceTree = "<group>"; };
+		ECA40F2D1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyActivityDateCell.m; sourceTree = "<group>"; };
+		ECA40F2E1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyActivityDateCell.xib; sourceTree = "<group>"; };
+		ECA40F311DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyActivityStoreCell.h; sourceTree = "<group>"; };
+		ECA40F321DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyActivityStoreCell.m; sourceTree = "<group>"; };
+		ECA40F331DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyActivityStoreCell.xib; sourceTree = "<group>"; };
+		ECA40F361DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyBabyNameCell.h; sourceTree = "<group>"; };
+		ECA40F371DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyBabyNameCell.m; sourceTree = "<group>"; };
+		ECA40F381DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyBabyNameCell.xib; sourceTree = "<group>"; };
+		ECA40F3B1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyBabyAgeCell.h; sourceTree = "<group>"; };
+		ECA40F3C1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyBabyAgeCell.m; sourceTree = "<group>"; };
+		ECA40F3D1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyBabyAgeCell.xib; sourceTree = "<group>"; };
+		ECA40F451DE41A9B001B087F /* ProductDetailFreeApplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyView.h; sourceTree = "<group>"; };
+		ECA40F461DE41A9B001B087F /* ProductDetailFreeApplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyView.m; sourceTree = "<group>"; };
+		ECA40F481DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyBabyBirthCell.h; sourceTree = "<group>"; };
+		ECA40F491DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyBabyBirthCell.m; sourceTree = "<group>"; };
+		ECA40F4A1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyBabyBirthCell.xib; sourceTree = "<group>"; };
+		ECA40F4D1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyParentNameCell.h; sourceTree = "<group>"; };
+		ECA40F4E1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyParentNameCell.m; sourceTree = "<group>"; };
+		ECA40F4F1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyParentNameCell.xib; sourceTree = "<group>"; };
+		ECA40F521DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyUserAddressCell.h; sourceTree = "<group>"; };
+		ECA40F531DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyUserAddressCell.m; sourceTree = "<group>"; };
+		ECA40F541DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyUserAddressCell.xib; sourceTree = "<group>"; };
+		ECA40F571DE42631001B087F /* ProductDetailFreeApplyBabySexCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyBabySexCell.h; sourceTree = "<group>"; };
+		ECA40F581DE42631001B087F /* ProductDetailFreeApplyBabySexCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyBabySexCell.m; sourceTree = "<group>"; };
+		ECA40F591DE42631001B087F /* ProductDetailFreeApplyBabySexCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyBabySexCell.xib; sourceTree = "<group>"; };
+		ECA40F611DE43166001B087F /* ProductDetailFreeApplyFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyFooterView.h; sourceTree = "<group>"; };
+		ECA40F621DE43166001B087F /* ProductDetailFreeApplyFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyFooterView.m; sourceTree = "<group>"; };
+		ECA40F631DE43166001B087F /* ProductDetailFreeApplyFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyFooterView.xib; sourceTree = "<group>"; };
+		ECA40F661DE437B5001B087F /* ProductDetailFreeApplyShowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyShowModel.h; sourceTree = "<group>"; };
+		ECA40F671DE437B5001B087F /* ProductDetailFreeApplyShowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyShowModel.m; sourceTree = "<group>"; };
+		ECA40F691DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplySelectAgeViewController.h; sourceTree = "<group>"; };
+		ECA40F6A1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplySelectAgeViewController.m; sourceTree = "<group>"; };
+		ECA40F6B1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplySelectAgeViewController.xib; sourceTree = "<group>"; };
+		ECA40F6E1DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplySelectBirthViewController.h; sourceTree = "<group>"; };
+		ECA40F6F1DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplySelectBirthViewController.m; sourceTree = "<group>"; };
+		ECA40F701DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplySelectBirthViewController.xib; sourceTree = "<group>"; };
+		ECA40F731DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplySelectSexViewController.h; sourceTree = "<group>"; };
+		ECA40F741DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplySelectSexViewController.m; sourceTree = "<group>"; };
+		ECA40F751DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplySelectSexViewController.xib; sourceTree = "<group>"; };
+		ECA40F781DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailFreeApplyUserAddressTipCell.h; sourceTree = "<group>"; };
+		ECA40F791DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFreeApplyUserAddressTipCell.m; sourceTree = "<group>"; };
+		ECA40F7A1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailFreeApplyUserAddressTipCell.xib; sourceTree = "<group>"; };
 		ECA628651DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementBuyNumTfInputView.h; sourceTree = "<group>"; };
 		ECA628661DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementBuyNumTfInputView.m; sourceTree = "<group>"; };
 		ECA628681DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementBuyNumTfInputView.xib; sourceTree = "<group>"; };
@@ -3872,7 +3976,54 @@
 			children = (
 				EC2F26511DD966FD00B67BBA /* ProductDetailFreeApplyViewController.h */,
 				EC2F26521DD966FD00B67BBA /* ProductDetailFreeApplyViewController.m */,
-				EC2F26531DD966FD00B67BBA /* ProductDetailFreeApplyViewController.xib */,
+				ECA40F661DE437B5001B087F /* ProductDetailFreeApplyShowModel.h */,
+				ECA40F671DE437B5001B087F /* ProductDetailFreeApplyShowModel.m */,
+				ECA40F451DE41A9B001B087F /* ProductDetailFreeApplyView.h */,
+				ECA40F461DE41A9B001B087F /* ProductDetailFreeApplyView.m */,
+				ECA40F241DE411F7001B087F /* ProductDetailFreeApplyBaseCell.h */,
+				ECA40F251DE411F7001B087F /* ProductDetailFreeApplyBaseCell.m */,
+				ECA40F271DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.h */,
+				ECA40F281DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.m */,
+				ECA40F291DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.xib */,
+				ECA40F781DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.h */,
+				ECA40F791DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.m */,
+				ECA40F7A1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.xib */,
+				ECA40F521DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.h */,
+				ECA40F531DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.m */,
+				ECA40F541DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.xib */,
+				ECA40F2C1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.h */,
+				ECA40F2D1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.m */,
+				ECA40F2E1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.xib */,
+				ECA40F311DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.h */,
+				ECA40F321DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.m */,
+				ECA40F331DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.xib */,
+				ECA40F361DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.h */,
+				ECA40F371DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.m */,
+				ECA40F381DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.xib */,
+				ECA40F481DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.h */,
+				ECA40F491DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.m */,
+				ECA40F4A1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.xib */,
+				ECA40F3B1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.h */,
+				ECA40F3C1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.m */,
+				ECA40F3D1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.xib */,
+				ECA40F571DE42631001B087F /* ProductDetailFreeApplyBabySexCell.h */,
+				ECA40F581DE42631001B087F /* ProductDetailFreeApplyBabySexCell.m */,
+				ECA40F591DE42631001B087F /* ProductDetailFreeApplyBabySexCell.xib */,
+				ECA40F4D1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.h */,
+				ECA40F4E1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.m */,
+				ECA40F4F1DE42556001B087F /* ProductDetailFreeApplyParentNameCell.xib */,
+				ECA40F611DE43166001B087F /* ProductDetailFreeApplyFooterView.h */,
+				ECA40F621DE43166001B087F /* ProductDetailFreeApplyFooterView.m */,
+				ECA40F631DE43166001B087F /* ProductDetailFreeApplyFooterView.xib */,
+				ECA40F6E1DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.h */,
+				ECA40F6F1DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.m */,
+				ECA40F701DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.xib */,
+				ECA40F691DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.h */,
+				ECA40F6A1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.m */,
+				ECA40F6B1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.xib */,
+				ECA40F731DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.h */,
+				ECA40F741DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.m */,
+				ECA40F751DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.xib */,
 			);
 			path = ProductDetailFreeApply;
 			sourceTree = "<group>";
@@ -6082,6 +6233,18 @@
 			children = (
 				EC4FBEFE1D77CEE400BBD050 /* ServiceSettlementModel.h */,
 				EC4FBEFF1D77CEE400BBD050 /* ServiceSettlementModel.m */,
+				EC84C39F1DE2998600A42515 /* ServiceSettlementDataItem.h */,
+				EC84C3A01DE2998600A42515 /* ServiceSettlementDataItem.m */,
+				EC84C3A21DE2999900A42515 /* ServiceSettlementPromotion.h */,
+				EC84C3A31DE2999900A42515 /* ServiceSettlementPromotion.m */,
+				EC84C3A51DE299A600A42515 /* ServiceSettlementPayType.h */,
+				EC84C3A61DE299A600A42515 /* ServiceSettlementPayType.m */,
+				EC84C3A81DE299B400A42515 /* ServiceSettlementCouponItem.h */,
+				EC84C3A91DE299B400A42515 /* ServiceSettlementCouponItem.m */,
+				EC84C3AB1DE2A1F800A42515 /* ServiceSettlementSeat.h */,
+				EC84C3AC1DE2A1F800A42515 /* ServiceSettlementSeat.m */,
+				EC84C3AE1DE2A25D00A42515 /* ServiceSettlementShowTime.h */,
+				EC84C3AF1DE2A25D00A42515 /* ServiceSettlementShowTime.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -6127,9 +6290,9 @@
 				ECA628651DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.h */,
 				ECA628661DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m */,
 				ECA628681DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib */,
-				EC4FBF181D77CEE400BBD050 /* ServiceSettlementToolBar.h */,
-				EC4FBF191D77CEE400BBD050 /* ServiceSettlementToolBar.m */,
-				EC4FBF1A1D77CEE400BBD050 /* ServiceSettlementToolBar.xib */,
+				EC84C3B11DE2C79000A42515 /* ServiceSettlementToolBar.h */,
+				EC84C3B21DE2C79000A42515 /* ServiceSettlementToolBar.m */,
+				EC84C3B41DE2C79900A42515 /* ServiceSettlementToolBar.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -9395,6 +9558,12 @@
 				EC8486091DDED4FD0039E9D3 /* ProductDetailTheater.m */,
 				EC84860B1DDED5590039E9D3 /* ProductDetailPromise.h */,
 				EC84860C1DDED5590039E9D3 /* ProductDetailPromise.m */,
+				EC84C3B61DE3380700A42515 /* ProductDetailProductCombo.h */,
+				EC84C3B71DE3380700A42515 /* ProductDetailProductCombo.m */,
+				EC84C3BC1DE3386000A42515 /* ProductDetailOnlineBespeak.h */,
+				EC84C3BD1DE3386000A42515 /* ProductDetailOnlineBespeak.m */,
+				EC84C3BF1DE3392900A42515 /* ProductDetailEnrollInfo.h */,
+				EC84C3C01DE3392900A42515 /* ProductDetailEnrollInfo.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -9900,17 +10069,17 @@
 				EC4FC47B1D77CEE400BBD050 /* FavouriteViewServiceCell.xib in Resources */,
 				EC4FC3C11D77CEE400BBD050 /* WelfareStoreLoveHouseAnnotationTipView.xib in Resources */,
 				EC7AF7A81D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.xib in Resources */,
+				ECA40F511DE42556001B087F /* ProductDetailFreeApplyParentNameCell.xib in Resources */,
 				EC2F260E1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.xib in Resources */,
 				EC4FC3591D77CEE400BBD050 /* FlashBalanceSettlementPayTypeCell.xib in Resources */,
 				EC154D5A1D883179007137E8 /* ArticleUserCenterToolBar.xib in Resources */,
 				EC4FC40C1D77CEE400BBD050 /* ChangeNickNameViewController.xib in Resources */,
 				EC4FC2281D77CEE400BBD050 /* KTCActionView.xib in Resources */,
 				ECFFC7501DC3A079002DBFB9 /* ServiceSettlementBuyNumCell.xib in Resources */,
-				EC2F26551DD966FD00B67BBA /* ProductDetailFreeApplyViewController.xib in Resources */,
 				EC4FC3771D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib in Resources */,
-				EC4FC3751D77CEE400BBD050 /* ServiceSettlementToolBar.xib in Resources */,
 				ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */,
 				EC4FC60A1D77DCFD00BBD050 /* Resources.bundle in Resources */,
+				ECA40F771DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.xib in Resources */,
 				EC4FC3F51D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.xib in Resources */,
 				EC4FC5BA1D77CEEF00BBD050 /* ImageError@2x.png in Resources */,
 				EC4FC4051D77CEE400BBD050 /* UserAddressEditViewCell.xib in Resources */,
@@ -9949,13 +10118,16 @@
 				EC4FC46E1D77CEE400BBD050 /* FavourateViewController.xib in Resources */,
 				ECFFC7311DC363C1002DBFB9 /* ProductDetailTwoColumnTableViewTipCell.xib in Resources */,
 				EC4FC4B81D77CEE400BBD050 /* ServiceOrderDetailAddressCell.xib in Resources */,
+				ECA40F561DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.xib in Resources */,
 				EC4FC5C21D77CEEF00BBD050 /* ImageSelectedSmallOff.png in Resources */,
 				EC4FC3A61D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.xib in Resources */,
 				EC4FC4EA1D77CEE400BBD050 /* UserCenterProductAutoRollCell.xib in Resources */,
+				ECA40F4C1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.xib in Resources */,
 				EC4FC4C31D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.xib in Resources */,
 				EC4FC5CA1D77CEEF00BBD050 /* PlayButtonOverlayLarge@3x.png in Resources */,
 				ECAA49461D79A45B00799CBE /* ArticleHomeColumnTitleCell.xib in Resources */,
 				EC4FC3181D77CEE400BBD050 /* SearchResultProductCell.xib in Resources */,
+				ECA40F5B1DE42631001B087F /* ProductDetailFreeApplyBabySexCell.xib in Resources */,
 				EC4FC5BC1D77CEEF00BBD050 /* ImageSelectedOff.png in Resources */,
 				EC2F26F51DDB0AE500B67BBA /* MyTracksHeader.xib in Resources */,
 				EC4FC2B71D77CEE400BBD050 /* CategoryItemCell.xib in Resources */,
@@ -9977,6 +10149,7 @@
 				EC76B8DA1DC65FC6006518DE /* ServiceDetailMoreInfoView.xib in Resources */,
 				ECAA494A1D79A45B00799CBE /* ArticleHomeIconCell.xib in Resources */,
 				EC4FC3D81D77CEE400BBD050 /* StrategyDetailAnnotationTipView.xib in Resources */,
+				ECA40F2B1DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.xib in Resources */,
 				EC4FC3AD1D77CEE400BBD050 /* StoreDetailHotRecommendCell.xib in Resources */,
 				EC4FC5CB1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap.png in Resources */,
 				EC4FC5C81D77CEEF00BBD050 /* PlayButtonOverlayLarge.png in Resources */,
@@ -9985,6 +10158,7 @@
 				EC4FC48D1D77CEE400BBD050 /* FlashServiceOrderDetailOrderInfoCell.xib in Resources */,
 				EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */,
 				ECFFC7121DC363C1002DBFB9 /* ProductDetailContactCell.xib in Resources */,
+				ECA40F7C1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.xib in Resources */,
 				EC4FC34F1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.xib in Resources */,
 				EC4FC4381D77CEE400BBD050 /* MyCommentListViewController.xib in Resources */,
 				EC4FC3ED1D77CEE400BBD050 /* ParentingStrategyDetailViewCell.xib in Resources */,
@@ -10088,14 +10262,17 @@
 				EC4FC5A51D77CEEF00BBD050 /* README.txt in Resources */,
 				ECAA49521D79A45B00799CBE /* ArticleHomeVideoCell.xib in Resources */,
 				EC7264B41D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib in Resources */,
+				ECA40F351DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.xib in Resources */,
 				EC0B6DAC1D8E952F00EC20EA /* ServiceOrderDetailTotalPayInfoCell.xib in Resources */,
 				EC42B9211D82DD4600E257F6 /* ArticleWriteCategoryCell.xib in Resources */,
 				EC4FC4521D77CEE400BBD050 /* CommentListViewSegmentCell.xib in Resources */,
 				EC4FC37A1D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.xib in Resources */,
 				EC0B6DBB1D8EC87C00EC20EA /* FlashServiceOrderDetailBookingCell.xib in Resources */,
 				EC4FC4BB1D77CEE400BBD050 /* ServiceOrderDetailInsuranceCell.xib in Resources */,
+				ECA40F3A1DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.xib in Resources */,
 				EC2F26641DD9803B00B67BBA /* CollectProductAllCell.xib in Resources */,
 				EC4FC4911D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
+				ECA40F3F1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.xib in Resources */,
 				EC4FC2341D77CEE400BBD050 /* BindPhoneViewController.xib in Resources */,
 				EC4FC34D1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.xib in Resources */,
 				EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */,
@@ -10141,6 +10318,7 @@
 				EC59719B1DD016670047CDEC /* SoftwareSettingHeader.xib in Resources */,
 				EC4FC3B81D77CEE400BBD050 /* StoreDetailServiceCell.xib in Resources */,
 				EC4FC2C81D77CEE400BBD050 /* FDStoreCell.xib in Resources */,
+				ECA40F721DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.xib in Resources */,
 				EC4FC5C51D77CEEF00BBD050 /* ImageSelectedSmallOn.png in Resources */,
 				ECAA49331D79A45B00799CBE /* ArticleHomeAlbumCell.xib in Resources */,
 				EC4FC4751D77CEE400BBD050 /* FavourateSegmentViewCell.xib in Resources */,
@@ -10171,6 +10349,7 @@
 				EC76B8D21DC65FC6006518DE /* ServiceDetailBottomView.xib in Resources */,
 				EC4FC4441D77CEE400BBD050 /* CommentDetailViewCell.xib in Resources */,
 				EC4FC23D1D77CEE400BBD050 /* ResetPasswordViewController.xib in Resources */,
+				ECA40F6D1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.xib in Resources */,
 				ECB3E7871D92C82E0059267D /* OrderBookingStoreInfoCell.xib in Resources */,
 				EC4FC4AB1D77CEE400BBD050 /* OrderListView.xib in Resources */,
 				EC4FC4091D77CEE400BBD050 /* UserAddressManageViewCell.xib in Resources */,
@@ -10184,6 +10363,7 @@
 				EC4FC4DF1D77CEE400BBD050 /* UserCenterFlashCell.xib in Resources */,
 				EC7FBC111DC4D074007B326C /* ProductDetailGetCouponCell.xib in Resources */,
 				EC4FC3691D77CEE400BBD050 /* ServiceSettlementCouponCell.xib in Resources */,
+				EC84C3B51DE2C79900A42515 /* ServiceSettlementToolBar.xib in Resources */,
 				ECB3E7991D92C96B0059267D /* FlashServiceOrderListCell.xib in Resources */,
 				EC4FC4461D77CEE400BBD050 /* CommentDetailViewNormalHeaderCell.xib in Resources */,
 				EC4FC5D01D77CEEF00BBD050 /* UIBarButtonItemArrowLeft@3x.png in Resources */,
@@ -10191,6 +10371,7 @@
 				EC4FC2C41D77CEE400BBD050 /* FDMoreCell.xib in Resources */,
 				EC4FC5C31D77CEEF00BBD050 /* ImageSelectedSmallOff@2x.png in Resources */,
 				EC4FC3471D77CEE400BBD050 /* FlashAdvanceSettlementPayTypeCell.xib in Resources */,
+				ECA40F301DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.xib in Resources */,
 				EC4FC22A1D77CEE400BBD050 /* AUIBannerScrollView.xib in Resources */,
 				EC4FC41A1D77CEE400BBD050 /* AppointmentOrderDetailViewController.xib in Resources */,
 				EC2F261D1DD6CDFF00B67BBA /* ProductDetailTicketSelectSeatCollectionViewFooter.xib in Resources */,
@@ -10201,6 +10382,7 @@
 				EC4FC4021D77CEE400BBD050 /* AddressPickerViewController.xib in Resources */,
 				EC4FC4481D77CEE400BBD050 /* CommentDetailViewStrategyHeaderCell.xib in Resources */,
 				EC4FC5D21D77CEEF00BBD050 /* UIBarButtonItemArrowRight@2x.png in Resources */,
+				ECA40F651DE43166001B087F /* ProductDetailFreeApplyFooterView.xib in Resources */,
 				EC4FC3441D77CEE400BBD050 /* FlashAdvanceSettlementAddressCell.xib in Resources */,
 				EC4FC5A31D77CEEF00BBD050 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				EC4FC40E1D77CEE400BBD050 /* AppointmentListViewHeaderTabCell.xib in Resources */,
@@ -10348,6 +10530,7 @@
 				EC4FC2961D77CEE400BBD050 /* ArticleCommentCell.m in Sources */,
 				EC4FC2AB1D77CEE400BBD050 /* ActivityFilterView.m in Sources */,
 				EC154D551D88303D007137E8 /* ArticleUserCenterViewController.m in Sources */,
+				ECA40F2F1DE41230001B087F /* ProductDetailFreeApplyActivityDateCell.m in Sources */,
 				EC4FC3B91D77CEE400BBD050 /* StoreDetialMapPoiAnnotationView.m in Sources */,
 				EC2F25CD1DD35BD000B67BBA /* CollectProductBaseView.m in Sources */,
 				EC4FC3601D77CEE400BBD050 /* FlashBalanceSettlementToolBar.m in Sources */,
@@ -10360,6 +10543,7 @@
 				EC2F263F1DD71B0000B67BBA /* SettlementResultNewCollectionViewCell.m in Sources */,
 				ECAA49381D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.m in Sources */,
 				EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */,
+				EC84C3C11DE3392900A42515 /* ProductDetailEnrollInfo.m in Sources */,
 				EC4FC30B1D77CEE400BBD050 /* SearchHistoryKeywordsManager.m in Sources */,
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
 				EC4FC23F1D77CEE400BBD050 /* RoleSelectViewController.m in Sources */,
@@ -10410,11 +10594,14 @@
 				EC4FC4161D77CEE400BBD050 /* AppointmentOrderModel.m in Sources */,
 				EC13B4FB1DD1F3430040F760 /* AccountCenterRecommendsCell.m in Sources */,
 				EC4FC2331D77CEE400BBD050 /* BindPhoneViewController.m in Sources */,
+				EC84C3AA1DE299B400A42515 /* ServiceSettlementCouponItem.m in Sources */,
 				EC4FC4371D77CEE400BBD050 /* MyCommentListViewController.m in Sources */,
 				ECFFC7151DC363C1002DBFB9 /* ProductDetailCouponCell.m in Sources */,
 				EC9CC51C1DC30E7F0093DCED /* FSCalendar+Deprecated.m in Sources */,
 				EC4FC5B41D77CEEF00BBD050 /* ImageTrimViewController.m in Sources */,
 				EC4FC4231D77CEE400BBD050 /* KTCBrowseHistoryViewServiceCell.m in Sources */,
+				EC84C3A41DE2999900A42515 /* ServiceSettlementPromotion.m in Sources */,
+				ECA40F551DE42573001B087F /* ProductDetailFreeApplyUserAddressCell.m in Sources */,
 				EC4FC4551D77CEE400BBD050 /* MyCommentListViewCell.m in Sources */,
 				EC4FC43F1D77CEE400BBD050 /* MyCommentListItemModel.m in Sources */,
 				EC4FC4811D77CEE400BBD050 /* NotificationCenterViewController.m in Sources */,
@@ -10432,6 +10619,7 @@
 				EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC3481D77CEE400BBD050 /* FlashAdvanceSettlementReadRuleCell.m in Sources */,
 				EC4FC4341D77CEE400BBD050 /* CommentListViewController.m in Sources */,
+				EC84C3A71DE299A600A42515 /* ServiceSettlementPayType.m in Sources */,
 				EC4FC3B11D77CEE400BBD050 /* StoreDetailRelatedStrategyListViewController.m in Sources */,
 				EC4FC2171D77CEE400BBD050 /* NSDictionary+Category.m in Sources */,
 				EC2F26981DD9B7A000B67BBA /* CollectionStoreViewController.m in Sources */,
@@ -10442,6 +10630,7 @@
 				EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */,
 				ECFFC6F41DC363C1002DBFB9 /* ProductDetailInsurance.m in Sources */,
 				ECAA49321D79A45B00799CBE /* ArticleHomeAlbumCell.m in Sources */,
+				EC84C3B81DE3380700A42515 /* ProductDetailProductCombo.m in Sources */,
 				EC84860A1DDED4FD0039E9D3 /* ProductDetailTheater.m in Sources */,
 				EC4FC2B21D77CEE400BBD050 /* CategoryViewController.m in Sources */,
 				EC4FC3FD1D77CEE400BBD050 /* AddressModel.m in Sources */,
@@ -10469,7 +10658,9 @@
 				EC76B8DF1DC65FC6006518DE /* ServiceDetailViewModel.m in Sources */,
 				EC4FC42C1D77CEE400BBD050 /* StoreListViewCell.m in Sources */,
 				EC4FC3F41D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.m in Sources */,
+				EC84C3B01DE2A25D00A42515 /* ServiceSettlementShowTime.m in Sources */,
 				EC4FC3E91D77CEE400BBD050 /* StrategyDetailRelatedStoreItemModel.m in Sources */,
+				ECA40F2A1DE41221001B087F /* ProductDetailFreeApplyUserPhoneCell.m in Sources */,
 				EC4FC2651D77CEE400BBD050 /* RefreshFooter.m in Sources */,
 				EC2F25BE1DD3384C00B67BBA /* MultiItemsToolBarScrollView.m in Sources */,
 				EC2F262B1DD6E53900B67BBA /* ServiceSettlementTicketGetSelfCell.m in Sources */,
@@ -10497,15 +10688,17 @@
 				EC43A2D01DC8CB2C00A99638 /* ProductDetailContentEleEmptyCell.m in Sources */,
 				EC4FC3E31D77CEE400BBD050 /* ParentingStrategyViewCell.m in Sources */,
 				ECFFC70A1DC363C1002DBFB9 /* ProductDetailBaseCell.m in Sources */,
-				EC4FC3741D77CEE400BBD050 /* ServiceSettlementToolBar.m in Sources */,
 				EC42B91C1D82C0EE00E257F6 /* ArticleWriteTextLinePositionModifier.m in Sources */,
 				ECFFC6FC1DC363C1002DBFB9 /* ProductDetailStandard.m in Sources */,
 				ECAA49301D79A45B00799CBE /* ArticleHomeViewController.m in Sources */,
 				EC4FC3451D77CEE400BBD050 /* FlashAdvanceSettlementBaseCell.m in Sources */,
 				EC9CC5271DC30E7F0093DCED /* FSCalendarHeader.m in Sources */,
+				ECA40F761DE4538E001B087F /* ProductDetailFreeApplySelectSexViewController.m in Sources */,
 				EC4FC2761D77CEE400BBD050 /* AddTabModel.m in Sources */,
+				ECA40F3E1DE41270001B087F /* ProductDetailFreeApplyBabyAgeCell.m in Sources */,
 				EC2F26A71DD9B81500B67BBA /* CollectionStoreView.m in Sources */,
 				ECFFC7041DC363C1002DBFB9 /* ProductDetailApplyCell.m in Sources */,
+				ECA40F681DE437B5001B087F /* ProductDetailFreeApplyShowModel.m in Sources */,
 				EC4FC2671D77CEE400BBD050 /* CookieManager.m in Sources */,
 				EC7FBBD61DC4CF6C007B326C /* ProductDetailGetCouponItem.m in Sources */,
 				EC4FC4761D77CEE400BBD050 /* FavourateView.m in Sources */,
@@ -10541,6 +10734,7 @@
 				EC72643C1D7D473B00AA739B /* ArticleHomeTableView.m in Sources */,
 				EC4FC4581D77CEE400BBD050 /* CommentListViewModel.m in Sources */,
 				EC4FC36C1D77CEE400BBD050 /* ServiceSettlementPayTypeCell.m in Sources */,
+				EC84C3A11DE2998600A42515 /* ServiceSettlementDataItem.m in Sources */,
 				ECFFC6F31DC363C1002DBFB9 /* ProductDetailData.m in Sources */,
 				ECFFC71F1DC363C1002DBFB9 /* ProductDetailNoticeCollectionViewCell.m in Sources */,
 				EC4FC5E21D77CEEF00BBD050 /* DACircularProgressView.m in Sources */,
@@ -10593,6 +10787,7 @@
 				EC4FC5B81D77CEEF00BBD050 /* InsuranceView.m in Sources */,
 				ECFFC6EE1DC363C1002DBFB9 /* ProdectDetailCoupon.m in Sources */,
 				EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */,
+				ECA40F391DE4125E001B087F /* ProductDetailFreeApplyBabyNameCell.m in Sources */,
 				EC4FC2721D77CEE400BBD050 /* TencentManager.m in Sources */,
 				EC4FC3AC1D77CEE400BBD050 /* StoreDetailHotRecommendCell.m in Sources */,
 				ECB3E7801D92C82E0059267D /* OrderBookingSelectAgeCell.m in Sources */,
@@ -10612,6 +10807,7 @@
 				EC0B6DB01D8EC03D00EC20EA /* ServiceOrderDetailBookingCell.m in Sources */,
 				EC76B8CC1DC65FC6006518DE /* ServiceMoreDetailHotSalesItemModel.m in Sources */,
 				EC76B8D51DC65FC6006518DE /* ServiceDetailConfigView.m in Sources */,
+				ECA40F711DE45029001B087F /* ProductDetailFreeApplySelectBirthViewController.m in Sources */,
 				ECF704E81D8917BD00650C0A /* ArticleHomeUserInfoModel.m in Sources */,
 				EC4FC3621D77CEE400BBD050 /* FlashSettlementModel.m in Sources */,
 				EC0B6DBA1D8EC87C00EC20EA /* FlashServiceOrderDetailBookingCell.m in Sources */,
@@ -10746,14 +10942,18 @@
 				EC2F259A1DD325E500B67BBA /* CollectProductViewController.m in Sources */,
 				EC4FC2441D77CEE400BBD050 /* Contacts.m in Sources */,
 				EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */,
+				EC84C3BE1DE3386000A42515 /* ProductDetailOnlineBespeak.m in Sources */,
 				ECFFC7251DC363C1002DBFB9 /* ProductDetailTitleCell.m in Sources */,
 				ECF5D1031DB8CE3900A1B268 /* TCHomeFloorTitleContentLayout.m in Sources */,
 				ECB3E7881D92C82E0059267D /* OrderBookingSelectAgeViewController.m in Sources */,
 				EC4FC4801D77CEE400BBD050 /* FavourateViewModel.m in Sources */,
 				EC7FBC121DC4D074007B326C /* ProductDetailGetCouponListViewController.m in Sources */,
 				EC4FC37E1D77CEE400BBD050 /* PayModel.m in Sources */,
+				ECA40F5A1DE42631001B087F /* ProductDetailFreeApplyBabySexCell.m in Sources */,
 				EC4FC5DF1D77CEEF00BBD050 /* MWTapDetectingImageView.m in Sources */,
+				EC84C3B31DE2C79000A42515 /* ServiceSettlementToolBar.m in Sources */,
 				ECAA493D1D79A45B00799CBE /* ArticleHomeBannerCollectionViewOneCell.m in Sources */,
+				ECA40F7B1DE47B9B001B087F /* ProductDetailFreeApplyUserAddressTipCell.m in Sources */,
 				ECAA493A1D79A45B00799CBE /* ArticleHomeBannerCell.m in Sources */,
 				EC4FC49A1D77CEE400BBD050 /* FlashServiceOrderDetailStoreInfoCell.m in Sources */,
 				EC4FC31C1D77CEE400BBD050 /* AreaAndAgeDataManager.m in Sources */,
@@ -10770,6 +10970,7 @@
 				EC7FBC101DC4D074007B326C /* ProductDetailGetCouponCell.m in Sources */,
 				EC13B4FD1DD1F3430040F760 /* AccountCenterTipsCell.m in Sources */,
 				EC4FC3A51D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.m in Sources */,
+				ECA40F501DE42556001B087F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
 				EC4FC3F31D77CEE400BBD050 /* StrategyDetailServiceItemModel.m in Sources */,
 				EC4FC40F1D77CEE400BBD050 /* AppointmentOrderListCell.m in Sources */,
 				EC4FC46D1D77CEE400BBD050 /* FavourateViewController.m in Sources */,
@@ -10840,10 +11041,12 @@
 				ECF5D1051DB8CE3900A1B268 /* TCHomeModel.m in Sources */,
 				EC4FC2AD1D77CEE400BBD050 /* ActivityView.m in Sources */,
 				ECF5D0C21DB8C4FE00A1B268 /* QRCodeAnimateView.m in Sources */,
+				ECA40F4B1DE420AC001B087F /* ProductDetailFreeApplyBabyBirthCell.m in Sources */,
 				EC4FC31E1D77CEE400BBD050 /* SearchResultFactorShowModel.m in Sources */,
 				ECAA49411D79A45B00799CBE /* ArticleHomeBaseCell.m in Sources */,
 				EC4FC48E1D77CEE400BBD050 /* FlashServiceOrderDetailProgressCell.m in Sources */,
 				ECB3E7A71D93C03E0059267D /* OrderBookingRemarksCell.m in Sources */,
+				ECA40F341DE41248001B087F /* ProductDetailFreeApplyActivityStoreCell.m in Sources */,
 				ECF5D10A1DB8CE3900A1B268 /* TCHomeBaseTableViewCell.m in Sources */,
 				EC4FC2321D77CEE400BBD050 /* TipButton.m in Sources */,
 				EC4FC5DC1D77CEEF00BBD050 /* MWGridViewController.m in Sources */,
@@ -10874,6 +11077,7 @@
 				EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */,
 				ECFFC6F71DC363C1002DBFB9 /* ProductDetailNote.m in Sources */,
 				EC4FC3581D77CEE400BBD050 /* FlashBalanceSettlementPayTypeCell.m in Sources */,
+				ECA40F6C1DE44EDC001B087F /* ProductDetailFreeApplySelectAgeViewController.m in Sources */,
 				EC4FC21F1D77CEE400BBD050 /* UIImageView+Category.m in Sources */,
 				EC68C3D01D9BF03600D4401A /* CoverManager.m in Sources */,
 				EC4FC2C51D77CEE400BBD050 /* FDServeDetailCell.m in Sources */,
@@ -10930,6 +11134,7 @@
 				EC13B4F01DD1F3430040F760 /* AccountCenterBannersCell.m in Sources */,
 				ECFFC7011DC363C1002DBFB9 /* ProductDetailRecommendModel.m in Sources */,
 				ECF5D0FC1DB8CE3900A1B268 /* TCHomeCategory.m in Sources */,
+				ECA40F641DE43166001B087F /* ProductDetailFreeApplyFooterView.m in Sources */,
 				EC0B6D901D8E693A00EC20EA /* ArticleLayout.m in Sources */,
 				EC4FC3CE1D77CEE400BBD050 /* StrategyAutoRollView.m in Sources */,
 				EC13B51B1DD1F4790040F760 /* AccountCenterConfig.m in Sources */,
@@ -10942,6 +11147,7 @@
 				EC4FC30D1D77CEE400BBD050 /* SearchHotKeywordsManager.m in Sources */,
 				EC4FC3551D77CEE400BBD050 /* FlashBalanceSettlementBaseCell.m in Sources */,
 				EC4FC2731D77CEE400BBD050 /* WeChatManager.m in Sources */,
+				ECA40F471DE41A9B001B087F /* ProductDetailFreeApplyView.m in Sources */,
 				EC4FC4B21D77CEE400BBD050 /* OrderRefundViewController.m in Sources */,
 				EC2F269B1DD9B7B300B67BBA /* CollectionContentViewController.m in Sources */,
 				EC68C3C81D9BD2B700D4401A /* SchemeManager.m in Sources */,
@@ -11072,6 +11278,7 @@
 				ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */,
 				EC4FC5DA1D77CEEF00BBD050 /* MWCaptionView.m in Sources */,
 				EC1E2F8E1D827EA4002381E7 /* ArticleWriteBottomView.m in Sources */,
+				ECA40F261DE411F7001B087F /* ProductDetailFreeApplyBaseCell.m in Sources */,
 				ECA95A6E1DDB29F300990AAE /* CouponListExpiredView.m in Sources */,
 				EC4FC23A1D77CEE400BBD050 /* RegisterViewController.m in Sources */,
 				EC4FC3DF1D77CEE400BBD050 /* ParentingStrategyFilterView.m in Sources */,
@@ -11123,6 +11330,7 @@
 				EC4FC3A11D77CEE400BBD050 /* StoreDetailAppointmentContactCell.m in Sources */,
 				EC4FC5E11D77CEEF00BBD050 /* MWZoomingScrollView.m in Sources */,
 				EC4FC5A61D77CEEF00BBD050 /* ActionSheet.m in Sources */,
+				EC84C3AD1DE2A1F800A42515 /* ServiceSettlementSeat.m in Sources */,
 				EC7FBBD71DC4CF6C007B326C /* ProductDetailGetCouponModel.m in Sources */,
 				EC4FC4C21D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC4FC22B1D77CEE400BBD050 /* CustomTabBar.m in Sources */,
