@@ -18,7 +18,6 @@
 #import "MultiItemsToolBar.h"
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
-#import "WelfareStoreViewController.h"
 #import "BuryPointManager.h"
 
 #define defaultTagId 0

@@ -81,6 +81,8 @@
     
     self.waitPayBtn.badgeValue = userCount.order_wait_pay;
     self.waitUseBtn.badgeValue = userCount.order_wait_use;
+    self.waitReceiptBtn.badgeValue = userCount.order_wait_received_count;
+    self.refundBtn.badgeValue = userCount.order_wait_refund_count;
     self.waitCommentBtn.badgeValue = userCount.order_wait_evaluate;
 }
 

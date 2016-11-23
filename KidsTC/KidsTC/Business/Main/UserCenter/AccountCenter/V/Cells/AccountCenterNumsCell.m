@@ -68,7 +68,7 @@
     
     self.scoreL.text = [NSString stringWithFormat:@"%zd",userCount.score_num];
     self.radishL.text = [NSString stringWithFormat:@"%zd",userCount.userRadishNum];
-    //self.couponL.text = [NSString stringWithFormat:@"%zd",userCount.userHasNewCoupon];
+    self.couponL.text = [NSString stringWithFormat:@"%zd",userCount.coupon_num];
     
 }
 

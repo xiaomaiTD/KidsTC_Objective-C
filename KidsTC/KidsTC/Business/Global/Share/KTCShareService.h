@@ -22,7 +22,8 @@ typedef enum {
     KTCShareServiceTypeService,
     KTCShareServiceTypeNews,
     KTCShareServiceTypeStrategy,
-    KTCShareServiceTypeActivity
+    KTCShareServiceTypeActivity,
+    KTCShareServiceTypeTicketService,
 }KTCShareServiceType;
 
 @interface KTCShareService : NSObject

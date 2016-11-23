@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface AccountCenterUserInfo : NSObject
 @property (nonatomic, strong) NSString *usrName;
 @property (nonatomic, strong) NSString *headUrl;

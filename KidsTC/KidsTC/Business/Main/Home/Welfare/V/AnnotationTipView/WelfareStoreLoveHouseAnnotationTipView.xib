@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,16 +17,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TZQ-PE-8xR" id="thK-Sp-cbc">
-                <frame key="frameInset" width="320" height="107"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FVC-nh-uUI">
+                        <rect key="frame" x="252" y="8" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="FVC-nh-uUI" secondAttribute="height" multiplier="1:1" id="9ES-W3-Mhs"/>
                             <constraint firstAttribute="width" constant="60" id="YIi-ep-AvH"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33x-9g-U1b">
+                        <rect key="frame" x="8" y="8" width="236" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="E28-Xl-9dU"/>
                         </constraints>
@@ -32,11 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-i8-BWo">
+                        <rect key="frame" x="8" y="23" width="236" height="45"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOp-XV-z5O">
+                        <rect key="frame" x="144.5" y="84.5" width="31" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="aDw-Gi-JvR"/>
                         </constraints>
@@ -47,6 +54,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUl-U4-c4I">
+                        <rect key="frame" x="250" y="84.5" width="62" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="szu-ux-Ku1"/>
                         </constraints>
@@ -56,12 +64,14 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9Q-3V-xZ6">
+                        <rect key="frame" x="8" y="76" width="304" height="0.5"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="2xa-LH-xg9"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-wE-HUn">
+                        <rect key="frame" x="8" y="84.5" width="37.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Qde-wZ-Pkr"/>
                         </constraints>
@@ -107,7 +117,7 @@
                 <outlet property="nearbyBtn" destination="aUl-U4-c4I" id="atm-9i-631"/>
                 <outlet property="titleLabel" destination="33x-9g-U1b" id="1zN-V4-Bq4"/>
             </connections>
-            <point key="canvasLocation" x="443" y="449"/>
+            <point key="canvasLocation" x="377" y="441"/>
         </tableViewCell>
     </objects>
 </document>

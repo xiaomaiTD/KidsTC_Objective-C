@@ -24,6 +24,14 @@ NSString *const CookieKeyGuid        = @"guid";
 @implementation CookieManager
 singleM(CookieManager)
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [NotificationCenter addObserver:self selector:@selector(mapaddrDidChange) name:kUserLocationHasChangedNotification object:nil];
+    }
+    return self;
+}
+
 -(void)setCookies{
     
     [self setCookieWithName:CookieKey_uid andValue:[User shareUser].uid];
@@ -60,5 +68,13 @@ singleM(CookieManager)
             [storage deleteCookie:cookie];
         }
     }
+}
+
+- (void)mapaddrDidChange{
+    [self setCookieWithName:CookieKey_mapaddr andValue:[KTCMapService shareKTCMapService].currentLocationString];
+}
+
+- (void)dealloc {
+    [NotificationCenter removeObserver:self name:kUserLocationHasChangedNotification object:nil];
 }
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "SettlementResultNewViewController.h"
+#import "UIBarButtonItem+Category.h"
+
 #import "SettlementResultNewCollectionHeader.h"
 #import "SettlementResultNewCollectionViewCell.h"
 
@@ -29,6 +31,13 @@ static CGFloat const margin = 12;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.naviTheme = NaviThemeWihte;
+    
+    self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateHighlighted];
+        btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    }];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"SettlementResultNewCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellId];
     [self.collectionView registerNib:[UINib nibWithNibName:@"SettlementResultNewCollectionHeader" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headId];

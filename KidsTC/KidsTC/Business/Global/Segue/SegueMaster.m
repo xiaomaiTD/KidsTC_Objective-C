@@ -9,7 +9,7 @@
 #import "SegueMaster.h"
 #import "WebViewController.h"
 #import "ActivityViewController.h"
-#import "WelfareStoreViewController.h"
+#import "NurseryViewController.h"
 #import "ParentingStrategyViewController.h"
 #import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
@@ -120,15 +120,15 @@
             break;
         case SegueDestinationLoveHouse:
         {
-            WelfareStoreViewController *controller = [[WelfareStoreViewController alloc]init];
-            controller.type = WelfareTypeLoveHouse;
+            NurseryViewController *controller = [[NurseryViewController alloc]initWithNibName:@"NurseryViewController" bundle:nil];
+            controller.type = NurseryTypeNursery;
             toController = controller;
         }
             break;
         case SegueDestinationHospital:
         {
-            WelfareStoreViewController *controller = [[WelfareStoreViewController alloc]init];
-            controller.type = WelfareTypeHospital;
+            NurseryViewController *controller = [[NurseryViewController alloc]initWithNibName:@"NurseryViewController" bundle:nil];
+            controller.type = NurseryTypeExhibitionHall;
             toController = controller;
         }
             break;

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mfh-UN-uT1" customClass="ProductDetailFreeApplyActivityStoreCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mfh-UN-uT1" id="jnx-Fd-pdU">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="活动地点：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNe-5G-ZbS">
+                        <rect key="frame" x="32" y="16" width="72" height="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市杨浦区大学路299号701室" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMt-7f-YCF">
+                        <rect key="frame" x="127" y="13" width="139" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_free_store" translatesAutoresizingMaskIntoConstraints="NO" id="9Rw-fj-fS7">
+                        <rect key="frame" x="104" y="14" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="9Rw-fj-fS7" secondAttribute="height" multiplier="1:1" id="5xv-T9-sv0"/>
+                            <constraint firstAttribute="width" constant="15" id="aAS-GI-cVH"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="JOK-Hq-tHQ">
+                        <rect key="frame" x="280" y="17" width="8" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="GUb-Rk-AAI"/>
+                            <constraint firstAttribute="width" secondItem="JOK-Hq-tHQ" secondAttribute="height" multiplier="1:1" id="Xig-fp-joe"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTL-3s-Gdz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                        <connections>
+                            <action selector="action:" destination="mfh-UN-uT1" eventType="touchUpInside" id="T4d-ok-HuH"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9Rw-fj-fS7" firstAttribute="leading" secondItem="pNe-5G-ZbS" secondAttribute="trailing" id="1Am-dr-YAc"/>
+                    <constraint firstItem="pTL-3s-Gdz" firstAttribute="leading" secondItem="jnx-Fd-pdU" secondAttribute="leading" id="1fS-s2-wPe"/>
+                    <constraint firstItem="pNe-5G-ZbS" firstAttribute="top" secondItem="jnx-Fd-pdU" secondAttribute="top" constant="16" id="BMq-Ti-iEK"/>
+                    <constraint firstItem="JOK-Hq-tHQ" firstAttribute="leading" secondItem="yMt-7f-YCF" secondAttribute="trailing" constant="14" id="Jrm-zi-DfC"/>
+                    <constraint firstAttribute="bottom" secondItem="pNe-5G-ZbS" secondAttribute="bottom" constant="16" id="Mm4-0b-07M"/>
+                    <constraint firstAttribute="bottom" secondItem="pTL-3s-Gdz" secondAttribute="bottom" id="Pra-8K-gtu"/>
+                    <constraint firstItem="yMt-7f-YCF" firstAttribute="leading" secondItem="9Rw-fj-fS7" secondAttribute="trailing" constant="8" id="XHL-XK-Vlr"/>
+                    <constraint firstItem="pTL-3s-Gdz" firstAttribute="top" secondItem="jnx-Fd-pdU" secondAttribute="top" id="XSF-TH-ako"/>
+                    <constraint firstAttribute="trailing" secondItem="pTL-3s-Gdz" secondAttribute="trailing" id="ZpQ-2C-lKg"/>
+                    <constraint firstAttribute="trailing" secondItem="JOK-Hq-tHQ" secondAttribute="trailing" constant="32" id="agg-X7-BW4"/>
+                    <constraint firstItem="9Rw-fj-fS7" firstAttribute="centerY" secondItem="jnx-Fd-pdU" secondAttribute="centerY" id="gXQ-Ou-0bk"/>
+                    <constraint firstItem="JOK-Hq-tHQ" firstAttribute="centerY" secondItem="jnx-Fd-pdU" secondAttribute="centerY" id="kmM-Xn-GFy"/>
+                    <constraint firstItem="pNe-5G-ZbS" firstAttribute="leading" secondItem="jnx-Fd-pdU" secondAttribute="leading" constant="32" id="moM-dr-gGj"/>
+                    <constraint firstItem="yMt-7f-YCF" firstAttribute="centerY" secondItem="jnx-Fd-pdU" secondAttribute="centerY" id="vLc-cc-X7G"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn" destination="pTL-3s-Gdz" id="Vj5-tt-kIW"/>
+                <outlet property="storeNameL" destination="yMt-7f-YCF" id="8bd-r1-gyR"/>
+            </connections>
+            <point key="canvasLocation" x="-96" y="32"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductDetail_arrow" width="20" height="36"/>
+        <image name="ProductDetail_free_store" width="75" height="65"/>
+    </resources>
+</document>

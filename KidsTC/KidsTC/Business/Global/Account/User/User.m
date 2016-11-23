@@ -94,13 +94,17 @@ singleM(User)
         TCLog(@"checkLoginStatusFromServer - 本地存储了uid和skey，可以开始检查是否登录");
         NSDictionary *param = @{@"uid":_uid,@"skey":_skey};
         [Request startWithName:@"LOGIN_IS_LOGIN" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-            TCLog(@"服务器端已经登录");
+            TCLog(@"checkLoginStatusFromServer - 服务器端已经登录");
             _hasLogin = YES;
             [[CookieManager shareCookieManager] setCookies];
             [self getUserPopulation];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            TCLog(@"服务器端没有登录");
-            [self logoutLocal];
+            if (error.code == -1000) {
+                TCLog(@"checkLoginStatusFromServer - 服务器端没有登录");
+                [self logoutLocal];
+            }else{
+                TCLog(@"checkLoginStatusFromServer - 请求失败，不做处理");
+            }
         }];
     }else{
         TCLog(@"checkLoginStatusFromServer - 本地没有存储uid和skey，不用检查是否登录");

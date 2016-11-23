@@ -42,6 +42,8 @@ static NSString *const ID = @"AddressPickerViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     self.view.backgroundColor = [UIColor clearColor];
     self.tipTitleHLineConstrantHeight.constant = LINE_H;
     self.tipBtnsHLineConstraintHeight.constant = LINE_H;

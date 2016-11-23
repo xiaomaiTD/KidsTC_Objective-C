@@ -58,6 +58,11 @@
 
 - (void)setModel:(AccountCenterModel *)model {
     [super setModel:model];
+    AccountCenterUserCount *userCount = model.data.userCount;
+    self.productNumL.text = [NSString stringWithFormat:@"%zd",userCount.product_collect_num];
+    self.storeNumL.text = [NSString stringWithFormat:@"%zd",userCount.store_collect_num];
+    self.contentNumL.text = [NSString stringWithFormat:@"%zd",userCount.like_content_num];
+    self.peopleNumL.text = [NSString stringWithFormat:@"%zd",userCount.like_author_num];
 }
 
 

@@ -20,4 +20,6 @@
 //selfDefine
 @property (nonatomic, strong) NSArray<NSString *> *phones;
 @property (nonatomic, strong) KTCLocation *location;
+//select
+@property (nonatomic, assign) BOOL selected;
 @end

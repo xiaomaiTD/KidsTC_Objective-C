@@ -32,6 +32,7 @@
 #import "AppointmentOrderListViewController.h"
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
+#import "NurseryViewController.h"
 
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
@@ -212,7 +213,9 @@
             break;
         case AccountCenterViewActionTypeWaitReceipt:
         {
-            
+            toController = [[ProductOrderListViewController alloc] init];
+//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
+//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitComment:
@@ -249,7 +252,9 @@
             break;
         case AccountCenterViewActionTypeECard:
         {
-            
+            NurseryViewController *controller = [[NurseryViewController alloc] initWithNibName:@"NurseryViewController" bundle:nil];
+            controller.type = NurseryTypeExhibitionHall;
+            toController = controller;
         }
             break;
         case AccountCenterViewActionTypeBalance:
