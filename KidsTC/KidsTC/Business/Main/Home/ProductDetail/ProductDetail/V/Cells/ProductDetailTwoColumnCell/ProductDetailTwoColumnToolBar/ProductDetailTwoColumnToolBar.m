@@ -30,34 +30,46 @@ CGFloat const kTwoColumnToolBarH = 46;
     [self.detailBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.consultBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
-    self.detailBtn.selected = YES;
     self.tipView.backgroundColor = COLOR_PINK;
     self.detailBtn.tag = ProductDetailTwoColumnToolBarActionTypeDetail;
     self.consultBtn.tag = ProductDetailTwoColumnToolBarActionTypeConsult;
 }
 
-- (void)setCount:(NSInteger)count {
-    _count = count;
-    if (count>0) {
-        [self.consultBtn setTitle:[NSString stringWithFormat:@"活动咨询(%zd)",count] forState:UIControlStateNormal];
-    }else{
-        [self.consultBtn setTitle:@"活动咨询" forState:UIControlStateNormal];
+- (void)setData:(ProductDetailData *)data {
+    _data = data;
+    
+    NSInteger count = data.advisoryCount;
+    NSString *consultTitle = count>0 ? [NSString stringWithFormat:@"活动咨询(%zd)",count]:@"活动咨询";
+    [self.consultBtn setTitle:consultTitle forState:UIControlStateNormal];
+    
+    switch (data.showType) {
+        case ProductDetailTwoColumnShowTypeDetail:
+        {
+            [self selectBtn:self.detailBtn];
+        }
+            break;
+        case ProductDetailTwoColumnShowTypeConsult:
+        {
+            [self selectBtn:self.consultBtn];
+        }
+            break;
     }
 }
 
 - (IBAction)action:(UIButton *)sender {
-    
-    if (self.selectedBtn == sender) {
-        return;
-    }
-    
-    self.tipConstraintLeading.constant = CGRectGetMinX(sender.frame);
+    if (self.selectedBtn == sender) return;
+    [self selectBtn:sender];
+    self.data.showType = (ProductDetailTwoColumnShowType)sender.tag;
     if ([self.delegate respondsToSelector:@selector(productDetailTwoColumnToolBar:ationType:value:)]) {
         [self.delegate productDetailTwoColumnToolBar:self ationType:(ProductDetailTwoColumnToolBarActionType)sender.tag value:nil];
     }
+}
+
+- (void)selectBtn:(UIButton *)sender {
     self.selectedBtn.selected = NO;
     sender.selected = YES;
     self.selectedBtn = sender;
+    self.tipConstraintLeading.constant = CGRectGetMinX(sender.frame);
 }
 
 

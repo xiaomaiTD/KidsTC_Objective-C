@@ -27,16 +27,16 @@
     NSMutableAttributedString *mutableAttStr = [[NSMutableAttributedString alloc]init];
     
     if ([_storeName isNotNull]) {
-        NSAttributedString *storeNameAttStr = [self attStrWith:_storeName fontSize:16 imageName:@"serviceSettle_store_01"];
+        NSAttributedString *storeNameAttStr = [self attStrWith:_storeName fontSize:14 imageName:@"serviceSettle_store_01"];
         [mutableAttStr appendAttributedString:storeNameAttStr];
     }
     if ([_officeHoursDesc isNotNull]) {
-        NSAttributedString *officeHoursDescAttStr = [self attStrWith:[NSString stringWithFormat:@"营业时间：%@",_officeHoursDesc] fontSize:16 imageName:@"serviceSettle_store_02"];
+        NSAttributedString *officeHoursDescAttStr = [self attStrWith:[NSString stringWithFormat:@"营业时间：%@",_officeHoursDesc] fontSize:14 imageName:@"serviceSettle_store_02"];
         if (mutableAttStr.length>0) [mutableAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
         [mutableAttStr appendAttributedString:officeHoursDescAttStr];
     }
     if ([_address isNotNull]) {
-        NSAttributedString *addressAttStr = [self attStrWith:_address fontSize:16 imageName:@"serviceSettle_store_03"];
+        NSAttributedString *addressAttStr = [self attStrWith:_address fontSize:14 imageName:@"serviceSettle_store_03"];
         if (mutableAttStr.length>0) [mutableAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
         [mutableAttStr appendAttributedString:addressAttStr];
     }

@@ -59,23 +59,20 @@ singleM(ProductDetailDataManager)
 - (void)loadConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
                    failureBlock:(void(^)(NSError *error))failureBlock
 {
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            [self loadNormalConsultSuccessBlock:successBlock failureBlock:failureBlock];
+    NSDictionary *param = @{@"relationNo":_productId,
+                            @"advisoryType":@(_type+1),
+                            @"pageIndex":@(1),
+                            @"pageSize":@(20)};
+    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<ProductDetailConsultItem *> *items = [ProductDetailConsultModel modelWithDictionary:dic].items;
+        if (items.count>0) {
+            if (successBlock) successBlock(items);
+        }else{
+            if (failureBlock) failureBlock(nil);
         }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            [self loadTicketConsultSuccessBlock:successBlock failureBlock:failureBlock];
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            [self loadFreeConsultSuccessBlock:successBlock failureBlock:failureBlock];
-        }
-            break;
-    }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failureBlock) failureBlock(error);
+    }];
 }
 
 
@@ -108,25 +105,6 @@ singleM(ProductDetailDataManager)
         NSArray<ProductDetailRecommendItem *> *recommends = [ProductDetailRecommendModel modelWithDictionary:dic].data;
         if (recommends.count>0) {
             if (successBlock) successBlock(recommends);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
-
-- (void)loadNormalConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
-                         failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"relationNo":_productId,
-                            @"advisoryType":@"1",
-                            @"pageIndex":@(1),
-                            @"pageSize":@(20)};
-    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailConsultItem *> *items = [ProductDetailConsultModel modelWithDictionary:dic].items;
-        if (items.count>0) {
-            if (successBlock) successBlock(items);
         }else{
             if (failureBlock) failureBlock(nil);
         }
@@ -172,25 +150,6 @@ singleM(ProductDetailDataManager)
     }];
 }
 
-- (void)loadTicketConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
-                         failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"relationNo":_productId,
-                            @"advisoryType":@"1",
-                            @"pageIndex":@(1),
-                            @"pageSize":@(20)};
-    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailConsultItem *> *items = [ProductDetailConsultModel modelWithDictionary:dic].items;
-        if (items.count>0) {
-            if (successBlock) successBlock(items);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
-
 #pragma mark - free
 
 - (void)loadFreeProductDataSuccessBlock:(void(^)(ProductDetailData *data))successBlock
@@ -228,23 +187,5 @@ singleM(ProductDetailDataManager)
     }];
 }
 
-- (void)loadFreeConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
-                       failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"relationNo":_productId,
-                            @"advisoryType":@"1",
-                            @"pageIndex":@(1),
-                            @"pageSize":@(20)};
-    [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailConsultItem *> *items = [ProductDetailConsultModel modelWithDictionary:dic].items;
-        if (items.count>0) {
-            if (successBlock) successBlock(items);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
 
 @end

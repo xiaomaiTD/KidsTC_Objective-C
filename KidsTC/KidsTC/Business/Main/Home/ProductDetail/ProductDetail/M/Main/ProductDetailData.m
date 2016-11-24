@@ -31,6 +31,8 @@
     
     _isCanBuy = _status == 1;
     
+    _showType = ProductDetailTwoColumnShowTypeDetail;
+    
     _simpleName = [_simpleName isNotNull]?_simpleName:@"服务详情";
     
     _priceSort = [NSString stringWithFormat:@"%@",@(_priceSort.floatValue)];

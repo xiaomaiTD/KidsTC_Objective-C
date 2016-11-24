@@ -88,7 +88,7 @@
      */
     NSString *scorenumStr = [NSString stringWithFormat:@"%zd",item.scorenum];
     NSString *scorenumTip = [NSString stringWithFormat:@"共%@积分可使用",scorenumStr];
-    UIFont *font = [UIFont systemFontOfSize:15];
+    UIFont *font = [UIFont systemFontOfSize:12];
     NSDictionary *att = @{NSFontAttributeName:font,
                           NSForegroundColorAttributeName:[UIColor lightGrayColor]};
     NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:scorenumTip

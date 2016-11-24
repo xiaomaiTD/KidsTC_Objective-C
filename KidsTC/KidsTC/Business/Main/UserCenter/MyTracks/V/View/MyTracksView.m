@@ -33,13 +33,8 @@ static NSString *const FootID = @"MyTracksFooter";
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.tableView.frame = self.bounds;
-}
-
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -48,6 +43,9 @@ static NSString *const FootID = @"MyTracksFooter";
     tableView.estimatedSectionFooterHeight = 40;
     [self addSubview:tableView];
     self.tableView = tableView;
+    
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    tableView.tableHeaderView = header;
     
     [tableView registerNib:[UINib nibWithNibName:@"MyTracksHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
     [tableView registerNib:[UINib nibWithNibName:@"MyTracksCell" bundle:nil] forCellReuseIdentifier:CellID];

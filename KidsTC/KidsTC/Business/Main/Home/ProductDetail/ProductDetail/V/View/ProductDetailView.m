@@ -13,21 +13,20 @@
 #import "NSArray+Category.h"
 
 #import "ProductDetailSubViewsProvider.h"
-#import "ProductDetailViewBaseHeader.h"
 #import "ProductDetailTwoColumnToolBar.h"
 #import "ProductDetailBaseToolBar.h"
 #import "ProductDetailCountDownView.h"
 
 static NSString *const ID = @"UITableViewCell";
 
-@interface ProductDetailView ()<ProductDetailViewBaseHeaderDelegate,UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
+@interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
 @property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ProductDetailViewBaseHeader *header;
 @property (nonatomic, strong) NSArray<NSArray<ProductDetailBaseCell *> *> *sections;
-@property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
-@property (nonatomic, strong) ProductDetailCountDownView *countDownView;
 @property (nonatomic, strong) ProductDetailBaseToolBar *toolBar;
+@property (nonatomic, strong) ProductDetailCountDownView *countDownView;
+@property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
 @property (nonatomic, assign) CGPoint tableViewContentOffset;
 @end
 
@@ -51,45 +50,13 @@ static NSString *const ID = @"UITableViewCell";
     [self setupToolBar];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    CGFloat self_w = CGRectGetWidth(self.bounds);
-    CGFloat self_h = CGRectGetHeight(self.bounds);
-    
-    CGRect tableViewFrame;
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            tableViewFrame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            tableViewFrame = CGRectMake(0, 0, self_w, self_h - kProductDetailBaseToolBarHeight);
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            tableViewFrame = CGRectMake(0, 64, self_w, self_h - 64 - kProductDetailBaseToolBarHeight);
-        }
-            break;
-    }
-    
-    _tableView.frame = tableViewFrame;
-    [self setupTwoColumnToolBarFrame];
-    CGFloat countDownView_y = self_h - kProductDetailCountDownViewHeight - kProductDetailBaseToolBarHeight;
-    _countDownView.frame = CGRectMake(0, countDownView_y, self_w, kProductDetailCountDownViewHeight);
-    CGFloat toolBar_y = self_h - kProductDetailBaseToolBarHeight;
-    _toolBar.frame = CGRectMake(0, toolBar_y, self_w, kProductDetailBaseToolBarHeight);
-}
-
 - (void)setData:(ProductDetailData *)data {
     _data = data;
     
     _subViewProvider.data = data;
     _sections = _subViewProvider.sections;
     _header.data = data;
-    _twoColumnToolBar.count = data.advisoryCount;
+    _twoColumnToolBar.data = data;
     _countDownView.data = data;
     _toolBar.data = data;
     [self reload];
@@ -97,8 +64,8 @@ static NSString *const ID = @"UITableViewCell";
 
 - (void)reload {
     [self.tableView reloadData];
-    self.tableView.contentOffset = self.tableViewContentOffset;
-    [self scrollViewDidScroll:self.tableView];
+    //self.tableView.contentOffset = self.tableViewContentOffset;
+    //[self scrollViewDidScroll:self.tableView];
 }
 
 - (void)action:(ProductDetailViewActionType)type value:(id)value {
@@ -109,7 +76,26 @@ static NSString *const ID = @"UITableViewCell";
 
 #pragma mark - setupTableView
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    
+    CGRect tableViewFrame;
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            tableViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kProductDetailBaseToolBarHeight);
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
+        }
+            break;
+    }
+    UITableView *tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -175,7 +161,6 @@ static NSString *const ID = @"UITableViewCell";
     switch (type) {
         case ProductDetailViewActionTypeOpenWebView:
         {
-            _subViewProvider.twoColumnCellUsed.webViewHasOpen = YES;
             [self reload];
         }
             break;
@@ -187,31 +172,6 @@ static NSString *const ID = @"UITableViewCell";
         default:
             break;
     }
-}
-
-#pragma mark - setupHeader
-
-//- (void)setupHeader {
-//    _header = _subViewProvider.header;
-//    _header.delegate = self;
-//    _header.bounds = CGRectMake(0, 0, SCREEN_WIDTH, kTicketHeaderH);
-//    //_tableView.tableHeaderView = _header;
-//    //_header.hidden = YES;
-//}
-//
-//- (void)setupHeaderFrame {
-//    CGFloat offsetY = _tableViewContentOffset.y;
-//    if (offsetY<=0) {
-//        CGRect frame = _header.frame;
-//        frame.size.height =  kTicketHeaderH - offsetY;
-//        _twoColumnToolBar.frame = frame;
-//    }
-//}
-
-#pragma mark ProductDetailViewBaseHeaderDelegate
-
-- (void)productDetailViewBaseHeader:(ProductDetailViewBaseHeader *)header actionType:(ProductDetailViewBaseHeaderActionType)type value:(id)value {
-    [self action:(ProductDetailViewActionType)type value:value];
 }
 
 #pragma mark - setupTwoColumnToolBar
@@ -227,14 +187,14 @@ static NSString *const ID = @"UITableViewCell";
     CGFloat offsetY = _tableViewContentOffset.y;
     switch (_type) {
         case ProductDetailTypeNormal:
-            case ProductDetailTypeFree:
+        case ProductDetailTypeFree:
         {
-            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCellUsed.frame) + 64;
+            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame) + 64;
             if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
                 _twoColumnToolBar.hidden = YES;
             }else{
                 CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCellUsed.frame) ) y = 64;
+                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCell.frame) ) y = 64;
                 CGRect frame = _twoColumnToolBar.frame;
                 frame.origin.y = y;
                 _twoColumnToolBar.frame = frame;
@@ -244,12 +204,12 @@ static NSString *const ID = @"UITableViewCell";
             break;
         case ProductDetailTypeTicket:
         {
-            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCellUsed.frame);
+            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame);
             if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
                 _twoColumnToolBar.hidden = YES;
             }else{
                 CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCellUsed.frame) ) y = 64;
+                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCell.frame) ) y = 64;
                 CGRect frame = _twoColumnToolBar.frame;
                 frame.origin.y = y;
                 _twoColumnToolBar.frame = frame;
@@ -258,36 +218,20 @@ static NSString *const ID = @"UITableViewCell";
         }
             break;
     }
-    
-}
-
-- (void)resetTwoColumnToolBarShowType:(ProductDetailTwoColumnToolBarActionType)type {
-    switch (type) {
-        case ProductDetailTwoColumnToolBarActionTypeDetail:
-        {
-            _subViewProvider.twoColumnCellUsed.showType = ProductDetailTwoColumnShowTypeDetail;
-            _subViewProvider.twoColumnBottomBarCellUsed.showType = ProductDetailTwoColumnShowTypeDetail;
-        }
-            break;
-        case ProductDetailTwoColumnToolBarActionTypeConsult:
-        {
-            _subViewProvider.twoColumnCellUsed.showType = ProductDetailTwoColumnShowTypeConsult;
-            _subViewProvider.twoColumnBottomBarCellUsed.showType = ProductDetailTwoColumnShowTypeConsult;
-        }
-            break;
-    }
 }
 
 #pragma mark ProductDetailTwoColumnToolBarDelegate
 - (void)productDetailTwoColumnToolBar:(ProductDetailTwoColumnToolBar *)toolBar ationType:(ProductDetailTwoColumnToolBarActionType)type value:(id)value {
     [self action:(ProductDetailViewActionType)type value:value];
-    [self resetTwoColumnToolBarShowType:type];
+    _sections = _subViewProvider.sections;
     [self reload];
 }
 
 #pragma mark - setupCountDownView
 - (void)setupCountDownView {
     _countDownView = _subViewProvider.countDownView;
+    CGFloat countDownView_y = SCREEN_HEIGHT - kProductDetailCountDownViewHeight - kProductDetailBaseToolBarHeight;
+    _countDownView.frame = CGRectMake(0, countDownView_y, SCREEN_WIDTH, kProductDetailCountDownViewHeight);
     _countDownView.delegate = self;
     [self addSubview:_countDownView];
     _countDownView.hidden = YES;
@@ -301,6 +245,8 @@ static NSString *const ID = @"UITableViewCell";
 #pragma mark - setupToolBar
 - (void)setupToolBar {
     _toolBar = _subViewProvider.toolBar;
+    CGFloat toolBar_y = SCREEN_HEIGHT - kProductDetailBaseToolBarHeight;
+    _toolBar.frame = CGRectMake(0, toolBar_y, SCREEN_WIDTH, kProductDetailBaseToolBarHeight);
     _toolBar.delegate = self;
     [self addSubview:_toolBar];
     _toolBar.hidden = YES;

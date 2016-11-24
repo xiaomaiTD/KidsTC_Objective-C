@@ -8,17 +8,26 @@
 
 #import "MyTracksCell.h"
 
+@interface MyTracksCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView *banner;
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *addressL;
+@property (weak, nonatomic) IBOutlet UILabel *statusL;
+@property (weak, nonatomic) IBOutlet UILabel *reduceL;
+@end
+
 @implementation MyTracksCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.bgView.layer.cornerRadius = 6;
+    self.bgView.layer.masksToBounds = YES;
+    
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
 
 @end

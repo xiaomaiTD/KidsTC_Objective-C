@@ -42,6 +42,11 @@ typedef enum : NSUInteger {
     ProductDetailFreeTypeApply,//申请-【我想免单】
 } ProductDetailFreeType;
 
+typedef enum : NSUInteger {
+    ProductDetailTwoColumnShowTypeDetail=100,//详情
+    ProductDetailTwoColumnShowTypeConsult//咨询
+} ProductDetailTwoColumnShowType;
+
 @interface ProductDetailData : NSObject
 @property (nonatomic, strong) NSString *serveId;
 @property (nonatomic, strong) NSString *chId;
@@ -135,6 +140,11 @@ typedef enum : NSUInteger {
 
 //shareObj
 @property (nonatomic, strong) CommonShareObject *shareObject;
+
+//showType
+@property (nonatomic, assign) ProductDetailTwoColumnShowType showType;
+@property (nonatomic, assign) BOOL webViewHasOpen;
+@property (nonatomic, assign) BOOL webViewHasLoad;
 
 //ticket
 @property (nonatomic, strong) NSAttributedString *attTicketContent;

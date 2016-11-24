@@ -24,7 +24,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
-    MyTracksView *tracksView = [[MyTracksView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    MyTracksView *tracksView = [[MyTracksView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tracksView.delegate = self;
     [self.view addSubview:tracksView];
     self.tracksView = tracksView;

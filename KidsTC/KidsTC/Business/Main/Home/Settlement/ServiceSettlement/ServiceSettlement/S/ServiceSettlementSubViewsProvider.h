@@ -20,5 +20,5 @@ singleH(ServiceSettlementSubViewsProvider)
 @property (nonatomic, strong) ServiceSettlementModel *model;
 - (NSArray<NSArray<ServiceSettlementBaseCell *> *> *)sections;
 - (ServiceSettlementToolBar *)tooBar;
-- (void)nilCells;
+- (void)nilSubViews;
 @end

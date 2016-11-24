@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailData.h"
 
 extern CGFloat const kTwoColumnToolBarH;
 
@@ -22,6 +23,7 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailTwoColumnToolBar : UIView
+@property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailTwoColumnToolBarDelegate> delegate;
-@property (nonatomic, assign) NSInteger count;
+
 @end

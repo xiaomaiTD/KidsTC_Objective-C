@@ -64,9 +64,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type = ProductDetailTypeFree;
-    _productId = @"3000000008";
-    _channelId = @"0";
+//    _type = ProductDetailTypeFree;
+//    _productId = @"3000000008";
+//    _channelId = @"0";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -373,6 +373,7 @@
 
 - (void)addNewConsult:(id)value {
     ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
+    controller.type = _type;
     controller.productId = self.productId;
     controller.delegate = self;
     controller.consultStr = self.consultStr;
@@ -400,6 +401,7 @@
 
 - (void)moreConsult:(id)value {
     ProductDetailConsultViewController *controller = [[ProductDetailConsultViewController alloc] init];
+    controller.type = _type;
     controller.productId = self.productId;
     controller.consultStr = self.consultStr;
     [self.navigationController pushViewController:controller animated:YES];
@@ -848,6 +850,10 @@
         [[KTCBrowseHistoryView historyView] startLoadingAnimation:NO];
     }];
     
+}
+
+- (void)dealloc {
+    [_subViewsProvider nilViews];
 }
 
 @end

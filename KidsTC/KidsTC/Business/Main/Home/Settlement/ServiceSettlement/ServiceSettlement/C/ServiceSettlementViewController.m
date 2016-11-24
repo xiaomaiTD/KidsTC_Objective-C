@@ -610,7 +610,7 @@
 }
 
 - (void)dealloc {
-    [_subViewsProvider nilCells];
+    [_subViewsProvider nilSubViews];
 }
 
 @end

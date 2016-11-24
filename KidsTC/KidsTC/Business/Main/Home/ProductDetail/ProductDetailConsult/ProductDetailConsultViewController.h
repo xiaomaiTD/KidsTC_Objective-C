@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ProductDetailConsultViewController : ViewController
+@property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *consultStr;
 @end

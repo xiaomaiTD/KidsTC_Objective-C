@@ -17,26 +17,23 @@
 #import "ProductDetailCountDownView.h"
 #import "ProductDetailBaseToolBar.h"
 
-#import "ProductDetailTwoColumnCell.h"
-#import "ProductDetailTwoColumnBottomBarCell.h"
+#import "ProductDetailTwoColumnWebViewCell.h"
 
 @interface ProductDetailSubViewsProvider : NSObject
 singleH(ProductDetailSubViewsProvider)
 @property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) ProductDetailData *data;
-
-@property (nonatomic, strong) ProductDetailTwoColumnCell *twoColumnCellUsed;
-@property (nonatomic, strong) ProductDetailTwoColumnBottomBarCell *twoColumnBottomBarCellUsed;
+@property (nonatomic, weak  ) ProductDetailBaseCell *twoColumnCell;
 @property (nonatomic, assign) NSUInteger twoColumnSectionUsed;
 
 - (ProductDetailViewBaseHeader *)header;
 
 - (NSArray<NSArray<ProductDetailBaseCell *> *> *)sections;
 
+- (ProductDetailBaseToolBar *)toolBar;
+- (ProductDetailCountDownView *)countDownView;
 - (ProductDetailTwoColumnToolBar *)twoColumnToolBar;
 
-- (ProductDetailCountDownView *)countDownView;
-
-- (ProductDetailBaseToolBar *)toolBar;
+- (void)nilViews;
 
 @end

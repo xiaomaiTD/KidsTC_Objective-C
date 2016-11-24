@@ -19,8 +19,11 @@
 #import "ProductDetailContentEleCell.h"
 #import "ProductDetailContentEleEmptyCell.h"
 #import "ProductDetailJoinCell.h"
-#import "ProductDetailTwoColumnCell.h"
-#import "ProductDetailTwoColumnBottomBarCell.h"
+#import "ProductDetailTwoColumnWebViewCell.h"
+#import "ProductDetailTwoColumnConsultTipCell.h"
+#import "ProductDetailTwoColumnConsultEmptyCell.h"
+#import "ProductDetailTwoColumnConsultConsultCell.h"
+#import "ProductDetailTwoColumnConsultMoreCell.h"
 #import "ProductDetailStandardCell.h"
 #import "ProductDetailCouponCell.h"
 #import "ProductDetailNoticeCell.h"
@@ -42,29 +45,268 @@
 #import "ProductDetailTicketToolBar.h"
 #import "ProductDetaiFreeToolBar.h"
 
+@interface ProductDetailSubViewsProvider ()
+
+@property (nonatomic, strong) ProductDetailViewBaseHeader *header;
+
+@property (nonatomic, strong) ProductDetailBannerCell *bannerCell;
+@property (nonatomic, strong) ProductDetailInfoCell *infoCell;
+@property (nonatomic, strong) ProductDetailDateCell *dateCell;
+@property (nonatomic, strong) ProductDetailAddressCell *addressCell;
+@property (nonatomic, strong) ProductDetailJoinCell *joinCell;
+@property (nonatomic, strong) ProductDetailTwoColumnWebViewCell *twoColumnWebViewCell;
+@property (nonatomic, strong) ProductDetailTwoColumnConsultTipCell *twoColumnConsultTipCell;
+@property (nonatomic, strong) ProductDetailTwoColumnConsultEmptyCell *twoColumnConsultEmptyCell;
+@property (nonatomic, strong) ProductDetailTwoColumnConsultMoreCell *twoColumnConsultMoreCell;
+@property (nonatomic, strong) ProductDetailCouponCell *couponCell;
+@property (nonatomic, strong) ProductDetailNoticeCell *noticeCell;
+@property (nonatomic, strong) ProductDetailContactCell *contactCell;
+@property (nonatomic, strong) ProductDetailCommentMoreCell *commentMoreCell;
+
+@property (nonatomic, strong) ProductDetailTicketInfoCell *ticketInfoCell;
+@property (nonatomic, strong) ProductDetailTicketDesCell *ticketDesCell;
+@property (nonatomic, strong) ProductDetailTicketDesBtnCell *ticketDesBtnCell;
+@property (nonatomic, strong) ProductDetailTicketPromiseCell *ticketPromiseCell;
+@property (nonatomic, strong) ProductDetailTicketActorCell *ticketActorCell;
+
+@property (nonatomic, strong) ProductDetaiFreeInfoCell *freeInfoCell;
+@property (nonatomic, strong) ProductDetaiFreeStoreInfoCell *freeStoreInfoCell;
+@property (nonatomic, strong) ProductDetaiFreeLifeTipCell *freeLifeTipCell;
+
+@property (nonatomic, strong) ProductDetailBaseToolBar *toolBar;
+@property (nonatomic, strong) ProductDetailCountDownView *countDownView;
+@property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
+
+@end
+
 @implementation ProductDetailSubViewsProvider
 singleM(ProductDetailSubViewsProvider)
 
-- (ProductDetailViewBaseHeader *)header {
-    ProductDetailViewBaseHeader *header = nil;
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            header = self.ticketHeader;
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            header = self.ticketHeader;
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            header = nil;
-        }
-            break;
+#pragma mark - cells
+
+- (ProductDetailBannerCell *)bannerCell {
+    if (!_bannerCell)
+    {
+        _bannerCell = [self viewWithNib:@"ProductDetailBannerCell"];
     }
-    return header;
+    return _bannerCell;
+}
+
+- (ProductDetailInfoCell *)infoCell {
+    if (!_infoCell)
+    {
+        _infoCell = [self viewWithNib:@"ProductDetailInfoCell"];
+    }
+    return _infoCell;
+}
+
+- (ProductDetailDateCell *)dateCell {
+    if (!_dateCell)
+    {
+        _dateCell = [self viewWithNib:@"ProductDetailDateCell"];
+    }
+    return _dateCell;
+}
+
+- (ProductDetailAddressCell *)addressCell {
+    if (!_addressCell)
+    {
+        _addressCell = [self viewWithNib:@"ProductDetailAddressCell"];
+    }
+    return _addressCell;
+}
+
+- (ProductDetailTitleCell *)titleCell {
+    return [self viewWithNib:@"ProductDetailTitleCell"];
+}
+
+- (ProductDetailContentEleCell *)contentEleCell {
+    return [self viewWithNib:@"ProductDetailContentEleCell"];
+}
+
+- (ProductDetailContentEleEmptyCell *)contentEleEmptyCell {
+    return [self viewWithNib:@"ProductDetailContentEleEmptyCell"];
+}
+
+- (ProductDetailJoinCell *)joinCell {
+    if (!_joinCell)
+    {
+        _joinCell = [self viewWithNib:@"ProductDetailJoinCell"];
+    }
+    return _joinCell;
+}
+
+- (ProductDetailTwoColumnWebViewCell *)twoColumnWebViewCell {
+    if (!_twoColumnWebViewCell)
+    {
+        _twoColumnWebViewCell = [self viewWithNib:@"ProductDetailTwoColumnWebViewCell"];
+    }
+    return _twoColumnWebViewCell;
+}
+
+- (ProductDetailTwoColumnConsultTipCell *)twoColumnConsultTipCell {
+    if (!_twoColumnConsultTipCell)
+    {
+        _twoColumnConsultTipCell = [self viewWithNib:@"ProductDetailTwoColumnConsultTipCell"];
+    }
+    return _twoColumnConsultTipCell;
+}
+
+- (ProductDetailTwoColumnConsultEmptyCell *)twoColumnConsultEmptyCell {
+    if (!_twoColumnConsultEmptyCell)
+    {
+        _twoColumnConsultEmptyCell = [self viewWithNib:@"ProductDetailTwoColumnConsultEmptyCell"];
+    }
+    return _twoColumnConsultEmptyCell;
+}
+
+- (ProductDetailTwoColumnConsultConsultCell *)twoColumnConsultConsultCell {
+    return [self viewWithNib:@"ProductDetailTwoColumnConsultConsultCell"];
+}
+
+- (ProductDetailTwoColumnConsultMoreCell *)twoColumnConsultMoreCell {
+    if (!_twoColumnConsultMoreCell)
+    {
+        _twoColumnConsultMoreCell = [self viewWithNib:@"ProductDetailTwoColumnConsultMoreCell"];
+    }
+    return _twoColumnConsultMoreCell;
+}
+
+- (ProductDetailStandardCell *)standardCell {
+    return [self viewWithNib:@"ProductDetailStandardCell"];
+}
+
+- (ProductDetailCouponCell *)couponCell {
+    if (!_couponCell)
+    {
+        _couponCell = [self viewWithNib:@"ProductDetailCouponCell"];
+    }
+    return _couponCell;
+}
+
+- (ProductDetailNoticeCell *)noticeCell {
+    if (!_noticeCell)
+    {
+        _noticeCell = [self viewWithNib:@"ProductDetailNoticeCell"];
+    }
+    return _noticeCell;
+}
+
+- (ProductDetailApplyCell *)applyCell {
+    return [self viewWithNib:@"ProductDetailApplyCell"];
+}
+
+- (ProductDetailContactCell *)contactCell {
+    if (!_contactCell)
+    {
+        _contactCell = [self viewWithNib:@"ProductDetailContactCell"];
+    }
+    return _contactCell;
+}
+
+- (ProductDetailCommentCell *)commentCell {
+    return [self viewWithNib:@"ProductDetailCommentCell"];
+}
+
+- (ProductDetailCommentMoreCell *)commentMoreCell {
+    if (!_commentMoreCell)
+    {
+        _commentMoreCell = [self viewWithNib:@"ProductDetailCommentMoreCell"];
+    }
+    return _commentMoreCell;
+}
+
+- (ProductDetailRecommendCell *)recommendCell {
+    return [self viewWithNib:@"ProductDetailRecommendCell"];
+}
+
+- (ProductDetailTicketInfoCell *)ticketInfoCell {
+    if (!_ticketInfoCell)
+    {
+        _ticketInfoCell = [self viewWithNib:@"ProductDetailTicketInfoCell"];
+    }
+    return _ticketInfoCell;
+}
+
+- (ProductDetailTicketDesCell *)ticketDesCell {
+    if (!_ticketDesCell)
+    {
+        _ticketDesCell = [self viewWithNib:@"ProductDetailTicketDesCell"];
+    }
+    return _ticketDesCell;
+}
+
+- (ProductDetailTicketDesBtnCell *)ticketDesBtnCell {
+    if (!_ticketDesBtnCell)
+    {
+        _ticketDesBtnCell = [self viewWithNib:@"ProductDetailTicketDesBtnCell"];
+    }
+    return _ticketDesBtnCell;
+}
+
+- (ProductDetailTicketPromiseCell *)ticketPromiseCell {
+    if (!_ticketPromiseCell)
+    {
+        _ticketPromiseCell = [self viewWithNib:@"ProductDetailTicketPromiseCell"];
+    }
+    return _ticketPromiseCell;
+}
+
+- (ProductDetailTicketActorCell *)ticketActorCell {
+    if (!_ticketActorCell)
+    {
+        _ticketActorCell = [self viewWithNib:@"ProductDetailTicketActorCell"];
+    }
+    return _ticketActorCell;
+}
+
+- (ProductDetaiFreeInfoCell *)freeInfoCell {
+    if (!_freeInfoCell)
+    {
+        _freeInfoCell = [self viewWithNib:@"ProductDetaiFreeInfoCell"];
+    }
+    return _freeInfoCell;
+}
+
+- (ProductDetaiFreeStoreInfoCell *)freeStoreInfoCell {
+    if (!_freeStoreInfoCell)
+    {
+        _freeStoreInfoCell = [self viewWithNib:@"ProductDetaiFreeStoreInfoCell"];
+    }
+    return _freeStoreInfoCell;
+}
+
+- (ProductDetaiFreeLifeTipCell *)freeLifeTipCell {
+    if (!_freeLifeTipCell)
+    {
+        _freeLifeTipCell = [self viewWithNib:@"ProductDetaiFreeLifeTipCell"];
+    }
+    return _freeLifeTipCell;
+}
+
+#pragma mark - header
+
+- (ProductDetailViewBaseHeader *)header {
+    if (!_header) {
+        switch (_type) {
+            case ProductDetailTypeNormal:
+            {
+                _header = nil;
+            }
+                break;
+            case ProductDetailTypeTicket:
+            {
+                _header = [self viewWithNib:@"ProductDetailViewTicketHeader"];
+            }
+                break;
+            case ProductDetailTypeFree:
+            {
+                _header = nil;
+            }
+                break;
+        }
+    }
+    return _header;
 }
 
 - (NSArray<NSArray<ProductDetailBaseCell *> *> *)sections {
@@ -138,14 +380,34 @@ singleM(ProductDetailSubViewsProvider)
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
-    _twoColumnCellUsed = self.twoColumnCell;
-    _twoColumnBottomBarCellUsed = self.twoColumnBottomBarCell;
-    [section04 addObject:_twoColumnCellUsed];
-    [section04 addObject:_twoColumnBottomBarCellUsed];
-    _twoColumnSectionUsed = sections.count;
-    if (section04.count>0) {
-        [sections addObject:section04];
+    switch (_data.showType) {
+        case ProductDetailTwoColumnShowTypeDetail:
+        {
+            [section04 addObject:self.twoColumnWebViewCell];
+            self.twoColumnCell = self.twoColumnWebViewCell;
+        }
+            break;
+        case ProductDetailTwoColumnShowTypeConsult:
+        {
+            [section04 addObject:self.twoColumnConsultTipCell];
+            self.twoColumnCell = self.twoColumnConsultTipCell;
+            
+            NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
+            if (consults.count<1) {
+                [section04 addObject:self.twoColumnConsultEmptyCell];
+            }else{
+                [consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
+                    ProductDetailTwoColumnConsultConsultCell *consultCell = self.twoColumnConsultConsultCell;
+                    consultCell.item = obj;
+                    [section04 addObject:consultCell];
+                }];
+                [section04 addObject:self.twoColumnConsultMoreCell];
+            }
+        }
+            break;
     }
+    _twoColumnSectionUsed = sections.count;
+    if (section04.count>0) [sections addObject:section04];
     
     
     //套餐明细
@@ -274,14 +536,34 @@ singleM(ProductDetailSubViewsProvider)
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
-    _twoColumnCellUsed = self.twoColumnCell;
-    _twoColumnBottomBarCellUsed = self.twoColumnBottomBarCell;
-    [section04 addObject:_twoColumnCellUsed];
-    [section04 addObject:_twoColumnBottomBarCellUsed];
-    _twoColumnSectionUsed = sections.count;
-    if (section04.count>0) {
-        [sections addObject:section04];
+    switch (_data.showType) {
+        case ProductDetailTwoColumnShowTypeDetail:
+        {
+            [section04 addObject:self.twoColumnWebViewCell];
+            self.twoColumnCell = self.twoColumnWebViewCell;
+        }
+            break;
+        case ProductDetailTwoColumnShowTypeConsult:
+        {
+            [section04 addObject:self.twoColumnConsultTipCell];
+            self.twoColumnCell = self.twoColumnConsultTipCell;
+            
+            NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
+            if (consults.count<1) {
+                [section04 addObject:self.twoColumnConsultEmptyCell];
+            }else{
+                [consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
+                    ProductDetailTwoColumnConsultConsultCell *consultCell = self.twoColumnConsultConsultCell;
+                    consultCell.item = obj;
+                    [section04 addObject:consultCell];
+                }];
+                [section04 addObject:self.twoColumnConsultMoreCell];
+            }
+        }
+            break;
     }
+    _twoColumnSectionUsed = sections.count;
+    if (section04.count>0) [sections addObject:section04];
     
     //套餐明细
     if (_data.product_standards.count>0) {
@@ -407,14 +689,34 @@ singleM(ProductDetailSubViewsProvider)
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
-    _twoColumnCellUsed = self.twoColumnCell;
-    _twoColumnBottomBarCellUsed = self.twoColumnBottomBarCell;
-    [section04 addObject:_twoColumnCellUsed];
-    [section04 addObject:_twoColumnBottomBarCellUsed];
-    _twoColumnSectionUsed = sections.count;
-    if (section04.count>0) {
-        [sections addObject:section04];
+    switch (_data.showType) {
+        case ProductDetailTwoColumnShowTypeDetail:
+        {
+            [section04 addObject:self.twoColumnWebViewCell];
+            self.twoColumnCell = self.twoColumnWebViewCell;
+        }
+            break;
+        case ProductDetailTwoColumnShowTypeConsult:
+        {
+            [section04 addObject:self.twoColumnConsultTipCell];
+            self.twoColumnCell = self.twoColumnConsultTipCell;
+            
+            NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
+            if (consults.count<1) {
+                [section04 addObject:self.twoColumnConsultEmptyCell];
+            }else{
+                [consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
+                    ProductDetailTwoColumnConsultConsultCell *consultCell = self.twoColumnConsultConsultCell;
+                    consultCell.item = obj;
+                    [section04 addObject:consultCell];
+                }];
+                [section04 addObject:self.twoColumnConsultMoreCell];
+            }
+        }
+            break;
     }
+    _twoColumnSectionUsed = sections.count;
+    if (section04.count>0) [sections addObject:section04];
     
     //套餐明细
     if (_data.product_standards.count>0) {
@@ -504,168 +806,95 @@ singleM(ProductDetailSubViewsProvider)
     return [NSArray arrayWithArray:sections];
 }
 
-#pragma mark - header
-
-- (ProductDetailViewTicketHeader *)ticketHeader {
-    return [self viewWithNib:@"ProductDetailViewTicketHeader"];
-}
-
-#pragma mark - cells
-
-- (ProductDetailBannerCell *)bannerCell {
-    return [self viewWithNib:@"ProductDetailBannerCell"];
-}
-
-- (ProductDetailInfoCell *)infoCell {
-    return [self viewWithNib:@"ProductDetailInfoCell"];
-}
-
-- (ProductDetailDateCell *)dateCell {
-    return [self viewWithNib:@"ProductDetailDateCell"];
-}
-
-- (ProductDetailAddressCell *)addressCell {
-    return [self viewWithNib:@"ProductDetailAddressCell"];
-}
-
-- (ProductDetailTitleCell *)titleCell {
-    return [self viewWithNib:@"ProductDetailTitleCell"];
-}
-
-- (ProductDetailContentEleCell *)contentEleCell {
-    return [self viewWithNib:@"ProductDetailContentEleCell"];
-}
-
-- (ProductDetailContentEleEmptyCell *)contentEleEmptyCell {
-    return [self viewWithNib:@"ProductDetailContentEleEmptyCell"];
-}
-
-- (ProductDetailJoinCell *)joinCell {
-    return [self viewWithNib:@"ProductDetailJoinCell"];
-}
-
-- (ProductDetailTwoColumnCell *)twoColumnCell {
-    return [self viewWithNib:@"ProductDetailTwoColumnCell"];
-}
-
-- (ProductDetailTwoColumnBottomBarCell *)twoColumnBottomBarCell {
-    return [self viewWithNib:@"ProductDetailTwoColumnBottomBarCell"];
-}
-
-- (ProductDetailStandardCell *)standardCell {
-    return [self viewWithNib:@"ProductDetailStandardCell"];
-}
-
-- (ProductDetailCouponCell *)couponCell {
-    return [self viewWithNib:@"ProductDetailCouponCell"];
-}
-
-- (ProductDetailNoticeCell *)noticeCell {
-    return [self viewWithNib:@"ProductDetailNoticeCell"];
-}
-
-- (ProductDetailApplyCell *)applyCell {
-    return [self viewWithNib:@"ProductDetailApplyCell"];
-}
-
-- (ProductDetailContactCell *)contactCell {
-    return [self viewWithNib:@"ProductDetailContactCell"];
-}
-
-- (ProductDetailCommentCell *)commentCell {
-    return [self viewWithNib:@"ProductDetailCommentCell"];
-}
-
-- (ProductDetailCommentMoreCell *)commentMoreCell {
-    return [self viewWithNib:@"ProductDetailCommentMoreCell"];
-}
-
-- (ProductDetailRecommendCell *)recommendCell {
-    return [self viewWithNib:@"ProductDetailRecommendCell"];
-}
-
-- (ProductDetailTicketInfoCell *)ticketInfoCell {
-    return [self viewWithNib:@"ProductDetailTicketInfoCell"];
-}
-
-- (ProductDetailTicketDesCell *)ticketDesCell {
-    return [self viewWithNib:@"ProductDetailTicketDesCell"];
-}
-
-- (ProductDetailTicketDesBtnCell *)ticketDesBtnCell {
-    return [self viewWithNib:@"ProductDetailTicketDesBtnCell"];
-}
-
-- (ProductDetailTicketPromiseCell *)ticketPromiseCell {
-    return [self viewWithNib:@"ProductDetailTicketPromiseCell"];
-}
-
-- (ProductDetailTicketActorCell *)ticketActorCell {
-    return [self viewWithNib:@"ProductDetailTicketActorCell"];
-}
-
-- (ProductDetaiFreeInfoCell *)freeInfoCell {
-    return [self viewWithNib:@"ProductDetaiFreeInfoCell"];
-}
-
-- (ProductDetaiFreeStoreInfoCell *)freeStoreInfoCell {
-    return [self viewWithNib:@"ProductDetaiFreeStoreInfoCell"];
-}
-
-- (ProductDetaiFreeLifeTipCell *)freeLifeTipCell {
-    return [self viewWithNib:@"ProductDetaiFreeLifeTipCell"];
-}
-
 #pragma mark - toolBar
 
-- (ProductDetailTwoColumnToolBar *)twoColumnToolBar {
-    return [self viewWithNib:@"ProductDetailTwoColumnToolBar"];
+- (ProductDetailBaseToolBar *)toolBar {
+    if (!_toolBar)
+    {
+        switch (_type) {
+            case ProductDetailTypeNormal:
+            {
+                _toolBar = [self viewWithNib:@"ProductDetailNormalToolBar"];
+            }
+                break;
+            case ProductDetailTypeTicket:
+            {
+                _toolBar = [self viewWithNib:@"ProductDetailTicketToolBar"];
+            }
+                break;
+            case ProductDetailTypeFree:
+            {
+                _toolBar = [self viewWithNib:@"ProductDetaiFreeToolBar"];
+            }
+                break;
+        }
+    }
+    return _toolBar;
 }
 
 - (ProductDetailCountDownView *)countDownView {
-    return [self viewWithNib:@"ProductDetailCountDownView"];
-}
-
-- (ProductDetailBaseToolBar *)toolBar {
-    
-    ProductDetailBaseToolBar *toolBar = nil;
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            toolBar = self.normalToolBar;
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            toolBar = self.ticketToolBar;
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            toolBar = self.freeToolBar;
-        }
-            break;
+    if (!_countDownView)
+    {
+        _countDownView = [self viewWithNib:@"ProductDetailCountDownView"];
     }
-    
-    return toolBar;
+    return _countDownView;
 }
 
-- (ProductDetailNormalToolBar *)normalToolBar {
-    return [self viewWithNib:@"ProductDetailNormalToolBar"];
-}
-
-- (ProductDetailTicketToolBar *)ticketToolBar {
-    return [self viewWithNib:@"ProductDetailTicketToolBar"];
-}
-
-- (ProductDetaiFreeToolBar *)freeToolBar {
-    return [self viewWithNib:@"ProductDetaiFreeToolBar"];
+- (ProductDetailTwoColumnToolBar *)twoColumnToolBar {
+    if (!_twoColumnToolBar)
+    {
+        _twoColumnToolBar = [self viewWithNib:@"ProductDetailTwoColumnToolBar"];
+    }
+    return _twoColumnToolBar;
 }
 
 #pragma mark - viewWithNib
 
 - (id)viewWithNib:(NSString *)nib{
     return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
+}
+
+- (void)nilViews {
+    [self nilHeader];
+    [self nilCells];
+    [self nilToolBar];
+}
+
+- (void)nilHeader {
+    _header = nil;
+}
+
+- (void)nilCells {
+    
+    _bannerCell = nil;
+    _infoCell = nil;
+    _dateCell = nil;
+    _addressCell = nil;
+    _joinCell = nil;
+    _twoColumnWebViewCell = nil;
+    _twoColumnConsultTipCell = nil;
+    _twoColumnConsultEmptyCell = nil;
+    _twoColumnConsultMoreCell = nil;
+    _couponCell = nil;
+    _noticeCell = nil;
+    _contactCell = nil;
+    _commentMoreCell = nil;
+    
+    _ticketInfoCell = nil;
+    _ticketDesCell = nil;
+    _ticketDesBtnCell = nil;
+    _ticketPromiseCell = nil;
+    _ticketActorCell = nil;
+    
+    _freeInfoCell = nil;
+    _freeStoreInfoCell = nil;
+    _freeLifeTipCell = nil;
+}
+
+- (void)nilToolBar {
+    _toolBar = nil;
+    _countDownView = nil;
+    _twoColumnToolBar = nil;
 }
 
 @end

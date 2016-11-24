@@ -1,17 +1,17 @@
 //
-//  ProductDetailTwoColumnTableViewConsultCell.m
+//  ProductDetailTwoColumnConsultConsultCell.m
 //  KidsTC
 //
 //  Created by 詹平 on 2016/10/27.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "ProductDetailTwoColumnTableViewConsultCell.h"
+#import "ProductDetailTwoColumnConsultConsultCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
 #import "Colours.h"
 
-@interface ProductDetailTwoColumnTableViewConsultCell ()
+@interface ProductDetailTwoColumnConsultConsultCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation ProductDetailTwoColumnTableViewConsultCell
+@implementation ProductDetailTwoColumnConsultConsultCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -36,7 +36,7 @@
 }
 
 - (void)setItem:(ProductDetailConsultItem *)item {
-    [super setItem:item];
+    _item = item;
     
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:item.headUrl] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
     self.nameL.text = item.name;

@@ -253,7 +253,7 @@ singleM(ServiceSettlementSubViewsProvider)
     return [[NSBundle mainBundle] loadNibNamed:nib owner:self options:nil].firstObject;
 }
 
-- (void)nilCells {
+- (void)nilSubViews {
     _tipAddressCell = nil;
     _addressCell = nil;
     _serviceInfoCell = nil;
@@ -263,6 +263,10 @@ singleM(ServiceSettlementSubViewsProvider)
     _payTypeCell = nil;
     _ticketGetCell = nil;
     _ticketGetSelfCell = nil;
+    
+    _tooBar = nil;
 }
+
+
 
 @end

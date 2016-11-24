@@ -26,7 +26,9 @@ static CGFloat const kAnimationDuration = 0.2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor clearColor];
+    self.naviTheme = NaviThemeWihte;
     self.inputContentConstraintB.constant = - self.inputContentConstraintH.constant;
     [self.view layoutIfNeeded];
     self.textView.text = self.consultStr;
@@ -105,7 +107,7 @@ static CGFloat const kAnimationDuration = 0.2;
         return;
     }
     NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@"1",
+                            @"advisoryType":@(_type+1),
                             @"content":content};
     [TCProgressHUD showSVP];
     [Request startWithName:@"ADD_ADVISORY" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {

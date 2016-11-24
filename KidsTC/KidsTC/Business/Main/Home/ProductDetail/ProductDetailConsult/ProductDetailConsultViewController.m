@@ -7,13 +7,13 @@
 //
 
 #import "ProductDetailConsultViewController.h"
-#import "ProductDetailTwoColumnTableViewConsultCell.h"
+#import "ProductDetailTwoColumnConsultConsultCell.h"
 #import "GHeader.h"
 #import "ProductDetailAddNewConsultViewController.h"
 #import "ProductDetailConsultModel.h"
 #import "UIBarButtonItem+Category.h"
 
-static NSString *const ID = @"ProductDetailTwoColumnTableViewConsultCell";
+static NSString *const ID = @"ProductDetailTwoColumnConsultConsultCell";
 static CGFloat const kToolBarH = 49;
 static int const pageSize = 10;
 
@@ -49,7 +49,7 @@ static int const pageSize = 10;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.contentInset = UIEdgeInsetsMake(0, 0, kToolBarH, 0);
     tableView.scrollIndicatorInsets = tableView.contentInset;
-    [tableView registerNib:[UINib nibWithNibName:@"ProductDetailTwoColumnTableViewConsultCell" bundle:nil] forCellReuseIdentifier:ID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductDetailTwoColumnConsultConsultCell" bundle:nil] forCellReuseIdentifier:ID];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
@@ -80,7 +80,7 @@ static int const pageSize = 10;
 - (void)loadData:(BOOL)refresh {
     _page = refresh?1:++_page;
     NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@"1",
+                            @"advisoryType":@(_type+1),
                             @"pageIndex":@(_page),
                             @"pageSize":@(pageSize)};
     [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
@@ -119,7 +119,7 @@ static int const pageSize = 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProductDetailTwoColumnTableViewConsultCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    ProductDetailTwoColumnConsultConsultCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.item = self.items[indexPath.row];
     return cell;
 }
@@ -139,6 +139,7 @@ static int const pageSize = 10;
 - (void)askAction:(UIButton *)btn {
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
         ProductDetailAddNewConsultViewController *controller = [[ProductDetailAddNewConsultViewController alloc] initWithNibName:@"ProductDetailAddNewConsultViewController" bundle:nil];
+        controller.type = _type;
         controller.productId = self.productId;
         controller.delegate = self;
         controller.consultStr = self.consultStr;

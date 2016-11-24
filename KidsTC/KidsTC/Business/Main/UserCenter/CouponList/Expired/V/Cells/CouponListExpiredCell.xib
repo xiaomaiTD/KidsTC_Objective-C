@@ -23,29 +23,29 @@
                         <rect key="frame" x="15" y="0.0" width="290" height="93"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOE-Tm-FKe">
-                                <rect key="frame" x="111" y="0.0" width="179" height="93"/>
+                                <rect key="frame" x="110.5" y="0.0" width="179.5" height="93"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CouponList_BGContnet" translatesAutoresizingMaskIntoConstraints="NO" id="gqZ-IH-931">
-                                        <rect key="frame" x="0.0" y="0.0" width="179" height="93"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="179.5" height="93"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWT-bI-wWw">
-                                        <rect key="frame" x="12" y="8" width="159" height="77"/>
+                                        <rect key="frame" x="12" y="8" width="159.5" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="仅可购买美影厂美术画画培训班抵扣课时费" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4p-nL-0Mf">
-                                                <rect key="frame" x="0.0" y="0.0" width="159" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="755" text="2016.11.04-2017.11.12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7om-yD-p5I">
-                                                <rect key="frame" x="0.0" y="40" width="159" height="12"/>
+                                                <rect key="frame" x="0.0" y="40" width="159.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CouponList_line" translatesAutoresizingMaskIntoConstraints="NO" id="zb3-E3-o75">
-                                                <rect key="frame" x="0.0" y="58" width="159" height="1"/>
+                                                <rect key="frame" x="0.0" y="58" width="159.5" height="1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="4ue-Sd-Udn"/>
                                                 </constraints>
@@ -57,7 +57,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-Mi-KXt">
-                                                <rect key="frame" x="143" y="63" width="16" height="16"/>
+                                                <rect key="frame" x="143.5" y="63" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="6cE-ao-KdP"/>
                                                     <constraint firstAttribute="width" secondItem="Z7Y-Mi-KXt" secondAttribute="height" multiplier="1:1" id="gnG-8c-JNe"/>
@@ -97,10 +97,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lR5-MI-YTf">
-                                <rect key="frame" x="0.0" y="0.0" width="114" height="93"/>
+                                <rect key="frame" x="0.0" y="0.0" width="113.5" height="93"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="260" verticalHuggingPriority="260" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" image="CouponList_CannotUsed" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-nc-hsk">
-                                        <rect key="frame" x="0.0" y="0.0" width="114" height="93"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="260" verticalHuggingPriority="260" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" image="CouponList_CannotUsed" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-nc-hsk">
+                                        <rect key="frame" x="0.0" y="0.0" width="113.5" height="93"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Quf-nc-hsk" secondAttribute="height" multiplier="523:429" id="qGs-Gx-lxi"/>
@@ -110,7 +110,7 @@
                                         <rect key="frame" x="11" y="12" width="91" height="69"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-1S-5Yj">
-                                                <rect key="frame" x="10" y="0.0" width="72" height="45"/>
+                                                <rect key="frame" x="10.5" y="0.0" width="72" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddu-nb-AzX">
                                                         <rect key="frame" x="0.0" y="17" width="14" height="26"/>
@@ -138,7 +138,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="满699元可使用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-7B-PXQ">
-                                                <rect key="frame" x="0.0" y="53" width="91" height="16"/>
+                                                <rect key="frame" x="1" y="53" width="91" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -167,6 +167,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="93" id="0IK-Lh-iVA"/>
                             <constraint firstAttribute="bottom" secondItem="aOE-Tm-FKe" secondAttribute="bottom" id="CJY-qT-zOq"/>
                             <constraint firstAttribute="bottom" secondItem="lR5-MI-YTf" secondAttribute="bottom" id="DWa-RG-jyK"/>
                             <constraint firstAttribute="trailing" secondItem="aOE-Tm-FKe" secondAttribute="trailing" id="HZo-5o-iRD"/>
