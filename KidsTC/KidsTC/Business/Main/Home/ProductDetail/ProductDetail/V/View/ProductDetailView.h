@@ -54,6 +54,9 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeTicketHeaderLike = 400,//票务 - 想看
     ProductDetailViewActionTypeTicketHeaderStar,//票务 - 评分
     
+    //self
+    ProductDetailViewDidScroll = 500,//滚动
+    
 } ProductDetailViewActionType;
 
 @class ProductDetailView;
@@ -62,7 +65,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailView : UIView
-@property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailViewDelegate> delegate;
 @end

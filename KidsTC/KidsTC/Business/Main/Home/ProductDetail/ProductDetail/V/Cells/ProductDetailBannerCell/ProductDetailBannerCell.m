@@ -41,6 +41,8 @@ static int const kProductDetailBannerCellMaxSections = 11;
     
     self.pageControl.numberOfPages = _narrowImg.count;
     [self addYYTimer];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {

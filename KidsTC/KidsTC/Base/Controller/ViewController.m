@@ -212,6 +212,7 @@
             [btn setImage:[UIImage imageNamed:highImageName] forState:UIControlStateHighlighted];
             btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
             btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            self.backBtn = btn;
         }];
         self.hidesBottomBarWhenPushed = YES;
     }
@@ -289,10 +290,26 @@
     [[FailureViewManager shareFailureViewManager] showType:FailureViewTypeLoadData
                                                     inView:self.view
                                                actionBlock:^(FailureViewManagerActionType type, id obj) {
-                                                   if (self.failurePageActionBlock) {
-                                                       self.failurePageActionBlock();
-                                                   }else{
-                                                       [self checkNetWork];
+                                                   switch (type) {
+                                                       case FailureViewManagerActionTypeWebView:
+                                                       {
+                                                           if (self.failurePageActionBlock) {
+                                                               self.failurePageActionBlock();
+                                                           }
+                                                       }
+                                                           break;
+                                                       case FailureViewManagerActionTypeRefrech:
+                                                       {
+                                                           if (self.failurePageActionBlock) {
+                                                               self.failurePageActionBlock();
+                                                           }
+                                                       }
+                                                           break;
+                                                       case FailureViewManagerActionTypeCheckNetwork:
+                                                       {
+                                                            [self checkNetWork];
+                                                       }
+                                                           break;
                                                    }
                                                }];
 }

@@ -25,6 +25,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NaviTheme naviTheme;
 @property (nonatomic, assign) BOOL showFailurePage;
 @property (nonatomic, copy) void(^failurePageActionBlock)();
+@property (nonatomic, strong) UIButton *backBtn;
 - (void)back;
 #pragma mark Notification
 - (void)keyboardWillShow:(NSNotification *)noti;

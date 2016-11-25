@@ -49,15 +49,34 @@
     
     [self setupShareObj:dic];
     
-    [self setupTicketInfo];
-    
-    [self setupSynopsis];
-    
-    [self setupTicketPromise];
-    
-    [self setupTricks];
-    
     return YES;
+}
+
+- (void)setType:(ProductDetailType)type {
+    _type = type;
+    switch (type) {
+        case ProductDetailTypeNormal:
+        {
+            
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            [self setupTicketInfo];
+            
+            [self setupTicketStore];
+            
+            [self setupTicketSynopsis];
+            
+            [self setupTicketPromise];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            [self setupTricks];
+        }
+            break;
+    }
 }
 
 - (void)setupInfo {
@@ -201,7 +220,18 @@
     return [[NSAttributedString alloc] initWithString:@"\n"];
 }
 
-- (void)setupSynopsis {
+- (void)setupTicketStore {
+    if (_theater) {
+        ProductDetailStore *store = [ProductDetailStore new];
+        store.storeName = _theater.theaterName;
+        store.address = _theater.address;
+        store.mapAddress = _theater.mapAddress;
+        [store setupStoreInfo];
+        _store = @[store];
+    }
+}
+
+- (void)setupTicketSynopsis {
     if ([_synopsis isNotNull]) {
         NSMutableAttributedString *attSynopsis = [[NSMutableAttributedString alloc] initWithString:_synopsis];
         attSynopsis.lineSpacing = 10;

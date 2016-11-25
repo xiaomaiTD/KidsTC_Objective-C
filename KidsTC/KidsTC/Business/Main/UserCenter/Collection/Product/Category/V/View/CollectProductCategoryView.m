@@ -27,7 +27,7 @@ static NSString *const ID = @"CollectProductCategoryCell";
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    return self.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -37,7 +37,10 @@ static NSString *const ID = @"CollectProductCategoryCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CollectProductCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    
+    NSInteger section = indexPath.section;
+    if (section<indexPath.section) {
+        cell.item = self.items[section];
+    }
     return cell;
 }
 

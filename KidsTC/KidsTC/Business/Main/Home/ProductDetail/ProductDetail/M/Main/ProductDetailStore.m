@@ -14,6 +14,11 @@
 
 @implementation ProductDetailStore
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [self setupStoreInfo];
+    return YES;
+}
+
+- (void)setupStoreInfo {
     _storeName = [_storeName isNotNull]?_storeName:@"";
     _address = [_address isNotNull]?_address:@"";
     _mapAddress = [_mapAddress isNotNull]?_mapAddress:@"";
@@ -23,15 +28,13 @@
     self.phones = [_phone componentsSeparatedByString:@";"];
     
     //location
-    CLLocationCoordinate2D coord = [ToolBox coordinateFromString:[dic objectForKey:@"mapAddress"]];
+    CLLocationCoordinate2D coord = [ToolBox coordinateFromString:_mapAddress];
     CLLocation *loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
     self.location = [[KTCLocation alloc] initWithLocation:loc locationDescription:self.storeName];
-    NSString *storeAddress = [dic objectForKey:@"address"];
+    NSString *storeAddress = _address;
     if ([storeAddress isKindOfClass:[NSString class]]) {
         [self.location setMoreDescription:storeAddress];
     }
-    
-    return YES;
 }
 
 

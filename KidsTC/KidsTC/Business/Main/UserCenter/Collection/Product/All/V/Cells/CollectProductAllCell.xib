@@ -22,9 +22,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2O-V8-yGc">
                         <rect key="frame" x="10" y="0.0" width="300" height="189.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h6D-zk-MpT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h6D-zk-MpT">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="b3m-D1-QlE"/>
                                 </constraints>
@@ -35,7 +34,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqw-PP-2Xe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xqw-PP-2Xe">
                                 <rect key="frame" x="253" y="73" width="37" height="37"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -50,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市静安寺康东路 4.24km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEy-hv-ksM">
-                                <rect key="frame" x="25" y="161.5" width="144" height="14"/>
+                                <rect key="frame" x="25" y="161.5" width="142.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -63,14 +62,14 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collection_time" translatesAutoresizingMaskIntoConstraints="NO" id="CXe-Ep-qPu">
-                                <rect key="frame" x="177" y="163" width="11" height="11"/>
+                                <rect key="frame" x="175.5" y="163.5" width="10" height="10"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="11" id="GIG-8p-8rm"/>
+                                    <constraint firstAttribute="width" constant="10" id="GIG-8p-8rm"/>
                                     <constraint firstAttribute="width" secondItem="CXe-Ep-qPu" secondAttribute="height" multiplier="1:1" id="YJa-dA-yZg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进行中 ，8天后结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehz-1F-bec">
-                                <rect key="frame" x="190" y="161" width="100.5" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="进行中 ，8天后结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehz-1F-bec">
+                                <rect key="frame" x="187.5" y="161" width="100.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -82,6 +81,7 @@
                             <constraint firstItem="h6D-zk-MpT" firstAttribute="top" secondItem="q2O-V8-yGc" secondAttribute="top" id="4rh-CL-qdq"/>
                             <constraint firstItem="CXe-Ep-qPu" firstAttribute="width" secondItem="CXe-Ep-qPu" secondAttribute="height" multiplier="1:1" id="74a-b3-HeO"/>
                             <constraint firstItem="h6D-zk-MpT" firstAttribute="leading" secondItem="q2O-V8-yGc" secondAttribute="leading" id="Dbe-Fx-xZn"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ehz-1F-bec" secondAttribute="trailing" constant="12" id="DkG-HW-lgM"/>
                             <constraint firstAttribute="trailing" secondItem="ejj-MI-4hz" secondAttribute="trailing" constant="12" id="G60-Ka-Bh7"/>
                             <constraint firstItem="ejj-MI-4hz" firstAttribute="top" secondItem="xqw-PP-2Xe" secondAttribute="bottom" constant="6" id="HEa-tu-Bl2"/>
                             <constraint firstItem="38d-Op-6Hk" firstAttribute="leading" secondItem="q2O-V8-yGc" secondAttribute="leading" constant="12" id="Ya2-TP-I4O"/>
@@ -119,7 +119,7 @@
                 <outlet property="priceL" destination="ejj-MI-4hz" id="lnL-Ab-dte"/>
                 <outlet property="statusL" destination="Ehz-1F-bec" id="xnQ-d3-iDf"/>
             </connections>
-            <point key="canvasLocation" x="-906" y="-59"/>
+            <point key="canvasLocation" x="-1100" y="-70"/>
         </tableViewCell>
     </objects>
     <resources>

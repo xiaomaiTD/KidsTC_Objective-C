@@ -8,6 +8,9 @@
 
 #import "CollectProductCategoryCell.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 #import "CollectProductCategoryCollectionViewCell.h"
 
@@ -46,6 +49,13 @@ static CGFloat const margin = 10;
     
 }
 
+- (void)setItem:(CollectProductCategoryItem *)item {
+    _item = item;
+    self.nameL.text = item.categoryName;
+    self.numL.text = [NSString stringWithFormat:@"%zd个活动",item.totalCount];
+    [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:item.firstItem.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat size = CGRectGetHeight(collectionView.bounds);
     return CGSizeMake(size, size);
@@ -66,13 +76,16 @@ static CGFloat const margin = 10;
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.item.items.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CollectProductCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
+    NSInteger row = indexPath.row;
+    if (row<self.item.items.count) {
+        cell.imgUrl = self.item.items[row].img;
+    }
     return cell;
 }
 

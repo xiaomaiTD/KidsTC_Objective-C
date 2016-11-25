@@ -32,6 +32,8 @@ static CGFloat const kAnimationDuration = 0.2;
     self.inputContentConstraintB.constant = - self.inputContentConstraintH.constant;
     [self.view layoutIfNeeded];
     self.textView.text = self.consultStr;
+    
+    [self.view layoutIfNeeded];
 }
 
 - (BOOL)prefersStatusBarHidden {

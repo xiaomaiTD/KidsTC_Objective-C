@@ -8,6 +8,9 @@
 
 #import "CollectProductReduceCell.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 @interface CollectProductReduceCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -28,8 +31,6 @@
     [self layoutIfNeeded];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
-    
     self.bgView.layer.cornerRadius = 8;
     self.bgView.layer.masksToBounds = YES;
     
@@ -38,8 +39,6 @@
     self.icon.layer.masksToBounds = YES;
     self.icon.layer.borderWidth = 1;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    self.bannerIcon.layer.borderWidth = 1;
-    self.bannerIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
     self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
@@ -49,5 +48,17 @@
     self.reduceL.textColor = [UIColor colorFromHexString:@"7EBCF2"];
 }
 
+- (void)setItem:(CollectProductItem *)item {
+    _item = item;
+    
+    [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_item.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    self.icon.hidden = ![_item.supplierIconImg isNotNull];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.supplierIconImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = _item.name;
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.price];
+    self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.address,_item.distanceDesc];
+    self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
+    self.reduceL.text = [NSString stringWithFormat:@"下降了¥%@",_item.markdownPrice];
+}
 
 @end

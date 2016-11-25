@@ -27,7 +27,6 @@ static NSString *const ID = @"UITableViewCell";
 @property (nonatomic, strong) ProductDetailBaseToolBar *toolBar;
 @property (nonatomic, strong) ProductDetailCountDownView *countDownView;
 @property (nonatomic, strong) ProductDetailTwoColumnToolBar *twoColumnToolBar;
-@property (nonatomic, assign) CGPoint tableViewContentOffset;
 @end
 
 @implementation ProductDetailView
@@ -59,13 +58,15 @@ static NSString *const ID = @"UITableViewCell";
     _twoColumnToolBar.data = data;
     _countDownView.data = data;
     _toolBar.data = data;
+    
     [self reload];
 }
 
 - (void)reload {
     [self.tableView reloadData];
-    //self.tableView.contentOffset = self.tableViewContentOffset;
-    //[self scrollViewDidScroll:self.tableView];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollViewDidScroll:self.tableView];
+    });
 }
 
 - (void)action:(ProductDetailViewActionType)type value:(id)value {
@@ -78,7 +79,7 @@ static NSString *const ID = @"UITableViewCell";
 - (void)setupTableView {
     
     CGRect tableViewFrame;
-    switch (_type) {
+    switch (_subViewProvider.type) {
         case ProductDetailTypeNormal:
         {
             tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
@@ -104,13 +105,16 @@ static NSString *const ID = @"UITableViewCell";
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.tableViewContentOffset = scrollView.contentOffset;
-    [self setupTwoColumnToolBarFrame];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    TCLog(@"offsetY:%f",offsetY);
+    [self setupTwoColumnToolBarFrame:offsetY];
+    [self action:ProductDetailViewDidScroll value:@(offsetY)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -183,18 +187,17 @@ static NSString *const ID = @"UITableViewCell";
     _twoColumnToolBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, kTwoColumnToolBarH);
 }
 
-- (void)setupTwoColumnToolBarFrame {
-    CGFloat offsetY = _tableViewContentOffset.y;
-    switch (_type) {
+- (void)setupTwoColumnToolBarFrame:(CGFloat)offsetY {
+    switch (_subViewProvider.type) {
         case ProductDetailTypeNormal:
         case ProductDetailTypeFree:
         {
-            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame) + 64;
-            if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
+            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame);
+            if (twoColumnCellY<=0) {
                 _twoColumnToolBar.hidden = YES;
             }else{
-                CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCell.frame) ) y = 64;
+                CGFloat y = twoColumnCellY + 64 - kTwoColumnToolBarH - offsetY;
+                if (y<64) y = 64;
                 CGRect frame = _twoColumnToolBar.frame;
                 frame.origin.y = y;
                 _twoColumnToolBar.frame = frame;
@@ -205,11 +208,11 @@ static NSString *const ID = @"UITableViewCell";
         case ProductDetailTypeTicket:
         {
             CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame);
-            if (twoColumnCellY <= 64) {//当twoColumnCellY<=64时，说明twoColumnCell还没有被添加到界面，此时按照正常计算方式计算高度是不对的。
+            if (twoColumnCellY<=0) {
                 _twoColumnToolBar.hidden = YES;
             }else{
                 CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-                if ( y < 64 && y > - CGRectGetHeight(_subViewProvider.twoColumnCell.frame) ) y = 64;
+                if (y<64) y = 64;
                 CGRect frame = _twoColumnToolBar.frame;
                 frame.origin.y = y;
                 _twoColumnToolBar.frame = frame;

@@ -8,6 +8,9 @@
 
 #import "CollectProductAllCell.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 @interface CollectProductAllCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -35,14 +38,24 @@
     self.icon.layer.masksToBounds = YES;
     self.icon.layer.borderWidth = 1;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    self.bannerIcon.layer.borderWidth = 1;
-    self.bannerIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
     self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.addressL.textColor = [UIColor colorFromHexString:@"999999"];
     self.statusL.textColor = [UIColor colorFromHexString:@"999999"];
     self.priceL.textColor = [UIColor colorFromHexString:@"F36863"];
+}
+
+- (void)setItem:(CollectProductItem *)item {
+    _item = item;
+    
+    [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_item.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    self.icon.hidden = ![_item.supplierIconImg isNotNull];
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.supplierIconImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = _item.name;
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.price];
+    self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.address,_item.distanceDesc];
+    self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
 }
 
 

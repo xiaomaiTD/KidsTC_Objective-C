@@ -69,9 +69,13 @@
     if (self.store.count>_currentIndex) {
         [KTCMapUtil cleanMap:self.mapView];
         [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
-        [self setDestinationAnnotationCoordinate:self.store[_currentIndex].location.location.coordinate];
         
-        [KTCMapUtil resetMapView:self.mapView toFitLocations:@[self.store[_currentIndex].location.location]];
+        ProductDetailStore *storeItem = self.store[_currentIndex];
+        [self setDestinationAnnotationCoordinate:storeItem.location.location.coordinate];
+        CLLocation *location = storeItem.location.location;
+        if (location) {
+            [KTCMapUtil resetMapView:self.mapView toFitLocations:@[location]];
+        }
     }
 }
 
@@ -127,9 +131,14 @@
     //指南针必须在加载完成后设置
     [self.mapView setCompassPosition:CGPointMake(SCREEN_WIDTH - 50, 70)];
     [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
-    [self setDestinationAnnotationCoordinate:self.store[_currentIndex].location.location.coordinate];
-    
-    [KTCMapUtil resetMapView:mapView toFitLocations:@[self.store[_currentIndex].location.location]];
+    if (self.store.count>_currentIndex) {
+        ProductDetailStore *storeItem = self.store[_currentIndex];
+        [self setDestinationAnnotationCoordinate:storeItem.location.location.coordinate];
+        CLLocation *location = storeItem.location.location;
+        if (location) {
+            [KTCMapUtil resetMapView:mapView toFitLocations:@[location]];
+        }
+    }
 }
 
 static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseIndentifier";
@@ -200,13 +209,16 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 #pragma mark - initNaviItems
 
 - (void)initNaviItems {
+    if (_store.count>1) {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"其他门店" postion:UIBarButtonPositionRight
+                                                                         target:self
+                                                                         action:@selector(rightBarButtonItemAction)
+                                                                   andGetButton:^(UIButton *btn) {
+                                                                       [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                                                                   }];
+    }
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"其他门店" postion:UIBarButtonPositionRight
-                                                                     target:self
-                                                                     action:@selector(rightBarButtonItemAction)
-                                                               andGetButton:^(UIButton *btn) {
-                                                                   [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                                                               }];
+    
     ProductDetailAddressTitleView *titleView = [self viewWithNib:@"ProductDetailAddressTitleView"];
     titleView.delegate = self;
     titleView.bounds = CGRectMake(0, 0, 160, 44);

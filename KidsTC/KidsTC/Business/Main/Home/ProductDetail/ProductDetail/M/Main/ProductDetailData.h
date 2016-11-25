@@ -117,6 +117,9 @@ typedef enum : NSUInteger {
 
 #pragma mark - selfDefine
 
+//type
+@property (nonatomic, assign) ProductDetailType type;
+
 //info
 @property (nonatomic, strong) NSAttributedString *attServeName;
 @property (nonatomic, strong) NSAttributedString *attPromote;

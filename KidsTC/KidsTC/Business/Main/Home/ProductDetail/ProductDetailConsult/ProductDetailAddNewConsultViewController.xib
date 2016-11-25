@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,10 +27,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNQ-nn-LYV">
+                    <rect key="frame" x="0.0" y="427" width="375" height="240"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh9-5l-exW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUD-fy-utW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9BJ-HN-EO5">
+                                    <rect key="frame" x="12" y="15" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="cld-se-3kD"/>
                                         <constraint firstAttribute="width" secondItem="9BJ-HN-EO5" secondAttribute="height" multiplier="1:1" id="sxG-8T-QRQ"/>
@@ -41,9 +50,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPV-lW-cM8">
+                                    <rect key="frame" x="335" y="15" width="28" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="xPV-lW-cM8" secondAttribute="height" multiplier="39:28" id="4Vn-IQ-WTQ"/>
-                                        <constraint firstAttribute="height" constant="18" id="saO-r7-m6a"/>
+                                        <constraint firstAttribute="height" constant="20" id="saO-r7-m6a"/>
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                     <state key="normal" image="ProductDetail_consult_yes">
@@ -54,6 +64,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="251" horizontalCompressionResistancePriority="100" text="我要咨询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz2-A7-OEU">
+                                    <rect key="frame" x="40" y="15" width="287" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -72,6 +83,7 @@
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiZ-wR-zjU">
+                            <rect key="frame" x="12" y="62" width="351" height="166"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -82,14 +94,18 @@
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="bh9-5l-exW" firstAttribute="trailing" secondItem="wUD-fy-utW" secondAttribute="trailing" id="877-6i-TsR"/>
                         <constraint firstItem="wUD-fy-utW" firstAttribute="top" secondItem="uNQ-nn-LYV" secondAttribute="top" id="9wZ-F8-hhh"/>
                         <constraint firstItem="TiZ-wR-zjU" firstAttribute="top" secondItem="wUD-fy-utW" secondAttribute="bottom" constant="12" id="B3G-mn-XL3"/>
                         <constraint firstAttribute="bottom" secondItem="TiZ-wR-zjU" secondAttribute="bottom" constant="12" id="F5k-Xf-JCv"/>
                         <constraint firstAttribute="height" constant="240" id="Iwf-rW-Yst"/>
+                        <constraint firstItem="bh9-5l-exW" firstAttribute="leading" secondItem="wUD-fy-utW" secondAttribute="leading" id="KCq-Oj-mmK"/>
                         <constraint firstAttribute="trailing" secondItem="wUD-fy-utW" secondAttribute="trailing" id="O6j-gw-ha3"/>
+                        <constraint firstItem="bh9-5l-exW" firstAttribute="top" secondItem="wUD-fy-utW" secondAttribute="top" id="Q5o-9Z-N11"/>
                         <constraint firstAttribute="trailing" secondItem="TiZ-wR-zjU" secondAttribute="trailing" constant="12" id="gBi-R0-fcB"/>
                         <constraint firstItem="wUD-fy-utW" firstAttribute="leading" secondItem="uNQ-nn-LYV" secondAttribute="leading" id="gIU-UI-G8W"/>
                         <constraint firstItem="TiZ-wR-zjU" firstAttribute="leading" secondItem="uNQ-nn-LYV" secondAttribute="leading" constant="12" id="mPg-h8-g2l"/>
+                        <constraint firstItem="bh9-5l-exW" firstAttribute="bottom" secondItem="wUD-fy-utW" secondAttribute="bottom" id="zQR-hG-Ylj"/>
                     </constraints>
                 </view>
             </subviews>
@@ -103,7 +119,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ProductDetail_consult_no" width="31" height="31"/>
-        <image name="ProductDetail_consult_yes" width="39" height="28"/>
+        <image name="ProductDetail_consult_no" width="57" height="57"/>
+        <image name="ProductDetail_consult_yes" width="76" height="51"/>
     </resources>
 </document>

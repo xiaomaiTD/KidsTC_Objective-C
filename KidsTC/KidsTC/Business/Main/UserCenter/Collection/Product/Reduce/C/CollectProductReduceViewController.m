@@ -7,10 +7,15 @@
 //
 
 #import "CollectProductReduceViewController.h"
+#import "GHeader.h"
+
+#import "CollectProductReduceModel.h"
 #import "CollectProductReduceView.h"
 
 @interface CollectProductReduceViewController ()<CollectProductBaseViewDelegate>
 @property (nonatomic, strong) CollectProductReduceView *reduceView;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation CollectProductReduceViewController
@@ -42,12 +47,24 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.reduceView endRefresh:NO];
-        });
-    });
+    self.page = refresh?1:++self.page;
+    NSDictionary *param = @{@"sort":@(CollectProductTypeReduct),
+                            @"page":@(self.page),
+                            @"pagecount":@(CollectProductPageCount)};
+    [Request startWithName:@"GET_USER_INTEREST_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        CollectProductReduceModel *model = [CollectProductReduceModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.reduceView.items = self.items;
+        [self.reduceView dealWithUI:model.data.count];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.reduceView dealWithUI:0];
+    }];
 }
 
 @end

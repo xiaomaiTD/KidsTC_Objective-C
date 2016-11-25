@@ -38,7 +38,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeShowAddress value:self.data.store];
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeShowAddress value:nil];
     }
 }
 

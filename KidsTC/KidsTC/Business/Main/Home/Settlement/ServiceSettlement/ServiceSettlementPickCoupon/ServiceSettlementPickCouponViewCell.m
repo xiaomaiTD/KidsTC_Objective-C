@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *checkImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cuttingLineConstraintWidth;
-@property (nonatomic, weak) CALayer *shadowLayer;
 @end
 
 @implementation ServiceSettlementPickCouponViewCell
@@ -30,25 +29,6 @@
     self.shapeView.layer.masksToBounds = YES;
     self.shapeView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.shapeView.layer.borderWidth = 1;
-    
-    CALayer *shadowLayer = [CALayer layer];
-    shadowLayer.backgroundColor = [UIColor whiteColor].CGColor;
-    shadowLayer.shadowColor = [UIColor colorWithWhite:0 alpha:1].CGColor;
-    shadowLayer.shadowOffset = CGSizeMake(2, 2);
-    shadowLayer.shadowRadius = 2;
-    shadowLayer.shadowOpacity = 0.3;
-    shadowLayer.cornerRadius = self.shapeView.layer.cornerRadius;
-    [self.contentView.layer insertSublayer:shadowLayer below:self.shapeView.layer];
-    self.shadowLayer = shadowLayer;
-}
-
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    [self.shapeView layoutIfNeeded];
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    self.shadowLayer.frame = self.shapeView.frame;
-    [CATransaction commit];
 }
 
 - (void)setItem:(ServiceSettlementCouponItem *)item {

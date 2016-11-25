@@ -16,6 +16,7 @@
 #import "GuideManager.h"
 #import "OnlineCustomerService.h"
 #import "UIBarButtonItem+Category.h"
+#import "ZPPopover.h"
 
 #import "ProductDetailDataManager.h"
 #import "ProductDetailSubViewsProvider.h"
@@ -40,14 +41,16 @@
 #import "StoreDetailViewController.h"
 
 #import "KTCBrowseHistoryView.h"
-#import "KTCActionView.h"
 
-@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCActionViewDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate>
+@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate,ZPPopoverDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) ProductDetailView *detailView;
 @property (nonatomic, strong) ProductDetailDataManager *dataManager;
 @property (nonatomic, strong) ProductDetailSubViewsProvider *subViewsProvider;
+@property (nonatomic, strong) UIButton *historyBtn;
+@property (nonatomic, strong) UIButton *shareBtn;
+@property (nonatomic, assign) BOOL isNaviBGClearColor;
 @end
 
 @implementation ProductDetailViewController
@@ -64,11 +67,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _type = ProductDetailTypeFree;
-//    _productId = @"3000000008";
+//    _type = ProductDetailTypeTicket;
+//    _productId = @"100001";//100001  //3000000004
 //    _channelId = @"0";
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
     
     if (![_productId isNotNull]) {
         [[iToast makeText:@"商品编号为空！"] show];
@@ -82,7 +83,7 @@
                          @"cid":_channelId};
     
     self.navigationItem.title = @"服务详情";
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
     switch (_type) {
@@ -120,7 +121,6 @@
     if (!_detailView) {
         _detailView = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _detailView.delegate = self;
-        _detailView.type = _type;
         [self.view addSubview:_detailView];
     }
     return _detailView;
@@ -139,6 +139,7 @@
 
 - (void)loadDataSuccess:(ProductDetailData *)data{
     _data = data;
+    _data.type = _type;
     self.detailView.data = data;
     self.navigationItem.title = data.simpleName;
     [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
@@ -305,7 +306,7 @@
             break;
         case ProductDetailViewActionTypeTicketToolBarComment://票务 - 评价
         {
-        
+            [self ticketToolBarComment:value];
         }
             break;
         case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
@@ -343,6 +344,11 @@
             [self freeToolBarShare:value]; 
         }
             break;
+        case ProductDetailViewDidScroll://滚动
+        {
+            [self didScroll:value];
+        }
+            break;
     }
 
 }
@@ -364,8 +370,11 @@
 #pragma mark - showAddress
 
 - (void)showAddress:(id)value{
+    if (_data.store.count<1) {
+        return;
+    }
     ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
-    controller.store = value;
+    controller.store = _data.store;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -598,9 +607,9 @@
 
 - (void)attentionType:(KTCFavouriteType)type value:(id)value {
     if (_data.isFavor) {
-        [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:_data.serveId type:KTCFavouriteTypeService succeed:nil failure:nil];
+        [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:_data.serveId type:type succeed:nil failure:nil];
     } else {
-        [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:_data.serveId type:KTCFavouriteTypeService succeed:nil failure:nil];
+        [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:_data.serveId type:type succeed:nil failure:nil];
     }
     NSDictionary *params = @{@"pid":_productId,
                              @"cid":_channelId};
@@ -663,6 +672,10 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)ticketToolBarComment:(id)value {
+    
+}
+
 #pragma mark - ticketSelectSeat
 
 - (void)ticketSelectSeat:(id)value {
@@ -686,6 +699,50 @@
     [self share];
 }
 
+- (void)didScroll:(id)value {
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            CGFloat offsetY = [value floatValue];
+            self.naviColor = [[UIColor whiteColor] colorWithAlphaComponent:offsetY/64];
+            if (offsetY<64) {
+                if (!self.isNaviBGClearColor) {
+                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+                    [self.backBtn setImage:[UIImage imageNamed:@"navi_back_white"] forState:UIControlStateNormal];
+                    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+                    [navigationBar setTitleTextAttributes:textAttrs];
+                    [self.historyBtn setImage:[UIImage imageNamed:@"ProductDetail_ticket_time"] forState:UIControlStateNormal];
+                    [self.shareBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_more_white"] forState:UIControlStateNormal];
+                    self.isNaviBGClearColor = YES;
+                }
+            }else{
+                if (self.isNaviBGClearColor) {
+                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+                    [self.backBtn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+                    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor blackColor]};
+                    [navigationBar setTitleTextAttributes:textAttrs];
+                    [self.historyBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_clock"] forState:UIControlStateNormal];
+                    [self.shareBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_more"] forState:UIControlStateNormal];
+                    self.isNaviBGClearColor = NO;
+                }
+            }
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            
+        }
+            break;
+    }
+}
+
 #pragma mark - buildRightBarButtons
 
 - (void)buildRightBarButtons {
@@ -706,24 +763,25 @@
     [historyButton setImage:[UIImage imageNamed:@"ProductDetail_navi_clock"] forState:UIControlStateNormal];
     [historyButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:historyButton];
+    self.historyBtn = historyButton;
     
     xPosition += buttonWidth + buttonGap;
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [shareButton setBackgroundColor:[UIColor clearColor]];
+    [shareButton setImageEdgeInsets:UIEdgeInsetsMake(2, 0, 2, 0)];
     shareButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [shareButton setImage:[UIImage imageNamed:@"ProductDetail_navi_more"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(showActionView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:shareButton];
+    self.shareBtn = shareButton;
     
     UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithCustomView:bgView];
     self.navigationItem.rightBarButtonItem = rItem;
 }
 
 - (void)showHistoryView {
-    
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        [[KTCActionView actionView] hide];
         if ([[KTCBrowseHistoryView historyView] isShowing]) {
             [[KTCBrowseHistoryView historyView] startLoadingAnimation:NO];
             [[KTCBrowseHistoryView historyView] setDelegate:nil];
@@ -741,40 +799,33 @@
 
 - (void)showActionView {
     [[KTCBrowseHistoryView historyView] hide];
-    if ([[KTCActionView actionView] isShowing]) {
-        [[KTCActionView actionView] hide];
-        [[KTCActionView actionView] setDelegate:nil];
-    } else {
-        [[KTCActionView actionView] showInViewController:self];
-        [[KTCActionView actionView] setDelegate:self];
-    }
+    [self rightBarButtonItemAction];
 }
 
-#pragma mark KTCActionViewDelegate
+- (void)rightBarButtonItemAction{
+    CGFloat rightMargin = 28;
+    if ([UIScreen mainScreen].bounds.size.width>400) rightMargin = 32;
+    CGFloat barBtnX = CGRectGetWidth([[UIScreen mainScreen] bounds]) - rightMargin;
+    CGFloat barBtnY = 46;
+    
+    ZPPopoverItem *popoverItem1 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_home"  title:@"首页"];
+    ZPPopoverItem *popoverItem2 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_share" title:@"搜索"];
+    ZPPopoverItem *popoverItem3 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_topic" title:@"分享"];
+    ZPPopover *popover = [ZPPopover popoverWithTopPointInWindow:CGPointMake(barBtnX, barBtnY) items:@[popoverItem1,popoverItem2,popoverItem3]];
+    popover.delegate = self;
+    [popover show];
+}
 
-- (void)actionViewDidClickedWithTag:(KTCActionViewTag)tag {
-    [[KTCActionView actionView] hide];
-    switch (tag) {
-        case KTCActionViewTagHome:
-        {
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            [[TabBarController shareTabBarController] selectIndex:0];
-        }
-            break;
-        case KTCActionViewTagSearch:
-        {
-            SearchTableViewController *controller = [[SearchTableViewController alloc]init];
-            controller.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:controller animated:YES];
-        }
-            break;
-        case KTCActionViewTagShare:
-        {
-            [self share];
-        }
-            break;
-        default:
-            break;
+#pragma mark - ZPPopoverDelegate
+
+- (void)didSelectMenuItemAtIndex:(NSUInteger)index {
+    if (index == 0) {
+        [[TabBarController shareTabBarController] selectIndex:0];
+    }else if (index == 1) {
+        SearchTableViewController *controller = [[SearchTableViewController alloc]init];
+        [self.navigationController pushViewController:controller animated:YES];
+    }else if (index == 2){
+        [self share];
     }
 }
 

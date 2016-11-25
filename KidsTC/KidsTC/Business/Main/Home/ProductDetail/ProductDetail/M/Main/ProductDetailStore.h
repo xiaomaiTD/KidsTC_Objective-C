@@ -22,4 +22,6 @@
 @property (nonatomic, strong) KTCLocation *location;
 //select
 @property (nonatomic, assign) BOOL selected;
+
+- (void)setupStoreInfo;
 @end

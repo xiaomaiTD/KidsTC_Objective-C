@@ -13,6 +13,12 @@ typedef enum : NSUInteger {
 } ProductDetailType;//商详类型
 
 typedef enum : NSUInteger {
+    CollectProductTypeAll = 1,//全部
+    CollectProductTypeCategory,//分类
+    CollectProductTypeReduct,//降价
+} CollectProductType;
+
+typedef enum : NSUInteger {
     TCSexTypeUnkonw,//未知
     TCSexTypeBoy,//男
     TCSexTypeGirl,//女

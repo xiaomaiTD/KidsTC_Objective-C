@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectProductCategoryItem.h"
 
 @interface CollectProductCategoryCell : UITableViewCell
-
+@property (nonatomic, strong) CollectProductCategoryItem *item;
 @end

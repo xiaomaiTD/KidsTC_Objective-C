@@ -44,16 +44,6 @@ singleM(FailureViewManager)
         {
             AFNetworkReachabilityStatus status = [ReachabilityManager shareReachabilityManager].status;
             if (status == AFNetworkReachabilityStatusNotReachable){
-                /*[view layoutIfNeeded];
-                self.webFailureView.frame = view.bounds;
-                WeakSelf(self)
-                self.webFailureView.actionBlock = ^void(WebFailureView *webFailureView){
-                    StrongSelf(self)
-                    [self.webFailureView removeFromSuperview];
-                    if (actionBlock) actionBlock(FailureViewManagerActionTypeWebView,webFailureView);
-                };
-                [view addSubview:self.webFailureView];*/
-                
                 self.loadDataView.frame = view.bounds;
                 [view addSubview:self.loadDataView];
                 WeakSelf(self)
@@ -98,6 +88,7 @@ singleM(FailureViewManager)
                         if([[UIApplication sharedApplication] canOpenURL:url]) {
                             [[UIApplication sharedApplication] openURL:url];
                         }
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                     }
                         break;
                     case FailureViewLoadDataActionTypeRefresh:

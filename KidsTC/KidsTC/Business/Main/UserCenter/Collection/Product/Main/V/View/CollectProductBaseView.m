@@ -10,6 +10,7 @@
 #import "Colours.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
+#import "KTCEmptyDataView.h"
 
 static NSString *const ID = @"UITableViewCell";
 
@@ -49,6 +50,7 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)setupMJ {
+    
     WeakSelf(self);
     RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self);
@@ -60,6 +62,8 @@ static NSString *const ID = @"UITableViewCell";
         [self loadData:NO];
     }];
     self.tableView.mj_footer = footer;
+    
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)loadData:(BOOL)refresh {
@@ -68,14 +72,24 @@ static NSString *const ID = @"UITableViewCell";
     }
 }
 
-- (void)endRefresh:(BOOL)noMoreData {
-    [self.tableView.mj_header endRefreshing];
-    if (noMoreData) {
-        [self.tableView.mj_footer endRefreshingWithNoMoreData];
-    } else {
-        [self.tableView.mj_footer endRefreshing];
-    }
+- (void)setItems:(NSArray *)items {
+    _items = items;
 }
+
+- (void)dealWithUI:(NSUInteger)loadCount {
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    if (loadCount<CollectProductPageCount) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }
+    if (self.items.count<1) {
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+                                                                          image:nil description:@"啥都没有啊…"
+                                                                     needGoHome:NO];
+    }else self.tableView.backgroundView = nil;
+}
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
