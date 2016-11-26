@@ -61,24 +61,30 @@
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    UIView *allView = [[CollectionStoreViewController alloc] init].view;
+    CollectionStoreViewController *allVC = [[CollectionStoreViewController alloc] init];
+    UIView *allView = allVC.view;
     allView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:allView];
+    [self addChildViewController:allVC];
     
-    UIView *categoryView = [[CollectionContentViewController alloc] init].view;
+    CollectionContentViewController *contentVC = [[CollectionContentViewController alloc] init];
+    UIView *categoryView = contentVC.view;
     categoryView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:categoryView];
+    [self addChildViewController:contentVC];
     
-    UIView *reduceView = [[CollectionTarentoViewController alloc] init].view;
+    CollectionTarentoViewController *tarentoVC = [[CollectionTarentoViewController alloc] init];
+    UIView *reduceView = tarentoVC.view;
     reduceView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:reduceView];
+    [self addChildViewController:tarentoVC];
     
     scrollView.contentSize = CGSizeMake(scrollView_w * 3, 1);
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.scrollView.contentOffset = CGPointMake(((int)_type) * scrollView_w, 0);
+        [self scrollViewDidScroll:self.scrollView];
+    });
 }
 
 - (void)edit {

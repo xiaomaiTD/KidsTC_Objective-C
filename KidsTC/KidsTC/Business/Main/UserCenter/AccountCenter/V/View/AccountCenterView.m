@@ -27,6 +27,15 @@ static NSString *const ID = @"UITableViewCell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) AccountCenterHeader *header;
 @property (nonatomic, strong) NSArray<NSArray<AccountCenterBaseCell *> *> *sections;
+
+@property (nonatomic, strong) AccountCenterCollectionsCell *collectionsCell;
+@property (nonatomic, strong) AccountCenterOrdersCell *ordersCell;
+@property (nonatomic, strong) AccountCenterNumsCell *numsCell;
+@property (nonatomic, strong) AccountCenterActivitiesCell *activitiesCell;
+@property (nonatomic, strong) AccountCenterItemsCell *itemsCell;
+@property (nonatomic, strong) AccountCenterBannersCell *bannersCell;
+@property (nonatomic, strong) AccountCenterTipsCell *tipsCell;
+//@property (nonatomic, strong) AccountCenterRecommendsCell *recommendsCell;
 @end
 
 @implementation AccountCenterView
@@ -93,31 +102,58 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (AccountCenterCollectionsCell *)collectonsCell {
-    return [self viewWithNib:@"AccountCenterCollectionsCell"];
+    if (!_collectionsCell)
+    {
+        _collectionsCell = [self viewWithNib:@"AccountCenterCollectionsCell"];
+    }
+    return _collectionsCell;
 }
 
 - (AccountCenterOrdersCell *)ordersCell {
-    return [self viewWithNib:@"AccountCenterOrdersCell"];
+    if (!_ordersCell)
+    {
+        _ordersCell = [self viewWithNib:@"AccountCenterOrdersCell"];
+    }
+    return _ordersCell;
 }
 
 - (AccountCenterNumsCell *)numsCell {
-    return [self viewWithNib:@"AccountCenterNumsCell"];
+    if (!_numsCell)
+    {
+        _numsCell = [self viewWithNib:@"AccountCenterNumsCell"];
+    }
+    return _numsCell;
 }
 
 - (AccountCenterActivitiesCell *)activitiesCell {
-    return [self viewWithNib:@"AccountCenterActivitiesCell"];
+    if (!_activitiesCell)
+    {
+        _activitiesCell = [self viewWithNib:@"AccountCenterActivitiesCell"];
+    }
+    return _activitiesCell;
 }
 
 - (AccountCenterItemsCell *)itemsCell {
-    return [self viewWithNib:@"AccountCenterItemsCell"];
+    if (!_itemsCell)
+    {
+        _itemsCell = [self viewWithNib:@"AccountCenterItemsCell"];
+    }
+    return _itemsCell;
 }
 
 - (AccountCenterBannersCell *)bannersCell {
-    return [self viewWithNib:@"AccountCenterBannersCell"];
+    if (!_bannersCell)
+    {
+        _bannersCell = [self viewWithNib:@"AccountCenterBannersCell"];
+    }
+    return _bannersCell;
 }
 
 - (AccountCenterTipsCell *)tipsCell {
-    return [self viewWithNib:@"AccountCenterTipsCell"];
+    if (!_tipsCell) {
+        _tipsCell = [self viewWithNib:@"AccountCenterTipsCell"];
+    }
+    return _tipsCell;
 }
 
 - (AccountCenterRecommendsCell *)recommendsCell {
@@ -125,6 +161,9 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)setupMainSections {
+    
+    AccountCenterData *data = self.model.data;
+    
     NSMutableArray *sections = [NSMutableArray array];
     
     NSMutableArray *section00 = [NSMutableArray array];
@@ -146,7 +185,9 @@ static NSString *const ID = @"UITableViewCell";
     }
     
     NSMutableArray *section03 = [NSMutableArray array];
-    [section03 addObject:self.activitiesCell];
+    if (data.config.activityExhibitionHall.count>0) {
+        [section03 addObject:self.activitiesCell];
+    }
     if (section03.count>0) {
         [sections addObject:section03];
     }
@@ -158,7 +199,7 @@ static NSString *const ID = @"UITableViewCell";
     }
     
     NSMutableArray *section05 = [NSMutableArray array];
-    if (self.model.data.config.banners.count>0) {
+    if (data.config.banners.count>0) {
         [section05 addObject:self.bannersCell];
     }
     if (section05.count>0) {

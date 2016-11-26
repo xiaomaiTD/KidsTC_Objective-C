@@ -102,6 +102,7 @@
 - (void)favourateView:(FavourateView *)favourateView articleCell:(ArticleCell *)cell didClickOnHeadColumnTitleTagBtn:(ACTagsItem *)targetItem{}
 - (void)favourateView:(FavourateView *)favourateView articleCell:(ArticleCell *)cell didClickOnAlbum:(ALstItem *)album index:(NSUInteger)index{}
 - (void)favourateView:(FavourateView *)favourateView articleCell:(ArticleCell *)cell didClickOnAlbumEntrysItem:(AHAlbumEntrysItem *)targetItem{}
+
 #pragma mark - ArticleCellDelegate
 /**
  *  点击了头部标题按钮

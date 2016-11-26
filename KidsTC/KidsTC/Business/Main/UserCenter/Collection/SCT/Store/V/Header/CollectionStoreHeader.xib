@@ -16,9 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="193"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w9Q-kM-w88">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w9Q-kM-w88">
                     <rect key="frame" x="15" y="16" width="48" height="48"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="w9Q-kM-w88" secondAttribute="height" multiplier="1:1" id="KjV-IK-BgY"/>
                         <constraint firstAttribute="width" constant="48" id="bfu-OJ-U4L"/>
@@ -36,6 +35,9 @@
                     <state key="normal" title="  进入门店  ">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="JZw-Ea-1DH"/>
+                    </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tf3-lA-5xS">
                     <rect key="frame" x="15" y="97" width="345" height="80"/>

@@ -25,4 +25,8 @@
 @property (nonatomic, assign) NSUInteger like_content_num;
 @property (nonatomic, assign) NSUInteger like_author_num;
 @property (nonatomic, assign) NSUInteger coupon_num;
+@property (nonatomic, assign) NSUInteger tcECordMoney;
+@property (nonatomic, assign) NSUInteger myResidual;
+@property (nonatomic, assign) BOOL userHasNewFlashProduct;
+@property (nonatomic, assign) BOOL userHasNewAppointmentOrder;
 @end

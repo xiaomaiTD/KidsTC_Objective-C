@@ -70,6 +70,18 @@
 //    _type = ProductDetailTypeTicket;
 //    _productId = @"100001";//100001  //3000000004
 //    _channelId = @"0";
+
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        case ProductDetailTypeTicket:
+        case ProductDetailTypeFree:
+            break;
+        default:
+        {
+            _type = ProductDetailTypeNormal;
+        }
+            break;
+    }
     
     if (![_productId isNotNull]) {
         [[iToast makeText:@"商品编号为空！"] show];

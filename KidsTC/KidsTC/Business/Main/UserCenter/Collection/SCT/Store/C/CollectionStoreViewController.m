@@ -8,10 +8,16 @@
 
 #import "CollectionStoreViewController.h"
 
+#import "GHeader.h"
+#import "SegueMaster.h"
+
+#import "CollectionStoreModel.h"
 #import "CollectionStoreView.h"
 
 @interface CollectionStoreViewController ()<CollectionSCTBaseViewDelegate>
 @property (nonatomic, strong) CollectionStoreView *storeView;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation CollectionStoreViewController
@@ -22,6 +28,11 @@
     storeView.delegate = self;
     self.view  = storeView;
     self.storeView = storeView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
 }
 
 
@@ -35,18 +46,32 @@
         }
             break;
             
-        default:
+        case CollectionSCTBaseViewActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
             break;
     }
 }
 
 - (void)loadData:(BOOL)refresh {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.storeView endRefresh:NO];
-        });
-    });
+    self.page = refresh?1:++self.page;
+    NSDictionary *param = @{@"page":@(self.page),
+                            @"pagecount":@(CollectionSCTPageCount)};
+    [Request startWithName:@"GET_USER_INTEREST_STORE_LST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        CollectionStoreModel *model = [CollectionStoreModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.storeView.items = self.items;
+        [self.storeView dealWithUI:0];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.storeView dealWithUI:0];
+    }];
 }
 
 @end

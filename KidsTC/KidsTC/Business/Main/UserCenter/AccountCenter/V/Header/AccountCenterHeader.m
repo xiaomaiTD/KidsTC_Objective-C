@@ -9,6 +9,8 @@
 #import "AccountCenterHeader.h"
 #import "UIImageView+WebCache.h"
 #import "TipButton.h"
+#import "NSString+Category.h"
+#import "UIImage+Category.h"
 
 @interface AccountCenterHeader ()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
@@ -46,6 +48,7 @@
         self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
         [self layoutIfNeeded];
     }
+    self.bgImageView.image = bgImage;
 }
 
 - (void)setupLayer:(CALayer *)layer {
@@ -70,6 +73,29 @@
     
     AccountCenterUserCount *userCount = model.data.userCount;
     self.messageBtn.badgeValue = userCount.unReadMsgCount;
+    
+    NSString *bgImgName = model.data.config.backgroundImg.Img;
+    if ([bgImgName isNotNull]) {
+        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:bgImgName] placeholderImage:PLACEHOLDERIMAGE_BIG completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            CGSize bgSize = image.size;
+            CGFloat bgImageW = bgSize.width;
+            CGFloat bgImageH = bgSize.height;
+            if (bgImageW !=0 && bgImageH != 0) {
+                self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
+                [self layoutIfNeeded];
+            }
+        }];
+    }else{
+        UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
+        CGSize bgSize = bgImage.size;
+        CGFloat bgImageW = bgSize.width;
+        CGFloat bgImageH = bgSize.height;
+        if (bgImageW !=0 && bgImageH != 0) {
+            self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
+            [self layoutIfNeeded];
+        }
+        self.bgImageView.image = bgImage;
+    }
 }
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(accountCenterHeader:actionType:value:)]) {

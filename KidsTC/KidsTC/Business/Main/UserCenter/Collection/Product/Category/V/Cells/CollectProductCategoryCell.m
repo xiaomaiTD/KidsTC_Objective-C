@@ -15,7 +15,8 @@
 #import "CollectProductCategoryCollectionViewCell.h"
 
 static NSString *const ID = @"CollectProductCategoryCollectionViewCell";
-static CGFloat const margin = 10;
+static CGFloat const margin_lefe_right = 10;
+static CGFloat const margin_top_bottom = 16;
 
 @interface CollectProductCategoryCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -25,6 +26,7 @@ static CGFloat const margin = 10;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *baannerIconH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewH;
+@property (nonatomic, assign) CGFloat item_s;
 @end
 
 @implementation CollectProductCategoryCell
@@ -35,16 +37,19 @@ static CGFloat const margin = 10;
     self.bgView.layer.cornerRadius = 8;
     self.bgView.layer.masksToBounds = YES;
     
-    self.bannerIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    self.bannerIcon.layer.borderWidth = LINE_H;
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectProductCategoryCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     
-    CGFloat item_w = (SCREEN_WIDTH - 7*margin)/4.5;
-    self.collectionViewH.constant = item_w;
+    _item_s = (SCREEN_WIDTH - 7*margin_lefe_right)/4.5;
+    self.collectionViewH.constant = _item_s + margin_top_bottom * 2;
     
     self.nameL.textColor = [UIColor colorFromHexString:@"222222"];
     self.numL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
-    self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    self.contentView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    
+    self.bannerIcon.userInteractionEnabled = YES;
+    UITapGestureRecognizer *iconTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.bannerIcon addGestureRecognizer:iconTapGR];
+    
     [self layoutIfNeeded];
     
 }
@@ -54,23 +59,37 @@ static CGFloat const margin = 10;
     self.nameL.text = item.categoryName;
     self.numL.text = [NSString stringWithFormat:@"%zd个活动",item.totalCount];
     [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:item.firstItem.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    
+    CGFloat collectionViewH = 0;
+    if (self.item.items.count>0) {
+        collectionViewH = _item_s + margin_top_bottom * 2;
+    }
+    self.collectionViewH.constant = collectionViewH;
+    [self layoutIfNeeded];
+    
+    [self.collectionView reloadData];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(collectProductCategoryCell:actionType:value:)]) {
+        [self.delegate collectProductCategoryCell:self actionType:CollectProductCategoryCellActionTypeSegue value:self.item.firstItem.segueModel];
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat size = CGRectGetHeight(collectionView.bounds);
-    return CGSizeMake(size, size);
+    return CGSizeMake(_item_s, _item_s);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, margin, 0, margin);
+    return UIEdgeInsetsMake(margin_top_bottom, margin_lefe_right, margin_top_bottom, margin_lefe_right);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return margin;
+    return margin_lefe_right;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return margin;
+    return margin_lefe_right;
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
@@ -83,12 +102,24 @@ static CGFloat const margin = 10;
     
     CollectProductCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     NSInteger row = indexPath.row;
-    if (row<self.item.items.count) {
-        cell.imgUrl = self.item.items[row].img;
+    NSArray<CollectProductItem *> *items = self.item.items;
+    if (row<items.count) {
+        cell.imgUrl = items[row].img;
     }
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    NSInteger row = indexPath.row;
+    NSArray<CollectProductItem *> *items = self.item.items;
+    if (row<items.count) {
+        CollectProductItem *item = items[row];
+        if ([self.delegate respondsToSelector:@selector(collectProductCategoryCell:actionType:value:)]) {
+            [self.delegate collectProductCategoryCell:self actionType:CollectProductCategoryCellActionTypeSegue value:item.segueModel];
+        }
+    }
+}
 
 
 @end

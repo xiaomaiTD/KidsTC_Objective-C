@@ -60,6 +60,9 @@
                                                 <state key="normal" title="立即使用">
                                                     <color key="titleColor" red="1" green="0.74509803921568629" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R5U-Hs-yz3"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="260" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="详细信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk5-Pl-Rx6">
                                                 <rect key="frame" x="0.0" y="65" width="41" height="12"/>
@@ -75,6 +78,9 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                                 <state key="normal" image="CouponList_open"/>
+                                                <connections>
+                                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6r0-1G-Rm3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -208,6 +214,15 @@
                     <constraint firstAttribute="bottom" secondItem="pit-50-fK3" secondAttribute="bottom" id="edI-0B-GS4"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="detailBtn" destination="ci7-Am-LTX" id="n7z-Hc-tLf"/>
+                <outlet property="expiredIcon" destination="Oi2-DG-Zw7" id="Ng8-qe-6YT"/>
+                <outlet property="nameL" destination="0ir-nn-y89" id="V3z-wB-un9"/>
+                <outlet property="priceL" destination="sgW-fV-uWI" id="rKF-7e-Brp"/>
+                <outlet property="timeL" destination="RtN-1E-tjY" id="vd5-3k-JVy"/>
+                <outlet property="tipL" destination="v7c-Nc-hcy" id="6ch-JR-bfl"/>
+                <outlet property="useBtn" destination="dMO-Pn-fD9" id="CZi-0U-Qxf"/>
+            </connections>
             <point key="canvasLocation" x="25" y="45"/>
         </tableViewCell>
     </objects>

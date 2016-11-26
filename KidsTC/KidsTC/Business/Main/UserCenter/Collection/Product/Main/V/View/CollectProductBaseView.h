@@ -12,6 +12,7 @@
 
 typedef enum : NSUInteger {
     CollectProductBaseViewActionTypeLoadData = 1,
+    CollectProductBaseViewActionTypeSegue
 } CollectProductBaseViewActionType;
 
 @class CollectProductBaseView;

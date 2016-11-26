@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define CouponListPageCount 10
+
 typedef enum : NSUInteger {
     CouponListBaseViewActionTypeLoadData = 1,
 } CouponListBaseViewActionType;
@@ -21,5 +23,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) UITableView *tableView;
 //这里修饰delegate的关键字必须为strong，原因是controller不被navi栈强引用，如果delegate不为strong，则delegate为nil
 @property (nonatomic, strong) id<CouponListBaseViewDelegate> delegate;
-- (void)endRefresh:(BOOL)noMoreData;
+@property (nonatomic, strong) NSArray *items;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

@@ -13,8 +13,9 @@
 #import "CollectionTarentoFooter.h"
 
 static NSString *const HeadID = @"CollectionTarentoHeader";
-static NSString *const CellID = @"CollectionTarentoCell";
 static NSString *const FootID = @"CollectionTarentoFooter";
+
+#import "CollectionTarentoItem.h"
 
 #import "ArticleHomeBaseCell.h"
 #import "ArticleHomeIconCell.h"
@@ -51,7 +52,6 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     if (self) {
         self.tableView.backgroundColor = [UIColor whiteColor];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
-        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoCell" bundle:nil] forCellReuseIdentifier:CellID];
         [self registerCells];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
     }
@@ -75,30 +75,64 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    return self.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    if (section<self.items.count) {
+        CollectionTarentoItem *item = self.items[section];
+        return item.articleLst.count;
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CollectionTarentoHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
-    
+    if (section<self.items.count) {
+        CollectionTarentoItem *item = self.items[section];
+        header.item = item;
+    }
     return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CollectionTarentoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-    
-    return cell;
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (section<self.items.count) {
+        CollectionTarentoItem *item = self.items[section];
+        NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
+        if (row<articleLst.count) {
+            ArticleHomeItem *articleItem = articleLst[row];
+            NSString *ID = [self cellIdWtith:articleItem.listTemplate];
+            ArticleHomeBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+            cell.delegate = self;
+            cell.item = articleItem;
+            return cell;
+        }
+    }
+    return [tableView dequeueReusableCellWithIdentifier:ArticleHomeBaseCellID];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     CollectionTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
-    
+    if (section<self.items.count) {
+        CollectionTarentoItem *item = self.items[section];
+        footer.item = item;
+    }
     return footer;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger row = indexPath.row;
+    if (row<self.items.count) {
+        ArticleHomeItem *item = self.items[row];
+        if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+            [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel];
+        }
+    }
+}
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource helper
 
 
@@ -172,7 +206,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value];
+            }
         }
             break;
         default:break;

@@ -11,7 +11,7 @@
 
 static NSString *const ID = @"CollectProductCategoryCell";
 
-@interface CollectProductCategoryView ()
+@interface CollectProductCategoryView ()<CollectProductCategoryCellDelegate>
 @end
 
 @implementation CollectProductCategoryView
@@ -38,10 +38,28 @@ static NSString *const ID = @"CollectProductCategoryCell";
     
     CollectProductCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     NSInteger section = indexPath.section;
-    if (section<indexPath.section) {
+    if (section<self.items.count) {
         cell.item = self.items[section];
     }
+    cell.delegate = self;
     return cell;
+}
+
+#pragma mark - CollectProductCategoryCellDelegate
+
+- (void)collectProductCategoryCell:(CollectProductCategoryCell *)cell actionType:(CollectProductCategoryCellActionType)type value:(id)value {
+    switch (type) {
+        case CollectProductCategoryCellActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
+                [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:value];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

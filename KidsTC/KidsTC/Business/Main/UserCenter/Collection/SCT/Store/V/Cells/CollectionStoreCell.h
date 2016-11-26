@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CollectionStoreProduct.h"
 @interface CollectionStoreCell : UITableViewCell
-
+@property (nonatomic, strong) CollectionStoreProduct *product;
 @end

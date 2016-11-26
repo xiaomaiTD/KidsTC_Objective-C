@@ -28,4 +28,9 @@
     self.marginView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
 }
 
+- (void)setItem:(CollectionStoreItem *)item {
+    _item = item;
+    self.numL.text = item.newsCount;
+}
+
 @end

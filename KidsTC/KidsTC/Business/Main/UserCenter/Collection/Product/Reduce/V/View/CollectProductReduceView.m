@@ -43,4 +43,15 @@ static NSString *const ID = @"CollectProductReduceCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger section = indexPath.section;
+    if (section<self.items.count) {
+        CollectProductItem *item = self.items[section];
+        if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
+            [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:item.segueModel];
+        }
+    }
+}
+
 @end

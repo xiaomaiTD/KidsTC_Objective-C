@@ -12,7 +12,8 @@
 + (NSDictionary *)modelContainerPropertyGenericClass
 {
     return @{@"icons" : [NSString class],
-             @"banners":[AccountCenterBanner class]};
+             @"banners":[AccountCenterBanner class],
+             @"activityExhibitionHall":[AccountCenterActivity class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     

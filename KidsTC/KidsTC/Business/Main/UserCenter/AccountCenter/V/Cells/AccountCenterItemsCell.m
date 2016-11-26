@@ -45,12 +45,18 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineTwoH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineThreeH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineFourH;
+
+@property (weak, nonatomic) IBOutlet UILabel *radishTipL;
+@property (weak, nonatomic) IBOutlet UILabel *flashTipL;
+@property (weak, nonatomic) IBOutlet UILabel *appoinmentTipL;
+@property (weak, nonatomic) IBOutlet UILabel *shareTipL;
 @end
 
 @implementation AccountCenterItemsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self layoutIfNeeded];
     
     self.historyBtn.tag = AccountCenterCellActionTypeHistory;
     self.radishMallBtn.tag = AccountCenterCellActionTypeRadishMall;
@@ -88,6 +94,19 @@
     self.HLineThreeH.constant = LINE_H;
     self.HLineFourH.constant = LINE_H;
     
+    self.radishTipL.backgroundColor = COLOR_PINK;
+    self.flashTipL.backgroundColor = COLOR_PINK;
+    self.appoinmentTipL.backgroundColor = COLOR_PINK;
+    self.shareTipL.backgroundColor = COLOR_PINK;
+    self.radishTipL.layer.cornerRadius = CGRectGetHeight(self.radishTipL.frame) * 0.5;
+    self.radishTipL.layer.masksToBounds = YES;
+    self.flashTipL.layer.cornerRadius = CGRectGetHeight(self.flashTipL.frame) * 0.5;
+    self.flashTipL.layer.masksToBounds = YES;
+    self.appoinmentTipL.layer.cornerRadius = CGRectGetHeight(self.appoinmentTipL.frame) * 0.5;
+    self.appoinmentTipL.layer.masksToBounds = YES;
+    self.shareTipL.layer.cornerRadius = CGRectGetHeight(self.shareTipL.frame) * 0.5;
+    self.shareTipL.layer.masksToBounds = YES;
+    
     [self layoutIfNeeded];
 }
 
@@ -100,6 +119,21 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
+    AccountCenterCellActionType type = sender.tag;
+    switch (type) {
+        case AccountCenterCellActionTypeRadishMall:
+        {
+            self.radishTipL.hidden = YES;
+        }
+            break;
+        case AccountCenterCellActionTypeShareMakeMoney:
+        {
+            self.shareTipL.hidden = YES;
+        }
+            break;
+        default:
+            break;
+    }
     if ([self.delegate respondsToSelector:@selector(accountCenterBaseCell:actionType:value:)]) {
         [self.delegate accountCenterBaseCell:self actionType:sender.tag value:nil];
     }
@@ -107,6 +141,10 @@
 
 - (void)setModel:(AccountCenterModel *)model {
     [super setModel:model];
+    AccountCenterUserCount *userCount = model.data.userCount;
+    self.flashTipL.hidden = !userCount.userHasNewFlashProduct;
+    self.appoinmentTipL.hidden = !userCount.userHasNewAppointmentOrder;
+    
 }
 
 @end

@@ -19,7 +19,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+}
+
+- (void)setCoupon:(CollectionStoreCoupon *)coupon {
+    _coupon = coupon;
+    self.fullL.text = _coupon.fiftyAmt;
+    self.disL.text = _coupon.couponAmt;
 }
 
 @end

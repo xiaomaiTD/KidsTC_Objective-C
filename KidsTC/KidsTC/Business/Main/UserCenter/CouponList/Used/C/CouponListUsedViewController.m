@@ -7,10 +7,15 @@
 //
 
 #import "CouponListUsedViewController.h"
+
+#import "GHeader.h"
+
 #import "CouponListUsedView.h"
 
 @interface CouponListUsedViewController ()<CouponListBaseViewDelegate>
 @property (nonatomic, strong) CouponListUsedView *usedView;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation CouponListUsedViewController
@@ -39,12 +44,25 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.usedView endRefresh:NO];
-        });
-    });
+    
+    self.page = refresh?1:++self.page;
+    NSDictionary *param = @{@"status":@(CouponListStatusUsed),
+                            @"page":@(self.page),
+                            @"pagecount":@(CouponListPageCount)};
+    [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        //        CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
+        //        if (refresh) {
+        //            self.items = model.data;
+        //        }else{
+        //            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+        //            [items addObjectsFromArray:model.data];
+        //            self.items = [NSArray arrayWithArray:items];
+        //        }
+        //        self.unusedView.items = self.items;
+        [self.usedView dealWithUI:0];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.usedView dealWithUI:0];
+    }];
 }
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "CollectProductCategoryViewController.h"
+
 #import "GHeader.h"
+#import "SegueMaster.h"
 
 #import "CollectProductCategoryModel.h"
 #import "CollectProductCategoryView.h"
@@ -29,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
 }
 
 #pragma mark - CollectProductBaseViewActionTypeDelegate
@@ -41,7 +44,10 @@
         }
             break;
             
-        default:
+        case CollectProductBaseViewActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
             break;
     }
 }

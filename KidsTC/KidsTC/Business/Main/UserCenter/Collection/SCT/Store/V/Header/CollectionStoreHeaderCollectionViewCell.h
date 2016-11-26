@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CollectionStoreCoupon.h"
 @interface CollectionStoreHeaderCollectionViewCell : UICollectionViewCell
-
+@property (nonatomic, strong) CollectionStoreCoupon *coupon;
 @end

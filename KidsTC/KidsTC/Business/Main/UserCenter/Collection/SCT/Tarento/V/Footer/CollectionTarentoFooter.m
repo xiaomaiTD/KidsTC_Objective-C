@@ -27,4 +27,9 @@
     self.marginView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
 }
 
+- (void)setItem:(CollectionTarentoItem *)item {
+    _item = item;
+    self.numL.text = _item.newsCount;
+}
+
 @end

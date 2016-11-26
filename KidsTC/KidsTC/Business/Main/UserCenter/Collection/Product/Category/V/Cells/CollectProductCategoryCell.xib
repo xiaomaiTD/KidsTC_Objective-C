@@ -52,10 +52,10 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-Ea-Fyx">
-                                <rect key="frame" x="0.0" y="180" width="300" height="80"/>
+                                <rect key="frame" x="0.0" y="164" width="300" height="113"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="s4m-8n-TtB"/>
+                                    <constraint firstAttribute="height" constant="113" id="NFd-a7-M9H"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eLi-sP-dCL">
                                     <size key="itemSize" width="50" height="50"/>
@@ -72,15 +72,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="x6J-MZ-Pd2" secondAttribute="trailing" id="2CW-Xr-foA"/>
+                            <constraint firstAttribute="trailing" secondItem="VSc-Ea-Fyx" secondAttribute="trailing" id="CPr-xO-XFz"/>
                             <constraint firstItem="x6J-MZ-Pd2" firstAttribute="leading" secondItem="JSN-hg-3od" secondAttribute="leading" id="DA6-lZ-iMd"/>
                             <constraint firstItem="QWD-Xy-HWr" firstAttribute="top" secondItem="JSN-hg-3od" secondAttribute="top" id="Dus-MK-f84"/>
-                            <constraint firstItem="VSc-Ea-Fyx" firstAttribute="leading" secondItem="JSN-hg-3od" secondAttribute="leading" id="GLb-Zd-JFp"/>
-                            <constraint firstAttribute="bottom" secondItem="VSc-Ea-Fyx" secondAttribute="bottom" constant="16" id="Tue-ek-gU9"/>
+                            <constraint firstItem="VSc-Ea-Fyx" firstAttribute="top" secondItem="x6J-MZ-Pd2" secondAttribute="bottom" id="O7O-Dg-lOG"/>
                             <constraint firstItem="QWD-Xy-HWr" firstAttribute="leading" secondItem="JSN-hg-3od" secondAttribute="leading" id="UCi-iF-9tc"/>
                             <constraint firstAttribute="trailing" secondItem="QWD-Xy-HWr" secondAttribute="trailing" id="Uq6-cf-sNP"/>
-                            <constraint firstItem="VSc-Ea-Fyx" firstAttribute="top" secondItem="x6J-MZ-Pd2" secondAttribute="bottom" constant="16" id="Xth-Bi-T6h"/>
                             <constraint firstItem="x6J-MZ-Pd2" firstAttribute="top" secondItem="QWD-Xy-HWr" secondAttribute="bottom" id="YTJ-Mp-7iD"/>
-                            <constraint firstAttribute="trailing" secondItem="VSc-Ea-Fyx" secondAttribute="trailing" id="vFj-Zw-D6Y"/>
+                            <constraint firstAttribute="bottom" secondItem="VSc-Ea-Fyx" secondAttribute="bottom" id="pBB-nL-4w4"/>
+                            <constraint firstItem="VSc-Ea-Fyx" firstAttribute="leading" secondItem="JSN-hg-3od" secondAttribute="leading" id="qW1-j9-8rb"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -97,11 +97,11 @@
                 <outlet property="bannerIcon" destination="x6J-MZ-Pd2" id="pn2-rh-A7F"/>
                 <outlet property="bgView" destination="JSN-hg-3od" id="T8k-hc-izr"/>
                 <outlet property="collectionView" destination="VSc-Ea-Fyx" id="cPU-Zc-ql8"/>
-                <outlet property="collectionViewH" destination="s4m-8n-TtB" id="tbg-8T-Q6H"/>
+                <outlet property="collectionViewH" destination="NFd-a7-M9H" id="PbM-oS-bQa"/>
                 <outlet property="nameL" destination="J50-uA-T8V" id="1LX-i3-QPl"/>
                 <outlet property="numL" destination="Off-aj-sp6" id="gHO-CA-3QX"/>
             </connections>
-            <point key="canvasLocation" x="59" y="31.5"/>
+            <point key="canvasLocation" x="-273" y="48"/>
         </tableViewCell>
     </objects>
 </document>

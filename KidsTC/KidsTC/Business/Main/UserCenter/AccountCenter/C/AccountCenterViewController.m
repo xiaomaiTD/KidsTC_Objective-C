@@ -174,19 +174,25 @@
             break;
         case AccountCenterViewActionTypeCollectionStore:
         {
-            toController = [[CollectionSCTViewController alloc] init];
+            CollectionSCTViewController *controller = [[CollectionSCTViewController alloc] init];
+            controller.type = CollectionSCTTypeStore;
+            toController = controller;
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
         case AccountCenterViewActionTypeCollectionContent:
         {
-            toController = [[CollectionSCTViewController alloc] init];
+            CollectionSCTViewController *controller = [[CollectionSCTViewController alloc] init];
+            controller.type = CollectionSCTTypeContent;
+            toController = controller;
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
         case AccountCenterViewActionTypeCollectionPeople:
         {
-            toController = [[CollectionSCTViewController alloc] init];
+            CollectionSCTViewController *controller = [[CollectionSCTViewController alloc] init];
+            controller.type = CollectionSCTTypeTarento;
+            toController = controller;
             [BuryPointManager trackEvent:@"event_skip_usr_favorlist" actionId:21505 params:nil];
         }
             break;
@@ -252,14 +258,12 @@
             break;
         case AccountCenterViewActionTypeECard:
         {
-            NurseryViewController *controller = [[NurseryViewController alloc] initWithNibName:@"NurseryViewController" bundle:nil];
-            controller.type = NurseryTypeExhibitionHall;
-            toController = controller;
+            [SegueMaster makeSegueWithModel:self.model.data.config.tcECordLink.segueModel fromController:self];
         }
             break;
         case AccountCenterViewActionTypeBalance:
         {
-            
+            [SegueMaster makeSegueWithModel:self.model.data.config.residualLink.segueModel fromController:self];
         }
             break;
         case AccountCenterViewActionTypeHistory:

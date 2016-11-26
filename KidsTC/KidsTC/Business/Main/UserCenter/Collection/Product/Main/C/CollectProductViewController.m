@@ -44,7 +44,6 @@
     [self.view addSubview:toolBar];
     self.toolBar = toolBar;
     
-    
     CGFloat scrollView_y = CGRectGetMaxY(toolBar.frame);
     CGFloat scrollView_w = SCREEN_WIDTH;
     CGFloat scrollView_h = SCREEN_HEIGHT - scrollView_y;
@@ -52,31 +51,36 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, scrollView_y, scrollView_w, scrollView_h)];
     scrollView.delegate = self;
     scrollView.pagingEnabled = YES;
+    //scrollView.scrollEnabled = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    UIView *allView = [[CollectProductAllViewController alloc] init].view;
+    CollectProductAllViewController *allVC = [[CollectProductAllViewController alloc] init];
+    UIView *allView = allVC.view;
     allView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:allView];
+    [self addChildViewController:allVC];
     
-    UIView *categoryView = [[CollectProductCategoryViewController alloc] init].view;
+    CollectProductCategoryViewController *categoryVC = [[CollectProductCategoryViewController alloc] init];
+    UIView *categoryView = categoryVC.view;
     categoryView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:categoryView];
+    [self addChildViewController:categoryVC];
     
-    UIView *reduceView = [[CollectProductReduceViewController alloc] init].view;
+    CollectProductReduceViewController *reduceVC = [[CollectProductReduceViewController alloc] init];
+    UIView *reduceView = reduceVC.view;
     reduceView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:reduceView];
+    [self addChildViewController:reduceVC];
     
     scrollView.contentSize = CGSizeMake(scrollView_w * 3, 1);
     
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
+    });
 }
 
 - (void)edit {

@@ -39,7 +39,7 @@
     self.icon.layer.borderWidth = 1;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
-    self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    self.contentView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.addressL.textColor = [UIColor colorFromHexString:@"999999"];
     self.statusL.textColor = [UIColor colorFromHexString:@"999999"];

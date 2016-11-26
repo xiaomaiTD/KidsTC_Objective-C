@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerIconH;
 @property (weak, nonatomic) IBOutlet UILabel *reduceL;
+@property (weak, nonatomic) IBOutlet UIImageView *reduceIcon;
 @end
 
 @implementation CollectProductReduceCell
@@ -40,7 +41,7 @@
     self.icon.layer.borderWidth = 1;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
-    self.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    self.contentView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.addressL.textColor = [UIColor colorFromHexString:@"999999"];
     self.statusL.textColor = [UIColor colorFromHexString:@"999999"];
@@ -58,6 +59,10 @@
     self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.price];
     self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.address,_item.distanceDesc];
     self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
+    
+    BOOL reduce = [_item.markdownPrice floatValue] > 0;
+    self.reduceIcon.hidden = !reduce;
+    self.reduceL.hidden = !reduce;
     self.reduceL.text = [NSString stringWithFormat:@"下降了¥%@",_item.markdownPrice];
 }
 

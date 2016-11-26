@@ -7,7 +7,7 @@
 //
 
 typedef enum : NSUInteger {
-    ProductDetailTypeNormal,//普通商详
+    ProductDetailTypeNormal = 1,//普通商详
     ProductDetailTypeTicket,//票务商详
     ProductDetailTypeFree,//免费商详
 } ProductDetailType;//商详类型
@@ -17,6 +17,12 @@ typedef enum : NSUInteger {
     CollectProductTypeCategory,//分类
     CollectProductTypeReduct,//降价
 } CollectProductType;
+
+typedef enum : NSUInteger {
+    CouponListStatusUnused = 1,//未使用
+    CouponListStatusUsed,//已使用
+    CouponListStatusExpired,//已过期
+} CouponListStatus;
 
 typedef enum : NSUInteger {
     TCSexTypeUnkonw,//未知

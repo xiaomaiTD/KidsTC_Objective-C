@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollectionStoreHeader : UITableViewHeaderFooterView
+#import "CollectionStoreItem.h"
 
+typedef enum : NSUInteger {
+    CollectionStoreHeaderActionTypeSegue = 1,
+} CollectionStoreHeaderActionType;
+
+@class CollectionStoreHeader;
+
+@protocol CollectionStoreHeaderDelegate <NSObject>
+- (void)collectionStoreHeader:(CollectionStoreHeader *)header actionType:(CollectionStoreHeaderActionType)type value:(id)value;
+@end
+
+@interface CollectionStoreHeader : UITableViewHeaderFooterView
+@property (nonatomic, strong) CollectionStoreItem *item;
+@property (nonatomic, weak) id<CollectionStoreHeaderDelegate> delegate;
 @end

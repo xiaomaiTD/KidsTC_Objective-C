@@ -8,6 +8,10 @@
 
 #import "CollectionStoreHeader.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
+
 #import "CollectionStoreHeaderCollectionViewCell.h"
 
 
@@ -51,8 +55,35 @@ static CGFloat const margin = 12;
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.numL.textColor = [UIColor colorFromHexString:@"888888"];
     
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:tapGR];
+    
     [self layoutIfNeeded];
 }
+
+- (void)setItem:(CollectionStoreItem *)item {
+    _item = item;
+    
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:item.storeImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = item.storeName;
+    self.numL.text = [NSString stringWithFormat:@"销量 %@  收藏 %@",item.saleNum,item.interestNum];
+    [self.collectionView reloadData];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    [self goToStoreAction];
+}
+
+- (IBAction)action:(UIButton *)sender {
+    [self goToStoreAction];
+}
+
+- (void)goToStoreAction {
+    if ([self.delegate respondsToSelector:@selector(collectionStoreHeader:actionType:value:)]) {
+        [self.delegate collectionStoreHeader:self actionType:CollectionStoreHeaderActionTypeSegue value:self.item.segueModel];
+    }
+}
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     [self layoutIfNeeded];
@@ -72,15 +103,28 @@ static CGFloat const margin = 12;
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    if (self.item.couponModeLst.count>3) {
+        return 3;
+    }else{
+        return self.item.couponModeLst.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionStoreHeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    
+    NSInteger row = indexPath.row;
+    NSArray<CollectionStoreCoupon *> *couponModeLst = self.item.couponModeLst;
+    if (row<couponModeLst.count) {
+        CollectionStoreCoupon *coupon = couponModeLst[row];
+        cell.coupon = coupon;
+    }
     return cell;
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self goToStoreAction];
+}
 
 
 @end

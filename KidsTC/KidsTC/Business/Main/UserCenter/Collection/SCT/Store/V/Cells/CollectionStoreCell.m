@@ -8,6 +8,9 @@
 
 #import "CollectionStoreCell.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 @interface CollectionStoreCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -31,6 +34,11 @@
     [self layoutIfNeeded];
 }
 
-
+- (void)setProduct:(CollectionStoreProduct *)product {
+    _product = product;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:product.img] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.nameL.text = product.name;
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",product.price];
+}
 
 @end

@@ -49,6 +49,8 @@ static KTCFavouriteManager *_sharedInstance = nil;
         case KTCFavouriteTypeService:
         case KTCFavouriteTypeStore:
         case KTCFavouriteTypeStrategy:
+        case KTCFavouriteTypeTicketService:
+        case KTCFavouriteTypeFreeService:
         {
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    identifier, @"number",
@@ -77,6 +79,8 @@ static KTCFavouriteManager *_sharedInstance = nil;
         case KTCFavouriteTypeService:
         case KTCFavouriteTypeStore:
         case KTCFavouriteTypeStrategy:
+        case KTCFavouriteTypeTicketService:
+        case KTCFavouriteTypeFreeService:
         {
             NSMutableDictionary *tempParam = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                               [NSNumber numberWithInteger:type], @"type",

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionTarentoItem.h"
 
 @interface CollectionTarentoHeader : UITableViewHeaderFooterView
-
+@property (nonatomic, strong) CollectionTarentoItem *item;
 @end

@@ -8,6 +8,9 @@
 
 #import "CollectionTarentoHeader.h"
 #import "Colours.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 @interface CollectionTarentoHeader ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -24,6 +27,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self layoutIfNeeded];
+    
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.icon.layer.borderWidth = LINE_H;
     self.icon.layer.cornerRadius = CGRectGetWidth(self.icon.bounds) * 0.5;
@@ -34,6 +38,27 @@
     self.articleNumL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
     self.seeNumL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
     self.timeL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
+}
+
+/*
+ @property (nonatomic, strong) NSString *authorNo;
+ @property (nonatomic, strong) NSString *authorName;
+ @property (nonatomic, strong) NSString *authorSign;
+ @property (nonatomic, strong) NSString *authorDesc;
+ @property (nonatomic, strong) NSString *headSculpture;
+ @property (nonatomic, strong) NSString *publishArticleNum;
+ @property (nonatomic, strong) NSString *viewSumNum;
+ @property (nonatomic, strong) NSString *newsCount;
+ */
+
+- (void)setItem:(CollectionTarentoItem *)item {
+    _item = item;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.headSculpture] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = _item.authorName;
+//    self.timeL.text = _item.
+    self.signL.text = _item.authorSign;
+    self.articleNumL.text = _item.publishArticleNum;
+    self.seeNumL.text = _item.viewSumNum;
 }
 
 @end

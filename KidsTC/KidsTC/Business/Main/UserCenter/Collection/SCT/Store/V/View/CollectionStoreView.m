@@ -11,9 +11,15 @@
 #import "CollectionStoreCell.h"
 #import "CollectionStoreFooter.h"
 
+#import "CollectionStoreItem.h"
+
 static NSString *const CellID = @"CollectionStoreCell";
 static NSString *const HeadID = @"CollectionStoreHeader";
 static NSString *const FootID = @"CollectionStoreFooter";
+
+@interface CollectionStoreView ()<CollectionStoreHeaderDelegate>
+
+@end
 
 @implementation CollectionStoreView
 
@@ -31,31 +37,79 @@ static NSString *const FootID = @"CollectionStoreFooter";
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    return self.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (section<self.items.count) {
+        CollectionStoreItem *item = self.items[section];
+        return item.productLst.count;
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CollectionStoreHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
-    
+    if (section<self.items.count) {
+        header.item = self.items[section];
+    }
+    header.delegate = self;
     return header;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CollectionStoreCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-    
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (section<self.items.count) {
+        CollectionStoreItem *item = self.items[section];
+        if (row<item.productLst.count) {
+            cell.product = item.productLst[row];
+        }
+    }
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     CollectionStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
-    
+    if (section<self.items.count) {
+        footer.item = self.items[section];
+    }
     return footer;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (section<self.items.count) {
+        CollectionStoreItem *item = self.items[section];
+        NSArray<CollectionStoreProduct *> *productLst = item.productLst;
+        if (row<productLst.count) {
+            CollectionStoreProduct *product = productLst[row];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:product.segueModel];
+            }
+        }
+    }
+}
+
+#pragma mark - CollectionStoreHeaderDelegate
+
+- (void)collectionStoreHeader:(CollectionStoreHeader *)header actionType:(CollectionStoreHeaderActionType)type value:(id)value {
+    switch (type) {
+        case CollectionStoreHeaderActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
 @end

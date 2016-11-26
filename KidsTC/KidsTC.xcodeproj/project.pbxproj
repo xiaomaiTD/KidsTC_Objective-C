@@ -176,6 +176,20 @@
 		EC2289431DE87DCA00EC324A /* CollectProductReduceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289421DE87DCA00EC324A /* CollectProductReduceModel.m */; };
 		EC2289461DE880A700EC324A /* CollectProductCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289451DE880A700EC324A /* CollectProductCategoryModel.m */; };
 		EC2289491DE8811200EC324A /* CollectProductCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289481DE8811200EC324A /* CollectProductCategoryItem.m */; };
+		EC22894C1DE95C8600EC324A /* CollectionStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22894B1DE95C8600EC324A /* CollectionStoreModel.m */; };
+		EC22894F1DE95CBC00EC324A /* CollectionStoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22894E1DE95CBC00EC324A /* CollectionStoreItem.m */; };
+		EC2289521DE95D4F00EC324A /* CollectionStoreCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289511DE95D4F00EC324A /* CollectionStoreCoupon.m */; };
+		EC2289551DE95D7300EC324A /* CollectionStoreProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289541DE95D7300EC324A /* CollectionStoreProduct.m */; };
+		EC2289581DE965A600EC324A /* CollectionTarentoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289571DE965A600EC324A /* CollectionTarentoModel.m */; };
+		EC22895B1DE97E1200EC324A /* CollectionContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22895A1DE97E1200EC324A /* CollectionContentModel.m */; };
+		EC22895E1DE9910C00EC324A /* CollectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22895D1DE9910C00EC324A /* CollectManager.m */; };
+		EC2289641DE9B35600EC324A /* AccountCenterBackgroundImg.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289631DE9B35600EC324A /* AccountCenterBackgroundImg.m */; };
+		EC2289671DE9B39600EC324A /* AccountCenterTCECordLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289661DE9B39600EC324A /* AccountCenterTCECordLink.m */; };
+		EC22896A1DE9B3C200EC324A /* AccountCenterResidualLink.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289691DE9B3C200EC324A /* AccountCenterResidualLink.m */; };
+		EC22896D1DE9B3EF00EC324A /* AccountCenterActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = EC22896C1DE9B3EF00EC324A /* AccountCenterActivity.m */; };
+		EC2289741DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289721DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.m */; };
+		EC2289751DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2289731DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.xib */; };
+		EC2289781DE9C7A400EC324A /* CollectionTarentoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2289771DE9C7A400EC324A /* CollectionTarentoItem.m */; };
 		EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F257E1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m */; };
 		EC2F25811DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC2F257F1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib */; };
 		EC2F25851DD31CE600B67BBA /* AccountCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2F25841DD31CE600B67BBA /* AccountCenterView.m */; };
@@ -1578,6 +1592,33 @@
 		EC2289451DE880A700EC324A /* CollectProductCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductCategoryModel.m; sourceTree = "<group>"; };
 		EC2289471DE8811200EC324A /* CollectProductCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectProductCategoryItem.h; sourceTree = "<group>"; };
 		EC2289481DE8811200EC324A /* CollectProductCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectProductCategoryItem.m; sourceTree = "<group>"; };
+		EC22894A1DE95C8600EC324A /* CollectionStoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreModel.h; sourceTree = "<group>"; };
+		EC22894B1DE95C8600EC324A /* CollectionStoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreModel.m; sourceTree = "<group>"; };
+		EC22894D1DE95CBC00EC324A /* CollectionStoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreItem.h; sourceTree = "<group>"; };
+		EC22894E1DE95CBC00EC324A /* CollectionStoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreItem.m; sourceTree = "<group>"; };
+		EC2289501DE95D4F00EC324A /* CollectionStoreCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreCoupon.h; sourceTree = "<group>"; };
+		EC2289511DE95D4F00EC324A /* CollectionStoreCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreCoupon.m; sourceTree = "<group>"; };
+		EC2289531DE95D7300EC324A /* CollectionStoreProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionStoreProduct.h; sourceTree = "<group>"; };
+		EC2289541DE95D7300EC324A /* CollectionStoreProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionStoreProduct.m; sourceTree = "<group>"; };
+		EC2289561DE965A600EC324A /* CollectionTarentoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoModel.h; sourceTree = "<group>"; };
+		EC2289571DE965A600EC324A /* CollectionTarentoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoModel.m; sourceTree = "<group>"; };
+		EC2289591DE97E1200EC324A /* CollectionContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionContentModel.h; sourceTree = "<group>"; };
+		EC22895A1DE97E1200EC324A /* CollectionContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionContentModel.m; sourceTree = "<group>"; };
+		EC22895C1DE9910C00EC324A /* CollectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectManager.h; sourceTree = "<group>"; };
+		EC22895D1DE9910C00EC324A /* CollectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectManager.m; sourceTree = "<group>"; };
+		EC2289621DE9B35600EC324A /* AccountCenterBackgroundImg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterBackgroundImg.h; sourceTree = "<group>"; };
+		EC2289631DE9B35600EC324A /* AccountCenterBackgroundImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterBackgroundImg.m; sourceTree = "<group>"; };
+		EC2289651DE9B39600EC324A /* AccountCenterTCECordLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterTCECordLink.h; sourceTree = "<group>"; };
+		EC2289661DE9B39600EC324A /* AccountCenterTCECordLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterTCECordLink.m; sourceTree = "<group>"; };
+		EC2289681DE9B3C200EC324A /* AccountCenterResidualLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterResidualLink.h; sourceTree = "<group>"; };
+		EC2289691DE9B3C200EC324A /* AccountCenterResidualLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterResidualLink.m; sourceTree = "<group>"; };
+		EC22896B1DE9B3EF00EC324A /* AccountCenterActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterActivity.h; sourceTree = "<group>"; };
+		EC22896C1DE9B3EF00EC324A /* AccountCenterActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterActivity.m; sourceTree = "<group>"; };
+		EC2289711DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterActivitiesCollectionViewCell.h; sourceTree = "<group>"; };
+		EC2289721DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterActivitiesCollectionViewCell.m; sourceTree = "<group>"; };
+		EC2289731DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountCenterActivitiesCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC2289761DE9C7A400EC324A /* CollectionTarentoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoItem.h; sourceTree = "<group>"; };
+		EC2289771DE9C7A400EC324A /* CollectionTarentoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoItem.m; sourceTree = "<group>"; };
 		EC2F257D1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCenterBannersCollectionViewCell.h; sourceTree = "<group>"; };
 		EC2F257E1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCenterBannersCollectionViewCell.m; sourceTree = "<group>"; };
 		EC2F257F1DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountCenterBannersCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -4062,8 +4103,16 @@
 				EC13B51D1DD1F6110040F760 /* AccountCenterBanner.m */,
 				EC13B51F1DD1F6250040F760 /* AccountCenterHotProduct.h */,
 				EC13B5201DD1F6250040F760 /* AccountCenterHotProduct.m */,
+				EC22896B1DE9B3EF00EC324A /* AccountCenterActivity.h */,
+				EC22896C1DE9B3EF00EC324A /* AccountCenterActivity.m */,
 				EC13B5221DD1F6920040F760 /* AccountCenterHotProductItem.h */,
 				EC13B5231DD1F6920040F760 /* AccountCenterHotProductItem.m */,
+				EC2289621DE9B35600EC324A /* AccountCenterBackgroundImg.h */,
+				EC2289631DE9B35600EC324A /* AccountCenterBackgroundImg.m */,
+				EC2289651DE9B39600EC324A /* AccountCenterTCECordLink.h */,
+				EC2289661DE9B39600EC324A /* AccountCenterTCECordLink.m */,
+				EC2289681DE9B3C200EC324A /* AccountCenterResidualLink.h */,
+				EC2289691DE9B3C200EC324A /* AccountCenterResidualLink.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -4084,6 +4133,9 @@
 				EC13B4CF1DD1F3430040F760 /* AccountCenterActivitiesCell.h */,
 				EC13B4D01DD1F3430040F760 /* AccountCenterActivitiesCell.m */,
 				EC13B4D11DD1F3430040F760 /* AccountCenterActivitiesCell.xib */,
+				EC2289711DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.h */,
+				EC2289721DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.m */,
+				EC2289731DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.xib */,
 				EC13B4D21DD1F3430040F760 /* AccountCenterBannersCell.h */,
 				EC13B4D31DD1F3430040F760 /* AccountCenterBannersCell.m */,
 				EC13B4D41DD1F3430040F760 /* AccountCenterBannersCell.xib */,
@@ -4216,6 +4268,8 @@
 			children = (
 				EC2F267A1DD9B77A00B67BBA /* SCT */,
 				EC2F25871DD321C400B67BBA /* Product */,
+				EC22895C1DE9910C00EC324A /* CollectManager.h */,
+				EC22895D1DE9910C00EC324A /* CollectManager.m */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -4573,6 +4627,8 @@
 		EC2F267D1DD9B77A00B67BBA /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC2289591DE97E1200EC324A /* CollectionContentModel.h */,
+				EC22895A1DE97E1200EC324A /* CollectionContentModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -4678,6 +4734,14 @@
 		EC2F268B1DD9B77A00B67BBA /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC22894A1DE95C8600EC324A /* CollectionStoreModel.h */,
+				EC22894B1DE95C8600EC324A /* CollectionStoreModel.m */,
+				EC22894D1DE95CBC00EC324A /* CollectionStoreItem.h */,
+				EC22894E1DE95CBC00EC324A /* CollectionStoreItem.m */,
+				EC2289501DE95D4F00EC324A /* CollectionStoreCoupon.h */,
+				EC2289511DE95D4F00EC324A /* CollectionStoreCoupon.m */,
+				EC2289531DE95D7300EC324A /* CollectionStoreProduct.h */,
+				EC2289541DE95D7300EC324A /* CollectionStoreProduct.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -4734,6 +4798,10 @@
 		EC2F26911DD9B77A00B67BBA /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC2289561DE965A600EC324A /* CollectionTarentoModel.h */,
+				EC2289571DE965A600EC324A /* CollectionTarentoModel.m */,
+				EC2289761DE9C7A400EC324A /* CollectionTarentoItem.h */,
+				EC2289771DE9C7A400EC324A /* CollectionTarentoItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -10509,6 +10577,7 @@
 				EC0044061DE6B8970042B701 /* ProductDetailApplyCell.xib in Resources */,
 				EC4FC2891D77CEE400BBD050 /* AlbumCollectionViewCell.xib in Resources */,
 				EC4FC4CD1D77CEE400BBD050 /* SreviceOrderDetailRemarksCell.xib in Resources */,
+				EC2289751DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.xib in Resources */,
 				EC4FC44E1D77CEE400BBD050 /* CommentListView.xib in Resources */,
 				EC4FC5C11D77CEEF00BBD050 /* ImageSelectedOn@3x.png in Resources */,
 				EC0044021DE6B8970042B701 /* ProductDetaiFreeStoreInfoCell.xib in Resources */,
@@ -10866,6 +10935,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC4FC4DC1D77CEE400BBD050 /* UserCenterContactCell.m in Sources */,
+				EC22895B1DE97E1200EC324A /* CollectionContentModel.m in Sources */,
 				EC4FC3631D77CEE400BBD050 /* ServiceSettlementViewController.m in Sources */,
 				EC4FC26D1D77CEE400BBD050 /* CommonShareViewController.m in Sources */,
 				EC4FC2CB1D77CEE400BBD050 /* FDChooseStoreView.m in Sources */,
@@ -10957,6 +11027,7 @@
 				EC4FC4701D77CEE400BBD050 /* FavouriteServiceItemModel.m in Sources */,
 				EC9CC5221DC30E7F0093DCED /* FSCalendarCollectionView.m in Sources */,
 				EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */,
+				EC2289581DE965A600EC324A /* CollectionTarentoModel.m in Sources */,
 				EC4FC3651D77CEE400BBD050 /* ServiceSettlementAddressCell.m in Sources */,
 				EC4FC4E21D77CEE400BBD050 /* UserCenterItemsCell.m in Sources */,
 				EC5CDD2B1DE538F200F95C6F /* ProductDetailFreeApplyBabyNameCell.m in Sources */,
@@ -11076,6 +11147,7 @@
 				EC0044201DE6B8970042B701 /* ProductDetailNoticeCell.m in Sources */,
 				EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */,
 				EC2F26F41DDB0AE500B67BBA /* MyTracksHeader.m in Sources */,
+				EC2289521DE95D4F00EC324A /* CollectionStoreCoupon.m in Sources */,
 				ECF704E51D89054000650C0A /* ArticleUserCenterCommentModel.m in Sources */,
 				EC72643C1D7D473B00AA739B /* ArticleHomeTableView.m in Sources */,
 				EC4FC4581D77CEE400BBD050 /* CommentListViewModel.m in Sources */,
@@ -11154,6 +11226,7 @@
 				EC76B8CC1DC65FC6006518DE /* ServiceMoreDetailHotSalesItemModel.m in Sources */,
 				EC76B8D51DC65FC6006518DE /* ServiceDetailConfigView.m in Sources */,
 				ECF704E81D8917BD00650C0A /* ArticleHomeUserInfoModel.m in Sources */,
+				EC2289741DE9B74200EC324A /* AccountCenterActivitiesCollectionViewCell.m in Sources */,
 				EC4FC3621D77CEE400BBD050 /* FlashSettlementModel.m in Sources */,
 				EC0B6DBA1D8EC87C00EC20EA /* FlashServiceOrderDetailBookingCell.m in Sources */,
 				EC13B4FF1DD1F3430040F760 /* AccountCenterHeader.m in Sources */,
@@ -11216,6 +11289,7 @@
 				EC2F26301DD719B700B67BBA /* SettlementResultNewViewController.m in Sources */,
 				EC9CC5251DC30E7F0093DCED /* FSCalendarExtensions.m in Sources */,
 				EC154D511D87F5C3007137E8 /* ArticleWritePreviewViewController.m in Sources */,
+				EC2289641DE9B35600EC324A /* AccountCenterBackgroundImg.m in Sources */,
 				EC4FC44D1D77CEE400BBD050 /* CommentListView.m in Sources */,
 				EC4FBBF11D77CE5000BBD050 /* AppDelegate.m in Sources */,
 				EC7264371D7D27BC00AA739B /* ArticleColumnModel.m in Sources */,
@@ -11420,6 +11494,8 @@
 				EC0044101DE6B8970042B701 /* ProductDetailCommentMoreCell.m in Sources */,
 				EC4FC5AC1D77CEEF00BBD050 /* AUIKeyboardAdhesiveView.m in Sources */,
 				EC4FC2C91D77CEE400BBD050 /* FDChooseStoreCell.m in Sources */,
+				EC22894C1DE95C8600EC324A /* CollectionStoreModel.m in Sources */,
+				EC2289781DE9C7A400EC324A /* CollectionTarentoItem.m in Sources */,
 				EC4FC5F51D77CEEF00BBD050 /* ToolBox.m in Sources */,
 				EC5CDD301DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
 				EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */,
@@ -11535,6 +11611,7 @@
 				EC4FC29B1D77CEE400BBD050 /* ArticleWeChatTableViewController.m in Sources */,
 				EC4FC43C1D77CEE400BBD050 /* CommentListItemModel.m in Sources */,
 				EC4FC23C1D77CEE400BBD050 /* ResetPasswordViewController.m in Sources */,
+				EC22895E1DE9910C00EC324A /* CollectManager.m in Sources */,
 				ECFFC6FD1DC363C1002DBFB9 /* ProductDetailStore.m in Sources */,
 				EC4FC4AC1D77CEE400BBD050 /* OrderListViewCell.m in Sources */,
 				EC4FC2861D77CEE400BBD050 /* ZPPhotoBrowserViewController.m in Sources */,
@@ -11566,6 +11643,7 @@
 				EC810A661D8FE53400B4B87A /* NSNumber+ZP.m in Sources */,
 				EC4FC25F1D77CEE400BBD050 /* PosterViewCell.m in Sources */,
 				EC4FC38D1D77CEE400BBD050 /* StoreDetailViewController.m in Sources */,
+				EC22894F1DE95CBC00EC324A /* CollectionStoreItem.m in Sources */,
 				EC2F25A61DD3265900B67BBA /* CollectProductAllViewController.m in Sources */,
 				EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */,
 				ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */,
@@ -11671,6 +11749,7 @@
 				ECF5D1071DB8CE3900A1B268 /* TCHomeRecommendItem.m in Sources */,
 				EC4FC2CF1D77CEE400BBD050 /* FDToolBarView.m in Sources */,
 				EC0043FD1DE6B8970042B701 /* ProductDetaiFreeInfoCell.m in Sources */,
+				EC2289551DE95D7300EC324A /* CollectionStoreProduct.m in Sources */,
 				ECFFC7381DC363C1002DBFB9 /* ProductDetailAddressViewController.m in Sources */,
 				EC4FC4DE1D77CEE400BBD050 /* UserCenterFlashCell.m in Sources */,
 				EC4FC2A41D77CEE400BBD050 /* UserArticleCommentsLayout.m in Sources */,
@@ -11684,6 +11763,7 @@
 				ECF5D1061DB8CE3900A1B268 /* TCHomeModule.m in Sources */,
 				EC2F266F1DD9809D00B67BBA /* CollectProductReduceCell.m in Sources */,
 				EC4FC3A11D77CEE400BBD050 /* StoreDetailAppointmentContactCell.m in Sources */,
+				EC2289671DE9B39600EC324A /* AccountCenterTCECordLink.m in Sources */,
 				EC4FC5E11D77CEEF00BBD050 /* MWZoomingScrollView.m in Sources */,
 				EC4FC5A61D77CEEF00BBD050 /* ActionSheet.m in Sources */,
 				EC5CDD3D1DE538F200F95C6F /* ProductDetailFreeApplySelectBirthViewController.m in Sources */,
@@ -11693,6 +11773,7 @@
 				EC4FC4C21D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC4FC22B1D77CEE400BBD050 /* CustomTabBar.m in Sources */,
 				EC13B4F51DD1F3430040F760 /* AccountCenterItemsCell.m in Sources */,
+				EC22896A1DE9B3C200EC324A /* AccountCenterResidualLink.m in Sources */,
 				EC4FC31F1D77CEE400BBD050 /* SearchResultFactorShowModelManager.m in Sources */,
 				EC13B4EE1DD1F3430040F760 /* AccountCenterActivitiesCell.m in Sources */,
 				EC4FC2661D77CEE400BBD050 /* RefreshHeader.m in Sources */,
@@ -11709,6 +11790,7 @@
 				EC4FC4E61D77CEE400BBD050 /* UserCenterProductCell.m in Sources */,
 				EC7FBBB01DC450DB007B326C /* GetUserPopulationModel.m in Sources */,
 				EC4FC41C1D77CEE400BBD050 /* ActivityLogoItem.m in Sources */,
+				EC22896D1DE9B3EF00EC324A /* AccountCenterActivity.m in Sources */,
 				ECB3E77E1D92C82E0059267D /* OrderBookingMakeSureCell.m in Sources */,
 				EC4FC5F31D77CEEF00BBD050 /* ZPProgress.m in Sources */,
 				EC4FC5EF1D77CEEF00BBD050 /* ZPPopoverCell.m in Sources */,

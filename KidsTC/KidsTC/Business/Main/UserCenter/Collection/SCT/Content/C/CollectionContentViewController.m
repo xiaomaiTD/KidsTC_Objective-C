@@ -8,10 +8,16 @@
 
 #import "CollectionContentViewController.h"
 
+#import "GHeader.h"
+#import "SegueMaster.h"
+
+#import "CollectionContentModel.h"
 #import "CollectionContentView.h"
 
 @interface CollectionContentViewController ()<CollectionSCTBaseViewDelegate>
 @property (nonatomic, strong) CollectionContentView *contentView;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) NSArray *items;
 @end
 
 @implementation CollectionContentViewController
@@ -22,6 +28,11 @@
     contentView.delegate = self;
     self.view  = contentView;
     self.contentView = contentView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
 }
 
 
@@ -35,18 +46,32 @@
         }
             break;
             
-        default:
+        case CollectionSCTBaseViewActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
             break;
     }
 }
 
 - (void)loadData:(BOOL)refresh {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.contentView endRefresh:NO];
-        });
-    });
+    self.page = refresh?1:++self.page;
+    NSDictionary *param = @{@"page":@(self.page),
+                            @"pageCount":@(CollectionSCTPageCount)};
+    [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.contentView.items = self.items;
+        [self.contentView dealWithUI:model.data.count];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.contentView dealWithUI:0];
+    }];
 }
 
 @end

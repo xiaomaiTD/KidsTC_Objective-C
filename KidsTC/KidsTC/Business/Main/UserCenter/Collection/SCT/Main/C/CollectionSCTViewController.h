@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 
-@interface CollectionSCTViewController : ViewController
+typedef enum : NSUInteger {
+    CollectionSCTTypeStore = 0,
+    CollectionSCTTypeContent,
+    CollectionSCTTypeTarento,
+} CollectionSCTType;
 
+@interface CollectionSCTViewController : ViewController
+@property (nonatomic, assign) CollectionSCTType type;;
 @end
