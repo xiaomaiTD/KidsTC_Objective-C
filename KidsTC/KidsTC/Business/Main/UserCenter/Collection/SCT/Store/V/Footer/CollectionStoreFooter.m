@@ -25,7 +25,13 @@
     self.numL.textColor = COLOR_PINK;
     self.preL.textColor = [UIColor colorFromHexString:@"999999"];
     self.subL.textColor = [UIColor colorFromHexString:@"999999"];
-    self.marginView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
+    self.marginView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+}
+
+- (IBAction)action:(UIButton *)sender {
+    if (self.actionBlock) {
+        self.actionBlock(_item);
+    }
 }
 
 - (void)setItem:(CollectionStoreItem *)item {

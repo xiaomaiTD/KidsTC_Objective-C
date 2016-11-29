@@ -32,7 +32,7 @@
 #import "ProductDetailAddNewConsultViewController.h"
 #import "ServiceSettlementViewController.h"
 #import "TabBarController.h"
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "CommonShareViewController.h"
 #import "StoreDetailViewController.h"
 #import "ProductDetailGetCouponListViewController.h"
@@ -834,7 +834,7 @@
     if (index == 0) {
         [[TabBarController shareTabBarController] selectIndex:0];
     }else if (index == 1) {
-        SearchTableViewController *controller = [[SearchTableViewController alloc]init];
+        SearchViewController *controller = [[SearchViewController alloc]init];
         [self.navigationController pushViewController:controller animated:YES];
     }else if (index == 2){
         [self share];

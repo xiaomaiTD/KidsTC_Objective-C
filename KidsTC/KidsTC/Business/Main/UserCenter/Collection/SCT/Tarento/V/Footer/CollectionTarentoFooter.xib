@@ -68,15 +68,25 @@
                         <constraint firstAttribute="trailing" secondItem="DM6-bH-KhJ" secondAttribute="trailing" constant="8" id="nUV-Eb-GrL"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG9-ct-TZP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                    <connections>
+                        <action selector="action:" destination="rcP-en-kKY" eventType="touchUpInside" id="wXn-Qs-Qrx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="uG9-ct-TZP" firstAttribute="leading" secondItem="rcP-en-kKY" secondAttribute="leading" id="5mW-8E-ARa"/>
+                <constraint firstAttribute="trailing" secondItem="uG9-ct-TZP" secondAttribute="trailing" id="Dhe-bA-Xei"/>
                 <constraint firstAttribute="bottom" secondItem="1yj-Y8-GcW" secondAttribute="bottom" id="QzD-4w-dEK"/>
+                <constraint firstItem="uG9-ct-TZP" firstAttribute="top" secondItem="rcP-en-kKY" secondAttribute="top" id="TiK-uB-ZLu"/>
                 <constraint firstItem="QjY-CH-WFV" firstAttribute="top" secondItem="rcP-en-kKY" secondAttribute="top" constant="16" id="Wau-Jx-n7N"/>
                 <constraint firstAttribute="trailing" secondItem="1yj-Y8-GcW" secondAttribute="trailing" id="XmI-TG-Qf3"/>
                 <constraint firstItem="QjY-CH-WFV" firstAttribute="centerX" secondItem="rcP-en-kKY" secondAttribute="centerX" id="fMC-xR-dcg"/>
                 <constraint firstItem="1yj-Y8-GcW" firstAttribute="top" secondItem="QjY-CH-WFV" secondAttribute="bottom" constant="16" id="hTk-jL-HsW"/>
                 <constraint firstItem="1yj-Y8-GcW" firstAttribute="leading" secondItem="rcP-en-kKY" secondAttribute="leading" id="oyO-JR-kkJ"/>
+                <constraint firstItem="1yj-Y8-GcW" firstAttribute="top" secondItem="uG9-ct-TZP" secondAttribute="bottom" id="te1-AC-kH8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -87,7 +97,7 @@
                 <outlet property="preL" destination="jQJ-BH-xAt" id="V12-RG-dKM"/>
                 <outlet property="subL" destination="jld-1g-6cU" id="wNL-wt-mmi"/>
             </connections>
-            <point key="canvasLocation" x="8" y="344"/>
+            <point key="canvasLocation" x="-112.5" y="83.5"/>
         </view>
     </objects>
     <resources>

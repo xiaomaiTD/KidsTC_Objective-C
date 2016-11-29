@@ -11,4 +11,5 @@
 
 @interface CollectionTarentoHeader : UITableViewHeaderFooterView
 @property (nonatomic, strong) CollectionTarentoItem *item;
+@property (nonatomic, copy) void(^actionBlock)(CollectionTarentoItem *item);
 @end

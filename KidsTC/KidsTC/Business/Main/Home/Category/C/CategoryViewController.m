@@ -122,9 +122,10 @@ NSString * const footId = @"footId";
     CategoryListItem *item = self.model.data[indexPath.section];
     NSArray<CategoryListItem *> *ScondCategory = item.ScondCategory;
     CategoryListItem *scondCategory_item = ScondCategory[indexPath.row];
+#warning TODO...
     SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-    controller.searchParmsModel = scondCategory_item.search_parms;
-    controller.searchType = SearchType_Product;
+//    controller.searchParmsModel = scondCategory_item.search_parms;
+//    controller.searchType = SearchType_Product;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

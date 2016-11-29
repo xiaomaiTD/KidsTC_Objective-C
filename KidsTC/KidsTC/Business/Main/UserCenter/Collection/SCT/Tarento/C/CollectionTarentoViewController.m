@@ -14,6 +14,8 @@
 #import "CollectionTarentoModel.h"
 #import "CollectionTarentoView.h"
 
+#import "ArticleUserCenterViewController.h"
+
 @interface CollectionTarentoViewController ()<CollectionSCTBaseViewDelegate>
 @property (nonatomic, strong) CollectionTarentoView *tarentoView;
 @property (nonatomic, assign) NSInteger page;
@@ -47,6 +49,13 @@
         case CollectionSCTBaseViewActionTypeSegue:
         {
             [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+        case CollectionSCTBaseViewActionTypeUserArticleCenter:
+        {
+            ArticleUserCenterViewController *controller = [[ArticleUserCenterViewController alloc]init];
+            controller.userId = value;
+            [self.navigationController pushViewController:controller animated:YES];
         }
             break;
     }

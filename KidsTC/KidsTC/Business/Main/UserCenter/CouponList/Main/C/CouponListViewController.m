@@ -9,6 +9,7 @@
 #import "CouponListViewController.h"
 #import "MultiItemsToolBar.h"
 #import "UIBarButtonItem+Category.h"
+#import "Colours.h"
 
 #import "CouponListUnusedViewController.h"
 #import "CouponListUsedViewController.h"
@@ -36,7 +37,6 @@
     [self.view addSubview:toolBar];
     self.toolBar = toolBar;
     
-    
     CGFloat scrollView_y = CGRectGetMaxY(toolBar.frame);
     CGFloat scrollView_w = SCREEN_WIDTH;
     CGFloat scrollView_h = SCREEN_HEIGHT - scrollView_y;
@@ -46,20 +46,28 @@
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    UIView *allView = [[CouponListUnusedViewController alloc] init].view;
-    allView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
-    [scrollView addSubview:allView];
+    CouponListUnusedViewController *unusedVC = [[CouponListUnusedViewController alloc] init];
+    UIView *unusedView = unusedVC.view;
+    unusedView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
+    [scrollView addSubview:unusedView];
+    [self addChildViewController:unusedVC];
     
-    UIView *categoryView = [[CouponListUsedViewController alloc] init].view;
-    categoryView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
-    [scrollView addSubview:categoryView];
+    CouponListUsedViewController *usedVC = [[CouponListUsedViewController alloc] init];
+    UIView *usedView = usedVC.view;
+    usedView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
+    [scrollView addSubview:usedView];
+    [self addChildViewController:usedVC];
     
-    UIView *reduceView = [[CouponListExpiredViewController alloc] init].view;
-    reduceView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
-    [scrollView addSubview:reduceView];
+    CouponListExpiredViewController *expiredVC = [[CouponListExpiredViewController alloc] init];
+    UIView *expiredView = expiredVC.view;
+    expiredView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
+    [scrollView addSubview:expiredView];
+    [self addChildViewController:expiredVC];
     
     scrollView.contentSize = CGSizeMake(scrollView_w * 3, 1);
     

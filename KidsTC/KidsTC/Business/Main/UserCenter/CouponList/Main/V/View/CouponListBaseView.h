@@ -12,6 +12,7 @@
 
 typedef enum : NSUInteger {
     CouponListBaseViewActionTypeLoadData = 1,
+    CouponListBaseViewActionTypeUseCoupon,
 } CouponListBaseViewActionType;
 
 @class CouponListBaseView;

@@ -26,7 +26,7 @@
 #import "ServiceDetailRelatedServiceListViewController.h"
 #import "ServiceDetailConfigView.h"
 #import "ServiceDetailConfigModel.h"
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "SVProgressHUD.h"
 #import "GHeader.h"
 #import "InterfaceManager.h"
@@ -332,8 +332,7 @@
             break;
         case KTCActionViewTagSearch:
         {
-            SearchTableViewController *controller = [[SearchTableViewController alloc]init];
-            controller.hidesBottomBarWhenPushed = YES;
+            SearchViewController *controller = [[SearchViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

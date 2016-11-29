@@ -10,6 +10,7 @@
 
 #import "GHeader.h"
 
+#import "CouponListExpiredModel.h"
 #import "CouponListExpiredView.h"
 
 @interface CouponListExpiredViewController ()<CouponListBaseViewDelegate>
@@ -27,6 +28,10 @@
     self.expiredView = expiredView;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
+}
 
 #pragma mark - CollectProductBaseViewActionTypeDelegate
 
@@ -49,17 +54,17 @@
     NSDictionary *param = @{@"status":@(CouponListStatusExpired),
                             @"page":@(self.page),
                             @"pagecount":@(CouponListPageCount)};
-    [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        //        CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
-        //        if (refresh) {
-        //            self.items = model.data;
-        //        }else{
-        //            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-        //            [items addObjectsFromArray:model.data];
-        //            self.items = [NSArray arrayWithArray:items];
-        //        }
-        //        self.unusedView.items = self.items;
-        [self.expiredView dealWithUI:0];
+    [Request startWithName:@"QUERY_USER_COUPON_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        CouponListExpiredModel *model = [CouponListExpiredModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.expiredView.items = self.items;
+        [self.expiredView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.expiredView dealWithUI:0];
     }];

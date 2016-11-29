@@ -30,7 +30,7 @@
 
 #import "QRCodeScanViewController.h"
 #import "SpeekViewController.h"
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "CategoryViewController.h"
 #import "MultiItemsToolBar.h"
 #import "AUIFloorNavigationView.h"
@@ -164,7 +164,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 #pragma mark Tf UITextFieldDelegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    SearchTableViewController *controller = [[SearchTableViewController alloc]init];
+    SearchViewController *controller = [[SearchViewController alloc]init];
     [self.navigationController pushViewController:controller animated:YES];
     [BuryPointManager trackEvent:@"event_skip_home_search" actionId:20101 params:nil];
     return NO;

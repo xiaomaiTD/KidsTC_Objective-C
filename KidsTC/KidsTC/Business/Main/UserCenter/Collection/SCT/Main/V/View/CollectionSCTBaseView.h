@@ -13,6 +13,7 @@
 typedef enum : NSUInteger {
     CollectionSCTBaseViewActionTypeLoadData = 1,
     CollectionSCTBaseViewActionTypeSegue,//通用跳转
+    CollectionSCTBaseViewActionTypeUserArticleCenter,
 } CollectionSCTBaseViewActionType;
 
 @class CollectionSCTBaseView;

@@ -74,6 +74,11 @@ static NSString *const FootID = @"CollectionStoreFooter";
     CollectionStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
     if (section<self.items.count) {
         footer.item = self.items[section];
+        footer.actionBlock = ^(CollectionStoreItem *item){
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel];
+            }
+        };
     }
     return footer;
 }

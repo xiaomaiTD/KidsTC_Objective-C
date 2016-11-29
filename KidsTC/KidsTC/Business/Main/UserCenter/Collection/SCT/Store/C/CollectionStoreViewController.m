@@ -51,6 +51,8 @@
             [SegueMaster makeSegueWithModel:value fromController:self];
         }
             break;
+        default:
+            break;
     }
 }
 

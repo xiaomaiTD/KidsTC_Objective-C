@@ -39,6 +39,11 @@
     self.seeNumL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
     self.timeL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
 }
+- (IBAction)action:(UIButton *)sender {
+    if (self.actionBlock) {
+        self.actionBlock(_item);
+    }
+}
 
 /*
  @property (nonatomic, strong) NSString *authorNo;

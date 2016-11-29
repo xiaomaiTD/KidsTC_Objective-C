@@ -180,9 +180,11 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
 - (void)loadArticleDataRefresh:(BOOL)refresh {
     
     self.articlePage = refresh?1:++_articlePage;
+    NSString *userId = [self.userId isNotNull]?self.userId:@"";
     
     NSDictionary *param = @{@"page":@(_articlePage),
-                            @"pageCount":@(kPageCount)};
+                            @"pageCount":@(kPageCount),
+                            @"userId":userId};
     
     [Request startWithName:@"ARTICLES_USER_GET" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [self loadArticleDataRefresh:refresh success:[ArticleUserCenterArticleModel modelWithDictionary:dic]];

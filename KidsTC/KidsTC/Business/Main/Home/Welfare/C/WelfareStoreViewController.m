@@ -421,11 +421,12 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 
 - (void)nearbyStoreWithCoordinate:(NSString *)coordinate{
     SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-    SearchParmsProductOrStoreModel *searchParmsModel = [[SearchParmsProductOrStoreModel alloc]init];
-    searchParmsModel.mapaddr = coordinate;
-    searchParmsModel.st = @"6";
-    controller.searchParmsModel = searchParmsModel;
-    controller.searchType = SearchType_Store;
+#warning TODO...
+//    SearchParmsProductOrStoreModel *searchParmsModel = [[SearchParmsProductOrStoreModel alloc]init];
+//    searchParmsModel.mapaddr = coordinate;
+//    searchParmsModel.st = @"6";
+//    controller.searchParmsModel = searchParmsModel;
+//    controller.searchType = SearchType_Store;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

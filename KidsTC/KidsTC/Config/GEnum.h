@@ -29,3 +29,10 @@ typedef enum : NSUInteger {
     TCSexTypeBoy,//男
     TCSexTypeGirl,//女
 } TCSexType;
+
+typedef enum : NSUInteger {
+    UseCouponStatusNotUse,//未使用
+    UseCouponStatusUsed,//已使用
+    UseCouponStatusNotArrvialTime,//未到达使用时间
+    UseCouponStatusExpried//已过期
+} UseCouponStatus;

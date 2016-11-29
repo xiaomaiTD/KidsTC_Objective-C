@@ -9,6 +9,7 @@
 #import "CouponListBaseView.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
+#import "Colours.h"
 #import "KTCEmptyDataView.h"
 
 static NSString *const ID = @"UITableViewCell";
@@ -40,6 +41,7 @@ static NSString *const ID = @"UITableViewCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60;
+    tableView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];

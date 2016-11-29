@@ -63,7 +63,11 @@
                                                     <constraint firstAttribute="width" secondItem="Z7Y-Mi-KXt" secondAttribute="height" multiplier="1:1" id="gnG-8c-JNe"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
-                                                <state key="normal" image="CouponList_open"/>
+                                                <state key="normal" image="CouponList_close"/>
+                                                <state key="selected" image="CouponList_open"/>
+                                                <connections>
+                                                    <action selector="action:" destination="olw-in-wQC" eventType="touchUpInside" id="cE7-rE-9pI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -110,7 +114,7 @@
                                         <rect key="frame" x="11" y="12" width="91" height="69"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntj-1S-5Yj">
-                                                <rect key="frame" x="10.5" y="0.0" width="72" height="45"/>
+                                                <rect key="frame" x="9.5" y="0.0" width="72" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddu-nb-AzX">
                                                         <rect key="frame" x="0.0" y="17" width="14" height="26"/>
@@ -138,7 +142,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="满699元可使用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-7B-PXQ">
-                                                <rect key="frame" x="1" y="53" width="91" height="16"/>
+                                                <rect key="frame" x="0.0" y="53" width="91" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -186,12 +190,20 @@
                     <constraint firstAttribute="trailing" secondItem="PDc-pC-XdZ" secondAttribute="trailing" constant="15" id="fXM-83-Ynz"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="detailBtn" destination="Z7Y-Mi-KXt" id="rC6-rT-3fW"/>
+                <outlet property="nameL" destination="R4p-nL-0Mf" id="q0W-Ao-Onv"/>
+                <outlet property="priceL" destination="PqU-Hy-9Di" id="bkF-b0-mLL"/>
+                <outlet property="timeL" destination="7om-yD-p5I" id="U6w-Gc-gin"/>
+                <outlet property="tipL" destination="6iG-7B-PXQ" id="UNM-S8-H64"/>
+            </connections>
             <point key="canvasLocation" x="25" y="45"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="CouponList_BGContnet" width="924" height="429"/>
         <image name="CouponList_CannotUsed" width="523" height="429"/>
+        <image name="CouponList_close" width="50" height="50"/>
         <image name="CouponList_line" width="831" height="4"/>
         <image name="CouponList_open" width="50" height="50"/>
     </resources>

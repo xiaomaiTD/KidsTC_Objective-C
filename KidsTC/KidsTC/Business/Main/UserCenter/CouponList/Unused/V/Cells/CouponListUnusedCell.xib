@@ -61,7 +61,7 @@
                                                     <color key="titleColor" red="1" green="0.74509803921568629" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="R5U-Hs-yz3"/>
+                                                    <action selector="useAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7OC-Yq-wFg"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="260" horizontalCompressionResistancePriority="760" verticalCompressionResistancePriority="760" text="详细信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk5-Pl-Rx6">
@@ -77,9 +77,10 @@
                                                     <constraint firstAttribute="width" secondItem="ci7-Am-LTX" secondAttribute="height" multiplier="1:1" id="7hK-hF-31p"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="2" minY="2" maxX="2" maxY="2"/>
-                                                <state key="normal" image="CouponList_open"/>
+                                                <state key="normal" image="CouponList_close"/>
+                                                <state key="selected" image="CouponList_open"/>
                                                 <connections>
-                                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6r0-1G-Rm3"/>
+                                                    <action selector="detailAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AKz-BB-5rn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -217,6 +218,7 @@
             <connections>
                 <outlet property="detailBtn" destination="ci7-Am-LTX" id="n7z-Hc-tLf"/>
                 <outlet property="expiredIcon" destination="Oi2-DG-Zw7" id="Ng8-qe-6YT"/>
+                <outlet property="icon" destination="bV9-De-Azq" id="nL5-QJ-dKR"/>
                 <outlet property="nameL" destination="0ir-nn-y89" id="V3z-wB-un9"/>
                 <outlet property="priceL" destination="sgW-fV-uWI" id="rKF-7e-Brp"/>
                 <outlet property="timeL" destination="RtN-1E-tjY" id="vd5-3k-JVy"/>
@@ -230,6 +232,7 @@
         <image name="CouponList_BGContnet" width="924" height="429"/>
         <image name="CouponList_ExpiredSoon" width="215" height="164"/>
         <image name="CouponList_Unused_0_50" width="523" height="429"/>
+        <image name="CouponList_close" width="50" height="50"/>
         <image name="CouponList_line" width="831" height="4"/>
         <image name="CouponList_open" width="50" height="50"/>
     </resources>

@@ -15,7 +15,7 @@
 #import "StoreListItemModel.h"
 #import "StoreAppointmentViewController.h"
 #import "ProductDetailViewController.h"
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "CommentListViewController.h"
 #import "CommentFoundingViewController.h"
 #import "KTCActionView.h"
@@ -428,8 +428,7 @@
             break;
         case KTCActionViewTagSearch:
         {
-            SearchTableViewController *controller = [[SearchTableViewController alloc]init];
-            controller.hidesBottomBarWhenPushed = YES;
+            SearchViewController *controller = [[SearchViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

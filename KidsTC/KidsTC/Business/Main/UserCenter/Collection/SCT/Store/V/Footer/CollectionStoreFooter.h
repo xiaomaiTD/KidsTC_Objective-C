@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionStoreItem.h"
+
 @interface CollectionStoreFooter : UITableViewHeaderFooterView
 @property (nonatomic, strong) CollectionStoreItem *item;
+@property (nonatomic, copy) void(^actionBlock)(CollectionStoreItem *item);
 @end

@@ -10,6 +10,7 @@
 
 #import "MultiItemsToolBar.h"
 #import "UIBarButtonItem+Category.h"
+#import "Colours.h"
 
 #import "CollectionStoreViewController.h"
 #import "CollectionContentViewController.h"
@@ -58,6 +59,7 @@
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     

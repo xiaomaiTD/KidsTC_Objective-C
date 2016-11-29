@@ -10,6 +10,7 @@
 
 #import "GHeader.h"
 
+#import "CouponListUsedModel.h"
 #import "CouponListUsedView.h"
 
 @interface CouponListUsedViewController ()<CouponListBaseViewDelegate>
@@ -25,6 +26,11 @@
     usedView.delegate = self;
     self.view =  usedView;
     self.usedView = usedView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
 }
 
 
@@ -49,17 +55,17 @@
     NSDictionary *param = @{@"status":@(CouponListStatusUsed),
                             @"page":@(self.page),
                             @"pagecount":@(CouponListPageCount)};
-    [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        //        CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
-        //        if (refresh) {
-        //            self.items = model.data;
-        //        }else{
-        //            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-        //            [items addObjectsFromArray:model.data];
-        //            self.items = [NSArray arrayWithArray:items];
-        //        }
-        //        self.unusedView.items = self.items;
-        [self.usedView dealWithUI:0];
+    [Request startWithName:@"QUERY_USER_COUPON_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        CouponListUsedModel *model = [CouponListUsedModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.usedView.items = self.items;
+        [self.usedView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.usedView dealWithUI:0];
     }];

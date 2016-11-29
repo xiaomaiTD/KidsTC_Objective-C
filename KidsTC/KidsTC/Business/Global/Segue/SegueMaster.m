@@ -7,6 +7,7 @@
 //
 
 #import "SegueMaster.h"
+#import "User.h"
 #import "WebViewController.h"
 #import "ActivityViewController.h"
 #import "NurseryViewController.h"
@@ -108,8 +109,9 @@
         case SegueDestinationNewsList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-            controller.searchType = SearchType_Article;
-            controller.searchParmsModel = [SearchParmsArticleModel modelWithDic :model.segueParam];
+#warning TODO...
+//            controller.searchType = SearchType_Article;
+//            controller.searchParmsModel = [SearchParmsArticleModel modelWithDic :model.segueParam];
             toController = controller;
         }
             break;
@@ -141,16 +143,18 @@
         case SegueDestinationServiceList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-            controller.searchType = SearchType_Product;
-            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic :model.segueParam];
+#warning TODO...
+//            controller.searchType = SearchType_Product;
+//            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic :model.segueParam];
             toController = controller;
         }
             break;
         case SegueDestinationStoreList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-            controller.searchType = SearchType_Store;
-            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic:model.segueParam];
+#warning TODO...[
+//            controller.searchType = SearchType_Store;
+//            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic:model.segueParam];
             toController = controller;
         }
             break;

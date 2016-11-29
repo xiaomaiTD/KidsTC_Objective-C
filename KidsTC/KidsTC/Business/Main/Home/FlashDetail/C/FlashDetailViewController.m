@@ -19,7 +19,7 @@
 #import "StoreDetialMapViewController.h"
 #import "KTCActionView.h"
 #import "KTCBrowseHistoryView.h"
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "CommonShareViewController.h"
 #import "WebViewController.h"
 #import "FDSegmentView.h"
@@ -421,7 +421,7 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
             break;
         case KTCActionViewTagSearch:
         {
-            SearchTableViewController *controller = [[SearchTableViewController alloc] init];
+            SearchViewController *controller = [[SearchViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

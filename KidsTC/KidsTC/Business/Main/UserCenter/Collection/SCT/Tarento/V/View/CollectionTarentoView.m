@@ -91,6 +91,11 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     if (section<self.items.count) {
         CollectionTarentoItem *item = self.items[section];
         header.item = item;
+        header.actionBlock = ^(CollectionTarentoItem *item){
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorNo];
+            }
+        };
     }
     return header;
 }
@@ -118,17 +123,28 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     if (section<self.items.count) {
         CollectionTarentoItem *item = self.items[section];
         footer.item = item;
+        footer.actionBlock = ^(CollectionTarentoItem *item){
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorNo];
+            }
+        };
     }
     return footer;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if (row<self.items.count) {
-        ArticleHomeItem *item = self.items[row];
-        if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-            [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel];
+    if (section<self.items.count) {
+        CollectionTarentoItem *item = self.items[section];
+        NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
+        if (row<articleLst.count) {
+            ArticleHomeItem *articleItem = articleLst[row];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:articleItem.segueModel];
+            }
         }
     }
 }

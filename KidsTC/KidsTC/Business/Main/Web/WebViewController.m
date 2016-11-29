@@ -56,7 +56,7 @@ typedef enum : NSUInteger {
     NSMutableArray *_selectedPhotos;
     NSMutableArray *_selectedAssets;
 }
-@property (nonatomic, weak  ) UIButton                *backBtn;
+@property (nonatomic, weak  ) UIButton                *backWebBtn;
 @property (nonatomic, weak  ) UIButton                *closeBtn;
 @property (nonatomic, strong) CommonShareObject       *shareObject;
 
@@ -134,7 +134,7 @@ typedef enum : NSUInteger {
     UIBarButtonItem *backBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(webBack) andGetButton:^(UIButton *btn) {
         [btn setImage:[UIImage imageNamed:@"navigation_back_n"] forState:UIControlStateNormal];
         btn.hidden = YES;
-        self.backBtn = btn;
+        self.backWebBtn = btn;
     }];
     UIBarButtonItem *closeBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(webClose) andGetButton:^(UIButton *btn) {
         [btn setImage:[UIImage imageNamed:@"navigation_close"] forState:UIControlStateNormal];

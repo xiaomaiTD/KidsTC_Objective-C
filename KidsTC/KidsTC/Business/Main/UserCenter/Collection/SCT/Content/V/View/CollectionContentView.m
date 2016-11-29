@@ -7,7 +7,6 @@
 //
 
 #import "CollectionContentView.h"
-#import "CollectionContentCell.h"
 #import "ArticleHomeBaseCell.h"
 
 static NSString *const ID = @"CollectionContentCell";
@@ -63,11 +62,11 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 12;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 12;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

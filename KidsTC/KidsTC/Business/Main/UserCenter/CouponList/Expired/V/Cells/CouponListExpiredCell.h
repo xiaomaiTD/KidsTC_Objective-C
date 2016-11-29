@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CouponListItem.h"
 @interface CouponListExpiredCell : UITableViewCell
-
+@property (nonatomic, strong) CouponListItem *item;
 @end

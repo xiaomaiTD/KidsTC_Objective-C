@@ -68,6 +68,12 @@
                         <constraint firstItem="a7G-2e-jrq" firstAttribute="top" secondItem="6LM-Vx-dVB" secondAttribute="top" id="uvj-sM-mZD"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La2-Na-pFp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="VNQ-kp-k0l"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -75,8 +81,12 @@
                 <constraint firstItem="A9q-od-b0r" firstAttribute="top" secondItem="6LM-Vx-dVB" secondAttribute="bottom" constant="16" id="EfL-zq-XBk"/>
                 <constraint firstItem="6LM-Vx-dVB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="J8H-ty-sta"/>
                 <constraint firstAttribute="bottom" secondItem="A9q-od-b0r" secondAttribute="bottom" id="Qq6-Y0-UMM"/>
+                <constraint firstItem="La2-Na-pFp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dug-bk-fl4"/>
                 <constraint firstItem="A9q-od-b0r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eH7-9a-uZl"/>
+                <constraint firstItem="A9q-od-b0r" firstAttribute="top" secondItem="La2-Na-pFp" secondAttribute="bottom" id="ere-Vl-fTw"/>
                 <constraint firstAttribute="trailing" secondItem="A9q-od-b0r" secondAttribute="trailing" id="niY-ie-gKa"/>
+                <constraint firstItem="La2-Na-pFp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uic-dp-bqH"/>
+                <constraint firstAttribute="trailing" secondItem="La2-Na-pFp" secondAttribute="trailing" id="yt7-4S-UR0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -87,7 +97,7 @@
                 <outlet property="preL" destination="wcl-Ik-RJD" id="so5-RT-JfK"/>
                 <outlet property="subL" destination="t2u-wt-yjd" id="OQK-OH-pyu"/>
             </connections>
-            <point key="canvasLocation" x="8" y="344"/>
+            <point key="canvasLocation" x="7.5" y="343.5"/>
         </view>
     </objects>
     <resources>
