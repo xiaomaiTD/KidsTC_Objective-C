@@ -48,8 +48,8 @@ static NSString *const ID = @"CollectProductReduceCell";
     NSInteger section = indexPath.section;
     if (section<self.items.count) {
         CollectProductItem *item = self.items[section];
-        if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
-            [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:item.segueModel];
+        if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+            [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:item.segueModel completion:nil];
         }
     }
 }

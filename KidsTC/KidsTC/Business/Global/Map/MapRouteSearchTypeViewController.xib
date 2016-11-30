@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapRouteSearchTypeViewController">
+            <connections>
+                <outlet property="VOneLineH" destination="wyM-y1-0mV" id="JMR-F2-Inu"/>
+                <outlet property="VTwoLineH" destination="csL-L3-6hl" id="M2M-HD-qmZ"/>
+                <outlet property="busBtn" destination="hB5-QY-Mle" id="hf0-Lv-SIa"/>
+                <outlet property="busImg" destination="Y46-Ni-YmE" id="ran-iG-U4c"/>
+                <outlet property="contentViewBottomMargin" destination="E5s-Zh-aHP" id="ky7-gU-g05"/>
+                <outlet property="contentViewH" destination="4gh-Dg-VG2" id="bU8-4h-wLB"/>
+                <outlet property="taxiBtn" destination="ROU-G4-HGI" id="9MC-yw-KBt"/>
+                <outlet property="taxiImg" destination="dTS-Ec-kUf" id="AKz-V2-3zr"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="worlkBtn" destination="pmk-3I-Paa" id="Jd8-dt-s3x"/>
+                <outlet property="worlkImg" destination="zOu-cN-S4B" id="Aqn-OK-BOL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k31-y9-vZ5">
+                    <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNS-zs-940">
+                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="100"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dZ-Jf-h0h">
+                                    <rect key="frame" x="54.5" y="29.5" width="16" height="42"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_taxi" translatesAutoresizingMaskIntoConstraints="NO" id="MGl-L6-nmZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="VZW-0Z-NYl"/>
+                                                <constraint firstAttribute="width" secondItem="MGl-L6-nmZ" secondAttribute="height" multiplier="1:1" id="e5n-zs-NVN"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="驾车" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZQ-d1-dFu">
+                                            <rect key="frame" x="-5" y="26" width="27" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="MGl-L6-nmZ" firstAttribute="top" secondItem="5dZ-Jf-h0h" secondAttribute="top" id="9pt-TA-zae"/>
+                                        <constraint firstAttribute="trailing" secondItem="MGl-L6-nmZ" secondAttribute="trailing" id="I1y-x0-6XV"/>
+                                        <constraint firstAttribute="bottom" secondItem="5ZQ-d1-dFu" secondAttribute="bottom" id="PJl-rH-8RA"/>
+                                        <constraint firstItem="5ZQ-d1-dFu" firstAttribute="centerX" secondItem="5dZ-Jf-h0h" secondAttribute="centerX" id="YIh-Rp-rts"/>
+                                        <constraint firstItem="5ZQ-d1-dFu" firstAttribute="top" secondItem="MGl-L6-nmZ" secondAttribute="bottom" constant="10" id="ZKK-Mh-t2H"/>
+                                        <constraint firstItem="MGl-L6-nmZ" firstAttribute="leading" secondItem="5dZ-Jf-h0h" secondAttribute="leading" id="bNo-MU-dPF"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROU-G4-HGI">
+                                    <rect key="frame" x="0.0" y="0.0" width="124.5" height="100"/>
+                                    <connections>
+                                        <action selector="action:" destination="-1" eventType="touchUpInside" id="LDs-lx-q2e"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_select" translatesAutoresizingMaskIntoConstraints="NO" id="dTS-Ec-kUf">
+                                    <rect key="frame" x="85" y="22" width="17" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="17" id="lup-Hs-Cka"/>
+                                        <constraint firstAttribute="width" secondItem="dTS-Ec-kUf" secondAttribute="height" multiplier="1:1" id="sr7-ks-zC2"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="5dZ-Jf-h0h" firstAttribute="centerX" secondItem="MNS-zs-940" secondAttribute="centerX" id="Kma-GB-c0x"/>
+                                <constraint firstItem="5dZ-Jf-h0h" firstAttribute="centerY" secondItem="MNS-zs-940" secondAttribute="centerY" id="MD6-e8-iV8"/>
+                                <constraint firstAttribute="bottom" secondItem="ROU-G4-HGI" secondAttribute="bottom" id="dLZ-PA-XB5"/>
+                                <constraint firstAttribute="trailing" secondItem="ROU-G4-HGI" secondAttribute="trailing" id="foL-ft-mfl"/>
+                                <constraint firstItem="ROU-G4-HGI" firstAttribute="top" secondItem="MNS-zs-940" secondAttribute="top" id="hCh-T7-w9X"/>
+                                <constraint firstItem="dTS-Ec-kUf" firstAttribute="leading" secondItem="5dZ-Jf-h0h" secondAttribute="trailing" constant="15" id="jl8-HM-5mG"/>
+                                <constraint firstItem="ROU-G4-HGI" firstAttribute="leading" secondItem="MNS-zs-940" secondAttribute="leading" id="qNh-Q5-C4J"/>
+                                <constraint firstItem="dTS-Ec-kUf" firstAttribute="top" secondItem="5dZ-Jf-h0h" secondAttribute="top" constant="-7.5" id="wId-0g-l4y"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8G-oi-T2J">
+                            <rect key="frame" x="125" y="0.0" width="125" height="100"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-lI-C89">
+                                    <rect key="frame" x="54.5" y="29.5" width="16" height="42"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_worlk" translatesAutoresizingMaskIntoConstraints="NO" id="Hmg-Zs-inJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Hmg-Zs-inJ" secondAttribute="height" multiplier="1:1" id="L5d-YL-2P7"/>
+                                                <constraint firstAttribute="width" constant="16" id="Yry-nu-fye"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="步行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWs-xg-ChZ">
+                                            <rect key="frame" x="-5" y="26" width="27" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="DWs-xg-ChZ" secondAttribute="bottom" id="0l9-l4-lKh"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hmg-Zs-inJ" secondAttribute="trailing" id="2qS-Bc-Jeh"/>
+                                        <constraint firstItem="DWs-xg-ChZ" firstAttribute="centerX" secondItem="aKa-lI-C89" secondAttribute="centerX" id="EPp-YN-uDn"/>
+                                        <constraint firstItem="Hmg-Zs-inJ" firstAttribute="top" secondItem="aKa-lI-C89" secondAttribute="top" id="FTJ-pa-9uh"/>
+                                        <constraint firstItem="Hmg-Zs-inJ" firstAttribute="leading" secondItem="aKa-lI-C89" secondAttribute="leading" id="ISo-Eu-e4l"/>
+                                        <constraint firstItem="DWs-xg-ChZ" firstAttribute="top" secondItem="Hmg-Zs-inJ" secondAttribute="bottom" constant="10" id="vt9-bL-GFl"/>
+                                    </constraints>
+                                </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_select" translatesAutoresizingMaskIntoConstraints="NO" id="zOu-cN-S4B">
+                                    <rect key="frame" x="85" y="22" width="17" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="zOu-cN-S4B" secondAttribute="height" multiplier="1:1" id="1ML-Kl-ba7"/>
+                                        <constraint firstAttribute="width" constant="17" id="etl-wF-154"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pmk-3I-Paa">
+                                    <rect key="frame" x="0.0" y="0.0" width="125" height="100"/>
+                                    <connections>
+                                        <action selector="action:" destination="-1" eventType="touchUpInside" id="Wmo-aY-fva"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="zOu-cN-S4B" firstAttribute="leading" secondItem="aKa-lI-C89" secondAttribute="trailing" constant="15" id="1wh-bs-fM8"/>
+                                <constraint firstItem="zOu-cN-S4B" firstAttribute="top" secondItem="aKa-lI-C89" secondAttribute="top" constant="-7.5" id="73F-sp-xNe"/>
+                                <constraint firstAttribute="trailing" secondItem="pmk-3I-Paa" secondAttribute="trailing" id="RDc-Xv-EHD"/>
+                                <constraint firstItem="aKa-lI-C89" firstAttribute="centerY" secondItem="h8G-oi-T2J" secondAttribute="centerY" id="Zkq-x2-X5F"/>
+                                <constraint firstItem="pmk-3I-Paa" firstAttribute="top" secondItem="h8G-oi-T2J" secondAttribute="top" id="aW1-GU-I1i"/>
+                                <constraint firstAttribute="bottom" secondItem="pmk-3I-Paa" secondAttribute="bottom" id="mIP-g4-gdc"/>
+                                <constraint firstItem="zOu-cN-S4B" firstAttribute="width" secondItem="zOu-cN-S4B" secondAttribute="height" multiplier="1:1" id="nS6-Rc-YVE"/>
+                                <constraint firstItem="aKa-lI-C89" firstAttribute="centerX" secondItem="h8G-oi-T2J" secondAttribute="centerX" id="rFA-kz-4LL"/>
+                                <constraint firstItem="pmk-3I-Paa" firstAttribute="leading" secondItem="h8G-oi-T2J" secondAttribute="leading" id="yYa-iI-bIh"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwE-zs-R8D">
+                            <rect key="frame" x="250.5" y="0.0" width="124.5" height="100"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hi-6d-WdH">
+                                    <rect key="frame" x="54" y="29.5" width="16" height="42"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_bus" translatesAutoresizingMaskIntoConstraints="NO" id="mHy-KL-JEf">
+                                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="5P7-Vh-lBR"/>
+                                                <constraint firstAttribute="width" secondItem="mHy-KL-JEf" secondAttribute="height" multiplier="1:1" id="jbb-8b-pQC"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公交" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTQ-LA-oG5">
+                                            <rect key="frame" x="-5" y="26" width="27" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="YTQ-LA-oG5" firstAttribute="centerX" secondItem="4Hi-6d-WdH" secondAttribute="centerX" id="4SE-N8-mxR"/>
+                                        <constraint firstAttribute="trailing" secondItem="mHy-KL-JEf" secondAttribute="trailing" id="9nC-EC-It5"/>
+                                        <constraint firstItem="mHy-KL-JEf" firstAttribute="leading" secondItem="4Hi-6d-WdH" secondAttribute="leading" id="ZQk-wI-WHE"/>
+                                        <constraint firstAttribute="bottom" secondItem="YTQ-LA-oG5" secondAttribute="bottom" id="rZh-FT-Pok"/>
+                                        <constraint firstItem="mHy-KL-JEf" firstAttribute="top" secondItem="4Hi-6d-WdH" secondAttribute="top" id="wQq-Of-CLU"/>
+                                        <constraint firstItem="YTQ-LA-oG5" firstAttribute="top" secondItem="mHy-KL-JEf" secondAttribute="bottom" constant="10" id="yxG-jW-nXT"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hB5-QY-Mle">
+                                    <rect key="frame" x="0.0" y="0.0" width="124.5" height="100"/>
+                                    <connections>
+                                        <action selector="action:" destination="-1" eventType="touchUpInside" id="tdm-Mp-lnj"/>
+                                    </connections>
+                                </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_select" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-Ni-YmE">
+                                    <rect key="frame" x="85" y="22" width="17" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="17" id="5mG-l9-yKQ"/>
+                                        <constraint firstAttribute="width" secondItem="Y46-Ni-YmE" secondAttribute="height" multiplier="1:1" id="8fc-dw-OPu"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="hB5-QY-Mle" secondAttribute="trailing" id="Ez9-79-Ixb"/>
+                                <constraint firstItem="hB5-QY-Mle" firstAttribute="leading" secondItem="FwE-zs-R8D" secondAttribute="leading" id="Lar-XG-brK"/>
+                                <constraint firstItem="4Hi-6d-WdH" firstAttribute="centerY" secondItem="FwE-zs-R8D" secondAttribute="centerY" id="Srb-e9-NmX"/>
+                                <constraint firstItem="Y46-Ni-YmE" firstAttribute="top" secondItem="4Hi-6d-WdH" secondAttribute="top" constant="-7.5" id="XT4-Oo-NXr"/>
+                                <constraint firstItem="Y46-Ni-YmE" firstAttribute="leading" secondItem="4Hi-6d-WdH" secondAttribute="trailing" constant="15" id="bWc-c7-3Wl"/>
+                                <constraint firstItem="4Hi-6d-WdH" firstAttribute="centerX" secondItem="FwE-zs-R8D" secondAttribute="centerX" id="dGQ-HL-FVB"/>
+                                <constraint firstAttribute="bottom" secondItem="hB5-QY-Mle" secondAttribute="bottom" id="nPu-tH-4ad"/>
+                                <constraint firstItem="hB5-QY-Mle" firstAttribute="top" secondItem="FwE-zs-R8D" secondAttribute="top" id="vqG-W0-olE"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R83-Pz-kA6">
+                            <rect key="frame" x="124.5" y="22" width="0.5" height="56"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="0.5" id="wyM-y1-0mV"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAT-x1-SWt">
+                            <rect key="frame" x="250" y="22" width="0.5" height="56"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="0.5" id="csL-L3-6hl"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="FwE-zs-R8D" firstAttribute="width" secondItem="MNS-zs-940" secondAttribute="width" id="1rb-vT-1nS"/>
+                        <constraint firstItem="h8G-oi-T2J" firstAttribute="leading" secondItem="R83-Pz-kA6" secondAttribute="trailing" id="28M-BM-1C7"/>
+                        <constraint firstAttribute="height" constant="100" id="4gh-Dg-VG2"/>
+                        <constraint firstAttribute="bottom" secondItem="R83-Pz-kA6" secondAttribute="bottom" constant="22" id="5MX-nH-L7f"/>
+                        <constraint firstItem="R83-Pz-kA6" firstAttribute="leading" secondItem="MNS-zs-940" secondAttribute="trailing" id="6rV-3i-CRQ"/>
+                        <constraint firstItem="FwE-zs-R8D" firstAttribute="leading" secondItem="bAT-x1-SWt" secondAttribute="trailing" id="9C5-X2-W2E"/>
+                        <constraint firstItem="MNS-zs-940" firstAttribute="top" secondItem="k31-y9-vZ5" secondAttribute="top" id="Fjf-zp-5oz"/>
+                        <constraint firstAttribute="trailing" secondItem="FwE-zs-R8D" secondAttribute="trailing" id="GmA-zI-nUm"/>
+                        <constraint firstItem="FwE-zs-R8D" firstAttribute="top" secondItem="k31-y9-vZ5" secondAttribute="top" id="Pr0-aF-hXL"/>
+                        <constraint firstItem="MNS-zs-940" firstAttribute="leading" secondItem="k31-y9-vZ5" secondAttribute="leading" id="RYT-OT-jBr"/>
+                        <constraint firstItem="R83-Pz-kA6" firstAttribute="top" secondItem="k31-y9-vZ5" secondAttribute="top" constant="22" id="YMc-O8-xz5"/>
+                        <constraint firstItem="bAT-x1-SWt" firstAttribute="leading" secondItem="h8G-oi-T2J" secondAttribute="trailing" id="YRP-GR-jE8"/>
+                        <constraint firstItem="h8G-oi-T2J" firstAttribute="width" secondItem="MNS-zs-940" secondAttribute="width" id="YwG-c2-kJf"/>
+                        <constraint firstAttribute="bottom" secondItem="FwE-zs-R8D" secondAttribute="bottom" id="dvA-GJ-LsQ"/>
+                        <constraint firstAttribute="bottom" secondItem="bAT-x1-SWt" secondAttribute="bottom" constant="22" id="kbf-MT-Di7"/>
+                        <constraint firstAttribute="bottom" secondItem="MNS-zs-940" secondAttribute="bottom" id="mSf-L6-eDi"/>
+                        <constraint firstItem="bAT-x1-SWt" firstAttribute="top" secondItem="k31-y9-vZ5" secondAttribute="top" constant="22" id="nJI-bT-CsU"/>
+                        <constraint firstAttribute="bottom" secondItem="h8G-oi-T2J" secondAttribute="bottom" id="vJr-Sj-Rag"/>
+                        <constraint firstItem="h8G-oi-T2J" firstAttribute="top" secondItem="k31-y9-vZ5" secondAttribute="top" id="xeG-Cx-3XU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="k31-y9-vZ5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="30v-Rf-ASa"/>
+                <constraint firstAttribute="bottom" secondItem="k31-y9-vZ5" secondAttribute="bottom" id="E5s-Zh-aHP"/>
+                <constraint firstAttribute="trailing" secondItem="k31-y9-vZ5" secondAttribute="trailing" id="cXJ-dk-cnL"/>
+            </constraints>
+            <point key="canvasLocation" x="-74" y="-29"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Nursery_bus" width="53" height="67"/>
+        <image name="Nursery_select" width="71" height="71"/>
+        <image name="Nursery_taxi" width="67" height="60"/>
+        <image name="Nursery_worlk" width="42" height="67"/>
+    </resources>
+</document>

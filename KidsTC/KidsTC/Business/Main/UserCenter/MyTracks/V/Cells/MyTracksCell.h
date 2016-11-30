@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyTracksItem.h"
 @interface MyTracksCell : UITableViewCell
-
+@property (nonatomic, strong) MyTracksItem *item;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (nonatomic, copy) void(^deleteAction)();
 @end

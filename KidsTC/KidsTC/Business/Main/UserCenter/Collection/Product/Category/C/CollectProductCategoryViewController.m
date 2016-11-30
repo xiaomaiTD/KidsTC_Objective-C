@@ -36,7 +36,7 @@
 
 #pragma mark - CollectProductBaseViewActionTypeDelegate
 
-- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value {
+- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value completion:(void (^)(id))completion {
     switch (type) {
         case CollectProductBaseViewActionTypeLoadData:
         {

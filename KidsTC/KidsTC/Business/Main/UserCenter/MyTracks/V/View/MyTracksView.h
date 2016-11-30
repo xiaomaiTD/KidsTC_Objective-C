@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+#define MyTracksPageCount 10
+
 typedef enum : NSUInteger {
     MyTracksViewActionTypeLoadData = 1,
+    MyTracksViewActionTypeSegue,
+    MyTracksViewActionTypeDelete,
 } MyTracksViewActionType;
 
 @class MyTracksView;
 @protocol MyTracksViewDelegate <NSObject>
-- (void)myTracksView:(MyTracksView *)view actionType:(MyTracksViewActionType)type value:(id)value;
+- (void)myTracksView:(MyTracksView *)view actionType:(MyTracksViewActionType)type value:(id)value completion:(void(^)(id value))completion;
 @end
 
 @interface MyTracksView : UIView
 @property (nonatomic, weak) id<MyTracksViewDelegate> delegate;
-- (void)endRefresh:(BOOL)noMoreData;
+@property (nonatomic, strong) NSArray *items;
+- (void)dealWithUI:(NSUInteger)loadCount;
+- (void)edit:(BOOL)edit;
 @end

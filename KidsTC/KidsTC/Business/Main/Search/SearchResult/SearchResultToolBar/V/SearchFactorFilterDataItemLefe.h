@@ -12,6 +12,7 @@
 @interface SearchFactorFilterDataItemLefe : NSObject
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, assign) BOOL selected;
+@property (nonatomic, assign) BOOL cellSeleted;
 @property (nonatomic, strong) NSArray<SearchFactorFilterDataItemRight *> *items;
 + (instancetype)itemWithTitle:(NSString *)title items:(NSArray<SearchFactorFilterDataItemRight *> *)items;
 @end

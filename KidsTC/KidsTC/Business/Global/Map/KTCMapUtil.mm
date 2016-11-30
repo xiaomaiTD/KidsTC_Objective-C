@@ -252,7 +252,7 @@ NSString *const kRouteLineStepsKey = @"kRouteLineStepsKey";
 }
 
 + (UIImage *)poiAnnotationImage {
-    return [UIImage imageNamed:@"annotation_poi"];
+    return [UIImage imageNamed:@"productDetail_tip_loca"];
 }
 
 + (NSString*)getMyBundlePath:(NSString *)filename {

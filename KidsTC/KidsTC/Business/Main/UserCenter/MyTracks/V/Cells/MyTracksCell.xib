@@ -20,11 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lfg-7p-3iX">
-                        <rect key="frame" x="10" y="0.0" width="300" height="247"/>
+                        <rect key="frame" x="10" y="10" width="300" height="247"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2XV-wb-glQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2XV-wb-glQ">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Rhl-al-ukl"/>
                                 </constraints>
@@ -107,28 +106,45 @@
                             <constraint firstItem="hzP-uP-t23" firstAttribute="centerY" secondItem="b4w-X3-uH3" secondAttribute="centerY" id="yti-Pz-xbe"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epV-Fy-DWg">
+                        <rect key="frame" x="298" y="2" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="epV-Fy-DWg" secondAttribute="height" multiplier="1:1" id="36s-ZG-Heg"/>
+                            <constraint firstAttribute="width" constant="20" id="iQd-Kf-1B6"/>
+                        </constraints>
+                        <state key="normal" image="icon_close_pink_round"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lPj-78-fu1"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
-                    <constraint firstItem="lfg-7p-3iX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="50I-0l-Rbk"/>
+                    <constraint firstItem="epV-Fy-DWg" firstAttribute="top" secondItem="lfg-7p-3iX" secondAttribute="top" constant="-8" id="4kv-10-rSf"/>
                     <constraint firstItem="lfg-7p-3iX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BOT-RC-ISC"/>
-                    <constraint firstAttribute="bottom" secondItem="lfg-7p-3iX" secondAttribute="bottom" constant="10" id="ONa-wu-aaD"/>
                     <constraint firstAttribute="trailing" secondItem="lfg-7p-3iX" secondAttribute="trailing" constant="10" id="ZoQ-N6-XJx"/>
+                    <constraint firstAttribute="bottom" secondItem="lfg-7p-3iX" secondAttribute="bottom" id="fNy-1Q-fA3"/>
+                    <constraint firstItem="epV-Fy-DWg" firstAttribute="trailing" secondItem="lfg-7p-3iX" secondAttribute="trailing" constant="8" id="gFf-A3-7AF"/>
+                    <constraint firstItem="lfg-7p-3iX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nHQ-PO-YQd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="addressL" destination="gNC-SX-1Ha" id="MIa-iM-UyE"/>
                 <outlet property="banner" destination="2XV-wb-glQ" id="KiT-aX-0m5"/>
+                <outlet property="bannerH" destination="Rhl-al-ukl" id="aYU-XE-uAG"/>
                 <outlet property="bgView" destination="lfg-7p-3iX" id="mar-Nu-ZNr"/>
+                <outlet property="deleteBtn" destination="epV-Fy-DWg" id="I1i-Pt-eZy"/>
                 <outlet property="nameL" destination="0yI-ar-Nkg" id="6hx-14-NQY"/>
                 <outlet property="priceL" destination="VvI-mu-f6E" id="8kM-K5-2PY"/>
+                <outlet property="reduceImg" destination="b4w-X3-uH3" id="Zyc-Ne-uwB"/>
                 <outlet property="reduceL" destination="hzP-uP-t23" id="QRv-Fs-sll"/>
                 <outlet property="statusL" destination="JB1-YI-6Pl" id="bXV-sk-7zN"/>
             </connections>
-            <point key="canvasLocation" x="-389" y="-16"/>
+            <point key="canvasLocation" x="-554" y="-19"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon_close_pink_round" width="46" height="46"/>
         <image name="myTracks_address" width="33" height="42"/>
         <image name="myTracks_reduce" width="32" height="42"/>
         <image name="myTracks_time" width="42" height="42"/>

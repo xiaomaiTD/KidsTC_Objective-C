@@ -15,6 +15,9 @@
 
 @implementation MyTracksHeader
 
-
+- (void)setItem:(MyTracksDateItem *)item {
+    _item = item;
+    self.timeL.text = _item.timeDesc;
+}
 
 @end

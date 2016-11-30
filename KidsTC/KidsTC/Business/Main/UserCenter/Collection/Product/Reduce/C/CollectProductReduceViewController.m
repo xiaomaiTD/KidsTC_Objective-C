@@ -34,9 +34,14 @@
     self.naviTheme = NaviThemeWihte;
 }
 
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    self.reduceView.editing = editing;
+}
+
 #pragma mark - CollectProductBaseViewActionTypeDelegate
 
-- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value {
+- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value completion:(void (^)(id))completion {
     switch (type) {
         case CollectProductBaseViewActionTypeLoadData:
         {

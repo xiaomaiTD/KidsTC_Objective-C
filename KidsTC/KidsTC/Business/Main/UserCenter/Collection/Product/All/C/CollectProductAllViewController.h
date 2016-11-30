@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface CollectProductAllViewController : ViewController
-
+@property (nonatomic, assign) BOOL editing;
 @end

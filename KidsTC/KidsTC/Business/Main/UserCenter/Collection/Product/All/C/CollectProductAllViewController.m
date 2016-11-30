@@ -10,6 +10,8 @@
 
 #import "GHeader.h"
 #import "SegueMaster.h"
+#import "NSString+Category.h"
+#import "KTCFavouriteManager.h"
 
 #import "CollectProductAllModel.h"
 #import "CollectProductAllView.h"
@@ -34,9 +36,14 @@
     self.naviTheme = NaviThemeWihte;
 }
 
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    self.allView.editing = editing;
+}
+
 #pragma mark - CollectProductBaseViewActionTypeDelegate
 
-- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value {
+- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value completion:(void (^)(id))completion{
     switch (type) {
         case CollectProductBaseViewActionTypeLoadData:
         {
@@ -49,6 +56,13 @@
             [SegueMaster makeSegueWithModel:value fromController:self];
         }
             break;
+        case CollectProductBaseViewActionTypeDelete:
+        {
+            [self delete:value completion:^(BOOL success) {
+                if (completion) completion(@(success));
+            }];
+        }
+            return;
     }
 }
 
@@ -71,6 +85,22 @@
         [self.allView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.allView dealWithUI:0];
+    }];
+}
+
+- (void)delete:(NSString *)productId completion:(void(^)(BOOL success))completion{
+    if (![productId isNotNull]) {
+        [[iToast makeText:@"服务编号为空"] show];
+        if (completion) completion(NO);
+        return;
+    }
+    [TCProgressHUD showSVP];
+    [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:productId type:KTCFavouriteTypeService succeed:^(NSDictionary *data) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(YES);
+    } failure:^(NSError *error) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(NO);
     }];
 }
 

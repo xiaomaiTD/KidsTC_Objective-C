@@ -53,6 +53,8 @@ static NSString *const ID = @"NurseryCell";
             break;
     }
     self.navigationItem.title = titleStr;
+    self.naviTheme = NaviThemeWihte;
+    
     
     self.mapView.mapType = BMKMapTypeStandard;
     self.mapView.showsUserLocation = YES;
@@ -88,8 +90,9 @@ static NSString *const ID = @"NurseryCell";
     
     self.navigationItem.rightBarButtonItem =
     [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(didClickRightBarButtonItem:) andGetButton:^(UIButton *btn) {
-        [btn setImage:[UIImage imageNamed:@"navigation_locate"] forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"navigation_list"] forState:UIControlStateSelected];
+        [btn setImage:[UIImage imageNamed:@"Nursery_address"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"Nursery_table"] forState:UIControlStateSelected];
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(2, 2, 2, 2)];
     }];
 }
 

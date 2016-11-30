@@ -265,6 +265,11 @@
 		EC43A2DC1DC92EE200A99638 /* NSObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2DB1DC92EE200A99638 /* NSObject+Category.m */; };
 		EC43A2DF1DC92F4100A99638 /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2DE1DC92F4100A99638 /* NSArray+Category.m */; };
 		EC43A2E21DC97FDC00A99638 /* ArticleHomeClassButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2E11DC97FDC00A99638 /* ArticleHomeClassButton.m */; };
+		EC4E270B1DEE80D300622711 /* MyTracksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E270A1DEE80D300622711 /* MyTracksModel.m */; };
+		EC4E27111DEE812E00622711 /* MyTracksDateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27101DEE812E00622711 /* MyTracksDateItem.m */; };
+		EC4E27141DEE813800622711 /* MyTracksItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27131DEE813800622711 /* MyTracksItem.m */; };
+		EC4E27181DEED77F00622711 /* MapRouteSearchTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27161DEED77F00622711 /* MapRouteSearchTypeViewController.m */; };
+		EC4E27191DEED77F00622711 /* MapRouteSearchTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27171DEED77F00622711 /* MapRouteSearchTypeViewController.xib */; };
 		EC4FBBDA1D77CD8300BBD050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBD91D77CD8300BBD050 /* main.m */; };
 		EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBBE41D77CD8300BBD050 /* Assets.xcassets */; };
 		EC4FBBF11D77CE5000BBD050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBF01D77CE5000BBD050 /* AppDelegate.m */; };
@@ -1793,6 +1798,15 @@
 		EC43A2DE1DC92F4100A99638 /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		EC43A2E01DC97FDC00A99638 /* ArticleHomeClassButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeClassButton.h; sourceTree = "<group>"; };
 		EC43A2E11DC97FDC00A99638 /* ArticleHomeClassButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeClassButton.m; sourceTree = "<group>"; };
+		EC4E27091DEE80D300622711 /* MyTracksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksModel.h; sourceTree = "<group>"; };
+		EC4E270A1DEE80D300622711 /* MyTracksModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTracksModel.m; sourceTree = "<group>"; };
+		EC4E270F1DEE812E00622711 /* MyTracksDateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksDateItem.h; sourceTree = "<group>"; };
+		EC4E27101DEE812E00622711 /* MyTracksDateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTracksDateItem.m; sourceTree = "<group>"; };
+		EC4E27121DEE813800622711 /* MyTracksItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksItem.h; sourceTree = "<group>"; };
+		EC4E27131DEE813800622711 /* MyTracksItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTracksItem.m; sourceTree = "<group>"; };
+		EC4E27151DEED77F00622711 /* MapRouteSearchTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteSearchTypeViewController.h; sourceTree = "<group>"; };
+		EC4E27161DEED77F00622711 /* MapRouteSearchTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteSearchTypeViewController.m; sourceTree = "<group>"; };
+		EC4E27171DEED77F00622711 /* MapRouteSearchTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapRouteSearchTypeViewController.xib; sourceTree = "<group>"; };
 		EC4FBBD51D77CD8300BBD050 /* KidsTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4FBBD91D77CD8300BBD050 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC4FBBE41D77CD8300BBD050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -4972,6 +4986,12 @@
 		EC2F26DA1DDB097E00B67BBA /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E27091DEE80D300622711 /* MyTracksModel.h */,
+				EC4E270A1DEE80D300622711 /* MyTracksModel.m */,
+				EC4E270F1DEE812E00622711 /* MyTracksDateItem.h */,
+				EC4E27101DEE812E00622711 /* MyTracksDateItem.m */,
+				EC4E27121DEE813800622711 /* MyTracksItem.h */,
+				EC4E27131DEE813800622711 /* MyTracksItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -5720,6 +5740,9 @@
 				EC4FBC8B1D77CEE300BBD050 /* MapLocateViewController.m */,
 				EC4FBC8C1D77CEE300BBD050 /* MapRouteViewController.h */,
 				EC4FBC8D1D77CEE300BBD050 /* MapRouteViewController.m */,
+				EC4E27151DEED77F00622711 /* MapRouteSearchTypeViewController.h */,
+				EC4E27161DEED77F00622711 /* MapRouteSearchTypeViewController.m */,
+				EC4E27171DEED77F00622711 /* MapRouteSearchTypeViewController.xib */,
 				EC4FBC8E1D77CEE300BBD050 /* RouteAnnotation.h */,
 				EC4FBC8F1D77CEE300BBD050 /* RouteAnnotation.m */,
 			);
@@ -11188,6 +11211,7 @@
 				EC0044111DE6B8970042B701 /* ProductDetailCommentMoreCell.xib in Resources */,
 				EC43A2D61DC8D5BB00A99638 /* HomeRefreshGuideView.xib in Resources */,
 				EC4FC4BD1D77CEE400BBD050 /* ServiceOrderDetailOrderInfoCell.xib in Resources */,
+				EC4E27191DEED77F00622711 /* MapRouteSearchTypeViewController.xib in Resources */,
 				EC0044231DE6B8970042B701 /* ProductDetailNoticeCollectionViewCell.xib in Resources */,
 				EC4FC4501D77CEE400BBD050 /* CommentListViewCell.xib in Resources */,
 				EC59719B1DD016670047CDEC /* SoftwareSettingHeader.xib in Resources */,
@@ -11862,7 +11886,9 @@
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
 				EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
+				EC4E27181DEED77F00622711 /* MapRouteSearchTypeViewController.m in Sources */,
 				EC5CDD3F1DE538F200F95C6F /* ProductDetailFreeApplySelectSexViewController.m in Sources */,
+				EC4E270B1DEE80D300622711 /* MyTracksModel.m in Sources */,
 				EC7FBC101DC4D074007B326C /* ProductDetailGetCouponCell.m in Sources */,
 				EC13B4FD1DD1F3430040F760 /* AccountCenterTipsCell.m in Sources */,
 				EC4FC3A51D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.m in Sources */,
@@ -11973,6 +11999,7 @@
 				EC4FC5AC1D77CEEF00BBD050 /* AUIKeyboardAdhesiveView.m in Sources */,
 				EC4FC2C91D77CEE400BBD050 /* FDChooseStoreCell.m in Sources */,
 				EC22894C1DE95C8600EC324A /* CollectionStoreModel.m in Sources */,
+				EC4E27141DEE813800622711 /* MyTracksItem.m in Sources */,
 				EC2289781DE9C7A400EC324A /* CollectionTarentoItem.m in Sources */,
 				EC4FC5F51D77CEEF00BBD050 /* ToolBox.m in Sources */,
 				EC5CDD301DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
@@ -12030,6 +12057,7 @@
 				ECB3E7971D92C96B0059267D /* FlashServiceOrderListModel.m in Sources */,
 				EC4FC49C1D77CEE400BBD050 /* FlashServiceOrderDetailToolBar.m in Sources */,
 				EC5CDD2F1DE538F200F95C6F /* ProductDetailFreeApplyBaseCell.m in Sources */,
+				EC4E27111DEE812E00622711 /* MyTracksDateItem.m in Sources */,
 				EC00434F1DE56E010042B701 /* NurseryCell.m in Sources */,
 				EC13B5211DD1F6250040F760 /* AccountCenterHotProduct.m in Sources */,
 				EC4FC4B71D77CEE400BBD050 /* ServiceOrderDetailAddressCell.m in Sources */,

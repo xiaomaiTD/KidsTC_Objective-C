@@ -59,6 +59,7 @@ static CGFloat const margin_top_bottom = 16;
     self.nameL.text = item.categoryName;
     self.numL.text = [NSString stringWithFormat:@"%zd个活动",item.totalCount];
     [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:item.firstItem.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    self.baannerIconH.constant = CGRectGetWidth(self.bannerIcon.frame) * _item.firstItem.imgRatio;
     
     CGFloat collectionViewH = 0;
     if (self.item.items.count>0) {

@@ -12,12 +12,13 @@
 
 typedef enum : NSUInteger {
     CollectProductBaseViewActionTypeLoadData = 1,
-    CollectProductBaseViewActionTypeSegue
+    CollectProductBaseViewActionTypeSegue,
+    CollectProductBaseViewActionTypeDelete
 } CollectProductBaseViewActionType;
 
 @class CollectProductBaseView;
 @protocol CollectProductBaseViewDelegate <NSObject>
-- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value;
+- (void)collectProductBaseView:(CollectProductBaseView *)view actionType:(CollectProductBaseViewActionType)type value:(id)value completion:(void(^)(id value))completion;
 @end
 
 @interface CollectProductBaseView : UIView<UITableViewDelegate,UITableViewDataSource>
@@ -25,5 +26,6 @@ typedef enum : NSUInteger {
 //这里修饰delegate的关键字必须为strong，原因是controller不被navi栈强引用，如果delegate不为strong，则delegate为nil
 @property (nonatomic, strong) id<CollectProductBaseViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, assign) BOOL editing;
 - (void)dealWithUI:(NSUInteger)loadCount;
 @end

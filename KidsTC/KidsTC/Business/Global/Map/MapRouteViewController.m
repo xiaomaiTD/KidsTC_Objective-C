@@ -12,6 +12,8 @@
 #import "TCProgressHUD.h"
 #import "iToast.h"
 #import "RouteAnnotation.h"
+#import "MapRouteSearchTypeViewController.h"
+#import "Colours.h"
 
 CGFloat const RouteTypeButtonSize = 40;
 
@@ -60,19 +62,21 @@ CGFloat const RouteTypeButtonSize = 40;
 
 - (void)initui{
     
-    self.naviColor = [UIColor clearColor];
+    self.naviTheme = NaviThemeWihte;
+    
+    self.navigationItem.title = @"路线";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self initMapView];
     
     [self initTextField];
     
-    [self initNaviBarItems];
-    
     [self initRouteTypeButton];
 }
 
 - (void)initMapView{
-    BMKMapView *mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    BMKMapView *mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     mapView.mapType = BMKMapTypeStandard;
     mapView.showsUserLocation = YES;
     mapView.isSelectedAnnotationViewFront = YES;
@@ -85,37 +89,46 @@ CGFloat const RouteTypeButtonSize = 40;
 }
 
 - (void)initTextField{
-    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-    textField.font = [UIFont systemFontOfSize:15];
-    textField.backgroundColor = [COLOR_PINK colorWithAlphaComponent:0.5];
+    
+    CGFloat textFieldH = 44;
+    
+    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(15, 72, SCREEN_WIDTH - 30, textFieldH)];
+    textField.font = [UIFont systemFontOfSize:13];
+    textField.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.96];
     textField.placeholder = @"请搜索或长按地图选择起点";
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeySearch;
     textField.clearButtonMode = UITextFieldViewModeAlways;
-    self.navigationItem.titleView = textField;
-    self.textField = textField;
+    
+    UIButton *rightBtn = [[UIButton alloc] init];
+    [rightBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [rightBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
+    rightBtn.frame = CGRectMake(0, 0, textFieldH, textFieldH);
+    [rightBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    textField.rightView = rightBtn;
+    textField.rightViewMode = UITextFieldViewModeAlways;
     
     textField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
     textField.leftViewMode = UITextFieldViewModeAlways;
-}
-
-- (void)initNaviBarItems{
-    self.navigationItem.leftBarButtonItem =
-    [UIBarButtonItem itemWithImageName:@"navigation_back_h" highImageName:@"navigation_back_h" postion:UIBarButtonPositionLeft target:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"搜索" postion:UIBarButtonPositionRightCenter target:self action:@selector(search) andGetButton:^(UIButton *btn) {
-        [btn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
-        btn.frame = CGRectMake(0, 0, CGRectGetWidth(btn.frame)+12, 30);
-        btn.backgroundColor = [COLOR_PINK colorWithAlphaComponent:0.5];
-    }];
+    
+    textField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    textField.layer.borderWidth = LINE_H;
+    
+    [self.view addSubview:textField];
+    
+    self.textField = textField;
 }
 
 - (void)initRouteTypeButton{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-RouteTypeButtonSize-24, SCREEN_HEIGHT-RouteTypeButtonSize-24, RouteTypeButtonSize, RouteTypeButtonSize)];
-    btn.backgroundColor = [COLOR_PINK colorWithAlphaComponent:0.5];
-    [btn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor whiteColor];
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
     btn.layer.masksToBounds = YES;
     btn.layer.cornerRadius = RouteTypeButtonSize*0.5;
+    btn.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    btn.layer.borderWidth = LINE_H;
     [btn setTitle:@"公交" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(choiceRouteType:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
@@ -167,15 +180,19 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 - (BMKOverlayView*)mapView:(BMKMapView *)mapView viewForOverlay:(id<BMKOverlay>)overlay {
     if ([overlay isKindOfClass:[BMKPolyline class]]) {
         BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
-        polylineView.fillColor = COLOR_BLUE;
-        polylineView.strokeColor = COLOR_BLUE;
-        polylineView.lineWidth = 3.0;
+        polylineView.fillColor = [UIColor colorFromHexString:@"4f83ff"];
+        polylineView.strokeColor = [UIColor colorFromHexString:@"4f83ff"];
+        polylineView.lineWidth = 4.0;
         return polylineView;
     }
     return nil;
 }
 
 #pragma mark private
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.textField resignFirstResponder];
+}
 
 - (void)setStartAnnotationCoordinate:(CLLocationCoordinate2D)coordinate {
     if (!self.startAnnotation) {
@@ -241,22 +258,13 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 #pragma mark - choiceRouteType
 
 - (void)choiceRouteType:(UIButton *)btn{
-    TCLog(@"");
-    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择路径规划方式" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *driveAction = [UIAlertAction actionWithTitle:@"驾车" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self startRouteSearchWithType:MapRouteSearchTypeDrive];
-    }];
-    UIAlertAction *busAction = [UIAlertAction actionWithTitle:@"公交" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self startRouteSearchWithType:MapRouteSearchTypeBus];
-    }];
-    UIAlertAction *walkAction = [UIAlertAction actionWithTitle:@"步行" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self startRouteSearchWithType:MapRouteSearchTypeWalk];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [controller addAction:driveAction];
-    [controller addAction:busAction];
-    [controller addAction:walkAction];
-    [controller addAction:cancelAction];
+    MapRouteSearchTypeViewController *controller = [[MapRouteSearchTypeViewController alloc] initWithNibName:@"MapRouteSearchTypeViewController" bundle:nil];
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    controller.type = (MapRouteSearchType)self.routeTypeButton.tag;
+    controller.actionBlock = ^(MapRouteSearchType type){
+        [self startRouteSearchWithType:type];
+    };
     [self presentViewController:controller animated:YES completion:nil];
 }
 
@@ -268,12 +276,14 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
         [self drawRouteLineDetailWithSearchResult:result];
     } failure:^(NSError *error) {
         [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"没有找到合适的路线"] show];
+        [[iToast makeText:@"没有找到合适的路线，建议选择步行！"] show];
+        [KTCMapUtil resetMapView:self.mapView toFitStart:self.startAnnotation.coordinate andDestination:self.destinationAnnotation.coordinate];
     }];
 }
 
 - (void)resetRouteTypeButtonWithType:(MapRouteSearchType)type {
     [self.routeTypeButton setHidden:NO];
+    self.routeTypeButton.tag = type;
     switch (type) {
         case MapRouteSearchTypeDrive:
         {

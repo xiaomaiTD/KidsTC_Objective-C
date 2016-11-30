@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2O-V8-yGc">
-                        <rect key="frame" x="10" y="0.0" width="300" height="189.5"/>
+                        <rect key="frame" x="10" y="10" width="300" height="179.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h6D-zk-MpT">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="亲亲袋鼠静安店4周年，50元特惠体验亲子活动" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38d-Op-6Hk">
-                                <rect key="frame" x="12" y="116" width="215" height="39"/>
+                                <rect key="frame" x="12" y="116" width="215" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,27 +49,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市静安寺康东路 4.24km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEy-hv-ksM">
-                                <rect key="frame" x="25" y="161.5" width="142.5" height="14"/>
+                                <rect key="frame" x="25" y="151.5" width="142.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collection_address" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-44-Z6J">
-                                <rect key="frame" x="12" y="163" width="11" height="11"/>
+                                <rect key="frame" x="12" y="153" width="11" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="11" id="16b-QF-z0l"/>
                                     <constraint firstAttribute="width" secondItem="fWh-44-Z6J" secondAttribute="height" multiplier="1:1" id="ag7-FO-Crb"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collection_time" translatesAutoresizingMaskIntoConstraints="NO" id="CXe-Ep-qPu">
-                                <rect key="frame" x="175.5" y="163.5" width="10" height="10"/>
+                                <rect key="frame" x="175.5" y="153.5" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="GIG-8p-8rm"/>
                                     <constraint firstAttribute="width" secondItem="CXe-Ep-qPu" secondAttribute="height" multiplier="1:1" id="YJa-dA-yZg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="进行中 ，8天后结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehz-1F-bec">
-                                <rect key="frame" x="187.5" y="161" width="100.5" height="14"/>
+                                <rect key="frame" x="187.5" y="151" width="100.5" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -100,13 +100,27 @@
                             <constraint firstAttribute="trailing" secondItem="h6D-zk-MpT" secondAttribute="trailing" id="zOh-q5-REe"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEV-3c-DSm">
+                        <rect key="frame" x="298" y="2" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Dwy-n0-wAB"/>
+                            <constraint firstAttribute="width" secondItem="nEV-3c-DSm" secondAttribute="height" multiplier="1:1" id="bdH-Ea-Xbp"/>
+                        </constraints>
+                        <state key="normal" image="icon_close_pink_round"/>
+                        <connections>
+                            <action selector="action:" destination="8bs-Ih-I1d" eventType="touchUpInside" id="61d-Qn-4u8"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
+                    <constraint firstItem="nEV-3c-DSm" firstAttribute="top" secondItem="q2O-V8-yGc" secondAttribute="top" constant="-8" id="FWz-v1-a1z"/>
                     <constraint firstAttribute="trailing" secondItem="q2O-V8-yGc" secondAttribute="trailing" constant="10" id="L6U-wM-6Dk"/>
+                    <constraint firstItem="nEV-3c-DSm" firstAttribute="trailing" secondItem="q2O-V8-yGc" secondAttribute="trailing" constant="8" id="SfV-Zt-jKx"/>
                     <constraint firstAttribute="bottom" secondItem="q2O-V8-yGc" secondAttribute="bottom" id="aMQ-Sa-gFJ"/>
                     <constraint firstItem="q2O-V8-yGc" firstAttribute="leading" secondItem="nk8-BG-eja" secondAttribute="leading" constant="10" id="f8u-CL-gT3"/>
-                    <constraint firstItem="q2O-V8-yGc" firstAttribute="top" secondItem="nk8-BG-eja" secondAttribute="top" id="owu-Qo-Tat"/>
+                    <constraint firstItem="nEV-3c-DSm" firstAttribute="width" secondItem="nEV-3c-DSm" secondAttribute="height" multiplier="1:1" id="fJs-XE-GYO"/>
+                    <constraint firstItem="q2O-V8-yGc" firstAttribute="top" secondItem="nk8-BG-eja" secondAttribute="top" constant="10" id="owu-Qo-Tat"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -114,16 +128,18 @@
                 <outlet property="bannerIcon" destination="h6D-zk-MpT" id="DIT-bI-jwv"/>
                 <outlet property="bannerIconH" destination="b3m-D1-QlE" id="ba8-zZ-QjJ"/>
                 <outlet property="bgView" destination="q2O-V8-yGc" id="uCS-Nk-JwF"/>
+                <outlet property="deleteBtn" destination="nEV-3c-DSm" id="Lom-8u-fui"/>
                 <outlet property="icon" destination="xqw-PP-2Xe" id="ss7-We-Ic4"/>
                 <outlet property="nameL" destination="38d-Op-6Hk" id="c38-bA-i5W"/>
                 <outlet property="priceL" destination="ejj-MI-4hz" id="lnL-Ab-dte"/>
                 <outlet property="statusL" destination="Ehz-1F-bec" id="xnQ-d3-iDf"/>
             </connections>
-            <point key="canvasLocation" x="-1100" y="-70"/>
+            <point key="canvasLocation" x="-1202" y="-72"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="collection_address" width="33" height="42"/>
         <image name="collection_time" width="42" height="42"/>
+        <image name="icon_close_pink_round" width="46" height="46"/>
     </resources>
 </document>

@@ -18,16 +18,33 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
-    UIView *view = [UIView new];
-    view.backgroundColor = [UIColor whiteColor];
-    self.selectedBackgroundView = view;
+    [self layoutIfNeeded];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.tipView.layer.cornerRadius = CGRectGetWidth(self.tipView.frame) * 0.5;
+    self.tipView.layer.masksToBounds = YES;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    UIColor *backgroundColor = self.tipView.backgroundColor;
+    [super setHighlighted:highlighted animated:animated];
+    self.tipView.backgroundColor = backgroundColor;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    UIColor *backgroundColor = self.tipView.backgroundColor;
+    [super setSelected:selected animated:animated];
+    self.tipView.backgroundColor = backgroundColor;
 }
 
 - (void)setItem:(SearchFactorFilterDataItemLefe *)item {
     _item = item;
     self.titleL.text = _item.title;
     self.tipView.hidden = !_item.selected;
+    UIColor *bgColor = _item.cellSeleted?[UIColor whiteColor]:[UIColor colorFromHexString:@"F7F7F7"];
+    self.contentView.backgroundColor = bgColor;
 }
 
 @end

@@ -17,6 +17,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setItem:(SearchFactorFilterDataItemRight *)item {

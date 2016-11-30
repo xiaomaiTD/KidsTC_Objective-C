@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7m-Bv-Tu2">
-                        <rect key="frame" x="15" y="16" width="290" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7m-Bv-Tu2">
+                        <rect key="frame" x="15" y="16" width="266" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="C7m-Bv-Tu2" secondAttribute="trailing" constant="15" id="ACC-2u-gkf"/>
+                    <constraint firstItem="zSb-xT-Cvz" firstAttribute="leading" secondItem="C7m-Bv-Tu2" secondAttribute="trailing" constant="8" id="Ab3-oN-7US"/>
                     <constraint firstItem="C7m-Bv-Tu2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Cud-tp-foa"/>
                     <constraint firstAttribute="bottom" secondItem="C7m-Bv-Tu2" secondAttribute="bottom" constant="16" id="fTo-SQ-xLb"/>
                     <constraint firstItem="zSb-xT-Cvz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g0p-Fp-qGI"/>

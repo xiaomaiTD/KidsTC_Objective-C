@@ -44,7 +44,7 @@
 {
     UINavigationBar *appearance = [UINavigationBar appearance];
     [appearance setBackgroundImage:[UIImage imageWithColor:COLOR_PINK] forBarMetrics:UIBarMetricsDefault];
-    [appearance setShadowImage:[UIImage new]];
+    //[appearance setShadowImage:[UIImage new]];
     [appearance setTranslucent:YES];
     [appearance setBarStyle:UIBarStyleDefault];
     [appearance setTintColor:[UIColor whiteColor]];

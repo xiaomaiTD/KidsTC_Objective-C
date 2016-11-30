@@ -76,6 +76,9 @@ static NSString *const ArticleHomeBannerCollectionViewTwoCellID  = @"ArticleHome
     }
     self.pageControlConstraintBottomMargin.constant = (int)pageControlConstraintBottomMargin;
     self.collectionConstraintHeight.constant = (int)collectionConstraintHeight;
+    
+    [self layoutIfNeeded];
+    
     [self.collectionView reloadData];
 }
 

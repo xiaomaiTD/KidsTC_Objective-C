@@ -180,19 +180,19 @@
 }
 
 - (void)addNaviShadow {
-    CALayer *layer = self.navigationController.navigationBar.layer;
-    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
-    layer.shadowOffset = CGSizeMake(0, 4);
-    layer.shadowRadius = 2;
-    layer.shadowOpacity = 0.5;
+//    CALayer *layer = self.navigationController.navigationBar.layer;
+//    layer.shadowColor = [UIColor colorWithWhite:0 alpha:0.5].CGColor;
+//    layer.shadowOffset = CGSizeMake(0, 4);
+//    layer.shadowRadius = 2;
+//    layer.shadowOpacity = 0.5;
 }
 
 - (void)removeNaviShadow {
-    CALayer *layer = self.navigationController.navigationBar.layer;
-    layer.shadowColor = [UIColor clearColor].CGColor;
-    layer.shadowOffset = CGSizeZero;
-    layer.shadowRadius = 0;
-    layer.shadowOpacity = 0;
+//    CALayer *layer = self.navigationController.navigationBar.layer;
+//    layer.shadowColor = [UIColor clearColor].CGColor;
+//    layer.shadowOffset = CGSizeZero;
+//    layer.shadowRadius = 0;
+//    layer.shadowOpacity = 0;
 }
 
 - (void)setNavigationBarColor{

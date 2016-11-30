@@ -22,10 +22,14 @@ static NSString *const ID_right = @"SearchFactorFilterRightCell";
 @property (nonatomic, strong) NSArray<NSArray<SearchFactorFilterDataItemLefe *> *> *filters;
 @property (nonatomic, strong) NSIndexPath *selectedIndexPath;
 
-@property (weak, nonatomic) IBOutlet UIView *btnsBgView;
-
 @property (nonatomic, strong) NSMutableDictionary *selectItemDic_left;
 @property (nonatomic, strong) NSMutableDictionary *selectItemDic_right;
+
+@property (nonatomic, weak) SearchFactorFilterDataItemLefe *cellSelectedItem_left;
+
+@property (weak, nonatomic) IBOutlet UIView *btnsBgView;
+@property (weak, nonatomic) IBOutlet UIButton *cleanBtn;
+@property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 
 @end
 
@@ -59,6 +63,21 @@ static NSString *const ID_right = @"SearchFactorFilterRightCell";
     }
     return height;
 }
+
+- (IBAction)clean:(UIButton *)sender {
+    NSArray<SearchFactorFilterDataItemRight *> *right_selectedItems = [_selectItemDic_right allValues];
+    [right_selectedItems makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
+    [self.tableView_right reloadData];
+    
+    NSArray<SearchFactorFilterDataItemLefe *> *left_selectedItems = [_selectItemDic_left allValues];
+    [left_selectedItems makeObjectsPerformSelector:@selector(setSelected:) withObject:@(NO)];
+    [self.tableView_left reloadData];
+}
+
+- (IBAction)sure:(UIButton *)sender {
+    
+}
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
@@ -134,6 +153,16 @@ static NSString *const ID_right = @"SearchFactorFilterRightCell";
     NSInteger row = indexPath.row;
     if (tableView == self.tableView_left) {
         _selectedIndexPath = indexPath;
+        if (section<_filters.count) {
+            NSArray<SearchFactorFilterDataItemLefe *> *lefe_items = _filters[section];
+            if (row<lefe_items.count) {
+                SearchFactorFilterDataItemLefe *item_left = lefe_items[row];
+                _cellSelectedItem_left.cellSeleted = NO;
+                item_left.cellSeleted = YES;
+                _cellSelectedItem_left = item_left;
+            }
+        }
+        [self.tableView_left reloadData];
         [self.tableView_right reloadData];
     }else{
         if (_selectedIndexPath.section<_filters.count) {
@@ -154,6 +183,8 @@ static NSString *const ID_right = @"SearchFactorFilterRightCell";
                         [_selectItemDic_right setObject:item_right forKey:key];
                     }
                     [self.tableView_right reloadData];
+                    
+                    [self.tableView_right scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                     
                     SearchFactorFilterDataItemLefe *selectItem_left = [_selectItemDic_left objectForKey:key];
                     selectItem_left.selected = NO;

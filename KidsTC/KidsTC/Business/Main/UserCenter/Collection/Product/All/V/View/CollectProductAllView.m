@@ -12,6 +12,7 @@
 static NSString *const ID = @"CollectProductAllCell";
 
 @interface CollectProductAllView ()
+
 @end
 
 @implementation CollectProductAllView
@@ -24,6 +25,8 @@ static NSString *const ID = @"CollectProductAllCell";
     return self;
 }
 
+
+
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -34,11 +37,23 @@ static NSString *const ID = @"CollectProductAllCell";
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.001;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return (section == self.items.count - 1)?10:0.001;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CollectProductAllCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     NSInteger section = indexPath.section;
     if (section<self.items.count) {
         cell.item = self.items[section];
+        cell.deleteBtn.hidden = !self.editing;
+        cell.deleteAction = ^void(){
+            [self deleteAtIndexPath:indexPath];
+        };
     }
     return cell;
 }
@@ -48,25 +63,28 @@ static NSString *const ID = @"CollectProductAllCell";
     NSInteger section = indexPath.section;
     if (section<self.items.count) {
         CollectProductItem *item = self.items[section];
-        if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
-            [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:item.segueModel];
+        if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+            [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:item.segueModel completion:nil];
         }
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+- (void)deleteAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    if (section>=self.items.count) return;
+    CollectProductItem *item = self.items[section];
+    if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+        [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeDelete value:item.productSysNo completion:^(id value) {
+            BOOL success = [value boolValue];
+            if (!success) return;
+            NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
+            if (section>=itemsAry.count) return;
+            [itemsAry removeObjectAtIndex:section];
+            self.items = [NSArray arrayWithArray:itemsAry];
+            [self.tableView reloadData];
+        }];
+    }
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewRowAction *action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        
-    }];
-    return @[action];
-}
 
 @end

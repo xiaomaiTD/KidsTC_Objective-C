@@ -12,30 +12,27 @@
 
 static NSString *const ID = @"NurseryCollectionViewCell";
 
-static CGFloat const imgMragin = 10;
+static CGFloat const imgMragin = 12;
 
 @interface NurseryCell ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewH;
 @property (nonatomic, assign) CGFloat item_s;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *routeBGViewH;
-@property (weak, nonatomic) IBOutlet UIView *routeBGView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *storeBGViewTopMargin;
-
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *distanceL;
-@property (weak, nonatomic) IBOutlet UILabel *routeL;
 @property (weak, nonatomic) IBOutlet UILabel *storeL;
-@property (weak, nonatomic) IBOutlet UILabel *busL;
-@property (weak, nonatomic) IBOutlet UILabel *subwayL;
-@property (weak, nonatomic) IBOutlet UILabel *tradingAreaL;
 @property (weak, nonatomic) IBOutlet UILabel *officeTimeL;
 @property (weak, nonatomic) IBOutlet UILabel *facilitiesL;
 
 @property (weak, nonatomic) IBOutlet UIButton *nearbyBtn;
 @property (weak, nonatomic) IBOutlet UIButton *routeBtn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HOneLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HTwoLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VOneLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VTwoLineH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VThreeLineH;
 @end
 
 @implementation NurseryCell
@@ -48,8 +45,14 @@ static CGFloat const imgMragin = 10;
     
     self.collectionView.userInteractionEnabled = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:@"NurseryCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
-    self.item_s = (SCREEN_WIDTH - 2*15 - 4*imgMragin)/4.5;
+    self.item_s = (SCREEN_WIDTH - 5*imgMragin)/4.5;
     self.collectionViewH.constant = self.item_s;
+    
+    self.HOneLineH.constant = LINE_H;
+    self.HTwoLineH.constant = LINE_H;
+    self.VOneLineH.constant = LINE_H;
+    self.VTwoLineH.constant = LINE_H;
+    self.VThreeLineH.constant = LINE_H;
     [self layoutIfNeeded];
     
 }
@@ -60,16 +63,9 @@ static CGFloat const imgMragin = 10;
     
     self.nameL.text = item.name;
     self.distanceL.text = item.distanceDesc;
-    self.routeL.text = [NSString stringWithFormat:@"%@ %@ %@",item.drivingTimeDesc,item.ridingTimeDesc,item.walkingTimeDesc];
     self.storeL.text = [NSString stringWithFormat:@"商户(%zd)",item.storesTotal];
-    self.busL.text = [NSString stringWithFormat:@"公交车(%zd)",item.busStopsTotal];
-    self.subwayL.text = item.subwayStationDesc;
-    self.tradingAreaL.text = item.tradingAreaName;
     self.officeTimeL.text = item.officeTimeDesc;
     self.facilitiesL.text = item.facilitiesDesc;
-    
-    self.routeBGView.hidden = ![item.routeStr isNotNull];
-    self.storeBGViewTopMargin.constant = self.routeBGView.hidden?0.5:self.routeBGViewH.constant+1;
     [self layoutIfNeeded];
 }
 
@@ -86,7 +82,7 @@ static CGFloat const imgMragin = 10;
     return CGSizeMake(self.item_s, self.item_s);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 15, 0, 15);
+    return UIEdgeInsetsMake(0, imgMragin, 0, imgMragin);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return imgMragin;

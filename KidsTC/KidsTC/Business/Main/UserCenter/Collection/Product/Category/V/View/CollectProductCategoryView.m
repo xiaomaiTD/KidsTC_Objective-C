@@ -51,8 +51,8 @@ static NSString *const ID = @"CollectProductCategoryCell";
     switch (type) {
         case CollectProductCategoryCellActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
-                [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:value];
+            if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+                [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeSegue value:value completion:nil];
             }
         }
             break;

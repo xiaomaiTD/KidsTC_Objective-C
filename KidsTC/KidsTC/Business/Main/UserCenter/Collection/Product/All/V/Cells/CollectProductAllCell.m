@@ -30,7 +30,7 @@
     [self layoutIfNeeded];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.bgView.layer.cornerRadius = 8;
+    self.bgView.layer.cornerRadius = 6;
     self.bgView.layer.masksToBounds = YES;
     
     self.priceL.textColor = COLOR_PINK;
@@ -56,6 +56,15 @@
     self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.price];
     self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.address,_item.distanceDesc];
     self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
+    
+    self.bannerIconH.constant = CGRectGetWidth(self.bannerIcon.frame) * _item.imgRatio;
+    [self layoutIfNeeded];
+}
+
+- (IBAction)action:(UIButton *)sender {
+    if (self.deleteAction) {
+        self.deleteAction();
+    }
 }
 
 

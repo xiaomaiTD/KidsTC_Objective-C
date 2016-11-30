@@ -60,6 +60,9 @@
                             <state key="normal" title="清空">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="clean:" destination="iN0-l3-epB" eventType="touchUpInside" id="WTQ-8a-z2y"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYj-nW-4uK">
                             <rect key="frame" x="176" y="12" width="151" height="40"/>
@@ -67,6 +70,9 @@
                             <state key="normal" title="确定">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="sure:" destination="iN0-l3-epB" eventType="touchUpInside" id="lKA-bS-Bfy"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rn-2w-cdJ">
                             <rect key="frame" x="0.0" y="63.5" width="342" height="0.5"/>
@@ -116,6 +122,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="btnsBgView" destination="RPi-hu-3Iz" id="N7v-j4-jdA"/>
+                <outlet property="cleanBtn" destination="6Er-yw-XNy" id="yVr-Pe-fIi"/>
+                <outlet property="sureBtn" destination="sYj-nW-4uK" id="FMu-TA-Ygf"/>
                 <outlet property="tableView_left" destination="1NW-Rh-J21" id="YbT-aL-4g8"/>
                 <outlet property="tableView_right" destination="Vr9-A2-7hI" id="df1-Kd-yUv"/>
             </connections>

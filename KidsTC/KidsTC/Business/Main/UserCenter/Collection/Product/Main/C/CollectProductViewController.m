@@ -21,6 +21,10 @@
 @property (nonatomic, strong) MultiItemsToolBar *toolBar;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton *naviRightBtn;
+
+@property (nonatomic, strong) CollectProductAllViewController *allVC;
+@property (nonatomic, strong) CollectProductCategoryViewController *categoryVC;
+@property (nonatomic, strong) CollectProductReduceViewController *reduceVC;
 @end
 
 @implementation CollectProductViewController
@@ -35,6 +39,8 @@
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"编辑" postion:UIBarButtonPositionRight target:self action:@selector(edit) andGetButton:^(UIButton *btn) {
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [btn setTitle:@"完成" forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
         self.naviRightBtn = btn;
     }];
     
@@ -58,23 +64,23 @@
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    CollectProductAllViewController *allVC = [[CollectProductAllViewController alloc] init];
-    UIView *allView = allVC.view;
+    _allVC = [[CollectProductAllViewController alloc] init];
+    UIView *allView = _allVC.view;
     allView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:allView];
-    [self addChildViewController:allVC];
+    [self addChildViewController:_allVC];
     
-    CollectProductCategoryViewController *categoryVC = [[CollectProductCategoryViewController alloc] init];
-    UIView *categoryView = categoryVC.view;
+    _categoryVC = [[CollectProductCategoryViewController alloc] init];
+    UIView *categoryView = _categoryVC.view;
     categoryView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:categoryView];
-    [self addChildViewController:categoryVC];
+    [self addChildViewController:_categoryVC];
     
-    CollectProductReduceViewController *reduceVC = [[CollectProductReduceViewController alloc] init];
-    UIView *reduceView = reduceVC.view;
+    _reduceVC = [[CollectProductReduceViewController alloc] init];
+    UIView *reduceView = _reduceVC.view;
     reduceView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:reduceView];
-    [self addChildViewController:reduceVC];
+    [self addChildViewController:_reduceVC];
     
     scrollView.contentSize = CGSizeMake(scrollView_w * 3, 1);
     
@@ -85,6 +91,17 @@
 
 - (void)edit {
     TCLog(@"---");
+    self.naviRightBtn.selected = !self.naviRightBtn.selected;
+    CGFloat offsetX = self.scrollView.contentOffset.x;
+    CGFloat scrollView_w = CGRectGetWidth(self.scrollView.bounds);
+    NSUInteger currentIndex = offsetX/scrollView_w;
+    if (currentIndex == 0) {
+        _allVC.editing = self.naviRightBtn.selected;
+    }else if (currentIndex == 1) {
+        
+    }else if (currentIndex == 2) {
+        _reduceVC.editing = self.naviRightBtn.selected;
+    }
 }
 
 #pragma mark - MultiItemsToolBarDelegate
@@ -105,6 +122,16 @@
     CGFloat progress = (offsetX - smallIndex * scrollView_w)/scrollView_w;
     
     [self.toolBar changeTipPlaceWithSmallIndex:smallIndex bigIndex:bigIndex progress:progress animate:YES];
+    
+    if (smallIndex == 0) {
+        self.naviRightBtn.selected = _allVC.editing;
+        self.naviRightBtn.hidden = NO;
+    }else if (smallIndex == 1) {
+        self.naviRightBtn.hidden = YES;
+    }else if (smallIndex == 2) {
+        self.naviRightBtn.selected = _reduceVC.editing;
+        self.naviRightBtn.hidden = NO;
+    }
 }
 
 

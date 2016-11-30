@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyTracksDateItem.h"
 
 @interface MyTracksHeader : UITableViewHeaderFooterView
-
+@property (nonatomic, strong) MyTracksDateItem *item;
 @end

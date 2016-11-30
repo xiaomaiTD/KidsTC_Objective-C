@@ -14,6 +14,9 @@
     return @{@"productCategory":[CollectProductCategory class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    _imgRatio = _imgRatio<=0?0.6:_imgRatio;
+    
     if ([_productSysNo isNotNull]) {
         if (![_channelId isNotNull]) _channelId = @"0";
         switch (_productType) {

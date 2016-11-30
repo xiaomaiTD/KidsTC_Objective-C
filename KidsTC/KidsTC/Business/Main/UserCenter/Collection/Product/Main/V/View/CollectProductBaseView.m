@@ -41,7 +41,7 @@ static NSString *const ID = @"UITableViewCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
-    tableView.estimatedRowHeight = 100;
+    tableView.estimatedRowHeight = 300;
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
@@ -67,8 +67,8 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)loadData:(BOOL)refresh {
-    if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:)]) {
-        [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeLoadData value:@(refresh)];
+    if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+        [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeLoadData value:@(refresh) completion:nil];
     }
 }
 
@@ -90,6 +90,10 @@ static NSString *const ID = @"UITableViewCell";
     }else self.tableView.backgroundView = nil;
 }
 
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    [self.tableView reloadData];
+}
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 

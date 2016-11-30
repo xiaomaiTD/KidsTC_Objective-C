@@ -84,7 +84,6 @@
              @"tags":[ArticleHomeTag class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    _ratio = _ratio>0?_ratio:0.4;
     _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_params];
     NSMutableAttributedString *titleAttributeStr = [[NSMutableAttributedString alloc] initWithString:[_title isNotNull]?_title:@""];
     titleAttributeStr.lineSpacing = 8;
@@ -98,6 +97,14 @@
     brifContentAttributeStr.lineSpacing = 8;
     brifContentAttributeStr.lineBreakMode = NSLineBreakByTruncatingTail;
     _brifContentAttributeStr = brifContentAttributeStr;
+    if (_ratio<=0) {
+        if (_banners.count>0) {
+            _ratio = _banners.firstObject.ratio;
+        }
+    }
+    if (_ratio<=0) {
+        _ratio = 0.4;
+    }
     return YES;
 }
 @end
