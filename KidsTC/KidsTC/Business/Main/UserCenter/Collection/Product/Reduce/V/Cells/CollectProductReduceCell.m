@@ -66,7 +66,13 @@
     self.reduceL.text = [NSString stringWithFormat:@"下降了¥%@",_item.markdownPrice];
     
     self.bannerIconH.constant = CGRectGetWidth(self.bannerIcon.frame) * _item.imgRatio;
-    [self layoutIfNeeded];
+    //[self layoutIfNeeded];
+}
+
+- (IBAction)action:(UIButton *)sender {
+    if (self.deleteAction) {
+        self.deleteAction();
+    }
 }
 
 @end

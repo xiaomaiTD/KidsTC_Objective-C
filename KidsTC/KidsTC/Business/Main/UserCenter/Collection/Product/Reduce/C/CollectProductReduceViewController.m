@@ -10,9 +10,12 @@
 
 #import "GHeader.h"
 #import "SegueMaster.h"
+#import "NSString+Category.h"
+#import "KTCFavouriteManager.h"
 
 #import "CollectProductReduceModel.h"
 #import "CollectProductReduceView.h"
+
 
 @interface CollectProductReduceViewController ()<CollectProductBaseViewDelegate>
 @property (nonatomic, strong) CollectProductReduceView *reduceView;
@@ -54,6 +57,13 @@
             [SegueMaster makeSegueWithModel:value fromController:self];
         }
             break;
+        case CollectProductBaseViewActionTypeDelete:
+        {
+            [self delete:value completion:^(BOOL success) {
+                if (completion) completion(@(success));
+            }];
+        }
+            break;
     }
 }
 
@@ -75,6 +85,22 @@
         [self.reduceView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.reduceView dealWithUI:0];
+    }];
+}
+
+- (void)delete:(NSString *)productId completion:(void(^)(BOOL success))completion{
+    if (![productId isNotNull]) {
+        [[iToast makeText:@"服务编号为空"] show];
+        if (completion) completion(NO);
+        return;
+    }
+    [TCProgressHUD showSVP];
+    [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:productId type:KTCFavouriteTypeService succeed:^(NSDictionary *data) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(YES);
+    } failure:^(NSError *error) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(NO);
     }];
 }
 

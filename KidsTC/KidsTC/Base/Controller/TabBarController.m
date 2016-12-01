@@ -13,6 +13,7 @@
 #import "TCHomeViewController.h"
 #import "ArticleHomeViewController.h"
 #import "StrategyViewController.h"
+#import "NearbyViewController.h"
 #import "AccountCenterViewController.h"
 #import "WebViewController.h"
 
@@ -108,7 +109,7 @@ singleM(TabBarController)
                 break;
             case TabBarItemElementTypeStrategy:
             {
-                controller = [[StrategyViewController alloc]init];
+                controller = [[NearbyViewController alloc]initWithNibName:@"NearbyViewController" bundle:nil];
             }
                 break;
             case TabBarItemElementTypeUserCenter:

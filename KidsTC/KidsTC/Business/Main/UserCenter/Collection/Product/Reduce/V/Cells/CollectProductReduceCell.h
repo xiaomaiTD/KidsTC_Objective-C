@@ -10,4 +10,6 @@
 #import "CollectProductItem.h"
 @interface CollectProductReduceCell : UITableViewCell
 @property (nonatomic, strong) CollectProductItem *item;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
+@property (nonatomic, copy) void(^deleteAction)();
 @end

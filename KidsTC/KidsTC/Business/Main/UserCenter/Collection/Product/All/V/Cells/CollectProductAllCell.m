@@ -58,6 +58,7 @@
     self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
     
     self.bannerIconH.constant = CGRectGetWidth(self.bannerIcon.frame) * _item.imgRatio;
+    [self setNeedsLayout];
     [self layoutIfNeeded];
 }
 

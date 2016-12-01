@@ -270,6 +270,28 @@
 		EC4E27141DEE813800622711 /* MyTracksItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27131DEE813800622711 /* MyTracksItem.m */; };
 		EC4E27181DEED77F00622711 /* MapRouteSearchTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27161DEED77F00622711 /* MapRouteSearchTypeViewController.m */; };
 		EC4E27191DEED77F00622711 /* MapRouteSearchTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27171DEED77F00622711 /* MapRouteSearchTypeViewController.xib */; };
+		EC4E278B1DF0134E00622711 /* NearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27791DF0134E00622711 /* NearbyViewController.m */; };
+		EC4E278C1DF0134E00622711 /* NearbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E277A1DF0134E00622711 /* NearbyViewController.xib */; };
+		EC4E278D1DF0134E00622711 /* NearbyCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E277D1DF0134E00622711 /* NearbyCollectionLayout.m */; };
+		EC4E278E1DF0134E00622711 /* NearbyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27811DF0134E00622711 /* NearbyCollectionViewCell.m */; };
+		EC4E278F1DF0134E00622711 /* NearbyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27821DF0134E00622711 /* NearbyCollectionViewCell.xib */; };
+		EC4E27901DF0134E00622711 /* NearbyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27841DF0134E00622711 /* NearbyTableViewCell.m */; };
+		EC4E27911DF0134E00622711 /* NearbyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27851DF0134E00622711 /* NearbyTableViewCell.xib */; };
+		EC4E27921DF0134E00622711 /* NearbyTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27871DF0134E00622711 /* NearbyTableViewHeader.m */; };
+		EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27881DF0134E00622711 /* NearbyTableViewHeader.xib */; };
+		EC4E27941DF0134E00622711 /* NearbyTableViewHeaderItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E278A1DF0134E00622711 /* NearbyTableViewHeaderItemView.m */; };
+		EC4E27981DF0148D00622711 /* NearbyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27961DF0148D00622711 /* NearbyFilterViewController.m */; };
+		EC4E27991DF0148D00622711 /* NearbyFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27971DF0148D00622711 /* NearbyFilterViewController.xib */; };
+		EC4E279C1DF0181400622711 /* NearbyFilterToolBarItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E279B1DF0181400622711 /* NearbyFilterToolBarItemView.m */; };
+		EC4E279F1DF0284A00622711 /* NearbyFilterToolBarDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E279E1DF0284A00622711 /* NearbyFilterToolBarDateView.m */; };
+		EC4E27A21DF0285C00622711 /* NearbyFilterToolBarCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27A11DF0285C00622711 /* NearbyFilterToolBarCategoryView.m */; };
+		EC4E27A51DF02B7900622711 /* NearbyFilterToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27A41DF02B7900622711 /* NearbyFilterToolBar.m */; };
+		EC4E27A81DF02CD000622711 /* NearbyFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27A71DF02CD000622711 /* NearbyFilterView.m */; };
+		EC4E27AB1DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27AA1DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.m */; };
+		EC4E27AF1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27AD1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.m */; };
+		EC4E27B01DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27AE1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.xib */; };
+		EC4E27B41DF063DF00622711 /* NearbyFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27B21DF063DF00622711 /* NearbyFilterCell.m */; };
+		EC4E27B51DF063DF00622711 /* NearbyFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4E27B31DF063DF00622711 /* NearbyFilterCell.xib */; };
 		EC4FBBDA1D77CD8300BBD050 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBD91D77CD8300BBD050 /* main.m */; };
 		EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBBE41D77CD8300BBD050 /* Assets.xcassets */; };
 		EC4FBBF11D77CE5000BBD050 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBBF01D77CE5000BBD050 /* AppDelegate.m */; };
@@ -1807,6 +1829,43 @@
 		EC4E27151DEED77F00622711 /* MapRouteSearchTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapRouteSearchTypeViewController.h; sourceTree = "<group>"; };
 		EC4E27161DEED77F00622711 /* MapRouteSearchTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapRouteSearchTypeViewController.m; sourceTree = "<group>"; };
 		EC4E27171DEED77F00622711 /* MapRouteSearchTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapRouteSearchTypeViewController.xib; sourceTree = "<group>"; };
+		EC4E27781DF0134E00622711 /* NearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyViewController.h; sourceTree = "<group>"; };
+		EC4E27791DF0134E00622711 /* NearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyViewController.m; sourceTree = "<group>"; };
+		EC4E277A1DF0134E00622711 /* NearbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyViewController.xib; sourceTree = "<group>"; };
+		EC4E277C1DF0134E00622711 /* NearbyCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyCollectionLayout.h; sourceTree = "<group>"; };
+		EC4E277D1DF0134E00622711 /* NearbyCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyCollectionLayout.m; sourceTree = "<group>"; };
+		EC4E27801DF0134E00622711 /* NearbyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyCollectionViewCell.h; sourceTree = "<group>"; };
+		EC4E27811DF0134E00622711 /* NearbyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyCollectionViewCell.m; sourceTree = "<group>"; };
+		EC4E27821DF0134E00622711 /* NearbyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC4E27831DF0134E00622711 /* NearbyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewCell.h; sourceTree = "<group>"; };
+		EC4E27841DF0134E00622711 /* NearbyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewCell.m; sourceTree = "<group>"; };
+		EC4E27851DF0134E00622711 /* NearbyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyTableViewCell.xib; sourceTree = "<group>"; };
+		EC4E27861DF0134E00622711 /* NearbyTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewHeader.h; sourceTree = "<group>"; };
+		EC4E27871DF0134E00622711 /* NearbyTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewHeader.m; sourceTree = "<group>"; };
+		EC4E27881DF0134E00622711 /* NearbyTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyTableViewHeader.xib; sourceTree = "<group>"; };
+		EC4E27891DF0134E00622711 /* NearbyTableViewHeaderItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewHeaderItemView.h; sourceTree = "<group>"; };
+		EC4E278A1DF0134E00622711 /* NearbyTableViewHeaderItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewHeaderItemView.m; sourceTree = "<group>"; };
+		EC4E27951DF0148D00622711 /* NearbyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterViewController.h; sourceTree = "<group>"; };
+		EC4E27961DF0148D00622711 /* NearbyFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterViewController.m; sourceTree = "<group>"; };
+		EC4E27971DF0148D00622711 /* NearbyFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyFilterViewController.xib; sourceTree = "<group>"; };
+		EC4E279A1DF0181400622711 /* NearbyFilterToolBarItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBarItemView.h; sourceTree = "<group>"; };
+		EC4E279B1DF0181400622711 /* NearbyFilterToolBarItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBarItemView.m; sourceTree = "<group>"; };
+		EC4E279D1DF0284A00622711 /* NearbyFilterToolBarDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBarDateView.h; sourceTree = "<group>"; };
+		EC4E279E1DF0284A00622711 /* NearbyFilterToolBarDateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBarDateView.m; sourceTree = "<group>"; };
+		EC4E27A01DF0285C00622711 /* NearbyFilterToolBarCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBarCategoryView.h; sourceTree = "<group>"; };
+		EC4E27A11DF0285C00622711 /* NearbyFilterToolBarCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBarCategoryView.m; sourceTree = "<group>"; };
+		EC4E27A31DF02B7900622711 /* NearbyFilterToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBar.h; sourceTree = "<group>"; };
+		EC4E27A41DF02B7900622711 /* NearbyFilterToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBar.m; sourceTree = "<group>"; };
+		EC4E27A61DF02CD000622711 /* NearbyFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterView.h; sourceTree = "<group>"; };
+		EC4E27A71DF02CD000622711 /* NearbyFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterView.m; sourceTree = "<group>"; };
+		EC4E27A91DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBarCategoryItem.h; sourceTree = "<group>"; };
+		EC4E27AA1DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBarCategoryItem.m; sourceTree = "<group>"; };
+		EC4E27AC1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterToolBarCategoryCell.h; sourceTree = "<group>"; };
+		EC4E27AD1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterToolBarCategoryCell.m; sourceTree = "<group>"; };
+		EC4E27AE1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyFilterToolBarCategoryCell.xib; sourceTree = "<group>"; };
+		EC4E27B11DF063DF00622711 /* NearbyFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyFilterCell.h; sourceTree = "<group>"; };
+		EC4E27B21DF063DF00622711 /* NearbyFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyFilterCell.m; sourceTree = "<group>"; };
+		EC4E27B31DF063DF00622711 /* NearbyFilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyFilterCell.xib; sourceTree = "<group>"; };
 		EC4FBBD51D77CD8300BBD050 /* KidsTC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KidsTC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4FBBD91D77CD8300BBD050 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EC4FBBE41D77CD8300BBD050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -5355,6 +5414,130 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		EC4E27701DF0134E00622711 /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27711DF0134E00622711 /* Filter */,
+				EC4E27761DF0134E00622711 /* Nearby */,
+			);
+			path = Nearby;
+			sourceTree = "<group>";
+		};
+		EC4E27711DF0134E00622711 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27721DF0134E00622711 /* C */,
+				EC4E27731DF0134E00622711 /* M */,
+				EC4E27741DF0134E00622711 /* S */,
+				EC4E27751DF0134E00622711 /* V */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		EC4E27721DF0134E00622711 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27951DF0148D00622711 /* NearbyFilterViewController.h */,
+				EC4E27961DF0148D00622711 /* NearbyFilterViewController.m */,
+				EC4E27971DF0148D00622711 /* NearbyFilterViewController.xib */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC4E27731DF0134E00622711 /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC4E27741DF0134E00622711 /* S */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = S;
+			sourceTree = "<group>";
+		};
+		EC4E27751DF0134E00622711 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E279A1DF0181400622711 /* NearbyFilterToolBarItemView.h */,
+				EC4E279B1DF0181400622711 /* NearbyFilterToolBarItemView.m */,
+				EC4E27A31DF02B7900622711 /* NearbyFilterToolBar.h */,
+				EC4E27A41DF02B7900622711 /* NearbyFilterToolBar.m */,
+				EC4E27A61DF02CD000622711 /* NearbyFilterView.h */,
+				EC4E27A71DF02CD000622711 /* NearbyFilterView.m */,
+				EC4E27B11DF063DF00622711 /* NearbyFilterCell.h */,
+				EC4E27B21DF063DF00622711 /* NearbyFilterCell.m */,
+				EC4E27B31DF063DF00622711 /* NearbyFilterCell.xib */,
+				EC4E279D1DF0284A00622711 /* NearbyFilterToolBarDateView.h */,
+				EC4E279E1DF0284A00622711 /* NearbyFilterToolBarDateView.m */,
+				EC4E27A01DF0285C00622711 /* NearbyFilterToolBarCategoryView.h */,
+				EC4E27A11DF0285C00622711 /* NearbyFilterToolBarCategoryView.m */,
+				EC4E27AC1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.h */,
+				EC4E27AD1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.m */,
+				EC4E27AE1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.xib */,
+				EC4E27A91DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.h */,
+				EC4E27AA1DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC4E27761DF0134E00622711 /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27771DF0134E00622711 /* C */,
+				EC4E277B1DF0134E00622711 /* M */,
+				EC4E277E1DF0134E00622711 /* S */,
+				EC4E277F1DF0134E00622711 /* V */,
+			);
+			path = Nearby;
+			sourceTree = "<group>";
+		};
+		EC4E27771DF0134E00622711 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27781DF0134E00622711 /* NearbyViewController.h */,
+				EC4E27791DF0134E00622711 /* NearbyViewController.m */,
+				EC4E277A1DF0134E00622711 /* NearbyViewController.xib */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC4E277B1DF0134E00622711 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E277C1DF0134E00622711 /* NearbyCollectionLayout.h */,
+				EC4E277D1DF0134E00622711 /* NearbyCollectionLayout.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC4E277E1DF0134E00622711 /* S */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = S;
+			sourceTree = "<group>";
+		};
+		EC4E277F1DF0134E00622711 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC4E27801DF0134E00622711 /* NearbyCollectionViewCell.h */,
+				EC4E27811DF0134E00622711 /* NearbyCollectionViewCell.m */,
+				EC4E27821DF0134E00622711 /* NearbyCollectionViewCell.xib */,
+				EC4E27831DF0134E00622711 /* NearbyTableViewCell.h */,
+				EC4E27841DF0134E00622711 /* NearbyTableViewCell.m */,
+				EC4E27851DF0134E00622711 /* NearbyTableViewCell.xib */,
+				EC4E27861DF0134E00622711 /* NearbyTableViewHeader.h */,
+				EC4E27871DF0134E00622711 /* NearbyTableViewHeader.m */,
+				EC4E27881DF0134E00622711 /* NearbyTableViewHeader.xib */,
+				EC4E27891DF0134E00622711 /* NearbyTableViewHeaderItemView.h */,
+				EC4E278A1DF0134E00622711 /* NearbyTableViewHeaderItemView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		EC4FBBCC1D77CD8300BBD050 = {
 			isa = PBXGroup;
 			children = (
@@ -6060,6 +6243,7 @@
 		EC4FBCFD1D77CEE300BBD050 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EC4E27701DF0134E00622711 /* Nearby */,
 				ECA59B901DEC1FDA00B3B1F7 /* Search */,
 				EC4FBCFE1D77CEE300BBD050 /* Article */,
 				EC4FBD661D77CEE300BBD050 /* Home */,
@@ -10954,6 +11138,7 @@
 				ECA59B8C1DEC077900B3B1F7 /* CouponUsableListView.xib in Resources */,
 				EC4FC2281D77CEE400BBD050 /* KTCActionView.xib in Resources */,
 				ECFFC7501DC3A079002DBFB9 /* ServiceSettlementBuyNumCell.xib in Resources */,
+				EC4E27B51DF063DF00622711 /* NearbyFilterCell.xib in Resources */,
 				EC4FC3771D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib in Resources */,
 				ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */,
 				EC4FC60A1D77DCFD00BBD050 /* Resources.bundle in Resources */,
@@ -10998,6 +11183,7 @@
 				EC4FC5D51D77CEEF00BBD050 /* UIBarButtonItemGrid@2x.png in Resources */,
 				EC4FC46E1D77CEE400BBD050 /* FavourateViewController.xib in Resources */,
 				EC4FC4B81D77CEE400BBD050 /* ServiceOrderDetailAddressCell.xib in Resources */,
+				EC4E27911DF0134E00622711 /* NearbyTableViewCell.xib in Resources */,
 				EC4FC5C21D77CEEF00BBD050 /* ImageSelectedSmallOff.png in Resources */,
 				EC4FC3A61D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.xib in Resources */,
 				EC4FC4EA1D77CEE400BBD050 /* UserCenterProductAutoRollCell.xib in Resources */,
@@ -11095,6 +11281,7 @@
 				EC4FC27E1D77CEE400BBD050 /* WelcomeViewCell.xib in Resources */,
 				ECB3E7AD1D93CDA50059267D /* FlashServiceOrderDetailBookingFailureCell.xib in Resources */,
 				EC4FC3F91D77CEE400BBD050 /* AccountSettingLogoutView.xib in Resources */,
+				EC4E278F1DF0134E00622711 /* NearbyCollectionViewCell.xib in Resources */,
 				EC4FC3E01D77CEE400BBD050 /* ParentingStrategyFilterView.xib in Resources */,
 				EC4FC4E31D77CEE400BBD050 /* UserCenterItemsCell.xib in Resources */,
 				EC13B4F11DD1F3430040F760 /* AccountCenterBannersCell.xib in Resources */,
@@ -11204,6 +11391,7 @@
 				EC0044171DE6B8970042B701 /* ProductDetailContentEleEmptyCell.xib in Resources */,
 				EC0B6DA71D8E7E6700EC20EA /* FlashServiceOrderDetailRemindView.xib in Resources */,
 				EC0044D31DE7F4E40042B701 /* ProductDetailTwoColumnConsultMoreCell.xib in Resources */,
+				EC4E278C1DF0134E00622711 /* NearbyViewController.xib in Resources */,
 				EC4FC2AC1D77CEE400BBD050 /* ActivityFilterView.xib in Resources */,
 				EC4FC4DB1D77CEE400BBD050 /* UserCenterBaseCell.xib in Resources */,
 				EC4FC4A71D77CEE400BBD050 /* OrderListViewController.xib in Resources */,
@@ -11298,6 +11486,7 @@
 				EC4FC3EB1D77CEE400BBD050 /* ParentingStrategyDetailView.xib in Resources */,
 				EC4FC3FB1D77CEE400BBD050 /* AccountSettingViewCell.xib in Resources */,
 				EC4FC4311D77CEE400BBD050 /* CommentEditViewController.xib in Resources */,
+				EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */,
 				EC4FC3161D77CEE400BBD050 /* SearchResultArticleCell.xib in Resources */,
 				ECA59C0C1DED646600B3B1F7 /* SearchFactorAreaHeader.xib in Resources */,
 				EC4FC5C41D77CEEF00BBD050 /* ImageSelectedSmallOff@3x.png in Resources */,
@@ -11310,6 +11499,7 @@
 				ECAA49391D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.xib in Resources */,
 				EC4FC33F1D77CEE400BBD050 /* ServiceDetailRelatedServiceListViewController.xib in Resources */,
 				EC4FC3CD1D77CEE400BBD050 /* StrategyAutoRollCell.xib in Resources */,
+				EC4E27B01DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.xib in Resources */,
 				EC4FC4C51D77CEE400BBD050 /* ServiceOrderDetailRefundTipCell.xib in Resources */,
 				EC4FC3BA1D77CEE400BBD050 /* StoreDetialMapPoiAnnotationView.xib in Resources */,
 				EC4FC5CC1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@2x.png in Resources */,
@@ -11338,6 +11528,7 @@
 				EC4FC4DD1D77CEE400BBD050 /* UserCenterContactCell.xib in Resources */,
 				ECA59B801DEC077900B3B1F7 /* CouponUsableListViewController.xib in Resources */,
 				ECB3E7A81D93C03E0059267D /* OrderBookingRemarksCell.xib in Resources */,
+				EC4E27991DF0148D00622711 /* NearbyFilterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11425,6 +11616,7 @@
 				EC4FC26D1D77CEE400BBD050 /* CommonShareViewController.m in Sources */,
 				EC4FC2CB1D77CEE400BBD050 /* FDChooseStoreView.m in Sources */,
 				EC4FC26F1D77CEE400BBD050 /* CommonShareObject.m in Sources */,
+				EC4E278B1DF0134E00622711 /* NearbyViewController.m in Sources */,
 				EC4FC3B41D77CEE400BBD050 /* StoreDetailServiceListViewController.m in Sources */,
 				EC4FC5F11D77CEEF00BBD050 /* ZPPopoverItem.m in Sources */,
 				EC2289401DE87CF200EC324A /* CollectProductCategory.m in Sources */,
@@ -11440,10 +11632,12 @@
 				ECF704DE1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m in Sources */,
 				EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */,
 				EC4FC3FC1D77CEE400BBD050 /* AddressDataManager.m in Sources */,
+				EC4E278D1DF0134E00622711 /* NearbyCollectionLayout.m in Sources */,
 				ECA95A721DDB2A2600990AAE /* CouponListUnusedCell.m in Sources */,
 				EC2F263F1DD71B0000B67BBA /* SettlementResultNewCollectionViewCell.m in Sources */,
 				ECAA49381D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.m in Sources */,
 				EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */,
+				EC4E27A51DF02B7900622711 /* NearbyFilterToolBar.m in Sources */,
 				EC84C3C11DE3392900A42515 /* ProductDetailEnrollInfo.m in Sources */,
 				EC4FC30B1D77CEE400BBD050 /* SearchHistoryKeywordsManager.m in Sources */,
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
@@ -11519,10 +11713,12 @@
 				EC4FC4E21D77CEE400BBD050 /* UserCenterItemsCell.m in Sources */,
 				EC5CDD2B1DE538F200F95C6F /* ProductDetailFreeApplyBabyNameCell.m in Sources */,
 				ECFFC7401DC363C1002DBFB9 /* ProductDetailCalendarViewController.m in Sources */,
+				EC4E27901DF0134E00622711 /* NearbyTableViewCell.m in Sources */,
 				EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */,
 				EC0044481DE6B8980042B701 /* ProductDetaiFreeToolBar.m in Sources */,
 				ECF5D10C1DB8CE3900A1B268 /* TCHomeMainCollectionCell.m in Sources */,
 				EC4FC3DB1D77CEE400BBD050 /* StrategyTagColumnModel.m in Sources */,
+				EC4E27921DF0134E00622711 /* NearbyTableViewHeader.m in Sources */,
 				EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC3481D77CEE400BBD050 /* FlashAdvanceSettlementReadRuleCell.m in Sources */,
 				EC4FC4341D77CEE400BBD050 /* CommentListViewController.m in Sources */,
@@ -11581,6 +11777,7 @@
 				EC4FC3DA1D77CEE400BBD050 /* StrategyTagColumnTableViewController.m in Sources */,
 				EC4FC4B61D77CEE400BBD050 /* ServiceOrderDetailModel.m in Sources */,
 				EC5CDD361DE538F200F95C6F /* ProductDetailFreeApplyUserPhoneCell.m in Sources */,
+				EC4E279C1DF0181400622711 /* NearbyFilterToolBarItemView.m in Sources */,
 				EC0043541DE584870042B701 /* NurseryCollectionViewCell.m in Sources */,
 				EC4FC4D01D77CEE400BBD050 /* SoftwareSettingViewCell.m in Sources */,
 				EC4FC47E1D77CEE400BBD050 /* FavouriteViewStrategyCell.m in Sources */,
@@ -11657,6 +11854,7 @@
 				ECFFC6F51DC363C1002DBFB9 /* ProductDetailInsuranceItem.m in Sources */,
 				EC4FC3C91D77CEE400BBD050 /* StrategyCollectionViewCell.m in Sources */,
 				EC4FC3201D77CEE400BBD050 /* SearchResultFactorView.m in Sources */,
+				EC4E27AF1DF04D3F00622711 /* NearbyFilterToolBarCategoryCell.m in Sources */,
 				EC0044D21DE7F4E40042B701 /* ProductDetailTwoColumnConsultMoreCell.m in Sources */,
 				EC4FC2C31D77CEE400BBD050 /* FDMoreCell.m in Sources */,
 				EC4FC4061D77CEE400BBD050 /* UserAddressEditViewController.m in Sources */,
@@ -11680,6 +11878,7 @@
 				EC4FC3EA1D77CEE400BBD050 /* ParentingStrategyDetailView.m in Sources */,
 				ECFD19381D958BD6009000D5 /* ArticleHomeBottomView.m in Sources */,
 				EC7264361D7D27BC00AA739B /* ArticleColumnViewController.m in Sources */,
+				EC4E27AB1DF03A5F00622711 /* NearbyFilterToolBarCategoryItem.m in Sources */,
 				EC13B4ED1DD1F3430040F760 /* AccountCenterViewController.m in Sources */,
 				EC4FC2C71D77CEE400BBD050 /* FDStoreCell.m in Sources */,
 				EC0044051DE6B8970042B701 /* ProductDetailApplyCell.m in Sources */,
@@ -11699,6 +11898,7 @@
 				EC4FC5B81D77CEEF00BBD050 /* InsuranceView.m in Sources */,
 				ECFFC6EE1DC363C1002DBFB9 /* ProdectDetailCoupon.m in Sources */,
 				ECA59C041DED61A600B3B1F7 /* SearchFactorAreaCell.m in Sources */,
+				EC4E27A21DF0285C00622711 /* NearbyFilterToolBarCategoryView.m in Sources */,
 				EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */,
 				EC4FC2721D77CEE400BBD050 /* TencentManager.m in Sources */,
 				EC4FC3AC1D77CEE400BBD050 /* StoreDetailHotRecommendCell.m in Sources */,
@@ -11832,6 +12032,7 @@
 				EC4FC21D1D77CEE400BBD050 /* UIDevice+IdentifierAddition.m in Sources */,
 				EC4FC28A1D77CEE400BBD050 /* AlbumToolBarView.m in Sources */,
 				EC4FC38C1D77CEE400BBD050 /* StoreAppointmentModel.m in Sources */,
+				EC4E27981DF0148D00622711 /* NearbyFilterViewController.m in Sources */,
 				EC4FC4C61D77CEE400BBD050 /* ServiceOrderDetailServiceInfoCell.m in Sources */,
 				EC4FC2B11D77CEE400BBD050 /* ActivityViewModel.m in Sources */,
 				ECA59C031DED61A600B3B1F7 /* SearchFactorAreaDataManager.m in Sources */,
@@ -11980,6 +12181,7 @@
 				EC9CC5281DC30E7F0093DCED /* FSCalendarScopeHandle.m in Sources */,
 				EC4FC4151D77CEE400BBD050 /* AppointmentOrderListViewModel.m in Sources */,
 				EC4FC4451D77CEE400BBD050 /* CommentDetailViewNormalHeaderCell.m in Sources */,
+				EC4E27A81DF02CD000622711 /* NearbyFilterView.m in Sources */,
 				EC4FC26C1D77CEE400BBD050 /* SegueModel.m in Sources */,
 				EC43A2E21DC97FDC00A99638 /* ArticleHomeClassButton.m in Sources */,
 				EC4FC2751D77CEE400BBD050 /* WeiboManager.m in Sources */,
@@ -12208,6 +12410,7 @@
 				EC4FC4921D77CEE400BBD050 /* FlashServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC8486221DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m in Sources */,
 				EC4FC5AB1D77CEEF00BBD050 /* AUIImageGridView.m in Sources */,
+				EC4E27941DF0134E00622711 /* NearbyTableViewHeaderItemView.m in Sources */,
 				EC0044031DE6B8970042B701 /* ProductDetailAddressCell.m in Sources */,
 				EC4FC2A11D77CEE400BBD050 /* ArticleWeChatTimeView.m in Sources */,
 				EC2F26A11DD9B7E000B67BBA /* CollectionSCTBaseView.m in Sources */,
@@ -12221,6 +12424,7 @@
 				EC4FC3561D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.m in Sources */,
 				EC0044D41DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.m in Sources */,
 				EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */,
+				EC4E278E1DF0134E00622711 /* NearbyCollectionViewCell.m in Sources */,
 				EC5CDD321DE538F200F95C6F /* ProductDetailFreeApplyUserAddressCell.m in Sources */,
 				EC4FC4131D77CEE400BBD050 /* AppointmentOrderListViewController.m in Sources */,
 				ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */,
@@ -12280,7 +12484,9 @@
 				ECF5D1061DB8CE3900A1B268 /* TCHomeModule.m in Sources */,
 				EC2F266F1DD9809D00B67BBA /* CollectProductReduceCell.m in Sources */,
 				EC4FC3A11D77CEE400BBD050 /* StoreDetailAppointmentContactCell.m in Sources */,
+				EC4E279F1DF0284A00622711 /* NearbyFilterToolBarDateView.m in Sources */,
 				EC2289671DE9B39600EC324A /* AccountCenterTCECordLink.m in Sources */,
+				EC4E27B41DF063DF00622711 /* NearbyFilterCell.m in Sources */,
 				EC4FC5E11D77CEEF00BBD050 /* MWZoomingScrollView.m in Sources */,
 				EC4FC5A61D77CEEF00BBD050 /* ActionSheet.m in Sources */,
 				EC5CDD3D1DE538F200F95C6F /* ProductDetailFreeApplySelectBirthViewController.m in Sources */,

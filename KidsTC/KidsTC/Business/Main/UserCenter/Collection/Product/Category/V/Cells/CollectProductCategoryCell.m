@@ -66,7 +66,7 @@ static CGFloat const margin_top_bottom = 16;
         collectionViewH = _item_s + margin_top_bottom * 2;
     }
     self.collectionViewH.constant = collectionViewH;
-    [self layoutIfNeeded];
+    //[self layoutIfNeeded];
     
     [self.collectionView reloadData];
 }
