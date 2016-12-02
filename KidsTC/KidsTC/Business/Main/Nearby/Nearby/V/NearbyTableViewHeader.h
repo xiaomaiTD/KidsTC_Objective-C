@@ -10,6 +10,17 @@
 
 extern CGFloat const kNearbyTableViewHeaderH;
 
-@interface NearbyTableViewHeader : UIView
+typedef enum : NSUInteger {
+    NearbyTableViewHeaderActionTypeNursery = 1,
+    NearbyTableViewHeaderActionTypeExhibition,
+    NearbyTableViewHeaderActionTypeCalendar,
+} NearbyTableViewHeaderActionType;
 
+@class NearbyTableViewHeader;
+@protocol NearbyTableViewHeaderDelegate <NSObject>
+- (void)nearbyTableViewHeader:(NearbyTableViewHeader *)header actionType:(NearbyTableViewHeaderActionType)type value:(id)value;
+@end
+
+@interface NearbyTableViewHeader : UIView
+@property (nonatomic, weak) id<NearbyTableViewHeaderDelegate> delegate;
 @end

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NearbyCategoryToolBar">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="565"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jfd-TV-okx">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="Vf0-u6-8df"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="ICr-LG-c0l"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="NHr-wN-3WD"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jfd-TV-okx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8rt-mg-ljP"/>
+                <constraint firstItem="jfd-TV-okx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VDP-fK-5pw"/>
+                <constraint firstAttribute="trailing" secondItem="jfd-TV-okx" secondAttribute="trailing" id="cGf-jo-7FC"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="jfd-TV-okx" id="OBS-cz-x8D"/>
+                <outlet property="tableViewH" destination="Vf0-u6-8df" id="qz1-9Z-KK5"/>
+                <outlet property="tableViewTopMargin" destination="8rt-mg-ljP" id="u7Y-Qg-OOv"/>
+            </connections>
+            <point key="canvasLocation" x="-37.5" y="66.5"/>
+        </view>
+    </objects>
+</document>

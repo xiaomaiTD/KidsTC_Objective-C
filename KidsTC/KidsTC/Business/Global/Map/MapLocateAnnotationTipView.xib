@@ -1,62 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="KGk-i7-Jjw" customClass="MapLocateAnnotationTipView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="71.5"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e17-7H-Hkp">
-                        <rect key="frame" x="130" y="8" width="60" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRM-ma-ad7">
-                        <rect key="frame" x="282" y="34" width="30" height="15"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="jk2-5G-YTN"/>
-                        </constraints>
-                        <state key="normal" title="确定"/>
-                        <connections>
-                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hcq-IS-BzW"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CP-s4-QMw">
-                        <rect key="frame" x="8" y="34" width="30" height="15"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="Ces-Fm-KfF"/>
-                        </constraints>
-                        <state key="normal" title="取消"/>
-                        <connections>
-                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Btm-4L-fq0"/>
-                        </connections>
-                    </button>
-                </subviews>
-                <constraints>
-                    <constraint firstAttribute="trailing" secondItem="QRM-ma-ad7" secondAttribute="trailing" constant="8" id="Ifb-MR-159"/>
-                    <constraint firstItem="e17-7H-Hkp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XAB-sQ-qkW"/>
-                    <constraint firstItem="QRM-ma-ad7" firstAttribute="centerY" secondItem="0CP-s4-QMw" secondAttribute="centerY" id="bKN-Vp-uut"/>
-                    <constraint firstItem="e17-7H-Hkp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="qnC-uQ-8pn"/>
-                    <constraint firstItem="0CP-s4-QMw" firstAttribute="top" secondItem="e17-7H-Hkp" secondAttribute="bottom" constant="8" id="w99-U5-1li"/>
-                    <constraint firstItem="0CP-s4-QMw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="wjw-6k-mpw"/>
-                </constraints>
-            </tableViewCellContentView>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MapLocateAnnotationTipView">
+            <rect key="frame" x="0.0" y="0.0" width="178" height="58"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaS-Wv-vFZ">
+                    <rect key="frame" x="8" y="28" width="31" height="30"/>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="SU3-5e-5zk"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的位置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djh-hc-rxH">
+                    <rect key="frame" x="58" y="6" width="62" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-l2-xzY">
+                    <rect key="frame" x="139" y="28" width="31" height="30"/>
+                    <state key="normal" title="确定">
+                        <color key="titleColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="9BR-fi-z6j"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gaS-Wv-vFZ" secondAttribute="bottom" id="8L4-WJ-gwZ"/>
+                <constraint firstAttribute="trailing" secondItem="gFc-l2-xzY" secondAttribute="trailing" constant="8" id="E4Z-aB-CkV"/>
+                <constraint firstItem="djh-hc-rxH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="RdX-Ae-yYc"/>
+                <constraint firstAttribute="bottom" secondItem="gFc-l2-xzY" secondAttribute="bottom" id="ef3-IH-9de"/>
+                <constraint firstItem="djh-hc-rxH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gAU-T8-NIb"/>
+                <constraint firstItem="gaS-Wv-vFZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="lXc-4Z-J8I"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cancleBtn" destination="0CP-s4-QMw" id="Ucm-iQ-xSO"/>
-                <outlet property="sureBtn" destination="QRM-ma-ad7" id="qKT-0V-Wd4"/>
+                <outlet property="cancleBtn" destination="gaS-Wv-vFZ" id="3oK-RX-RmF"/>
+                <outlet property="sureBtn" destination="gFc-l2-xzY" id="hbh-hv-7Zg"/>
             </connections>
-            <point key="canvasLocation" x="315" y="298"/>
-        </tableViewCell>
+            <point key="canvasLocation" x="-131" y="36"/>
+        </view>
     </objects>
 </document>

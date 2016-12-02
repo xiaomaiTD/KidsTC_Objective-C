@@ -62,17 +62,20 @@
 
 - (void)initui{
     
-    self.naviColor = [UIColor clearColor];
+    self.naviTheme = NaviThemeWihte;
+    
+    self.navigationItem.title = @"位置";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self initMapView];
     
     [self initTextField];
-    
-    [self initNaviBarItems];
+
 }
 
 - (void)initMapView{
-    BMKMapView *mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    BMKMapView *mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     mapView.mapType = BMKMapTypeStandard;
     mapView.showsUserLocation = YES;
     mapView.isSelectedAnnotationViewFront = YES;
@@ -84,28 +87,35 @@
 }
 
 - (void)initTextField{
-    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-    textField.font = [UIFont systemFontOfSize:15];
-    textField.backgroundColor = [COLOR_PINK colorWithAlphaComponent:0.5];
-    textField.placeholder = @"请搜索或长按地图选择起点";
+    
+    CGFloat textFieldH = 44;
+    
+    UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(15, 72, SCREEN_WIDTH - 30, textFieldH)];
+    textField.font = [UIFont systemFontOfSize:13];
+    textField.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.96];
+    textField.placeholder = @"请搜索或长按地图选择位置";
     textField.delegate = self;
     textField.returnKeyType = UIReturnKeySearch;
     textField.clearButtonMode = UITextFieldViewModeAlways;
-    self.navigationItem.titleView = textField;
-    self.textField = textField;
+    
+    UIButton *rightBtn = [[UIButton alloc] init];
+    [rightBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    [rightBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
+    rightBtn.frame = CGRectMake(0, 0, textFieldH, textFieldH);
+    [rightBtn addTarget:self action:@selector(search) forControlEvents:UIControlEventTouchUpInside];
+    textField.rightView = rightBtn;
+    textField.rightViewMode = UITextFieldViewModeAlways;
     
     textField.leftView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
     textField.leftViewMode = UITextFieldViewModeAlways;
-}
-
-- (void)initNaviBarItems{
-    self.navigationItem.leftBarButtonItem =
-    [UIBarButtonItem itemWithImageName:@"navigation_back_h" highImageName:@"navigation_back_h" postion:UIBarButtonPositionLeft target:self action:@selector(back)];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"搜索" postion:UIBarButtonPositionRightCenter target:self action:@selector(search) andGetButton:^(UIButton *btn) {
-        [btn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
-        btn.frame = CGRectMake(0, 0, CGRectGetWidth(btn.frame)+12, 30);
-        btn.backgroundColor = [COLOR_PINK colorWithAlphaComponent:0.5];
-    }];
+    
+    textField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    textField.layer.borderWidth = LINE_H;
+    
+    [self.view addSubview:textField];
+    
+    self.textField = textField;
 }
 
 #pragma mark - BMKMapViewDelegate
@@ -143,6 +153,10 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 }
 
 #pragma mark private
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 - (void)setLocateAnnotationCoordinate:(CLLocationCoordinate2D)coordinate {
     [KTCMapUtil cleanMap:self.mapView];

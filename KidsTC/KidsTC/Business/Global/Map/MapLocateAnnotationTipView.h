@@ -18,7 +18,7 @@ typedef enum : NSUInteger {
 - (void)MapLocateAnnotationTipView:(MapLocateAnnotationTipView *)view actionType:(MapLocateAnnotationTipViewActionType)type;
 @end
 @protocol BMKAnnotation;
-@interface MapLocateAnnotationTipView : UITableViewCell
+@interface MapLocateAnnotationTipView : UIView
 @property (nonatomic, assign) id<BMKAnnotation> annotation;
 @property (nonatomic, weak) id<MapLocateAnnotationTipViewDelegate> deletate;
 @end

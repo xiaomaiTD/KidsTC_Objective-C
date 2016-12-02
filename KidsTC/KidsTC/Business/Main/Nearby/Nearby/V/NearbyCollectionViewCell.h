@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NearbyCollectionViewCell : UICollectionViewCell
+typedef enum : NSUInteger {
+    NearbyCollectionViewCellActionTypeNursery = 1,
+    NearbyCollectionViewCellActionTypeExhibition,
+    NearbyCollectionViewCellActionTypeCalendar,
+    
+} NearbyCollectionViewCellActionType;
 
+@class NearbyCollectionViewCell;
+@protocol NearbyCollectionViewCellDelegate <NSObject>
+- (void)nearbyCollectionViewCell:(NearbyCollectionViewCell *)cell actionType:(NearbyCollectionViewCellActionType)type value:(id)value;
+@end
+
+@interface NearbyCollectionViewCell : UICollectionViewCell
+@property (nonatomic, weak) id<NearbyCollectionViewCellDelegate> delegate;
 @end

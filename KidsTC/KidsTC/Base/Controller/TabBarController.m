@@ -109,7 +109,7 @@ singleM(TabBarController)
                 break;
             case TabBarItemElementTypeStrategy:
             {
-                controller = [[NearbyViewController alloc]initWithNibName:@"NearbyViewController" bundle:nil];
+                controller = [[NearbyViewController alloc]init];
             }
                 break;
             case TabBarItemElementTypeUserCenter:

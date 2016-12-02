@@ -1,5 +1,5 @@
 //
-//  NearbyTableViewHeaderItemView.h
+//  NearbyCalendarCell.h
 //  KidsTC
 //
 //  Created by 詹平 on 2016/12/1.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NearbyTableViewHeaderItemView : UIView
-@property (nonatomic, copy) void(^actionBlock)();
+@interface NearbyCalendarCell : UITableViewCell
+
 @end

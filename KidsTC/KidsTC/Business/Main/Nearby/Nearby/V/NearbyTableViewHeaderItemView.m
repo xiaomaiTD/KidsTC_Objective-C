@@ -26,7 +26,9 @@
 }
 
 - (IBAction)action:(UIButton *)sender{
-    
+    if (self.actionBlock) {
+        self.actionBlock();
+    }
 }
 
 @end
