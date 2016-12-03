@@ -53,6 +53,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        case ProductDetailTypeTicket:
+        case ProductDetailTypeFree:
+            break;
+        default:
+        {
+            _type = ProductDetailTypeNormal;
+        }
+            break;
+    }
+    
     _subViewsProvider = [ServiceSettlementSubViewsProvider shareServiceSettlementSubViewsProvider];
     _subViewsProvider.type = _type;
     
@@ -134,11 +146,16 @@
         }
             break;
     }
+    return nil;
 }
 
 - (void)loadShoppingCart{
     NSDictionary *param = self.loadShoppingCartParam;
-    if (!param) return;
+    if (!param) {
+        [[iToast makeText:@"参数错误"] show];
+        [self back];
+        return;
+    }
     
     [TCProgressHUD showSVP];
     [_dataManager loadDataWithParam:param successBlock:^(ServiceSettlementModel *model) {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductOrderListItem.h"
 
 @interface ProductOrderListCell : UITableViewCell
-
+@property (nonatomic, strong) ProductOrderListItem *item;
 @end

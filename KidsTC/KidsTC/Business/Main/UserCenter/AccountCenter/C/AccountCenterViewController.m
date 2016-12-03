@@ -198,28 +198,28 @@
             break;
         case AccountCenterViewActionTypeAllOrder:
         {
-            toController = [[ProductOrderListViewController alloc] init];
+            toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeAll];
 //            NSDictionary *params = @{@"type":@(OrderListTypeAll)};
 //            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitPay:
         {
-            toController = [[ProductOrderListViewController alloc] init];
+            toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaitPay];
 //            NSDictionary *params = @{@"type":@(OrderListTypeWaitingPayment)};
 //            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitUse:
         {
-            toController = [[ProductOrderListViewController alloc] init];
+            toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaiatUse];
 //            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
 //            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitReceipt:
         {
-            toController = [[ProductOrderListViewController alloc] init];
+            toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaitRecive];
 //            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
 //            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
@@ -235,7 +235,7 @@
             break;
         case AccountCenterViewActionTypeRefund:
         {
-            toController = [[ProductOrderListViewController alloc] init];
+            toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeRefund];
 //            NSDictionary *params = @{@"type":@(OrderListTypeRefund)};
 //            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }

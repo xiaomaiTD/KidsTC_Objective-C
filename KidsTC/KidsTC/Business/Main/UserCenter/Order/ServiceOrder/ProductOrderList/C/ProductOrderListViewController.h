@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface ProductOrderListViewController : ViewController
-
+- (instancetype)initWithType:(ProductOrderListType)type;
 @end

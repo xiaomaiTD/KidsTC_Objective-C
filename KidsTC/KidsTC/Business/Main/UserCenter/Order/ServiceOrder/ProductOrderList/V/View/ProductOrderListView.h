@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define ProductOrderListPageCount 10
+
 typedef enum : NSUInteger {
     ProductOrderListViewActionTypeLoadData = 1,
 } ProductOrderListViewActionType;
@@ -21,5 +23,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) UITableView *tableView;
 //这里修饰delegate的关键字必须为strong，原因是controller不被navi栈强引用，如果delegate不为strong，则delegate为nil
 @property (nonatomic, weak) id<ProductOrderListViewDelegate> delegate;
-- (void)endRefresh:(BOOL)noMoreData;
+@property (nonatomic, assign) NSArray *items;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

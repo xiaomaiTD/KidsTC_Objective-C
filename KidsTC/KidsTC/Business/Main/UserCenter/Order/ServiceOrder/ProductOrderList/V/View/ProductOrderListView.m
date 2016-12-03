@@ -7,9 +7,11 @@
 //
 
 #import "ProductOrderListView.h"
+#import "Colours.h"
 #import "ProductOrderListCell.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
+#import "KTCEmptyDataView.h"
 
 static NSString *const CellID = @"ProductOrderListCell";
 
@@ -36,6 +38,7 @@ static NSString *const CellID = @"ProductOrderListCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60;
+    tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListCell" bundle:nil] forCellReuseIdentifier:CellID];
@@ -55,6 +58,7 @@ static NSString *const CellID = @"ProductOrderListCell";
         [self loadData:NO];
     }];
     self.tableView.mj_footer = footer;
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)loadData:(BOOL)refresh {
@@ -63,19 +67,24 @@ static NSString *const CellID = @"ProductOrderListCell";
     }
 }
 
-- (void)endRefresh:(BOOL)noMoreData {
+- (void)dealWithUI:(NSUInteger)loadCount {
+    [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
-    if (noMoreData) {
+    [self.tableView.mj_footer endRefreshing];
+    if (loadCount<ProductOrderListPageCount) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
-    } else {
-        [self.tableView.mj_footer endRefreshing];
     }
+    if (self.items.count<1) {
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
+                                                                          image:nil description:@"啥都没有啊…"
+                                                                     needGoHome:NO];
+    }else self.tableView.backgroundView = nil;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 20;
+    return self.items.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,12 +96,15 @@ static NSString *const CellID = @"ProductOrderListCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 8;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProductOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-    
+    NSInteger section = indexPath.section;
+    if (section < self.items.count) {
+        cell.item = self.items[section];
+    }
     return cell;
 }
 
