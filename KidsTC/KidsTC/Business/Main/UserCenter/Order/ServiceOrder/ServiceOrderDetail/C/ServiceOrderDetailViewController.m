@@ -386,7 +386,7 @@
     if (phones && phones.count == 1) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phones[0]]]];
     }else if (phones && phones.count > 1){
-        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择客服电话" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择客服电话" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         for (NSString *phone in phones) {
             UIAlertAction *phoneAction = [UIAlertAction actionWithTitle:phone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phone]]];

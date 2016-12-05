@@ -8,12 +8,16 @@
 
 #import "ProductOrderListView.h"
 #import "Colours.h"
-#import "ProductOrderListCell.h"
+
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
+#import "ProductOrderListCell.h"
+#import "ProductOrderListHeader.h"
 
 static NSString *const CellID = @"ProductOrderListCell";
+@interface ProductOrderListView ()<ProductOrderListCellDelegate>
+@end
 
 @implementation ProductOrderListView
 
@@ -22,18 +26,16 @@ static NSString *const CellID = @"ProductOrderListCell";
     if (self) {
         
         [self setupTableView];
-        
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.tableView.frame = self.bounds;
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -42,6 +44,13 @@ static NSString *const CellID = @"ProductOrderListCell";
     [self addSubview:tableView];
     self.tableView = tableView;
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListCell" bundle:nil] forCellReuseIdentifier:CellID];
+    ProductOrderListHeader *header = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListHeader" owner:self options:nil].firstObject;
+    header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 28);
+    header.hidden = YES;
+    header.actionBlock = ^(){
+        tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+    };
+    tableView.tableHeaderView = header;
     
     [self setupMJ];
 }
@@ -67,7 +76,14 @@ static NSString *const CellID = @"ProductOrderListCell";
     }
 }
 
+- (void)beginRefreshing {
+    [self.tableView.mj_header beginRefreshing];
+}
+
 - (void)dealWithUI:(NSUInteger)loadCount {
+    if (self.items.count>0) {
+        self.tableView.tableHeaderView.hidden = NO;
+    }
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
@@ -101,15 +117,27 @@ static NSString *const CellID = @"ProductOrderListCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ProductOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
+    if (!cell) {
+        cell = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListCell" owner:self options:nil].firstObject;
+    }
     NSInteger section = indexPath.section;
     if (section < self.items.count) {
         cell.item = self.items[section];
+        cell.delegate = self;
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark - ProductOrderListCellDelegate
+
+- (void)productOrderListCell:(ProductOrderListCell *)cell actionType:(ProductOrderListCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
+        [self.delegate productOrderListView:self actionType:(ProductOrderListViewActionType)type value:value];
+    }
 }
 
 @end

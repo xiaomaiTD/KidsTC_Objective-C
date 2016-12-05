@@ -32,6 +32,10 @@
     self.pageId = 11007;
     if ([self.orderId isNotNull]) {
         self.trackParams = @{@"orderId":_orderId};
+    }else{
+        [[iToast makeText:@"订单编号为空"] show];
+        [self back];
+        return;
     }
     
     self.navigationItem.title = @"收银台";

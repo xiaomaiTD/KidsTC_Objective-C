@@ -15,6 +15,8 @@
 #import "ServiceOrderDetailModel.h"
 #import "FlashServiceOrderDetailModel.h"
 #import "FlashServiceOrderListModel.h"
+#import "ProductOrderListItem.h"
+#import "ProductOrderFreeListItem.h"
 
 @interface CommentFoundingModel : NSObject
 
@@ -51,4 +53,10 @@
 + (instancetype)modelFromFlashServiceOrderDetailData:(FlashServiceOrderDetailData *)data;
 
 + (instancetype)modelFromServiceOrderDetailModel:(ServiceOrderDetailModel *)orderModel;
+
++ (instancetype)modelFromProductOrderListItem:(ProductOrderListItem *)item;
+
++ (instancetype)modelFromProductOrderFreeListItem:(ProductOrderFreeListItem *)item;
+
+
 @end

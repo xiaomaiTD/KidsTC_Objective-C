@@ -7,6 +7,7 @@
 //
 
 #import "ProductOrderListItem.h"
+#import "NSString+Category.h"
 
 @implementation ProductOrderListItem
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -15,6 +16,9 @@
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
     [self setupBtns];
+    
+    [self setupMoblies];
+    
     return YES;
 }
 
@@ -32,4 +36,25 @@
     }
     _btns = [NSArray arrayWithArray:btns];
 }
+
+- (void)setupMoblies {
+    NSString *phonesString =  _supplierMobie;
+    if ([phonesString isNotNull]) {
+        NSMutableArray *phonesAry = [NSMutableArray new];
+        if ([phonesString containsString:@";"]) {
+            NSArray *ary = [phonesString componentsSeparatedByString:@";"];
+            for (NSString *str in ary) {
+                if (str && ![str isEqualToString:@""]) {
+                    [phonesAry addObject:str];
+                }
+            }
+        }else{
+            if (phonesString && ![phonesString isEqualToString:@""]) {
+                [phonesAry addObject:phonesString];
+            }
+        }
+        _supplierPhones = [NSArray arrayWithArray:phonesAry];
+    }
+}
+
 @end

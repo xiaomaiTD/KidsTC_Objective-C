@@ -36,3 +36,6 @@ static NSString *const kHomeViewControllerDidEndDrag       = @"HomeViewControlle
 
 //票务详情 - 想看
 static NSString *const kProductDetaiTicketLike             = @"ProductDetaiTicketLike";
+
+//倒计时
+static NSString *const kTCCountDownNoti                    = @"kTCCountDownNoti";

@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductOrderListAllTitleView">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductOrderListAllTitleShowView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -43,8 +43,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="7Fb-3S-g4t" id="4dW-nE-qf6"/>
+                <outlet property="collectionViewH" destination="QP6-vw-OxC" id="svS-iu-EBy"/>
+                <outlet property="collectionViewTop" destination="cP8-Hy-IRF" id="Ay5-VW-pyT"/>
             </connections>
-            <point key="canvasLocation" x="-348.5" y="18.5"/>
+            <point key="canvasLocation" x="-238" y="45"/>
         </view>
     </objects>
 </document>

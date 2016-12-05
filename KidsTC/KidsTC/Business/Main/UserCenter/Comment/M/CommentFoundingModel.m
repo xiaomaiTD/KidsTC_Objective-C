@@ -82,4 +82,29 @@
     commentModel.imageUrl = [NSURL URLWithString:data.imgUrl];
     return commentModel;
 }
+
++ (instancetype)modelFromProductOrderListItem:(ProductOrderListItem *)item {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = item.orderNo;
+    commentModel.relationSysNo = item.commentNo;
+    commentModel.sourceType = (CommentFoundingSourceType)item.commentType;
+    commentModel.objectId = item.commentNo;
+    commentModel.relationType = (CommentRelationType)item.commentType;
+    commentModel.objectName = item.productName;
+    commentModel.imageUrl = [NSURL URLWithString:item.imgUrl];
+    return commentModel;
+}
+
++ (instancetype)modelFromProductOrderFreeListItem:(ProductOrderFreeListItem *)item {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = item.orderNo;
+    commentModel.relationSysNo = item.productSysNo;
+    commentModel.sourceType = (CommentFoundingSourceType)item.productType;
+    commentModel.objectId = item.productSysNo;
+    commentModel.relationType = (CommentRelationType)item.productType;
+    commentModel.objectName = item.productName;
+    commentModel.imageUrl = [NSURL URLWithString:item.productImg];
+    return commentModel;
+}
+
 @end

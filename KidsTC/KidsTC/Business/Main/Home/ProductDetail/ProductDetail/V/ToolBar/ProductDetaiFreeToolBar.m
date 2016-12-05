@@ -8,6 +8,7 @@
 
 #import "ProductDetaiFreeToolBar.h"
 #import "User.h"
+#import "UIButton+Category.h"
 
 @interface ProductDetaiFreeToolBar ()
 @property (weak, nonatomic) IBOutlet UIButton *likeBtn;
@@ -26,7 +27,8 @@
     self.shareBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.HLineOneH.constant = LINE_H;
     self.HLineTwoH.constant = LINE_H;
-    self.applyBtn.backgroundColor = COLOR_PINK;
+    [self.applyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self.applyBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
     self.likeBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarLike;
     self.shareBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarShare;
     self.applyBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarApply;

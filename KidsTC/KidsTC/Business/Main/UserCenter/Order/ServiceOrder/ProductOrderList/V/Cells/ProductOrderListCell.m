@@ -11,8 +11,9 @@
 #import "UIImageView+WebCache.h"
 #import "NSString+Category.h"
 
-@interface ProductOrderListCell ()
+@interface ProductOrderListCell ()<ProductOrderListCellBtnsViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *storeNameL;
+@property (weak, nonatomic) IBOutlet UIButton *storeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *statusNameL;
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
 @property (weak, nonatomic) IBOutlet UILabel *realPriceL;
@@ -28,11 +29,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _storeBtn.tag = ProductOrderListCellActionTypeStore;
     _imageIcon.layer.cornerRadius = 4;
     _imageIcon.layer.masksToBounds = YES;
     _imageIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     _imageIcon.layer.borderWidth = LINE_H;
-    [NotificationCenter addObserver:self selector:@selector(countDown) name:kProductOrderListCountDownNoti object:nil];
+    [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
+    
+    _btnsView.delegate = self;
 }
 
 - (void)setItem:(ProductOrderListItem *)item {
@@ -59,8 +63,23 @@
     }
 }
 
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
+        [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)sender.tag value:_item];
+    }
+}
+
+
+#pragma mark - ProductOrderListCellBtnsViewDelegate
+
+- (void)productOrderListCellBtnsView:(ProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
+        [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)btn.tag value:_item];
+    }
+}
+
 - (void)dealloc{
-    [NotificationCenter removeObserver:self name:kProductOrderListCountDownNoti object:nil];
+    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
 }
 
 @end

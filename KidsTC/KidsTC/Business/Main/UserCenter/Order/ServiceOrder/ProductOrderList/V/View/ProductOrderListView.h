@@ -11,7 +11,25 @@
 #define ProductOrderListPageCount 10
 
 typedef enum : NSUInteger {
-    ProductOrderListViewActionTypeLoadData = 1,
+    
+    ProductOrderListViewActionTypePay = 1,/// 付款
+    ProductOrderListViewActionTypeCancelOrder = 2,/// 取消订单
+    ProductOrderListViewActionTypeConnectService = 3,/// 联系客服
+    ProductOrderListViewActionTypeConnectSupplier = 4,/// 联系商家
+    ProductOrderListViewActionTypeConsumeCode = 5,/// 取票码
+    ProductOrderListViewActionTypeReserve = 6,/// 我要预约
+    ProductOrderListViewActionTypeCancelTip = 7,/// 取消提醒
+    ProductOrderListViewActionTypeWantTip = 8,/// 活动提醒
+    ProductOrderListViewActionTypeReminder = 9,/// 我要催单
+    ProductOrderListViewActionTypeConfirmDeliver = 10,/// 确认收货
+    ProductOrderListViewActionTypeEvaluate = 11,/// 评价
+    ProductOrderListViewActionTypeBuyAgain = 12,/// 再次购买
+    ProductOrderListViewActionTypeComplaint = 13,/// 投诉
+    
+    ProductOrderListViewActionTypeStore = 14,//门店详情
+    
+    ProductOrderListViewActionTypeLoadData = 100,//加载数据
+    
 } ProductOrderListViewActionType;
 
 @class ProductOrderListView;
@@ -21,8 +39,8 @@ typedef enum : NSUInteger {
 
 @interface ProductOrderListView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-//这里修饰delegate的关键字必须为strong，原因是controller不被navi栈强引用，如果delegate不为strong，则delegate为nil
 @property (nonatomic, weak) id<ProductOrderListViewDelegate> delegate;
 @property (nonatomic, assign) NSArray *items;
+- (void)beginRefreshing;
 - (void)dealWithUI:(NSUInteger)loadCount;
 @end

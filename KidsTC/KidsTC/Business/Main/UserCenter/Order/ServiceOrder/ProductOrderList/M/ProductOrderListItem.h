@@ -41,12 +41,13 @@
 @property (nonatomic, strong) NSString *unitPrice;
 @property (nonatomic, strong) NSString *payNum;
 @property (nonatomic, strong) NSString *payPrice;
-//@property (nonatomic, strong) NSString *supplierMobie;
+@property (nonatomic, strong) NSString *supplierMobie;
 @property (nonatomic, strong) NSString *reservationRemark;
 @property (nonatomic, strong) NSArray<NSNumber *> *orderBtns;
 @property (nonatomic, assign) ProductOrderListBtnType defaultBtn;
 @property (nonatomic, strong) NSString *commentNo;
-@property (nonatomic, strong) NSString *commentType;
+@property (nonatomic, assign) NSInteger commentType;
 //selfDefine
 @property (nonatomic, strong) NSArray<ProductOrderListBtn *> *btns;
+@property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @end

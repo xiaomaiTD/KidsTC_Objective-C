@@ -25,8 +25,13 @@
 #import "CoverManager.h"
 #import "SynchronizeManager.h"
 #import "ScreenshotManager.h"
+#import "TCTimer.h"
 
 #import "TabBarController.h"
+
+@interface AppDelegate ()
+
+@end
 
 @implementation AppDelegate
 
@@ -119,6 +124,8 @@
     [[KTCMapService shareKTCMapService] startService];
     
     [[ScreenshotManager shareScreenshotManager] startService];
+    
+    [TCTimer shareTCTimer];
 }
 
 - (void)JSPatchRemote:(BOOL)remote{
@@ -151,8 +158,6 @@
         [USERDEFAULTS synchronize];
     }
 }
-
-
 
 // 获取当前处于activity状态的view controller
 - (UIViewController *)topVC
@@ -210,5 +215,7 @@
     
     return topVC;
 }
+
+
 
 @end

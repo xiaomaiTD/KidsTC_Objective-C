@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ProductOrderListBtn.h"
 
+@class ProductOrderListCellBtnsView;
+@protocol ProductOrderListCellBtnsViewDelegate <NSObject>
+- (void)productOrderListCellBtnsView:(ProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value;
+@end
+
 @interface ProductOrderListCellBtnsView : UIView
 @property (nonatomic, strong) NSArray<ProductOrderListBtn *> *btnsAry;
+@property (nonatomic, weak) id<ProductOrderListCellBtnsViewDelegate> delegate;
 @end

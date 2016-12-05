@@ -58,11 +58,19 @@
                                     <constraint firstAttribute="height" constant="0.5" id="ZKD-4Q-smW"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-lT-gQy">
+                                <rect key="frame" x="15" y="0.0" width="158" height="44"/>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3GP-bp-LdV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="clK-aw-xqV" firstAttribute="leading" secondItem="h4u-lT-gQy" secondAttribute="leading" id="26a-bu-8a3"/>
                             <constraint firstAttribute="bottom" secondItem="tKv-3S-s8T" secondAttribute="bottom" id="5uE-jZ-Qwi"/>
                             <constraint firstItem="io5-8k-lxm" firstAttribute="centerY" secondItem="gJh-fS-fEz" secondAttribute="centerY" id="Bty-N2-AvY"/>
                             <constraint firstItem="tKv-3S-s8T" firstAttribute="leading" secondItem="gJh-fS-fEz" secondAttribute="leading" id="IUb-Sg-0x9"/>
+                            <constraint firstItem="io5-8k-lxm" firstAttribute="trailing" secondItem="h4u-lT-gQy" secondAttribute="trailing" id="YrH-0j-tPW"/>
                             <constraint firstItem="VBK-Rb-wqy" firstAttribute="centerY" secondItem="gJh-fS-fEz" secondAttribute="centerY" id="dJT-7v-9ig"/>
                             <constraint firstItem="clK-aw-xqV" firstAttribute="top" secondItem="gJh-fS-fEz" secondAttribute="top" constant="16" id="eiv-fk-HXl"/>
                             <constraint firstAttribute="trailing" secondItem="VBK-Rb-wqy" secondAttribute="trailing" constant="15" id="kVe-DF-aNs"/>
@@ -71,6 +79,8 @@
                             <constraint firstItem="lbI-I7-neP" firstAttribute="leading" secondItem="clK-aw-xqV" secondAttribute="trailing" constant="8" id="lLl-Zb-Ny1"/>
                             <constraint firstItem="VBK-Rb-wqy" firstAttribute="leading" secondItem="io5-8k-lxm" secondAttribute="trailing" constant="12" id="m6K-s8-RDy"/>
                             <constraint firstAttribute="bottom" secondItem="clK-aw-xqV" secondAttribute="bottom" constant="16" id="p2G-3O-Oq8"/>
+                            <constraint firstItem="h4u-lT-gQy" firstAttribute="top" secondItem="gJh-fS-fEz" secondAttribute="top" id="rHI-Is-6vb"/>
+                            <constraint firstItem="tKv-3S-s8T" firstAttribute="top" secondItem="h4u-lT-gQy" secondAttribute="bottom" id="ueU-RH-0vi"/>
                             <constraint firstItem="io5-8k-lxm" firstAttribute="leading" secondItem="lbI-I7-neP" secondAttribute="trailing" constant="4" id="yx6-9X-0f3"/>
                             <constraint firstAttribute="trailing" secondItem="tKv-3S-s8T" secondAttribute="trailing" id="z5N-la-ee9"/>
                         </constraints>
@@ -197,7 +207,8 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bun-CK-bxq">
                                 <rect key="frame" x="37" y="10" width="268" height="29"/>
-                                <string key="text">童成客服已经发货，运单号： 14174117114117请您注意查收！客服联系方式： 021-588747474</string>
+                                <string key="text">童成客服已经发货，运单号： 14174117114117
+请您注意查收！客服联系方式： 021-588747474</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -302,6 +313,7 @@
                 <outlet property="realPriceL" destination="am7-hs-stR" id="N4z-r0-056"/>
                 <outlet property="remarkL" destination="gcd-Om-i0C" id="bhT-VL-gfG"/>
                 <outlet property="statusNameL" destination="VBK-Rb-wqy" id="KE1-b0-OAN"/>
+                <outlet property="storeBtn" destination="h4u-lT-gQy" id="VmZ-rK-5tH"/>
                 <outlet property="storeNameL" destination="lbI-I7-neP" id="bag-IT-91J"/>
                 <outlet property="timeL" destination="ueE-m1-eoe" id="D1s-QE-Gdc"/>
             </connections>

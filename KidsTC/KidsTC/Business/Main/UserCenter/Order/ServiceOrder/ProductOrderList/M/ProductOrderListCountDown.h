@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const kProductOrderListCountDownNoti;
-
 @interface ProductOrderListCountDown : NSObject
 @property (nonatomic, assign) BOOL showCountDown;
 @property (nonatomic, assign) NSTimeInterval countDownTime;

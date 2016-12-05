@@ -31,10 +31,15 @@ typedef enum : NSUInteger {
 
 typedef enum : NSUInteger {
     ProductOrderListOrderTypeAll = 1,//所有
-    ProductOrderListOrderTypeNormal,//普通订单
+    ProductOrderListOrderTypeNormal,//普通订单（活动）
     ProductOrderListOrderTypeRealObject,//实物订单
     ProductOrderListOrderTypeTicket,//票务订单
 } ProductOrderListOrderType;
+
+typedef enum : NSUInteger {
+    ProductOrderFreeListTypeFreeActivity = 1,//免费活动
+    ProductOrderFreeListTypeLottery,//抽奖
+} ProductOrderFreeListType;
 
 typedef enum : NSUInteger {
     CouponListStatusUnused = 1,//未使用

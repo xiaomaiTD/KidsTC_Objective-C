@@ -8,7 +8,7 @@
 
 #import "ProductOrderListCountDown.h"
 
-NSString *const kProductOrderListCountDownNoti = @"ProductOrderListCountDownNoti";
+
 
 @implementation ProductOrderListCountDown
 
@@ -16,14 +16,14 @@ NSString *const kProductOrderListCountDownNoti = @"ProductOrderListCountDownNoti
 
     if (_showCountDown) {
         [self setupCountDownValueString];
-        [NotificationCenter addObserver:self selector:@selector(countDown) name:kProductOrderListCountDownNoti object:nil];
+        [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
     }
     return YES;
 }
 
 - (void)countDown{
     if (_countDownTime<0) {
-        [NotificationCenter removeObserver:self name:kProductOrderListCountDownNoti object:nil];
+        [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
     }else{
         [self  setupCountDownValueString];
     }
@@ -58,6 +58,6 @@ NSString *const kProductOrderListCountDownNoti = @"ProductOrderListCountDownNoti
 }
 
 - (void)dealloc{
-    [NotificationCenter removeObserver:self name:kProductOrderListCountDownNoti object:nil];
+    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
 }
 @end
