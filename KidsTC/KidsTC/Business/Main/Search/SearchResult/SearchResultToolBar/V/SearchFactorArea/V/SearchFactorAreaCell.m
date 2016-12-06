@@ -7,10 +7,11 @@
 //
 
 #import "SearchFactorAreaCell.h"
+#import "UIButton+Category.h"
+#import "Colours.h"
 
 @interface SearchFactorAreaCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleL;
-@property (weak, nonatomic) IBOutlet UIImageView *checkImg;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @end
 
@@ -18,12 +19,16 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.btn.layer.cornerRadius = 4;
+    self.btn.layer.masksToBounds = YES;
+    [self.btn setBackgroundColor:[UIColor colorFromHexString:@"F2F2F2"] forState:UIControlStateNormal];
+    [self.btn setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
 }
 
 - (void)setItem:(SearchFactorAreaDataItem *)item {
     _item = item;
-    self.titleL.text = _item.title;
-    self.checkImg.hidden = !_item.selected;
+    self.btn.selected = _item.selected;
+    [self.btn setTitle:_item.title forState:UIControlStateNormal];
 }
 
 - (IBAction)action:(UIButton *)sender {

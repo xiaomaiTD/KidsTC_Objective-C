@@ -12,22 +12,14 @@
 @implementation SearchFactorAreaDataManager
 singleM(SearchFactorAreaDataManager)
 - (NSArray<SearchFactorAreaDataItem *> *)areas {
-    if (!_areas) {
-        NSArray<AreaAndAgeListItem *> * addr = [AreaAndAgeDataManager shareAreaAndAgeDataManager].model.data.Addr;
-        NSMutableArray *areas = [NSMutableArray array];
-        [addr enumerateObjectsUsingBlock:^(AreaAndAgeListItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            SearchFactorAreaDataItem *item = [SearchFactorAreaDataItem itemWithTitle:obj.Name value:obj.Value];
-            if(item) [areas addObject:item];
-        }];
-        _areas = [NSArray arrayWithArray:areas];
-    }
-    return _areas;
-}
-
-- (SearchFactorAreaDataItem *)headItem {
-    if (!_headItem) {
-        _headItem = [SearchFactorAreaDataItem itemWithTitle:@"全部地区" value:@""];
-    }
-    return _headItem;
+    NSArray<AreaAndAgeListItem *> * addr = [AreaAndAgeDataManager shareAreaAndAgeDataManager].model.data.Addr;
+    NSMutableArray *areas = [NSMutableArray array];
+    SearchFactorAreaDataItem *firstItem = [SearchFactorAreaDataItem itemWithTitle:@"全部地区" value:@""];
+    if (firstItem) [areas addObject:firstItem];
+    [addr enumerateObjectsUsingBlock:^(AreaAndAgeListItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        SearchFactorAreaDataItem *item = [SearchFactorAreaDataItem itemWithTitle:obj.Name value:obj.Value];
+        if(item) [areas addObject:item];
+    }];
+    return [NSArray arrayWithArray:areas];
 }
 @end

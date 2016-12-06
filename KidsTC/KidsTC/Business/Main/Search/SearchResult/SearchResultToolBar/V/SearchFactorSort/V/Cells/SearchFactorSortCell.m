@@ -7,6 +7,7 @@
 //
 
 #import "SearchFactorSortCell.h"
+#import "Colours.h"
 
 @interface SearchFactorSortCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *img;
@@ -26,6 +27,7 @@
     self.img.image = [UIImage imageNamed:_item.img];
     self.title.text = _item.title;
     self.checkImg.hidden = !_item.selected;
+    self.title.textColor = _item.selected?COLOR_PINK:[UIColor colorFromHexString:@"555555"];
 }
 
 - (IBAction)action:(UIButton *)sender {

@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "SearchHistoryKeywordsModel.h"
 #import "GHeader.h"
+#import "SearchHotKeywordsItem.h"
+
 @interface SearchHistoryKeywordsManager : NSObject
 singleH(SearchHistoryKeywordsManager)
 @property (nonatomic, strong) SearchHistoryKeywordsModel *model;
-- (void)addSearchHistoryKeywords:(NSString *)searchHistoryKeywords searchType:(SearchType)searchType;
-- (void)removeSearchHistoryKeywordsAtIndex:(NSUInteger)index searchType:(SearchType)searchType;
-- (void)cleanUpHistoryWithSearchType:(SearchType)searchType;
+- (void)addSearchHistoryKeywords:(NSString *)keywords;
+- (void)addSearchHistoryItem:(SearchHotKeywordsItem *)item;
+- (void)removeSearchHistoryAtIndex:(NSUInteger)index;
+- (void)cleanUpHistory;
 @end

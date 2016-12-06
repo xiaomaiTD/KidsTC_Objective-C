@@ -9,40 +9,23 @@
 #import "SearchHistoryKeywordsModel.h"
 
 @implementation SearchHistoryKeywordsModel
-
--(NSMutableArray<NSString *> *)article{
-    if (!_article) {
-        _article = [NSMutableArray<NSString *> array];
+-(NSMutableArray<SearchHotKeywordsItem *> *)store{
+    if (!_history) {
+        _history = [NSMutableArray<SearchHotKeywordsItem *> array];
     }
-    return _article;
-}
--(NSMutableArray<NSString *> *)product{
-    if (!_product) {
-        _product = [NSMutableArray<NSString *> array];
-    }
-    return _product;
-}
--(NSMutableArray<NSString *> *)store{
-    if (!_store) {
-        _store = [NSMutableArray<NSString *> array];
-    }
-    return _store;
+    return _history;
 }
 
 // 解码
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if(self=[super init]){
-        self.article=[aDecoder decodeObjectForKey:@"article"];
-        self.product=[aDecoder decodeObjectForKey:@"product"];
-        self.store=[aDecoder decodeObjectForKey:@"store"];
+        self.history=[aDecoder decodeObjectForKey:@"history"];
     }
     return  self;
 }
 //编码
 -(void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.article forKey:@"article"];
-    [aCoder encodeObject:self.product forKey:@"product"];
-    [aCoder encodeObject:self.store forKey:@"store"];
+    [aCoder encodeObject:self.store forKey:@"history"];
 }
 
 @end

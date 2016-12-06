@@ -14,5 +14,4 @@
 @interface SearchFactorAreaDataManager : NSObject
 singleH(SearchFactorAreaDataManager)
 @property (nonatomic, strong) NSArray<SearchFactorAreaDataItem *> *areas;
-@property (nonatomic, strong) SearchFactorAreaDataItem *headItem;
 @end

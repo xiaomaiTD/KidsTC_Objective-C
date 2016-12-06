@@ -12,5 +12,6 @@
 @interface SearchHotKeywordsManager : NSObject
 singleH(SearchHotKeywordsManager)
 @property (nonatomic, strong) SearchHotKeywordsModel *model;
+@property (nonatomic, strong) SearchHotKeywordsItem *firstItem;
 - (void)synchronize;
 @end

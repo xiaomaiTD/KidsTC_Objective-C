@@ -8,6 +8,26 @@
 
 #import "ViewController.h"
 
-@interface SearchResultViewController : ViewController
+/*
+ k:搜索关键字
+ 
+ s:地理位置
+    全部:@""
+ 
+ st:排序规则
+    @"智能排序":@"1"
+    @"按销量排序":@"8"
+    @"按星级排序":@"7"
+    @"价格从低到高":@"4"
+    @"价格从高到低":@"5"
+ 
+ a:年龄段
+    
+ c:分类
+    
+ */
 
+@interface SearchResultViewController : ViewController
+@property (nonatomic, strong) NSDictionary *search_parms;
+@property (nonatomic, strong) NSString *key;
 @end

@@ -26,10 +26,10 @@ static NSString *const ID = @"SearchFactorSortCell";
     _items = [SearchFactorSortDataManager shareSearchFactorSortDataManager].items;
     self.tableView.estimatedRowHeight = 44.0;
     [self.tableView registerNib:[UINib nibWithNibName:@"SearchFactorSortCell" bundle:nil] forCellReuseIdentifier:ID];
-    [self layoutIfNeeded];
-    [self.tableView reloadData];
+//    [self layoutIfNeeded];
+//    [self.tableView reloadData];
     
-    [self selectFirstItem];
+    if (_items.count>0) [self setupSelectItem:_items.firstObject];
 }
 
 - (CGFloat)contentHeight {
@@ -40,10 +40,6 @@ static NSString *const ID = @"SearchFactorSortCell";
         height = maxHeight;
     }
     return height;
-}
-
-- (void)selectFirstItem {
-    if (_items.count>0) [self selectItem:_items.firstObject];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -58,13 +54,13 @@ static NSString *const ID = @"SearchFactorSortCell";
     if (row<_items.count) {
         cell.item = _items[row];
         cell.actionBlock = ^(SearchFactorSortDataItem *item){
-            [self selectItem:item];
+            [self setupSelectItem:item];
         };
     }
     return cell;
 }
 
-- (void)selectItem:(SearchFactorSortDataItem *)item {
+- (void)setupSelectItem:(SearchFactorSortDataItem *)item {
     self.selectedItem.selected = NO;
     item.selected = YES;
     self.selectedItem = item;

@@ -174,41 +174,41 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (NSString *)placeholder {
     __block NSString *placeholder = nil;
-    SearchHotKeywordsData *data = [SearchHotKeywordsManager shareSearchHotKeywordsManager].model.data;
-    if (placeholder.length==0) {
-        [data.product enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
-                                                   NSUInteger idx,
-                                                   BOOL *stop) {
-            if (obj.name.length>0) {
-                placeholder = obj.name;
-                *stop = YES;
-            }
-        }];
-    }
-    if (placeholder.length == 0) {
-        [data.store enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
-                                                 NSUInteger idx,
-                                                 BOOL *stop) {
-            if (obj.name.length>0) {
-                placeholder = obj.name;
-                *stop = YES;
-            }
-        }];
-    }
-    if (placeholder.length == 0) {
-        [data.article enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
-                                                   NSUInteger idx,
-                                                   BOOL *stop) {
-            if (obj.name.length>0) {
-                placeholder = obj.name;
-                *stop = YES;
-            }
-        }];
-    }
-    if (placeholder.length == 0) {
-        placeholder = @"宝爸宝妈都在搜";
-    }
-    placeholder = [NSString stringWithFormat:@"  %@",placeholder];
+//    SearchHotKeywordsData *data = [SearchHotKeywordsManager shareSearchHotKeywordsManager].model.data;
+//    if (placeholder.length==0) {
+//        [data.product enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
+//                                                   NSUInteger idx,
+//                                                   BOOL *stop) {
+//            if (obj.name.length>0) {
+//                placeholder = obj.name;
+//                *stop = YES;
+//            }
+//        }];
+//    }
+//    if (placeholder.length == 0) {
+//        [data.store enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
+//                                                 NSUInteger idx,
+//                                                 BOOL *stop) {
+//            if (obj.name.length>0) {
+//                placeholder = obj.name;
+//                *stop = YES;
+//            }
+//        }];
+//    }
+//    if (placeholder.length == 0) {
+//        [data.article enumerateObjectsUsingBlock:^(SearchHotKeywordsListItem *obj,
+//                                                   NSUInteger idx,
+//                                                   BOOL *stop) {
+//            if (obj.name.length>0) {
+//                placeholder = obj.name;
+//                *stop = YES;
+//            }
+//        }];
+//    }
+//    if (placeholder.length == 0) {
+//        placeholder = @"宝爸宝妈都在搜";
+//    }
+//    placeholder = [NSString stringWithFormat:@"  %@",placeholder];
     return placeholder;
 }
 

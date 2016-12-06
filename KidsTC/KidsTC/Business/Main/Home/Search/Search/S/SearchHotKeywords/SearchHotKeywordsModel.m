@@ -8,27 +8,6 @@
 
 #import "SearchHotKeywordsModel.h"
 
-@implementation SearchHotKeywordsListItem
-
-@end
-
-@implementation SearchHotKeywordsListArticleItem
-
-@end
-
-@implementation SearchHotKeywordsListProductOrStoreItem
-
-@end
-
-@implementation SearchHotKeywordsData
-+ (NSDictionary *)modelContainerPropertyGenericClass
-{
-    return @{@"article" : [SearchHotKeywordsListArticleItem class],
-             @"product" : [SearchHotKeywordsListProductOrStoreItem class],
-             @"store" : [SearchHotKeywordsListProductOrStoreItem class]};
-}
-@end
-
 @implementation SearchHotKeywordsModel
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};

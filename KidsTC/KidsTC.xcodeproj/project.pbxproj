@@ -297,6 +297,23 @@
 		EC4C60B91DF5B0CB00830126 /* ProductOrderListAllTitleShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60AD1DF5B0CB00830126 /* ProductOrderListAllTitleShowView.xib */; };
 		EC4C60BA1DF5B0CB00830126 /* ProductOrderListAllTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60B01DF5B0CB00830126 /* ProductOrderListAllTitleView.m */; };
 		EC4C60BB1DF5B0CB00830126 /* ProductOrderListAllTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60B11DF5B0CB00830126 /* ProductOrderListAllTitleView.xib */; };
+		EC4C60BE1DF65F4800830126 /* SearchHotKeywordsData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60BD1DF65F4800830126 /* SearchHotKeywordsData.m */; };
+		EC4C60C11DF65F6700830126 /* SearchHotKeywordsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60C01DF65F6700830126 /* SearchHotKeywordsItem.m */; };
+		EC4C60C51DF6679D00830126 /* SearchHotKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60C31DF6679D00830126 /* SearchHotKeyCell.m */; };
+		EC4C60C61DF6679D00830126 /* SearchHotKeyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60C41DF6679D00830126 /* SearchHotKeyCell.xib */; };
+		EC4C60CA1DF667C000830126 /* SearchHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60C81DF667C000830126 /* SearchHistoryCell.m */; };
+		EC4C60CB1DF667C000830126 /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60C91DF667C000830126 /* SearchHistoryCell.xib */; };
+		EC4C60CF1DF6697400830126 /* SearchHotKeyCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60CD1DF6697400830126 /* SearchHotKeyCollectionCell.m */; };
+		EC4C60D01DF6697400830126 /* SearchHotKeyCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60CE1DF6697400830126 /* SearchHotKeyCollectionCell.xib */; };
+		EC4C60D31DF66DB300830126 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60D21DF66DB300830126 /* SearchView.m */; };
+		EC4C60D81DF6713C00830126 /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60D71DF6713C00830126 /* SearchModel.m */; };
+		EC4C60DB1DF6776100830126 /* SearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60DA1DF6776100830126 /* SearchDataManager.m */; };
+		EC4C60E11DF68F4700830126 /* SearchSectionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60E01DF68F4700830126 /* SearchSectionItem.m */; };
+		EC4C60E41DF68F5500830126 /* SearchRowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60E31DF68F5500830126 /* SearchRowItem.m */; };
+		EC4C60EC1DF6952500830126 /* SearchSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60EB1DF6952500830126 /* SearchSectionHeader.m */; };
+		EC4C60EE1DF6953400830126 /* SearchSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60ED1DF6953400830126 /* SearchSectionHeader.xib */; };
+		EC4C60F11DF6A72300830126 /* SearchTableViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C60F01DF6A72300830126 /* SearchTableViewFooter.m */; };
+		EC4C60F31DF6A72E00830126 /* SearchTableViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60F21DF6A72E00830126 /* SearchTableViewFooter.xib */; };
 		EC4E270B1DEE80D300622711 /* MyTracksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E270A1DEE80D300622711 /* MyTracksModel.m */; };
 		EC4E27111DEE812E00622711 /* MyTracksDateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27101DEE812E00622711 /* MyTracksDateItem.m */; };
 		EC4E27141DEE813800622711 /* MyTracksItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4E27131DEE813800622711 /* MyTracksItem.m */; };
@@ -493,15 +510,10 @@
 		EC4FC2CD1D77CEE400BBD050 /* FDHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBDB81D77CEE300BBD050 /* FDHeaderView.m */; };
 		EC4FC2CE1D77CEE400BBD050 /* FDSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBDBA1D77CEE300BBD050 /* FDSegmentView.m */; };
 		EC4FC2CF1D77CEE400BBD050 /* FDToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBDBC1D77CEE300BBD050 /* FDToolBarView.m */; };
-		EC4FC30A1D77CEE400BBD050 /* SearchTypeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE461D77CEE300BBD050 /* SearchTypeItem.m */; };
 		EC4FC30B1D77CEE400BBD050 /* SearchHistoryKeywordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE4A1D77CEE300BBD050 /* SearchHistoryKeywordsManager.m */; };
 		EC4FC30C1D77CEE400BBD050 /* SearchHistoryKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE4C1D77CEE300BBD050 /* SearchHistoryKeywordsModel.m */; };
 		EC4FC30D1D77CEE400BBD050 /* SearchHotKeywordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE4F1D77CEE300BBD050 /* SearchHotKeywordsManager.m */; };
 		EC4FC30E1D77CEE400BBD050 /* SearchHotKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE511D77CEE300BBD050 /* SearchHotKeywordsModel.m */; };
-		EC4FC30F1D77CEE400BBD050 /* SearchHotKeywordsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE541D77CEE300BBD050 /* SearchHotKeywordsView.m */; };
-		EC4FC3101D77CEE400BBD050 /* SearchTableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE561D77CEE300BBD050 /* SearchTableTextField.m */; };
-		EC4FC3111D77CEE400BBD050 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE581D77CEE300BBD050 /* SearchTableViewCell.m */; };
-		EC4FC3121D77CEE400BBD050 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBE591D77CEE300BBD050 /* SearchTableViewCell.xib */; };
 		EC4FC3141D77CEE400BBD050 /* SearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE611D77CEE300BBD050 /* SearchResultModel.m */; };
 		EC4FC3151D77CEE400BBD050 /* SearchResultArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE641D77CEE300BBD050 /* SearchResultArticleCell.m */; };
 		EC4FC3161D77CEE400BBD050 /* SearchResultArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBE651D77CEE300BBD050 /* SearchResultArticleCell.xib */; };
@@ -1149,6 +1161,9 @@
 		EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */; };
 		EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */; };
 		EC889D0E1DE069610054355C /* ServiceSettlementSubViewsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */; };
+		EC891BED1DF7004C002BF78B /* SearchFactorFilterAgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */; };
+		EC891BEF1DF70056002BF78B /* SearchFactorFilterAgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */; };
+		EC891BF21DF70175002BF78B /* SearchFactorFilterAgeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		EC9CC51C1DC30E7F0093DCED /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC4FF1DC30E7F0093DCED /* FSCalendar+Deprecated.m */; };
 		EC9CC51D1DC30E7F0093DCED /* FSCalendar+IBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC5011DC30E7F0093DCED /* FSCalendar+IBExtension.m */; };
@@ -1213,8 +1228,6 @@
 		ECA59C051DED61A600B3B1F7 /* SearchFactorAreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BFE1DED61A600B3B1F7 /* SearchFactorAreaCell.xib */; };
 		ECA59C061DED61A600B3B1F7 /* SearchFactorAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C001DED61A600B3B1F7 /* SearchFactorAreaView.m */; };
 		ECA59C071DED61A600B3B1F7 /* SearchFactorAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59C011DED61A600B3B1F7 /* SearchFactorAreaView.xib */; };
-		ECA59C0B1DED646600B3B1F7 /* SearchFactorAreaHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C091DED646600B3B1F7 /* SearchFactorAreaHeader.m */; };
-		ECA59C0C1DED646600B3B1F7 /* SearchFactorAreaHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59C0A1DED646600B3B1F7 /* SearchFactorAreaHeader.xib */; };
 		ECA59C0F1DED773000B3B1F7 /* SearchFactorFilterDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C0E1DED773000B3B1F7 /* SearchFactorFilterDataManager.m */; };
 		ECA59C121DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C111DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m */; };
 		ECA59C151DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C141DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m */; };
@@ -1911,6 +1924,35 @@
 		EC4C60AF1DF5B0CB00830126 /* ProductOrderListAllTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListAllTitleView.h; sourceTree = "<group>"; };
 		EC4C60B01DF5B0CB00830126 /* ProductOrderListAllTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderListAllTitleView.m; sourceTree = "<group>"; };
 		EC4C60B11DF5B0CB00830126 /* ProductOrderListAllTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderListAllTitleView.xib; sourceTree = "<group>"; };
+		EC4C60BC1DF65F4800830126 /* SearchHotKeywordsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeywordsData.h; sourceTree = "<group>"; };
+		EC4C60BD1DF65F4800830126 /* SearchHotKeywordsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsData.m; sourceTree = "<group>"; };
+		EC4C60BF1DF65F6700830126 /* SearchHotKeywordsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeywordsItem.h; sourceTree = "<group>"; };
+		EC4C60C01DF65F6700830126 /* SearchHotKeywordsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsItem.m; sourceTree = "<group>"; };
+		EC4C60C21DF6679D00830126 /* SearchHotKeyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeyCell.h; sourceTree = "<group>"; };
+		EC4C60C31DF6679D00830126 /* SearchHotKeyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeyCell.m; sourceTree = "<group>"; };
+		EC4C60C41DF6679D00830126 /* SearchHotKeyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHotKeyCell.xib; sourceTree = "<group>"; };
+		EC4C60C71DF667C000830126 /* SearchHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHistoryCell.h; sourceTree = "<group>"; };
+		EC4C60C81DF667C000830126 /* SearchHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryCell.m; sourceTree = "<group>"; };
+		EC4C60C91DF667C000830126 /* SearchHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
+		EC4C60CC1DF6697400830126 /* SearchHotKeyCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeyCollectionCell.h; sourceTree = "<group>"; };
+		EC4C60CD1DF6697400830126 /* SearchHotKeyCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeyCollectionCell.m; sourceTree = "<group>"; };
+		EC4C60CE1DF6697400830126 /* SearchHotKeyCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHotKeyCollectionCell.xib; sourceTree = "<group>"; };
+		EC4C60D11DF66DB300830126 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		EC4C60D21DF66DB300830126 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		EC4C60D61DF6713C00830126 /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
+		EC4C60D71DF6713C00830126 /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
+		EC4C60D91DF6776100830126 /* SearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDataManager.h; sourceTree = "<group>"; };
+		EC4C60DA1DF6776100830126 /* SearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDataManager.m; sourceTree = "<group>"; };
+		EC4C60DF1DF68F4700830126 /* SearchSectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionItem.h; sourceTree = "<group>"; };
+		EC4C60E01DF68F4700830126 /* SearchSectionItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionItem.m; sourceTree = "<group>"; };
+		EC4C60E21DF68F5500830126 /* SearchRowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRowItem.h; sourceTree = "<group>"; };
+		EC4C60E31DF68F5500830126 /* SearchRowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRowItem.m; sourceTree = "<group>"; };
+		EC4C60EA1DF6952500830126 /* SearchSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSectionHeader.h; sourceTree = "<group>"; };
+		EC4C60EB1DF6952500830126 /* SearchSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSectionHeader.m; sourceTree = "<group>"; };
+		EC4C60ED1DF6953400830126 /* SearchSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSectionHeader.xib; sourceTree = "<group>"; };
+		EC4C60EF1DF6A72300830126 /* SearchTableViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewFooter.h; sourceTree = "<group>"; };
+		EC4C60F01DF6A72300830126 /* SearchTableViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewFooter.m; sourceTree = "<group>"; };
+		EC4C60F21DF6A72E00830126 /* SearchTableViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewFooter.xib; sourceTree = "<group>"; };
 		EC4E27091DEE80D300622711 /* MyTracksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksModel.h; sourceTree = "<group>"; };
 		EC4E270A1DEE80D300622711 /* MyTracksModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTracksModel.m; sourceTree = "<group>"; };
 		EC4E270F1DEE812E00622711 /* MyTracksDateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTracksDateItem.h; sourceTree = "<group>"; };
@@ -2264,8 +2306,6 @@
 		EC4FBDBA1D77CEE300BBD050 /* FDSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDSegmentView.m; sourceTree = "<group>"; };
 		EC4FBDBB1D77CEE300BBD050 /* FDToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDToolBarView.h; sourceTree = "<group>"; };
 		EC4FBDBC1D77CEE300BBD050 /* FDToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDToolBarView.m; sourceTree = "<group>"; };
-		EC4FBE451D77CEE300BBD050 /* SearchTypeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTypeItem.h; sourceTree = "<group>"; };
-		EC4FBE461D77CEE300BBD050 /* SearchTypeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTypeItem.m; sourceTree = "<group>"; };
 		EC4FBE491D77CEE300BBD050 /* SearchHistoryKeywordsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHistoryKeywordsManager.h; sourceTree = "<group>"; };
 		EC4FBE4A1D77CEE300BBD050 /* SearchHistoryKeywordsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHistoryKeywordsManager.m; sourceTree = "<group>"; };
 		EC4FBE4B1D77CEE300BBD050 /* SearchHistoryKeywordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHistoryKeywordsModel.h; sourceTree = "<group>"; };
@@ -2274,13 +2314,6 @@
 		EC4FBE4F1D77CEE300BBD050 /* SearchHotKeywordsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsManager.m; sourceTree = "<group>"; };
 		EC4FBE501D77CEE300BBD050 /* SearchHotKeywordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeywordsModel.h; sourceTree = "<group>"; };
 		EC4FBE511D77CEE300BBD050 /* SearchHotKeywordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsModel.m; sourceTree = "<group>"; };
-		EC4FBE531D77CEE300BBD050 /* SearchHotKeywordsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeywordsView.h; sourceTree = "<group>"; };
-		EC4FBE541D77CEE300BBD050 /* SearchHotKeywordsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsView.m; sourceTree = "<group>"; };
-		EC4FBE551D77CEE300BBD050 /* SearchTableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableTextField.h; sourceTree = "<group>"; };
-		EC4FBE561D77CEE300BBD050 /* SearchTableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableTextField.m; sourceTree = "<group>"; };
-		EC4FBE571D77CEE300BBD050 /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
-		EC4FBE581D77CEE300BBD050 /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
-		EC4FBE591D77CEE300BBD050 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		EC4FBE601D77CEE300BBD050 /* SearchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultModel.h; sourceTree = "<group>"; };
 		EC4FBE611D77CEE300BBD050 /* SearchResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultModel.m; sourceTree = "<group>"; };
 		EC4FBE631D77CEE300BBD050 /* SearchResultArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultArticleCell.h; sourceTree = "<group>"; };
@@ -3341,6 +3374,11 @@
 		EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementDataManager.m; sourceTree = "<group>"; };
 		EC889D0C1DE069610054355C /* ServiceSettlementSubViewsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementSubViewsProvider.h; sourceTree = "<group>"; };
 		EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementSubViewsProvider.m; sourceTree = "<group>"; };
+		EC891BEB1DF7004C002BF78B /* SearchFactorFilterAgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeView.h; sourceTree = "<group>"; };
+		EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeView.m; sourceTree = "<group>"; };
+		EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterAgeView.xib; sourceTree = "<group>"; };
+		EC891BF01DF70175002BF78B /* SearchFactorFilterAgeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeItem.h; sourceTree = "<group>"; };
+		EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeItem.m; sourceTree = "<group>"; };
 		EC8FD0D01DAA528900570884 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
@@ -3455,9 +3493,6 @@
 		ECA59BFF1DED61A600B3B1F7 /* SearchFactorAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorAreaView.h; sourceTree = "<group>"; };
 		ECA59C001DED61A600B3B1F7 /* SearchFactorAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorAreaView.m; sourceTree = "<group>"; };
 		ECA59C011DED61A600B3B1F7 /* SearchFactorAreaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorAreaView.xib; sourceTree = "<group>"; };
-		ECA59C081DED646600B3B1F7 /* SearchFactorAreaHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorAreaHeader.h; sourceTree = "<group>"; };
-		ECA59C091DED646600B3B1F7 /* SearchFactorAreaHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorAreaHeader.m; sourceTree = "<group>"; };
-		ECA59C0A1DED646600B3B1F7 /* SearchFactorAreaHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorAreaHeader.xib; sourceTree = "<group>"; };
 		ECA59C0D1DED773000B3B1F7 /* SearchFactorFilterDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterDataManager.h; sourceTree = "<group>"; };
 		ECA59C0E1DED773000B3B1F7 /* SearchFactorFilterDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterDataManager.m; sourceTree = "<group>"; };
 		ECA59C101DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterDataItemLefe.h; sourceTree = "<group>"; };
@@ -6984,28 +7019,9 @@
 		EC4FBE401D77CEE300BBD050 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				EC4FBE411D77CEE300BBD050 /* C */,
-				EC4FBE441D77CEE300BBD050 /* M */,
 				EC4FBE471D77CEE300BBD050 /* S */,
-				EC4FBE521D77CEE300BBD050 /* V */,
 			);
 			path = Search;
-			sourceTree = "<group>";
-		};
-		EC4FBE411D77CEE300BBD050 /* C */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = C;
-			sourceTree = "<group>";
-		};
-		EC4FBE441D77CEE300BBD050 /* M */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBE451D77CEE300BBD050 /* SearchTypeItem.h */,
-				EC4FBE461D77CEE300BBD050 /* SearchTypeItem.m */,
-			);
-			path = M;
 			sourceTree = "<group>";
 		};
 		EC4FBE471D77CEE300BBD050 /* S */ = {
@@ -7035,22 +7051,12 @@
 				EC4FBE4F1D77CEE300BBD050 /* SearchHotKeywordsManager.m */,
 				EC4FBE501D77CEE300BBD050 /* SearchHotKeywordsModel.h */,
 				EC4FBE511D77CEE300BBD050 /* SearchHotKeywordsModel.m */,
+				EC4C60BC1DF65F4800830126 /* SearchHotKeywordsData.h */,
+				EC4C60BD1DF65F4800830126 /* SearchHotKeywordsData.m */,
+				EC4C60BF1DF65F6700830126 /* SearchHotKeywordsItem.h */,
+				EC4C60C01DF65F6700830126 /* SearchHotKeywordsItem.m */,
 			);
 			path = SearchHotKeywords;
-			sourceTree = "<group>";
-		};
-		EC4FBE521D77CEE300BBD050 /* V */ = {
-			isa = PBXGroup;
-			children = (
-				EC4FBE531D77CEE300BBD050 /* SearchHotKeywordsView.h */,
-				EC4FBE541D77CEE300BBD050 /* SearchHotKeywordsView.m */,
-				EC4FBE551D77CEE300BBD050 /* SearchTableTextField.h */,
-				EC4FBE561D77CEE300BBD050 /* SearchTableTextField.m */,
-				EC4FBE571D77CEE300BBD050 /* SearchTableViewCell.h */,
-				EC4FBE581D77CEE300BBD050 /* SearchTableViewCell.m */,
-				EC4FBE591D77CEE300BBD050 /* SearchTableViewCell.xib */,
-			);
-			path = V;
 			sourceTree = "<group>";
 		};
 		EC4FBE5A1D77CEE300BBD050 /* SearchResult */ = {
@@ -10202,6 +10208,12 @@
 		ECA59B931DEC208A00B3B1F7 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC4C60D61DF6713C00830126 /* SearchModel.h */,
+				EC4C60D71DF6713C00830126 /* SearchModel.m */,
+				EC4C60DF1DF68F4700830126 /* SearchSectionItem.h */,
+				EC4C60E01DF68F4700830126 /* SearchSectionItem.m */,
+				EC4C60E21DF68F5500830126 /* SearchRowItem.h */,
+				EC4C60E31DF68F5500830126 /* SearchRowItem.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -10209,6 +10221,8 @@
 		ECA59B941DEC208A00B3B1F7 /* S */ = {
 			isa = PBXGroup;
 			children = (
+				EC4C60D91DF6776100830126 /* SearchDataManager.h */,
+				EC4C60DA1DF6776100830126 /* SearchDataManager.m */,
 			);
 			path = S;
 			sourceTree = "<group>";
@@ -10216,6 +10230,23 @@
 		ECA59B951DEC208A00B3B1F7 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				EC4C60C21DF6679D00830126 /* SearchHotKeyCell.h */,
+				EC4C60C31DF6679D00830126 /* SearchHotKeyCell.m */,
+				EC4C60C41DF6679D00830126 /* SearchHotKeyCell.xib */,
+				EC4C60CC1DF6697400830126 /* SearchHotKeyCollectionCell.h */,
+				EC4C60CD1DF6697400830126 /* SearchHotKeyCollectionCell.m */,
+				EC4C60CE1DF6697400830126 /* SearchHotKeyCollectionCell.xib */,
+				EC4C60C71DF667C000830126 /* SearchHistoryCell.h */,
+				EC4C60C81DF667C000830126 /* SearchHistoryCell.m */,
+				EC4C60C91DF667C000830126 /* SearchHistoryCell.xib */,
+				EC4C60EA1DF6952500830126 /* SearchSectionHeader.h */,
+				EC4C60EB1DF6952500830126 /* SearchSectionHeader.m */,
+				EC4C60ED1DF6953400830126 /* SearchSectionHeader.xib */,
+				EC4C60EF1DF6A72300830126 /* SearchTableViewFooter.h */,
+				EC4C60F01DF6A72300830126 /* SearchTableViewFooter.m */,
+				EC4C60F21DF6A72E00830126 /* SearchTableViewFooter.xib */,
+				EC4C60D11DF66DB300830126 /* SearchView.h */,
+				EC4C60D21DF66DB300830126 /* SearchView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -10315,6 +10346,11 @@
 				ECA59BC31DEC5D6500B3B1F7 /* SearchFactorFilterView.h */,
 				ECA59BC41DEC5D6500B3B1F7 /* SearchFactorFilterView.m */,
 				ECA59BC61DEC5D7600B3B1F7 /* SearchFactorFilterView.xib */,
+				EC891BEB1DF7004C002BF78B /* SearchFactorFilterAgeView.h */,
+				EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */,
+				EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */,
+				EC891BF01DF70175002BF78B /* SearchFactorFilterAgeItem.h */,
+				EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */,
 				ECA59BC81DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.h */,
 				ECA59BC91DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m */,
 				ECA59BCA1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib */,
@@ -10419,9 +10455,6 @@
 		ECA59BFB1DED61A600B3B1F7 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				ECA59C081DED646600B3B1F7 /* SearchFactorAreaHeader.h */,
-				ECA59C091DED646600B3B1F7 /* SearchFactorAreaHeader.m */,
-				ECA59C0A1DED646600B3B1F7 /* SearchFactorAreaHeader.xib */,
 				ECA59BFC1DED61A600B3B1F7 /* SearchFactorAreaCell.h */,
 				ECA59BFD1DED61A600B3B1F7 /* SearchFactorAreaCell.m */,
 				ECA59BFE1DED61A600B3B1F7 /* SearchFactorAreaCell.xib */,
@@ -11474,6 +11507,7 @@
 				EC4FC2B71D77CEE400BBD050 /* CategoryItemCell.xib in Resources */,
 				EC4FC4B31D77CEE400BBD050 /* OrderRefundViewController.xib in Resources */,
 				EC4FC5F01D77CEEF00BBD050 /* ZPPopoverCell.xib in Resources */,
+				EC4C60C61DF6679D00830126 /* SearchHotKeyCell.xib in Resources */,
 				EC0044351DE6B8970042B701 /* ProductDetailTitleCell.xib in Resources */,
 				ECA59C051DED61A600B3B1F7 /* SearchFactorAreaCell.xib in Resources */,
 				EC4C60B51DF5B0CB00830126 /* ProductOrderListAllTitleCollectionCell.xib in Resources */,
@@ -11614,6 +11648,7 @@
 				EC4FC5D91D77CEEF00BBD050 /* VideoOverlay@3x.png in Resources */,
 				ECA95A731DDB2A2600990AAE /* CouponListUnusedCell.xib in Resources */,
 				EC4FC3F21D77CEE400BBD050 /* StrategyDetailRelatedServiceListViewController.xib in Resources */,
+				EC4C60EE1DF6953400830126 /* SearchSectionHeader.xib in Resources */,
 				EC4FC3921D77CEE400BBD050 /* StoreDetailBottomView.xib in Resources */,
 				EC00444C1DE6B8980042B701 /* ProductDetailNormalToolBar.xib in Resources */,
 				EC4E27D31DF14CBD00622711 /* NearbyTitleView.xib in Resources */,
@@ -11621,6 +11656,7 @@
 				EC13B4FC1DD1F3430040F760 /* AccountCenterRecommendsCell.xib in Resources */,
 				EC4FC5CD1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
 				EC76B8DC1DC65FC6006518DE /* ServiceDetailSegmentCell.xib in Resources */,
+				EC891BEF1DF70056002BF78B /* SearchFactorFilterAgeView.xib in Resources */,
 				EC4FC3A81D77CEE400BBD050 /* StoreDetailAppointmentViewController.xib in Resources */,
 				EC4FC5BD1D77CEEF00BBD050 /* ImageSelectedOff@2x.png in Resources */,
 				EC4FC5A51D77CEEF00BBD050 /* README.txt in Resources */,
@@ -11680,6 +11716,7 @@
 				EC4FC2AC1D77CEE400BBD050 /* ActivityFilterView.xib in Resources */,
 				EC4FC4DB1D77CEE400BBD050 /* UserCenterBaseCell.xib in Resources */,
 				EC4FC4A71D77CEE400BBD050 /* OrderListViewController.xib in Resources */,
+				EC4C60CB1DF667C000830126 /* SearchHistoryCell.xib in Resources */,
 				ECA95A781DDB2A3E00990AAE /* CouponListUsedCell.xib in Resources */,
 				EC0044111DE6B8970042B701 /* ProductDetailCommentMoreCell.xib in Resources */,
 				EC43A2D61DC8D5BB00A99638 /* HomeRefreshGuideView.xib in Resources */,
@@ -11776,7 +11813,6 @@
 				EC4FC4311D77CEE400BBD050 /* CommentEditViewController.xib in Resources */,
 				EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */,
 				EC4FC3161D77CEE400BBD050 /* SearchResultArticleCell.xib in Resources */,
-				ECA59C0C1DED646600B3B1F7 /* SearchFactorAreaHeader.xib in Resources */,
 				EC4FC5C41D77CEEF00BBD050 /* ImageSelectedSmallOff@3x.png in Resources */,
 				EC4FC5BE1D77CEEF00BBD050 /* ImageSelectedOff@3x.png in Resources */,
 				ECA95A901DDC4DFD00990AAE /* MyTracksFooter.xib in Resources */,
@@ -11792,6 +11828,7 @@
 				EC4FC5CC1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				EC4FC4D51D77CEE400BBD050 /* UserCenterBannerAutoRoleCell.xib in Resources */,
 				EC4FC4C91D77CEE400BBD050 /* ServiceOrderDetailStoreInfoCell.xib in Resources */,
+				EC4C60F31DF6A72E00830126 /* SearchTableViewFooter.xib in Resources */,
 				EC2F26701DD9809D00B67BBA /* CollectProductReduceCell.xib in Resources */,
 				EC4FC3611D77CEE400BBD050 /* FlashBalanceSettlementToolBar.xib in Resources */,
 				EC4FC23B1D77CEE400BBD050 /* RegisterViewController.xib in Resources */,
@@ -11809,9 +11846,9 @@
 				EC4FC38B1D77CEE400BBD050 /* StoreAppointmentViewController.xib in Resources */,
 				EC8486231DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.xib in Resources */,
 				EC00441F1DE6B8970042B701 /* ProductDetailJoinCell.xib in Resources */,
+				EC4C60D01DF6697400830126 /* SearchHotKeyCollectionCell.xib in Resources */,
 				ECB3E78B1D92C82E0059267D /* OrderBookingSelectTimeViewController.xib in Resources */,
 				EC4FC3CA1D77CEE400BBD050 /* StrategyCollectionViewCell.xib in Resources */,
-				EC4FC3121D77CEE400BBD050 /* SearchTableViewCell.xib in Resources */,
 				EC2F26401DD71B0000B67BBA /* SettlementResultNewCollectionViewCell.xib in Resources */,
 				EC4FC4DD1D77CEE400BBD050 /* UserCenterContactCell.xib in Resources */,
 				ECA59B801DEC077900B3B1F7 /* CouponUsableListViewController.xib in Resources */,
@@ -11915,7 +11952,6 @@
 				EC4FC3601D77CEE400BBD050 /* FlashBalanceSettlementToolBar.m in Sources */,
 				EC4FC5AE1D77CEEF00BBD050 /* AUIPickerView.m in Sources */,
 				EC4FC3F11D77CEE400BBD050 /* StrategyDetailRelatedServiceListViewController.m in Sources */,
-				ECA59C0B1DED646600B3B1F7 /* SearchFactorAreaHeader.m in Sources */,
 				ECF704DE1D88F3EB00650C0A /* ArticleUserCenterCommentCell.m in Sources */,
 				EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */,
 				EC4FC3FC1D77CEE400BBD050 /* AddressDataManager.m in Sources */,
@@ -11937,7 +11973,6 @@
 				EC00442A1DE6B8970042B701 /* ProductDetailTicketActorCollectionViewCell.m in Sources */,
 				EC9CC5241DC30E7F0093DCED /* FSCalendarEventIndicator.m in Sources */,
 				ECF5D0C51DB8C4FE00A1B268 /* QRCodeScanHistoryItem.m in Sources */,
-				EC4FC30F1D77CEE400BBD050 /* SearchHotKeywordsView.m in Sources */,
 				EC4FC4901D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.m in Sources */,
 				EC4FC3BC1D77CEE400BBD050 /* WelfareStoreViewController.m in Sources */,
 				EC13B51E1DD1F6110040F760 /* AccountCenterBanner.m in Sources */,
@@ -11994,6 +12029,7 @@
 				EC4FC4701D77CEE400BBD050 /* FavouriteServiceItemModel.m in Sources */,
 				EC9CC5221DC30E7F0093DCED /* FSCalendarCollectionView.m in Sources */,
 				EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */,
+				EC4C60BE1DF65F4800830126 /* SearchHotKeywordsData.m in Sources */,
 				EC2289581DE965A600EC324A /* CollectionTarentoModel.m in Sources */,
 				EC4FC3651D77CEE400BBD050 /* ServiceSettlementAddressCell.m in Sources */,
 				EC4FC4E21D77CEE400BBD050 /* UserCenterItemsCell.m in Sources */,
@@ -12001,12 +12037,14 @@
 				ECFFC7401DC363C1002DBFB9 /* ProductDetailCalendarViewController.m in Sources */,
 				EC4E27901DF0134E00622711 /* NearbyTableViewCell.m in Sources */,
 				EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */,
+				EC4C60E11DF68F4700830126 /* SearchSectionItem.m in Sources */,
 				EC0044481DE6B8980042B701 /* ProductDetaiFreeToolBar.m in Sources */,
 				ECF5D10C1DB8CE3900A1B268 /* TCHomeMainCollectionCell.m in Sources */,
 				EC4FC3DB1D77CEE400BBD050 /* StrategyTagColumnModel.m in Sources */,
 				EC4E27921DF0134E00622711 /* NearbyTableViewHeader.m in Sources */,
 				EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */,
 				EC4FC3481D77CEE400BBD050 /* FlashAdvanceSettlementReadRuleCell.m in Sources */,
+				EC4C60F11DF6A72300830126 /* SearchTableViewFooter.m in Sources */,
 				EC4FC4341D77CEE400BBD050 /* CommentListViewController.m in Sources */,
 				EC84C3A71DE299A600A42515 /* ServiceSettlementPayType.m in Sources */,
 				ECA2BC151DF2A58E00EAE79C /* ProductOrderListBtn.m in Sources */,
@@ -12121,6 +12159,7 @@
 				EC4FC34E1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.m in Sources */,
 				EC4C60971DF5984000830126 /* ProductOrderFreeListStore.m in Sources */,
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
+				EC891BED1DF7004C002BF78B /* SearchFactorFilterAgeView.m in Sources */,
 				ECB3E79D1D93BA8F0059267D /* ServiceOrderDetailBookingFailureCell.m in Sources */,
 				EC4FC4D81D77CEE400BBD050 /* UserCenterBannerCell.m in Sources */,
 				EC0044201DE6B8970042B701 /* ProductDetailNoticeCell.m in Sources */,
@@ -12138,6 +12177,7 @@
 				EC4FC5E21D77CEEF00BBD050 /* DACircularProgressView.m in Sources */,
 				ECF5D10B1DB8CE3900A1B268 /* TCHomeCollectionViewCell.m in Sources */,
 				EC4FC3B61D77CEE400BBD050 /* StoreOwnedServiceModel.m in Sources */,
+				EC4C60CF1DF6697400830126 /* SearchHotKeyCollectionCell.m in Sources */,
 				EC4FC4291D77CEE400BBD050 /* ServiceListViewCell.m in Sources */,
 				EC4FC4201D77CEE400BBD050 /* KTCBrowseHistoryManager.m in Sources */,
 				EC4FC2291D77CEE400BBD050 /* AUIBannerScrollView.m in Sources */,
@@ -12205,6 +12245,7 @@
 				EC13B4F91DD1F3430040F760 /* AccountCenterOrdersCell.m in Sources */,
 				EC4FC3E61D77CEE400BBD050 /* ParentingStrategyDetailViewController.m in Sources */,
 				EC5CDD2D1DE538F200F95C6F /* ProductDetailFreeApplyBabySexCell.m in Sources */,
+				EC891BF21DF70175002BF78B /* SearchFactorFilterAgeItem.m in Sources */,
 				EC4FC4E81D77CEE400BBD050 /* UserCenterMessageButton.m in Sources */,
 				EC4FC3DE1D77CEE400BBD050 /* ParentingStrategyListItemModel.m in Sources */,
 				EC4E27F91DF152F700622711 /* NearbyCalendarToolBarCategoryView.m in Sources */,
@@ -12291,6 +12332,7 @@
 				EC4FC4071D77CEE400BBD050 /* UserAddressManageModel.m in Sources */,
 				ECAA494D1D79A45B00799CBE /* ArticleHomeTagImgCell.m in Sources */,
 				ECA95A771DDB2A3E00990AAE /* CouponListUsedCell.m in Sources */,
+				EC4C60EC1DF6952500830126 /* SearchSectionHeader.m in Sources */,
 				EC4FC5DE1D77CEEF00BBD050 /* MWPhotoBrowser.m in Sources */,
 				EC4FC30E1D77CEE400BBD050 /* SearchHotKeywordsModel.m in Sources */,
 				EC4FC4ED1D77CEE400BBD050 /* WebViewController.m in Sources */,
@@ -12372,6 +12414,7 @@
 				ECAA493D1D79A45B00799CBE /* ArticleHomeBannerCollectionViewOneCell.m in Sources */,
 				ECAA493A1D79A45B00799CBE /* ArticleHomeBannerCell.m in Sources */,
 				EC4FC49A1D77CEE400BBD050 /* FlashServiceOrderDetailStoreInfoCell.m in Sources */,
+				EC4C60C51DF6679D00830126 /* SearchHotKeyCell.m in Sources */,
 				EC5CDD211DE538F200F95C6F /* ProductDetailFreeApplyViewController.m in Sources */,
 				EC4FC31C1D77CEE400BBD050 /* AreaAndAgeDataManager.m in Sources */,
 				EC4FC29A1D77CEE400BBD050 /* MessageCenterCell.m in Sources */,
@@ -12459,11 +12502,9 @@
 				EC5CDD221DE538F200F95C6F /* ProductDetailFreeApplyShowModel.m in Sources */,
 				EC5CDD251DE538F200F95C6F /* ProductDetailFreeApplyActivityStoreCell.m in Sources */,
 				EC4FC4191D77CEE400BBD050 /* AppointmentOrderDetailViewController.m in Sources */,
-				EC4FC3111D77CEE400BBD050 /* SearchTableViewCell.m in Sources */,
 				EC4FC42E1D77CEE400BBD050 /* CommentDetailViewController.m in Sources */,
 				ECA95A681DDB29B800990AAE /* CouponListUnusedView.m in Sources */,
 				EC810A601D8FE0C700B4B87A /* NSDate+ZP.m in Sources */,
-				EC4FC30A1D77CEE400BBD050 /* SearchTypeItem.m in Sources */,
 				EC0044091DE6B8970042B701 /* ProductDetailBannerCollectionViewCell.m in Sources */,
 				EC4FC4281D77CEE400BBD050 /* ServiceListItemModel.m in Sources */,
 				ECAA49421D79A45B00799CBE /* ArticleHomeBigImgCell.m in Sources */,
@@ -12476,6 +12517,7 @@
 				ECAA49411D79A45B00799CBE /* ArticleHomeBaseCell.m in Sources */,
 				EC4FC48E1D77CEE400BBD050 /* FlashServiceOrderDetailProgressCell.m in Sources */,
 				EC00440C1DE6B8970042B701 /* ProductDetailCommentCell.m in Sources */,
+				EC4C60C11DF65F6700830126 /* SearchHotKeywordsItem.m in Sources */,
 				ECB3E7A71D93C03E0059267D /* OrderBookingRemarksCell.m in Sources */,
 				ECF5D10A1DB8CE3900A1B268 /* TCHomeBaseTableViewCell.m in Sources */,
 				EC4FC2321D77CEE400BBD050 /* TipButton.m in Sources */,
@@ -12542,7 +12584,6 @@
 				EC2F26A41DD9B80600B67BBA /* CollectionContentView.m in Sources */,
 				EC0044DE1DE808BD0042B701 /* ProductDetailTwoColumnConsultEmptyCell.m in Sources */,
 				EC00441E1DE6B8970042B701 /* ProductDetailJoinCell.m in Sources */,
-				EC4FC3101D77CEE400BBD050 /* SearchTableTextField.m in Sources */,
 				EC4FC2201D77CEE400BBD050 /* UILabel+Additions.m in Sources */,
 				EC4C608E1DF585D900830126 /* TCTimer.m in Sources */,
 				ECB3E7961D92C96B0059267D /* FlashServiceOrderListViewController.m in Sources */,
@@ -12659,6 +12700,7 @@
 				EC7AF7A71D94FC24003A6D9B /* ServiceOrderDetailCountDownCell.m in Sources */,
 				EC0B6D921D8E693A00EC20EA /* ArticleCell.m in Sources */,
 				EC4FC25A1D77CEE400BBD050 /* KTCPaymentService.m in Sources */,
+				EC4C60D81DF6713C00830126 /* SearchModel.m in Sources */,
 				EC4FC37D1D77CEE400BBD050 /* CashierDeskModel.m in Sources */,
 				EC1E2FA81D8286C1002381E7 /* ArticleWriteContentCell.m in Sources */,
 				EC4FC4DA1D77CEE400BBD050 /* UserCenterBaseCell.m in Sources */,
@@ -12672,6 +12714,7 @@
 				EC3CE0C11DF17A57005729E2 /* NearbyCategoryToolBarItem.m in Sources */,
 				EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */,
 				ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */,
+				EC4C60CA1DF667C000830126 /* SearchHistoryCell.m in Sources */,
 				EC4FC4321D77CEE400BBD050 /* CommentFoundingViewController.m in Sources */,
 				EC68C3C41D9BBC8D00D4401A /* HomeActivityManager.m in Sources */,
 				EC0B6D911D8E693A00EC20EA /* ArticleModel.m in Sources */,
@@ -12754,6 +12797,7 @@
 				EC4FC2A61D77CEE400BBD050 /* UserArticleCommentsHeader.m in Sources */,
 				EC4FC3891D77CEE400BBD050 /* SettlementResultShareModel.m in Sources */,
 				EC4FC3B71D77CEE400BBD050 /* StoreDetailServiceCell.m in Sources */,
+				EC4C60D31DF66DB300830126 /* SearchView.m in Sources */,
 				ECA95A891DDB3A1900990AAE /* CouponListExpiredViewController.m in Sources */,
 				EC43A2DC1DC92EE200A99638 /* NSObject+Category.m in Sources */,
 				EC4FC4AF1D77CEE400BBD050 /* OrderRefundModel.m in Sources */,
@@ -12831,6 +12875,8 @@
 				EC22896D1DE9B3EF00EC324A /* AccountCenterActivity.m in Sources */,
 				ECB3E77E1D92C82E0059267D /* OrderBookingMakeSureCell.m in Sources */,
 				EC4FC5F31D77CEEF00BBD050 /* ZPProgress.m in Sources */,
+				EC4C60DB1DF6776100830126 /* SearchDataManager.m in Sources */,
+				EC4C60E41DF68F5500830126 /* SearchRowItem.m in Sources */,
 				EC4FC5EF1D77CEEF00BBD050 /* ZPPopoverCell.m in Sources */,
 				EC9CC5291DC30E7F0093DCED /* FSCalendarStickyHeader.m in Sources */,
 				EC4FC5B71D77CEEF00BBD050 /* Insurance.m in Sources */,

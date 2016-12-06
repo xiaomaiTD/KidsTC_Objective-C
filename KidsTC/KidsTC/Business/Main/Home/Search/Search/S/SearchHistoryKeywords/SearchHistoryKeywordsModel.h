@@ -7,13 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-typedef enum : NSUInteger {
-    SearchType_Product=1,
-    SearchType_Store,
-    SearchType_Article
-} SearchType;
+#import "SearchHotKeywordsItem.h"
 @interface SearchHistoryKeywordsModel : NSObject<NSCoding>
-@property (nonatomic, strong) NSMutableArray<NSString *> *article;
-@property (nonatomic, strong) NSMutableArray<NSString *> *product;
-@property (nonatomic, strong) NSMutableArray<NSString *> *store;
+@property (nonatomic, strong) NSMutableArray<SearchHotKeywordsItem *> *history;
 @end

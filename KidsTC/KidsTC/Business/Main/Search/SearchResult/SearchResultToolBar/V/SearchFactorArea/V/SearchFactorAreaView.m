@@ -7,17 +7,14 @@
 //
 
 #import "SearchFactorAreaView.h"
-#import "SearchFactorAreaHeader.h"
 #import "SearchFactorAreaCell.h"
 
-
-static NSString *const kHeadID = @"SearchFactorAreaHeader";
 static NSString *const kCellID = @"SearchFactorAreaCell";
+static CGFloat const margin = 16;
 
 @interface SearchFactorAreaView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray<SearchFactorAreaDataItem *> *areas;
-@property (nonatomic, strong) SearchFactorAreaDataItem *headItem;
 
 @property (nonatomic, weak) SearchFactorAreaDataItem *selectedItem;
 
@@ -28,17 +25,10 @@ static NSString *const kCellID = @"SearchFactorAreaCell";
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _areas = [SearchFactorAreaDataManager shareSearchFactorAreaDataManager].areas;
-    _headItem = [SearchFactorAreaDataManager shareSearchFactorAreaDataManager].headItem;
-    
-    [self.collectionView registerNib:[UINib nibWithNibName:@"SearchFactorAreaHeader" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kHeadID];
     [self.collectionView registerNib:[UINib nibWithNibName:@"SearchFactorAreaCell" bundle:nil] forCellWithReuseIdentifier:kCellID];
     
-    [self layoutIfNeeded];
-    
-    [self.collectionView reloadData];
-    
-    [self selectItem:_headItem];
+    _areas = [SearchFactorAreaDataManager shareSearchFactorAreaDataManager].areas;
+    if (_areas.count>0) [self setupSelectItem:_areas.firstObject];
 }
 
 - (CGFloat)contentHeight {
@@ -52,20 +42,17 @@ static NSString *const kCellID = @"SearchFactorAreaCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat w = (SCREEN_WIDTH - 2 * LINE_H) * 0.5;
-    return CGSizeMake(w, 49);
+    CGFloat w = (SCREEN_WIDTH - 4 * margin - 4) / 3.0;
+    return CGSizeMake(w, 28);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, 0, 0, 0);
+    return UIEdgeInsetsMake(margin, margin, margin, margin);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return LINE_H;
+    return margin;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return LINE_H;
-}
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    return CGSizeMake(SCREEN_WIDTH, 49);
+    return margin;
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
@@ -80,25 +67,13 @@ static NSString *const kCellID = @"SearchFactorAreaCell";
     if (row<_areas.count) {
         cell.item = _areas[row];
         cell.actionBlock = ^(SearchFactorAreaDataItem *item){
-            [self selectItem:item];
+            [self setupSelectItem:item];
         };
     }
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        SearchFactorAreaHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:kHeadID forIndexPath:indexPath];
-        header.item = _headItem;
-        header.actionBlock = ^(SearchFactorAreaDataItem *item){
-            [self selectItem:item];
-        };
-        return header;
-    }
-    return nil;
-}
-
-- (void)selectItem:(SearchFactorAreaDataItem *)item {
+- (void)setupSelectItem:(SearchFactorAreaDataItem *)item {
     _selectedItem.selected = NO;
     item.selected = YES;
     _selectedItem = item;

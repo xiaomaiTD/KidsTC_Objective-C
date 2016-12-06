@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,10 +18,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-ll-75g">
-                    <rect key="frame" x="0.0" y="0.0" width="342" height="527"/>
+                    <rect key="frame" x="0.0" y="108" width="342" height="419"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1NW-Rh-J21">
-                            <rect key="frame" x="0.0" y="0.0" width="171" height="527"/>
+                            <rect key="frame" x="0.0" y="0.0" width="171" height="419"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <connections>
                                 <outlet property="dataSource" destination="iN0-l3-epB" id="a3a-gr-9Nd"/>
@@ -28,7 +29,7 @@
                             </connections>
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vr9-A2-7hI">
-                            <rect key="frame" x="171" y="0.0" width="171" height="527"/>
+                            <rect key="frame" x="171" y="0.0" width="171" height="419"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="iN0-l3-epB" id="XbB-Wr-3S9"/>
@@ -107,16 +108,71 @@
                         <constraint firstItem="6Er-yw-XNy" firstAttribute="leading" secondItem="RPi-hu-3Iz" secondAttribute="leading" constant="15" id="w0g-OV-H2O"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHx-XB-s4w">
+                    <rect key="frame" x="0.0" y="0.0" width="342" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEp-t9-hAP">
+                            <rect key="frame" x="15" y="16" width="53" height="16"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_toolBar_filter_age" translatesAutoresizingMaskIntoConstraints="NO" id="yoZ-G7-Dtd">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="16" id="BPy-lC-mR5"/>
+                                        <constraint firstAttribute="width" secondItem="yoZ-G7-Dtd" secondAttribute="height" multiplier="1:1" id="Glu-UV-MID"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6p-Rg-08i">
+                                    <rect key="frame" x="24" y="0.0" width="29" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="yoZ-G7-Dtd" secondAttribute="bottom" id="2aI-qE-Kxo"/>
+                                <constraint firstAttribute="trailing" secondItem="u6p-Rg-08i" secondAttribute="trailing" id="7iS-KZ-2lS"/>
+                                <constraint firstItem="u6p-Rg-08i" firstAttribute="top" secondItem="yEp-t9-hAP" secondAttribute="top" id="Ijc-LO-mzQ"/>
+                                <constraint firstItem="yoZ-G7-Dtd" firstAttribute="top" secondItem="yEp-t9-hAP" secondAttribute="top" id="UEC-rR-rdp"/>
+                                <constraint firstItem="yoZ-G7-Dtd" firstAttribute="leading" secondItem="yEp-t9-hAP" secondAttribute="leading" id="UjP-SL-3Xt"/>
+                                <constraint firstItem="u6p-Rg-08i" firstAttribute="leading" secondItem="yoZ-G7-Dtd" secondAttribute="trailing" constant="8" id="ox8-VP-uDH"/>
+                                <constraint firstAttribute="bottom" secondItem="u6p-Rg-08i" secondAttribute="bottom" id="pDt-ZQ-f7h"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VQp-lB-msS">
+                            <rect key="frame" x="0.0" y="32" width="342" height="68"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nYD-rh-T9h">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="yEp-t9-hAP" firstAttribute="leading" secondItem="pHx-XB-s4w" secondAttribute="leading" constant="15" id="3rP-9j-PHH"/>
+                        <constraint firstItem="VQp-lB-msS" firstAttribute="leading" secondItem="pHx-XB-s4w" secondAttribute="leading" id="CGw-1W-JAS"/>
+                        <constraint firstItem="VQp-lB-msS" firstAttribute="top" secondItem="yEp-t9-hAP" secondAttribute="bottom" id="IWB-Fw-kfR"/>
+                        <constraint firstAttribute="bottom" secondItem="VQp-lB-msS" secondAttribute="bottom" id="MYs-7l-Ime"/>
+                        <constraint firstAttribute="trailing" secondItem="VQp-lB-msS" secondAttribute="trailing" id="R8w-jz-mUX"/>
+                        <constraint firstAttribute="height" constant="100" id="eYo-pj-ySI"/>
+                        <constraint firstItem="yEp-t9-hAP" firstAttribute="top" secondItem="pHx-XB-s4w" secondAttribute="top" constant="16" id="vPJ-Fh-qdD"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="m6q-ll-75g" firstAttribute="top" secondItem="pHx-XB-s4w" secondAttribute="bottom" constant="8" id="8Go-7e-Kv7"/>
                 <constraint firstAttribute="trailing" secondItem="m6q-ll-75g" secondAttribute="trailing" id="BjA-zo-5Yw"/>
                 <constraint firstItem="RPi-hu-3Iz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Llg-JO-WZ5"/>
+                <constraint firstItem="pHx-XB-s4w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NNy-cO-vOQ"/>
                 <constraint firstItem="RPi-hu-3Iz" firstAttribute="top" secondItem="m6q-ll-75g" secondAttribute="bottom" id="Qvd-06-O5H"/>
                 <constraint firstAttribute="bottom" secondItem="RPi-hu-3Iz" secondAttribute="bottom" id="ZN8-pM-FU1"/>
+                <constraint firstAttribute="trailing" secondItem="pHx-XB-s4w" secondAttribute="trailing" id="eu7-4g-XJf"/>
                 <constraint firstAttribute="trailing" secondItem="RPi-hu-3Iz" secondAttribute="trailing" id="iQu-2v-cY1"/>
-                <constraint firstItem="m6q-ll-75g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kZn-s6-vdC"/>
                 <constraint firstItem="m6q-ll-75g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rJx-db-WU9"/>
+                <constraint firstItem="pHx-XB-s4w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wLj-Uf-uk8"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -127,7 +183,10 @@
                 <outlet property="tableView_left" destination="1NW-Rh-J21" id="YbT-aL-4g8"/>
                 <outlet property="tableView_right" destination="Vr9-A2-7hI" id="df1-Kd-yUv"/>
             </connections>
-            <point key="canvasLocation" x="-274" y="-93.5"/>
+            <point key="canvasLocation" x="-541" y="-282"/>
         </view>
     </objects>
+    <resources>
+        <image name="search_toolBar_filter_age" width="67" height="57"/>
+    </resources>
 </document>

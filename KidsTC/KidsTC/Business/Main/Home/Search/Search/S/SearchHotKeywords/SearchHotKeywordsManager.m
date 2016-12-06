@@ -7,7 +7,7 @@
 //
 
 #import "SearchHotKeywordsManager.h"
-static NSString *const SearchHotKeywordsFileName = @"SearchHotKeywords";
+static NSString *const SearchHotKeywordsFileName = @"SearchHotKeywordsLocal";
 
 @implementation SearchHotKeywordsManager
 singleM(SearchHotKeywordsManager)
@@ -23,12 +23,39 @@ singleM(SearchHotKeywordsManager)
     }
     return _model;
 }
+
+- (SearchHotKeywordsItem *)firstItem {
+    if (!_firstItem) {
+        SearchHotKeywordsData *data = self.model.data;
+        
+        NSArray<SearchHotKeywordsItem *> *location = data.location;
+        NSArray<SearchHotKeywordsItem *> *store = data.store;
+        NSArray<SearchHotKeywordsItem *> *product = data.product;
+        
+        [product enumerateObjectsUsingBlock:^(SearchHotKeywordsItem *obj, NSUInteger idx, BOOL *stop) {
+            _firstItem = obj;
+            *stop = YES;
+        }];
+        
+        [store enumerateObjectsUsingBlock:^(SearchHotKeywordsItem *obj, NSUInteger idx, BOOL *stop) {
+            _firstItem = obj;
+            *stop = YES;
+        }];
+        
+        [location enumerateObjectsUsingBlock:^(SearchHotKeywordsItem *obj, NSUInteger idx, BOOL *stop) {
+            _firstItem = obj;
+            *stop = YES;
+        }];
+    }
+    return _firstItem;
+}
+
 - (void)synchronize{
     
     NSString *md5 = self.model.md5.length>0?self.model.md5:@"";
     NSString *pt = [User shareUser].role.roleIdentifierString;
     NSDictionary *param = @{@"md5":md5,@"pt":pt};
-    [Request startAndCallBackInChildThreadWithName:@"SEARCH_GET_HOTKEY" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startAndCallBackInChildThreadWithName:@"GET_SEARCH_KEY_WORD" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         TCLog(@"[热搜关键字]:有更新数据");
         SearchHotKeywordsModel *model = [SearchHotKeywordsModel modelWithDictionary:dic];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
@@ -37,6 +64,7 @@ singleM(SearchHotKeywordsManager)
         if (bWrite) {
             TCLog(@"[热搜关键字]:写入成功");
             self.model = model;
+            self.firstItem = nil;
         }else{
             TCLog(@"[热搜关键字]:写入失败");
         }
@@ -53,6 +81,7 @@ singleM(SearchHotKeywordsManager)
 - (void)removeLocalTheme{
     [[NSFileManager defaultManager] removeItemAtPath:FILE_CACHE_PATH(SearchHotKeywordsFileName) error:nil];
     self.model = nil;
+    self.firstItem = nil;
 }
 
 
