@@ -1,5 +1,5 @@
 //
-//  SearchResultModel.h
+//  SearchResultProductModel.h
 //  KidsTC
 //
 //  Created by zhanping on 7/5/16.
@@ -37,7 +37,7 @@ typedef enum {
 @property (nonatomic, assign) CGFloat cellHeight;
 @end
 
-@interface SearchResultProductModel : NSObject
+@interface SearchResultModel : NSObject
 @property (nonatomic, assign) NSInteger errNo;
 @property (nonatomic, strong) NSArray<SearchResultProductItem *> *data;
 @property (nonatomic, assign) NSInteger count;

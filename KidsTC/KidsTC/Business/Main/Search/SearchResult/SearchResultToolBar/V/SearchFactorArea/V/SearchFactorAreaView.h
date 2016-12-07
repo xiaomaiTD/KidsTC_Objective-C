@@ -11,10 +11,11 @@
 
 @class SearchFactorAreaView;
 @protocol SearchFactorAreaViewDelegate <NSObject>
-- (void)searchFactorAreaView:(SearchFactorAreaView *)view didSelectItem:(SearchFactorAreaDataItem *)item;
+- (void)searchFactorAreaView:(SearchFactorAreaView *)view didSelectItem:(SearchFactorAreaDataItem *)item byClick:(BOOL)byClick;
 @end
 
 @interface SearchFactorAreaView : UIView
 @property (nonatomic, weak) id<SearchFactorAreaViewDelegate> delegate;
+@property (nonatomic, weak) NSDictionary *insetParam;
 - (CGFloat)contentHeight;
 @end

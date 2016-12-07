@@ -273,6 +273,30 @@
 		EC43A2DC1DC92EE200A99638 /* NSObject+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2DB1DC92EE200A99638 /* NSObject+Category.m */; };
 		EC43A2DF1DC92F4100A99638 /* NSArray+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2DE1DC92F4100A99638 /* NSArray+Category.m */; };
 		EC43A2E21DC97FDC00A99638 /* ArticleHomeClassButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC43A2E11DC97FDC00A99638 /* ArticleHomeClassButton.m */; };
+		EC486F2F1DF7C726005CA365 /* SearchFactorFilterAgeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F0C1DF7C726005CA365 /* SearchFactorFilterAgeItem.m */; };
+		EC486F301DF7C726005CA365 /* SearchFactorFilterAgeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F101DF7C726005CA365 /* SearchFactorFilterAgeCell.m */; };
+		EC486F311DF7C726005CA365 /* SearchFactorFilterAgeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F111DF7C726005CA365 /* SearchFactorFilterAgeCell.xib */; };
+		EC486F321DF7C726005CA365 /* SearchFactorFilterAgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F141DF7C726005CA365 /* SearchFactorFilterAgeView.m */; };
+		EC486F331DF7C726005CA365 /* SearchFactorFilterAgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F151DF7C726005CA365 /* SearchFactorFilterAgeView.xib */; };
+		EC486F341DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F191DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m */; };
+		EC486F351DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F1B1DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.m */; };
+		EC486F361DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F1F1DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m */; };
+		EC486F371DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F201DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.xib */; };
+		EC486F381DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F221DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.m */; };
+		EC486F391DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F231DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib */; };
+		EC486F3A1DF7C726005CA365 /* SearchFactorFilterCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F261DF7C726005CA365 /* SearchFactorFilterCategoryView.m */; };
+		EC486F3B1DF7C726005CA365 /* SearchFactorFilterCategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F271DF7C726005CA365 /* SearchFactorFilterCategoryView.xib */; };
+		EC486F3C1DF7C726005CA365 /* SearchFactorFilterToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F2A1DF7C726005CA365 /* SearchFactorFilterToolBar.m */; };
+		EC486F3D1DF7C726005CA365 /* SearchFactorFilterToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F2B1DF7C726005CA365 /* SearchFactorFilterToolBar.xib */; };
+		EC486F3E1DF7C726005CA365 /* SearchFactorFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F2D1DF7C726005CA365 /* SearchFactorFilterView.m */; };
+		EC486F3F1DF7C726005CA365 /* SearchFactorFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F2E1DF7C726005CA365 /* SearchFactorFilterView.xib */; };
+		EC486F421DF83328005CA365 /* SearchResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F411DF83328005CA365 /* SearchResultView.m */; };
+		EC486F461DF84313005CA365 /* SearchResultProductSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F441DF84313005CA365 /* SearchResultProductSmallCell.m */; };
+		EC486F471DF84313005CA365 /* SearchResultProductSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F451DF84313005CA365 /* SearchResultProductSmallCell.xib */; };
+		EC486F4B1DF8432A005CA365 /* SearchResultProductLargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F491DF8432A005CA365 /* SearchResultProductLargeCell.m */; };
+		EC486F4C1DF8432A005CA365 /* SearchResultProductLargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F4A1DF8432A005CA365 /* SearchResultProductLargeCell.xib */; };
+		EC486F501DF85255005CA365 /* SearchResultProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F4F1DF85255005CA365 /* SearchResultProductModel.m */; };
+		EC486F531DF852A9005CA365 /* SearchResultProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F521DF852A9005CA365 /* SearchResultProduct.m */; };
 		EC4C605F1DF5027600830126 /* ProductOrderListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C605E1DF5027600830126 /* ProductOrderListHeader.m */; };
 		EC4C60611DF5028100830126 /* ProductOrderListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60601DF5028100830126 /* ProductOrderListHeader.xib */; };
 		EC4C607B1DF5765400830126 /* ProductOrderFreeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C607A1DF5765400830126 /* ProductOrderFreeListViewController.m */; };
@@ -1161,9 +1185,6 @@
 		EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC889D051DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib */; };
 		EC889D0B1DE0693C0054355C /* ServiceSettlementDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */; };
 		EC889D0E1DE069610054355C /* ServiceSettlementSubViewsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */; };
-		EC891BED1DF7004C002BF78B /* SearchFactorFilterAgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */; };
-		EC891BEF1DF70056002BF78B /* SearchFactorFilterAgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */; };
-		EC891BF21DF70175002BF78B /* SearchFactorFilterAgeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		EC9CC51C1DC30E7F0093DCED /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC4FF1DC30E7F0093DCED /* FSCalendar+Deprecated.m */; };
 		EC9CC51D1DC30E7F0093DCED /* FSCalendar+IBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC5011DC30E7F0093DCED /* FSCalendar+IBExtension.m */; };
@@ -1210,12 +1231,6 @@
 		ECA59BA91DEC2CB000B3B1F7 /* SearchResultToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BA81DEC2CB000B3B1F7 /* SearchResultToolBar.m */; };
 		ECA59BAB1DEC2CBD00B3B1F7 /* SearchResultToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BAA1DEC2CBD00B3B1F7 /* SearchResultToolBar.xib */; };
 		ECA59BAE1DEC311E00B3B1F7 /* SearchResultToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BAD1DEC311E00B3B1F7 /* SearchResultToolBarButton.m */; };
-		ECA59BC51DEC5D6500B3B1F7 /* SearchFactorFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BC41DEC5D6500B3B1F7 /* SearchFactorFilterView.m */; };
-		ECA59BC71DEC5D7600B3B1F7 /* SearchFactorFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BC61DEC5D7600B3B1F7 /* SearchFactorFilterView.xib */; };
-		ECA59BCB1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BC91DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m */; };
-		ECA59BCC1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BCA1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib */; };
-		ECA59BD01DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BCE1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.m */; };
-		ECA59BD11DEC5DA900B3B1F7 /* SearchFactorFilterRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BCF1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.xib */; };
 		ECA59BE81DED612600B3B1F7 /* SearchFactorSortDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BDB1DED612600B3B1F7 /* SearchFactorSortDataItem.m */; };
 		ECA59BE91DED612600B3B1F7 /* SearchFactorSortDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BDE1DED612600B3B1F7 /* SearchFactorSortDataManager.m */; };
 		ECA59BEA1DED612600B3B1F7 /* SearchFactorSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59BE21DED612600B3B1F7 /* SearchFactorSortCell.m */; };
@@ -1228,9 +1243,6 @@
 		ECA59C051DED61A600B3B1F7 /* SearchFactorAreaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59BFE1DED61A600B3B1F7 /* SearchFactorAreaCell.xib */; };
 		ECA59C061DED61A600B3B1F7 /* SearchFactorAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C001DED61A600B3B1F7 /* SearchFactorAreaView.m */; };
 		ECA59C071DED61A600B3B1F7 /* SearchFactorAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA59C011DED61A600B3B1F7 /* SearchFactorAreaView.xib */; };
-		ECA59C0F1DED773000B3B1F7 /* SearchFactorFilterDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C0E1DED773000B3B1F7 /* SearchFactorFilterDataManager.m */; };
-		ECA59C121DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C111DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m */; };
-		ECA59C151DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA59C141DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m */; };
 		ECA628671DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA628661DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m */; };
 		ECA628691DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECA628681DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib */; };
 		ECA95A681DDB29B800990AAE /* CouponListUnusedView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA95A671DDB29B800990AAE /* CouponListUnusedView.m */; };
@@ -1883,6 +1895,45 @@
 		EC43A2DE1DC92F4100A99638 /* NSArray+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Category.m"; sourceTree = "<group>"; };
 		EC43A2E01DC97FDC00A99638 /* ArticleHomeClassButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleHomeClassButton.h; sourceTree = "<group>"; };
 		EC43A2E11DC97FDC00A99638 /* ArticleHomeClassButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeClassButton.m; sourceTree = "<group>"; };
+		EC486F0B1DF7C726005CA365 /* SearchFactorFilterAgeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeItem.h; sourceTree = "<group>"; };
+		EC486F0C1DF7C726005CA365 /* SearchFactorFilterAgeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeItem.m; sourceTree = "<group>"; };
+		EC486F0F1DF7C726005CA365 /* SearchFactorFilterAgeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeCell.h; sourceTree = "<group>"; };
+		EC486F101DF7C726005CA365 /* SearchFactorFilterAgeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeCell.m; sourceTree = "<group>"; };
+		EC486F111DF7C726005CA365 /* SearchFactorFilterAgeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterAgeCell.xib; sourceTree = "<group>"; };
+		EC486F131DF7C726005CA365 /* SearchFactorFilterAgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeView.h; sourceTree = "<group>"; };
+		EC486F141DF7C726005CA365 /* SearchFactorFilterAgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeView.m; sourceTree = "<group>"; };
+		EC486F151DF7C726005CA365 /* SearchFactorFilterAgeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterAgeView.xib; sourceTree = "<group>"; };
+		EC486F181DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterCategoryItemLeft.h; sourceTree = "<group>"; };
+		EC486F191DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterCategoryItemLeft.m; sourceTree = "<group>"; };
+		EC486F1A1DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterCategoryItemRight.h; sourceTree = "<group>"; };
+		EC486F1B1DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterCategoryItemRight.m; sourceTree = "<group>"; };
+		EC486F1E1DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterCategoryCellLeft.h; sourceTree = "<group>"; };
+		EC486F1F1DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterCategoryCellLeft.m; sourceTree = "<group>"; };
+		EC486F201DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterCategoryCellLeft.xib; sourceTree = "<group>"; };
+		EC486F211DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterCategoryCellRight.h; sourceTree = "<group>"; };
+		EC486F221DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterCategoryCellRight.m; sourceTree = "<group>"; };
+		EC486F231DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterCategoryCellRight.xib; sourceTree = "<group>"; };
+		EC486F251DF7C726005CA365 /* SearchFactorFilterCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterCategoryView.h; sourceTree = "<group>"; };
+		EC486F261DF7C726005CA365 /* SearchFactorFilterCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterCategoryView.m; sourceTree = "<group>"; };
+		EC486F271DF7C726005CA365 /* SearchFactorFilterCategoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterCategoryView.xib; sourceTree = "<group>"; };
+		EC486F291DF7C726005CA365 /* SearchFactorFilterToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterToolBar.h; sourceTree = "<group>"; };
+		EC486F2A1DF7C726005CA365 /* SearchFactorFilterToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterToolBar.m; sourceTree = "<group>"; };
+		EC486F2B1DF7C726005CA365 /* SearchFactorFilterToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterToolBar.xib; sourceTree = "<group>"; };
+		EC486F2C1DF7C726005CA365 /* SearchFactorFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterView.h; sourceTree = "<group>"; };
+		EC486F2D1DF7C726005CA365 /* SearchFactorFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterView.m; sourceTree = "<group>"; };
+		EC486F2E1DF7C726005CA365 /* SearchFactorFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterView.xib; sourceTree = "<group>"; };
+		EC486F401DF83328005CA365 /* SearchResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultView.h; sourceTree = "<group>"; };
+		EC486F411DF83328005CA365 /* SearchResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultView.m; sourceTree = "<group>"; };
+		EC486F431DF84313005CA365 /* SearchResultProductSmallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductSmallCell.h; sourceTree = "<group>"; };
+		EC486F441DF84313005CA365 /* SearchResultProductSmallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductSmallCell.m; sourceTree = "<group>"; };
+		EC486F451DF84313005CA365 /* SearchResultProductSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultProductSmallCell.xib; sourceTree = "<group>"; };
+		EC486F481DF8432A005CA365 /* SearchResultProductLargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductLargeCell.h; sourceTree = "<group>"; };
+		EC486F491DF8432A005CA365 /* SearchResultProductLargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductLargeCell.m; sourceTree = "<group>"; };
+		EC486F4A1DF8432A005CA365 /* SearchResultProductLargeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultProductLargeCell.xib; sourceTree = "<group>"; };
+		EC486F4E1DF85255005CA365 /* SearchResultProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductModel.h; sourceTree = "<group>"; };
+		EC486F4F1DF85255005CA365 /* SearchResultProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductModel.m; sourceTree = "<group>"; };
+		EC486F511DF852A9005CA365 /* SearchResultProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProduct.h; sourceTree = "<group>"; };
+		EC486F521DF852A9005CA365 /* SearchResultProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProduct.m; sourceTree = "<group>"; };
 		EC4C605D1DF5027600830126 /* ProductOrderListHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListHeader.h; sourceTree = "<group>"; };
 		EC4C605E1DF5027600830126 /* ProductOrderListHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderListHeader.m; sourceTree = "<group>"; };
 		EC4C60601DF5028100830126 /* ProductOrderListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderListHeader.xib; sourceTree = "<group>"; };
@@ -3374,11 +3425,6 @@
 		EC889D0A1DE0693C0054355C /* ServiceSettlementDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementDataManager.m; sourceTree = "<group>"; };
 		EC889D0C1DE069610054355C /* ServiceSettlementSubViewsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementSubViewsProvider.h; sourceTree = "<group>"; };
 		EC889D0D1DE069610054355C /* ServiceSettlementSubViewsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementSubViewsProvider.m; sourceTree = "<group>"; };
-		EC891BEB1DF7004C002BF78B /* SearchFactorFilterAgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeView.h; sourceTree = "<group>"; };
-		EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeView.m; sourceTree = "<group>"; };
-		EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterAgeView.xib; sourceTree = "<group>"; };
-		EC891BF01DF70175002BF78B /* SearchFactorFilterAgeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterAgeItem.h; sourceTree = "<group>"; };
-		EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterAgeItem.m; sourceTree = "<group>"; };
 		EC8FD0D01DAA528900570884 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
@@ -3464,15 +3510,6 @@
 		ECA59BAA1DEC2CBD00B3B1F7 /* SearchResultToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultToolBar.xib; sourceTree = "<group>"; };
 		ECA59BAC1DEC311E00B3B1F7 /* SearchResultToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultToolBarButton.h; sourceTree = "<group>"; };
 		ECA59BAD1DEC311E00B3B1F7 /* SearchResultToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultToolBarButton.m; sourceTree = "<group>"; };
-		ECA59BC31DEC5D6500B3B1F7 /* SearchFactorFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterView.h; sourceTree = "<group>"; };
-		ECA59BC41DEC5D6500B3B1F7 /* SearchFactorFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterView.m; sourceTree = "<group>"; };
-		ECA59BC61DEC5D7600B3B1F7 /* SearchFactorFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterView.xib; sourceTree = "<group>"; };
-		ECA59BC81DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterLeftCell.h; sourceTree = "<group>"; };
-		ECA59BC91DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterLeftCell.m; sourceTree = "<group>"; };
-		ECA59BCA1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterLeftCell.xib; sourceTree = "<group>"; };
-		ECA59BCD1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterRightCell.h; sourceTree = "<group>"; };
-		ECA59BCE1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterRightCell.m; sourceTree = "<group>"; };
-		ECA59BCF1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorFilterRightCell.xib; sourceTree = "<group>"; };
 		ECA59BDA1DED612600B3B1F7 /* SearchFactorSortDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorSortDataItem.h; sourceTree = "<group>"; };
 		ECA59BDB1DED612600B3B1F7 /* SearchFactorSortDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorSortDataItem.m; sourceTree = "<group>"; };
 		ECA59BDD1DED612600B3B1F7 /* SearchFactorSortDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorSortDataManager.h; sourceTree = "<group>"; };
@@ -3493,12 +3530,6 @@
 		ECA59BFF1DED61A600B3B1F7 /* SearchFactorAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorAreaView.h; sourceTree = "<group>"; };
 		ECA59C001DED61A600B3B1F7 /* SearchFactorAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorAreaView.m; sourceTree = "<group>"; };
 		ECA59C011DED61A600B3B1F7 /* SearchFactorAreaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchFactorAreaView.xib; sourceTree = "<group>"; };
-		ECA59C0D1DED773000B3B1F7 /* SearchFactorFilterDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterDataManager.h; sourceTree = "<group>"; };
-		ECA59C0E1DED773000B3B1F7 /* SearchFactorFilterDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterDataManager.m; sourceTree = "<group>"; };
-		ECA59C101DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterDataItemLefe.h; sourceTree = "<group>"; };
-		ECA59C111DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterDataItemLefe.m; sourceTree = "<group>"; };
-		ECA59C131DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFactorFilterDataItemRight.h; sourceTree = "<group>"; };
-		ECA59C141DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFactorFilterDataItemRight.m; sourceTree = "<group>"; };
 		ECA628651DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceSettlementBuyNumTfInputView.h; sourceTree = "<group>"; };
 		ECA628661DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceSettlementBuyNumTfInputView.m; sourceTree = "<group>"; };
 		ECA628681DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceSettlementBuyNumTfInputView.xib; sourceTree = "<group>"; };
@@ -5563,6 +5594,139 @@
 				EC3CE0BC1DF17A57005729E2 /* NearbyCategoryToolBarItem.m */,
 			);
 			path = NearbyCategoryToolBar;
+			sourceTree = "<group>";
+		};
+		EC486F081DF7C726005CA365 /* SearchFactorFilter */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F091DF7C726005CA365 /* SearchFactorFilterAge */,
+				EC486F161DF7C726005CA365 /* SearchFactorFilterCategory */,
+				EC486F281DF7C726005CA365 /* SearchFactorFilterToolBar */,
+				EC486F2C1DF7C726005CA365 /* SearchFactorFilterView.h */,
+				EC486F2D1DF7C726005CA365 /* SearchFactorFilterView.m */,
+				EC486F2E1DF7C726005CA365 /* SearchFactorFilterView.xib */,
+			);
+			path = SearchFactorFilter;
+			sourceTree = "<group>";
+		};
+		EC486F091DF7C726005CA365 /* SearchFactorFilterAge */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F0A1DF7C726005CA365 /* M */,
+				EC486F0D1DF7C726005CA365 /* V */,
+			);
+			path = SearchFactorFilterAge;
+			sourceTree = "<group>";
+		};
+		EC486F0A1DF7C726005CA365 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F0B1DF7C726005CA365 /* SearchFactorFilterAgeItem.h */,
+				EC486F0C1DF7C726005CA365 /* SearchFactorFilterAgeItem.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC486F0D1DF7C726005CA365 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F0E1DF7C726005CA365 /* Cells */,
+				EC486F121DF7C726005CA365 /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC486F0E1DF7C726005CA365 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F0F1DF7C726005CA365 /* SearchFactorFilterAgeCell.h */,
+				EC486F101DF7C726005CA365 /* SearchFactorFilterAgeCell.m */,
+				EC486F111DF7C726005CA365 /* SearchFactorFilterAgeCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC486F121DF7C726005CA365 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F131DF7C726005CA365 /* SearchFactorFilterAgeView.h */,
+				EC486F141DF7C726005CA365 /* SearchFactorFilterAgeView.m */,
+				EC486F151DF7C726005CA365 /* SearchFactorFilterAgeView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC486F161DF7C726005CA365 /* SearchFactorFilterCategory */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F171DF7C726005CA365 /* M */,
+				EC486F1C1DF7C726005CA365 /* V */,
+			);
+			path = SearchFactorFilterCategory;
+			sourceTree = "<group>";
+		};
+		EC486F171DF7C726005CA365 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F181DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.h */,
+				EC486F191DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m */,
+				EC486F1A1DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.h */,
+				EC486F1B1DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC486F1C1DF7C726005CA365 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F1D1DF7C726005CA365 /* Cells */,
+				EC486F241DF7C726005CA365 /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC486F1D1DF7C726005CA365 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F1E1DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.h */,
+				EC486F1F1DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m */,
+				EC486F201DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.xib */,
+				EC486F211DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.h */,
+				EC486F221DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.m */,
+				EC486F231DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC486F241DF7C726005CA365 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F251DF7C726005CA365 /* SearchFactorFilterCategoryView.h */,
+				EC486F261DF7C726005CA365 /* SearchFactorFilterCategoryView.m */,
+				EC486F271DF7C726005CA365 /* SearchFactorFilterCategoryView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC486F281DF7C726005CA365 /* SearchFactorFilterToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F291DF7C726005CA365 /* SearchFactorFilterToolBar.h */,
+				EC486F2A1DF7C726005CA365 /* SearchFactorFilterToolBar.m */,
+				EC486F2B1DF7C726005CA365 /* SearchFactorFilterToolBar.xib */,
+			);
+			path = SearchFactorFilterToolBar;
+			sourceTree = "<group>";
+		};
+		EC486F4D1DF8523E005CA365 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F4E1DF85255005CA365 /* SearchResultProductModel.h */,
+				EC486F4F1DF85255005CA365 /* SearchResultProductModel.m */,
+				EC486F511DF852A9005CA365 /* SearchResultProduct.h */,
+				EC486F521DF852A9005CA365 /* SearchResultProduct.m */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		EC4C60741DF5762100830126 /* ProductOrderFreeList */ = {
@@ -10283,6 +10447,7 @@
 		ECA59B991DEC208A00B3B1F7 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC486F4D1DF8523E005CA365 /* Product */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -10297,6 +10462,14 @@
 		ECA59B9B1DEC208A00B3B1F7 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				EC486F401DF83328005CA365 /* SearchResultView.h */,
+				EC486F411DF83328005CA365 /* SearchResultView.m */,
+				EC486F431DF84313005CA365 /* SearchResultProductSmallCell.h */,
+				EC486F441DF84313005CA365 /* SearchResultProductSmallCell.m */,
+				EC486F451DF84313005CA365 /* SearchResultProductSmallCell.xib */,
+				EC486F481DF8432A005CA365 /* SearchResultProductLargeCell.h */,
+				EC486F491DF8432A005CA365 /* SearchResultProductLargeCell.m */,
+				EC486F4A1DF8432A005CA365 /* SearchResultProductLargeCell.xib */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -10341,28 +10514,9 @@
 				ECA59BAA1DEC2CBD00B3B1F7 /* SearchResultToolBar.xib */,
 				ECA59BAC1DEC311E00B3B1F7 /* SearchResultToolBarButton.h */,
 				ECA59BAD1DEC311E00B3B1F7 /* SearchResultToolBarButton.m */,
+				EC486F081DF7C726005CA365 /* SearchFactorFilter */,
 				ECA59BF41DED61A600B3B1F7 /* SearchFactorArea */,
 				ECA59BD81DED612600B3B1F7 /* SearchFactorSort */,
-				ECA59BC31DEC5D6500B3B1F7 /* SearchFactorFilterView.h */,
-				ECA59BC41DEC5D6500B3B1F7 /* SearchFactorFilterView.m */,
-				ECA59BC61DEC5D7600B3B1F7 /* SearchFactorFilterView.xib */,
-				EC891BEB1DF7004C002BF78B /* SearchFactorFilterAgeView.h */,
-				EC891BEC1DF7004C002BF78B /* SearchFactorFilterAgeView.m */,
-				EC891BEE1DF70056002BF78B /* SearchFactorFilterAgeView.xib */,
-				EC891BF01DF70175002BF78B /* SearchFactorFilterAgeItem.h */,
-				EC891BF11DF70175002BF78B /* SearchFactorFilterAgeItem.m */,
-				ECA59BC81DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.h */,
-				ECA59BC91DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m */,
-				ECA59BCA1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib */,
-				ECA59BCD1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.h */,
-				ECA59BCE1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.m */,
-				ECA59BCF1DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.xib */,
-				ECA59C0D1DED773000B3B1F7 /* SearchFactorFilterDataManager.h */,
-				ECA59C0E1DED773000B3B1F7 /* SearchFactorFilterDataManager.m */,
-				ECA59C101DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.h */,
-				ECA59C111DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m */,
-				ECA59C131DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.h */,
-				ECA59C141DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -11421,7 +11575,6 @@
 				ECF704DF1D88F3EB00650C0A /* ArticleUserCenterCommentCell.xib in Resources */,
 				ECAA49431D79A45B00799CBE /* ArticleHomeBigImgCell.xib in Resources */,
 				EC4FC3A41D77CEE400BBD050 /* StoreDetailAppointmentPreferenceInfoCell.xib in Resources */,
-				ECA59BCC1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.xib in Resources */,
 				EC4FC31A1D77CEE400BBD050 /* SearchResultStoreCell.xib in Resources */,
 				EC0044311DE6B8970042B701 /* ProductDetailTicketInfoCell.xib in Resources */,
 				EC4FC3861D77CEE400BBD050 /* SettlementResultViewController.xib in Resources */,
@@ -11483,6 +11636,7 @@
 				ECAA494C1D79A45B00799CBE /* ArticleHomeNoIconCell.xib in Resources */,
 				ECAA49351D79A45B00799CBE /* ArticleHomeAlbumCollectionViewCell.xib in Resources */,
 				EC0043451DE559110042B701 /* NurseryViewController.xib in Resources */,
+				EC486F3B1DF7C726005CA365 /* SearchFactorFilterCategoryView.xib in Resources */,
 				EC7FBC0E1DC4D074007B326C /* ProductDetailAddNewConsultViewController.xib in Resources */,
 				EC4FC4331D77CEE400BBD050 /* CommentFoundingViewController.xib in Resources */,
 				EC5CDD3E1DE538F200F95C6F /* ProductDetailFreeApplySelectBirthViewController.xib in Resources */,
@@ -11515,12 +11669,12 @@
 				EC2F26AF1DD9BA8700B67BBA /* CollectionTarentoCell.xib in Resources */,
 				EC4FC3EF1D77CEE400BBD050 /* StrategyDetailBottomView.xib in Resources */,
 				EC4C60B91DF5B0CB00830126 /* ProductOrderListAllTitleShowView.xib in Resources */,
-				ECA59BC71DEC5D7600B3B1F7 /* SearchFactorFilterView.xib in Resources */,
 				EC4FC49D1D77CEE400BBD050 /* FlashServiceOrderDetailToolBar.xib in Resources */,
 				EC2F26451DD71B4B00B67BBA /* SettlementResultNewCollectionHeader.xib in Resources */,
 				EC4FC37C1D77CEE400BBD050 /* CashierDeskViewController.xib in Resources */,
 				EC0044251DE6B8970042B701 /* ProductDetailRecommendCell.xib in Resources */,
 				EC630DC11DCA0CA00088145E /* home_guid_01.gif in Resources */,
+				EC486F391DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib in Resources */,
 				ECF704D71D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib in Resources */,
 				EC13B4FE1DD1F3430040F760 /* AccountCenterTipsCell.xib in Resources */,
 				EC4FC3941D77CEE400BBD050 /* StoreDetailCommentCell.xib in Resources */,
@@ -11563,7 +11717,9 @@
 				EC0044211DE6B8970042B701 /* ProductDetailNoticeCell.xib in Resources */,
 				EC4FC5E61D77CEEF00BBD050 /* LICENSE in Resources */,
 				EC4FC4D91D77CEE400BBD050 /* UserCenterBannerCell.xib in Resources */,
+				EC486F3F1DF7C726005CA365 /* SearchFactorFilterView.xib in Resources */,
 				EC4FC4991D77CEE400BBD050 /* FlashServiceOrderDetailServiceInfoCell.xib in Resources */,
+				EC486F471DF84313005CA365 /* SearchResultProductSmallCell.xib in Resources */,
 				EC4FC4261D77CEE400BBD050 /* KTCBrowseHistoryViewStoreCell.xib in Resources */,
 				EC4FC26E1D77CEE400BBD050 /* CommonShareViewController.xib in Resources */,
 				EC76B8D61DC65FC6006518DE /* ServiceDetailConfigView.xib in Resources */,
@@ -11616,7 +11772,6 @@
 				EC4FC3841D77CEE400BBD050 /* SettlementPickStoreViewCell.xib in Resources */,
 				EC4FC36F1D77CEE400BBD050 /* ServiceSettlementServiceInfoCell.xib in Resources */,
 				EC4FC4C71D77CEE400BBD050 /* ServiceOrderDetailServiceInfoCell.xib in Resources */,
-				ECA59BD11DEC5DA900B3B1F7 /* SearchFactorFilterRightCell.xib in Resources */,
 				EC4FC5C61D77CEEF00BBD050 /* ImageSelectedSmallOn@2x.png in Resources */,
 				EC0B6D9F1D8E748F00EC20EA /* ServiceOrderDetailRemindView.xib in Resources */,
 				ECFFC73A1DC363C1002DBFB9 /* ProductDetailAddressAnnoView.xib in Resources */,
@@ -11656,7 +11811,6 @@
 				EC13B4FC1DD1F3430040F760 /* AccountCenterRecommendsCell.xib in Resources */,
 				EC4FC5CD1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
 				EC76B8DC1DC65FC6006518DE /* ServiceDetailSegmentCell.xib in Resources */,
-				EC891BEF1DF70056002BF78B /* SearchFactorFilterAgeView.xib in Resources */,
 				EC4FC3A81D77CEE400BBD050 /* StoreDetailAppointmentViewController.xib in Resources */,
 				EC4FC5BD1D77CEEF00BBD050 /* ImageSelectedOff@2x.png in Resources */,
 				EC4FC5A51D77CEEF00BBD050 /* README.txt in Resources */,
@@ -11690,10 +11844,12 @@
 				EC5CDD4D1DE53A0E00F95C6F /* ProductDetailFreeApplySelectStoreViewController.xib in Resources */,
 				EC1E2F9A1D828460002381E7 /* ArticleWriteBottomView.xib in Resources */,
 				EC0043FE1DE6B8970042B701 /* ProductDetaiFreeInfoCell.xib in Resources */,
+				EC486F4C1DF8432A005CA365 /* SearchResultProductLargeCell.xib in Resources */,
 				EC0044291DE6B8970042B701 /* ProductDetailTicketActorCell.xib in Resources */,
 				EC4FC3D01D77CEE400BBD050 /* StrategyTagPicCollectionViewCell.xib in Resources */,
 				EC5CDD351DE538F200F95C6F /* ProductDetailFreeApplyUserAddressTipCell.xib in Resources */,
 				EC4FC4241D77CEE400BBD050 /* KTCBrowseHistoryViewServiceCell.xib in Resources */,
+				EC486F371DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.xib in Resources */,
 				EC4FC2601D77CEE400BBD050 /* PosterViewCell.xib in Resources */,
 				EC4FC2311D77CEE400BBD050 /* TCProgressHUD.xib in Resources */,
 				ECA95AE11DDD59DF00990AAE /* CollectionTarentoFooter.xib in Resources */,
@@ -11785,6 +11941,7 @@
 				EC4FC5C31D77CEEF00BBD050 /* ImageSelectedSmallOff@2x.png in Resources */,
 				EC4FC3471D77CEE400BBD050 /* FlashAdvanceSettlementPayTypeCell.xib in Resources */,
 				EC4FC22A1D77CEE400BBD050 /* AUIBannerScrollView.xib in Resources */,
+				EC486F3D1DF7C726005CA365 /* SearchFactorFilterToolBar.xib in Resources */,
 				EC4FC41A1D77CEE400BBD050 /* AppointmentOrderDetailViewController.xib in Resources */,
 				EC2F261D1DD6CDFF00B67BBA /* ProductDetailTicketSelectSeatCollectionViewFooter.xib in Resources */,
 				EC1E2FA91D8286C1002381E7 /* ArticleWriteContentCell.xib in Resources */,
@@ -11795,6 +11952,7 @@
 				ECA59B591DEBFCB900B3B1F7 /* CouponListTipCell.xib in Resources */,
 				EC4FC5D21D77CEEF00BBD050 /* UIBarButtonItemArrowRight@2x.png in Resources */,
 				EC4FC3441D77CEE400BBD050 /* FlashAdvanceSettlementAddressCell.xib in Resources */,
+				EC486F331DF7C726005CA365 /* SearchFactorFilterAgeView.xib in Resources */,
 				EC5CDD391DE538F200F95C6F /* ProductDetailFreeApplyFooterView.xib in Resources */,
 				EC4FC5A31D77CEEF00BBD050 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				EC4FC40E1D77CEE400BBD050 /* AppointmentListViewHeaderTabCell.xib in Resources */,
@@ -11803,6 +11961,7 @@
 				EC2F262C1DD6E53900B67BBA /* ServiceSettlementTicketGetSelfCell.xib in Resources */,
 				EC4FC4101D77CEE400BBD050 /* AppointmentOrderListCell.xib in Resources */,
 				EC2F26F31DDB0AE500B67BBA /* MyTracksCell.xib in Resources */,
+				EC486F311DF7C726005CA365 /* SearchFactorFilterAgeCell.xib in Resources */,
 				EC4FC3D21D77CEE400BBD050 /* StrategyTableViewCell.xib in Resources */,
 				EC0043501DE56E010042B701 /* NurseryCell.xib in Resources */,
 				ECA59B8E1DEC077900B3B1F7 /* CouponUsableListViewCell.xib in Resources */,
@@ -11934,6 +12093,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC486F461DF84313005CA365 /* SearchResultProductSmallCell.m in Sources */,
 				EC4FC4DC1D77CEE400BBD050 /* UserCenterContactCell.m in Sources */,
 				EC22895B1DE97E1200EC324A /* CollectionContentModel.m in Sources */,
 				EC4FC3631D77CEE400BBD050 /* ServiceSettlementViewController.m in Sources */,
@@ -11967,6 +12127,7 @@
 				EC4FC3151D77CEE400BBD050 /* SearchResultArticleCell.m in Sources */,
 				EC7264271D7D279A00AA739B /* ColumnCell.m in Sources */,
 				EC0043441DE559110042B701 /* NurseryViewController.m in Sources */,
+				EC486F421DF83328005CA365 /* SearchResultView.m in Sources */,
 				ECFFC74F1DC3A079002DBFB9 /* ServiceSettlementBuyNumCell.m in Sources */,
 				EC0043581DE59EE30042B701 /* NurseryAnnoView.m in Sources */,
 				EC4FC43D1D77CEE400BBD050 /* CommentReplyItemModel.m in Sources */,
@@ -12028,12 +12189,14 @@
 				ECF5D0C41DB8C4FE00A1B268 /* QRCodeScanHistoryViewController.m in Sources */,
 				EC4FC4701D77CEE400BBD050 /* FavouriteServiceItemModel.m in Sources */,
 				EC9CC5221DC30E7F0093DCED /* FSCalendarCollectionView.m in Sources */,
+				EC486F301DF7C726005CA365 /* SearchFactorFilterAgeCell.m in Sources */,
 				EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */,
 				EC4C60BE1DF65F4800830126 /* SearchHotKeywordsData.m in Sources */,
 				EC2289581DE965A600EC324A /* CollectionTarentoModel.m in Sources */,
 				EC4FC3651D77CEE400BBD050 /* ServiceSettlementAddressCell.m in Sources */,
 				EC4FC4E21D77CEE400BBD050 /* UserCenterItemsCell.m in Sources */,
 				EC5CDD2B1DE538F200F95C6F /* ProductDetailFreeApplyBabyNameCell.m in Sources */,
+				EC486F351DF7C726005CA365 /* SearchFactorFilterCategoryItemRight.m in Sources */,
 				ECFFC7401DC363C1002DBFB9 /* ProductDetailCalendarViewController.m in Sources */,
 				EC4E27901DF0134E00622711 /* NearbyTableViewCell.m in Sources */,
 				EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */,
@@ -12085,6 +12248,7 @@
 				ECF5D1211DB8D77C00A1B268 /* AUIStackView.m in Sources */,
 				EC68C3A81D9BA89800D4401A /* ReachabilityManager.m in Sources */,
 				EC4FC47A1D77CEE400BBD050 /* FavouriteViewServiceCell.m in Sources */,
+				EC486F341DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m in Sources */,
 				EC3CE0BD1DF17A57005729E2 /* NearbyCategoryToolBar.m in Sources */,
 				EC2F25A91DD3266E00B67BBA /* CollectProductCategoryViewController.m in Sources */,
 				EC4E27F21DF152F700622711 /* NearbyCalendarCell.m in Sources */,
@@ -12159,7 +12323,6 @@
 				EC4FC34E1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.m in Sources */,
 				EC4C60971DF5984000830126 /* ProductOrderFreeListStore.m in Sources */,
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
-				EC891BED1DF7004C002BF78B /* SearchFactorFilterAgeView.m in Sources */,
 				ECB3E79D1D93BA8F0059267D /* ServiceOrderDetailBookingFailureCell.m in Sources */,
 				EC4FC4D81D77CEE400BBD050 /* UserCenterBannerCell.m in Sources */,
 				EC0044201DE6B8970042B701 /* ProductDetailNoticeCell.m in Sources */,
@@ -12179,6 +12342,7 @@
 				EC4FC3B61D77CEE400BBD050 /* StoreOwnedServiceModel.m in Sources */,
 				EC4C60CF1DF6697400830126 /* SearchHotKeyCollectionCell.m in Sources */,
 				EC4FC4291D77CEE400BBD050 /* ServiceListViewCell.m in Sources */,
+				EC486F3A1DF7C726005CA365 /* SearchFactorFilterCategoryView.m in Sources */,
 				EC4FC4201D77CEE400BBD050 /* KTCBrowseHistoryManager.m in Sources */,
 				EC4FC2291D77CEE400BBD050 /* AUIBannerScrollView.m in Sources */,
 				EC4FC2791D77CEE400BBD050 /* ThemeModel.m in Sources */,
@@ -12201,7 +12365,6 @@
 				EC7FBA1A1DE864DF0058E541 /* CollectProductItem.m in Sources */,
 				EC2F26631DD9803B00B67BBA /* CollectProductAllCell.m in Sources */,
 				EC4FC2241D77CEE400BBD050 /* TabBarController.m in Sources */,
-				ECA59BC51DEC5D6500B3B1F7 /* SearchFactorFilterView.m in Sources */,
 				EC1E2FA31D8286A0002381E7 /* ArticleWriteTitleCell.m in Sources */,
 				EC4FC25B1D77CEE400BBD050 /* PaymentTypeModel.m in Sources */,
 				EC4FC2921D77CEE400BBD050 /* ArticleCommentViewController.m in Sources */,
@@ -12216,7 +12379,6 @@
 				EC0044051DE6B8970042B701 /* ProductDetailApplyCell.m in Sources */,
 				EC8486181DDF29560039E9D3 /* ProductDetailTicketSelectSeatData.m in Sources */,
 				EC4FC4081D77CEE400BBD050 /* UserAddressManageViewCell.m in Sources */,
-				ECA59C0F1DED773000B3B1F7 /* SearchFactorFilterDataManager.m in Sources */,
 				EC4FC3A31D77CEE400BBD050 /* StoreDetailAppointmentPreferenceInfoCell.m in Sources */,
 				ECA59BE81DED612600B3B1F7 /* SearchFactorSortDataItem.m in Sources */,
 				EC4FC2701D77CEE400BBD050 /* CommonShareService.m in Sources */,
@@ -12231,6 +12393,7 @@
 				ECFFC6EE1DC363C1002DBFB9 /* ProdectDetailCoupon.m in Sources */,
 				ECA59C041DED61A600B3B1F7 /* SearchFactorAreaCell.m in Sources */,
 				EC4C60911DF5968500830126 /* ProductOrderFreeListModel.m in Sources */,
+				EC486F4B1DF8432A005CA365 /* SearchResultProductLargeCell.m in Sources */,
 				EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */,
 				EC4FC2721D77CEE400BBD050 /* TencentManager.m in Sources */,
 				EC4FC3AC1D77CEE400BBD050 /* StoreDetailHotRecommendCell.m in Sources */,
@@ -12245,7 +12408,6 @@
 				EC13B4F91DD1F3430040F760 /* AccountCenterOrdersCell.m in Sources */,
 				EC4FC3E61D77CEE400BBD050 /* ParentingStrategyDetailViewController.m in Sources */,
 				EC5CDD2D1DE538F200F95C6F /* ProductDetailFreeApplyBabySexCell.m in Sources */,
-				EC891BF21DF70175002BF78B /* SearchFactorFilterAgeItem.m in Sources */,
 				EC4FC4E81D77CEE400BBD050 /* UserCenterMessageButton.m in Sources */,
 				EC4FC3DE1D77CEE400BBD050 /* ParentingStrategyListItemModel.m in Sources */,
 				EC4E27F91DF152F700622711 /* NearbyCalendarToolBarCategoryView.m in Sources */,
@@ -12269,7 +12431,6 @@
 				ECF5D1041DB8CE3900A1B268 /* TCHomeFloorTitleContentShowpiece.m in Sources */,
 				ECF5D10D1DB8CE3900A1B268 /* TCHomeTitleContainer.m in Sources */,
 				EC4FC2361D77CEE400BBD050 /* LoginViewController.m in Sources */,
-				ECA59C151DED77C300B3B1F7 /* SearchFactorFilterDataItemRight.m in Sources */,
 				EC7264AE1D81070400AA739B /* ArticleHomeUserArticleCell.m in Sources */,
 				EC4FC4171D77CEE400BBD050 /* AppointmentOrderDetailView.m in Sources */,
 				EC31CF651DA9DBA300C49E29 /* NotificationService.m in Sources */,
@@ -12301,6 +12462,7 @@
 				EC4FC2491D77CEE400BBD050 /* GuideViewController.m in Sources */,
 				EC4FC25D1D77CEE400BBD050 /* PosterModel.m in Sources */,
 				EC4E27F41DF152F700622711 /* NearbyCalendarToolBar.m in Sources */,
+				EC486F321DF7C726005CA365 /* SearchFactorFilterAgeView.m in Sources */,
 				EC68C3C21D9BBC8D00D4401A /* HomeActivityViewController.m in Sources */,
 				EC4FC5E91D77CEEF00BBD050 /* UIImage+MWPhotoBrowser.m in Sources */,
 				EC4FC2B61D77CEE400BBD050 /* CategoryItemCell.m in Sources */,
@@ -12331,6 +12493,7 @@
 				EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */,
 				EC4FC4071D77CEE400BBD050 /* UserAddressManageModel.m in Sources */,
 				ECAA494D1D79A45B00799CBE /* ArticleHomeTagImgCell.m in Sources */,
+				EC486F501DF85255005CA365 /* SearchResultProductModel.m in Sources */,
 				ECA95A771DDB2A3E00990AAE /* CouponListUsedCell.m in Sources */,
 				EC4C60EC1DF6952500830126 /* SearchSectionHeader.m in Sources */,
 				EC4FC5DE1D77CEEF00BBD050 /* MWPhotoBrowser.m in Sources */,
@@ -12352,6 +12515,7 @@
 				ECF5D11E1DB8D6EA00A1B268 /* TextSegueModel.m in Sources */,
 				EC4FC5EB1D77CEEF00BBD050 /* StepperView.m in Sources */,
 				EC4FC4961D77CEE400BBD050 /* FlashServiceOrderDetailRemarksCell.m in Sources */,
+				EC486F531DF852A9005CA365 /* SearchResultProduct.m in Sources */,
 				EC00441C1DE6B8970042B701 /* ProductDetailInfoCell.m in Sources */,
 				EC4FC5AD1D77CEEF00BBD050 /* PlaceHolderTextView.m in Sources */,
 				EC0043FF1DE6B8970042B701 /* ProductDetaiFreeLifeTipCell.m in Sources */,
@@ -12451,7 +12615,6 @@
 				EC4FC4361D77CEE400BBD050 /* CommentTableViewController.m in Sources */,
 				EC4FC48C1D77CEE400BBD050 /* FlashServiceOrderDetailOrderInfoCell.m in Sources */,
 				ECF5D0C11DB8C4FE00A1B268 /* QRCodeScanViewController.m in Sources */,
-				ECA59C121DED77B400B3B1F7 /* SearchFactorFilterDataItemLefe.m in Sources */,
 				EC4FC23E1D77CEE400BBD050 /* Role.m in Sources */,
 				ECF5D1101DB8CE6300A1B268 /* TCHomeCollectionViewLayout.m in Sources */,
 				EC4FC4B51D77CEE400BBD050 /* ServiceOrderDetailViewController.m in Sources */,
@@ -12548,6 +12711,7 @@
 				EC4E27141DEE813800622711 /* MyTracksItem.m in Sources */,
 				EC2289781DE9C7A400EC324A /* CollectionTarentoItem.m in Sources */,
 				EC4FC5F51D77CEEF00BBD050 /* ToolBox.m in Sources */,
+				EC486F2F1DF7C726005CA365 /* SearchFactorFilterAgeItem.m in Sources */,
 				EC5CDD301DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
 				EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */,
 				ECFFC6F71DC363C1002DBFB9 /* ProductDetailNote.m in Sources */,
@@ -12593,6 +12757,7 @@
 				EC13B5061DD1F3960040F760 /* AccountCenterData.m in Sources */,
 				EC7FBC0D1DC4D074007B326C /* ProductDetailAddNewConsultViewController.m in Sources */,
 				ECAA493F1D79A45B00799CBE /* ArticleHomeBannerCollectionViewTwoCell.m in Sources */,
+				EC486F361DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m in Sources */,
 				EC4FC48A1D77CEE400BBD050 /* FlashServiceOrderDetailCountDownCell.m in Sources */,
 				EC4FC4BC1D77CEE400BBD050 /* ServiceOrderDetailOrderInfoCell.m in Sources */,
 				EC5CDD341DE538F200F95C6F /* ProductDetailFreeApplyUserAddressTipCell.m in Sources */,
@@ -12658,7 +12823,6 @@
 				EC4FC2271D77CEE400BBD050 /* KTCActionView.m in Sources */,
 				ECFFC6EF1DC363C1002DBFB9 /* ProduceDetialCommentItem.m in Sources */,
 				EC4E27F81DF152F700622711 /* NearbyCalendarToolBarCategoryItem.m in Sources */,
-				ECA59BD01DEC5DA800B3B1F7 /* SearchFactorFilterRightCell.m in Sources */,
 				EC2F25D81DD442D000B67BBA /* ProductDetailSubViewsProvider.m in Sources */,
 				EC2F26AA1DD9B82700B67BBA /* CollectionTarentoView.m in Sources */,
 				EC4FC4CF1D77CEE400BBD050 /* SoftwareSettingModel.m in Sources */,
@@ -12712,6 +12876,7 @@
 				EC22894F1DE95CBC00EC324A /* CollectionStoreItem.m in Sources */,
 				EC2F25A61DD3265900B67BBA /* CollectProductAllViewController.m in Sources */,
 				EC3CE0C11DF17A57005729E2 /* NearbyCategoryToolBarItem.m in Sources */,
+				EC486F3C1DF7C726005CA365 /* SearchFactorFilterToolBar.m in Sources */,
 				EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */,
 				ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */,
 				EC4C60CA1DF667C000830126 /* SearchHistoryCell.m in Sources */,
@@ -12815,6 +12980,7 @@
 				EC4FC43B1D77CEE400BBD050 /* CommentFoundingModel.m in Sources */,
 				EC4FC3211D77CEE400BBD050 /* SearchResultFactorBottomView.m in Sources */,
 				EC4FC3231D77CEE400BBD050 /* SearchResultFactorTableViewCell.m in Sources */,
+				EC486F3E1DF7C726005CA365 /* SearchFactorFilterView.m in Sources */,
 				EC4FC22E1D77CEE400BBD050 /* RichPriceView.m in Sources */,
 				ECA95AD21DDC9FA500990AAE /* CollectionStoreFooter.m in Sources */,
 				ECA59B4B1DEBDFBF00B3B1F7 /* CouponListUnusedModel.m in Sources */,
@@ -12831,7 +12997,6 @@
 				ECFFC7381DC363C1002DBFB9 /* ProductDetailAddressViewController.m in Sources */,
 				EC4FC4DE1D77CEE400BBD050 /* UserCenterFlashCell.m in Sources */,
 				EC4FC2A41D77CEE400BBD050 /* UserArticleCommentsLayout.m in Sources */,
-				ECA59BCB1DEC5D9900B3B1F7 /* SearchFactorFilterLeftCell.m in Sources */,
 				EC4FC2BC1D77CEE400BBD050 /* FlashDetailViewController.m in Sources */,
 				ECFFC7391DC363C1002DBFB9 /* ProductDetailAddressAnnoView.m in Sources */,
 				EC13B5091DD1F3E90040F760 /* AccountCenterUserCount.m in Sources */,
@@ -12879,6 +13044,7 @@
 				EC4C60E41DF68F5500830126 /* SearchRowItem.m in Sources */,
 				EC4FC5EF1D77CEEF00BBD050 /* ZPPopoverCell.m in Sources */,
 				EC9CC5291DC30E7F0093DCED /* FSCalendarStickyHeader.m in Sources */,
+				EC486F381DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.m in Sources */,
 				EC4FC5B71D77CEEF00BBD050 /* Insurance.m in Sources */,
 				EC4FC2391D77CEE400BBD050 /* RegisterModel.m in Sources */,
 				EC4FC4CC1D77CEE400BBD050 /* SreviceOrderDetailRemarksCell.m in Sources */,

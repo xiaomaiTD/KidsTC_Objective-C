@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchResultToolBar : UIView
+extern CGFloat const kSearchResultToolBarH;
 
+@interface SearchResultToolBar : UIView
+@property (nonatomic, weak) NSDictionary *insetParam;
 @end

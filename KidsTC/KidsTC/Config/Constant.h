@@ -39,3 +39,10 @@ static NSString *const kProductDetaiTicketLike             = @"ProductDetaiTicke
 
 //倒计时
 static NSString *const kTCCountDownNoti                    = @"kTCCountDownNoti";
+
+//搜索关键字
+static NSString *const kSearchKey_words                    = @"k";//搜索词
+static NSString *const kSearchKey_area                     = @"s";//地区
+static NSString *const kSearchKey_sort                     = @"st";//排序
+static NSString *const kSearchKey_age                      = @"a";//年龄
+static NSString *const kSearchKey_category                 = @"c";//分类

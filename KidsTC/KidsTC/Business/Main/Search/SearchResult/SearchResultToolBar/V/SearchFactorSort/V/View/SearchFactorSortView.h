@@ -11,11 +11,12 @@
 
 @class SearchFactorSortView;
 @protocol SearchFactorSortViewDelegate <NSObject>
-- (void)searchFactorSortView:(SearchFactorSortView *)view didSelectItem:(SearchFactorSortDataItem *)item;
+- (void)searchFactorSortView:(SearchFactorSortView *)view didSelectItem:(SearchFactorSortDataItem *)item byClick:(BOOL)byClick;
 @end
 
 @interface SearchFactorSortView : UIView
 @property (nonatomic, weak) id<SearchFactorSortViewDelegate> delegate;
+@property (nonatomic, weak) NSDictionary *insetParam;
 - (CGFloat)contentHeight;
 - (void)selectFirstItem;
 @end

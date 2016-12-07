@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UIImageView *checkImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @end
 
 @implementation SearchFactorSortCell
@@ -20,6 +21,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setItem:(SearchFactorSortDataItem *)item {

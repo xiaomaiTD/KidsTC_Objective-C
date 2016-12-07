@@ -8,14 +8,16 @@
 
 #import "SearchResultToolBar.h"
 #import "SearchResultToolBarButton.h"
+#import "NSString+Category.h"
 
 #import "SearchFactorAreaView.h"
 #import "SearchFactorSortView.h"
 #import "SearchFactorFilterView.h"
 
 static CGFloat const kAnimateDuration = 0.3;
+CGFloat const kSearchResultToolBarH = 44;
 
-@interface SearchResultToolBar ()<SearchFactorAreaViewDelegate,SearchFactorSortViewDelegate>
+@interface SearchResultToolBar ()<SearchFactorAreaViewDelegate,SearchFactorSortViewDelegate,SearchFactorFilterViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *btnsView;
 
@@ -24,6 +26,7 @@ static CGFloat const kAnimateDuration = 0.3;
 @property (weak, nonatomic) IBOutlet UIButton *saleBtn;
 @property (weak, nonatomic) IBOutlet UIButton *storeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *filterBtn;
+@property (weak, nonatomic) IBOutlet UIView *filterBtnTip;
 
 @property (nonatomic, strong) SearchFactorAreaView *areaView;
 @property (nonatomic, strong) SearchFactorSortView *sortView;
@@ -58,9 +61,18 @@ static CGFloat const kAnimateDuration = 0.3;
 - (SearchFactorFilterView *)filterView {
     if (!_filterView) {
         _filterView = [self viewWithNib:@"SearchFactorFilterView"];
+        _filterView.delegate = self;
         [self insertSubview:_filterView atIndex:0];
     }
     return _filterView;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self layoutIfNeeded];
+    self.filterBtnTip.layer.cornerRadius = CGRectGetWidth(self.filterBtnTip.frame) * 0.5;
+    self.filterBtnTip.layer.masksToBounds = YES;
+    self.filterBtnTip.hidden = YES;
 }
 
 - (void)layoutSubviews {
@@ -93,6 +105,13 @@ static CGFloat const kAnimateDuration = 0.3;
     self.filterView.frame = CGRectMake(0, filter_y, self_w, filter_h);
 }
 
+- (void)setInsetParam:(NSDictionary *)insetParam {
+    _insetParam = insetParam;
+    self.areaView.insetParam = _insetParam;
+    self.sortView.insetParam = _insetParam;
+    self.filterView.insetParam = _insetParam;
+}
+
 - (IBAction)action:(UIButton *)sender {
     [self changeState:sender];
 }
@@ -114,8 +133,6 @@ static CGFloat const kAnimateDuration = 0.3;
             [self.sortView selectFirstItem];
         }else if (sender == self.storeBtn){
             [self.sortView selectFirstItem];
-        }else{
-            
         }
     }
     if(!self.isChangingView) [self changeView];
@@ -133,6 +150,7 @@ static CGFloat const kAnimateDuration = 0.3;
             nextShowView = self.sortView;
         }else if (self.currentBtn == self.filterBtn) {
             nextShowView = self.filterView;
+            [self.filterView reset];
         }
     }
     [self hideView:self.currentView completion:^{
@@ -158,6 +176,7 @@ static CGFloat const kAnimateDuration = 0.3;
     if (!view) {
         if (completion) completion();
     }else{
+    
         CGFloat btnsView_max_y = CGRectGetMaxY(self.btnsView.frame);
         CGFloat view_x = view.frame.origin.x;
         CGFloat view_w = view.bounds.size.width;
@@ -204,18 +223,33 @@ static CGFloat const kAnimateDuration = 0.3;
 }
 
 #pragma mark - SearchFactorAreaViewDelegate
-- (void)searchFactorAreaView:(SearchFactorAreaView *)view didSelectItem:(SearchFactorAreaDataItem *)item {
+- (void)searchFactorAreaView:(SearchFactorAreaView *)view didSelectItem:(SearchFactorAreaDataItem *)item byClick:(BOOL)byClick {
     [self.areaBtn setTitle:item.title forState:UIControlStateNormal];
     self.areaBtn.selected = NO;
-    if(!self.isChangingView) [self changeView];
+    if (byClick) {
+        if(!self.isChangingView) [self changeView];
+    }
+    
 }
 
 #pragma mark - SearchFactorSortViewDelegate
-- (void)searchFactorSortView:(SearchFactorSortView *)view didSelectItem:(SearchFactorSortDataItem *)item {
+- (void)searchFactorSortView:(SearchFactorSortView *)view didSelectItem:(SearchFactorSortDataItem *)item byClick:(BOOL)byClick {
     [self.sortBtn setTitle:item.title forState:UIControlStateNormal];
     self.sortBtn.selected = NO;
-    if(!self.isChangingView) [self changeView];
+    if (byClick) {
+        if(!self.isChangingView) [self changeView];
+    }
 }
 
+#pragma mark - SearchFactorFilterViewDelegate
+- (void)searchFactorFilterView:(SearchFactorFilterView *)view didSelectParam:(NSDictionary *)param byClick:(BOOL)byClick {
+    self.filterBtn.selected = NO;
+    if ([param isKindOfClass:[NSDictionary class]]) {
+        self.filterBtnTip.hidden = param.count<1;
+    }
+    if (byClick) {
+        if(!self.isChangingView) [self changeView];
+    }
+}
 
 @end

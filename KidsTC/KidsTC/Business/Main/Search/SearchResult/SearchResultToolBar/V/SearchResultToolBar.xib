@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="371" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd9-WD-Iaq" customClass="SearchResultToolBarButton">
-                            <rect key="frame" x="0.0" y="0.0" width="104.5" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="95.5" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" title="全部地区" image="search_toolBar_btnTip_down">
@@ -33,14 +34,14 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaz-6W-1cb">
-                            <rect key="frame" x="209.5" y="10" width="0.5" height="24"/>
+                            <rect key="frame" x="192" y="10" width="0.0" height="24"/>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="Wcb-zn-N9S"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2D2-E5-S9K" customClass="SearchResultToolBarButton">
-                            <rect key="frame" x="105.5" y="0.0" width="104" height="44"/>
+                            <rect key="frame" x="96.5" y="0.0" width="95.5" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" title="智能排序" image="search_toolBar_btnTip_down">
@@ -54,7 +55,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oet-Mw-8ev">
-                            <rect key="frame" x="210" y="0.0" width="50" height="44"/>
+                            <rect key="frame" x="192" y="0.0" width="54" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" title="销量">
@@ -68,23 +69,23 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZF-f9-YmM">
-                            <rect key="frame" x="104.5" y="10" width="1" height="24"/>
+                            <rect key="frame" x="95.5" y="10" width="1" height="24"/>
                             <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="GJA-o1-NYL"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCD-Dj-T5b">
-                            <rect key="frame" x="310.5" y="10" width="0.5" height="24"/>
+                            <rect key="frame" x="301" y="10" width="0.0" height="24"/>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="fdG-Nw-3xb"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kf-Dt-daq">
-                            <rect key="frame" x="260.5" y="0.0" width="50" height="44"/>
+                            <rect key="frame" x="247" y="0.0" width="54" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="50" id="dI5-11-xjk"/>
+                                <constraint firstAttribute="width" constant="54" id="dI5-11-xjk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -99,9 +100,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTn-xW-yCi" customClass="SearchResultToolBarButton">
-                            <rect key="frame" x="311" y="0.0" width="60" height="44"/>
+                            <rect key="frame" x="301" y="0.0" width="70" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="WVp-bO-pdU"/>
+                                <constraint firstAttribute="width" constant="70" id="WVp-bO-pdU"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -116,17 +117,25 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yo-lY-CfR">
-                            <rect key="frame" x="260" y="10" width="0.5" height="24"/>
+                            <rect key="frame" x="246" y="10" width="1" height="24"/>
                             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="Aar-Zd-ojk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36p-B6-Vtj">
-                            <rect key="frame" x="0.0" y="43.5" width="371" height="0.5"/>
+                            <rect key="frame" x="0.0" y="44" width="371" height="0.0"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="HHe-kj-PbN"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9IR-gy-E33">
+                            <rect key="frame" x="307" y="19" width="5" height="5"/>
+                            <color key="backgroundColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="5" id="cPM-Ly-E5q"/>
+                                <constraint firstAttribute="width" secondItem="9IR-gy-E33" secondAttribute="height" multiplier="1:1" id="u3Q-sO-cs0"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -142,9 +151,11 @@
                         <constraint firstItem="3Yo-lY-CfR" firstAttribute="leading" secondItem="Oet-Mw-8ev" secondAttribute="trailing" id="CBl-x0-6Vu"/>
                         <constraint firstItem="3Yo-lY-CfR" firstAttribute="top" secondItem="cSG-Op-RjB" secondAttribute="top" constant="10" id="Erp-7c-WLD"/>
                         <constraint firstItem="Oet-Mw-8ev" firstAttribute="top" secondItem="cSG-Op-RjB" secondAttribute="top" id="Fh3-te-Pn0"/>
+                        <constraint firstItem="9IR-gy-E33" firstAttribute="leading" secondItem="CTn-xW-yCi" secondAttribute="leading" constant="6" id="KqF-Ew-nqR"/>
                         <constraint firstItem="aaz-6W-1cb" firstAttribute="leading" secondItem="2D2-E5-S9K" secondAttribute="trailing" id="PgW-eX-izh"/>
                         <constraint firstItem="2D2-E5-S9K" firstAttribute="width" secondItem="zd9-WD-Iaq" secondAttribute="width" id="RMO-Iq-hEH"/>
                         <constraint firstItem="zd9-WD-Iaq" firstAttribute="top" secondItem="cSG-Op-RjB" secondAttribute="top" id="TjE-lK-cUU"/>
+                        <constraint firstItem="9IR-gy-E33" firstAttribute="centerY" secondItem="cSG-Op-RjB" secondAttribute="centerY" id="UIW-LR-Xng"/>
                         <constraint firstAttribute="bottom" secondItem="ZZF-f9-YmM" secondAttribute="bottom" constant="10" id="V4k-hk-VeG"/>
                         <constraint firstAttribute="bottom" secondItem="ZCD-Dj-T5b" secondAttribute="bottom" constant="10" id="V6O-th-y7Y"/>
                         <constraint firstItem="ZZF-f9-YmM" firstAttribute="top" secondItem="cSG-Op-RjB" secondAttribute="top" constant="10" id="Wfx-R4-aEH"/>
@@ -181,6 +192,7 @@
                 <outlet property="areaBtn" destination="zd9-WD-Iaq" id="aqA-yZ-BLD"/>
                 <outlet property="btnsView" destination="cSG-Op-RjB" id="bgc-kw-2Df"/>
                 <outlet property="filterBtn" destination="CTn-xW-yCi" id="3mX-LA-1cB"/>
+                <outlet property="filterBtnTip" destination="9IR-gy-E33" id="uT9-Rb-0yG"/>
                 <outlet property="saleBtn" destination="Oet-Mw-8ev" id="64P-3M-Vpf"/>
                 <outlet property="sortBtn" destination="2D2-E5-S9K" id="9FU-Ob-ozs"/>
                 <outlet property="storeBtn" destination="5kf-Dt-daq" id="O6B-WZ-eHK"/>

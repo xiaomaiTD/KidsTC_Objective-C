@@ -7,6 +7,7 @@
 //
 
 #import "SearchFactorAreaView.h"
+#import "NSString+Category.h"
 #import "SearchFactorAreaCell.h"
 
 static NSString *const kCellID = @"SearchFactorAreaCell";
@@ -28,7 +29,22 @@ static CGFloat const margin = 16;
     [self.collectionView registerNib:[UINib nibWithNibName:@"SearchFactorAreaCell" bundle:nil] forCellWithReuseIdentifier:kCellID];
     
     _areas = [SearchFactorAreaDataManager shareSearchFactorAreaDataManager].areas;
-    if (_areas.count>0) [self setupSelectItem:_areas.firstObject];
+}
+
+- (void)setInsetParam:(NSDictionary *)insetParam {
+    _insetParam = insetParam;
+    NSString *area = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_area]];
+    if ([area isNotNull]) {
+        [self.areas enumerateObjectsUsingBlock:^(SearchFactorAreaDataItem *obj, NSUInteger idx, BOOL *stop) {
+            if ([area isEqualToString:obj.value]) {
+                [self setupSelectItem:obj byClick:NO];
+                *stop = YES;
+            }
+        }];
+    }
+    if (!self.selectedItem && _areas.count>0) {
+        [self setupSelectItem:_areas.firstObject byClick:NO];
+    }
 }
 
 - (CGFloat)contentHeight {
@@ -67,19 +83,19 @@ static CGFloat const margin = 16;
     if (row<_areas.count) {
         cell.item = _areas[row];
         cell.actionBlock = ^(SearchFactorAreaDataItem *item){
-            [self setupSelectItem:item];
+            [self setupSelectItem:item byClick:YES];
         };
     }
     return cell;
 }
 
-- (void)setupSelectItem:(SearchFactorAreaDataItem *)item {
+- (void)setupSelectItem:(SearchFactorAreaDataItem *)item byClick:(BOOL)byClick{
     _selectedItem.selected = NO;
     item.selected = YES;
     _selectedItem = item;
     [self.collectionView reloadData];
-    if ([self.delegate respondsToSelector:@selector(searchFactorAreaView:didSelectItem:)]) {
-        [self.delegate searchFactorAreaView:self didSelectItem:_selectedItem];
+    if ([self.delegate respondsToSelector:@selector(searchFactorAreaView:didSelectItem:byClick:)]) {
+        [self.delegate searchFactorAreaView:self didSelectItem:_selectedItem byClick:byClick];
     }
 }
 

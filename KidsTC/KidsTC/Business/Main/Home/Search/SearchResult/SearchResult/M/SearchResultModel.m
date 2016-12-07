@@ -1,5 +1,5 @@
 //
-//  SearchResultModel.m
+//  SearchResultProductModel.m
 //  KidsTC
 //
 //  Created by zhanping on 7/5/16.
@@ -101,7 +101,7 @@
 
 @end
 
-@implementation SearchResultProductModel
+@implementation SearchResultModel
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};
 }

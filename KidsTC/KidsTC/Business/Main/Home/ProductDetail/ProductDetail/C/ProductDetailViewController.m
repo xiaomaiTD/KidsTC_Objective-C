@@ -67,8 +67,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type = ProductDetailTypeFree;
-    _productId = @"3000000004";//100001  //3000000004
+    _type = ProductDetailTypeTicket;
+    _productId = @"100001";//100001  //3000000004
     _channelId = @"0";
 
     switch (_type) {
