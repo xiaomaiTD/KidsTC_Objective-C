@@ -10,6 +10,19 @@
 
 extern CGFloat const kSearchResultToolBarH;
 
+typedef enum : NSUInteger {
+    SearchResultToolBarActionTypeBtnClicked = 1,
+    SearchResultToolBarActionTypeDidSelectParam,
+    SearchResultToolBarActionTypeDidSelectProduct,
+    SearchResultToolBarActionTypeDidSeltctStore,
+} SearchResultToolBarActionType;
+@class SearchResultToolBar;
+@protocol SearchResultToolBarDelegate <NSObject>
+- (void)searchResultToolBar:(SearchResultToolBar *)toolBar actionType:(SearchResultToolBarActionType)type value:(id)value;
+@end
+
 @interface SearchResultToolBar : UIView
-@property (nonatomic, weak) NSDictionary *insetParam;
+@property (nonatomic, strong) NSDictionary *insetParam;
+@property (nonatomic, weak) id<SearchResultToolBarDelegate> delegate;
+@property (nonatomic, assign) SearchType searchType;
 @end

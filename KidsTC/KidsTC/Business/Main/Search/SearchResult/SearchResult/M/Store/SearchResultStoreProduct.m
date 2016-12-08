@@ -1,33 +1,33 @@
 //
-//  SearchResultProduct.m
+//  SearchResultStoreProduct.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/12/7.
+//  Created by 詹平 on 2016/12/8.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "SearchResultProduct.h"
+#import "SearchResultStoreProduct.h"
 #import "NSString+Category.h"
 
-@implementation SearchResultProduct
+@implementation SearchResultStoreProduct
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    _bigImgRatio = _bigImgRatio>0?_bigImgRatio:0.6;
-    if ([_serveId isNotNull]) {
-        if (![_channelId isNotNull]) _channelId = @"0";
-        switch (_productType) {
+    
+    if ([_ProductSysNo isNotNull]) {
+        if (![_ChannelId isNotNull]) _ChannelId = @"0";
+        switch (_ProductType) {
             case ProductDetailTypeNormal:
             case ProductDetailTypeTicket:
             case ProductDetailTypeFree:
                 break;
             default:
             {
-                _productType = ProductDetailTypeNormal;
+                _ProductType = ProductDetailTypeNormal;
             }
                 break;
         }
-        NSDictionary *param = @{@"pid":_serveId,
-                                @"cid":_channelId,
-                                @"type":@(_productType)};
+        NSDictionary *param = @{@"pid":_ProductSysNo,
+                                @"cid":_ChannelId,
+                                @"type":@(_ProductType)};
         _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
     }
     

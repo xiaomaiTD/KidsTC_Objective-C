@@ -297,6 +297,19 @@
 		EC486F4C1DF8432A005CA365 /* SearchResultProductLargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F4A1DF8432A005CA365 /* SearchResultProductLargeCell.xib */; };
 		EC486F501DF85255005CA365 /* SearchResultProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F4F1DF85255005CA365 /* SearchResultProductModel.m */; };
 		EC486F531DF852A9005CA365 /* SearchResultProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F521DF852A9005CA365 /* SearchResultProduct.m */; };
+		EC486F571DF96414005CA365 /* SearchResultStoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F561DF96414005CA365 /* SearchResultStoreModel.m */; };
+		EC486F5A1DF96431005CA365 /* SearchResultStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F591DF96431005CA365 /* SearchResultStore.m */; };
+		EC486F5D1DF96459005CA365 /* SearchResultStoreProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F5C1DF96459005CA365 /* SearchResultStoreProduct.m */; };
+		EC486F601DF9678C005CA365 /* SearchResultStoreHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F5F1DF9678C005CA365 /* SearchResultStoreHeader.m */; };
+		EC486F621DF96AFA005CA365 /* SearchResultStoreHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F611DF96AFA005CA365 /* SearchResultStoreHeader.xib */; };
+		EC486F661DF96F1E005CA365 /* SearchResultStoreProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F641DF96F1E005CA365 /* SearchResultStoreProductCell.m */; };
+		EC486F671DF96F1E005CA365 /* SearchResultStoreProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F651DF96F1E005CA365 /* SearchResultStoreProductCell.xib */; };
+		EC486F6A1DF972C0005CA365 /* SearchResultStoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F691DF972C0005CA365 /* SearchResultStoreFooter.m */; };
+		EC486F6C1DF972D4005CA365 /* SearchResultStoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F6B1DF972D4005CA365 /* SearchResultStoreFooter.xib */; };
+		EC486F6F1DF98D00005CA365 /* SearchResultProductHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F6E1DF98D00005CA365 /* SearchResultProductHeader.m */; };
+		EC486F731DF98D16005CA365 /* SearchResultProductHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F721DF98D16005CA365 /* SearchResultProductHeader.xib */; };
+		EC486F761DF98D5B005CA365 /* SearchResultProductFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC486F751DF98D5B005CA365 /* SearchResultProductFooter.m */; };
+		EC486F781DF98D64005CA365 /* SearchResultProductFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC486F771DF98D64005CA365 /* SearchResultProductFooter.xib */; };
 		EC4C605F1DF5027600830126 /* ProductOrderListHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C605E1DF5027600830126 /* ProductOrderListHeader.m */; };
 		EC4C60611DF5028100830126 /* ProductOrderListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4C60601DF5028100830126 /* ProductOrderListHeader.xib */; };
 		EC4C607B1DF5765400830126 /* ProductOrderFreeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4C607A1DF5765400830126 /* ProductOrderFreeListViewController.m */; };
@@ -538,14 +551,6 @@
 		EC4FC30C1D77CEE400BBD050 /* SearchHistoryKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE4C1D77CEE300BBD050 /* SearchHistoryKeywordsModel.m */; };
 		EC4FC30D1D77CEE400BBD050 /* SearchHotKeywordsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE4F1D77CEE300BBD050 /* SearchHotKeywordsManager.m */; };
 		EC4FC30E1D77CEE400BBD050 /* SearchHotKeywordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE511D77CEE300BBD050 /* SearchHotKeywordsModel.m */; };
-		EC4FC3141D77CEE400BBD050 /* SearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE611D77CEE300BBD050 /* SearchResultModel.m */; };
-		EC4FC3151D77CEE400BBD050 /* SearchResultArticleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE641D77CEE300BBD050 /* SearchResultArticleCell.m */; };
-		EC4FC3161D77CEE400BBD050 /* SearchResultArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBE651D77CEE300BBD050 /* SearchResultArticleCell.xib */; };
-		EC4FC3171D77CEE400BBD050 /* SearchResultProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE671D77CEE300BBD050 /* SearchResultProductCell.m */; };
-		EC4FC3181D77CEE400BBD050 /* SearchResultProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBE681D77CEE300BBD050 /* SearchResultProductCell.xib */; };
-		EC4FC3191D77CEE400BBD050 /* SearchResultStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE6A1D77CEE300BBD050 /* SearchResultStoreCell.m */; };
-		EC4FC31A1D77CEE400BBD050 /* SearchResultStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC4FBE6B1D77CEE300BBD050 /* SearchResultStoreCell.xib */; };
-		EC4FC31B1D77CEE400BBD050 /* SearchResultViewLocationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE6D1D77CEE300BBD050 /* SearchResultViewLocationButton.m */; };
 		EC4FC31C1D77CEE400BBD050 /* AreaAndAgeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE721D77CEE300BBD050 /* AreaAndAgeDataManager.m */; };
 		EC4FC31D1D77CEE400BBD050 /* AreaAndAgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE741D77CEE300BBD050 /* AreaAndAgeModel.m */; };
 		EC4FC31E1D77CEE400BBD050 /* SearchResultFactorShowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4FBE771D77CEE300BBD050 /* SearchResultFactorShowModel.m */; };
@@ -1934,6 +1939,27 @@
 		EC486F4F1DF85255005CA365 /* SearchResultProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductModel.m; sourceTree = "<group>"; };
 		EC486F511DF852A9005CA365 /* SearchResultProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProduct.h; sourceTree = "<group>"; };
 		EC486F521DF852A9005CA365 /* SearchResultProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProduct.m; sourceTree = "<group>"; };
+		EC486F551DF96414005CA365 /* SearchResultStoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreModel.h; sourceTree = "<group>"; };
+		EC486F561DF96414005CA365 /* SearchResultStoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreModel.m; sourceTree = "<group>"; };
+		EC486F581DF96431005CA365 /* SearchResultStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStore.h; sourceTree = "<group>"; };
+		EC486F591DF96431005CA365 /* SearchResultStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStore.m; sourceTree = "<group>"; };
+		EC486F5B1DF96459005CA365 /* SearchResultStoreProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreProduct.h; sourceTree = "<group>"; };
+		EC486F5C1DF96459005CA365 /* SearchResultStoreProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreProduct.m; sourceTree = "<group>"; };
+		EC486F5E1DF9678C005CA365 /* SearchResultStoreHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreHeader.h; sourceTree = "<group>"; };
+		EC486F5F1DF9678C005CA365 /* SearchResultStoreHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreHeader.m; sourceTree = "<group>"; };
+		EC486F611DF96AFA005CA365 /* SearchResultStoreHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreHeader.xib; sourceTree = "<group>"; };
+		EC486F631DF96F1E005CA365 /* SearchResultStoreProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreProductCell.h; sourceTree = "<group>"; };
+		EC486F641DF96F1E005CA365 /* SearchResultStoreProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreProductCell.m; sourceTree = "<group>"; };
+		EC486F651DF96F1E005CA365 /* SearchResultStoreProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreProductCell.xib; sourceTree = "<group>"; };
+		EC486F681DF972C0005CA365 /* SearchResultStoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreFooter.h; sourceTree = "<group>"; };
+		EC486F691DF972C0005CA365 /* SearchResultStoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreFooter.m; sourceTree = "<group>"; };
+		EC486F6B1DF972D4005CA365 /* SearchResultStoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreFooter.xib; sourceTree = "<group>"; };
+		EC486F6D1DF98D00005CA365 /* SearchResultProductHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductHeader.h; sourceTree = "<group>"; };
+		EC486F6E1DF98D00005CA365 /* SearchResultProductHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductHeader.m; sourceTree = "<group>"; };
+		EC486F721DF98D16005CA365 /* SearchResultProductHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultProductHeader.xib; sourceTree = "<group>"; };
+		EC486F741DF98D5B005CA365 /* SearchResultProductFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductFooter.h; sourceTree = "<group>"; };
+		EC486F751DF98D5B005CA365 /* SearchResultProductFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductFooter.m; sourceTree = "<group>"; };
+		EC486F771DF98D64005CA365 /* SearchResultProductFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultProductFooter.xib; sourceTree = "<group>"; };
 		EC4C605D1DF5027600830126 /* ProductOrderListHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListHeader.h; sourceTree = "<group>"; };
 		EC4C605E1DF5027600830126 /* ProductOrderListHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderListHeader.m; sourceTree = "<group>"; };
 		EC4C60601DF5028100830126 /* ProductOrderListHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderListHeader.xib; sourceTree = "<group>"; };
@@ -2365,19 +2391,6 @@
 		EC4FBE4F1D77CEE300BBD050 /* SearchHotKeywordsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsManager.m; sourceTree = "<group>"; };
 		EC4FBE501D77CEE300BBD050 /* SearchHotKeywordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHotKeywordsModel.h; sourceTree = "<group>"; };
 		EC4FBE511D77CEE300BBD050 /* SearchHotKeywordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHotKeywordsModel.m; sourceTree = "<group>"; };
-		EC4FBE601D77CEE300BBD050 /* SearchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultModel.h; sourceTree = "<group>"; };
-		EC4FBE611D77CEE300BBD050 /* SearchResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultModel.m; sourceTree = "<group>"; };
-		EC4FBE631D77CEE300BBD050 /* SearchResultArticleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultArticleCell.h; sourceTree = "<group>"; };
-		EC4FBE641D77CEE300BBD050 /* SearchResultArticleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultArticleCell.m; sourceTree = "<group>"; };
-		EC4FBE651D77CEE300BBD050 /* SearchResultArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultArticleCell.xib; sourceTree = "<group>"; };
-		EC4FBE661D77CEE300BBD050 /* SearchResultProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultProductCell.h; sourceTree = "<group>"; };
-		EC4FBE671D77CEE300BBD050 /* SearchResultProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultProductCell.m; sourceTree = "<group>"; };
-		EC4FBE681D77CEE300BBD050 /* SearchResultProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultProductCell.xib; sourceTree = "<group>"; };
-		EC4FBE691D77CEE300BBD050 /* SearchResultStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultStoreCell.h; sourceTree = "<group>"; };
-		EC4FBE6A1D77CEE300BBD050 /* SearchResultStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultStoreCell.m; sourceTree = "<group>"; };
-		EC4FBE6B1D77CEE300BBD050 /* SearchResultStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultStoreCell.xib; sourceTree = "<group>"; };
-		EC4FBE6C1D77CEE300BBD050 /* SearchResultViewLocationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewLocationButton.h; sourceTree = "<group>"; };
-		EC4FBE6D1D77CEE300BBD050 /* SearchResultViewLocationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewLocationButton.m; sourceTree = "<group>"; };
 		EC4FBE711D77CEE300BBD050 /* AreaAndAgeDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaAndAgeDataManager.h; sourceTree = "<group>"; };
 		EC4FBE721D77CEE300BBD050 /* AreaAndAgeDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaAndAgeDataManager.m; sourceTree = "<group>"; };
 		EC4FBE731D77CEE300BBD050 /* AreaAndAgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaAndAgeModel.h; sourceTree = "<group>"; };
@@ -5729,6 +5742,19 @@
 			path = Product;
 			sourceTree = "<group>";
 		};
+		EC486F541DF963FB005CA365 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EC486F551DF96414005CA365 /* SearchResultStoreModel.h */,
+				EC486F561DF96414005CA365 /* SearchResultStoreModel.m */,
+				EC486F581DF96431005CA365 /* SearchResultStore.h */,
+				EC486F591DF96431005CA365 /* SearchResultStore.m */,
+				EC486F5B1DF96459005CA365 /* SearchResultStoreProduct.h */,
+				EC486F5C1DF96459005CA365 /* SearchResultStoreProduct.m */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		EC4C60741DF5762100830126 /* ProductOrderFreeList */ = {
 			isa = PBXGroup;
 			children = (
@@ -7252,8 +7278,6 @@
 		EC4FBE5F1D77CEE300BBD050 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				EC4FBE601D77CEE300BBD050 /* SearchResultModel.h */,
-				EC4FBE611D77CEE300BBD050 /* SearchResultModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -7261,17 +7285,6 @@
 		EC4FBE621D77CEE300BBD050 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				EC4FBE631D77CEE300BBD050 /* SearchResultArticleCell.h */,
-				EC4FBE641D77CEE300BBD050 /* SearchResultArticleCell.m */,
-				EC4FBE651D77CEE300BBD050 /* SearchResultArticleCell.xib */,
-				EC4FBE661D77CEE300BBD050 /* SearchResultProductCell.h */,
-				EC4FBE671D77CEE300BBD050 /* SearchResultProductCell.m */,
-				EC4FBE681D77CEE300BBD050 /* SearchResultProductCell.xib */,
-				EC4FBE691D77CEE300BBD050 /* SearchResultStoreCell.h */,
-				EC4FBE6A1D77CEE300BBD050 /* SearchResultStoreCell.m */,
-				EC4FBE6B1D77CEE300BBD050 /* SearchResultStoreCell.xib */,
-				EC4FBE6C1D77CEE300BBD050 /* SearchResultViewLocationButton.h */,
-				EC4FBE6D1D77CEE300BBD050 /* SearchResultViewLocationButton.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -10447,6 +10460,7 @@
 		ECA59B991DEC208A00B3B1F7 /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC486F541DF963FB005CA365 /* Store */,
 				EC486F4D1DF8523E005CA365 /* Product */,
 			);
 			path = M;
@@ -10464,6 +10478,21 @@
 			children = (
 				EC486F401DF83328005CA365 /* SearchResultView.h */,
 				EC486F411DF83328005CA365 /* SearchResultView.m */,
+				EC486F5E1DF9678C005CA365 /* SearchResultStoreHeader.h */,
+				EC486F5F1DF9678C005CA365 /* SearchResultStoreHeader.m */,
+				EC486F611DF96AFA005CA365 /* SearchResultStoreHeader.xib */,
+				EC486F681DF972C0005CA365 /* SearchResultStoreFooter.h */,
+				EC486F691DF972C0005CA365 /* SearchResultStoreFooter.m */,
+				EC486F6B1DF972D4005CA365 /* SearchResultStoreFooter.xib */,
+				EC486F631DF96F1E005CA365 /* SearchResultStoreProductCell.h */,
+				EC486F641DF96F1E005CA365 /* SearchResultStoreProductCell.m */,
+				EC486F651DF96F1E005CA365 /* SearchResultStoreProductCell.xib */,
+				EC486F6D1DF98D00005CA365 /* SearchResultProductHeader.h */,
+				EC486F6E1DF98D00005CA365 /* SearchResultProductHeader.m */,
+				EC486F721DF98D16005CA365 /* SearchResultProductHeader.xib */,
+				EC486F741DF98D5B005CA365 /* SearchResultProductFooter.h */,
+				EC486F751DF98D5B005CA365 /* SearchResultProductFooter.m */,
+				EC486F771DF98D64005CA365 /* SearchResultProductFooter.xib */,
 				EC486F431DF84313005CA365 /* SearchResultProductSmallCell.h */,
 				EC486F441DF84313005CA365 /* SearchResultProductSmallCell.m */,
 				EC486F451DF84313005CA365 /* SearchResultProductSmallCell.xib */,
@@ -11575,7 +11604,6 @@
 				ECF704DF1D88F3EB00650C0A /* ArticleUserCenterCommentCell.xib in Resources */,
 				ECAA49431D79A45B00799CBE /* ArticleHomeBigImgCell.xib in Resources */,
 				EC4FC3A41D77CEE400BBD050 /* StoreDetailAppointmentPreferenceInfoCell.xib in Resources */,
-				EC4FC31A1D77CEE400BBD050 /* SearchResultStoreCell.xib in Resources */,
 				EC0044311DE6B8970042B701 /* ProductDetailTicketInfoCell.xib in Resources */,
 				EC4FC3861D77CEE400BBD050 /* SettlementResultViewController.xib in Resources */,
 				EC0044441DE6B8980042B701 /* ProductDetailCountDownView.xib in Resources */,
@@ -11606,6 +11634,7 @@
 				ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */,
 				EC4FC60A1D77DCFD00BBD050 /* Resources.bundle in Resources */,
 				EC4FC3F51D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.xib in Resources */,
+				EC486F671DF96F1E005CA365 /* SearchResultStoreProductCell.xib in Resources */,
 				EC4FC5BA1D77CEEF00BBD050 /* ImageError@2x.png in Resources */,
 				EC4FC4051D77CEE400BBD050 /* UserAddressEditViewCell.xib in Resources */,
 				EC0044131DE6B8970042B701 /* ProductDetailContactCell.xib in Resources */,
@@ -11654,7 +11683,6 @@
 				EC4FC4C31D77CEE400BBD050 /* ServiceOrderDetailRefundInfoCell.xib in Resources */,
 				EC4FC5CA1D77CEEF00BBD050 /* PlayButtonOverlayLarge@3x.png in Resources */,
 				ECAA49461D79A45B00799CBE /* ArticleHomeColumnTitleCell.xib in Resources */,
-				EC4FC3181D77CEE400BBD050 /* SearchResultProductCell.xib in Resources */,
 				EC4FC5BC1D77CEEF00BBD050 /* ImageSelectedOff.png in Resources */,
 				EC2F26F51DDB0AE500B67BBA /* MyTracksHeader.xib in Resources */,
 				EC5CDD311DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.xib in Resources */,
@@ -11686,6 +11714,7 @@
 				EC4FC3AD1D77CEE400BBD050 /* StoreDetailHotRecommendCell.xib in Resources */,
 				EC4FC5CB1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap.png in Resources */,
 				EC4FC5C81D77CEEF00BBD050 /* PlayButtonOverlayLarge.png in Resources */,
+				EC486F6C1DF972D4005CA365 /* SearchResultStoreFooter.xib in Resources */,
 				EC4C60B71DF5B0CB00830126 /* ProductOrderListAllTitleCollectionHeader.xib in Resources */,
 				EC4FC5BF1D77CEEF00BBD050 /* ImageSelectedOn.png in Resources */,
 				EC00444E1DE6B8980042B701 /* ProductDetailTicketToolBar.xib in Resources */,
@@ -11831,6 +11860,8 @@
 				EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */,
 				EC13B4F81DD1F3430040F760 /* AccountCenterNumsCell.xib in Resources */,
 				EC4FC3571D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.xib in Resources */,
+				EC486F731DF98D16005CA365 /* SearchResultProductHeader.xib in Resources */,
+				EC486F621DF96AFA005CA365 /* SearchResultStoreHeader.xib in Resources */,
 				EC4FC34B1D77CEE400BBD050 /* FlashAdvanceSettlementServiceInfoCell.xib in Resources */,
 				ECAA494E1D79A45B00799CBE /* ArticleHomeTagImgCell.xib in Resources */,
 				EC4E27F31DF152F700622711 /* NearbyCalendarCell.xib in Resources */,
@@ -11971,7 +12002,6 @@
 				EC4FC3FB1D77CEE400BBD050 /* AccountSettingViewCell.xib in Resources */,
 				EC4FC4311D77CEE400BBD050 /* CommentEditViewController.xib in Resources */,
 				EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */,
-				EC4FC3161D77CEE400BBD050 /* SearchResultArticleCell.xib in Resources */,
 				EC4FC5C41D77CEEF00BBD050 /* ImageSelectedSmallOff@3x.png in Resources */,
 				EC4FC5BE1D77CEEF00BBD050 /* ImageSelectedOff@3x.png in Resources */,
 				ECA95A901DDC4DFD00990AAE /* MyTracksFooter.xib in Resources */,
@@ -12000,6 +12030,7 @@
 				ECB3E7891D92C82E0059267D /* OrderBookingSelectAgeViewController.xib in Resources */,
 				EC4FC3881D77CEE400BBD050 /* SettlementResultShareViewController.xib in Resources */,
 				EC4FC5CE1D77CEEF00BBD050 /* UIBarButtonItemArrowLeft.png in Resources */,
+				EC486F781DF98D64005CA365 /* SearchResultProductFooter.xib in Resources */,
 				EC0044D71DE7F4E40042B701 /* ProductDetailTwoColumnToolBar.xib in Resources */,
 				EC5CDD281DE538F200F95C6F /* ProductDetailFreeApplyBabyAgeCell.xib in Resources */,
 				EC4FC38B1D77CEE400BBD050 /* StoreAppointmentViewController.xib in Resources */,
@@ -12124,7 +12155,6 @@
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
 				EC4FC23F1D77CEE400BBD050 /* RoleSelectViewController.m in Sources */,
 				ECF704E21D89000100650C0A /* ArticleUserCenterArticleModel.m in Sources */,
-				EC4FC3151D77CEE400BBD050 /* SearchResultArticleCell.m in Sources */,
 				EC7264271D7D279A00AA739B /* ColumnCell.m in Sources */,
 				EC0043441DE559110042B701 /* NurseryViewController.m in Sources */,
 				EC486F421DF83328005CA365 /* SearchResultView.m in Sources */,
@@ -12180,6 +12210,7 @@
 				EC4FC4371D77CEE400BBD050 /* MyCommentListViewController.m in Sources */,
 				EC9CC51C1DC30E7F0093DCED /* FSCalendar+Deprecated.m in Sources */,
 				EC4FC5B41D77CEEF00BBD050 /* ImageTrimViewController.m in Sources */,
+				EC486F661DF96F1E005CA365 /* SearchResultStoreProductCell.m in Sources */,
 				EC4FC4231D77CEE400BBD050 /* KTCBrowseHistoryViewServiceCell.m in Sources */,
 				EC84C3A41DE2999900A42515 /* ServiceSettlementPromotion.m in Sources */,
 				EC4FC4551D77CEE400BBD050 /* MyCommentListViewCell.m in Sources */,
@@ -12213,6 +12244,7 @@
 				ECA2BC151DF2A58E00EAE79C /* ProductOrderListBtn.m in Sources */,
 				EC4FC3B11D77CEE400BBD050 /* StoreDetailRelatedStrategyListViewController.m in Sources */,
 				EC4FC2171D77CEE400BBD050 /* NSDictionary+Category.m in Sources */,
+				EC486F5A1DF96431005CA365 /* SearchResultStore.m in Sources */,
 				EC2F26981DD9B7A000B67BBA /* CollectionStoreViewController.m in Sources */,
 				EC4FC3821D77CEE400BBD050 /* SettlementPickStoreModel.m in Sources */,
 				EC4FC5A81D77CEEF00BBD050 /* SheetCell.m in Sources */,
@@ -12236,6 +12268,7 @@
 				ECA59BA91DEC2CB000B3B1F7 /* SearchResultToolBar.m in Sources */,
 				ECAA49311D79A45B00799CBE /* ArticleHomeModel.m in Sources */,
 				EC2F26741DD997C200B67BBA /* CollectProductCategoryCollectionViewCell.m in Sources */,
+				EC486F5D1DF96459005CA365 /* SearchResultStoreProduct.m in Sources */,
 				EC4FC2C11D77CEE400BBD050 /* FDCommentCell.m in Sources */,
 				EC68C3CC1D9BD3E800D4401A /* SynchronizeManager.m in Sources */,
 				EC4FC3521D77CEE400BBD050 /* FlashBalanceSettlementViewController.m in Sources */,
@@ -12301,7 +12334,6 @@
 				EC2F26171DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m in Sources */,
 				EC4C607B1DF5765400830126 /* ProductOrderFreeListViewController.m in Sources */,
 				EC00444B1DE6B8980042B701 /* ProductDetailNormalToolBar.m in Sources */,
-				EC4FC3191D77CEE400BBD050 /* SearchResultStoreCell.m in Sources */,
 				EC4FC36E1D77CEE400BBD050 /* ServiceSettlementServiceInfoCell.m in Sources */,
 				ECF5D0C91DB8C4FE00A1B268 /* QRCodeScanTextViewController.m in Sources */,
 				ECB3E78A1D92C82E0059267D /* OrderBookingSelectTimeViewController.m in Sources */,
@@ -12370,6 +12402,7 @@
 				EC4FC2921D77CEE400BBD050 /* ArticleCommentViewController.m in Sources */,
 				EC4FC25C1D77CEE400BBD050 /* PosterViewController.m in Sources */,
 				ECA95AC61DDC6EF100990AAE /* ProductOrderListView.m in Sources */,
+				EC486F601DF9678C005CA365 /* SearchResultStoreHeader.m in Sources */,
 				EC4FC3EA1D77CEE400BBD050 /* ParentingStrategyDetailView.m in Sources */,
 				ECFD19381D958BD6009000D5 /* ArticleHomeBottomView.m in Sources */,
 				EC7264361D7D27BC00AA739B /* ArticleColumnViewController.m in Sources */,
@@ -12696,7 +12729,6 @@
 				EC4FC4D71D77CEE400BBD050 /* UserCenterBannerAutoRollViewLayout.m in Sources */,
 				EC4FC3FA1D77CEE400BBD050 /* AccountSettingViewCell.m in Sources */,
 				EC4FC4431D77CEE400BBD050 /* CommentDetailViewCell.m in Sources */,
-				EC4FC3171D77CEE400BBD050 /* SearchResultProductCell.m in Sources */,
 				EC4FC2521D77CEE400BBD050 /* MapLocateAnnotationTipView.m in Sources */,
 				EC4FC2CE1D77CEE400BBD050 /* FDSegmentView.m in Sources */,
 				EC00444A1DE6B8980042B701 /* ProductDetailBaseToolBar.m in Sources */,
@@ -12796,6 +12828,7 @@
 				EC4C60B81DF5B0CB00830126 /* ProductOrderListAllTitleShowView.m in Sources */,
 				EC4FC3551D77CEE400BBD050 /* FlashBalanceSettlementBaseCell.m in Sources */,
 				EC4FC2731D77CEE400BBD050 /* WeChatManager.m in Sources */,
+				EC486F6A1DF972C0005CA365 /* SearchResultStoreFooter.m in Sources */,
 				EC4FC4B21D77CEE400BBD050 /* OrderRefundViewController.m in Sources */,
 				EC2F269B1DD9B7B300B67BBA /* CollectionContentViewController.m in Sources */,
 				EC68C3C81D9BD2B700D4401A /* SchemeManager.m in Sources */,
@@ -12893,7 +12926,6 @@
 				EC4FC3791D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.m in Sources */,
 				ECF5D1141DB8CF7100A1B268 /* HomeRoleButton.m in Sources */,
 				EC4FC4721D77CEE400BBD050 /* FavouriteStrategyItemModel.m in Sources */,
-				EC4FC3141D77CEE400BBD050 /* SearchResultModel.m in Sources */,
 				EC2289431DE87DCA00EC324A /* CollectProductReduceModel.m in Sources */,
 				EC76B8DD1DC65FC6006518DE /* ServiceDetailView.m in Sources */,
 				EC4FC41B1D77CEE400BBD050 /* AppointmentOrderDetailViewModel.m in Sources */,
@@ -12943,6 +12975,7 @@
 				EC4FC3C61D77CEE400BBD050 /* StrategyViewController.m in Sources */,
 				EC4FC3561D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.m in Sources */,
 				EC0044D41DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.m in Sources */,
+				EC486F6F1DF98D00005CA365 /* SearchResultProductHeader.m in Sources */,
 				EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */,
 				EC4E278E1DF0134E00622711 /* NearbyCollectionViewCell.m in Sources */,
 				EC5CDD321DE538F200F95C6F /* ProductDetailFreeApplyUserAddressCell.m in Sources */,
@@ -12953,7 +12986,6 @@
 				ECA95A6E1DDB29F300990AAE /* CouponListExpiredView.m in Sources */,
 				EC4FC23A1D77CEE400BBD050 /* RegisterViewController.m in Sources */,
 				EC4FC3DF1D77CEE400BBD050 /* ParentingStrategyFilterView.m in Sources */,
-				EC4FC31B1D77CEE400BBD050 /* SearchResultViewLocationButton.m in Sources */,
 				EC4FC3FF1D77CEE400BBD050 /* AddressPickerViewCell.m in Sources */,
 				ECA2BC0C1DF2971100EAE79C /* ProductOrderListCellBtnsView.m in Sources */,
 				EC4FC4391D77CEE400BBD050 /* CommentDetailModel.m in Sources */,
@@ -13026,6 +13058,7 @@
 				EC4FC4BE1D77CEE400BBD050 /* ServiceOrderDetailPayInfoCell.m in Sources */,
 				EC4FC22F1D77CEE400BBD050 /* SharePaidInfoView.m in Sources */,
 				EC4FC2781D77CEE400BBD050 /* Theme.m in Sources */,
+				EC486F761DF98D5B005CA365 /* SearchResultProductFooter.m in Sources */,
 				EC4FC40A1D77CEE400BBD050 /* UserAddressManageViewController.m in Sources */,
 				ECA2BC121DF2A12600EAE79C /* ProductOrderListItem.m in Sources */,
 				ECA59BE91DED612600B3B1F7 /* SearchFactorSortDataManager.m in Sources */,
@@ -13040,6 +13073,7 @@
 				EC22896D1DE9B3EF00EC324A /* AccountCenterActivity.m in Sources */,
 				ECB3E77E1D92C82E0059267D /* OrderBookingMakeSureCell.m in Sources */,
 				EC4FC5F31D77CEEF00BBD050 /* ZPProgress.m in Sources */,
+				EC486F571DF96414005CA365 /* SearchResultStoreModel.m in Sources */,
 				EC4C60DB1DF6776100830126 /* SearchDataManager.m in Sources */,
 				EC4C60E41DF68F5500830126 /* SearchRowItem.m in Sources */,
 				EC4FC5EF1D77CEEF00BBD050 /* ZPPopoverCell.m in Sources */,
@@ -13220,7 +13254,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/KidsTC/Lib/SDK/MTASDK",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -13257,7 +13290,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/KidsTC/Lib/SDK/MTASDK",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;

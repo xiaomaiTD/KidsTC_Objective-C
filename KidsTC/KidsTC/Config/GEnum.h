@@ -59,3 +59,8 @@ typedef enum : NSUInteger {
     UseCouponStatusNotArrvialTime,//未到达使用时间
     UseCouponStatusExpried//已过期
 } UseCouponStatus;
+
+typedef enum : NSUInteger {
+    SearchTypeProduct,//搜索服务
+    SearchTypeStore,//搜索门店
+} SearchType;

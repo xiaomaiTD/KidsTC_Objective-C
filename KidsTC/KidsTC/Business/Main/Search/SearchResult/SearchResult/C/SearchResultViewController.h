@@ -28,6 +28,8 @@
  */
 
 @interface SearchResultViewController : ViewController
-@property (nonatomic, strong) NSDictionary *search_parms;
-@property (nonatomic, strong) NSString *key;
+@property (nonatomic, strong) NSDictionary *params_store;
+@property (nonatomic, strong) NSDictionary *params_product;
+@property (nonatomic, strong) NSDictionary *params_current;
+@property (nonatomic, assign) SearchType searchType;
 @end

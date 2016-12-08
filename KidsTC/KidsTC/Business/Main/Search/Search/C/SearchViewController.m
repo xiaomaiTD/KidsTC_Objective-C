@@ -205,8 +205,8 @@
 - (void)searchBeginWithItem:(SearchHotKeywordsItem *)item {
     self.tf.text = item.name;
     SearchResultViewController *controller = [[SearchResultViewController alloc] init];
-    controller.search_parms = item.search_parms;
-    controller.key = item.name;
+    controller.params_product = item.search_parms;
+    controller.searchType = SearchTypeProduct;
     [self.navigationController pushViewController:controller animated:YES];
     [[SearchHistoryKeywordsManager shareSearchHistoryKeywordsManager] addSearchHistoryItem:item];
     [self.searchView reloadData];

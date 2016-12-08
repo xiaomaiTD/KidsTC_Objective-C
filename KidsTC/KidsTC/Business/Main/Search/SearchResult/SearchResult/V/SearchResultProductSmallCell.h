@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchResultProduct.h"
 
 @interface SearchResultProductSmallCell : UITableViewCell
-
+@property (nonatomic, strong) SearchResultProduct *product;
 @end

@@ -35,7 +35,7 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaz-6W-1cb">
                             <rect key="frame" x="192" y="10" width="0.0" height="24"/>
-                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="Wcb-zn-N9S"/>
                             </constraints>
@@ -48,7 +48,10 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" image="search_toolBar_btnTip_up">
-                                <color key="titleColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="focused">
+                                <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="FaR-K1-jdx"/>
@@ -64,20 +67,23 @@
                             <state key="selected">
                                 <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="focused">
+                                <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="EB4-aT-2gb"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZF-f9-YmM">
                             <rect key="frame" x="95.5" y="10" width="1" height="24"/>
-                            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="GJA-o1-NYL"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCD-Dj-T5b">
                             <rect key="frame" x="301" y="10" width="0.0" height="24"/>
-                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="fdG-Nw-3xb"/>
                             </constraints>
@@ -93,7 +99,10 @@
                                 <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected">
-                                <color key="titleColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="focused">
+                                <color key="titleColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="N3K-Pr-m51"/>
@@ -118,14 +127,14 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yo-lY-CfR">
                             <rect key="frame" x="246" y="10" width="1" height="24"/>
-                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="0.5" id="Aar-Zd-ojk"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36p-B6-Vtj">
                             <rect key="frame" x="0.0" y="44" width="371" height="0.0"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="HHe-kj-PbN"/>
                             </constraints>
@@ -189,6 +198,11 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="HLineHOne" destination="HHe-kj-PbN" id="iVx-TK-pfo"/>
+                <outlet property="VLineWFour" destination="fdG-Nw-3xb" id="OqE-xd-wyg"/>
+                <outlet property="VLineWOne" destination="GJA-o1-NYL" id="Mmj-pn-on4"/>
+                <outlet property="VLineWThree" destination="Aar-Zd-ojk" id="u8M-bW-eQF"/>
+                <outlet property="VLineWTwo" destination="Wcb-zn-N9S" id="VnM-nE-RZ7"/>
                 <outlet property="areaBtn" destination="zd9-WD-Iaq" id="aqA-yZ-BLD"/>
                 <outlet property="btnsView" destination="cSG-Op-RjB" id="bgc-kw-2Df"/>
                 <outlet property="filterBtn" destination="CTn-xW-yCi" id="3mX-LA-1cB"/>

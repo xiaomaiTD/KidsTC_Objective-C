@@ -46,3 +46,4 @@ static NSString *const kSearchKey_area                     = @"s";//地区
 static NSString *const kSearchKey_sort                     = @"st";//排序
 static NSString *const kSearchKey_age                      = @"a";//年龄
 static NSString *const kSearchKey_category                 = @"c";//分类
+static NSString *const kSearchKey_populationType           = @"pt";//人群种类

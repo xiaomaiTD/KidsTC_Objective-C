@@ -75,6 +75,7 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
 - (void)setInsetParam:(NSDictionary *)insetParam {
     _insetParam = insetParam;
     NSString *category = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_category]];
+    __block BOOL hasCompared = NO;
     if ([category isNotNull]) {
         [self.leftItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemLeft *itemLeft, NSUInteger idxLeft, BOOL *stopLeft) {
             [itemLeft.rightItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemRight *itemRight, NSUInteger idxRight, BOOL *stopRight) {
@@ -83,14 +84,19 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
                     itemLeft.currentCell   = YES;
                     itemRight.dataSelected = YES;
                     [self setupSelectedItemLeft:itemLeft itemRight:itemRight];
-                    *stopRight = YES;
-                    *stopLeft  = YES;
+                    hasCompared = YES;
+                    *stopRight  = YES;
+                    *stopLeft   = YES;
                 }
             }];
         }];
     }
-    if (!self.currentCellItemLeft && self.leftItems.count>0) {
-        [self setupSelectedItemLeft:self.leftItems.firstObject itemRight:nil];
+    if (!hasCompared && self.leftItems.count>0) {
+        SearchFactorFilterCategoryItemLeft *itemLeft = self.leftItems.firstObject;
+        itemLeft.dataSelected = NO;
+        itemLeft.cellSelected = NO;
+        itemLeft.currentCell  = NO;
+        [self setupSelectedItemLeft:itemLeft itemRight:nil];
     }
 }
 
@@ -156,7 +162,7 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
         itemRight.cellSelected = YES;
         self.cellSelectedItemRight = itemRight;
     }
-    if (!self.currentCellItemLeft) {
+    if (!self.currentCellItemLeft.currentCell) {
         itemLeft.currentCell = YES;
         self.currentCellItemLeft = itemLeft;
     }

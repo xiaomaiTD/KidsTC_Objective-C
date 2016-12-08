@@ -7,6 +7,9 @@
 //
 
 #import "SearchResultProductLargeCell.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+
 
 @interface SearchResultProductLargeCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -34,6 +37,19 @@
     self.storeIcon.layer.masksToBounds = YES;
     self.storeIcon.layer.borderWidth = 1;
     self.storeIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+}
+
+- (void)setProduct:(SearchResultProduct *)product {
+    _product = product;
+    [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_product.bigImgurl] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    _nameL.text = _product.name;
+    _priceL.text = _product.price;
+    _addressL.text = [NSString stringWithFormat:@"%@ 距离%@",_product.storeName,_product.distance];
+    _stateL.text = _product.endTimeDesc;
+    _bannerH.constant = (SCREEN_WIDTH - 20) * _product.bigImgRatio;
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="114" id="KGk-i7-Jjw" customClass="SearchResultStoreProductCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G23-SG-iEa">
+                        <rect key="frame" x="15" y="16" width="76" height="76"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="G23-SG-iEa" secondAttribute="height" multiplier="1:1" id="kQb-16-MIc"/>
+                            <constraint firstAttribute="width" constant="76" id="mXi-ua-fbr"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVS-a2-8Ft">
+                        <rect key="frame" x="103" y="16" width="202" height="76"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiV-hH-2TQ">
+                                <rect key="frame" x="0.0" y="0.0" width="202" height="54"/>
+                                <string key="text">格林童话经典童话音乐剧《白雪公主》格林童话经典童话音乐剧乐剧乐剧 剧…格林童话经典童话音乐剧《白雪公主》格林童话经典童话音乐剧乐剧乐剧 剧…</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥10～50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeI-qM-LIe">
+                                <rect key="frame" x="0.0" y="55" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MeI-qM-LIe" firstAttribute="leading" secondItem="ZVS-a2-8Ft" secondAttribute="leading" id="3wt-I3-7up"/>
+                            <constraint firstAttribute="bottom" secondItem="MeI-qM-LIe" secondAttribute="bottom" id="8Nt-sr-cr1"/>
+                            <constraint firstItem="EiV-hH-2TQ" firstAttribute="top" secondItem="ZVS-a2-8Ft" secondAttribute="top" id="Pff-5B-KY0"/>
+                            <constraint firstAttribute="trailing" secondItem="EiV-hH-2TQ" secondAttribute="trailing" id="jBk-7w-rnW"/>
+                            <constraint firstItem="EiV-hH-2TQ" firstAttribute="leading" secondItem="ZVS-a2-8Ft" secondAttribute="leading" id="zOW-ra-Km4"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5l-WG-Pv4">
+                        <rect key="frame" x="15" y="107.5" width="290" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="SfV-tR-Wpl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ZVS-a2-8Ft" firstAttribute="bottom" secondItem="G23-SG-iEa" secondAttribute="bottom" id="1nQ-bw-hzQ"/>
+                    <constraint firstItem="G23-SG-iEa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="8WL-Me-G1B"/>
+                    <constraint firstItem="m5l-WG-Pv4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HJj-BU-kHq"/>
+                    <constraint firstItem="ZVS-a2-8Ft" firstAttribute="top" secondItem="G23-SG-iEa" secondAttribute="top" id="Lsf-7p-fiC"/>
+                    <constraint firstItem="ZVS-a2-8Ft" firstAttribute="leading" secondItem="G23-SG-iEa" secondAttribute="trailing" constant="12" id="NzX-3D-BLw"/>
+                    <constraint firstAttribute="bottom" secondItem="G23-SG-iEa" secondAttribute="bottom" constant="16" id="R7j-uG-UCe"/>
+                    <constraint firstAttribute="bottom" secondItem="m5l-WG-Pv4" secondAttribute="bottom" id="Tlh-LN-FPb"/>
+                    <constraint firstAttribute="trailing" secondItem="ZVS-a2-8Ft" secondAttribute="trailing" constant="15" id="ZLg-XF-yia"/>
+                    <constraint firstItem="G23-SG-iEa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="r4r-JR-vqj"/>
+                    <constraint firstAttribute="trailing" secondItem="m5l-WG-Pv4" secondAttribute="trailing" constant="15" id="zbh-aW-1I9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="SfV-tR-Wpl" id="azN-xr-9mt"/>
+                <outlet property="icon" destination="G23-SG-iEa" id="MBI-cJ-aJg"/>
+                <outlet property="infoBGView" destination="ZVS-a2-8Ft" id="YQu-Lj-PIr"/>
+                <outlet property="nameL" destination="EiV-hH-2TQ" id="Xju-qA-jrt"/>
+                <outlet property="priceL" destination="MeI-qM-LIe" id="5Uf-yS-gQu"/>
+            </connections>
+            <point key="canvasLocation" x="-194" y="87.5"/>
+        </tableViewCell>
+    </objects>
+</document>

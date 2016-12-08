@@ -1,18 +1,18 @@
 //
-//  SearchResultProductModel.m
+//  SearchResultStoreModel.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/12/7.
+//  Created by 詹平 on 2016/12/8.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "SearchResultProductModel.h"
+#import "SearchResultStoreModel.h"
 
-@implementation SearchResultProductModel
+@implementation SearchResultStoreModel
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};
 }
 + (NSDictionary *)modelContainerPropertyGenericClass{
-    return @{@"data":[SearchResultProduct class]};
+    return @{@"data":[SearchResultStore class]};
 }
 @end

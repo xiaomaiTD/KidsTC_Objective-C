@@ -12,30 +12,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="204" id="KGk-i7-Jjw" customClass="SearchResultProductLargeCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="265" id="KGk-i7-Jjw" customClass="SearchResultProductLargeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="264.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEg-3y-osJ">
-                        <rect key="frame" x="10" y="10" width="300" height="194"/>
+                        <rect key="frame" x="10" y="10" width="300" height="254.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhk-oK-khp">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="sf7-LP-Bgv"/>
+                                    <constraint firstAttribute="height" constant="160" id="sf7-LP-Bgv"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="亲亲袋鼠静安店4周年，50元特惠体验亲子活动" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXh-Fw-PNt">
-                                <rect key="frame" x="12" y="116" width="215" height="43"/>
+                                <rect key="frame" x="12" y="176" width="215" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1GO-hY-oBI">
-                                <rect key="frame" x="253" y="73" width="37" height="37"/>
+                                <rect key="frame" x="253" y="133" width="37" height="37"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1GO-hY-oBI" secondAttribute="height" multiplier="1:1" id="YQm-Vf-Dzl"/>
@@ -43,33 +43,33 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="¥10.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvE-hd-02e">
-                                <rect key="frame" x="235" y="116" width="53" height="21"/>
+                                <rect key="frame" x="235" y="176" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市静安寺康东路 4.24km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouG-2B-AVt">
-                                <rect key="frame" x="25" y="165" width="142" height="14"/>
+                                <rect key="frame" x="25" y="225.5" width="142" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResult_address" translatesAutoresizingMaskIntoConstraints="NO" id="5Cn-Yb-x60">
-                                <rect key="frame" x="12" y="167" width="11" height="11"/>
+                                <rect key="frame" x="12" y="227.5" width="11" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="11" id="XcN-GG-Jfa"/>
                                     <constraint firstAttribute="width" secondItem="5Cn-Yb-x60" secondAttribute="height" multiplier="1:1" id="yrS-5U-iC8"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResult_time" translatesAutoresizingMaskIntoConstraints="NO" id="YPN-si-86Y">
-                                <rect key="frame" x="175" y="167" width="10" height="10"/>
+                                <rect key="frame" x="175" y="227.5" width="10" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="WOK-vh-f8m"/>
                                     <constraint firstAttribute="width" secondItem="YPN-si-86Y" secondAttribute="height" multiplier="1:1" id="heY-5N-1Ty"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="进行中 ，8天后结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn8-qG-h0n">
-                                <rect key="frame" x="187" y="165" width="101" height="14"/>
+                                <rect key="frame" x="187" y="225.5" width="101" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -119,7 +119,7 @@
                 <outlet property="stateL" destination="Nn8-qG-h0n" id="hDf-Sc-tpI"/>
                 <outlet property="storeIcon" destination="1GO-hY-oBI" id="WLk-fs-h5n"/>
             </connections>
-            <point key="canvasLocation" x="25" y="-52"/>
+            <point key="canvasLocation" x="-50" y="-141"/>
         </tableViewCell>
     </objects>
     <resources>

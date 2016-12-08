@@ -15,29 +15,53 @@
 #import "SearchHotKeywordsManager.h"
 #import <AVFoundation/AVFoundation.h>
 #import "KTCMapService.h"
+#import "SegueMaster.h"
 
 #import "SearchResultProductModel.h"
+#import "SearchResultStoreModel.h"
 #import "SearchResultView.h"
 
 #import "SpeekViewController.h"
 
-@interface SearchResultViewController ()<UITextFieldDelegate,SearchResultViewDelegate>
+@interface SearchResultViewController ()<UITextFieldDelegate,SearchResultToolBarDelegate,SearchResultViewDelegate>
 @property (nonatomic, weak) UITextField *tf;
+@property (nonatomic, weak) SearchResultToolBar *toolBar;
 @property (nonatomic, weak) SearchResultView *resultView;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSString *userLocation;
-@property (nonatomic, strong) NSArray<SearchResultProduct *> *products;
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) UIButton *rightBarBtn;
 @end
 
 @implementation SearchResultViewController
+
+- (void)setSearchType:(SearchType)searchType {
+    _searchType = searchType;
+    self.resultView.searchType = searchType;
+    self.toolBar.searchType = searchType;
+    self.rightBarBtn.enabled = (searchType == SearchTypeProduct);
+}
+
+- (void)setParams_product:(NSDictionary *)params_product {
+    _params_product = params_product;
+    self.params_current = _params_product;
+}
+
+- (void)setParams_store:(NSDictionary *)params_store {
+    _params_store = params_store;
+    self.params_current = _params_store;
+}
+
+- (void)setParams_current:(NSDictionary *)params_current {
+    _params_current = params_current;
+    self.toolBar.insetParam = _params_current;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    [self setupToolBar];
     
     [self setupTf];
     
@@ -47,6 +71,8 @@
     resultView.delegate = self;
     [self.view addSubview:resultView];
     self.resultView = resultView;
+    
+    [self setupToolBar];
     
     [NotificationCenter addObserver:self selector:@selector(userLocationDidChange) name:kUserLocationHasChangedNotification object:nil];
     [self userLocationDidChange];
@@ -67,9 +93,21 @@
 }
 
 - (void)buildNavigationBar{
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"搜索" postion:UIBarButtonPositionRight target:self action:@selector(search) andGetButton:^(UIButton *btn) {
-        [btn setTitleColor:[UIColor colorFromHexString:@"5B5B5B"] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(changeProductShowState:) andGetButton:^(UIButton *btn) {
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(2, 2, 2, 2)];
+        [btn setImage:[UIImage imageNamed:@"searchResult_large"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"searchResult_small"] forState:UIControlStateSelected];
+        self.rightBarBtn = btn;
     }];
+}
+
+- (void)changeProductShowState:(UIButton *)btn {
+    btn.selected = !btn.selected;
+    if (!btn.selected) {
+        self.resultView.showType = SearchResultProductViewShowTypeSmall;
+    }else{
+        self.resultView.showType = SearchResultProductViewShowTypeLarge;
+    }
 }
 
 - (void)setupTf {
@@ -179,15 +217,71 @@
     }else{
         item = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem;
     }
-    
 }
 
 - (void)setupToolBar {
     SearchResultToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"SearchResultToolBar" owner:self options:nil].firstObject;
     toolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kSearchResultToolBarH);
+    toolBar.delegate = self;
     [self.view addSubview:toolBar];
-    toolBar.insetParam = self.search_parms;
+    toolBar.insetParam = _params_current;
+    self.toolBar = toolBar;
 }
+
+#pragma mark - SearchResultToolBarDelegate
+
+- (void)searchResultToolBar:(SearchResultToolBar *)toolBar actionType:(SearchResultToolBarActionType)type value:(id)value {
+    switch (type) {
+        case SearchResultToolBarActionTypeBtnClicked:
+        {
+            [self.tf resignFirstResponder];
+        }
+            break;
+        case SearchResultToolBarActionTypeDidSelectParam:
+        {
+            switch (self.searchType) {
+                case SearchTypeProduct:
+                {
+                    if ([value isKindOfClass:[NSDictionary class]]) {
+                        self.params_product = value;
+                        [self.resultView beginRefreshing];
+                    }
+                }
+                    break;
+                case SearchTypeStore:
+                {
+                    if ([value isKindOfClass:[NSDictionary class]]) {
+                        self.params_store = value;
+                        [self.resultView beginRefreshing];
+                    }
+                }
+                    break;
+            }
+        }
+            break;
+        case SearchResultToolBarActionTypeDidSelectProduct:
+        {
+            self.resultView.items = nil;
+            [self.resultView reloadData];
+            self.searchType = SearchTypeProduct;
+        }
+            break;
+        case SearchResultToolBarActionTypeDidSeltctStore:
+        {
+            self.resultView.items = nil;
+            [self.resultView reloadData];
+            self.params_current = self.params_store;
+            self.searchType = SearchTypeStore;
+            [self.resultView beginRefreshing];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
+
 
 
 #pragma mark - SearchResultViewDelegate
@@ -196,20 +290,47 @@
     switch (type) {
         case SearchResultViewActionTypeLoadData:
         {
-            if ([value respondsToSelector:@selector(boolValue)]) {
-                [self loadData:[value boolValue]];
-            }
+            [self loadData:value];
         }
             break;
-            
+        case SearchResultViewActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
         default:
             break;
     }
 }
 
-- (void)loadData:(BOOL)refresh {
+- (void)loadData:(id)value {
+    if ([value respondsToSelector:@selector(boolValue)]) {
+        switch (_searchType) {
+            case SearchTypeProduct:
+            {
+                [self loadProductData:[value boolValue]];
+            }
+                break;
+            case SearchTypeStore:
+            {
+                [self loadStoreData:[value boolValue]];
+            }
+                break;
+            default:
+            {
+                [self.resultView dealWithUI:0];
+            }
+                break;
+        }
+    }else{
+        [self.resultView dealWithUI:0];
+    }
+    
+}
+
+- (void)loadProductData:(BOOL)refresh {
     self.page = refresh?1:++self.page;
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.search_parms];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.params_current];
     [dic setObject:@(self.page) forKey:@"page"];
     [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
     if ([self.userLocation isNotNull]) {
@@ -219,13 +340,39 @@
     [Request startWithName:@"SEARCH_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultProductModel *model = [SearchResultProductModel modelWithDictionary:dic];
         if (refresh) {
-            self.products = model.data;
+            self.items = model.data;
         }else{
-            NSMutableArray *products = [NSMutableArray arrayWithArray:self.products];
-            [products addObjectsFromArray:model.data];
-            self.products = [NSArray arrayWithArray:products];
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
         }
-        self.resultView.products = self.products;
+        self.resultView.items = self.items;
+        [self.resultView dealWithUI:model.data.count];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.resultView dealWithUI:0];
+    }];
+}
+
+- (void)loadStoreData:(BOOL)refresh {
+    self.page = refresh?1:++self.page;
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.params_current];
+    [dic setObject:@(self.page) forKey:@"page"];
+    [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
+    if ([self.userLocation isNotNull]) {
+        [dic setObject:self.userLocation forKey:@"mapaddr"];
+    }
+    //NSString *pt = [NSString stringWithFormat:<#(nonnull NSString *), ...#>];
+    NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
+    [Request startWithName:@"STORE_SEARCH_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        SearchResultStoreModel *model = [SearchResultStoreModel modelWithDictionary:dic];
+        if (refresh) {
+            self.items = model.data;
+        }else{
+            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+            [items addObjectsFromArray:model.data];
+            self.items = [NSArray arrayWithArray:items];
+        }
+        self.resultView.items = self.items;
         [self.resultView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.resultView dealWithUI:0];

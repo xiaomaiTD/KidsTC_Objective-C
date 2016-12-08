@@ -12,7 +12,13 @@
 #define kSearchResultViewPageCount 10
 
 typedef enum : NSUInteger {
+    SearchResultProductViewShowTypeSmall = 1,//小图模式
+    SearchResultProductViewShowTypeLarge,//大图模式
+} SearchResultProductViewShowType;
+
+typedef enum : NSUInteger {
     SearchResultViewActionTypeLoadData = 1,
+    SearchResultViewActionTypeSegue,
 } SearchResultViewActionType;
 
 @class SearchResultView;
@@ -21,7 +27,11 @@ typedef enum : NSUInteger {
 @end
 
 @interface SearchResultView : UIView
-@property (nonatomic, strong) NSArray<SearchResultProduct *> *products;
+@property (nonatomic, strong) NSArray *items;
 @property (nonatomic, weak) id<SearchResultViewDelegate> delegate;
+@property (nonatomic, assign) SearchResultProductViewShowType showType;
+@property (nonatomic, assign) SearchType searchType;
 - (void)dealWithUI:(NSUInteger)loadCount;
+- (void)beginRefreshing;
+- (void)reloadData;
 @end

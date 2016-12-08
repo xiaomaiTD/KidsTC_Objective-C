@@ -107,19 +107,19 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     
     SearchFactorFilterAgeItem *ageItem = self.ageView.cellSelectedItem;
+    NSString *age = @"";
     if (ageItem.dataSelected) {
-        NSString *age = ageItem.value;
-        if ([age isNotNull]) {
-            [dic setObject:age forKey:kSearchKey_area];
-        }
+        age = [NSString stringWithFormat:@"%@",ageItem.value];
     }
+    [dic setObject:age forKey:kSearchKey_area];
+    
     SearchFactorFilterCategoryItemRight *categoryItemRight = self.categoryView.cellSelectedItemRight;
+    NSString *category = @"";
     if (categoryItemRight.dataSelected) {
-        NSString *category = categoryItemRight.value;
-        if ([category isNotNull]) {
-            [dic setObject:category forKey:kSearchKey_category];
-        }
+        category = categoryItemRight.value;
     }
+    [dic setObject:category forKey:kSearchKey_category];
+    
     if ([self.delegate respondsToSelector:@selector(searchFactorFilterView:didSelectParam:byClick:)]) {
         [self.delegate searchFactorFilterView:self didSelectParam:[NSDictionary dictionaryWithDictionary:dic] byClick:byClick];
     }

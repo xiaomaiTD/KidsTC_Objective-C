@@ -57,12 +57,12 @@ static CGFloat const margin = 16;
 
 - (void)setInsetParam:(NSDictionary *)insetParam {
     _insetParam = insetParam;
+    
     NSString *age = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_age]];
     if ([age isNotNull]) {
         [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([age isEqualToString:obj.value]) {
                 [self setupSelectedItem:obj];
-                *stop = YES;
             }
         }];
     }
