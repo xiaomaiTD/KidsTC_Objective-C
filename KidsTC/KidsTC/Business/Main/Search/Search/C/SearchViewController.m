@@ -14,6 +14,8 @@
 #import "NSString+Category.h"
 #import "SearchHistoryKeywordsManager.h"
 #import "SearchHotKeywordsManager.h"
+#import "TabBarController.h"
+#import "NavigationController.h"
 
 #import "SearchView.h"
 
@@ -60,6 +62,13 @@
 }
 
 - (void)buildNavigationBar{
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateHighlighted];
+        btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.backBtn = btn;
+    }];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"搜索" postion:UIBarButtonPositionRight target:self action:@selector(search) andGetButton:^(UIButton *btn) {
         [btn setTitleColor:[UIColor colorFromHexString:@"5B5B5B"] forState:UIControlStateNormal];
     }];
@@ -122,8 +131,10 @@
 
 - (void)speek {
     [self requestAccess:AVMediaTypeAudio name:@"麦克风" callBack:^{
+        [self.navigationController dismissViewControllerAnimated:NO completion:nil];
         SpeekViewController *controller = [[SpeekViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
+        NavigationController *targent = [[NavigationController alloc] initWithRootViewController:controller];
+        [[TabBarController shareTabBarController].selectedViewController presentViewController:targent animated:YES completion:nil];
     }];
 }
 
@@ -204,12 +215,26 @@
 
 - (void)searchBeginWithItem:(SearchHotKeywordsItem *)item {
     self.tf.text = item.name;
-    SearchResultViewController *controller = [[SearchResultViewController alloc] init];
-    controller.params_product = item.search_parms;
-    controller.searchType = SearchTypeProduct;
-    [self.navigationController pushViewController:controller animated:YES];
+    __block SearchResultViewController *controller;
+    UINavigationController *navi = [TabBarController shareTabBarController].selectedViewController;
+    [navi.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[SearchResultViewController class]]) {
+            controller = (SearchResultViewController *)obj;
+            *stop = YES;
+        }
+    }];
+    if (controller) {
+        [controller setSearchType:item.searchType params:item.search_parms];
+        [navi popToViewController:controller animated:YES];
+    }else{
+        controller = [[SearchResultViewController alloc] init];
+        [controller setSearchType:item.searchType params:item.search_parms];
+        [navi pushViewController:controller animated:YES];
+    }
+    
     [[SearchHistoryKeywordsManager shareSearchHistoryKeywordsManager] addSearchHistoryItem:item];
     [self.searchView reloadData];
+    [self.navigationController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)deleteHistoryAtIndex:(NSInteger)index {

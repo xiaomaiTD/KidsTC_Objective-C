@@ -33,18 +33,19 @@ static CGFloat const margin = 16;
 
 - (void)setInsetParam:(NSDictionary *)insetParam {
     _insetParam = insetParam;
+    
+    _selectedItem.selected = NO;
+    
     NSString *area = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_area]];
-    __block BOOL hasCompared = NO;
     if ([area isNotNull]) {
         [self.areas enumerateObjectsUsingBlock:^(SearchFactorAreaDataItem *obj, NSUInteger idx, BOOL *stop) {
             if ([area isEqualToString:obj.value]) {
                 [self setupSelectItem:obj byClick:NO];
-                hasCompared = YES;
                 *stop = YES;
             }
         }];
     }
-    if (!hasCompared && _areas.count>0) {
+    if (!_selectedItem.selected && _areas.count>0) {
         [self setupSelectItem:_areas.firstObject byClick:NO];
     }
 }

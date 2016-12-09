@@ -14,20 +14,20 @@
     _bigImgRatio = _bigImgRatio>0?_bigImgRatio:0.6;
     if ([_serveId isNotNull]) {
         if (![_channelId isNotNull]) _channelId = @"0";
-        switch (_productType) {
+        switch (_productSearchType) {
             case ProductDetailTypeNormal:
             case ProductDetailTypeTicket:
             case ProductDetailTypeFree:
                 break;
             default:
             {
-                _productType = ProductDetailTypeNormal;
+                _productSearchType = ProductDetailTypeNormal;
             }
                 break;
         }
         NSDictionary *param = @{@"pid":_serveId,
                                 @"cid":_channelId,
-                                @"type":@(_productType)};
+                                @"type":@(_productSearchType)};
         _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
     }
     

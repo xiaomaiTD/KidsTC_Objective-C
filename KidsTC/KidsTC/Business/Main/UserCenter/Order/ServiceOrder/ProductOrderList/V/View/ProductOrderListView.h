@@ -25,8 +25,11 @@ typedef enum : NSUInteger {
     ProductOrderListViewActionTypeEvaluate = 11,/// 评价
     ProductOrderListViewActionTypeBuyAgain = 12,/// 再次购买
     ProductOrderListViewActionTypeComplaint = 13,/// 投诉
+    ProductOrderListViewActionTypeRefund = 14,//申请售后
     
-    ProductOrderListViewActionTypeStore = 14,//门店详情
+    ProductOrderListViewActionTypeStore = 50,//门店详情
+    ProductOrderListViewActionTypeSegue = 51,//通用跳转
+    ProductOrderListViewActionTypeCall = 52,//打电话
     
     ProductOrderListViewActionTypeLoadData = 100,//加载数据
     
@@ -40,7 +43,8 @@ typedef enum : NSUInteger {
 @interface ProductOrderListView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) id<ProductOrderListViewDelegate> delegate;
-@property (nonatomic, assign) NSArray *items;
+@property (nonatomic, strong) NSArray *items;
 - (void)beginRefreshing;
+- (void)reloadData;
 - (void)dealWithUI:(NSUInteger)loadCount;
 @end

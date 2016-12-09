@@ -8,37 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import "SegueModel.h"
-/*
- serveId	Integer	100001
- name	String	钢琴独奏亲子音乐会《肖邦与夜曲》（红色区域下午）
- productType	Integer	0
- channelId	Integer	0
- productSearchType	Integer	2
- level	Integer	5
- status	Integer	1
- price	String	40~250
- num	Integer	0
- imgurl	String	http://img.kidstc.com/v1/img/T1LRETBKxT1RCvBVdK.jpg
- fullCut	Array
- isHaveCoupon	Boolean	true
- isGqt	Boolean	false
- isSst	Boolean	false
- isBft	Boolean	false
- bigImgurl	String	http://img.kidstc.com/v1/img/T1cRETByKv1RCvBVdK.jpg
- restDays	Integer	297
- storeNo	Integer	1
- mapAddress	String	121.456391000424,31.2431438681179
- address	String	江宁路631号
- distance	String	15m
- */
+
+typedef enum : NSUInteger {
+    SearchResultProductTypeService = 1,//服务
+    SearchResultProductTypeActivity,//活动
+    SearchResultProductTypeMaterialObject,//实物
+} SearchResultProductType;
+
+typedef enum : NSUInteger {
+    SearchResultProductStatusUnder = -1,//已下架
+    SearchResultProductStatusInitial = 0,//初始
+    SearchResultProductStatusPublished = 1,//已上架
+    SearchResultProductStatusSlodOut = 2,//已售罄
+    SearchResultProductStatusNoStore = 3,//没有门店-暂不销售
+    SearchResultProductStatusNotStart = 4,//即将开始
+    SearchResultProductStatusFinished = 5,//已经结束-暂不销售
+} SearchResultProductStatus;
+
 @interface SearchResultProduct : NSObject
 @property (nonatomic, strong) NSString *serveId;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) ProductDetailType productType;
+@property (nonatomic, assign) SearchResultProductType productType;
 @property (nonatomic, strong) NSString *channelId;
-//@property (nonatomic, strong) NSString *productSearchType;
+@property (nonatomic, assign) ProductDetailType productSearchType;
 @property (nonatomic, assign) NSInteger level;
-//@property (nonatomic, strong) NSString *status;
+@property (nonatomic, assign) SearchResultProductStatus status;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *num;
 @property (nonatomic, strong) NSString *imgurl;
@@ -56,6 +50,11 @@
 @property (nonatomic, strong) NSString *endTimeDesc;
 @property (nonatomic, strong) NSString *storeName;
 @property (nonatomic, strong) NSString *storeLogo;
+@property (nonatomic, strong) NSString *joinText;
+@property (nonatomic, assign) BOOL isFreeShipping;
+@property (nonatomic, strong) NSString *freeShippingRange;
+@property (nonatomic, strong) NSString *commentNum;
+@property (nonatomic, strong) NSString *goodCommentPercent;
 
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;

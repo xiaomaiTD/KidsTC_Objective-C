@@ -52,52 +52,86 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
 }
 
 - (void)clean {
-    self.cellSelectedItemLeft.cellSelected = NO;
-    self.cellSelectedItemRight.cellSelected = NO;
+    [self.leftItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemLeft *itemLeft, NSUInteger idxLeft, BOOL *stopLeft) {
+        itemLeft.cellSelected = NO;
+        [itemLeft.rightItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemRight *itemRight, NSUInteger idxLeft, BOOL *stopLeft) {
+            itemRight.cellSelected = NO;
+        }];
+    }];
     [self.tableView_left reloadData];
     [self.tableView_right reloadData];
 }
 
 - (void)sure {
-    self.cellSelectedItemLeft.dataSelected = self.cellSelectedItemLeft.cellSelected;
-    self.cellSelectedItemRight.dataSelected = self.cellSelectedItemRight.cellSelected;
+    [self.leftItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemLeft *itemLeft, NSUInteger idxLeft, BOOL *stopLeft) {
+        itemLeft.dataSelected = itemLeft.cellSelected;
+        [itemLeft.rightItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemRight *itemRight, NSUInteger idxLeft, BOOL *stopLeft) {
+            itemRight.dataSelected = itemRight.cellSelected;
+        }];
+    }];
     [self.tableView_left reloadData];
     [self.tableView_right reloadData];
 }
 
 - (void)reset {
-    self.cellSelectedItemLeft.cellSelected = self.cellSelectedItemLeft.dataSelected;
-    self.cellSelectedItemRight.cellSelected = self.cellSelectedItemRight.dataSelected;
+    [self.leftItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemLeft *itemLeft, NSUInteger idxLeft, BOOL *stopLeft) {
+        itemLeft.cellSelected = itemLeft.dataSelected;
+        if (itemLeft.dataSelected) {
+            self.cellSelectedItemLeft = itemLeft;
+        }
+        [itemLeft.rightItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemRight *itemRight, NSUInteger idxLeft, BOOL *stopLeft) {
+            itemRight.cellSelected = itemRight.dataSelected;
+            if (itemRight.dataSelected) {
+                self.cellSelectedItemRight = itemRight;
+            }
+        }];
+    }];
+    
     [self.tableView_left reloadData];
     [self.tableView_right reloadData];
 }
 
 - (void)setInsetParam:(NSDictionary *)insetParam {
     _insetParam = insetParam;
+    if (self.cellSelectedItemLeft || self.cellSelectedItemRight || self.currentCellItemLeft) {
+        self.cellSelectedItemLeft.dataSelected  = NO;
+        self.cellSelectedItemLeft.cellSelected  = NO;
+        self.cellSelectedItemLeft.currentCell   = NO;
+        self.cellSelectedItemRight.dataSelected = NO;
+        self.cellSelectedItemRight.cellSelected = NO;
+        self.currentCellItemLeft.dataSelected   = NO;
+        self.currentCellItemLeft.cellSelected   = NO;
+        self.currentCellItemLeft.currentCell    = NO;
+        self.cellSelectedItemLeft  = nil;
+        self.cellSelectedItemRight = nil;
+        self.currentCellItemLeft   = nil;
+    }
     NSString *category = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_category]];
-    __block BOOL hasCompared = NO;
     if ([category isNotNull]) {
         [self.leftItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemLeft *itemLeft, NSUInteger idxLeft, BOOL *stopLeft) {
             [itemLeft.rightItems enumerateObjectsUsingBlock:^(SearchFactorFilterCategoryItemRight *itemRight, NSUInteger idxRight, BOOL *stopRight) {
                 if ([category isEqualToString:itemRight.value]) {
                     itemLeft.dataSelected  = YES;
+                    itemLeft.cellSelected  = YES;
                     itemLeft.currentCell   = YES;
                     itemRight.dataSelected = YES;
-                    [self setupSelectedItemLeft:itemLeft itemRight:itemRight];
-                    hasCompared = YES;
+                    itemRight.cellSelected = YES;
+                    self.cellSelectedItemLeft  = itemLeft;
+                    self.cellSelectedItemRight = itemRight;
+                    self.currentCellItemLeft   = itemLeft;
                     *stopRight  = YES;
                     *stopLeft   = YES;
                 }
             }];
         }];
     }
-    if (!hasCompared && self.leftItems.count>0) {
+    if (!self.currentCellItemLeft && self.leftItems.count>0) {
         SearchFactorFilterCategoryItemLeft *itemLeft = self.leftItems.firstObject;
-        itemLeft.dataSelected = NO;
-        itemLeft.cellSelected = NO;
-        itemLeft.currentCell  = NO;
-        [self setupSelectedItemLeft:itemLeft itemRight:nil];
+        itemLeft.currentCell   = YES;
+        self.currentCellItemLeft = itemLeft;
     }
+    [self.tableView_left reloadData];
+    [self.tableView_right reloadData];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -140,7 +174,7 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
         NSArray<SearchFactorFilterCategoryItemRight *> *rightItems = self.currentCellItemLeft.rightItems;
         if (row>=rightItems.count) return;
         SearchFactorFilterCategoryItemRight *itemRight = rightItems[row];
-        [self setupSelectedItemLeft:self.currentCellItemLeft itemRight:itemRight];
+        [self setupSelectedItemRight:itemRight];
     }
 }
 
@@ -152,8 +186,7 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
     [self.tableView_right reloadData];
 }
 
-- (void)setupSelectedItemLeft:(SearchFactorFilterCategoryItemLeft *)itemLeft
-                    itemRight:(SearchFactorFilterCategoryItemRight *)itemRight
+- (void)setupSelectedItemRight:(SearchFactorFilterCategoryItemRight *)itemRight
 {
     if (itemRight == self.cellSelectedItemRight) {
         itemRight.cellSelected = !itemRight.cellSelected;
@@ -162,13 +195,9 @@ static NSString *const CellRightID = @"SearchFactorFilterCategoryCellRight";
         itemRight.cellSelected = YES;
         self.cellSelectedItemRight = itemRight;
     }
-    if (!self.currentCellItemLeft.currentCell) {
-        itemLeft.currentCell = YES;
-        self.currentCellItemLeft = itemLeft;
-    }
     self.cellSelectedItemLeft.cellSelected = NO;
     self.currentCellItemLeft.cellSelected = self.cellSelectedItemRight.cellSelected;
-    self.cellSelectedItemLeft = itemLeft;
+    self.cellSelectedItemLeft = self.currentCellItemLeft;
     [self.tableView_left reloadData];
     [self.tableView_right reloadData];
 }

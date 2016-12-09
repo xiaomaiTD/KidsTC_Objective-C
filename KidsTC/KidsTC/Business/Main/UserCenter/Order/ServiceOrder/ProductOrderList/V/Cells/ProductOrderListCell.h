@@ -25,8 +25,11 @@ typedef enum : NSUInteger {
     ProductOrderListCellActionTypeEvaluate = 11,/// 评价
     ProductOrderListCellActionTypeBuyAgain = 12,/// 再次购买
     ProductOrderListCellActionTypeComplaint = 13,/// 投诉
+    ProductOrderListCellActionTypeRefund = 14,//申请售后
     
-    ProductOrderListCellActionTypeStore = 14,//门店详情
+    ProductOrderListCellActionTypeStore = 50,//门店详情
+    ProductOrderListCellActionTypeSegue = 51,//通用跳转
+    ProductOrderListCellActionTypeCall = 52,//打电话
     
 } ProductOrderListCellActionType;
 

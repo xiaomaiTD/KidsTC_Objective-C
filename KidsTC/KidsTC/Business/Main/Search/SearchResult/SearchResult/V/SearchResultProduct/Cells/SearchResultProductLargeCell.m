@@ -9,6 +9,7 @@
 #import "SearchResultProductLargeCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 
 @interface SearchResultProductLargeCell ()
@@ -46,6 +47,14 @@
     _priceL.text = _product.price;
     _addressL.text = [NSString stringWithFormat:@"%@ 距离%@",_product.storeName,_product.distance];
     _stateL.text = _product.endTimeDesc;
+    
+    if ([_product.storeLogo isNotNull]) {
+        self.storeIcon.hidden = NO;
+        [self.storeIcon sd_setImageWithURL:[NSURL URLWithString:_product.storeLogo] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    }else{
+        self.storeIcon.hidden = YES;
+    }
+    
     _bannerH.constant = (SCREEN_WIDTH - 20) * _product.bigImgRatio;
     
     [self setNeedsLayout];

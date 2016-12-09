@@ -83,6 +83,11 @@
             btn.title = @"投诉";
         }
             break;
+        case ProductOrderListBtnTypeRefund:
+        {
+            btn.title = @"申请售后";
+        }
+            break;
         default:
         {
             return nil;

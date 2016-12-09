@@ -12,6 +12,9 @@
 #import "SearchResultViewController.h"
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
+#import "TabBarController.h"
+#import "SearchHistoryKeywordsManager.h"
+#import "UIBarButtonItem+Category.h"
 
 @interface SpeekViewController ()<SpeekViewDelegate>
 @property (nonatomic, strong) SpeekView *speekView;
@@ -31,6 +34,14 @@
     [speekView start];
     
     self.showFailurePage = YES;
+    
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateHighlighted];
+        btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
+        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        self.backBtn = btn;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,13 +60,30 @@
     switch (type) {
         case SpeekViewActionTypeRecognizeSuccess:
         {
+            
+            if (![value isKindOfClass:[NSString class]]) return;
             NSString *text = value;
-            #warning TODO...
-//            [self addSearchHistoryKeywords:text searchType:SearchType_Product];
-            SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-//            controller.searchParmsModel = [self searchParmsModelWithItem:nil searchType:SearchType_Product text:text];
-//            controller.searchType = SearchType_Product;
-            [self.navigationController pushViewController:controller animated:YES];
+            SearchHotKeywordsItem *item = [SearchHotKeywordsItem itemWithName:text];
+            __block SearchResultViewController *controller;
+            UINavigationController *navi = [TabBarController shareTabBarController].selectedViewController;
+            [navi.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj isKindOfClass:[SearchResultViewController class]]) {
+                    controller = (SearchResultViewController *)obj;
+                    *stop = YES;
+                }
+            }];
+            if (controller) {
+                [controller setSearchType:item.searchType params:item.search_parms];
+                [navi popToViewController:controller animated:YES];
+            }else{
+                controller = [[SearchResultViewController alloc] init];
+                [controller setSearchType:item.searchType params:item.search_parms];
+                [navi pushViewController:controller animated:YES];
+            }
+            
+            [[SearchHistoryKeywordsManager shareSearchHistoryKeywordsManager] addSearchHistoryItem:item];
+            [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+            
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
             if ([text isNotNull]) {
                 [params setValue:text forKey:@"key"];
@@ -66,49 +94,5 @@
     }
 }
 
-/**
- *  添加历史搜索关键词
- */
-//- (void)addSearchHistoryKeywords:(NSString *)text searchType:(SearchType)searchType {
-//    [[SearchHistoryKeywordsManager shareSearchHistoryKeywordsManager] addSearchHistoryKeywords:text
-//                                                                                    searchType:searchType];
-//}
-//
-//- (SearchParmsModel *)searchParmsModelWithItem:(SearchHotKeywordsListItem *)item
-//                                    searchType:(SearchType)searchType
-//                                          text:(NSString *)text
-//{
-//    SearchParmsModel *searchParmsModel = nil;
-//    switch (searchType) {
-//        case SearchType_Product:
-//        case SearchType_Store:
-//        {
-//            SearchParmsProductOrStoreModel *searchParmsProductOrStoreModel = nil;
-//            if (item) {
-//                SearchHotKeywordsListProductOrStoreItem *productOrStoreItem = (SearchHotKeywordsListProductOrStoreItem *)item;
-//                searchParmsProductOrStoreModel = productOrStoreItem.search_parms;
-//            }else{
-//                searchParmsProductOrStoreModel = [[SearchParmsProductOrStoreModel alloc]init];
-//                searchParmsProductOrStoreModel.k = text;
-//            }
-//            searchParmsModel = searchParmsProductOrStoreModel;
-//        }
-//            break;
-//        case SearchType_Article:
-//        {
-//            SearchParmsArticleModel *searchParmsArticleModel = nil;
-//            if (item) {
-//                SearchHotKeywordsListArticleItem *articleItem = (SearchHotKeywordsListArticleItem *)item;
-//                searchParmsArticleModel = articleItem.search_parms;
-//            }else{
-//                searchParmsArticleModel = [[SearchParmsArticleModel alloc]init];
-//                searchParmsArticleModel.k = text;
-//            }
-//            searchParmsModel = searchParmsArticleModel;
-//        }
-//            break;
-//    }
-//    return searchParmsModel;
-//}
 
 @end

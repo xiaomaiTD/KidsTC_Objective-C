@@ -41,28 +41,44 @@ static CGFloat const margin = 16;
 }
 
 - (void)clean {
-    self.cellSelectedItem.cellSelected = NO;
+    [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.cellSelected = NO;
+    }];
     [self.collectionView reloadData];
 }
 
 - (void)sure {
-    self.cellSelectedItem.dataSelected = self.cellSelectedItem.cellSelected;
+    [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.dataSelected = obj.cellSelected;
+    }];
     [self.collectionView reloadData];
 }
 
 - (void)reset {
-    self.cellSelectedItem.cellSelected = self.cellSelectedItem.dataSelected;
+    [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.cellSelected = obj.dataSelected;
+        if (obj.dataSelected) {
+            self.cellSelectedItem = obj;
+        }
+    }];
     [self.collectionView reloadData];
 }
 
 - (void)setInsetParam:(NSDictionary *)insetParam {
     _insetParam = insetParam;
-    
+    if (self.cellSelectedItem) {
+        self.cellSelectedItem.cellSelected = NO;
+        self.cellSelectedItem.dataSelected = NO;
+        self.cellSelectedItem = nil;
+        [self.collectionView reloadData];
+    }
     NSString *age = [NSString stringWithFormat:@"%@",insetParam[kSearchKey_age]];
     if ([age isNotNull]) {
-        [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.items enumerateObjectsUsingBlock:^(SearchFactorFilterAgeItem *obj, NSUInteger idx, BOOL *stop) {
             if ([age isEqualToString:obj.value]) {
-                [self setupSelectedItem:obj];
+                obj.cellSelected = YES;
+                obj.dataSelected = YES;
+                self.cellSelectedItem = obj;
             }
         }];
     }

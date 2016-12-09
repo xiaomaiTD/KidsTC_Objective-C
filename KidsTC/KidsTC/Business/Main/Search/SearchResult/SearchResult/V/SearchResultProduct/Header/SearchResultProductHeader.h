@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchResultProductHeader : UITableViewHeaderFooterView
-
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 @end

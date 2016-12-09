@@ -8,6 +8,10 @@
 
 #import "SearchResultProductHeader.h"
 
+@interface SearchResultProductHeader ()
+
+@end
+
 @implementation SearchResultProductHeader
 
 /*

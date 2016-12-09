@@ -11,8 +11,9 @@
 #import "GHeader.h"
 #import "NSString+Category.h"
 #import "OnlineCustomerService.h"
+#import "SegueMaster.h"
 
-
+#import "ProductOrderListReplaceModel.h"
 #import "ProductOrderListAllTitleRowItem.h"
 
 #import "ProductOrderListAllTitleView.h"
@@ -30,8 +31,9 @@
 #import "AppointmentOrderListViewController.h"
 #import "ProductOrderFreeListViewController.h"
 #import "NotificationCenterViewController.h"
+#import "OrderRefundViewController.h"
 
-@interface ProductOrderListViewController ()<ProductOrderListViewDelegate,CommentFoundingViewControllerDelegate,ProductOrderListAllTitleShowViewDelegate>
+@interface ProductOrderListViewController ()<ProductOrderListViewDelegate,CommentFoundingViewControllerDelegate,ProductOrderListAllTitleShowViewDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, assign) ProductOrderListType type;
 @property (nonatomic, assign) ProductOrderListOrderType orderType;
 @property (nonatomic, strong) ProductOrderListView *listView;
@@ -41,6 +43,7 @@
 
 @property (nonatomic, strong) ProductOrderListAllTitleView *allTitleView;
 @property (nonatomic, strong) ProductOrderListAllTitleShowView *allTitleShowView;
+
 @end
 
 @implementation ProductOrderListViewController
@@ -71,6 +74,7 @@
 }
 
 - (void)setupTitle {
+    
     switch (_type) {
         case ProductOrderListTypeAll://全部订单
         case ProductOrderListTypeCompleted://已完成订单
@@ -98,7 +102,7 @@
             break;
         case ProductOrderListTypeWaiatUse:
         {
-            self.navigationItem.title = @"待使用";
+            self.navigationItem.title = @"待消费";
         }
             break;
         case ProductOrderListTypeWaitRecive:
@@ -109,6 +113,11 @@
         case ProductOrderListTypeWaitComment:
         {
             self.navigationItem.title = @"待评价";
+        }
+            break;
+        case ProductOrderListTypeHasComment:
+        {
+            self.navigationItem.title = @"已评价";
         }
             break;
         case ProductOrderListTypeRefund:
@@ -122,6 +131,47 @@
 - (void)message {
     NotificationCenterViewController *controller = [[NotificationCenterViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - 更换单个Item
+
+- (void)loadReplaceItem:(ProductOrderListItem *)item {
+    
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"type":@(self.type),
+                            @"orderId":orderId};
+    
+    [Request startWithName:@"QUERY_ORDER_ITEM_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        ProductOrderListItem *replaceItem = [ProductOrderListReplaceModel modelWithDictionary:dic].data;
+        if (replaceItem) [self loadReplaceItemSuccess:replaceItem];
+    } failure:nil];
+}
+
+- (void)loadReplaceItemSuccess:(ProductOrderListItem *)item {
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        return;
+    }
+    __block NSInteger index = -1;
+    NSMutableArray<ProductOrderListItem *> *items = [NSMutableArray arrayWithArray:self.items];
+    [items enumerateObjectsUsingBlock:^(ProductOrderListItem  * obj, NSUInteger idx, BOOL *stop) {
+        if ([obj.orderNo isNotNull]) {
+            if ([obj.orderNo isEqualToString:orderId]) {
+                index = idx;
+                *stop = YES;
+            }
+        }
+    }];
+    if (index>=0) {
+        [items removeObjectAtIndex:index];
+        [items insertObject:item atIndex:index];
+        self.listView.items = [NSArray arrayWithArray:items];
+        [self.listView reloadData];
+    }
 }
 
 #pragma mark - ProductOrderListViewDelegate
@@ -140,7 +190,8 @@
             break;
         case ProductOrderListViewActionTypeConnectService:/// 联系客服
         {
-            [self connectService:value];
+            //[self connectService:value];
+            [self loadReplaceItem:value];
         }
             break;
         case ProductOrderListViewActionTypeConnectSupplier:/// 联系商家
@@ -193,9 +244,24 @@
             [self connectService:value];
         }
             break;
+        case ProductOrderListViewActionTypeRefund://申请退款
+        {
+            [self refund:value];
+        }
+            break;
         case ProductOrderListViewActionTypeStore://门店详情
         {
             [self storeInfo:value];
+        }
+            break;
+        case ProductOrderListViewActionTypeSegue://通用跳转
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+        case ProductOrderListViewActionTypeCall://打电话
+        {
+            [self call:value];
         }
             break;
         case ProductOrderListViewActionTypeLoadData://加载数据
@@ -214,7 +280,7 @@
     controller.orderId = item.orderNo;
     controller.orderKind = CashierDeskOrderKindService;
     controller.resultBlock = ^void (BOOL needRefresh){
-        
+        if (needRefresh) [self loadReplaceItem:item];
     };
 }
 
@@ -247,6 +313,7 @@
 
 - (void)cancelOrderSucceed:(NSDictionary *)data {
     [[iToast makeText:@"取消订单成功"] show];
+    
 }
 
 - (void)cancelOrderFailed:(NSError *)error {
@@ -323,7 +390,7 @@
     controller.orderNo = item.orderNo;
     controller.mustEdit = NO;
     controller.successBlock = ^void(){
-        
+        [self loadReplaceItem:item];
     };
 }
 
@@ -347,9 +414,29 @@
     
 }
 
+#pragma mark ================申请售后================
+
+- (void)refund:(ProductOrderListItem *)item {
+    OrderRefundViewController *controller = [[OrderRefundViewController alloc] initWithOrderId:item.orderNo];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark OrderRefundViewControllerDelegate
+
+- (void)orderRefundViewController:(OrderRefundViewController *)vc didSucceedWithRefundForOrderId:(NSString *)identifier {
+    
+}
+
 - (void)storeInfo:(ProductOrderListItem *)item {
-//    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeNo];
-//    [self.navigationController pushViewController:controller animated:YES];
+    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeNo];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)call:(id)valure {
+    if ([valure isNotNull]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", valure]]];
+    }
 }
 
 #pragma mark ================加载数据================

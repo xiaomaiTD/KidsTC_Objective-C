@@ -47,6 +47,9 @@ singleM(SearchHotKeywordsManager)
             *stop = YES;
         }];
     }
+    if (!_firstItem) {
+        _firstItem = [SearchHotKeywordsItem itemWithName:@"宝爸宝妈都在搜索"];
+    }
     return _firstItem;
 }
 

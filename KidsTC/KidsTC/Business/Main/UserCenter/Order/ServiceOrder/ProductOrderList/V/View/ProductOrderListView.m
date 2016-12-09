@@ -80,6 +80,10 @@ static NSString *const CellID = @"ProductOrderListCell";
     [self.tableView.mj_header beginRefreshing];
 }
 
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
 - (void)dealWithUI:(NSUInteger)loadCount {
     if (self.items.count>0) {
         self.tableView.tableHeaderView.hidden = NO;

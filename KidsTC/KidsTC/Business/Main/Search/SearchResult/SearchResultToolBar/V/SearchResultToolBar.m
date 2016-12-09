@@ -113,6 +113,24 @@ CGFloat const kSearchResultToolBarH = 44;
     self.areaView.insetParam = _insetParam;
     self.sortView.insetParam = _insetParam;
     self.filterView.insetParam = _insetParam;
+    
+    switch (_searchType) {
+        case SearchTypeProduct:
+        {
+            NSString *sort = [NSString stringWithFormat:@"%@",_insetParam[kSearchKey_sort]];
+            if ([sort isEqualToString:@"8"]) {
+                [self setupSaleBtn];
+            }else{
+                [self setupSortBtn];
+            }
+        }
+            break;
+        case SearchTypeStore:
+        {
+            [self setupStoreBtn];
+        }
+            break;
+    }
 }
 
 - (IBAction)action:(UIButton *)sender {
@@ -140,41 +158,21 @@ CGFloat const kSearchResultToolBarH = 44;
         self.filterBtn.selected = NO;
         
     }else if (sender == self.saleBtn) {
-        
         if (sender == self.lastClickedBtn) return;
-        
-        self.areaBtn.selected   = NO;
-        self.sortBtn.selected   = NO;
-        [self.sortBtn setTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
-        [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down"] forState:UIControlStateNormal];
-        self.saleBtn.selected   = YES;
-        self.storeBtn.selected  = NO;
-        self.filterBtn.selected = NO;
-        
-        [self.sortView selectFirstItem];
-        
-        if ([self.delegate respondsToSelector:@selector(searchResultToolBar:actionType:value:)]) {
-            [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:nil];
+        if (self.searchType != SearchTypeProduct) {
+            if ([self.delegate respondsToSelector:@selector(searchResultToolBar:actionType:value:)]) {
+                [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:@"8"];
+            }
+        }else{
+            [self setupSaleBtn];
+            [self setParamValue:@"8" key:kSearchKey_sort];
         }
-        
-        [self setParamValue:@"8" key:kSearchKey_sort];
-        
     }else if (sender == self.storeBtn) {
         
         if (sender == self.lastClickedBtn) return;
         
-        self.areaBtn.selected   = NO;
-        self.sortBtn.selected   = NO;
-        [self.sortBtn setTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
-        [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down"] forState:UIControlStateNormal];
-        self.saleBtn.selected   = NO;
-        self.storeBtn.selected  = YES;
-        self.filterBtn.selected = NO;
-        
-        [self.sortView selectFirstItem];
-        
         if ([self.delegate respondsToSelector:@selector(searchResultToolBar:actionType:value:)]) {
-            [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSeltctStore value:nil];
+            [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectStore value:nil];
         }
         
     }else if (sender == self.filterBtn) {
@@ -188,6 +186,39 @@ CGFloat const kSearchResultToolBarH = 44;
     self.lastClickedBtn = sender;
     
     if(!self.isChangingView) [self changeView];
+}
+
+- (void)setupSortBtn {
+    self.saleBtn.selected   = NO;
+    self.storeBtn.selected  = NO;
+    [self.sortBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
+    [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down_red"] forState:UIControlStateNormal];
+}
+
+- (void)setupSaleBtn {
+    
+    self.areaBtn.selected   = NO;
+    self.sortBtn.selected   = NO;
+    [self.sortBtn setTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
+    [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down"] forState:UIControlStateNormal];
+    self.saleBtn.selected   = YES;
+    self.storeBtn.selected  = NO;
+    self.filterBtn.selected = NO;
+    
+    [self.sortView selectFirstItem];
+}
+
+- (void)setupStoreBtn {
+    
+    self.areaBtn.selected   = NO;
+    self.sortBtn.selected   = NO;
+    [self.sortBtn setTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
+    [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down"] forState:UIControlStateNormal];
+    self.saleBtn.selected   = NO;
+    self.storeBtn.selected  = YES;
+    self.filterBtn.selected = NO;
+    
+    [self.sortView selectFirstItem];
 }
 
 - (void)changeView {
@@ -294,18 +325,14 @@ CGFloat const kSearchResultToolBarH = 44;
     if (byClick) {
         
         if (self.searchType != SearchTypeProduct) {
-            self.searchType = SearchTypeProduct;
             if ([self.delegate respondsToSelector:@selector(searchResultToolBar:actionType:value:)]) {
-                [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:nil];
+                [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:item.title];
             }
+        }else{
+            [self setupSortBtn];
+            [self setParamValue:item.value key:kSearchKey_sort];
         }
-        
-        self.saleBtn.selected   = NO;
-        self.storeBtn.selected  = NO;
-        [self.sortBtn setTitleColor:COLOR_PINK forState:UIControlStateNormal];
-        [self.sortBtn setImage:[UIImage imageNamed:@"search_toolBar_btnTip_down_red"] forState:UIControlStateNormal];
         if(!self.isChangingView) [self changeView];
-        [self setParamValue:item.value key:kSearchKey_sort];
     }
 }
 

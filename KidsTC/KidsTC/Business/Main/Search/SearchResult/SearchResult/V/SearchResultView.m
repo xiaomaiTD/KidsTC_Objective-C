@@ -62,7 +62,7 @@ static NSString *const StoreProductCellID = @"SearchResultStoreProductCell";
     tableView.estimatedSectionFooterHeight = 10;
     tableView.estimatedSectionHeaderHeight = 87;
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    tableView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+    tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellID];
     [tableView registerNib:[UINib nibWithNibName:@"SearchResultStoreHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:StoreHeaderID];
     [tableView registerNib:[UINib nibWithNibName:@"SearchResultStoreFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:StoreFooterID];
@@ -172,6 +172,18 @@ static NSString *const StoreProductCellID = @"SearchResultStoreProductCell";
         case SearchTypeProduct:
         {
             SearchResultProductHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:ProductHeaderID];
+            switch (_showType) {
+                case SearchResultProductViewShowTypeSmall:
+                {
+                    header.bgView.backgroundColor = [UIColor whiteColor];
+                }
+                    break;
+                case SearchResultProductViewShowTypeLarge:
+                {
+                    header.bgView.backgroundColor = [UIColor clearColor];
+                }
+                    break;
+            }
             return header;
         }
             break;

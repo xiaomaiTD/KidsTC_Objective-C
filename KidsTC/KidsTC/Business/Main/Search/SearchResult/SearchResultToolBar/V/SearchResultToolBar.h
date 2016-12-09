@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
     SearchResultToolBarActionTypeBtnClicked = 1,
     SearchResultToolBarActionTypeDidSelectParam,
     SearchResultToolBarActionTypeDidSelectProduct,
-    SearchResultToolBarActionTypeDidSeltctStore,
+    SearchResultToolBarActionTypeDidSelectStore,
 } SearchResultToolBarActionType;
 @class SearchResultToolBar;
 @protocol SearchResultToolBarDelegate <NSObject>

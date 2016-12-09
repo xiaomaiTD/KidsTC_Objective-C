@@ -15,4 +15,16 @@
              @"product"  : [SearchHotKeywordsItem class],
              @"store"    : [SearchHotKeywordsItem class]};
 }
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [_location enumerateObjectsUsingBlock:^(SearchHotKeywordsItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.searchType = SearchTypeProduct;
+    }];
+    [_product enumerateObjectsUsingBlock:^(SearchHotKeywordsItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.searchType = SearchTypeProduct;
+    }];
+    [_store enumerateObjectsUsingBlock:^(SearchHotKeywordsItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.searchType = SearchTypeStore;
+    }];
+    return YES;
+}
 @end

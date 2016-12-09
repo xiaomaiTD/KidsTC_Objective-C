@@ -13,6 +13,12 @@
 + (instancetype)itemWithName:(NSString *)name {
     SearchHotKeywordsItem *item = [SearchHotKeywordsItem new];
     item.name = name;
+    item.searchType = SearchTypeProduct;
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    if ([name isNotNull]) {
+        [param setObject:name forKey:kSearchKey_words];
+    }
+    item.search_parms = [NSDictionary dictionaryWithDictionary:param];
     return item;
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {

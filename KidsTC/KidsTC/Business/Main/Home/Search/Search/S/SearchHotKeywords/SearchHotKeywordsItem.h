@@ -11,5 +11,8 @@
 @interface SearchHotKeywordsItem : Model
 @property (nonatomic, strong) NSDictionary *search_parms;
 @property (nonatomic, strong) NSString *name;
+
+//selfDefine
+@property (nonatomic, assign) SearchType searchType;
 + (instancetype)itemWithName:(NSString *)name;
 @end

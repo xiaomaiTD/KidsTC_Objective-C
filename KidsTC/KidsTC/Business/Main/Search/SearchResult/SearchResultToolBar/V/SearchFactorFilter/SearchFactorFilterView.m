@@ -111,7 +111,7 @@
     if (ageItem.dataSelected) {
         age = [NSString stringWithFormat:@"%@",ageItem.value];
     }
-    [dic setObject:age forKey:kSearchKey_area];
+    [dic setObject:age forKey:kSearchKey_age];
     
     SearchFactorFilterCategoryItemRight *categoryItemRight = self.categoryView.cellSelectedItemRight;
     NSString *category = @"";

@@ -10,15 +10,38 @@
 #import "ProductOrderListCellBtnsView.h"
 #import "UIImageView+WebCache.h"
 #import "NSString+Category.h"
+#import "YYKit.h"
+#import "Colours.h"
 
 @interface ProductOrderListCell ()<ProductOrderListCellBtnsViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *storeNameL;
+@property (weak, nonatomic) IBOutlet UIImageView *storeArrowImg;
 @property (weak, nonatomic) IBOutlet UIButton *storeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *statusNameL;
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
 @property (weak, nonatomic) IBOutlet UILabel *realPriceL;
+
+@property (weak, nonatomic) IBOutlet UIView *deliverBGView;
+@property (weak, nonatomic) IBOutlet UILabel *deliverPlaceL;
+@property (weak, nonatomic) IBOutlet YYLabel *deliverL;
+
+
+@property (weak, nonatomic) IBOutlet UIView *normalBGView;
+@property (weak, nonatomic) IBOutlet UILabel *productNameL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *countL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *remarkL;
+
+
+@property (weak, nonatomic) IBOutlet UIView *ticketBGView;
+@property (weak, nonatomic) IBOutlet UILabel *ticketNameL;
+@property (weak, nonatomic) IBOutlet UILabel *theaterNameL;
+@property (weak, nonatomic) IBOutlet UILabel *ticketCountL;
+@property (weak, nonatomic) IBOutlet UILabel *ticketPriceL;
+@property (weak, nonatomic) IBOutlet UILabel *ticketTimeL;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet UIImageView *countDownIcon;
 @property (weak, nonatomic) IBOutlet ProductOrderListCellBtnsView *btnsView;
@@ -41,14 +64,64 @@
 
 - (void)setItem:(ProductOrderListItem *)item {
     _item = item;
-    _storeNameL.text = _item.storeName;
-    _statusNameL.text = _item.statusName;
-    [_imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-    _remarkL.text = _item.reservationRemark;
-    _timeL.text = _item.createTime;
+    self.storeNameL.text = _item.storeName;
+    self.statusNameL.text = _item.statusName;
+    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    
     [self countDown];
-    _realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
-    _btnsView.btnsAry = _item.btns;
+    self.realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
+    self.btnsView.btnsAry = _item.btns;
+    
+    switch (_item.orderType) {
+        case ProductOrderListOrderTypeTicket:
+        {
+            self.storeArrowImg.hidden = YES;
+            self.normalBGView.hidden = YES;
+            self.ticketBGView.hidden = NO;
+            self.ticketNameL.text = _item.productName;
+            self.ticketTimeL.text = _item.createTime;
+            self.ticketCountL.text = _item.payNum;
+            self.ticketPriceL.text = [NSString stringWithFormat:@"¥%@",_item.unitPrice];
+            self.theaterNameL.text = _item.venueName;
+        }
+            break;
+        default:
+        {
+            self.storeArrowImg.hidden = NO;
+            self.normalBGView.hidden = NO;
+            self.ticketBGView.hidden = YES;
+            self.productNameL.text = _item.productName;
+            self.countL.text = [NSString stringWithFormat:@"x%@",_item.payNum];
+            self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.unitPrice];
+            self.remarkL.text = _item.reservationRemark;
+            self.timeL.text = _item.createTime;
+        }
+            break;
+    }
+    
+    WeakSelf(self)
+    NSMutableAttributedString *attDeliverInfo = [[NSMutableAttributedString alloc] initWithAttributedString:_item.deliver.attDeliverInfo];
+    [_item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
+        StrongSelf(self)
+        NSRange range = [_item.deliver.deliverInfo rangeOfString:obj.value];
+        [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
+        UIColor *color = [UIColor colorFromHexString:obj.color];
+        if (!color) color = COLOR_PINK;
+        [attDeliverInfo setTextHighlightRange:range
+                                    color:color
+                          backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                                    if (![self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) return;
+                                    if (obj.isCall) {
+                                        if (![obj.value isNotNull]) return;
+                                        [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeCall value:obj.value];
+                                    }else{
+                                        [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeSegue value:obj.segueModel];
+                                    }
+                                }];
+    }];
+    self.deliverL.attributedText = attDeliverInfo;
+    self.deliverPlaceL.attributedText = attDeliverInfo;
 }
 
 - (void)countDown {
@@ -64,6 +137,7 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
+    if (_item.orderType == ProductOrderListOrderTypeTicket) return;
     if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
         [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)sender.tag value:_item];
     }

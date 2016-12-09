@@ -20,13 +20,14 @@ typedef enum : NSUInteger {
 
 typedef enum : NSUInteger {
     ProductOrderListTypeAll = 1,//全部订单
-    ProductOrderListTypeCompleted,//已完成订单
-    ProductOrderListTypeCancled,//已取消订单
-    ProductOrderListTypeWaitPay,//待付款
-    ProductOrderListTypeWaiatUse,//待使用
-    ProductOrderListTypeWaitRecive,//待收货
-    ProductOrderListTypeWaitComment,//待评价
-    ProductOrderListTypeRefund,//退款/售后
+    ProductOrderListTypeWaitPay = 2,//待付款
+    ProductOrderListTypeWaiatUse = 3,//待使用
+    ProductOrderListTypeWaitComment = 4,//待评价
+    ProductOrderListTypeHasComment = 5,//已评价
+    ProductOrderListTypeRefund = 6,//退款/售后
+    ProductOrderListTypeCompleted = 7,//已完成
+    ProductOrderListTypeCancled = 8,//已取消
+    ProductOrderListTypeWaitRecive = 9,//待收货
 } ProductOrderListType;
 
 typedef enum : NSUInteger {

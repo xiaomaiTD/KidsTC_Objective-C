@@ -77,6 +77,7 @@ typedef enum : NSUInteger {
     ProductOrderListBtnTypeEvaluate = 11,/// 评价
     ProductOrderListBtnTypeBuyAgain = 12,/// 再次购买
     ProductOrderListBtnTypeComplaint = 13,/// 投诉
+    ProductOrderListBtnTypeRefund = 14,//申请售后
 } ProductOrderListBtnType;
 
 @interface ProductOrderListBtn : NSObject

@@ -16,45 +16,90 @@
 #import <AVFoundation/AVFoundation.h>
 #import "KTCMapService.h"
 #import "SegueMaster.h"
+#import "NavigationController.h"
+#import "TabBarController.h"
 
 #import "SearchResultProductModel.h"
 #import "SearchResultStoreModel.h"
 #import "SearchResultView.h"
 
+#import "SearchViewController.h"
 #import "SpeekViewController.h"
 
 @interface SearchResultViewController ()<UITextFieldDelegate,SearchResultToolBarDelegate,SearchResultViewDelegate>
 @property (nonatomic, weak) UITextField *tf;
 @property (nonatomic, weak) SearchResultToolBar *toolBar;
 @property (nonatomic, weak) SearchResultView *resultView;
+@property (nonatomic, strong) UIButton *rightBarBtn;
+
+
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSString *userLocation;
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) UIButton *rightBarBtn;
+
+
+@property (nonatomic, assign) SearchType searchType;
+@property (nonatomic, strong) NSDictionary *params_store;
+@property (nonatomic, strong) NSDictionary *params_product;
 @end
 
 @implementation SearchResultViewController
 
+- (void)setSearchType:(SearchType)searchType params:(NSDictionary *)params {
+    switch (searchType) {
+        case SearchTypeProduct:
+        {
+            self.params_product = params;
+        }
+            break;
+        case SearchTypeStore:
+        {
+            self.params_store = params;;
+        }
+            break;
+    }
+    self.searchType = searchType;
+}
+
 - (void)setSearchType:(SearchType)searchType {
+    
+    self.resultView.items = nil;
+    [self.resultView reloadData];
+    
     _searchType = searchType;
     self.resultView.searchType = searchType;
     self.toolBar.searchType = searchType;
+    
+    self.toolBar.insetParam = self.params_current;
+    
     self.rightBarBtn.enabled = (searchType == SearchTypeProduct);
+    
+    NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
+    if ([searchKeyWords isNotNull]) {
+        self.tf.text = searchKeyWords;
+    }
+    
+    [self.resultView beginRefreshing];
 }
 
-- (void)setParams_product:(NSDictionary *)params_product {
-    _params_product = params_product;
-    self.params_current = _params_product;
-}
-
-- (void)setParams_store:(NSDictionary *)params_store {
-    _params_store = params_store;
-    self.params_current = _params_store;
-}
-
-- (void)setParams_current:(NSDictionary *)params_current {
-    _params_current = params_current;
-    self.toolBar.insetParam = _params_current;
+- (NSDictionary *)params_current {
+    switch (_searchType) {
+        case SearchTypeProduct:
+        {
+            return self.params_product;
+        }
+            break;
+        case SearchTypeStore:
+        {
+            return self.params_store;
+        }
+            break;
+        default:
+        {
+            return nil;
+        }
+            break;
+    }
 }
 
 - (void)viewDidLoad {
@@ -146,19 +191,27 @@
     self.navigationItem.titleView = tf;
     self.tf = tf;
     
+    NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
+    if ([searchKeyWords isNotNull]) {
+        self.tf.text = searchKeyWords;
+    }
+    
 }
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self search];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    SearchViewController *controller = [[SearchViewController alloc]init];
+    NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:navi animated:NO completion:nil];
     return NO;
 }
 
 - (void)speek {
     [self requestAccess:AVMediaTypeAudio name:@"麦克风" callBack:^{
         SpeekViewController *controller = [[SpeekViewController alloc] init];
-        [self.navigationController pushViewController:controller animated:YES];
+        NavigationController *targent = [[NavigationController alloc] initWithRootViewController:controller];
+        [self presentViewController:targent animated:YES completion:nil];
     }];
 }
 
@@ -224,7 +277,8 @@
     toolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kSearchResultToolBarH);
     toolBar.delegate = self;
     [self.view addSubview:toolBar];
-    toolBar.insetParam = _params_current;
+    toolBar.searchType = self.searchType;
+    toolBar.insetParam = self.params_current;
     self.toolBar = toolBar;
 }
 
@@ -239,50 +293,46 @@
             break;
         case SearchResultToolBarActionTypeDidSelectParam:
         {
-            switch (self.searchType) {
-                case SearchTypeProduct:
-                {
-                    if ([value isKindOfClass:[NSDictionary class]]) {
-                        self.params_product = value;
-                        [self.resultView beginRefreshing];
-                    }
-                }
-                    break;
-                case SearchTypeStore:
-                {
-                    if ([value isKindOfClass:[NSDictionary class]]) {
-                        self.params_store = value;
-                        [self.resultView beginRefreshing];
-                    }
-                }
-                    break;
-            }
+            [self toolBarSetParam:value];
         }
             break;
         case SearchResultToolBarActionTypeDidSelectProduct:
         {
-            self.resultView.items = nil;
-            [self.resultView reloadData];
+            NSString *valueStr = [NSString stringWithFormat:@"%@",value];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.params_product];
+            [dic setObject:valueStr forKey:kSearchKey_sort];
+            self.params_product = [NSDictionary dictionaryWithDictionary:dic];
             self.searchType = SearchTypeProduct;
         }
             break;
-        case SearchResultToolBarActionTypeDidSeltctStore:
+        case SearchResultToolBarActionTypeDidSelectStore:
         {
-            self.resultView.items = nil;
-            [self.resultView reloadData];
-            self.params_current = self.params_store;
             self.searchType = SearchTypeStore;
-            [self.resultView beginRefreshing];
         }
-            break;
-        default:
             break;
     }
 }
 
 
-
-
+- (void)toolBarSetParam:(id)value {
+    
+    if (![value isKindOfClass:[NSDictionary class]]) return;
+    
+    switch (self.searchType) {
+        case SearchTypeProduct:
+        {
+            self.params_product = value;
+        }
+            break;
+        case SearchTypeStore:
+        {
+            self.params_store = value;
+        }
+            break;
+    }
+    [self.resultView beginRefreshing];
+    
+}
 
 #pragma mark - SearchResultViewDelegate
 
@@ -333,6 +383,8 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.params_current];
     [dic setObject:@(self.page) forKey:@"page"];
     [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
+    NSString *pt = [User shareUser].role.roleIdentifierString;
+    [dic setObject:pt forKey:kSearchKey_populationType];
     if ([self.userLocation isNotNull]) {
         [dic setObject:self.userLocation forKey:@"mapaddr"];
     }
@@ -358,10 +410,11 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:self.params_current];
     [dic setObject:@(self.page) forKey:@"page"];
     [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
+    NSString *pt = [User shareUser].role.roleIdentifierString;
+    [dic setObject:pt forKey:kSearchKey_populationType];
     if ([self.userLocation isNotNull]) {
         [dic setObject:self.userLocation forKey:@"mapaddr"];
     }
-    //NSString *pt = [NSString stringWithFormat:<#(nonnull NSString *), ...#>];
     NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
     [Request startWithName:@"STORE_SEARCH_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultStoreModel *model = [SearchResultStoreModel modelWithDictionary:dic];
