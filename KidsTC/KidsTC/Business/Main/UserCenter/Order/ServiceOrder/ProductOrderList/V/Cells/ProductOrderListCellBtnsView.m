@@ -17,7 +17,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [_btns enumerateObjectsUsingBlock:^(UIButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.layer.borderWidth = LINE_H;
+        obj.layer.borderWidth = 1;
         obj.layer.cornerRadius = 2;
         obj.layer.masksToBounds = YES;
     }];

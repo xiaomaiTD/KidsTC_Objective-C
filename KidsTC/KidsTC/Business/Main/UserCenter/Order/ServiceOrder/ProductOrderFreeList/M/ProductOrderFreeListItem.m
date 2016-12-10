@@ -10,6 +10,9 @@
 #import "NSString+Category.h"
 
 @implementation ProductOrderFreeListItem
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"orderBtns":[NSNumber class]};
+}
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
     [self setupMoblies];
@@ -18,7 +21,23 @@
         [self setupCountDownValueString];
         [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
     }
+    [self setupBtns];
     return YES;
+}
+
+- (void)setupBtns {
+    NSMutableArray *btns = [NSMutableArray array];
+    int count = (int)_orderBtns.count;
+    for (int i = 1; i<=4; i++) {
+        int index = count - i;
+        if (index>=0) {
+            NSNumber *obj = _orderBtns[index];
+            ProductOrderFreeListBtnType btnType = obj.integerValue;
+            ProductOrderFreeListBtn *btn = [ProductOrderFreeListBtn btnWithType:btnType isHighLight:btnType == _defaultBtn];
+            if (btn) [btns addObject:btn];
+        }
+    }
+    _btns = [NSArray arrayWithArray:btns];
 }
 
 - (void)setupMoblies {

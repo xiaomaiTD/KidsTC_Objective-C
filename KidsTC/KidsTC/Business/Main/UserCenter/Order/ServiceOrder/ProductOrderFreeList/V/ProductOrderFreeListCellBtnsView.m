@@ -17,16 +17,16 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [_btns enumerateObjectsUsingBlock:^(UIButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        obj.layer.borderWidth = LINE_H;
+        obj.layer.borderWidth = 1;
         obj.layer.cornerRadius = 2;
         obj.layer.masksToBounds = YES;
     }];
 }
 
-- (void)setBtnsAry:(NSArray<ProductOrderListBtn *> *)btnsAry {
+- (void)setBtnsAry:(NSArray<ProductOrderFreeListBtn *> *)btnsAry {
     _btnsAry = btnsAry;
     [_btns enumerateObjectsUsingBlock:^(UIButton  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        ProductOrderListBtn *btn;
+        ProductOrderFreeListBtn *btn;
         if (idx<btnsAry.count) {
             btn = btnsAry[idx];
         }

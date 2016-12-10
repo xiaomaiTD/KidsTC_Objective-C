@@ -15,5 +15,5 @@
 @property (nonatomic, strong) NSString *deliverInfo;
 @property (nonatomic, strong) NSArray<ProductOrderListDeliverItem *> *items;
 //selfDefine
-@property (nonatomic, strong) NSAttributedString *attDeliverInfo;
+@property (nonatomic, strong) NSString *deliverStr;
 @end

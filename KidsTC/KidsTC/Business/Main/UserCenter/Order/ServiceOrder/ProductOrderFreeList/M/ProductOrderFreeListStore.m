@@ -7,7 +7,13 @@
 //
 
 #import "ProductOrderFreeListStore.h"
+#import "NSString+Category.h"
 
 @implementation ProductOrderFreeListStore
-
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    _distance = [_distance isNotNull]?[NSString stringWithFormat:@"距离:%@",_distance]:nil;
+    
+    return YES;
+}
 @end

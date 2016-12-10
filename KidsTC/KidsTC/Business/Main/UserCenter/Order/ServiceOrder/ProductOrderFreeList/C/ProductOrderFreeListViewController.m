@@ -25,9 +25,10 @@
 #import "AppointmentOrderListViewController.h"
 #import "ProductOrderFreeListViewController.h"
 #import "NotificationCenterViewController.h"
+#import "OrderRefundViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
 
-
-@interface ProductOrderFreeListViewController ()<ProductOrderFreeListViewDelegate,CommentFoundingViewControllerDelegate>
+@interface ProductOrderFreeListViewController ()<ProductOrderFreeListViewDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, strong) ProductOrderFreeListView *listView;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSArray *items;
@@ -138,6 +139,11 @@
             [self connectService:value];
         }
             break;
+        case ProductOrderFreeListViewActionTypeRefund://申请售后
+        {
+            
+        }
+            break;
         case ProductOrderFreeListViewActionTypeStore://门店详情
         {
             [self storeInfo:value];
@@ -146,6 +152,11 @@
         case ProductOrderFreeListViewActionTypeLoadData://加载数据
         {
             [self loadData:[value boolValue]];
+        }
+            break;
+        case ProductOrderFreeListViewActionTypeDetail://报名详情
+        {
+            [self detail:value];
         }
             break;
             default:
@@ -294,6 +305,22 @@
     
 }
 
+#pragma mark ================申请售后================
+
+- (void)refund:(ProductOrderFreeListItem *)item {
+    OrderRefundViewController *controller = [[OrderRefundViewController alloc] initWithOrderId:item.orderNo];
+    controller.delegate = self;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark OrderRefundViewControllerDelegate
+
+- (void)orderRefundViewController:(OrderRefundViewController *)vc didSucceedWithRefundForOrderId:(NSString *)identifier {
+    
+}
+
+#pragma mark ================门店详情================
+
 - (void)storeInfo:(ProductOrderFreeListItem *)item {
     StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeInfo.storeId];
     [self.navigationController pushViewController:controller animated:YES];
@@ -322,6 +349,12 @@
     }];
 }
 
+#pragma mark - Detail
 
+- (void)detail:(ProductOrderFreeListItem *)item {
+    ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+    controller.orderId = item.orderNo;
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 @end

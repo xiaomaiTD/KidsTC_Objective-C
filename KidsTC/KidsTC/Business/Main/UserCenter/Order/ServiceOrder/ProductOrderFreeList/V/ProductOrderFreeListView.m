@@ -18,8 +18,8 @@
 
 static NSString *const CellID = @"ProductOrderFreeListCell";
 
-@interface ProductOrderFreeListView ()<ProductOrderFreeListCellDelegate>
-
+@interface ProductOrderFreeListView ()<ProductOrderFreeListCellDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation ProductOrderFreeListView
@@ -135,6 +135,14 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger section = indexPath.section;
+    if (section < self.items.count) {
+        ProductOrderFreeListItem *item = self.items[section];
+        if ([self.delegate respondsToSelector:@selector(productOrderFreeListView:actionType:value:)]) {
+            [self.delegate productOrderFreeListView:self actionType:ProductOrderFreeListViewActionTypeDetail value:item];
+        }
+    }
+    
 }
 
 #pragma mark - ProductOrderFreeListCellDelegate

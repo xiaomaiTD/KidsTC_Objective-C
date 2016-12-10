@@ -12,6 +12,9 @@
 #define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
+#pragma mark - pageCount
+#define TCPAGECOUNT 10
+
 #pragma mark - 获取app版本号
 #define APP_VERSION [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"]
 

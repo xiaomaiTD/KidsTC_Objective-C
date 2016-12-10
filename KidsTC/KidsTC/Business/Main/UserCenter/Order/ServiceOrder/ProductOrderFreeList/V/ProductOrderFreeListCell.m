@@ -15,13 +15,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *storeNameL;
 @property (weak, nonatomic) IBOutlet UIButton *storeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *statusNameL;
+@property (weak, nonatomic) IBOutlet UILabel *addressL;
+@property (weak, nonatomic) IBOutlet UILabel *distanceL;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
-@property (weak, nonatomic) IBOutlet UILabel *realPriceL;
+@property (weak, nonatomic) IBOutlet UILabel *productNameL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *remarkL;
+
+@property (weak, nonatomic) IBOutlet UILabel *numL;
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet UIImageView *countDownIcon;
 @property (weak, nonatomic) IBOutlet ProductOrderFreeListCellBtnsView *btnsView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnsViewH;
+
 @end
 
 @implementation ProductOrderFreeListCell
@@ -35,20 +43,35 @@
     _imageIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     _imageIcon.layer.borderWidth = LINE_H;
     [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
-    
     _btnsView.delegate = self;
 }
 
 - (void)setItem:(ProductOrderFreeListItem *)item {
     _item = item;
-    _storeNameL.text = _item.storeInfo.storeName;
-    _statusNameL.text = _item.productStatusStr;
-    [_imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.productImg] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-//    _remarkL.text = _item.reservationRemark;
-    _timeL.text = _item.rowCreateTime;
+    
+    ProductOrderFreeListStore *storeInfo = _item.storeInfo;
+    
+    self.storeNameL.text = storeInfo.storeName;
+    self.statusNameL.text = _item.productStatusStr;
+    self.addressL.text = storeInfo.address;
+    self.distanceL.text = storeInfo.distance;
+    
+    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.productImg] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.remarkL.text = _item.onlineBespeak.advanceDayDesc;
+    self.timeL.text = _item.startTimeStr;
+    self.priceL.text = _item.freeTypeStr;
+    
     [self countDown];
-//    _realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
-//    _btnsView.btnsAry = _item.btns;
+    self.numL.text = _item.joinCount;
+    
+    if (_item.btns.count>0) {
+        self.btnsView.btnsAry = _item.btns;
+        self.btnsView.hidden = NO;
+        self.btnsViewH.constant = 46;
+    }else{
+        self.btnsView.hidden = YES;
+        self.btnsViewH.constant = 0;
+    }
 }
 
 - (void)countDown {

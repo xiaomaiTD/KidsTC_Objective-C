@@ -21,7 +21,7 @@
             [string replaceCharactersInRange:range withString:obj.value];
         }
     }];
-    _attDeliverInfo = [[NSAttributedString alloc] initWithString:string];
+    _deliverStr = [NSString stringWithString:string];
     return YES;
 }
 @end

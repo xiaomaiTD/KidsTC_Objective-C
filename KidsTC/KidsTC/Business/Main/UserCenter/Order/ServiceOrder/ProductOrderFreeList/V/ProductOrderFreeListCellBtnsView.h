@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductOrderListBtn.h"
+#import "ProductOrderFreeListBtn.h"
 
 @class ProductOrderFreeListCellBtnsView;
 @protocol ProductOrderFreeListCellBtnsViewDelegate <NSObject>
@@ -15,6 +15,6 @@
 @end
 
 @interface ProductOrderFreeListCellBtnsView : UIView
-@property (nonatomic, strong) NSArray<ProductOrderListBtn *> *btnsAry;
+@property (nonatomic, strong) NSArray<ProductOrderFreeListBtn *> *btnsAry;
 @property (nonatomic, weak) id<ProductOrderFreeListCellBtnsViewDelegate> delegate;
 @end

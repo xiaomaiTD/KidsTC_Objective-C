@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="271" id="KGk-i7-Jjw" customClass="ProductOrderListCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="277"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJh-fS-fEz">
@@ -298,9 +298,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yoz-Vk-pd6" customClass="YYLabel">
                                 <rect key="frame" x="37" y="8" width="268" height="29"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfLines">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="height" constant="47" id="3sc-i5-YOC"/>
                             <constraint firstItem="Yoz-Vk-pd6" firstAttribute="trailing" secondItem="Bun-CK-bxq" secondAttribute="trailing" id="6Vw-Kw-VQB"/>
                             <constraint firstItem="Bun-CK-bxq" firstAttribute="top" secondItem="dnH-4i-1DC" secondAttribute="top" constant="8" id="MBK-uk-aDs"/>
                             <constraint firstItem="Yoz-Vk-pd6" firstAttribute="top" secondItem="Bun-CK-bxq" secondAttribute="top" id="Wmf-hB-lMf"/>
@@ -314,10 +320,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s2-LG-wPx" customClass="ProductOrderListCellBtnsView">
-                        <rect key="frame" x="0.0" y="228" width="320" height="49"/>
+                        <rect key="frame" x="0.0" y="228" width="320" height="46.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofD-Vl-NR2">
-                                <rect key="frame" x="165" y="10" width="65" height="30"/>
+                                <rect key="frame" x="165" y="9" width="65" height="30"/>
                                 <state key="normal" title="联系商家">
                                     <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -326,7 +332,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-4M-1o6">
-                                <rect key="frame" x="90" y="10" width="65" height="30"/>
+                                <rect key="frame" x="90" y="9" width="65" height="30"/>
                                 <state key="normal" title="我要投诉">
                                     <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -335,7 +341,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-Mf-RhH">
-                                <rect key="frame" x="15" y="8" width="65" height="33"/>
+                                <rect key="frame" x="15" y="8" width="65" height="30.5"/>
                                 <state key="normal" title="再次购买">
                                     <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -344,7 +350,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-Nv-fgo">
-                                <rect key="frame" x="240" y="10" width="65" height="30"/>
+                                <rect key="frame" x="240" y="9" width="65" height="30"/>
                                 <state key="normal" title="评价">
                                     <color key="titleColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -356,14 +362,18 @@
                         <constraints>
                             <constraint firstItem="KhA-4M-1o6" firstAttribute="leading" secondItem="EcX-Mf-RhH" secondAttribute="trailing" constant="10" id="0xj-3i-TzW"/>
                             <constraint firstItem="ofD-Vl-NR2" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="6gE-5T-KCm"/>
+                            <constraint firstAttribute="height" constant="46" id="7oQ-0c-vzL"/>
                             <constraint firstItem="Pbf-Nv-fgo" firstAttribute="leading" secondItem="ofD-Vl-NR2" secondAttribute="trailing" constant="10" id="DnN-K8-HL7"/>
                             <constraint firstItem="KhA-4M-1o6" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="NlR-NS-M3I"/>
+                            <constraint firstItem="ofD-Vl-NR2" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="PJr-RF-4fL"/>
                             <constraint firstItem="KhA-4M-1o6" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="QTF-eL-amG"/>
                             <constraint firstAttribute="bottom" secondItem="EcX-Mf-RhH" secondAttribute="bottom" constant="8" id="RzZ-9n-7tn"/>
                             <constraint firstItem="Pbf-Nv-fgo" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="Wf4-JK-H3N"/>
+                            <constraint firstItem="KhA-4M-1o6" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="YNO-hb-opS"/>
                             <constraint firstItem="Pbf-Nv-fgo" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="ZcF-gk-DqY"/>
                             <constraint firstItem="ofD-Vl-NR2" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="bwN-wN-PXw"/>
                             <constraint firstItem="EcX-Mf-RhH" firstAttribute="leading" secondItem="2s2-LG-wPx" secondAttribute="leading" constant="15" id="dIz-6V-hny"/>
+                            <constraint firstItem="Pbf-Nv-fgo" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="f7o-Vc-d7y"/>
                             <constraint firstItem="ofD-Vl-NR2" firstAttribute="leading" secondItem="KhA-4M-1o6" secondAttribute="trailing" constant="10" id="htu-t1-5LD"/>
                             <constraint firstItem="EcX-Mf-RhH" firstAttribute="top" secondItem="2s2-LG-wPx" secondAttribute="top" constant="8" id="v0V-QK-hxB"/>
                             <constraint firstAttribute="trailing" secondItem="Pbf-Nv-fgo" secondAttribute="trailing" constant="15" id="wzR-sc-p5V"/>
@@ -397,10 +407,12 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnsView" destination="2s2-LG-wPx" id="dLj-YE-7fm"/>
+                <outlet property="btnsViewH" destination="7oQ-0c-vzL" id="16H-zA-Dwi"/>
                 <outlet property="countDownIcon" destination="Ysv-mL-gLy" id="EGg-9C-sAH"/>
                 <outlet property="countDownL" destination="wad-ov-k65" id="U5I-dQ-KPy"/>
                 <outlet property="countL" destination="Tl0-DT-XJA" id="peW-CI-OIa"/>
                 <outlet property="deliverBGView" destination="dnH-4i-1DC" id="EWq-It-OW5"/>
+                <outlet property="deliverBGViewH" destination="3sc-i5-YOC" id="934-fz-Hab"/>
                 <outlet property="deliverL" destination="Yoz-Vk-pd6" id="YyK-eW-GsX"/>
                 <outlet property="deliverPlaceL" destination="Bun-CK-bxq" id="cad-IU-XJR"/>
                 <outlet property="imageIcon" destination="idv-Wf-wuZ" id="iWJ-f3-sUU"/>
@@ -408,6 +420,7 @@
                 <outlet property="priceL" destination="iuw-MG-xWo" id="tZO-ht-cMD"/>
                 <outlet property="productNameL" destination="fbL-4B-paL" id="bjA-GI-PVP"/>
                 <outlet property="realPriceL" destination="am7-hs-stR" id="N4z-r0-056"/>
+                <outlet property="realPriceTipL" destination="w5B-34-yf1" id="EIO-HN-rmm"/>
                 <outlet property="remarkL" destination="gcd-Om-i0C" id="bhT-VL-gfG"/>
                 <outlet property="statusNameL" destination="VBK-Rb-wqy" id="KE1-b0-OAN"/>
                 <outlet property="storeArrowImg" destination="io5-8k-lxm" id="LSb-cH-QaS"/>

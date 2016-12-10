@@ -19,11 +19,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *storeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *statusNameL;
 @property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
+
+@property (weak, nonatomic) IBOutlet UILabel *realPriceTipL;
 @property (weak, nonatomic) IBOutlet UILabel *realPriceL;
 
 @property (weak, nonatomic) IBOutlet UIView *deliverBGView;
 @property (weak, nonatomic) IBOutlet UILabel *deliverPlaceL;
 @property (weak, nonatomic) IBOutlet YYLabel *deliverL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deliverBGViewH;
 
 
 @property (weak, nonatomic) IBOutlet UIView *normalBGView;
@@ -45,6 +48,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet UIImageView *countDownIcon;
 @property (weak, nonatomic) IBOutlet ProductOrderListCellBtnsView *btnsView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnsViewH;
+
 @end
 
 @implementation ProductOrderListCell
@@ -69,8 +74,17 @@
     [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     
     [self countDown];
+    self.realPriceTipL.text = _item.payDesc;
     self.realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
-    self.btnsView.btnsAry = _item.btns;
+    
+    if (_item.btns.count>0) {
+        self.btnsView.btnsAry = _item.btns;
+        self.btnsView.hidden = NO;
+        self.btnsViewH.constant = 46;
+    }else{
+        self.btnsView.hidden = YES;
+        self.btnsViewH.constant = 0;
+    }
     
     switch (_item.orderType) {
         case ProductOrderListOrderTypeTicket:
@@ -99,29 +113,49 @@
             break;
     }
     
+    ProductOrderListDeliver *deliver = _item.deliver;
+    if ([deliver.deliverStr isNotNull]) {
+        self.deliverBGView.hidden = NO;
+        [self settupDeliverInfo];
+    }else{
+        self.deliverBGView.hidden = YES;
+        self.deliverBGViewH.constant = 0;
+        self.deliverL.attributedText = nil;
+        self.deliverPlaceL.attributedText = nil;
+    }
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
+- (void)settupDeliverInfo {
     WeakSelf(self)
-    NSMutableAttributedString *attDeliverInfo = [[NSMutableAttributedString alloc] initWithAttributedString:_item.deliver.attDeliverInfo];
+    NSMutableAttributedString *attDeliverInfo = [[NSMutableAttributedString alloc] initWithString:_item.deliver.deliverStr];
+    attDeliverInfo.color = [UIColor colorFromHexString:@"555555"];
+    attDeliverInfo.font = [UIFont systemFontOfSize:12];
+    attDeliverInfo.lineSpacing = 6;
     [_item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
         StrongSelf(self)
-        NSRange range = [_item.deliver.deliverInfo rangeOfString:obj.value];
-        [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
+        NSRange range = [_item.deliver.deliverStr rangeOfString:obj.value];
+        //[attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
         UIColor *color = [UIColor colorFromHexString:obj.color];
         if (!color) color = COLOR_PINK;
         [attDeliverInfo setTextHighlightRange:range
-                                    color:color
-                          backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
-                                tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
-                                    if (![self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) return;
-                                    if (obj.isCall) {
-                                        if (![obj.value isNotNull]) return;
-                                        [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeCall value:obj.value];
-                                    }else{
-                                        [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeSegue value:obj.segueModel];
-                                    }
-                                }];
+                                        color:color
+                              backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                    tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                                        if (![self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) return;
+                                        if (obj.isCall) {
+                                            if (![obj.value isNotNull]) return;
+                                            [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeCall value:obj.value];
+                                        }else{
+                                            [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeSegue value:obj.segueModel];
+                                        }
+                                    }];
     }];
     self.deliverL.attributedText = attDeliverInfo;
     self.deliverPlaceL.attributedText = attDeliverInfo;
+    self.deliverBGViewH.constant = [attDeliverInfo boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 50, 99999) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height + 18;
 }
 
 - (void)countDown {

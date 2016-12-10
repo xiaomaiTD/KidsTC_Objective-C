@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProductOrderFreeDetailToolBar">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eni-O2-M4k" customClass="ProductOrderFreeDetailBtnsView">
+                    <rect key="frame" x="0.0" y="28" width="375" height="59"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fr0-HS-T5M">
+                            <rect key="frame" x="192.5" y="10.5" width="79" height="39"/>
+                            <state key="normal" title="联系商家">
+                                <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="action:" destination="Eni-O2-M4k" eventType="touchUpInside" id="Fv1-PR-CYg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahR-cQ-qCr">
+                            <rect key="frame" x="104" y="10.5" width="78.5" height="39"/>
+                            <state key="normal" title="我要投诉">
+                                <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="action:" destination="Eni-O2-M4k" eventType="touchUpInside" id="dku-Fc-K61"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3Q-E8-JCI">
+                            <rect key="frame" x="15" y="10" width="79" height="39"/>
+                            <state key="normal" title="再次购买">
+                                <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="action:" destination="Eni-O2-M4k" eventType="touchUpInside" id="xSI-TO-m2K"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJN-jj-4qE">
+                            <rect key="frame" x="281.5" y="10.5" width="78.5" height="39"/>
+                            <state key="normal" title="评价">
+                                <color key="titleColor" red="0.95294117649999999" green="0.40784313729999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="action:" destination="Eni-O2-M4k" eventType="touchUpInside" id="F3O-Mx-zzf"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOd-eE-aro">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="snl-3r-4ho"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="UOd-eE-aro" firstAttribute="top" secondItem="Eni-O2-M4k" secondAttribute="top" id="4ja-hd-Ag1"/>
+                        <constraint firstItem="fr0-HS-T5M" firstAttribute="width" secondItem="T3Q-E8-JCI" secondAttribute="width" id="CmR-VB-jYy"/>
+                        <constraint firstItem="ahR-cQ-qCr" firstAttribute="leading" secondItem="T3Q-E8-JCI" secondAttribute="trailing" constant="10" id="G0O-ws-zNg"/>
+                        <constraint firstItem="bJN-jj-4qE" firstAttribute="centerY" secondItem="Eni-O2-M4k" secondAttribute="centerY" id="GcC-BB-jdJ"/>
+                        <constraint firstItem="ahR-cQ-qCr" firstAttribute="height" secondItem="T3Q-E8-JCI" secondAttribute="height" id="Ghx-Wn-fvP"/>
+                        <constraint firstItem="T3Q-E8-JCI" firstAttribute="leading" secondItem="Eni-O2-M4k" secondAttribute="leading" constant="15" id="IxH-2R-Ua6"/>
+                        <constraint firstAttribute="trailing" secondItem="UOd-eE-aro" secondAttribute="trailing" id="MPh-3h-2pX"/>
+                        <constraint firstItem="ahR-cQ-qCr" firstAttribute="width" secondItem="T3Q-E8-JCI" secondAttribute="width" id="PfX-C5-gBi"/>
+                        <constraint firstItem="ahR-cQ-qCr" firstAttribute="centerY" secondItem="Eni-O2-M4k" secondAttribute="centerY" id="Phg-w3-MQz"/>
+                        <constraint firstAttribute="height" constant="59" id="QB4-GR-E4G"/>
+                        <constraint firstItem="fr0-HS-T5M" firstAttribute="centerY" secondItem="Eni-O2-M4k" secondAttribute="centerY" id="QTZ-JV-IMk"/>
+                        <constraint firstItem="bJN-jj-4qE" firstAttribute="leading" secondItem="fr0-HS-T5M" secondAttribute="trailing" constant="10" id="QuQ-vt-yDn"/>
+                        <constraint firstItem="bJN-jj-4qE" firstAttribute="width" secondItem="T3Q-E8-JCI" secondAttribute="width" id="TFY-Jl-OmD"/>
+                        <constraint firstAttribute="trailing" secondItem="bJN-jj-4qE" secondAttribute="trailing" constant="15" id="UfY-uJ-HC1"/>
+                        <constraint firstItem="bJN-jj-4qE" firstAttribute="height" secondItem="T3Q-E8-JCI" secondAttribute="height" id="WYZ-Oc-XSz"/>
+                        <constraint firstItem="T3Q-E8-JCI" firstAttribute="top" secondItem="Eni-O2-M4k" secondAttribute="top" constant="10" id="YCS-Ss-NC2"/>
+                        <constraint firstAttribute="bottom" secondItem="T3Q-E8-JCI" secondAttribute="bottom" constant="10" id="YF7-ge-1J3"/>
+                        <constraint firstItem="fr0-HS-T5M" firstAttribute="height" secondItem="T3Q-E8-JCI" secondAttribute="height" id="f9h-V2-xGe"/>
+                        <constraint firstItem="fr0-HS-T5M" firstAttribute="leading" secondItem="ahR-cQ-qCr" secondAttribute="trailing" constant="10" id="i0m-pk-zEI"/>
+                        <constraint firstItem="UOd-eE-aro" firstAttribute="leading" secondItem="Eni-O2-M4k" secondAttribute="leading" id="yC6-m9-bwl"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="btns" destination="bJN-jj-4qE" id="f4k-Fa-j6M"/>
+                        <outletCollection property="btns" destination="fr0-HS-T5M" id="ewy-7Y-S2U"/>
+                        <outletCollection property="btns" destination="ahR-cQ-qCr" id="lQR-vx-7w6"/>
+                        <outletCollection property="btns" destination="T3Q-E8-JCI" id="rWd-Ib-BuY"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96G-66-e3Q">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJ1-Pu-OHH">
+                            <rect key="frame" x="98.5" y="8.5" width="179.5" height="12"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductOrderFreeDetail_time" translatesAutoresizingMaskIntoConstraints="NO" id="Qzm-rl-xUX">
+                                    <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Qzm-rl-xUX" secondAttribute="height" multiplier="1:1" id="Rkb-Dz-wWX"/>
+                                        <constraint firstAttribute="width" constant="12" id="tUt-51-nAu"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离开始：4天29小时30分12秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZx-jh-4Tp">
+                                    <rect key="frame" x="20" y="0.0" width="159.5" height="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Qzm-rl-xUX" secondAttribute="bottom" id="GR3-ep-jes"/>
+                                <constraint firstAttribute="bottom" secondItem="FZx-jh-4Tp" secondAttribute="bottom" id="Kk1-hP-GK1"/>
+                                <constraint firstItem="Qzm-rl-xUX" firstAttribute="top" secondItem="pJ1-Pu-OHH" secondAttribute="top" id="Qk9-Ii-hpW"/>
+                                <constraint firstItem="Qzm-rl-xUX" firstAttribute="leading" secondItem="pJ1-Pu-OHH" secondAttribute="leading" id="Wf4-2c-oVA"/>
+                                <constraint firstItem="FZx-jh-4Tp" firstAttribute="top" secondItem="pJ1-Pu-OHH" secondAttribute="top" id="dvb-r3-7x2"/>
+                                <constraint firstAttribute="trailing" secondItem="FZx-jh-4Tp" secondAttribute="trailing" id="oFb-kL-qTf"/>
+                                <constraint firstItem="FZx-jh-4Tp" firstAttribute="leading" secondItem="Qzm-rl-xUX" secondAttribute="trailing" constant="8" id="uPP-WC-jta"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.81568627450980391" green="0.90588235294117647" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="T8i-KS-AYd"/>
+                        <constraint firstItem="pJ1-Pu-OHH" firstAttribute="centerX" secondItem="96G-66-e3Q" secondAttribute="centerX" id="TDo-wR-Fph"/>
+                        <constraint firstItem="pJ1-Pu-OHH" firstAttribute="centerY" secondItem="96G-66-e3Q" secondAttribute="centerY" id="y8X-80-fn9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Eni-O2-M4k" secondAttribute="bottom" id="039-Eg-4SO"/>
+                <constraint firstItem="96G-66-e3Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Bbf-m2-bZI"/>
+                <constraint firstAttribute="trailing" secondItem="96G-66-e3Q" secondAttribute="trailing" id="UAk-o1-1t4"/>
+                <constraint firstItem="Eni-O2-M4k" firstAttribute="top" secondItem="96G-66-e3Q" secondAttribute="bottom" id="Xbb-7H-jZd"/>
+                <constraint firstItem="Eni-O2-M4k" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cwW-Lw-JRW"/>
+                <constraint firstAttribute="trailing" secondItem="Eni-O2-M4k" secondAttribute="trailing" id="i4f-VL-WK3"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="HLineH" destination="snl-3r-4ho" id="5f9-sl-Emo"/>
+                <outlet property="btnsView" destination="Eni-O2-M4k" id="GZr-zc-nPt"/>
+                <outlet property="btnsViewH" destination="QB4-GR-E4G" id="aPs-kB-fVD"/>
+                <outlet property="countDownL" destination="FZx-jh-4Tp" id="Unz-xj-UoX"/>
+                <outlet property="countDownView" destination="96G-66-e3Q" id="LQP-ih-ueB"/>
+            </connections>
+            <point key="canvasLocation" x="-450.5" y="-31.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ProductOrderFreeDetail_time" width="50" height="50"/>
+    </resources>
+</document>
