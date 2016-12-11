@@ -18,6 +18,16 @@
     if ([_ageStr isNotNull]) {
         _ageStr = [NSString stringWithFormat:@"适应：%@",_ageStr];
     }else _ageStr = nil;
+    if ([_productSysNo isNotNull]) {
+        if (![_channelId isNotNull]) {
+            _channelId = @"0";
+        }
+        NSDictionary *params = @{@"pid":_productSysNo,
+                                 @"icd":_channelId,
+                                 @"type":@(ProductDetailTypeFree)};
+        _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:params];
+    }
+    
     
     [self setupMoblies];
     

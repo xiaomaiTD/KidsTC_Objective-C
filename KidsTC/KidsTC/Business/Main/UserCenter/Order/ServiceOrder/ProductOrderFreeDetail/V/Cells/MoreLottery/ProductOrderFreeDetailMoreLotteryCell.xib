@@ -58,8 +58,18 @@
                             <constraint firstItem="DdS-B1-ukl" firstAttribute="centerX" secondItem="gW1-Of-sdc" secondAttribute="centerX" id="fL5-Qv-C8t"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4M1-Cj-9Se">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="9CT-Wu-b2E"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="4M1-Cj-9Se" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5HH-pJ-L46"/>
+                    <constraint firstItem="4M1-Cj-9Se" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Qeb-7T-hU5"/>
+                    <constraint firstAttribute="trailing" secondItem="4M1-Cj-9Se" secondAttribute="trailing" id="cR1-3l-8HR"/>
                     <constraint firstAttribute="trailing" secondItem="gW1-Of-sdc" secondAttribute="trailing" constant="15" id="doB-tU-Whw"/>
                     <constraint firstItem="gW1-Of-sdc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fr3-dd-6e3"/>
                     <constraint firstItem="gW1-Of-sdc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="oQc-fL-nEq"/>
@@ -67,6 +77,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="HLineH" destination="9CT-Wu-b2E" id="9Cp-jF-nfF"/>
                 <outlet property="moreBGView" destination="gW1-Of-sdc" id="Kga-wp-NPN"/>
             </connections>
             <point key="canvasLocation" x="-110" y="44"/>

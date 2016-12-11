@@ -10,7 +10,6 @@
 #import "Colours.h"
 #import "MultiItemsToolBar.h"
 #import "NearbyCategoryToolBar.h"
-#import "NearbyCollectionViewCell.h"
 #import "NearbyViewFlowLayout.h"
 
 static NSString *CellID = @"NearbyCollectionViewCell";
@@ -107,8 +106,8 @@ static NSString *CellID = @"NearbyCollectionViewCell";
 #pragma mark - NearbyCollectionViewCellDelegate
 
 - (void)nearbyCollectionViewCell:(NearbyCollectionViewCell *)cell actionType:(NearbyCollectionViewCellActionType)type value:(id)value {
-    if ([self.delegate respondsToSelector:@selector(nearbyView:actionType:value:)]) {
-        [self.delegate nearbyView:self actionType:(NearbyViewActionType)type value:value];
+    if ([self.delegate respondsToSelector:@selector(nearbyView:nearbyCollectionViewCell:actionType:value:)]) {
+        [self.delegate nearbyView:self nearbyCollectionViewCell:cell actionType:(NearbyViewActionType)type value:value];
     }
 }
 

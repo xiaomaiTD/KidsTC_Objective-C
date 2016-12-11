@@ -137,7 +137,9 @@
     [_item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
         StrongSelf(self)
         NSRange range = [_item.deliver.deliverStr rangeOfString:obj.value];
-        //[attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
+        if ((obj.isCall&&[obj.value isNotNull])||obj.segueModel) {
+            [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
+        }
         UIColor *color = [UIColor colorFromHexString:obj.color];
         if (!color) color = COLOR_PINK;
         [attDeliverInfo setTextHighlightRange:range

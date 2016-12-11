@@ -40,10 +40,9 @@
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSArray *items;
 
-
 @property (nonatomic, strong) ProductOrderListAllTitleView *allTitleView;
 @property (nonatomic, strong) ProductOrderListAllTitleShowView *allTitleShowView;
-
+@property (nonatomic, strong) ProductOrderListItem *currentItem;
 @end
 
 @implementation ProductOrderListViewController
@@ -177,6 +176,7 @@
 #pragma mark - ProductOrderListViewDelegate
 
 - (void)productOrderListView:(ProductOrderListView *)view actionType:(ProductOrderListViewActionType)type value:(id)value {
+    if ([value isKindOfClass:[ProductOrderListItem class]]) self.currentItem = value;
     switch (type) {
         case ProductOrderListViewActionTypePay:/// 付款
         {
@@ -190,8 +190,7 @@
             break;
         case ProductOrderListViewActionTypeConnectService:/// 联系客服
         {
-            //[self connectService:value];
-            [self loadReplaceItem:value];
+            [self connectService:value];
         }
             break;
         case ProductOrderListViewActionTypeConnectSupplier:/// 联系商家
@@ -201,7 +200,7 @@
             break;
         case ProductOrderListViewActionTypeConsumeCode:/// 取票码
         {
-            
+            [self consumeCode:value];
         }
             break;
         case ProductOrderListViewActionTypeReserve:/// 我要预约
@@ -221,7 +220,7 @@
             break;
         case ProductOrderListViewActionTypeReminder:/// 我要催单
         {
-            
+            [self reminder:value];
         }
             break;
         case ProductOrderListViewActionTypeConfirmDeliver:/// 确认收货
@@ -282,6 +281,7 @@
     controller.resultBlock = ^void (BOOL needRefresh){
         if (needRefresh) [self loadReplaceItem:item];
     };
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark ================取消订单================
@@ -297,7 +297,6 @@
     [self presentViewController:controller animated:YES completion:nil];
     
 }
-
 - (void)cancelOrderRequest:(NSString *)orderId {
     if (![orderId isNotNull]) {
         [[iToast makeText:@"订单编号为空"] show];
@@ -310,46 +309,12 @@
         [self cancelOrderFailed:error];
     }];
 }
-
 - (void)cancelOrderSucceed:(NSDictionary *)data {
     [[iToast makeText:@"取消订单成功"] show];
-    
+    [self loadReplaceItem:self.currentItem];
 }
-
 - (void)cancelOrderFailed:(NSError *)error {
     [[iToast makeText:@"取消订单失败"] show];
-}
-
-#pragma mark ================再次购买================
-
-- (void)buyAgain:(ProductOrderListItem *)item {
-    NSString *productid = item.productNo;
-    NSString *storeno = @"";
-    NSString *chid = item.chId;
-    productid = [productid isNotNull]?productid:@"";
-    storeno = [storeno isNotNull]?storeno:@"";
-    chid = [chid isNotNull]?chid:@"0";
-    NSDictionary *param = @{@"productid":productid,
-                            @"storeno":storeno,
-                            @"chid":chid,
-                            @"buynum":@(1)};
-    [TCProgressHUD showSVP];
-    [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
-        [self buyAgainSuccess:nil];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [TCProgressHUD dismissSVP];
-        [self buyAgainFailure:error];
-    }];
-}
-
-- (void)buyAgainSuccess:(id)value {
-    ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (void)buyAgainFailure:(NSError *)error {
-    [[iToast makeText:@"再次购买失败，请稍后再试"] show];
 }
 
 #pragma mark ================联系客服================
@@ -383,6 +348,27 @@
     }
 }
 
+#pragma mark ================获取消费码================
+
+- (void)consumeCode:(ProductOrderListItem *)item{
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"orderId":orderId};
+    [Request startWithName:@"ORDER_SEND_CONSUME_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = @"获取消费码失败";
+        NSString *errMsg = error.userInfo[@"data"];
+        if ([errMsg isNotNull]) {
+            msg = errMsg;
+        }
+        [[iToast makeText:msg] show];
+    }];
+}
+
 #pragma mark ================我要预约================
 
 - (void)booking:(ProductOrderListItem *)item {
@@ -392,6 +378,29 @@
     controller.successBlock = ^void(){
         [self loadReplaceItem:item];
     };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark ================我要催单================
+
+- (void)reminder:(ProductOrderListItem *)item {
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"orderId":orderId};
+    [Request startWithName:@"URGE_ORDER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [[iToast makeText:@"催单成功"] show];
+        [self loadReplaceItem:item];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = @"催单失败";
+        NSString *errMsg = error.userInfo[@"data"];
+        if ([errMsg isNotNull]) {
+            msg = errMsg;
+        }
+        [[iToast makeText:msg] show];
+    }];
 }
 
 #pragma mark ================确认收货================
@@ -411,7 +420,38 @@
 #pragma mark CommentFoundingViewControllerDelegate
 
 - (void)commentFoundingViewControllerDidFinishSubmitComment:(CommentFoundingViewController *)vc {
-    
+    [self loadReplaceItem:self.currentItem];
+}
+
+#pragma mark ================再次购买================
+
+- (void)buyAgain:(ProductOrderListItem *)item {
+    NSString *productid = item.productNo;
+    NSString *storeno = @"";
+    NSString *chid = item.chId;
+    productid = [productid isNotNull]?productid:@"";
+    storeno = [storeno isNotNull]?storeno:@"";
+    chid = [chid isNotNull]?chid:@"0";
+    NSDictionary *param = @{@"productid":productid,
+                            @"storeno":storeno,
+                            @"chid":chid,
+                            @"buynum":@(1)};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        [self buyAgainSuccess:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        [self buyAgainFailure:error];
+    }];
+}
+- (void)buyAgainSuccess:(id)value {
+    [self loadReplaceItem:self.currentItem];
+    ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+- (void)buyAgainFailure:(NSError *)error {
+    [[iToast makeText:@"再次购买失败，请稍后再试"] show];
 }
 
 #pragma mark ================申请售后================
@@ -425,13 +465,17 @@
 #pragma mark OrderRefundViewControllerDelegate
 
 - (void)orderRefundViewController:(OrderRefundViewController *)vc didSucceedWithRefundForOrderId:(NSString *)identifier {
-    
+    [self loadReplaceItem:self.currentItem];
 }
+
+#pragma mark ================门店详情================
 
 - (void)storeInfo:(ProductOrderListItem *)item {
     StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeNo];
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+#pragma mark ================拨打电话================
 
 - (void)call:(id)valure {
     if ([valure isNotNull]) {

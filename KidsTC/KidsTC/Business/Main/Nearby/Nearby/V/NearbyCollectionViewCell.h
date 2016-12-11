@@ -12,7 +12,7 @@ typedef enum : NSUInteger {
     NearbyCollectionViewCellActionTypeNursery = 1,
     NearbyCollectionViewCellActionTypeExhibition,
     NearbyCollectionViewCellActionTypeCalendar,
-    
+    NearbyCollectionViewCellActionTypeLoadData,
 } NearbyCollectionViewCellActionType;
 
 @class NearbyCollectionViewCell;
@@ -22,4 +22,6 @@ typedef enum : NSUInteger {
 
 @interface NearbyCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) id<NearbyCollectionViewCellDelegate> delegate;
+@property (nonatomic, strong) NSArray *items;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

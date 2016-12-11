@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
 }
 
 - (void)setInfoData:(ProductOrderFreeDetailData *)infoData {
@@ -27,5 +27,7 @@
 - (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
     [super setLotteryData:lotteryData];
 }
+
+
 
 @end

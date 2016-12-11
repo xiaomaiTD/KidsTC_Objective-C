@@ -31,6 +31,7 @@ CGFloat const kProductOrderFreeDetailToolBarH = 87;
 
 - (void)setData:(ProductOrderFreeDetailData *)data {
     _data = data;
+    self.hidden = NO;
     [self countDown];
     if (_data.btns.count>0) {
         self.btnsView.btnsAry = _data.btns;

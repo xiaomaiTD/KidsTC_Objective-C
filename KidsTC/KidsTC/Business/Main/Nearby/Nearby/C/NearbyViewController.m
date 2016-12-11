@@ -8,8 +8,9 @@
 
 #import "NearbyViewController.h"
 #import "NavigationController.h"
-#import "NavigationController.h"
+#import "GHeader.h"
 
+#import "NearbyModel.h"
 #import "NearbyView.h"
 #import "NearbyTitleView.h"
 #import "NearbyCalendarViewController.h"
@@ -20,6 +21,7 @@
 
 @interface NearbyViewController ()<NearbyTitleViewDelegate,NearbyViewDelegate>
 @property (weak, nonatomic) NearbyView *nearbyView;
+@property (nonatomic, strong) NSArray<NSArray<NearbyItem *> *> *items;
 @end
 
 @implementation NearbyViewController
@@ -41,8 +43,6 @@
     self.navigationItem.titleView = titleView;
     
 }
-
-
 
 #pragma mark - NearbyTitleViewDelegate
 
@@ -67,27 +67,66 @@
 
 #pragma mark - NearbyViewDelegate
 
-- (void)nearbyView:(NearbyView *)view actionType:(NearbyViewActionType)type value:(id)value {
+- (void)nearbyView:(NearbyView *)view nearbyCollectionViewCell:(NearbyCollectionViewCell *)cell actionType:(NearbyViewActionType)type value:(id)value {
     switch (type) {
         case NearbyViewActionTypeNursery:
         {
-            NurseryViewController *controller = [[NurseryViewController alloc] init];
-            controller.type = NurseryTypeNursery;
-            [self.navigationController pushViewController:controller animated:YES];
+            [self nursery:value];
         }
             break;
         case NearbyViewActionTypeExhibition:
         {
-            
+            [self nursery:value];
         }
             break;
         case NearbyViewActionTypeCalendar:
         {
-            NearbyCalendarViewController *controller = [[NearbyCalendarViewController alloc] initWithNibName:@"NearbyCalendarViewController" bundle:nil];
-            [self.navigationController pushViewController:controller animated:YES];
+            [self calendar:value];
+        }
+            break;
+        case NearbyViewActionTypeLoadData:
+        {
+            [self loadData:value completionBlock:^(NSInteger count) {
+                [cell dealWithUI:count];
+            }];
         }
             break;
     }
+}
+
+#pragma mark ============ 育儿室 ============
+
+- (void)nursery:(id)value {
+    NurseryViewController *controller = [[NurseryViewController alloc] init];
+    controller.type = NurseryTypeNursery;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark ============跳转日历============
+
+- (void)calendar:(id)value {
+    NearbyCalendarViewController *controller = [[NearbyCalendarViewController alloc] initWithNibName:@"NearbyCalendarViewController" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark ============加载数据============
+
+- (void)loadData:(id)value completionBlock:(void(^)(NSInteger count))completionBlock{
+    
+    NSDictionary *param = @{@"st":@"1",//排序规则
+                            @"c":@"",//分类ID
+                            @"s":@"",//地区
+                            @"a":@"",//年龄段
+                            @"k":@"",//关键字
+                            @"pt":@"",//人群
+                            @"page":@(1),
+                            @"pageSize":@(TCPAGECOUNT)};
+    
+    [Request startWithName:@"SEARCH_NEARBY_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        if(completionBlock)completionBlock(0);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(completionBlock)completionBlock(0);
+    }];
 }
 
 

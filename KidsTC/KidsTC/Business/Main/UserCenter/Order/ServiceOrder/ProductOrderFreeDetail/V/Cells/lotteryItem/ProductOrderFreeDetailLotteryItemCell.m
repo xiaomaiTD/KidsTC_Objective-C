@@ -27,8 +27,17 @@
     self.nameL.text = _item.userName;
     self.phoneL.text = _item.userPhone;
     self.timeL.text = _item.rowCreateTimeStr;
-    UIColor *color = (_item.index%2 == 1)?[UIColor whiteColor]:[UIColor colorFromHexString:@"f9f9f9"];
-    self.contentView.backgroundColor = color;
+    
+    UIColor *textColor = [UIColor colorFromHexString:@"444444"];
+    if ((_item.index == 0) && (self.infoData.isLottery)) {
+        textColor = COLOR_PINK;
+    }
+    self.nameL.textColor = textColor;
+    self.phoneL.textColor = textColor;
+    self.timeL.textColor = textColor;
+    
+    UIColor *bgColor = (_item.index%2 == 1)?[UIColor whiteColor]:[UIColor colorFromHexString:@"f9f9f9"];
+    self.contentView.backgroundColor = bgColor;
 }
 
 @end

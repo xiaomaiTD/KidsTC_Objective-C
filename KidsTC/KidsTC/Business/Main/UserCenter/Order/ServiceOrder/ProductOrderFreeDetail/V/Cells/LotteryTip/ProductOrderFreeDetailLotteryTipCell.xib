@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,42 +15,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Htg-Ca-rmr" id="vp9-bg-1lG">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="48.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哎呀，差一点点就中奖了。别放弃，更多精彩活动等你哦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAe-Ef-D2k">
-                        <rect key="frame" x="15" y="16" width="270" height="16"/>
+                        <rect key="frame" x="15" y="16" width="290" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductOrderFreeDetail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fhk-D8-O8A">
-                        <rect key="frame" x="293" y="19" width="12" height="12"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="12" id="YQJ-Pq-X1D"/>
-                            <constraint firstAttribute="width" secondItem="fhk-D8-O8A" secondAttribute="height" multiplier="1:1" id="nnX-xC-dJA"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="0.81568627450980391" green="0.90588235294117647" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="bAe-Ef-D2k" firstAttribute="centerY" secondItem="vp9-bg-1lG" secondAttribute="centerY" id="0Ro-Ak-Smn"/>
-                    <constraint firstAttribute="trailing" secondItem="fhk-D8-O8A" secondAttribute="trailing" constant="15" id="62g-MR-OSZ"/>
-                    <constraint firstItem="fhk-D8-O8A" firstAttribute="centerY" secondItem="vp9-bg-1lG" secondAttribute="centerY" id="9PU-2i-ZpS"/>
                     <constraint firstItem="bAe-Ef-D2k" firstAttribute="top" secondItem="vp9-bg-1lG" secondAttribute="top" constant="16" id="HjZ-rj-Twc"/>
                     <constraint firstAttribute="bottom" secondItem="bAe-Ef-D2k" secondAttribute="bottom" constant="16" id="KA5-da-j39"/>
-                    <constraint firstItem="fhk-D8-O8A" firstAttribute="leading" secondItem="bAe-Ef-D2k" secondAttribute="trailing" constant="8" id="dVa-lq-e3x"/>
+                    <constraint firstAttribute="trailing" secondItem="bAe-Ef-D2k" secondAttribute="trailing" constant="15" id="XF6-Om-6QZ"/>
                     <constraint firstItem="bAe-Ef-D2k" firstAttribute="leading" secondItem="vp9-bg-1lG" secondAttribute="leading" constant="15" id="qkE-Zs-LLl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="arrowImg" destination="fhk-D8-O8A" id="njW-r4-5YO"/>
                 <outlet property="titleL" destination="bAe-Ef-D2k" id="ZXL-6o-IRX"/>
             </connections>
             <point key="canvasLocation" x="-274" y="-41"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ProductOrderFreeDetail_arrow" width="29" height="50"/>
-    </resources>
 </document>

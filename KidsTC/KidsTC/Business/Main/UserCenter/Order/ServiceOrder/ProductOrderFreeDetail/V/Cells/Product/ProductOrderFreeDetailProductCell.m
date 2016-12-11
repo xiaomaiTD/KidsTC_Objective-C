@@ -25,6 +25,9 @@
     self.icon.layer.masksToBounds = YES;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.icon.layer.borderWidth = LINE_H;
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.contentView addGestureRecognizer:tapGR];
 }
 
 
@@ -38,6 +41,12 @@
 
 - (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
     [super setLotteryData:lotteryData];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
+        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeProduct value:self.infoData];
+    }
 }
 
 @end

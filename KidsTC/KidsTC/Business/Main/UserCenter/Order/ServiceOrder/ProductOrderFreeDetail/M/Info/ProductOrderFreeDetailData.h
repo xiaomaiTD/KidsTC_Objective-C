@@ -11,6 +11,7 @@
 #import "ProductOrderFreeDetailBooking.h"
 #import "ProductOrderFreeDetailBtn.h"
 #import "ProductDetailTime.h"
+#import "SegueModel.h"
 
 @interface ProductOrderFreeDetailData : NSObject
 @property (nonatomic, strong) ProductDetailTime *time;
@@ -46,4 +47,5 @@
 @property (nonatomic, strong) NSString *countDownValueString;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @property (nonatomic, strong) NSArray<ProductOrderFreeDetailBtn *> *btns;
+@property (nonatomic, strong) SegueModel *segueModel;
 @end

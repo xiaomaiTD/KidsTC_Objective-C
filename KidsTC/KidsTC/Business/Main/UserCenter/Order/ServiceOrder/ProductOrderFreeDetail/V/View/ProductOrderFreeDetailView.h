@@ -25,6 +25,13 @@ typedef enum : NSUInteger {
     ProductOrderFreeDetailViewActionTypeBuyAgain = 12,/// 再次购买
     ProductOrderFreeDetailViewActionTypeComplaint = 13,/// 投诉
     ProductOrderFreeDetailViewActionTypeRefund = 14,//申请售后
+    
+    ProductOrderFreeDetailViewActionTypeProduct = 50,
+    ProductOrderFreeDetailViewActionTypeStore,
+    ProductOrderFreeDetailViewActionTypeAddress,
+    ProductOrderFreeDetailViewActionTypeDate,
+    ProductOrderFreeDetailViewActionTypeMoreLottery,
+    
 } ProductOrderFreeDetailViewActionType;
 
 @class ProductOrderFreeDetailView;
@@ -37,5 +44,5 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) ProductOrderFreeDetailLotteryData *lotteryData;
 @property (nonatomic, strong) ProductOrderFreeDetailData *infoData;
 - (void)reloadInfoData;
-- (void)reloadLotteryData;
+- (void)reloadLotteryData:(NSInteger)count;
 @end

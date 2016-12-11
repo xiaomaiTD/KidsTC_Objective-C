@@ -17,26 +17,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                <subviews>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jis-Yl-n4M">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="gTV-IL-0wX" id="wDO-FZ-YRK"/>
-                            <outlet property="delegate" destination="gTV-IL-0wX" id="lq9-yB-pL3"/>
-                        </connections>
-                    </tableView>
-                </subviews>
             </view>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="jis-Yl-n4M" secondAttribute="trailing" id="2hh-8t-Kmt"/>
-                <constraint firstItem="jis-Yl-n4M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZZ5-Mt-pP6"/>
-                <constraint firstItem="jis-Yl-n4M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="btT-SR-MmL"/>
-                <constraint firstAttribute="bottom" secondItem="jis-Yl-n4M" secondAttribute="bottom" id="mRc-nu-qlT"/>
-            </constraints>
-            <connections>
-                <outlet property="tableView" destination="jis-Yl-n4M" id="Sv2-fC-ZMw"/>
-            </connections>
             <point key="canvasLocation" x="-134" y="31"/>
         </collectionViewCell>
     </objects>

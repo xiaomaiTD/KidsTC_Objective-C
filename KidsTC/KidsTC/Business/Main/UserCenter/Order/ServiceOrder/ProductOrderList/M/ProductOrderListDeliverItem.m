@@ -9,5 +9,10 @@
 #import "ProductOrderListDeliverItem.h"
 
 @implementation ProductOrderListDeliverItem
-
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_linkParams];
+    
+    return YES;
+}
 @end

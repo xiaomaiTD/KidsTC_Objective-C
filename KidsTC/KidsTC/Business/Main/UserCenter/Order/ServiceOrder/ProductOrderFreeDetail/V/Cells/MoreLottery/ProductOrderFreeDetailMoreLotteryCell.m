@@ -7,9 +7,11 @@
 //
 
 #import "ProductOrderFreeDetailMoreLotteryCell.h"
+#import "Colours.h"
 
 @interface ProductOrderFreeDetailMoreLotteryCell ()
 @property (weak, nonatomic) IBOutlet UIView *moreBGView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
 
@@ -17,7 +19,13 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.HLineH.constant = LINE_H;
+    self.moreBGView.layer.cornerRadius = 4;
+    self.moreBGView.layer.masksToBounds = YES;
+    self.moreBGView.layer.borderColor = [UIColor colorFromHexString:@"DDDDDD"].CGColor;
+    self.moreBGView.layer.borderWidth = 1;
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.moreBGView addGestureRecognizer:tapGR];
 }
 
 - (void)setInfoData:(ProductOrderFreeDetailData *)infoData {
@@ -26,6 +34,12 @@
 
 - (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
     [super setLotteryData:lotteryData];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
+        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeMoreLottery value:self.infoData];
+    }
 }
 
 @end

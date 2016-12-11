@@ -43,6 +43,22 @@ typedef enum : NSUInteger {
 } ProductOrderFreeListType;
 
 typedef enum : NSUInteger {
+    SearchResultProductTypeService = 1,//服务
+    SearchResultProductTypeActivity,//活动
+    SearchResultProductTypeMaterialObject,//实物
+} SearchResultProductType;
+
+typedef enum : NSInteger {
+    SearchResultProductStatusUnder = -1,//已下架
+    SearchResultProductStatusInitial = 0,//初始
+    SearchResultProductStatusPublished = 1,//已上架
+    SearchResultProductStatusSlodOut = 2,//已售罄
+    SearchResultProductStatusNoStore = 3,//没有门店-暂不销售
+    SearchResultProductStatusNotStart = 4,//即将开始
+    SearchResultProductStatusFinished = 5,//已经结束-暂不销售
+} SearchResultProductStatus;
+
+typedef enum : NSUInteger {
     CouponListStatusUnused = 1,//未使用
     CouponListStatusUsed,//已使用
     CouponListStatusExpired,//已过期

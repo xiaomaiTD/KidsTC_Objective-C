@@ -81,6 +81,10 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
     }
 }
 
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
 - (void)beginRefreshing {
     [self.tableView.mj_header beginRefreshing];
 }

@@ -152,7 +152,7 @@
         case SegueDestinationStoreList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-#warning TODO...[
+#warning TODO...
 //            controller.searchType = SearchType_Store;
 //            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic:model.segueParam];
             toController = controller;
@@ -163,7 +163,9 @@
             NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
             NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
             channelId = [channelId isNotNull]?channelId:@"0";
+            ProductDetailType type = (ProductDetailType)[model.segueParam[@"type"] integerValue];
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+            controller.type = type;
             toController = controller;
         }
             break;

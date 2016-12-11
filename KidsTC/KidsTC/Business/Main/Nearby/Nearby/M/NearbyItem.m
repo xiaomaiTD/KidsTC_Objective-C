@@ -1,17 +1,17 @@
 //
-//  SearchResultStoreProduct.m
+//  NearbyItem.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/12/8.
+//  Created by 詹平 on 2016/12/11.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "SearchResultStoreProduct.h"
+#import "NearbyItem.h"
 #import "NSString+Category.h"
 
-@implementation SearchResultStoreProduct
+@implementation NearbyItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    
+    _bigImgRatio = _bigImgRatio>0?_bigImgRatio:0.6;
     if ([_serveId isNotNull]) {
         if (![_channelId isNotNull]) _channelId = @"0";
         switch (_productSearchType) {

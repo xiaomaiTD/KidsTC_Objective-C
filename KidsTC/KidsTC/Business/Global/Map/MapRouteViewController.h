@@ -10,5 +10,4 @@
 #import "KTCMapService.h"
 @interface MapRouteViewController : ViewController
 @property (nonatomic, assign) CLLocationCoordinate2D destinationCoordinate;
-
 @end

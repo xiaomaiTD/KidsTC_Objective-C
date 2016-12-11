@@ -107,4 +107,16 @@
     return commentModel;
 }
 
++ (instancetype)modelFromProductOrderFreeDetailData:(ProductOrderFreeDetailData *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = data.orderNo;
+    commentModel.relationSysNo = data.productSysNo;
+    commentModel.sourceType = (CommentFoundingSourceType)data.productType;
+    commentModel.objectId = data.productSysNo;
+    commentModel.relationType = (CommentRelationType)data.productType;
+    commentModel.objectName = data.productName;
+    commentModel.imageUrl = [NSURL URLWithString:data.productImg];
+    return commentModel;
+}
+
 @end

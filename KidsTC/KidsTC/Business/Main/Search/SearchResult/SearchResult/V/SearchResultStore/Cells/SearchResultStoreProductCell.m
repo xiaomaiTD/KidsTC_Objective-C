@@ -32,9 +32,9 @@
 - (void)setStoreProduct:(SearchResultStoreProduct *)storeProduct {
     _storeProduct = storeProduct;
     
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:_storeProduct.ImgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-    self.nameL.text = _storeProduct.ProductName;
-    self.priceL.text = _storeProduct.Price;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_storeProduct.imgurl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.nameL.text = _storeProduct.name;
+    self.priceL.text = _storeProduct.price;
 }
 
 @end

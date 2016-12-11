@@ -18,6 +18,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.contentView addGestureRecognizer:tapGR];
 }
 
 - (void)setInfoData:(ProductOrderFreeDetailData *)infoData {
@@ -28,6 +30,12 @@
 
 - (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
     [super setLotteryData:lotteryData];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
+        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeDate value:self.infoData];
+    }
 }
 
 @end

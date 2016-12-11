@@ -25,20 +25,19 @@
 #import "ProductOrderFreeDetailMoreLotteryCell.h"
 
 static NSString *const CellID = @"ProductOrderFreeDetailInfoBaseCell";
+static NSString *const ProductCellID = @"ProductOrderFreeDetailProductCell";
+static NSString *const StoreCellID = @"ProductOrderFreeDetailStoreCell";
+static NSString *const AddressCellID = @"ProductOrderFreeDetailAddressCell";
+static NSString *const TimeCellID = @"ProductOrderFreeDetailTimeCell";
+static NSString *const LotteryTipCellID = @"ProductOrderFreeDetailLotteryTipCell";
+static NSString *const LotteryCellID = @"ProductOrderFreeDetailLotteryCell";
+static NSString *const LotteryItemCellID = @"ProductOrderFreeDetailLotteryItemCell";
+static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCell";
 
-@interface ProductOrderFreeDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderFreeDetailToolBarDelegate>
+@interface ProductOrderFreeDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderFreeDetailToolBarDelegate,ProductOrderFreeDetailInfoBaseCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<ProductOrderFreeDetailInfoBaseCell *> *> *sections;
-@property (nonatomic, strong) ProductOrderFreeDetailProductCell *productCell;
-@property (nonatomic, strong) ProductOrderFreeDetailStoreCell *storeCell;
-@property (nonatomic, strong) ProductOrderFreeDetailAddressCell *addressCell;
-@property (nonatomic, strong) ProductOrderFreeDetailTimeCell *timeCell;
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryTipCell *lotteryTipCell;
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryCell *lotteryCell;
-@property (nonatomic, strong) ProductOrderFreeDetailMoreLotteryCell *moreLotteryCell;
-
 @property (nonatomic, strong) ProductOrderFreeDetailToolBar *toolBar;
-
 @end
 
 @implementation ProductOrderFreeDetailView
@@ -58,68 +57,77 @@ static NSString *const CellID = @"ProductOrderFreeDetailInfoBaseCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 60;
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, kProductOrderFreeDetailToolBarH, 0);
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailInfoBaseCell" bundle:nil] forCellReuseIdentifier:CellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailProductCell" bundle:nil] forCellReuseIdentifier:ProductCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailStoreCell" bundle:nil] forCellReuseIdentifier:StoreCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailTimeCell" bundle:nil] forCellReuseIdentifier:TimeCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailLotteryTipCell" bundle:nil] forCellReuseIdentifier:LotteryTipCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailLotteryCell" bundle:nil] forCellReuseIdentifier:LotteryCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailLotteryItemCell" bundle:nil] forCellReuseIdentifier:LotteryItemCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailMoreLotteryCell" bundle:nil] forCellReuseIdentifier:MoreLotteryCellID];
     [self addSubview:tableView];
     self.tableView = tableView;
 }
 
 - (void)reloadInfoData {
     self.toolBar.data = self.infoData;
-    [self setupSections];
+    [self setupSections:0];
     [self.tableView reloadData];
 }
 
-- (void)reloadLotteryData {
-    [self setupSections];
+- (void)reloadLotteryData:(NSInteger)count {
+    [self setupSections:count];
     [self.tableView reloadData];
 }
 
-- (void)beginRefreshing {
-    [self.tableView.mj_header beginRefreshing];
-}
-
-- (void)setupSections {
+- (void)setupSections:(NSInteger)count {
     NSMutableArray *sections = [NSMutableArray array];
     
     NSMutableArray *section00 = [NSMutableArray array];
     if (self.infoData) {
-        [section00 addObject:self.productCell];
+        [section00 addObject:[self cellWithID:ProductCellID]];
     }
     if (section00.count>0) [sections addObject:section00];
     
     NSMutableArray *section01 = [NSMutableArray array];
     if (self.infoData.storeInfo) {
-        [section01 addObject:self.storeCell];
-        [section01 addObject:self.addressCell];
+        [section01 addObject:[self cellWithID:StoreCellID]];
+        [section01 addObject:[self cellWithID:AddressCellID]];
     }
     if (self.infoData.time) {
-        [section01 addObject:self.timeCell];
+        [section01 addObject:[self cellWithID:TimeCellID]];
     }
     if (!self.infoData.isLottery) {
-        [section01 addObject:self.lotteryTipCell];
-        [section01 addObject:self.lotteryCell];
-        [section01 addObjectsFromArray:self.resultListsCells];
+        [section01 addObject:[self cellWithID:LotteryTipCellID]];
+        [section01 addObject:[self cellWithID:LotteryCellID]];
+        if (self.infoData.freeType == ProductOrderFreeListTypeLottery) {
+            [section01 addObjectsFromArray:[self resultListsCells:count]];
+        }
         if (section01.count>0) [sections addObject:section01];
     }else{
         if (section01.count>0) [sections addObject:section01];
         NSMutableArray *section02 = [NSMutableArray array];
-        [section02 addObject:self.lotteryCell];
-        [section02 addObjectsFromArray:self.resultListsCells];
+        [section02 addObject:[self cellWithID:LotteryCellID]];
+        if (self.infoData.freeType == ProductOrderFreeListTypeLottery) {
+            [section02 addObjectsFromArray:[self resultListsCells:count]];
+        }
         if (section02.count>0) [sections addObject:section02];
     }
     self.sections = [NSArray arrayWithArray:sections];
 }
 
-- (NSArray *)resultListsCells {
+- (NSArray *)resultListsCells:(NSInteger)count {
     NSMutableArray *section = [NSMutableArray array];
     NSArray<ProductOrderFreeDetailLotteryItem *> *resultLists = self.lotteryData.ResultLists;
     [resultLists enumerateObjectsUsingBlock:^(ProductOrderFreeDetailLotteryItem *obj, NSUInteger idx, BOOL *stop) {
-        ProductOrderFreeDetailLotteryItemCell *lotteryItemCell = self.lotteryItemCell;
+        ProductOrderFreeDetailLotteryItemCell *lotteryItemCell = [self.tableView dequeueReusableCellWithIdentifier:LotteryItemCellID];
         lotteryItemCell.item = obj;
         if (lotteryItemCell) [section addObject:lotteryItemCell];
     }];
-    if (resultLists.count>0) [section addObject:self.moreLotteryCell];
+    if (count>=TCPAGECOUNT) [section addObject:[self cellWithID:MoreLotteryCellID]];
     return section;
 }
 
@@ -153,16 +161,26 @@ static NSString *const CellID = @"ProductOrderFreeDetailInfoBaseCell";
             ProductOrderFreeDetailInfoBaseCell *cell = rows[row];
             cell.lotteryData = self.lotteryData;
             cell.infoData = self.infoData;
+            cell.delegate = self;
             return cell;
         }
     }
     return [tableView dequeueReusableCellWithIdentifier:CellID];
 }
 
+#pragma mark - ProductOrderFreeDetailInfoBaseCellDelegate
+
+- (void)productOrderFreeDetailInfoBaseCell:(ProductOrderFreeDetailInfoBaseCell *)cell actionType:(ProductOrderFreeDetailInfoBaseCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailView:actionType:value:)]) {
+        [self.delegate productOrderFreeDetailView:self actionType:(ProductOrderFreeDetailViewActionType)type value:value];
+    }
+}
+
 - (void)setupToolBar {
     ProductOrderFreeDetailToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderFreeDetailToolBar" owner:self options:nil].firstObject;
     toolBar.frame = CGRectMake(0, SCREEN_HEIGHT - 64 - kProductOrderFreeDetailToolBarH, SCREEN_WIDTH, kProductOrderFreeDetailToolBarH);
     toolBar.delegate = self;
+    toolBar.hidden = YES;
     [self addSubview:toolBar];
     self.toolBar = toolBar;
 }
@@ -177,57 +195,8 @@ static NSString *const CellID = @"ProductOrderFreeDetailInfoBaseCell";
 
 #pragma mark - helpers
 
-- (ProductOrderFreeDetailProductCell *)productCell {
-    if (!_productCell) {
-        _productCell = [self viewWithNib:@"ProductOrderFreeDetailProductCell"];
-    }
-    return _productCell;
-}
-
-- (ProductOrderFreeDetailStoreCell *)storeCell {
-    if (!_storeCell) {
-        _storeCell = [self viewWithNib:@"ProductOrderFreeDetailStoreCell"];
-    }
-    return _storeCell;
-}
-
-- (ProductOrderFreeDetailAddressCell *)addressCell {
-    if (!_addressCell) {
-        _addressCell = [self viewWithNib:@"ProductOrderFreeDetailAddressCell"];
-    }
-    return _addressCell;
-}
-
-- (ProductOrderFreeDetailTimeCell *)timeCell {
-    if (!_timeCell) {
-        _timeCell = [self viewWithNib:@"ProductOrderFreeDetailTimeCell"];
-    }
-    return _timeCell;
-}
-
-- (ProductOrderFreeDetailLotteryTipCell *)lotteryTipCell {
-    if (!_lotteryTipCell) {
-        _lotteryTipCell = [self viewWithNib:@"ProductOrderFreeDetailLotteryTipCell"];
-    }
-    return _lotteryTipCell;
-}
-
-- (ProductOrderFreeDetailLotteryCell *)lotteryCell {
-    if (!_lotteryCell) {
-        _lotteryCell = [self viewWithNib:@"ProductOrderFreeDetailLotteryCell"];
-    }
-    return _lotteryCell;
-}
-
-- (ProductOrderFreeDetailLotteryItemCell *)lotteryItemCell {
-    return [self viewWithNib:@"ProductOrderFreeDetailLotteryItemCell"];
-}
-
-- (ProductOrderFreeDetailMoreLotteryCell *)moreLotteryCell {
-    if (!_moreLotteryCell) {
-        _moreLotteryCell = [self viewWithNib:@"ProductOrderFreeDetailMoreLotteryCell"];
-    }
-    return _moreLotteryCell;
+- (nullable __kindof UITableViewCell *)cellWithID:(NSString *)ID {
+    return [self.tableView dequeueReusableCellWithIdentifier:ID];
 }
 
 - (id)viewWithNib:(NSString *)nib {
