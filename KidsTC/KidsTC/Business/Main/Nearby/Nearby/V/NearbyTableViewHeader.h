@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearbyPlaceInfo.h"
+#import "NearbyTableViewHeaderItemView.h"
 
 extern CGFloat const kNearbyTableViewHeaderH;
-
-typedef enum : NSUInteger {
-    NearbyTableViewHeaderActionTypeNursery = 1,
-    NearbyTableViewHeaderActionTypeExhibition,
-    NearbyTableViewHeaderActionTypeCalendar,
-} NearbyTableViewHeaderActionType;
 
 @class NearbyTableViewHeader;
 @protocol NearbyTableViewHeaderDelegate <NSObject>
@@ -22,5 +18,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface NearbyTableViewHeader : UIView
+@property (nonatomic, weak) NearbyPlaceInfo *placeInfo;
 @property (nonatomic, weak) id<NearbyTableViewHeaderDelegate> delegate;
 @end

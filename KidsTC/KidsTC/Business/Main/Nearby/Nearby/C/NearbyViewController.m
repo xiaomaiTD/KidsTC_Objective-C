@@ -9,6 +9,9 @@
 #import "NearbyViewController.h"
 #import "NavigationController.h"
 #import "GHeader.h"
+#import "SegueMaster.h"
+#import "KTCFavouriteManager.h"
+#import "NSString+Category.h"
 
 #import "NearbyModel.h"
 #import "NearbyView.h"
@@ -17,14 +20,36 @@
 #import "MapLocateViewController.h"
 #import "SearchViewController.h"
 #import "NurseryViewController.h"
+#import "WebViewController.h"
 
 
 @interface NearbyViewController ()<NearbyTitleViewDelegate,NearbyViewDelegate>
 @property (weak, nonatomic) NearbyView *nearbyView;
-@property (nonatomic, strong) NSArray<NSArray<NearbyItem *> *> *items;
+@property (nonatomic, strong) NSArray<NearbyData *> *datas;
+@property (nonatomic, strong) NSString *categoryValue;
 @end
 
 @implementation NearbyViewController
+
+- (NSArray<NearbyData *> *)datas {
+    if (!_datas) {
+        NearbyData *data00 = [NearbyData new];
+        NearbyData *data01 = [NearbyData new];
+        NearbyData *data02 = [NearbyData new];
+        data00.stValue = @"1";//人气
+        data01.stValue = @"4";//价格
+        data02.stValue = @"2";//促销
+        _datas = [NSArray arrayWithObjects:data00,data01,data02,nil];
+    }
+    return _datas;
+}
+
+- (NSString *)categoryValue {
+    if (!_categoryValue) {
+        _categoryValue = @"";
+    }
+    return _categoryValue;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +59,7 @@
     
     NearbyView *nearbyView = [[NearbyView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     nearbyView.delegate = self;
+    nearbyView.datas = self.datas;
     [self.view addSubview:nearbyView];
     self.nearbyView = nearbyView;
     
@@ -76,7 +102,7 @@
             break;
         case NearbyViewActionTypeExhibition:
         {
-            [self nursery:value];
+            [self exhibition:value];
         }
             break;
         case NearbyViewActionTypeCalendar:
@@ -86,9 +112,22 @@
             break;
         case NearbyViewActionTypeLoadData:
         {
-            [self loadData:value completionBlock:^(NSInteger count) {
-                [cell dealWithUI:count];
-            }];
+            [self loadDataWithCell:cell refresh:value];
+        }
+            break;
+        case NearbyViewActionTypeSegue:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+        case NearbyViewActionTypeLike:
+        {
+            [self like:value];
+        }
+            break;
+        case NearbyViewActionTypeDidSelectCategory:
+        {
+            [self didSelectCategory:value];
         }
             break;
     }
@@ -102,6 +141,22 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark ============ 展览馆 ============
+
+- (void)exhibition:(id)value {
+    if (![value isKindOfClass:[NearbyPlaceInfo class]]) {
+        return;
+    }
+    NearbyPlaceInfo *info = value;
+    NSString *linkUrl = info.linkUrl;
+    if (![linkUrl isNotNull]) {
+        return;
+    }
+    WebViewController *controller = [[WebViewController alloc] init];
+    controller.urlString = linkUrl;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 #pragma mark ============跳转日历============
 
 - (void)calendar:(id)value {
@@ -111,24 +166,98 @@
 
 #pragma mark ============加载数据============
 
-- (void)loadData:(id)value completionBlock:(void(^)(NSInteger count))completionBlock{
+- (void)loadDataWithCell:(NearbyCollectionViewCell *)cell
+                 refresh:(id)value
+{
+    if (![value respondsToSelector:@selector(boolValue)]) {
+        [cell dealWithUI:0];
+        return;
+    }
+    BOOL refresh = [value boolValue];
     
-    NSDictionary *param = @{@"st":@"1",//排序规则
-                            @"c":@"",//分类ID
-                            @"s":@"",//地区
-                            @"a":@"",//年龄段
-                            @"k":@"",//关键字
-                            @"pt":@"",//人群
-                            @"page":@(1),
-                            @"pageSize":@(TCPAGECOUNT)};
+    NSInteger index = cell.index;
+    if (index>=self.datas.count) [cell dealWithUI:0];
+    NearbyData *data = self.datas[index];
+    data.currentPage = refresh?1:(data.currentPage+1);
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:@(data.currentPage) forKey:@"page"];
+    [param setObject:@(TCPAGECOUNT) forKey:@"pageSize"];
+    NSString *c = self.categoryValue;
+    if ([c isNotNull]) {
+        [param setObject:c forKey:kSearchKey_category];
+    }
+    NSString *st = data.stValue;
+    if ([st isNotNull]) {
+        [param setObject:st forKey:kSearchKey_sort];
+    }
+    NSString *pt = [User shareUser].role.roleIdentifierString;
+    if ([pt isNotNull]) {
+        [param setObject:pt forKey:kSearchKey_populationType];
+    }
     
     [Request startWithName:@"SEARCH_NEARBY_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(completionBlock)completionBlock(0);
+        NearbyData *loadData = [NearbyModel modelWithDictionary:dic].data;
+        NSArray<NearbyItem *> *items = loadData.data;
+        NearbyPlaceInfo *placeInfo = loadData.placeInfo;
+        if (refresh) {
+            data.data = items;
+            data.placeInfo = placeInfo;
+        }else{
+            NSMutableArray *datas = [NSMutableArray arrayWithArray:data.data];
+            [datas addObjectsFromArray:items];
+            data.data = datas;
+        }
+        [cell dealWithUI:loadData.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(completionBlock)completionBlock(0);
+        [cell dealWithUI:0];
     }];
 }
 
+#pragma mark ============添加关注============
 
+- (void)like:(id)value {
+    NearbyItem *item = value;
+    NSString *serveId = item.serveId;
+    KTCFavouriteType type = KTCFavouriteTypeService;
+    ProductDetailType productSearchType = item.productSearchType;
+    switch (productSearchType) {
+        case ProductDetailTypeNormal:
+        {
+            type = KTCFavouriteTypeService;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            type = KTCFavouriteTypeTicketService;
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            type = KTCFavouriteTypeFreeService;
+        }
+            break;
+        default:
+        {
+            type = KTCFavouriteTypeService;
+        }
+            break;
+    }
+    if (item.isInterest) {
+        [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:serveId type:type succeed:nil failure:nil];
+    } else {
+        [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:serveId type:type succeed:nil failure:nil];
+    }
+}
+
+#pragma mark ============选择分类============
+
+- (void)didSelectCategory:(id)value {
+    if (![value isKindOfClass:[NearbyCategoryToolBarItem class]]) return;
+    NearbyCategoryToolBarItem *item = value;
+    self.categoryValue = [NSString stringWithFormat:@"%@",item.value];
+    self.datas = nil;
+    self.nearbyView.datas = self.datas;
+}
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NearbyItem.h"
+#import "NearbyData.h"
 
 @interface NearbyModel : NSObject
 @property (nonatomic, assign) NSInteger errNo;
-@property (nonatomic, strong) NSArray<NearbyItem *> *data;
+@property (nonatomic, strong) NearbyData *data;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSString *page;
+
 @end

@@ -8,20 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum : NSUInteger {
-    OrderBookingOnlineBespeakTypeNeed=1,//需要预约
-    OrderBookingOnlineBespeakTypeNoNeed,//不需要预约
-} OrderBookingOnlineBespeakType;
-
-typedef enum : NSUInteger {
-    OrderBookingBespeakStatusNoCanBespeak=1,//不可预约
-    OrderBookingBespeakStatusCanBespeak,//可预约
-    OrderBookingBespeakStatusBespeaking,//预约中
-    OrderBookingBespeakStatusBespeakFail,//预约失败
-    OrderBookingBespeakStatusBespeakSuccess,//预约成功
-    OrderBookingBespeakStatusCancle,//已取消
-} OrderBookingBespeakStatus;
-
 @interface OrderBookingProductOnlineBespeakConfig : NSObject
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *productName;

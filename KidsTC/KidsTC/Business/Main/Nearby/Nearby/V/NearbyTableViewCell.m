@@ -7,6 +7,9 @@
 //
 
 #import "NearbyTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+Category.h"
+#import "User.h"
 
 @interface NearbyTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
@@ -18,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
 @property (weak, nonatomic) IBOutlet UILabel *statusL;
 @property (weak, nonatomic) IBOutlet UILabel *distanceL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerIconH;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
 @end
 
 @implementation NearbyTableViewCell
@@ -27,7 +32,32 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.bgView.layer.cornerRadius = 4;
     self.bgView.layer.masksToBounds = YES;
+    self.likeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
+- (void)setItem:(NearbyItem *)item {
+    _item = item;
+    [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_item.bigImgurl] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    self.bannerIconH.constant = _item.bigImgRatio * (SCREEN_WIDTH - 20);
+    self.nameL.text = _item.name;
+    self.tipL.text =  [NSString stringWithFormat:@"%@人消费",_item.num];
+    self.areaL.text = [NSString stringWithFormat:@"%@ | %@",_item.categoryName,_item.districtName];
+    self.priceL.text = _item.price;
+    self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.storeName,_item.address];
+    self.statusL.text = _item.endTimeDesc;
+    self.distanceL.text = _item.distance;
+    self.likeBtn.selected = _item.isInterest;
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
 
+- (IBAction)action:(UIButton *)sender {
+    [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
+        if ([self.delegate respondsToSelector:@selector(nearbyTableViewCell:actionType:value:)]) {
+            [self.delegate nearbyTableViewCell:self actionType:NearbyTableViewCellActionTypeLike value:_item];
+            _item.isInterest = !_item.isInterest;
+            self.likeBtn.selected = _item.isInterest;
+        }
+    }];
+}
 @end

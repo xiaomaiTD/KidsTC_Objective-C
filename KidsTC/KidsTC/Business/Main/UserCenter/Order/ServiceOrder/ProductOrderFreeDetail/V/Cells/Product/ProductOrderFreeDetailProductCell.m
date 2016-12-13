@@ -45,7 +45,7 @@
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
-        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeProduct value:self.infoData];
+        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeSegue value:self.infoData.segueModel];
     }
 }
 

@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef enum : NSUInteger {
+    NearbyTableViewHeaderActionTypeNursery = 1,
+    NearbyTableViewHeaderActionTypeExhibition,
+    NearbyTableViewHeaderActionTypeCalendar,
+} NearbyTableViewHeaderActionType;
+
+@class NearbyTableViewHeaderItemView;
+@protocol NearbyTableViewHeaderItemViewDelegate <NSObject>
+- (void)nearbyTableViewHeaderItemView:(NearbyTableViewHeaderItemView *)view actionType:(NearbyTableViewHeaderActionType)type value:(id)value;
+@end
 
 @interface NearbyTableViewHeaderItemView : UIView
-@property (nonatomic, copy) void(^actionBlock)();
+@property (nonatomic, assign) NearbyTableViewHeaderActionType type;
+@property (nonatomic, weak) id<NearbyTableViewHeaderItemViewDelegate> delegate;
 @end

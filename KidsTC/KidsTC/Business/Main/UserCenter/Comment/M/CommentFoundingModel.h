@@ -18,6 +18,8 @@
 #import "ProductOrderListItem.h"
 #import "ProductOrderFreeListItem.h"
 #import "ProductOrderFreeDetailData.h"
+#import "ProductOrderNormalDetailData.h"
+#import "ProductOrderTicketDetailData.h"
 
 @interface CommentFoundingModel : NSObject
 
@@ -60,5 +62,9 @@
 + (instancetype)modelFromProductOrderFreeListItem:(ProductOrderFreeListItem *)item;
 
 + (instancetype)modelFromProductOrderFreeDetailData:(ProductOrderFreeDetailData *)data;
+
++ (instancetype)modelFromProductOrderNormalDetailData:(ProductOrderNormalDetailData *)data;
+
++ (instancetype)modelFromProductOrderTicketDetailData:(ProductOrderTicketDetailData *)data;
 
 @end

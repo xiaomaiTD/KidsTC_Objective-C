@@ -8,16 +8,20 @@
 
 #import "NearbyView.h"
 #import "Colours.h"
+#import "NSString+Category.h"
+
 #import "MultiItemsToolBar.h"
 #import "NearbyCategoryToolBar.h"
 #import "NearbyViewFlowLayout.h"
 
+
 static NSString *CellID = @"NearbyCollectionViewCell";
 
-@interface NearbyView ()<UICollectionViewDelegate,UICollectionViewDataSource,MultiItemsToolBarDelegate,NearbyCollectionViewCellDelegate>
+@interface NearbyView ()<UICollectionViewDelegate,UICollectionViewDataSource,MultiItemsToolBarDelegate,NearbyCollectionViewCellDelegate,NearbyCategoryToolBarDelegate>
 @property (weak, nonatomic) UICollectionView *collectionView;
 @property (weak, nonatomic) MultiItemsToolBar *itemsBar;
 @property (weak, nonatomic) NearbyCategoryToolBar *categoryToolBar;
+@property (nonatomic, assign) NSUInteger currentIndex;
 @end
 
 @implementation NearbyView
@@ -39,13 +43,14 @@ static NSString *CellID = @"NearbyCollectionViewCell";
         
         NearbyCategoryToolBar *categoryToolBar = [[NSBundle mainBundle] loadNibNamed:@"NearbyCategoryToolBar" owner:self options:nil].firstObject;
         categoryToolBar.frame = CGRectMake(0, CGRectGetMaxY(self.itemsBar.frame), SCREEN_WIDTH,SCREEN_HEIGHT - 64 - MultiItemsToolBarScrollViewHeight - 49);
+        categoryToolBar.delegate = self;
         [self addSubview:categoryToolBar];
         categoryToolBar.hidden = YES;
         self.categoryToolBar = categoryToolBar;
         
         MultiItemsToolBar *itemsBar = [[MultiItemsToolBar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
         itemsBar.delegate =  self;
-        itemsBar.tags = @[@"人气",@"价格",@"促销",@"分类"];
+        itemsBar.tags = @[@"人气",@"价格",@"促销",@"全部分类"];
         [self addSubview:itemsBar];
         self.itemsBar = itemsBar;
         
@@ -63,15 +68,40 @@ static NSString *CellID = @"NearbyCollectionViewCell";
     self.itemsBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight);
 }
 
+- (void)setDatas:(NSArray<NearbyData *> *)datas {
+    _datas = datas;
+    [self.collectionView reloadData];
+}
+
+#pragma mark - NearbyCategoryToolBarDelegate
+
+- (void)nearbyCategoryToolBar:(NearbyCategoryToolBar *)toolBar actionType:(NearbyCategoryToolBarActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(nearbyView:nearbyCollectionViewCell:actionType:value:)]) {
+        [self.delegate nearbyView:self nearbyCollectionViewCell:nil actionType:(NearbyViewActionType)type value:value];
+    }
+    NearbyCategoryToolBarItem *item = value;
+    if ([item.title isNotNull]) {
+        _itemsBar.tags = @[@"人气",@"价格",@"促销",item.title];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.001 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.itemsBar changeTipPlaceWithSmallIndex:self.currentIndex bigIndex:self.currentIndex progress:0 animate:NO];
+        });
+    }
+}
+
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return self.datas.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NearbyCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellID forIndexPath:indexPath];
+    NSInteger row = indexPath.row;
+    cell.index = row;
     cell.delegate = self;
+    if (row<self.datas.count) {
+        cell.data = self.datas[row];
+    }
     return cell;
 }
 
@@ -101,6 +131,7 @@ static NSString *CellID = @"NearbyCollectionViewCell";
     CGFloat progress = (offsetX - smallIndex * scrollView_w)/scrollView_w;
     
     [self.itemsBar changeTipPlaceWithSmallIndex:smallIndex bigIndex:bigIndex progress:progress animate:YES];
+    self.currentIndex = smallIndex;
 }
 
 #pragma mark - NearbyCollectionViewCellDelegate

@@ -103,7 +103,7 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
     if (!self.infoData.isLottery) {
         [section01 addObject:[self cellWithID:LotteryTipCellID]];
         [section01 addObject:[self cellWithID:LotteryCellID]];
-        if (self.infoData.freeType == ProductOrderFreeListTypeLottery) {
+        if (self.infoData.freeType == FreeTypeLottery) {
             [section01 addObjectsFromArray:[self resultListsCells:count]];
         }
         if (section01.count>0) [sections addObject:section01];
@@ -111,7 +111,7 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
         if (section01.count>0) [sections addObject:section01];
         NSMutableArray *section02 = [NSMutableArray array];
         [section02 addObject:[self cellWithID:LotteryCellID]];
-        if (self.infoData.freeType == ProductOrderFreeListTypeLottery) {
+        if (self.infoData.freeType == FreeTypeLottery) {
             [section02 addObjectsFromArray:[self resultListsCells:count]];
         }
         if (section02.count>0) [sections addObject:section02];

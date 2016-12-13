@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="KGk-i7-Jjw" customClass="ProductOrderTicketDetailProductCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UBI-AV-NHl">
+                        <rect key="frame" x="15" y="16" width="77" height="106"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="77" id="qk4-na-Bbe"/>
+                            <constraint firstAttribute="height" constant="106" id="tzS-4V-Y8G"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gC-eu-l9U">
+                        <rect key="frame" x="102" y="16" width="203" height="106"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="圣诞节狂欢节亲子派对一大一小大狂欢圣诞节狂欢节亲子圣诞节狂欢节亲子派对一大一小大狂欢圣诞节狂欢节亲子" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHs-4i-hHf">
+                                <rect key="frame" x="0.0" y="0.0" width="203" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海 / 喜剧 / 45分钟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaR-Xm-mOu">
+                                <rect key="frame" x="0.0" y="90.5" width="203" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="场馆：上海解放军歌剧院" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9je-UL-yuK">
+                                <rect key="frame" x="0.0" y="64.5" width="146" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="IaR-Xm-mOu" secondAttribute="trailing" id="Ma7-tw-Z8T"/>
+                            <constraint firstItem="9je-UL-yuK" firstAttribute="leading" secondItem="5gC-eu-l9U" secondAttribute="leading" id="RCL-dh-Rwl"/>
+                            <constraint firstItem="IaR-Xm-mOu" firstAttribute="top" secondItem="9je-UL-yuK" secondAttribute="bottom" constant="10" id="VD2-cm-scp"/>
+                            <constraint firstAttribute="trailing" secondItem="PHs-4i-hHf" secondAttribute="trailing" id="bLD-8Y-5Af"/>
+                            <constraint firstAttribute="bottom" secondItem="IaR-Xm-mOu" secondAttribute="bottom" id="ldl-2A-psK"/>
+                            <constraint firstItem="PHs-4i-hHf" firstAttribute="top" secondItem="5gC-eu-l9U" secondAttribute="top" id="lmc-Ks-JxV"/>
+                            <constraint firstItem="PHs-4i-hHf" firstAttribute="leading" secondItem="5gC-eu-l9U" secondAttribute="leading" id="v0B-Hz-hqq"/>
+                            <constraint firstItem="IaR-Xm-mOu" firstAttribute="leading" secondItem="5gC-eu-l9U" secondAttribute="leading" id="w1n-TB-iAu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="5gC-eu-l9U" firstAttribute="top" secondItem="UBI-AV-NHl" secondAttribute="top" id="53R-dz-1jg"/>
+                    <constraint firstItem="5gC-eu-l9U" firstAttribute="bottom" secondItem="UBI-AV-NHl" secondAttribute="bottom" id="6BL-5a-8JQ"/>
+                    <constraint firstAttribute="trailing" secondItem="5gC-eu-l9U" secondAttribute="trailing" constant="15" id="7Aj-T7-pc9"/>
+                    <constraint firstAttribute="bottom" secondItem="UBI-AV-NHl" secondAttribute="bottom" constant="16" id="LjP-T9-0Pk"/>
+                    <constraint firstItem="UBI-AV-NHl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cwk-GX-a88"/>
+                    <constraint firstItem="5gC-eu-l9U" firstAttribute="leading" secondItem="UBI-AV-NHl" secondAttribute="trailing" constant="10" id="e0T-C5-PPk"/>
+                    <constraint firstItem="UBI-AV-NHl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="hUh-Yw-VuK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="icon" destination="UBI-AV-NHl" id="7y5-jp-Vpz"/>
+                <outlet property="nameL" destination="PHs-4i-hHf" id="zBL-CE-jOD"/>
+                <outlet property="theatherL" destination="9je-UL-yuK" id="R2Z-zl-AHp"/>
+                <outlet property="tipL" destination="IaR-Xm-mOu" id="5rw-mS-FPH"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="101.5"/>
+        </tableViewCell>
+    </objects>
+</document>

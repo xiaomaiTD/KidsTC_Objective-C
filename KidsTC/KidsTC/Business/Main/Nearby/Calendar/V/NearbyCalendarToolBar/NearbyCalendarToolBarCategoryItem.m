@@ -24,7 +24,7 @@
     NearbyCalendarToolBarCategoryItem *firstItem = [NearbyCalendarToolBarCategoryItem itemWithTitle:@"全部分类" value:@""];
     if(firstItem) [items addObject:firstItem];
     [categorys enumerateObjectsUsingBlock:^(CategoryListItem *obj, NSUInteger idx, BOOL *stop) {
-        NearbyCalendarToolBarCategoryItem *item = [NearbyCalendarToolBarCategoryItem itemWithTitle:obj.Name value:obj.SysNo];
+        NearbyCalendarToolBarCategoryItem *item = [NearbyCalendarToolBarCategoryItem itemWithTitle:[NSString stringWithFormat:@"%@",obj.Name] value:[NSString stringWithFormat:@"%@",obj.SysNo]];
         if(item)[items addObject:item];
     }];
     return items;

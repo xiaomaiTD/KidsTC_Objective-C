@@ -7,11 +7,11 @@
 //
 
 #import "NearbyTableViewHeader.h"
-#import "NearbyTableViewHeaderItemView.h"
+
 
 CGFloat const kNearbyTableViewHeaderH = 112;
 
-@interface NearbyTableViewHeader ()
+@interface NearbyTableViewHeader ()<NearbyTableViewHeaderItemViewDelegate>
 @property (weak, nonatomic) IBOutlet NearbyTableViewHeaderItemView *leftItemView;
 @property (weak, nonatomic) IBOutlet NearbyTableViewHeaderItemView *rightItemView;
 @end
@@ -20,22 +20,40 @@ CGFloat const kNearbyTableViewHeaderH = 112;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.leftItemView.tag = NearbyTableViewHeaderActionTypeNursery;
-    self.rightItemView.tag = NearbyTableViewHeaderActionTypeCalendar;
-    self.leftItemView.actionBlock = ^{
-        [self action:self.leftItemView.tag];
-    };
-    self.rightItemView.actionBlock = ^{
-        [self action:self.rightItemView.tag];
-    };
+    
+    self.leftItemView.type = NearbyTableViewHeaderActionTypeNursery;
+    self.rightItemView.type = NearbyTableViewHeaderActionTypeCalendar;
+    self.leftItemView.delegate = self;
+    self.rightItemView.delegate = self;
 }
 
-- (void)action:(NearbyTableViewHeaderActionType)type {
+- (void)setPlaceInfo:(NearbyPlaceInfo *)placeInfo {
+    _placeInfo = placeInfo;
+    NearbyTableViewHeaderActionType actionType = NearbyTableViewHeaderActionTypeNursery;
+    switch (_placeInfo.placeType) {
+        case NurseryTypeNursery:
+        {
+            actionType = NearbyTableViewHeaderActionTypeNursery;
+        }
+            break;
+        case NurseryTypeExhibitionHall:
+        {
+            actionType = NearbyTableViewHeaderActionTypeExhibition;
+        }
+            break;
+        default:
+        {
+            actionType = NearbyTableViewHeaderActionTypeNursery;
+        }
+            break;
+    }
+    self.leftItemView.type = actionType;
+}
+
+- (void)nearbyTableViewHeaderItemView:(NearbyTableViewHeaderItemView *)view actionType:(NearbyTableViewHeaderActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(nearbyTableViewHeader:actionType:value:)]) {
-        [self.delegate nearbyTableViewHeader:self actionType:type value:nil];
+        [self.delegate nearbyTableViewHeader:self actionType:type value:_placeInfo];
     }
 }
-
-
 
 @end

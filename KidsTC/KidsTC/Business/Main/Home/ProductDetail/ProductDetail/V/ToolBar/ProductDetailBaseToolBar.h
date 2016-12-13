@@ -24,6 +24,7 @@ typedef enum : NSUInteger {
     ProductDetailBaseToolBarActionTypeFreeToolBarLike,//免费商详 - 喜欢、收藏
     ProductDetailBaseToolBarActionTypeFreeToolBarApply,//免费商详 - 我要报名
     ProductDetailBaseToolBarActionTypeFreeToolBarShare,//免费商详 - 分享
+    ProductDetailBaseToolBarActionTypeFreeToolBarRelateBuy,//免费商详 - 原价购买
     
 } ProductDetailBaseToolBarActionType;
 

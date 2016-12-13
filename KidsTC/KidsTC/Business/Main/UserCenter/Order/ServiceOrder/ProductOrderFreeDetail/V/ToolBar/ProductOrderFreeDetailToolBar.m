@@ -31,7 +31,7 @@ CGFloat const kProductOrderFreeDetailToolBarH = 87;
 
 - (void)setData:(ProductOrderFreeDetailData *)data {
     _data = data;
-    self.hidden = NO;
+    self.hidden = (data == nil);
     [self countDown];
     if (_data.btns.count>0) {
         self.btnsView.btnsAry = _data.btns;
@@ -44,13 +44,25 @@ CGFloat const kProductOrderFreeDetailToolBarH = 87;
 }
 
 - (void)countDown {
-    NSString *str = _data.countDownValueString;
+    ProductOrderFreeDetailCountDown *countDown = self.data.countDown;
+    NSString *str = countDown.countDownValueString;
     if ([str isNotNull]) {
         _countDownView.hidden = NO;
         _countDownL.text = str;
     }else{
         _countDownView.hidden = YES;
+        [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
+        if (countDown.showCountDown && !countDown.countDownOver) {
+            countDown.countDownOver = YES;
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailToolBar:actionType:value:)]) {
+                [self.delegate productOrderFreeDetailToolBar:self actionType:ProductOrderFreeDetailToolBarActionTypeCountDownOver value:_data];
+            }
+        }
     }
+}
+
+- (void)dealloc{
+    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
 }
 
 #pragma mark - ProductOrderFreeDetailBtnsViewDelegate
@@ -60,8 +72,5 @@ CGFloat const kProductOrderFreeDetailToolBarH = 87;
     }
 }
 
-- (void)dealloc{
-    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
-}
 
 @end

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearbyModel.h"
 
 typedef enum : NSUInteger {
     NearbyCalendarViewActionTypeDidSelectDate = 1,
-    NearbyCalendarViewActionTypeDidSelectCategory,
+    NearbyCalendarViewActionTypeDidSelectCategory = 2,
+    NearbyCalendarViewActionTypeLike = 6,
+    NearbyCalendarViewActionTypeSegue = 7,
+    NearbyCalendarViewActionTypeLoadData = 8,
 } NearbyCalendarViewActionType;
 
 @class NearbyCalendarView;
@@ -20,4 +24,6 @@ typedef enum : NSUInteger {
 
 @interface NearbyCalendarView : UIView
 @property (nonatomic, weak) id<NearbyCalendarViewDelegate> delegate;
+@property (nonatomic, strong) NearbyData *data;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

@@ -12,6 +12,7 @@
 #import "ProductOrderFreeDetailBtn.h"
 #import "ProductDetailTime.h"
 #import "SegueModel.h"
+#import "ProductOrderFreeDetailCountDown.h"
 
 @interface ProductOrderFreeDetailData : NSObject
 @property (nonatomic, strong) ProductDetailTime *time;
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) NSString *productSysNo;
 @property (nonatomic, assign) NSInteger productType;
 @property (nonatomic, assign) NSInteger commentType;
-@property (nonatomic, assign) ProductOrderFreeListType freeType;
+@property (nonatomic, assign) FreeType freeType;
 @property (nonatomic, strong) NSString *freeTypeStr;
 @property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *channelId;
@@ -32,9 +33,7 @@
 @property (nonatomic, strong) NSString *productStatusStr;
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSString *startTimeStr;
-@property (nonatomic, assign) BOOL isShowCountDown;
-@property (nonatomic, assign) NSTimeInterval countDownValue;
-@property (nonatomic, strong) NSString *countDownText;
+@property (nonatomic, strong) ProductOrderFreeDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *rowCreateTime;
 @property (nonatomic, strong) ProductOrderFreeDetailBooking *onlineBespeak;
 @property (nonatomic, assign) BOOL isLottery;
@@ -42,7 +41,7 @@
 @property (nonatomic, assign) BOOL isCanComment;
 @property (nonatomic, strong) NSArray<NSNumber *> *orderBtns;
 @property (nonatomic, assign) ProductOrderFreeDetailBtnType defaultBtn;
-@property (nonatomic, assign) NSInteger orderStatus;
+@property (nonatomic, assign) OrderState orderStatus;
 //selfDefine
 @property (nonatomic, strong) NSString *countDownValueString;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;

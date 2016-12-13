@@ -59,6 +59,8 @@
 
 - (void)loadData {
     if (![_orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        [self back];
         return;
     }
     NSDictionary *param = @{@"orderId":_orderId};
@@ -81,7 +83,7 @@
     self.infoData = data;
     self.detailView.infoData = data;
     [self.detailView reloadInfoData];
-    if (data.freeType == ProductOrderFreeListTypeLottery) {
+    if (data.freeType == FreeTypeLottery) {
         [self loadLottery];
     }
 }
@@ -168,9 +170,14 @@
             [self refund:value];
         }
             break;
-        case ProductOrderFreeDetailViewActionTypeProduct:
+        case ProductOrderFreeDetailViewActionTypeCountDownOver://倒计时结束
         {
-            [self product:value];
+            [self loadData];
+        }
+            break;
+        case ProductOrderFreeDetailViewActionTypeSegue://通用跳转
+        {
+            [self segue:value];
         }
             break;
         case ProductOrderFreeDetailViewActionTypeStore:
@@ -330,7 +337,23 @@
 #pragma mark ================确认收货================
 
 - (void)confirmDeliver:(ProductOrderListItem *)item {
-    
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"orderId":orderId};
+    [Request startWithName:@"CONFIRM_ORDER_DELIVER_RECEIVED" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [[iToast makeText:@"确认收货成功"] show];
+        [self loadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = @"确认收货失败";
+        NSString *errMsg = error.userInfo[@"data"];
+        if ([errMsg isNotNull]) {
+            msg = errMsg;
+        }
+        [[iToast makeText:msg] show];
+    }];
 }
 
 #pragma mark ================发表评论================
@@ -350,34 +373,7 @@
 #pragma mark ================再次购买================
 
 - (void)buyAgain:(ProductOrderFreeDetailData *)data {
-    NSString *productid = data.productSysNo;
-    NSString *storeno = @"";
-    NSString *chid = data.channelId;
-    productid = [productid isNotNull]?productid:@"";
-    storeno = [storeno isNotNull]?storeno:@"";
-    chid = [chid isNotNull]?chid:@"0";
-    NSDictionary *param = @{@"productid":productid,
-                            @"storeno":storeno,
-                            @"chid":chid,
-                            @"buynum":@(1)};
-    [TCProgressHUD showSVP];
-    [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
-        [self buyAgainSuccess:nil];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [TCProgressHUD dismissSVP];
-        [self buyAgainFailure:error];
-    }];
-}
-
-- (void)buyAgainSuccess:(id)value {
-    [self loadData];
-    ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (void)buyAgainFailure:(NSError *)error {
-    [[iToast makeText:@"再次购买失败，请稍后再试"] show];
+    [[iToast makeText:@"免费商品不支持再次购买哦"] show];
 }
 
 #pragma mark ================申请售后================
@@ -394,10 +390,10 @@
     [self loadData];
 }
 
-#pragma mark ================商品详情================
+#pragma mark ================通用跳转================
 
-- (void)product:(ProductOrderFreeDetailData *)data {
-    [SegueMaster makeSegueWithModel:data.segueModel fromController:self];
+- (void)segue:(id)value {
+    [SegueMaster makeSegueWithModel:value fromController:self];
 }
 
 #pragma mark ================门店详情================

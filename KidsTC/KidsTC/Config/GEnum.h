@@ -38,9 +38,31 @@ typedef enum : NSUInteger {
 } ProductOrderListOrderType;
 
 typedef enum : NSUInteger {
-    ProductOrderFreeListTypeFreeActivity = 1,//免费活动
-    ProductOrderFreeListTypeLottery,//抽奖
-} ProductOrderFreeListType;
+    OrderKindNormal = 1,//普通订单
+    OrderKindFlash = 2,//闪购订单
+    OrderKindRadish = 3,/// 萝卜订单
+    OrderKindTicket = 4,/// 票务订单
+    OrderKindFree = 5,/// 免费商品报名订单
+    OrderKindFight = 6,/// 拼团
+} OrderKind;
+
+typedef enum : NSUInteger {
+    OrderStateWaitPay=1,//待付款
+    OrderStateWaitUse,//待使用
+    OrderStatePartUse,//部分使用
+    OrderStateWaitComment,//待评价
+    OrderStateCanceled,//订单已取消
+    OrderStateRefunding,//退款中
+    OrderStateRefundSuccess,//退款成功
+    OrderStateRefundFailure,//退款失败
+    OrderStateHasComment,//已评价
+    OrderStateHasOverTime,//已过期
+} OrderState;
+
+typedef enum : NSUInteger {
+    FreeTypeFreeActivity = 1,//免费活动
+    FreeTypeLottery,//抽奖
+} FreeType;
 
 typedef enum : NSUInteger {
     SearchResultProductTypeService = 1,//服务
@@ -59,10 +81,29 @@ typedef enum : NSInteger {
 } SearchResultProductStatus;
 
 typedef enum : NSUInteger {
+    OrderBookingOnlineBespeakTypeNeed=1,//需要预约
+    OrderBookingOnlineBespeakTypeNoNeed,//不需要预约
+} OrderBookingOnlineBespeakType;
+
+typedef enum : NSUInteger {
+    OrderBookingBespeakStatusNoCanBespeak=1,//不可预约
+    OrderBookingBespeakStatusCanBespeak,//可预约
+    OrderBookingBespeakStatusBespeaking,//预约中
+    OrderBookingBespeakStatusBespeakFail,//预约失败
+    OrderBookingBespeakStatusBespeakSuccess,//预约成功
+    OrderBookingBespeakStatusCancle,//已取消
+} OrderBookingBespeakStatus;
+
+typedef enum : NSUInteger {
     CouponListStatusUnused = 1,//未使用
     CouponListStatusUsed,//已使用
     CouponListStatusExpired,//已过期
 } CouponListStatus;
+
+typedef enum : NSUInteger {
+    NurseryTypeNursery = 1, //育婴室
+    NurseryTypeExhibitionHall,//展览馆
+} NurseryType;
 
 typedef enum : NSUInteger {
     TCSexTypeUnkonw,//未知

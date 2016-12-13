@@ -23,6 +23,7 @@
 
 - (void)countDown{
     if (_countDownTime<0) {
+        _countDownValueString = nil;
         [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
     }else{
         [self  setupCountDownValueString];

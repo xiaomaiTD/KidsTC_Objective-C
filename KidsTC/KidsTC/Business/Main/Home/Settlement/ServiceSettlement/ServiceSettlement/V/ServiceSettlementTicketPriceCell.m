@@ -12,7 +12,7 @@
 @interface ServiceSettlementTicketPriceCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
-
+@property (weak, nonatomic) IBOutlet UILabel *numL;
 @end
 
 @implementation ServiceSettlementTicketPriceCell
@@ -27,6 +27,7 @@
     _seat = seat;
     
     self.titleL.text = _seat.seat;
+    self.numL.text = [NSString stringWithFormat:@"%zd张",seat.num];
     self.priceL.text = [NSString stringWithFormat:@"%@元",_seat.price];
 }
 

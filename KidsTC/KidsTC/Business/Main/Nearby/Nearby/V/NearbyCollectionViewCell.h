@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearbyModel.h"
 
 typedef enum : NSUInteger {
     NearbyCollectionViewCellActionTypeNursery = 1,
-    NearbyCollectionViewCellActionTypeExhibition,
-    NearbyCollectionViewCellActionTypeCalendar,
-    NearbyCollectionViewCellActionTypeLoadData,
+    NearbyCollectionViewCellActionTypeExhibition = 2,
+    NearbyCollectionViewCellActionTypeCalendar = 3,
+    NearbyCollectionViewCellActionTypeLoadData = 4,
+    NearbyCollectionViewCellActionTypeSegue = 5,
+    NearbyCollectionViewCellActionTypeLike = 6,
 } NearbyCollectionViewCellActionType;
 
 @class NearbyCollectionViewCell;
@@ -22,6 +25,7 @@ typedef enum : NSUInteger {
 
 @interface NearbyCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) id<NearbyCollectionViewCellDelegate> delegate;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, weak) NearbyData *data;
+@property (nonatomic, assign) NSInteger index;
 - (void)dealWithUI:(NSUInteger)loadCount;
 @end

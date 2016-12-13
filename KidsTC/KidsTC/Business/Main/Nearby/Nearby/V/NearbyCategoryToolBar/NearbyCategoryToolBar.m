@@ -118,6 +118,9 @@ static CGFloat const kAnimationDuration = 0.3;
         NearbyCategoryToolBarItem *item = self.items[row];
         [self selectedItem:item];
         [self showHide];
+        if ([self.delegate respondsToSelector:@selector(nearbyCategoryToolBar:actionType:value:)]) {
+            [self.delegate nearbyCategoryToolBar:self actionType:NearbyCategoryToolBarActionTypeDidSelectCategory value:item];
+        }
     }
 }
 

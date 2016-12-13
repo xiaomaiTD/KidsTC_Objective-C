@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    NearbyCategoryToolBarActionTypeDidSelectCategory = 50
+} NearbyCategoryToolBarActionType;
+
+@class NearbyCategoryToolBar;
+@protocol NearbyCategoryToolBarDelegate <NSObject>
+- (void)nearbyCategoryToolBar:(NearbyCategoryToolBar *)toolBar actionType:(NearbyCategoryToolBarActionType)type value:(id)value;
+@end
+
 @interface NearbyCategoryToolBar : UIView
+@property (nonatomic, weak) id<NearbyCategoryToolBarDelegate> delegate;
 - (void)showHide;
 - (void)hide;
 @end

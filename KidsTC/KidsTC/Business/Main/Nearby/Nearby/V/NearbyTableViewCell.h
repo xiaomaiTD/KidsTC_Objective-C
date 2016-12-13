@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearbyItem.h"
+
+typedef enum : NSUInteger {
+    NearbyTableViewCellActionTypeLike = 6,
+} NearbyTableViewCellActionType;
+@class NearbyTableViewCell;
+@protocol NearbyTableViewCellDelegate <NSObject>
+- (void)nearbyTableViewCell:(NearbyTableViewCell *)cell actionType:(NearbyTableViewCellActionType)type value:(id)value;
+@end
 
 @interface NearbyTableViewCell : UITableViewCell
-
+@property (nonatomic, weak) NearbyItem *item;
+@property (nonatomic, weak) id<NearbyTableViewCellDelegate> delegate;
 @end

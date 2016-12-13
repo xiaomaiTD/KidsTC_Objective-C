@@ -26,7 +26,11 @@ typedef enum {
     CommentRelationTypeStore = 10,
     CommentRelationTypeStrategy = 11,
     CommentRelationTypeStrategyDetail = 12,
-    CommentRelationTypeNews = 13
+    CommentRelationTypeNews = 13,
+    CommentRelationTypeTicketProduct = 14,//票务服务
+    CommentRelationTypeFreeProductService = 15,//免费服务
+    CommentRelationTypeFreeProductActivity = 16,//免费服务-活动
+    CommentRelationTypeFreeProductMaterialObject = 17,//免费服务-实物
 }CommentRelationType;
 
 typedef enum {
@@ -36,7 +40,11 @@ typedef enum {
     CommentFoundingSourceTypeStore = 10,
     CommentFoundingSourceTypeStrategy = 11,
     CommentFoundingSourceTypeStrategyDetail = 12,
-    CommentFoundingSourceTypeNews = 13
+    CommentFoundingSourceTypeNews = 13,
+    CommentFoundingSourceTypeTicketProduct = 14,//票务服务
+    CommentFoundingSourceTypeFreeProductService = 15,//免费服务
+    CommentFoundingSourceTypeFreeProductActivity = 16,//免费服务-活动
+    CommentFoundingSourceTypeFreeProductMaterialObject = 17,//免费服务-实物
 }CommentFoundingSourceType;
 
 typedef struct {

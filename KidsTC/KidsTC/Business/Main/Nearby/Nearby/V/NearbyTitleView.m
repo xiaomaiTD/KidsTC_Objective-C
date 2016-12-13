@@ -39,8 +39,6 @@
     NSString *locationString = [KTCMapService shareKTCMapService].currentLocation.locationDescription;
     NSString *address = [locationString isNotNull]?locationString:@"还没有定位哦...";
     self.addressl.text = address;
-    //[self.addressBtn setTitle:address forState:UIControlStateNormal];
-    
 }
 
 - (IBAction)action:(UIButton *)sender {

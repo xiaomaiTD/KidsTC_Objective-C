@@ -384,7 +384,9 @@
     [dic setObject:@(self.page) forKey:@"page"];
     [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
     NSString *pt = [User shareUser].role.roleIdentifierString;
-    [dic setObject:pt forKey:kSearchKey_populationType];
+    if ([pt isNotNull]) {
+        [dic setObject:pt forKey:kSearchKey_populationType];
+    }
     if ([self.userLocation isNotNull]) {
         [dic setObject:self.userLocation forKey:@"mapaddr"];
     }

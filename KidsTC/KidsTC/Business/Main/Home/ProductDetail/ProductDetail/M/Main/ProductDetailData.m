@@ -23,7 +23,8 @@
              @"coupons":[NSString class],
              @"product_standards":[ProductDetailStandard class],
              @"store":[ProductDetailStore class],
-             @"actors":[ProductDetailActor class]};
+             @"actors":[ProductDetailActor class],
+             @"joinMember":[NSString class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
@@ -74,6 +75,8 @@
         case ProductDetailTypeFree:
         {
             [self setupTricks];
+            
+            [self setupJoinMember];
         }
             break;
     }
@@ -295,5 +298,23 @@
     _attTrickStr = [[NSAttributedString alloc] initWithAttributedString:attTrick];
 }
 
+- (void)setupJoinMember {
+    if (self.joinMember.count>17) {
+        NSMutableArray *ary = [NSMutableArray array];
+        int count = 17;
+        while (count>0) {
+            count--;
+            NSString *string = self.joinMember[count];
+            if (![string isNotNull]) {
+                string = @"ProductDetaiFreeJoin_place";
+            }
+            [ary addObject:string];
+        }
+        [ary addObject:@"ProductDetaiFreeJoin_more"];
+        [ary addObject:@"ProductDetaiFreeJoin_place"];
+        [ary addObject:@"ProductDetaiFreeJoin_place"];
+        self.joinMember = [NSArray arrayWithArray:ary];
+    }
+}
 
 @end

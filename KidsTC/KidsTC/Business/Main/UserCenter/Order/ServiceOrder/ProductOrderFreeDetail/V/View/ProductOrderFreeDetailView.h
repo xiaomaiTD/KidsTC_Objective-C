@@ -25,8 +25,9 @@ typedef enum : NSUInteger {
     ProductOrderFreeDetailViewActionTypeBuyAgain = 12,/// 再次购买
     ProductOrderFreeDetailViewActionTypeComplaint = 13,/// 投诉
     ProductOrderFreeDetailViewActionTypeRefund = 14,//申请售后
+    ProductOrderFreeDetailViewActionTypeCountDownOver,//倒计时结束
     
-    ProductOrderFreeDetailViewActionTypeProduct = 50,
+    ProductOrderFreeDetailViewActionTypeSegue = 50,
     ProductOrderFreeDetailViewActionTypeStore,
     ProductOrderFreeDetailViewActionTypeAddress,
     ProductOrderFreeDetailViewActionTypeDate,

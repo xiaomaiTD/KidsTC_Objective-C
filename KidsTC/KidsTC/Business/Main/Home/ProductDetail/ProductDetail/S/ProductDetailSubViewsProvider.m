@@ -19,6 +19,7 @@
 #import "ProductDetailContentEleCell.h"
 #import "ProductDetailContentEleEmptyCell.h"
 #import "ProductDetailJoinCell.h"
+#import "ProductDetaiFreeJoinCell.h"
 #import "ProductDetailTwoColumnWebViewCell.h"
 #import "ProductDetailTwoColumnConsultTipCell.h"
 #import "ProductDetailTwoColumnConsultEmptyCell.h"
@@ -70,6 +71,7 @@
 @property (nonatomic, strong) ProductDetailTicketActorCell *ticketActorCell;
 
 @property (nonatomic, strong) ProductDetaiFreeInfoCell *freeInfoCell;
+@property (nonatomic, strong) ProductDetaiFreeJoinCell *freeJoinCell;
 @property (nonatomic, strong) ProductDetaiFreeStoreInfoCell *freeStoreInfoCell;
 @property (nonatomic, strong) ProductDetaiFreeLifeTipCell *freeLifeTipCell;
 
@@ -266,6 +268,14 @@ singleM(ProductDetailSubViewsProvider)
         _freeInfoCell = [self viewWithNib:@"ProductDetaiFreeInfoCell"];
     }
     return _freeInfoCell;
+}
+
+- (ProductDetaiFreeJoinCell *)freeJoinCell {
+    if (!_freeJoinCell)
+    {
+        _freeJoinCell = [self viewWithNib:@"ProductDetaiFreeJoinCell"];
+    }
+    return _freeJoinCell;
 }
 
 - (ProductDetaiFreeStoreInfoCell *)freeStoreInfoCell {
@@ -671,6 +681,13 @@ singleM(ProductDetailSubViewsProvider)
         if (section01.count>0) [sections addObject:section01];
     }];
     
+    //他们已参加
+    if (_data.joinMember.count>0) {
+        NSMutableArray *section03 = [NSMutableArray new];
+        [section03 addObject:self.freeJoinCell];
+        if (section03.count>0) [sections addObject:section03];
+    }
+    
     NSMutableArray *section02 = [NSMutableArray new];
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section02 addObject:self.dateCell];
@@ -680,12 +697,6 @@ singleM(ProductDetailSubViewsProvider)
     }
     if (section02.count>0) [sections addObject:section02];
     
-    //他们已参加
-    if (_data.comment.userHeadImgs.count>0) {
-        NSMutableArray *section03 = [NSMutableArray new];
-        [section03 addObject:self.joinCell];
-        if (section03.count>0) [sections addObject:section03];
-    }
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
@@ -887,6 +898,7 @@ singleM(ProductDetailSubViewsProvider)
     _ticketActorCell = nil;
     
     _freeInfoCell = nil;
+    _freeJoinCell = nil;
     _freeStoreInfoCell = nil;
     _freeLifeTipCell = nil;
 }

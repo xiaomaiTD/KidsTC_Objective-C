@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ProductOrderListDeliverItem.h"
-//deliverInfo	String	童成客服已经发货，运单号：${DeliveryNo}；
-//请您注意查收。客服联系方式：${Mobile}
-//items	Array
+
 @interface ProductOrderListDeliver : NSObject
 @property (nonatomic, strong) NSString *deliverInfo;
 @property (nonatomic, strong) NSArray<ProductOrderListDeliverItem *> *items;

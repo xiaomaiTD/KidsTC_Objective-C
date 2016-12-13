@@ -119,4 +119,28 @@
     return commentModel;
 }
 
++ (instancetype)modelFromProductOrderNormalDetailData:(ProductOrderNormalDetailData *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = data.orderId;
+    commentModel.relationSysNo = data.serveId;
+    commentModel.sourceType = (CommentFoundingSourceType)data.productType;
+    commentModel.objectId = data.serveId;
+    commentModel.relationType = (CommentRelationType)data.productType;
+    commentModel.objectName = data.name;
+    commentModel.imageUrl = [NSURL URLWithString:data.imgUrl];
+    return commentModel;
+}
+
++ (instancetype)modelFromProductOrderTicketDetailData:(ProductOrderTicketDetailData *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = data.orderNo;
+    commentModel.relationSysNo = data.productNo;
+    commentModel.sourceType = CommentFoundingSourceTypeTicketProduct;
+    commentModel.objectId = data.productNo;
+    commentModel.relationType = CommentRelationTypeTicketProduct;
+    commentModel.objectName = data.serveName;
+    commentModel.imageUrl = [NSURL URLWithString:data.img];
+    return commentModel;
+}
+
 @end

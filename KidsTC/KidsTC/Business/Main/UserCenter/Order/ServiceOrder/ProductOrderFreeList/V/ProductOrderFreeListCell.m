@@ -75,7 +75,8 @@
 }
 
 - (void)countDown {
-    NSString *str = _item.countDownValueString;
+    ProductOrderFreeListCountDown *countDown = self.item.countDown;
+    NSString *str = countDown.countDownValueString;
     if ([str isNotNull]) {
         _countDownIcon.hidden = NO;
         _countDownL.hidden = NO;
@@ -83,6 +84,12 @@
     }else{
         _countDownIcon.hidden = YES;
         _countDownL.hidden = YES;
+        if (countDown.showCountDown && !countDown.countDownOver) {
+            countDown.countDownOver = YES;
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeListCell:actionType:value:)]) {
+                [self.delegate productOrderFreeListCell:self actionType:ProductOrderFreeListCellActionTypeCountDownOver value:_item];
+            }
+        }
     }
 }
 
@@ -99,10 +106,6 @@
     if ([self.delegate respondsToSelector:@selector(productOrderFreeListCell:actionType:value:)]) {
         [self.delegate productOrderFreeListCell:self actionType:(ProductOrderFreeListCellActionType)btn.tag value:_item];
     }
-}
-
-- (void)dealloc{
-    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
 }
 
 @end

@@ -72,6 +72,7 @@ CGFloat const kNearbyCalendarToolBarH = 44;
 }
 
 - (void)setupToolBarItemView {
+    [self.dateItemView setTitle:[NSString zp_stringWithDate:[NSDate date] Format:DF_yMd]];
     [self.dateItemView setIconImage:[UIImage imageNamed:@"Nearby_date_unsel"] forState:UIControlStateNormal];
     [self.dateItemView setTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
     [self.dateItemView setArrowImage:[UIImage imageNamed:@"Nearby_down"] forState:UIControlStateNormal];
@@ -214,7 +215,7 @@ CGFloat const kNearbyCalendarToolBarH = 44;
             [self.delegate nearbyCalendarToolBar:self actionType:type value:value];
         }
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((kAnimateDuration+0.01) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.categoryItemView setTitle:title];
+            [_currentItemView setTitle:title];
             self.userInteractionEnabled = YES;
         });
     });

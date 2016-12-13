@@ -12,7 +12,5 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};
 }
-+ (NSDictionary *)modelContainerPropertyGenericClass{
-    return @{@"data":[NearbyItem class]};
-}
+
 @end

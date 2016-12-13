@@ -143,7 +143,7 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
     if (section < self.items.count) {
         ProductOrderFreeListItem *item = self.items[section];
         if ([self.delegate respondsToSelector:@selector(productOrderFreeListView:actionType:value:)]) {
-            [self.delegate productOrderFreeListView:self actionType:ProductOrderFreeListViewActionTypeDetail value:item];
+            [self.delegate productOrderFreeListView:self actionType:ProductOrderFreeListViewActionTypeSegue value:item.segueModel];
         }
     }
     

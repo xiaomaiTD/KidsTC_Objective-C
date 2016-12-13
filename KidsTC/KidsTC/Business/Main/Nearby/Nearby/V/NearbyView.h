@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "NearbyCollectionViewCell.h"
+#import "NearbyModel.h"
+#import "NearbyCategoryToolBarItem.h"
 
 typedef enum : NSUInteger {
     NearbyViewActionTypeNursery = 1,
-    NearbyViewActionTypeExhibition,
-    NearbyViewActionTypeCalendar,
-    NearbyViewActionTypeLoadData,
+    NearbyViewActionTypeExhibition = 2,
+    NearbyViewActionTypeCalendar = 3,
+    NearbyViewActionTypeLoadData = 4,
+    NearbyViewActionTypeSegue = 5,
+    NearbyViewActionTypeLike = 6,
+    NearbyViewActionTypeDidSelectCategory = 50,
 } NearbyViewActionType;
 @class NearbyView;
 @protocol NearbyViewDelegate <NSObject>
@@ -21,4 +26,5 @@ typedef enum : NSUInteger {
 @end
 @interface NearbyView : UIView
 @property (nonatomic, weak) id<NearbyViewDelegate> delegate;
+@property (nonatomic, weak) NSArray<NearbyData *> *datas;
 @end

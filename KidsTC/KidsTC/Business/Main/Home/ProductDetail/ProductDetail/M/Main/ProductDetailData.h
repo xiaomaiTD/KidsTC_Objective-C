@@ -25,6 +25,7 @@
 #import "ProductDetailPromise.h"
 #import "ProductDetailOnlineBespeak.h"
 #import "ProductDetailEnrollInfo.h"
+#import "ProductDetailFreeRelatedProduct.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -36,11 +37,6 @@ typedef enum : NSUInteger {
     ProductDetailUseValidTimeTypeLong = 1,//长期有效
     ProductDetailUseValidTimeTypePartTime,//时间区间有效
 } ProductDetailUseValidTimeType;
-
-typedef enum : NSUInteger {
-    ProductDetailFreeTypeJoin = 1,//报名-【我要参加】
-    ProductDetailFreeTypeApply,//申请-【我想免单】
-} ProductDetailFreeType;
 
 typedef enum : NSUInteger {
     ProductDetailTwoColumnShowTypeDetail=100,//详情
@@ -102,7 +98,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, assign) NSInteger favorCount;
 @property (nonatomic, strong) NSString *xiaoBianNote;
-@property (nonatomic, assign) ProductDetailFreeType freeType;
+@property (nonatomic, assign) FreeType freeType;
 //@property (nonatomic, strong) <#type#> *productCombo;
 @property (nonatomic, strong) NSString *productText;
 @property (nonatomic, strong) NSString *trickName;
@@ -114,6 +110,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) ProductDetailOnlineBespeak *onlineBespeak;
 @property (nonatomic, strong) ProductDetailEnrollInfo *enrollInfo;
 @property (nonatomic, assign) BOOL isEnrolled;
+@property (nonatomic, strong) NSString *originalPriceDesc;
+@property (nonatomic, assign) CGFloat storePrice;
+@property (nonatomic, strong) NSArray<NSString *> *joinMember;
+@property (nonatomic, strong) ProductDetailFreeRelatedProduct *relatedProduct;
 
 #pragma mark - selfDefine
 

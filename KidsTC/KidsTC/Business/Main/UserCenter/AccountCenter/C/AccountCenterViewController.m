@@ -62,7 +62,7 @@
 }
 
 - (void)loadData{
-    [Request startWithName:@"GET_USER_CENTER" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startWithName:@"GET_USER_CENTER_V2" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [self loadDataSuccess:[AccountCenterModel modelWithDictionary:dic]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self loadDataFailure:error];

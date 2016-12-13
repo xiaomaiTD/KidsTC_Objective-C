@@ -28,6 +28,9 @@
 #import "ArticleWeChatTableViewController.h"
 #import "ArticleCommentViewController.h"
 #import "NSString+Category.h"
+#import "ProductOrderNormalDetailViewController.h"
+#import "ProductOrderTicketDetailViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
 
 @implementation SegueMaster
 
@@ -215,9 +218,49 @@
             break;
         case SegueDestinationOrderDetail:
         {
-            ServiceOrderDetailViewController *controller = [[ServiceOrderDetailViewController alloc]init];
-            controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
-            toController = controller;
+            OrderKind kind = OrderKindNormal;
+            id orderKindid = model.segueParam[@"kind"];
+            if ([orderKindid respondsToSelector:@selector(integerValue)]) {
+                kind = (OrderKind)[orderKindid integerValue];
+            }
+            switch (kind) {
+                case OrderKindNormal://普通订单
+                {
+                    ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+                    toController = controller;
+                }
+                    break;
+                case OrderKindFlash://闪购订单
+                {
+                    
+                }
+                    break;
+                case OrderKindRadish:// 萝卜订单
+                {
+                    
+                }
+                    break;
+                case OrderKindTicket:// 票务订单
+                {
+                    ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+                    toController = controller;
+                }
+                    break;
+                case OrderKindFree:// 免费商品报名订单
+                {
+                    ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+                    toController = controller;
+                }
+                    break;
+                case OrderKindFight:// 拼团
+                {
+                    
+                }
+                    break;
+            }
         }
             break;
         case SegueDestinationOrderList:

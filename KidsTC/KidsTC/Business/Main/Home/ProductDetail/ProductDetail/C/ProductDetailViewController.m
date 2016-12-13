@@ -67,10 +67,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _type = ProductDetailTypeTicket;
-//    _productId = @"100001";//100001  //3000000004
-//    _channelId = @"0";
-
+    _type = ProductDetailTypeFree;
+    _productId = @"3000000008";//100001  //3000000004   3000000013   3000000008
+    _channelId = @"0";
+    
     switch (_type) {
         case ProductDetailTypeNormal:
         case ProductDetailTypeTicket:
@@ -356,6 +356,11 @@
             [self freeToolBarShare:value]; 
         }
             break;
+        case ProductDetailViewActionTypeFreeToolBarRelateBuy://免费商详 - 原价购买
+        {
+            [self freeToolBarRelateBuy:value];
+        }
+            break;
         case ProductDetailViewDidScroll://滚动
         {
             [self didScroll:value];
@@ -461,7 +466,7 @@
     [TCProgressHUD showSVP];
     [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
-        [self goSettlement];
+        [self goSettlement:_type];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
@@ -666,7 +671,7 @@
     [TCProgressHUD showSVP];
     [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
-        [self goSettlement];
+        [self goSettlement:_type];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
@@ -679,9 +684,9 @@
     [BuryPointManager trackEvent:@"event_result_server_addtocart" actionId:20404 params:params];
 }
 
-- (void)goSettlement {
+- (void)goSettlement:(ProductDetailType)type {
     ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
-    controller.type = _type;
+    controller.type = type;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -710,6 +715,38 @@
 
 - (void)freeToolBarShare:(id)value {
     [self share];
+}
+
+#pragma mark - freeToolBarRelateBuy
+
+- (void)freeToolBarRelateBuy:(id)value {
+//    NSString *storeno = _data.store.firstObject.storeId;
+//    if (![storeno isNotNull]) {
+//        [[iToast makeText:@"门店编号为空！"] show];
+//        return;
+//    }
+    NSString *productid = _data.relatedProduct.productSysNo;
+    if (![productid isNotNull]) {
+        [[iToast makeText:@"服务编号为空！"] show];
+        return;
+    }
+    NSString *chid = _data.relatedProduct.channelId;
+    if (![chid isNotNull]) {
+        chid = @"0";
+    }
+    NSInteger buynum = _data.buyMinNum>0?_data.buyMinNum:1;
+    
+    NSDictionary *param = @{@"productid":productid,
+                            @"chid":chid,
+                            @"buynum":@(buynum)};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        [self goSettlement:ProductDetailTypeNormal];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
+    }];
 }
 
 - (void)didScroll:(id)value {

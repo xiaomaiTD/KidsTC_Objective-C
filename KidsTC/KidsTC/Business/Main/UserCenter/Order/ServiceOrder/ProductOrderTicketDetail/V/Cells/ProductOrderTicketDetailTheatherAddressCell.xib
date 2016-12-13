@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gfI-Zo-86m" customClass="ProductOrderTicketDetailTheatherAddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gfI-Zo-86m" id="TE8-hl-ZPh">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductOrderTicketDetail_address" translatesAutoresizingMaskIntoConstraints="NO" id="RiH-Q3-c0e">
+                        <rect key="frame" x="15" y="17" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="RiH-Q3-c0e" secondAttribute="height" multiplier="1:1" id="k6b-Sa-JJu"/>
+                            <constraint firstAttribute="width" constant="16" id="ncy-Tm-adX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倍他文化文化文" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNG-GL-jBR">
+                        <rect key="frame" x="47" y="16" width="96" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductOrderNormalDetail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-fk-hYn">
+                        <rect key="frame" x="293" y="19" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Kow-fk-hYn" secondAttribute="height" multiplier="1:1" id="45Y-1v-NCN"/>
+                            <constraint firstAttribute="width" constant="12" id="7GU-r2-9Ii"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="上海市杨浦区大学路299号701室" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pu-lE-XkX">
+                        <rect key="frame" x="143" y="17" width="148" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtc-aT-RWx">
+                        <rect key="frame" x="0.0" y="48.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="YYe-QI-a6Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="dtc-aT-RWx" secondAttribute="trailing" id="7Oy-yA-sft"/>
+                    <constraint firstItem="RiH-Q3-c0e" firstAttribute="centerY" secondItem="TE8-hl-ZPh" secondAttribute="centerY" id="8az-CS-bQk"/>
+                    <constraint firstItem="Kow-fk-hYn" firstAttribute="centerY" secondItem="TE8-hl-ZPh" secondAttribute="centerY" id="9aY-vQ-Vje"/>
+                    <constraint firstItem="CNG-GL-jBR" firstAttribute="leading" secondItem="RiH-Q3-c0e" secondAttribute="trailing" constant="16" id="A5n-dS-aYf"/>
+                    <constraint firstItem="CNG-GL-jBR" firstAttribute="width" secondItem="TE8-hl-ZPh" secondAttribute="width" multiplier="0.3" id="HrA-sh-ghV"/>
+                    <constraint firstItem="CNG-GL-jBR" firstAttribute="top" secondItem="TE8-hl-ZPh" secondAttribute="top" constant="16" id="LEp-4N-tq9"/>
+                    <constraint firstItem="3pu-lE-XkX" firstAttribute="leading" secondItem="CNG-GL-jBR" secondAttribute="trailing" id="MQZ-x2-Fb0"/>
+                    <constraint firstItem="dtc-aT-RWx" firstAttribute="leading" secondItem="TE8-hl-ZPh" secondAttribute="leading" id="P1C-Kg-2SV"/>
+                    <constraint firstAttribute="bottom" secondItem="dtc-aT-RWx" secondAttribute="bottom" id="Tm0-5o-uPc"/>
+                    <constraint firstAttribute="bottom" secondItem="CNG-GL-jBR" secondAttribute="bottom" constant="16" id="X7t-5z-9XX"/>
+                    <constraint firstItem="RiH-Q3-c0e" firstAttribute="leading" secondItem="TE8-hl-ZPh" secondAttribute="leading" constant="15" id="Z4s-6P-RJ4"/>
+                    <constraint firstItem="Kow-fk-hYn" firstAttribute="leading" secondItem="3pu-lE-XkX" secondAttribute="trailing" constant="2" id="b00-7B-CHk"/>
+                    <constraint firstAttribute="trailing" secondItem="Kow-fk-hYn" secondAttribute="trailing" constant="15" id="cUQ-EB-8wa"/>
+                    <constraint firstItem="3pu-lE-XkX" firstAttribute="centerY" secondItem="TE8-hl-ZPh" secondAttribute="centerY" id="yYk-80-7A7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="YYe-QI-a6Q" id="Cwn-h8-47J"/>
+                <outlet property="addressL" destination="3pu-lE-XkX" id="36T-Dr-TeO"/>
+                <outlet property="nameL" destination="CNG-GL-jBR" id="Vcr-2T-92a"/>
+            </connections>
+            <point key="canvasLocation" x="-9" y="49"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductOrderNormalDetail_arrow" width="27" height="50"/>
+        <image name="ProductOrderTicketDetail_address" width="56" height="70"/>
+    </resources>
+</document>

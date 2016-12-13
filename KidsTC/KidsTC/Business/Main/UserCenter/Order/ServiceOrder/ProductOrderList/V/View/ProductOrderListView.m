@@ -134,6 +134,13 @@ static NSString *const CellID = @"ProductOrderListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger section = indexPath.section;
+    if (section < self.items.count) {
+        ProductOrderListItem *item = self.items[section];
+        if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
+            [self.delegate productOrderListView:self actionType:ProductOrderListViewActionTypeSegue value:item.segueModel];
+        }
+    }
 }
 
 #pragma mark - ProductOrderListCellDelegate

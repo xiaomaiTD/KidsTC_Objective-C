@@ -19,6 +19,12 @@
     
     [self setupMoblies];
     
+    if ([_orderNo isNotNull]) {
+        NSDictionary *param = @{@"kind":@(_orderKind),
+                                @"sid":_orderNo};
+        _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderDetail paramRawData:param];
+    }
+    
     return YES;
 }
 

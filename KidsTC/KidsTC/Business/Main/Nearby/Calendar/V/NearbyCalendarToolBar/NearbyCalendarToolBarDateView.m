@@ -13,6 +13,7 @@
 
 @interface NearbyCalendarToolBarDateView ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance>
 @property (nonatomic, strong) FSCalendar *calendar;
+@property (nonatomic, strong) NSDate *minimumDate;
 @end
 
 @implementation NearbyCalendarToolBarDateView
@@ -34,8 +35,11 @@
         calendar.appearance.caseOptions = FSCalendarCaseOptionsWeekdayUsesSingleUpperCase|FSCalendarCaseOptionsHeaderUsesDefaultCase;
         calendar.appearance.todayColor = [UIColor clearColor];
         calendar.appearance.titleTodayColor = [UIColor blackColor];
+        [calendar selectDate:[NSDate date]];
         [self addSubview:calendar];
         _calendar = calendar;
+        
+        self.minimumDate = [NSDate date];
     }
     return _calendar;
 }
@@ -46,6 +50,11 @@
 }
 
 #pragma mark - FSCalendarDelegate
+
+- (NSDate *)minimumDateForCalendar:(FSCalendar *)calendar
+{
+    return self.minimumDate;
+}
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date {
     if ([self.delegate respondsToSelector:@selector(nearbyCalendarToolBarDateView:didSelectDate:)]) {

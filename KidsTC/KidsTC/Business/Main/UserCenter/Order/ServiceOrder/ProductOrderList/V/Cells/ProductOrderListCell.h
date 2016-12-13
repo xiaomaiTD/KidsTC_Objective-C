@@ -26,6 +26,7 @@ typedef enum : NSUInteger {
     ProductOrderListCellActionTypeBuyAgain = 12,/// 再次购买
     ProductOrderListCellActionTypeComplaint = 13,/// 投诉
     ProductOrderListCellActionTypeRefund = 14,//申请售后
+    ProductOrderListCellActionTypeCountDownOver,//倒计时结束
     
     ProductOrderListCellActionTypeStore = 50,//门店详情
     ProductOrderListCellActionTypeSegue = 51,//通用跳转

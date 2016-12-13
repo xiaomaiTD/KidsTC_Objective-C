@@ -18,7 +18,7 @@
 
 static NSString *const CellID = @"NearbyTableViewCell";
 
-@interface NearbyCollectionViewCell ()<UITableViewDelegate,UITableViewDataSource,NearbyTableViewHeaderDelegate>
+@interface NearbyCollectionViewCell ()<UITableViewDelegate,UITableViewDataSource,NearbyTableViewHeaderDelegate,NearbyTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NearbyTableViewHeader *header;
 @end
@@ -45,6 +45,21 @@ static NSString *const CellID = @"NearbyTableViewCell";
     //self.tableView.frame = self.bounds;
 }
 
+- (void)setData:(NearbyData *)data {
+    _data = data;
+    if (_data.data.count<1) {
+        [self.tableView.mj_header beginRefreshing];
+    }
+    if (_index == 0) {
+        self.tableView.tableHeaderView = self.header;
+        NearbyPlaceInfo *placeInfo = _data.placeInfo;
+        if (placeInfo) self.header.placeInfo = placeInfo;
+    }else {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+    }
+    [self.tableView reloadData];
+}
+
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-44-49) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -55,7 +70,6 @@ static NSString *const CellID = @"NearbyTableViewCell";
     [tableView registerNib:[UINib nibWithNibName:@"NearbyTableViewCell" bundle:nil] forCellReuseIdentifier:CellID];
     [self addSubview:tableView];
     self.tableView = tableView;
-    self.tableView.tableHeaderView = self.header;
     [self setupMJ];
 }
 
@@ -81,7 +95,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 }
 
 - (void)dealWithUI:(NSUInteger)loadCount {
-    if (self.items.count>0) {
+    if (self.data.data.count>0) {
         self.tableView.tableHeaderView.hidden = NO;
     }
     [self.tableView reloadData];
@@ -90,7 +104,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
     if (loadCount<TCPAGECOUNT) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
-    if (self.items.count<1) {
+    if (self.data.data.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                                           image:nil description:@"啥都没有啊…"
                                                                      needGoHome:NO];
@@ -100,7 +114,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return self.data.data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,8 +131,31 @@ static NSString *const CellID = @"NearbyTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NearbyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-    
+    NSInteger section = indexPath.section;
+    if (section<self.data.data.count) {
+        NearbyItem *item = self.data.data[section];
+        cell.item = item;
+        cell.delegate = self;
+    }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    if (section<self.data.data.count) {
+        NearbyItem *item = self.data.data[section];
+        if ([self.delegate respondsToSelector:@selector(nearbyCollectionViewCell:actionType:value:)]) {
+            [self.delegate nearbyCollectionViewCell:self actionType:NearbyCollectionViewCellActionTypeSegue value:item.segueModel];
+        }
+    }
+}
+
+#pragma mark - NearbyTableViewCellDelegate
+
+- (void)nearbyTableViewCell:(NearbyTableViewCell *)cell actionType:(NearbyTableViewCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(nearbyCollectionViewCell:actionType:value:)]) {
+        [self.delegate nearbyCollectionViewCell:self actionType:(NearbyCollectionViewCellActionType)type value:value];
+    }
 }
 
 #pragma mark - NearbyTableViewHeaderDelegate

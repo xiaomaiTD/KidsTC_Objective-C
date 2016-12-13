@@ -32,6 +32,7 @@
 #import "ProductOrderFreeListViewController.h"
 #import "NotificationCenterViewController.h"
 #import "OrderRefundViewController.h"
+#import "ProductDetailTicketSelectSeatViewController.h"
 
 @interface ProductOrderListViewController ()<ProductOrderListViewDelegate,CommentFoundingViewControllerDelegate,ProductOrderListAllTitleShowViewDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, assign) ProductOrderListType type;
@@ -248,6 +249,11 @@
             [self refund:value];
         }
             break;
+        case ProductOrderListViewActionTypeCountDownOver://倒计时结束
+        {
+            [self loadReplaceItem:self.currentItem];
+        }
+            break;
         case ProductOrderListViewActionTypeStore://门店详情
         {
             [self storeInfo:value];
@@ -406,7 +412,23 @@
 #pragma mark ================确认收货================
 
 - (void)confirmDeliver:(ProductOrderListItem *)item {
-    
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"orderId":orderId};
+    [Request startWithName:@"CONFIRM_ORDER_DELIVER_RECEIVED" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [[iToast makeText:@"确认收货成功"] show];
+        [self loadReplaceItem:item];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = @"确认收货失败";
+        NSString *errMsg = error.userInfo[@"data"];
+        if ([errMsg isNotNull]) {
+            msg = errMsg;
+        }
+        [[iToast makeText:msg] show];
+    }];
 }
 
 #pragma mark ================发表评论================
@@ -426,12 +448,33 @@
 #pragma mark ================再次购买================
 
 - (void)buyAgain:(ProductOrderListItem *)item {
+    
+    switch (item.orderKind) {
+        case OrderKindNormal:
+        {
+            [self buyNormalProduct:item];
+        }
+            break;
+        case OrderKindTicket:
+        {
+            [self buyTicketProduct:item];
+        }
+            break;
+        default:
+        {
+            [[iToast makeText:@"该商品暂不支持再次购买哦"] show];
+        }
+            break;
+    }
+}
+
+- (void)buyNormalProduct:(ProductOrderListItem *)item {
     NSString *productid = item.productNo;
-    NSString *storeno = @"";
     NSString *chid = item.chId;
     productid = [productid isNotNull]?productid:@"";
-    storeno = [storeno isNotNull]?storeno:@"";
     chid = [chid isNotNull]?chid:@"0";
+    NSString *storeno = @"";
+    storeno = [storeno isNotNull]?storeno:@"";
     NSDictionary *param = @{@"productid":productid,
                             @"storeno":storeno,
                             @"chid":chid,
@@ -445,6 +488,7 @@
         [self buyAgainFailure:error];
     }];
 }
+
 - (void)buyAgainSuccess:(id)value {
     [self loadReplaceItem:self.currentItem];
     ServiceSettlementViewController *controller = [[ServiceSettlementViewController alloc]init];
@@ -452,6 +496,17 @@
 }
 - (void)buyAgainFailure:(NSError *)error {
     [[iToast makeText:@"再次购买失败，请稍后再试"] show];
+}
+
+- (void)buyTicketProduct:(ProductOrderListItem *)item {
+    NSString *productid = item.productNo;
+    NSString *chid = item.chId;
+    productid = [productid isNotNull]?productid:@"";
+    chid = [chid isNotNull]?chid:@"0";
+    ProductDetailTicketSelectSeatViewController *controller = [[ProductDetailTicketSelectSeatViewController alloc] initWithNibName:@"ProductDetailTicketSelectSeatViewController" bundle:nil];
+    controller.productId = productid;
+    controller.channelId = chid;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark ================申请售后================
@@ -618,7 +673,7 @@
 
 - (void)jumpToLotteryOrderList:(ProductOrderListAllTitleRowItem *)item {
     ProductOrderFreeListViewController *controller = [[ProductOrderFreeListViewController alloc] init];
-    controller.type = ProductOrderFreeListTypeLottery;
+    controller.type = FreeTypeLottery;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -626,7 +681,7 @@
 
 - (void)jumpToActivityRegisterOrderList:(ProductOrderListAllTitleRowItem *)item {
     ProductOrderFreeListViewController *controller = [[ProductOrderFreeListViewController alloc] init];
-    controller.type = ProductOrderFreeListTypeFreeActivity;
+    controller.type = FreeTypeFreeActivity;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -43,7 +43,7 @@
 
 - (IBAction)useAction:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(couponListUnusedCell:actionType:value:)]) {
-        [self.delegate couponListUnusedCell:self actionType:sender.tag value:self.item.couponCode];
+        [self.delegate couponListUnusedCell:self actionType:sender.tag value:self.item.batchSysNo];
     }
 }
 

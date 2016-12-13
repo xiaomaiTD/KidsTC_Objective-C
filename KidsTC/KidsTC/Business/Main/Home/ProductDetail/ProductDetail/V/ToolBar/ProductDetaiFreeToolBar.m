@@ -9,12 +9,21 @@
 #import "ProductDetaiFreeToolBar.h"
 #import "User.h"
 #import "UIButton+Category.h"
+#import "ProductDetailToolBarButton.h"
 
 @interface ProductDetaiFreeToolBar ()
-@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet UIView *freeBGView;
+@property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *likeBtn;
+@property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *shareBtn;
 @property (weak, nonatomic) IBOutlet UIButton *applyBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineOneH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineOneW;
+
+@property (weak, nonatomic) IBOutlet UIView *lotteryBGView;
+@property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *lotteryShareBtn;
+@property (weak, nonatomic) IBOutlet UIButton *lotteryBuyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *lotteryApplyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *buyPriceL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineTwoH;
 
 @end
@@ -23,23 +32,53 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.likeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.shareBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.HLineOneH.constant = LINE_H;
+    self.VLineOneW.constant = LINE_H;
     self.HLineTwoH.constant = LINE_H;
+    
     [self.applyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [self.applyBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
     self.likeBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarLike;
     self.shareBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarShare;
     self.applyBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarApply;
+    
+    [self.lotteryApplyBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [self.lotteryApplyBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
+    self.lotteryShareBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarShare;
+    self.lotteryApplyBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarApply;
+    self.lotteryBuyBtn.tag = ProductDetailBaseToolBarActionTypeFreeToolBarRelateBuy;
+    
     [self layoutIfNeeded];
 }
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    self.likeBtn.selected = data.isFavor;
-    self.applyBtn.enabled = data.isCanBuy;
-    [self.applyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
+    switch (data.freeType) {
+        case FreeTypeFreeActivity:
+        {
+            self.freeBGView.hidden = NO;
+            self.lotteryBGView.hidden = YES;
+            self.likeBtn.selected = data.isFavor;
+            self.applyBtn.enabled = data.isCanBuy;
+            [self.applyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
+        }
+            break;
+        case FreeTypeLottery:
+        {
+            self.freeBGView.hidden = YES;
+            self.lotteryBGView.hidden = NO;
+            self.lotteryApplyBtn.enabled = data.isCanBuy;
+            [self.lotteryApplyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
+            self.buyPriceL.text = data.relatedProduct.price;
+        }
+            break;
+        default:
+        {
+            self.freeBGView.hidden = YES;
+            self.lotteryBGView.hidden = YES;
+        }
+            break;
+    }
 }
 
 - (IBAction)action:(UIButton *)sender {

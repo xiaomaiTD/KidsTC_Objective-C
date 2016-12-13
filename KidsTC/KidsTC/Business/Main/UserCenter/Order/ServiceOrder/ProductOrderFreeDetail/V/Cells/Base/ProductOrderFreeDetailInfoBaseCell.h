@@ -11,7 +11,7 @@
 #import "ProductOrderFreeDetailData.h"
 
 typedef enum : NSUInteger {
-    ProductOrderFreeDetailInfoBaseCellActionTypeProduct = 50,
+    ProductOrderFreeDetailInfoBaseCellActionTypeSegue = 50,
     ProductOrderFreeDetailInfoBaseCellActionTypeStore,
     ProductOrderFreeDetailInfoBaseCellActionTypeAddress,
     ProductOrderFreeDetailInfoBaseCellActionTypeDate,

@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface ProductOrderFreeListViewController : ViewController
-@property (nonatomic, assign) ProductOrderFreeListType type;
+@property (nonatomic, assign) FreeType type;
 @end

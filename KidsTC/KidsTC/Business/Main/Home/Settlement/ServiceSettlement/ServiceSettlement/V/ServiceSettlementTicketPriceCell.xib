@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一张" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-yy-xYC">
-                        <rect key="frame" x="15" y="14" width="29" height="15.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8排12号（套）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVc-yy-xYC">
+                        <rect key="frame" x="15" y="14" width="95" height="15.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -37,9 +37,17 @@
                             <constraint firstAttribute="height" constant="0.5" id="zHe-Rv-CNp"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一张" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wS-QD-CA2">
+                        <rect key="frame" x="122" y="13.5" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="sMY-7n-2Gl" secondAttribute="bottom" id="Bju-4m-7ZT"/>
+                    <constraint firstItem="2wS-QD-CA2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="K8j-Qt-wJq"/>
+                    <constraint firstItem="2wS-QD-CA2" firstAttribute="leading" secondItem="yVc-yy-xYC" secondAttribute="trailing" constant="12" id="TcM-92-ayI"/>
                     <constraint firstItem="yVc-yy-xYC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="b9C-xM-QBE"/>
                     <constraint firstAttribute="trailing" secondItem="sMY-7n-2Gl" secondAttribute="trailing" id="gWH-Pz-Fuh"/>
                     <constraint firstItem="sMY-7n-2Gl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jHZ-CS-YZx"/>
@@ -50,6 +58,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="numL" destination="2wS-QD-CA2" id="uGJ-b0-noG"/>
                 <outlet property="priceL" destination="Rls-NA-KBc" id="Ofi-vw-3EF"/>
                 <outlet property="titleL" destination="yVc-yy-xYC" id="MDD-Px-ktO"/>
             </connections>

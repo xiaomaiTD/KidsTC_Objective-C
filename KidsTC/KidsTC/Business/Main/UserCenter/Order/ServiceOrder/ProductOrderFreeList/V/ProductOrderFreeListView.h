@@ -30,7 +30,7 @@ typedef enum : NSUInteger {
     ProductOrderFreeListViewActionTypeStore = 50,//门店详情
     
     ProductOrderFreeListViewActionTypeLoadData = 100,//加载数据
-    ProductOrderFreeListViewActionTypeDetail = 101,//报名详情
+    ProductOrderFreeListViewActionTypeSegue = 101,//通用跳转
     
 } ProductOrderFreeListViewActionType;
 

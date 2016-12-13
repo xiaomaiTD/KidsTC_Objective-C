@@ -8,10 +8,7 @@
 
 #import "ViewController.h"
 
-typedef enum : NSUInteger {
-    NurseryTypeNursery = 1,
-    NurseryTypeExhibitionHall,
-} NurseryType;
+
 
 @interface NurseryViewController : ViewController
 @property (nonatomic, assign) NurseryType type;

@@ -300,9 +300,26 @@ typedef enum : NSUInteger {
     NSDictionary *dic = [NSDictionary parsetUrl:param];
     NSString *serviceId = [dic objectForKey:@"id"];
     NSString *channelId = [dic objectForKey:@"chid"];
+    ProductDetailType type = ProductDetailTypeNormal;
+    id typeId = dic[@"type"];
+    if ([typeId respondsToSelector:@selector(integerValue)]) {
+        type = [typeId integerValue];
+        switch (type) {
+            case ProductDetailTypeNormal:
+            case ProductDetailTypeTicket:
+            case ProductDetailTypeFree:
+                break;
+            default:
+            {
+                type = ProductDetailTypeNormal;
+            }
+                break;
+        }
+    }
     if ([serviceId isNotNull]) {
         channelId = [channelId isNotNull]?channelId:@"0";
         ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+        controller.type = type;
         [self makeSegue:controller];
         NSDictionary *params = @{@"url":self.urlString,
                                  @"pid":serviceId,

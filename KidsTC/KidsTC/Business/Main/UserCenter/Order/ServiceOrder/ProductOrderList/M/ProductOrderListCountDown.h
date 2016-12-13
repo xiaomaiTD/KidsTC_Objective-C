@@ -13,5 +13,6 @@
 @property (nonatomic, assign) NSTimeInterval countDownTime;
 @property (nonatomic, strong) NSString *countDownDesc;
 //selfDefine
+@property (nonatomic, assign) BOOL countDownOver;
 @property (nonatomic, strong) NSString *countDownValueString;
 @end
