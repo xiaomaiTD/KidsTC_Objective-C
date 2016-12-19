@@ -55,13 +55,14 @@ static NSString *const ID = @"UITableViewCell";
         [self addSubview:tableView];
         self.tableView = tableView;
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
-        
-        WeakSelf(self)
-        RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
-            StrongSelf(self)
-            [self loadRecommend];
-        }];
-        tableView.mj_footer = footer;
+        /*
+         WeakSelf(self)
+         RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
+         StrongSelf(self)
+         [self loadRecommend];
+         }];
+         tableView.mj_footer = footer;
+         */
     }
     return self;
 }
@@ -206,6 +207,7 @@ static NSString *const ID = @"UITableViewCell";
         [sections addObject:section05];
     }
     
+    /*
     NSMutableArray *section06 = [NSMutableArray array];
     if (sections.count>0) {
         [section06 addObject:self.tipsCell];
@@ -214,12 +216,13 @@ static NSString *const ID = @"UITableViewCell";
         [sections addObject:section06];
     }
     
-    NSMutableArray *section07 = [NSMutableArray array];
-    [section07 addObject:self.recommendsCell];
-    [section07 addObject:self.recommendsCell];
-    if (section07.count>0) {
-        [sections addObject:section07];
-    }
+     NSMutableArray *section07 = [NSMutableArray array];
+     [section07 addObject:self.recommendsCell];
+     [section07 addObject:self.recommendsCell];
+     if (section07.count>0) {
+     [sections addObject:section07];
+     }
+     */
     
     self.sections = [NSMutableArray arrayWithArray:sections];
 }

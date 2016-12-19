@@ -15,6 +15,7 @@
 #import "ServiceSettlementStoreInfoCell.h"
 #import "ServiceSettlementBuyNumCell.h"
 #import "ServiceSettlementCouponCell.h"
+#import "ServiceSettlementUserRemarkCell.h"
 #import "ServiceSettlementPayTypeCell.h"
 #import "ServiceSettlementPayInfoCell.h"
 #import "ServiceSettlementTicketPriceCell.h"
@@ -30,13 +31,13 @@
 @property (nonatomic, strong) ServiceSettlementBuyNumCell           *buyNumCell;
 @property (nonatomic, strong) ServiceSettlementStoreInfoCell        *storeInfoCell;
 @property (nonatomic, strong) ServiceSettlementCouponCell           *couponCell;
+@property (nonatomic, strong) ServiceSettlementUserRemarkCell       *userRemarkCell;
 @property (nonatomic, strong) ServiceSettlementPayTypeCell          *payTypeCell;
 @property (nonatomic, strong) ServiceSettlementTicketGetCell        *ticketGetCell;
 @property (nonatomic, strong) ServiceSettlementTicketGetSelfCell    *ticketGetSelfCell;
 @end
 
 @implementation ServiceSettlementSubViewsProvider
-singleM(ServiceSettlementSubViewsProvider)
 
 - (NSArray<NSArray<ServiceSettlementBaseCell *> *> *)sections {
 
@@ -81,8 +82,10 @@ singleM(ServiceSettlementSubViewsProvider)
     NSMutableArray<ServiceSettlementBaseCell *> *section01 = [NSMutableArray array];
     [section01 addObject:self.serviceInfoCell];
     [section01 addObject:self.buyNumCell];
-    if (item.store && item.store.storeDesc.length>0) {
-        [section01 addObject:self.storeInfoCell];
+    if (item.placeType != PlaceTypeNone) {
+        if (item.store.storeDesc.length>0 || item.place.count>0) {
+            [section01 addObject:self.storeInfoCell];
+        }
     }
     [sections addObject:section01];
     //优惠券、积分
@@ -93,6 +96,12 @@ singleM(ServiceSettlementSubViewsProvider)
     NSMutableArray<ServiceSettlementBaseCell *> *section03 = [NSMutableArray array];
     [section03 addObject:self.payTypeCell];
     [sections addObject:section03];
+    
+    //备注
+    NSMutableArray<ServiceSettlementBaseCell *> *sectionForUserRemark = [NSMutableArray array];
+    [sectionForUserRemark addObject:self.userRemarkCell];
+    [sections addObject:sectionForUserRemark];
+    
     //结算信息
     NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
     ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
@@ -160,6 +169,12 @@ singleM(ServiceSettlementSubViewsProvider)
     NSMutableArray<ServiceSettlementBaseCell *> *section03 = [NSMutableArray array];
     [section03 addObject:self.payTypeCell];
     [sections addObject:section03];
+    
+    //备注
+    NSMutableArray<ServiceSettlementBaseCell *> *sectionForUserRemark = [NSMutableArray array];
+    [sectionForUserRemark addObject:self.userRemarkCell];
+    [sections addObject:sectionForUserRemark];
+    
     //结算信息
     NSMutableArray<ServiceSettlementBaseCell *> *section04 = [NSMutableArray array];
     ServiceSettlementPayInfoCell *pricePayInfoCell = self.payInfoCell;
@@ -217,6 +232,12 @@ singleM(ServiceSettlementSubViewsProvider)
     }
     return _couponCell;
 }
+- (ServiceSettlementUserRemarkCell *)userRemarkCell {
+    if (!_userRemarkCell) {
+        _userRemarkCell = [self viewWithNib:@"ServiceSettlementUserRemarkCell"];
+    }
+    return _userRemarkCell;
+}
 - (ServiceSettlementPayTypeCell *)payTypeCell {
     if (!_payTypeCell) {
         _payTypeCell = [self viewWithNib:@"ServiceSettlementPayTypeCell"];
@@ -260,6 +281,7 @@ singleM(ServiceSettlementSubViewsProvider)
     _buyNumCell = nil;
     _storeInfoCell = nil;
     _couponCell = nil;
+    _userRemarkCell = nil;
     _payTypeCell = nil;
     _ticketGetCell = nil;
     _ticketGetSelfCell = nil;

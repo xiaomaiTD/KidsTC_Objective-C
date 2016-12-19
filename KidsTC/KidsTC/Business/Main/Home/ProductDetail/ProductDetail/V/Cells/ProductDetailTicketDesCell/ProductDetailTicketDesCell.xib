@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="134" id="KGk-i7-Jjw" customClass="ProductDetailTicketDesCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="151" id="KGk-i7-Jjw" customClass="ProductDetailTicketDesCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="151"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="150.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="117" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAW-jC-jxN">
-                        <rect key="frame" x="15" y="16" width="290" height="117"/>
+                        <rect key="frame" x="15" y="16" width="290" height="118.5"/>
                         <string key="text">白雪公主与7个小矮人，我们小时候都有听过，是不是很憧憬剧场版的呢？白雪公主与7个小矮人，我们小时候都有听过，是不是很憧憬剧场版的呀是不是很憧憬剧场版的呀是白雪公主与7个小矮人，我们小时候都有听过，是不是很憧憬剧场版的呢？白雪公主与7个小矮人，我们小时候都有听过，是不是很憧憬剧场版的呀是不是很憧憬剧场版的呀是</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
@@ -27,6 +27,7 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="uAW-jC-jxN" secondAttribute="bottom" constant="16" id="SSF-VK-jP7"/>
                     <constraint firstAttribute="trailing" secondItem="uAW-jC-jxN" secondAttribute="trailing" constant="15" id="q5h-5i-c2q"/>
                     <constraint firstItem="uAW-jC-jxN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="tbK-jj-72J"/>
                     <constraint firstItem="uAW-jC-jxN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="y38-Il-kxG"/>
@@ -35,7 +36,7 @@
             <connections>
                 <outlet property="contentL" destination="uAW-jC-jxN" id="fKe-8K-gTJ"/>
             </connections>
-            <point key="canvasLocation" x="-211" y="43"/>
+            <point key="canvasLocation" x="-211" y="51.5"/>
         </tableViewCell>
     </objects>
 </document>

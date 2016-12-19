@@ -8,6 +8,7 @@
 
 #import "ProductOrderFreeDetailData.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 @implementation ProductOrderFreeDetailData
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -23,15 +24,17 @@
             _channelId = @"0";
         }
         NSDictionary *params = @{@"pid":_productSysNo,
-                                 @"icd":_channelId,
-                                 @"type":@(ProductDetailTypeFree)};
-        _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:params];
+                                 @"icd":_channelId};
+        _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:params];
     }
     
     
     [self setupMoblies];
     
     [self setupBtns];
+    
+    [self setupUserRemarkStr];
+    
     return YES;
 }
 
@@ -51,7 +54,7 @@
 }
 
 - (void)setupMoblies {
-    NSString *phonesString =  _storeInfo.phone;
+    NSString *phonesString =  _supplierMobie;
     if ([phonesString isNotNull]) {
         NSMutableArray *phonesAry = [NSMutableArray new];
         if ([phonesString containsString:@";"]) {
@@ -70,4 +73,14 @@
     }
 }
 
+- (void)setupUserRemarkStr {
+    if ([_userRemark isNotNull]) {
+        NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc]init];
+        paragraph.lineSpacing = 8;
+        NSDictionary *att = @{NSFontAttributeName:[UIFont systemFontOfSize:14],
+                              NSForegroundColorAttributeName:[UIColor colorFromHexString:@"222222"],
+                              NSParagraphStyleAttributeName:paragraph};
+        _userRemarkStr = [[NSMutableAttributedString alloc]initWithString:_userRemark attributes:att];
+    }
+}
 @end

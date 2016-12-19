@@ -28,6 +28,8 @@
 
 @property (nonatomic, assign) CGFloat ratio;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
 
 - (CGFloat)cellHeight;

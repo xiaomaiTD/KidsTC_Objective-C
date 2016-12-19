@@ -7,7 +7,7 @@
 //
 
 #import "CollectionTarentoViewController.h"
-
+#import "NSString+Category.h"
 #import "GHeader.h"
 #import "SegueMaster.h"
 
@@ -37,9 +37,14 @@
     self.naviTheme = NaviThemeWihte;
 }
 
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    self.tarentoView.editing = editing;
+}
+
 #pragma mark - CollectionSCTBaseViewDelegate
 
-- (void)collectionSCTBaseView:(CollectionSCTBaseView *)view actionType:(CollectionSCTBaseViewActionType)type value:(id)value {
+- (void)collectionSCTBaseView:(CollectionSCTBaseView *)view actionType:(CollectionSCTBaseViewActionType)type value:(id)value completion:(void (^)(id))completion {
     switch (type) {
         case CollectionSCTBaseViewActionTypeLoadData:
         {
@@ -56,6 +61,13 @@
             ArticleUserCenterViewController *controller = [[ArticleUserCenterViewController alloc]init];
             controller.userId = value;
             [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+        case CollectionSCTBaseViewActionTypeDelete:
+        {
+            [self delete:value completion:^(BOOL success) {
+                if(completion)completion(@(success));
+            }];
         }
             break;
     }
@@ -78,6 +90,24 @@
         [self.tarentoView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.tarentoView dealWithUI:0];
+    }];
+}
+
+- (void)delete:(CollectionTarentoItem *)item completion:(void(^)(BOOL success))completion{
+    if (![item.authorNo isNotNull]) {
+        [[iToast makeText:@"作者编号为空"] show];
+        if (completion) completion(NO);
+        return;
+    }
+    NSDictionary *param = @{@"authorId":item.authorNo,
+                            @"isFollow":@(0)};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"USER_FOLLOW_AUTHOR" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        if (completion) completion(YES);
+        [TCProgressHUD dismissSVP];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(NO);
     }];
 }
 

@@ -62,9 +62,8 @@
 
 - (void)activityView:(ActivityView *)view didSelectedItemAtIndex:(NSUInteger)index {
     ActivityListItemModel *itemModel = [[self.viewModel resultArray] objectAtIndex:index];
-    
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:itemModel.activityId channelId:itemModel.channelId];
-    [controller setHidesBottomBarWhenPushed:YES];
+    controller.type = itemModel.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

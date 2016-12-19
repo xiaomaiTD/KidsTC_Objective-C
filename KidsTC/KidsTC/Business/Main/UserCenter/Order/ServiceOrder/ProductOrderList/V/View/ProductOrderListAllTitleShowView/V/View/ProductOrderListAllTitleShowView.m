@@ -24,7 +24,7 @@ static CGFloat const kAnimationDuration = 0.3;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewTop;
 @property (nonatomic, strong) NSArray<ProductOrderListAllTitleSectionItem *> *sectionItems;
-@property (nonatomic, strong) ProductOrderListAllTitleRowItem *currentRowItem;
+
 @end
 
 @implementation ProductOrderListAllTitleShowView
@@ -100,6 +100,52 @@ static CGFloat const kAnimationDuration = 0.3;
         self.collectionViewTop.constant = 0;
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         [self layoutIfNeeded];
+    }];
+}
+
+- (void)insetOrderType:(ProductOrderListOrderType)orderType {
+    
+    [self.sectionItems enumerateObjectsUsingBlock:^(ProductOrderListAllTitleSectionItem *sectionItem, NSUInteger idx, BOOL *stopSectionItem) {
+        [sectionItem.rowItems enumerateObjectsUsingBlock:^(ProductOrderListAllTitleRowItem *rowItem, NSUInteger idx, BOOL *stopRowItem) {
+            switch (orderType) {
+                case ProductOrderListOrderTypeNormal:
+                {
+                    if (rowItem.actionType == ProductOrderListAllTitleRowItemActionTypeActivity) {
+                        [self selectCurrentItem:rowItem];
+                        *stopRowItem = YES;
+                        *stopSectionItem = YES;
+                    }
+                }
+                    break;
+                case ProductOrderListOrderTypeTicket:
+                {
+                    if (rowItem.actionType == ProductOrderListAllTitleRowItemActionTypeTicket) {
+                        [self selectCurrentItem:rowItem];
+                        *stopRowItem = YES;
+                        *stopSectionItem = YES;
+                    }
+                }
+                    break;
+                case ProductOrderListOrderTypeRealObject:
+                {
+                    if (rowItem.actionType == ProductOrderListAllTitleRowItemActionTypeRealObject) {
+                        [self selectCurrentItem:rowItem];
+                        *stopRowItem = YES;
+                        *stopSectionItem = YES;
+                    }
+                }
+                    break;
+                default:
+                {
+                    if (rowItem.actionType == ProductOrderListAllTitleRowItemActionTypeAll) {
+                        [self selectCurrentItem:rowItem];
+                        *stopRowItem = YES;
+                        *stopSectionItem = YES;
+                    }
+                }
+                    break;
+            }
+        }];
     }];
 }
 

@@ -83,7 +83,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tf.placeholder = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
+    self.tf.text = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
     [self updateIv_activity];
 }
 
@@ -131,7 +131,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)setupTf {
     
     UITextField *tf = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 400, 30)];
-    tf.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+    tf.backgroundColor = [UIColor colorWithWhite:0 alpha:0.08];
     tf.font = [UIFont systemFontOfSize:15];
     tf.borderStyle = UITextBorderStyleNone;
     tf.layer.cornerRadius = 4;

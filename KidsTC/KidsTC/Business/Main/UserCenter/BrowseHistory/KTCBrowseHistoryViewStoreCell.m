@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bizZoneLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
 
@@ -23,14 +24,10 @@
     // Initialization code
     [self.contentView setBackgroundColor:COLOR_BG_CEll];
     
-    self.cellImageView.layer.cornerRadius = 5;
+    self.cellImageView.layer.cornerRadius = 4;
     self.cellImageView.layer.masksToBounds = YES;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    self.HLineH.constant = LINE_H;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)configWithModel:(BrowseHistoryStoreListItemModel *)model {

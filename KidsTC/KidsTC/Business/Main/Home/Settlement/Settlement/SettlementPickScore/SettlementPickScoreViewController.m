@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
+    
     self.view.backgroundColor = [UIColor clearColor];
     
     self.alertView.layer.cornerRadius = 8;
@@ -72,12 +74,12 @@
 
 - (void)show{
     self.AlertViewConstraintBottomMargin.constant = - CGRectGetHeight(self.alertView.frame);
-    [self updateLayout:self.alertView];
+    [self.view layoutIfNeeded];
     self.alertView.hidden = NO;
     self.view.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:0.3 animations:^{
         self.AlertViewConstraintBottomMargin.constant = SCREEN_HEIGHT*0.5;
-        [self updateLayout:self.alertView];
+        [self.view layoutIfNeeded];
         self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2 animations:^{
@@ -97,18 +99,12 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.view.backgroundColor = [UIColor clearColor];
         self.AlertViewConstraintBottomMargin.constant = - CGRectGetHeight(self.alertView.frame);
-        [self updateLayout:self.alertView];
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self back];
     }];
 }
 
-- (void)updateLayout:(UIView *)view{
-    [view setNeedsUpdateConstraints];
-    [view updateConstraintsIfNeeded];
-    [view setNeedsLayout];
-    [view layoutIfNeeded];
-}
 
 - (void)textFieldTextDidChange:(UITextField *)textField {
     NSUInteger numVlaue = [textField.text integerValue];
@@ -127,8 +123,9 @@
     }
     textField.text = numVlaue>0?[NSString stringWithFormat:@"%zd",numVlaue]:@"";
     self.reachMoneyLabel.text = [NSString stringWithFormat:@"%0.1f元",numVlaue/10.0];
-    [textField resignFirstResponder];
-    [textField becomeFirstResponder];
+    //[textField resignFirstResponder];
+    //[textField becomeFirstResponder];
+    [self.view layoutIfNeeded];
 }
 
 @end

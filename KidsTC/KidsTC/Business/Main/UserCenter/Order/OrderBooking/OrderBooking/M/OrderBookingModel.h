@@ -90,6 +90,7 @@
 @property (nonatomic, strong) NSArray<OrderBookingRemarkItem *> *userRemark;
 @property (nonatomic, assign) OrderBookingBespeakStatus bespeakStatus;
 @property (nonatomic, strong) NSString *bespeakStatusDesc;
+@property (nonatomic, assign) ProductDetailType productRedirect;
 /**selfDefine*/
 @property (nonatomic, strong) NSAttributedString *supplierRemarkStr;
 @property (nonatomic, strong) NSAttributedString *userRemarkStr;

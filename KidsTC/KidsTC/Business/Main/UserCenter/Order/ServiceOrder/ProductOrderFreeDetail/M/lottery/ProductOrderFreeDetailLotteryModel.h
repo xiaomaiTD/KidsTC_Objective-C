@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ProductOrderFreeDetailLotteryData.h"
+#import "ProductOrderFreeDetailLotteryItem.h"
 
 @interface ProductOrderFreeDetailLotteryModel : NSObject
 @property (nonatomic, assign) NSInteger errNo;
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryData *data;
+@property (nonatomic, strong) NSArray<ProductOrderFreeDetailLotteryItem *> *data;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSString *page;
 @end

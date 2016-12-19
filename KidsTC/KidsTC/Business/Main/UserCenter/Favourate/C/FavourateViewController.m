@@ -49,6 +49,7 @@
         {
             FavouriteServiceItemModel *model = [array objectAtIndex:index];
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
+            controller.type = model.productRedirect;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

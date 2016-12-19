@@ -34,6 +34,7 @@
 #import "ToolBox.h"
 #import "OnlineCustomerService.h"
 #import "ServiceSettlementViewController.h"
+#import "NavigationController.h"
 
 @interface ServiceDetailViewController () <ServiceDetailViewDelegate, ServiceDetailBottomViewDelegate, KTCActionViewDelegate, KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ServiceDetailConfigViewDelegate>
 
@@ -333,7 +334,8 @@
         case KTCActionViewTagSearch:
         {
             SearchViewController *controller = [[SearchViewController alloc]init];
-            [self.navigationController pushViewController:controller animated:YES];
+            NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:NO completion:nil];
         }
             break;
         case KTCActionViewTagShare:

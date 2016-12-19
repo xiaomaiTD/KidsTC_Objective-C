@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) CGFloat price;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
 
 @end

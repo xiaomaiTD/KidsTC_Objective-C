@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductOrderFreeDetailLotteryData.h"
+#import "ProductOrderFreeDetailLotteryItem.h"
 #import "ProductOrderFreeDetailData.h"
 
 typedef enum : NSUInteger {
@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
 
 
 @interface ProductOrderFreeDetailInfoBaseCell : UITableViewCell
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryData *lotteryData;
+@property (nonatomic, strong) NSArray<ProductOrderFreeDetailLotteryItem* > *lotteryData;
 @property (nonatomic, strong) ProductOrderFreeDetailData *infoData;
 @property (nonatomic, weak) id<ProductOrderFreeDetailInfoBaseCellDelegate> delegate;
 @end

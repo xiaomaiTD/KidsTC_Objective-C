@@ -12,7 +12,7 @@
 #import "NSString+Category.h"
 #import "NSArray+Category.h"
 
-#import "ProductDetailSubViewsProvider.h"
+
 #import "ProductDetailTwoColumnToolBar.h"
 #import "ProductDetailBaseToolBar.h"
 #import "ProductDetailCountDownView.h"
@@ -20,7 +20,7 @@
 static NSString *const ID = @"UITableViewCell";
 
 @interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
-@property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
+
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ProductDetailViewBaseHeader *header;
 @property (nonatomic, strong) NSArray<NSArray<ProductDetailBaseCell *> *> *sections;
@@ -31,15 +31,9 @@ static NSString *const ID = @"UITableViewCell";
 
 @implementation ProductDetailView
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-        _subViewProvider = [ProductDetailSubViewsProvider shareProductDetailSubViewsProvider];
-        
-        [self setupSubViews];
-    }
-    return self;
+- (void)setSubViewProvider:(ProductDetailSubViewsProvider *)subViewProvider {
+    _subViewProvider = subViewProvider;
+    [self setupSubViews];
 }
 
 - (void)setupSubViews {
@@ -138,7 +132,8 @@ static NSString *const ID = @"UITableViewCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     NSInteger count = self.sections.count;
     if (count > section) {
-        return (count-1 == section && _data.showCountDown)?42:12;
+        ProductDetailCountDown *countDown = _data.countDown;
+        return (count-1 == section && (_data.priceSort != PriceSortSecKill) && countDown.showCountDown && countDown.countDownTime>0)?42:12;
     }
     return 12;
 }

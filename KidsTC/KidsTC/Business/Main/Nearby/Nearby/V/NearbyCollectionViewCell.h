@@ -8,14 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "NearbyModel.h"
-
+#import "MultiItemsToolBar.h"
 typedef enum : NSUInteger {
     NearbyCollectionViewCellActionTypeNursery = 1,
     NearbyCollectionViewCellActionTypeExhibition = 2,
     NearbyCollectionViewCellActionTypeCalendar = 3,
-    NearbyCollectionViewCellActionTypeLoadData = 4,
-    NearbyCollectionViewCellActionTypeSegue = 5,
-    NearbyCollectionViewCellActionTypeLike = 6,
+    
+    
+    NearbyCollectionViewCellActionTypeLoadData = 100,
+    NearbyCollectionViewCellActionTypeSegue = 101,
+    NearbyCollectionViewCellActionTypeLike = 102,
 } NearbyCollectionViewCellActionType;
 
 @class NearbyCollectionViewCell;

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cg-mw-7TX" customClass="ServiceSettlementTicketGetButton">
@@ -26,10 +26,10 @@
                             <constraint firstAttribute="height" constant="54" id="SJt-dA-aJP"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="快递" image="ticket_get_car_n">
+                        <state key="normal" title="现场取票" image="ticket_get_self_n">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" title="快递" image="ticket_get_car_s">
+                        <state key="selected" title="现场取票" image="ticket_get_self_s">
                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
@@ -39,10 +39,10 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-mh-4J0" customClass="ServiceSettlementTicketGetButton">
                         <rect key="frame" x="93" y="41" width="28" height="54"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <state key="normal" title="自取" image="ticket_get_self_n">
+                        <state key="normal" title="快递" image="ticket_get_car_n">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" title="自取" image="ticket_get_self_s">
+                        <state key="selected" title="快递" image="ticket_get_car_s">
                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
@@ -57,7 +57,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wuc-5A-b1C">
                         <rect key="frame" x="0.0" y="110" width="320" height="1"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="X9w-CB-vhK"/>
                         </constraints>
@@ -88,10 +88,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="carBtn" destination="0cg-mw-7TX" id="i4X-PZ-YB0"/>
+                <outlet property="carBtn" destination="rMz-mh-4J0" id="u1n-JP-AdZ"/>
                 <outlet property="line" destination="Wuc-5A-b1C" id="HnN-DP-fdT"/>
                 <outlet property="lineH" destination="X9w-CB-vhK" id="I9q-dB-o3K"/>
-                <outlet property="selfBtn" destination="rMz-mh-4J0" id="MRa-O9-LYf"/>
+                <outlet property="selfBtn" destination="0cg-mw-7TX" id="JvK-10-BNl"/>
                 <outlet property="tipL" destination="upm-yo-qae" id="BJV-9y-XHk"/>
                 <outlet property="upImgCenterX" destination="pxy-sA-k8X" id="a2z-yb-JgU"/>
             </connections>

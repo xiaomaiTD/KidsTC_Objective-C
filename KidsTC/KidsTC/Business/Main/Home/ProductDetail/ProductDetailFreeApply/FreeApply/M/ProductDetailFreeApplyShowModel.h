@@ -10,7 +10,7 @@
 #import "UserAddressManageModel.h"
 #import "ProductDetailTime.h"
 #import "ProductDetailStore.h"
-
+#import "ProductDetailPlace.h"
 
 @interface ProductDetailFreeApplyShowModel : NSObject
 @property (nonatomic, assign) BOOL hidePen;
@@ -23,4 +23,6 @@
 @property (nonatomic, assign) NSInteger babyAge;
 @property (nonatomic, strong) NSDictionary *babySex;
 @property (nonatomic, strong) NSString *parentName;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, assign) ProductDetailPlace *place;
 @end

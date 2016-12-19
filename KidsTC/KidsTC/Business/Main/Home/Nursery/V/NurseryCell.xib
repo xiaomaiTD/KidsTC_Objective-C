@@ -16,10 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="269"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-wX-ure">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="OBf-wX-ure">
                         <rect key="frame" x="0.0" y="16" width="320" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -55,7 +55,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsT-0p-Oe2">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="0.0"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="0EU-hu-q5Z"/>
@@ -203,7 +203,7 @@
                                         <rect key="frame" x="106.5" y="0.0" width="107" height="66"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16M-uP-gzF">
-                                                <rect key="frame" x="45.5" y="14" width="16" height="38"/>
+                                                <rect key="frame" x="45" y="14" width="16" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_local" translatesAutoresizingMaskIntoConstraints="NO" id="fdl-do-avL">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -253,7 +253,7 @@
                                         <rect key="frame" x="213.5" y="0.0" width="106.5" height="66"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIG-rK-6aC">
-                                                <rect key="frame" x="45.5" y="14" width="16" height="38"/>
+                                                <rect key="frame" x="45" y="14" width="16" height="38"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nursery_time" translatesAutoresizingMaskIntoConstraints="NO" id="Jd6-Fa-VhF">
                                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
@@ -322,7 +322,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGL-th-OKe">
-                                        <rect key="frame" x="0.0" y="65.5" width="320" height="0.5"/>
+                                        <rect key="frame" x="0.0" y="66" width="320" height="0.0"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="WB8-54-WpV"/>

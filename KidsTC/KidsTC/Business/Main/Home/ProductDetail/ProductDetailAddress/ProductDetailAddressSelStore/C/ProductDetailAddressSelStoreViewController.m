@@ -8,8 +8,10 @@
 
 #import "ProductDetailAddressSelStoreViewController.h"
 #import "ProductDetailAddressSelStoreCell.h"
+#import "ProductDetailAddressSelPlaceCell.h"
 
-static NSString *const ID = @"ProductDetailAddressSelStoreCell";
+static NSString *const StoreCellID = @"ProductDetailAddressSelStoreCell";
+static NSString *const PlaceCellID = @"ProductDetailAddressSelPlaceCell";
 
 static CGFloat const kAnimateDuration =  0.2;
 
@@ -33,7 +35,8 @@ static CGFloat const kAnimateDuration =  0.2;
     tableView.estimatedRowHeight = 100;
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [tableView registerNib:[UINib nibWithNibName:@"ProductDetailAddressSelStoreCell" bundle:nil] forCellReuseIdentifier:ID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductDetailAddressSelStoreCell" bundle:nil] forCellReuseIdentifier:StoreCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductDetailAddressSelPlaceCell" bundle:nil] forCellReuseIdentifier:PlaceCellID];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
@@ -79,13 +82,37 @@ static CGFloat const kAnimateDuration =  0.2;
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.store.count;
+    return self.places.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProductDetailAddressSelStoreCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    cell.store = self.store[indexPath.row];
-    return cell;
+    switch (_placeType) {
+        case PlaceTypeStore:
+        {
+            ProductDetailAddressSelStoreCell *cell = [tableView dequeueReusableCellWithIdentifier:StoreCellID];
+            NSInteger row = indexPath.row;
+            if (row<self.places.count) {
+                cell.place = self.places[indexPath.row];
+            }
+            return cell;
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            ProductDetailAddressSelPlaceCell *cell = [tableView dequeueReusableCellWithIdentifier:PlaceCellID];
+            NSInteger row = indexPath.row;
+            if (row<self.places.count) {
+                cell.place = self.places[indexPath.row];
+            }
+            return cell;
+        }
+            break;
+        default:
+        {
+            return [UITableViewCell new];
+        }
+            break;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,7 +14,6 @@
 @interface ProductOrderListItem : NSObject
 @property (nonatomic, strong) NSString *orderNo;
 @property (nonatomic, assign) OrderKind orderKind;
-@property (nonatomic, assign) ProductOrderListOrderType orderType;
 @property (nonatomic, strong) NSString *statusName;
 @property (nonatomic, strong) NSString *imgUrl;
 @property (nonatomic, strong) NSString *productName;
@@ -37,6 +36,7 @@
 @property (nonatomic, strong) NSString *venueName;
 @property (nonatomic, strong) NSString *payDesc;
 @property (nonatomic, strong) NSString *storeNo;
+@property (nonatomic, assign) PlaceType placeType;
 //selfDefine
 @property (nonatomic, strong) NSArray<ProductOrderListBtn *> *btns;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;

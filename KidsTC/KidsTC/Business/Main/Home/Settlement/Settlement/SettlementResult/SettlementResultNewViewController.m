@@ -8,17 +8,22 @@
 
 #import "SettlementResultNewViewController.h"
 #import "UIBarButtonItem+Category.h"
+#import "TabBarController.h"
 
 #import "SettlementResultNewCollectionHeader.h"
 #import "SettlementResultNewCollectionViewCell.h"
 
+#import "ProductOrderNormalDetailViewController.h"
+#import "ProductOrderTicketDetailViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
+
 static NSString *const cellId = @"SettlementResultNewCollectionViewCell";
 static NSString *const headId = @"SettlementResultNewCollectionHeader";
 
-static CGFloat const headH = 270;
+static CGFloat const headH = 213;
 static CGFloat const margin = 12;
 
-@interface SettlementResultNewViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface SettlementResultNewViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,SettlementResultNewCollectionHeaderDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
@@ -68,7 +73,7 @@ static CGFloat const margin = 12;
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,10 +86,73 @@ static CGFloat const margin = 12;
     
     if (kind == UICollectionElementKindSectionHeader) {
         SettlementResultNewCollectionHeader *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headId forIndexPath:indexPath];
-        
+        headerView.data = self.data;
+        headerView.delegate = self;
         return  headerView;
     }
     return nil;
+}
+
+#pragma mark - SettlementResultNewCollectionHeaderDelegate
+
+- (void)settlementResultNewCollectionHeader:(SettlementResultNewCollectionHeader *)header
+                                 actionType:(SettlementResultNewCollectionHeaderActionType)type
+                                      value:(id)value
+{
+    switch (type) {
+        case SettlementResultNewCollectionHeaderActionTypeDetail:
+        {
+            [self detail];
+        }
+            break;
+        case SettlementResultNewCollectionHeaderActionTypeHome:
+        {
+            [self goHome];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)detail {
+    [self dismissViewControllerAnimated:YES completion:^{
+        switch (self.data.type) {
+            case ProductDetailTypeNormal:
+            {
+                ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+            }
+                break;
+            case ProductDetailTypeTicket:
+            {
+                ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+            }
+                break;
+            case ProductDetailTypeFree:
+            {
+                ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+            }
+                break;
+            default:
+            {
+                ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+            }
+                break;
+        }
+    }];
+}
+
+- (void)goHome {
+    [[TabBarController shareTabBarController] selectIndex:0];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

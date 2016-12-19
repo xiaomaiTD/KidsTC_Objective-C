@@ -90,7 +90,7 @@
 }
 
 - (void)edit {
-    TCLog(@"---");
+    
     self.naviRightBtn.selected = !self.naviRightBtn.selected;
     CGFloat offsetX = self.scrollView.contentOffset.x;
     CGFloat scrollView_w = CGRectGetWidth(self.scrollView.bounds);

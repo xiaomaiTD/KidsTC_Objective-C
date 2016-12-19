@@ -33,6 +33,7 @@ static CGFloat const imgMragin = 12;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VOneLineH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VTwoLineH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VThreeLineH;
+
 @end
 
 @implementation NurseryCell
@@ -43,7 +44,6 @@ static CGFloat const imgMragin = 12;
     self.nearbyBtn.tag = NurseryCellActionTypeNearby;
     self.routeBtn.tag = NurseryCellActionTypeRoute;
     
-    self.collectionView.userInteractionEnabled = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:@"NurseryCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     self.item_s = (SCREEN_WIDTH - 5*imgMragin)/4.5;
     self.collectionViewH.constant = self.item_s;

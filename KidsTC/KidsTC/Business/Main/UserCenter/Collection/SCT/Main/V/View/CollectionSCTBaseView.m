@@ -64,8 +64,8 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)loadData:(BOOL)refresh {
-    if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-        [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeLoadData value:@(refresh)];
+    if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+        [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeLoadData value:@(refresh) completion:nil];
     }
 }
 
@@ -81,6 +81,11 @@ static NSString *const ID = @"UITableViewCell";
                                                                           image:nil description:@"啥都没有啊…"
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
+}
+
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource

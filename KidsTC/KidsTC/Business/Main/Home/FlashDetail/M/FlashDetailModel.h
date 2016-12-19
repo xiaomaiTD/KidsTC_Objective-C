@@ -186,6 +186,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isOpenRemind;
 @property (nonatomic, strong) NSString *detailUrl;
 @property (nonatomic, strong) FDShare *share;
+@property (nonatomic, assign) ProductDetailType productRedirect;
 @end
 
 @interface FlashDetailModel : NSObject

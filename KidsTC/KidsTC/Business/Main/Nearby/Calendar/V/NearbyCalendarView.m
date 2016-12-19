@@ -48,11 +48,15 @@ static NSString *const CellID = @"NearbyTableViewCell";
     toolBar.delegate = self;
     [self addSubview:toolBar];
     self.toolBar = toolBar;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _toolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kNearbyCalendarToolBarH);
+    });
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.toolBar.frame = CGRectMake(0, 64, SCREEN_WIDTH, kNearbyCalendarToolBarH);
+    
 }
 
 - (void)setData:(NearbyData *)data {

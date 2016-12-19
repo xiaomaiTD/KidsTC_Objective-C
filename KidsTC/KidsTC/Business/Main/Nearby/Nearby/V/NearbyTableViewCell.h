@@ -10,7 +10,7 @@
 #import "NearbyItem.h"
 
 typedef enum : NSUInteger {
-    NearbyTableViewCellActionTypeLike = 6,
+    NearbyTableViewCellActionTypeLike = 102,
 } NearbyTableViewCellActionType;
 @class NearbyTableViewCell;
 @protocol NearbyTableViewCellDelegate <NSObject>

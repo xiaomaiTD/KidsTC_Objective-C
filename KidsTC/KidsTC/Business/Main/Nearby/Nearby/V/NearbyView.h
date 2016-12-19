@@ -15,10 +15,13 @@ typedef enum : NSUInteger {
     NearbyViewActionTypeNursery = 1,
     NearbyViewActionTypeExhibition = 2,
     NearbyViewActionTypeCalendar = 3,
-    NearbyViewActionTypeLoadData = 4,
-    NearbyViewActionTypeSegue = 5,
-    NearbyViewActionTypeLike = 6,
-    NearbyViewActionTypeDidSelectCategory = 50,
+    
+    NearbyViewActionTypeLoadData = 100,
+    NearbyViewActionTypeSegue = 101,
+    NearbyViewActionTypeLike = 102,
+    
+    NearbyViewActionTypeDidSelectCategory = 200,
+    
 } NearbyViewActionType;
 @class NearbyView;
 @protocol NearbyViewDelegate <NSObject>

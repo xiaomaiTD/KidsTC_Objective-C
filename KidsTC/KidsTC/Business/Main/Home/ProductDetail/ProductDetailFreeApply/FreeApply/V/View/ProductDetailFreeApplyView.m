@@ -21,6 +21,7 @@
 #import "ProductDetailFreeApplyBabyAgeCell.h"
 #import "ProductDetailFreeApplyBabySexCell.h"
 #import "ProductDetailFreeApplyParentNameCell.h"
+#import "ProductDetailFreeApplyUserRemarkCell.h"
 
 #import "ProductDetailFreeApplyFooterView.h"
 
@@ -44,7 +45,14 @@ static NSString *const ID = @"UITableViewCell";
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.tableView.tableFooterView = self.footerView;
+    self.tableView.frame = self.bounds;
+}
+
 - (void)reloadData {
+    
     [self.tableView reloadData];
 }
 
@@ -69,7 +77,7 @@ static NSString *const ID = @"UITableViewCell";
 
 - (void)setupFooter {
     ProductDetailFreeApplyFooterView *footerView = self.footerView;
-    footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 120);
+    footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300);
     footerView.sureBlock = ^{
         if ([self.delegate respondsToSelector:@selector(productDetailFreeApplyView:actionType:value:)]) {
             [self.delegate productDetailFreeApplyView:self actionType:ProductDetailFreeApplyViewActionTypeSure value:nil];
@@ -111,8 +119,27 @@ static NSString *const ID = @"UITableViewCell";
     if (time.times.count>0) {
         [section01 addObject:self.activityDateCell];
     }
-    if (store.count>0) {
-        [section01 addObject:self.activityStoreCell];
+    switch (self.data.placeType) {
+        case PlaceTypeStore:
+        {
+            if (store.count>0) [section01 addObject:self.activityStoreCell];
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            if (self.data.place.count>0) [section01 addObject:self.activityStoreCell];
+        }
+            break;
+        case PlaceTypeNone:
+        {
+            
+        }
+            break;
+        default:
+        {
+            if (store.count>0) [section01 addObject:self.activityStoreCell];
+        }
+            break;
     }
     if (section01.count>0) [sections addObject:section01];
     
@@ -133,6 +160,10 @@ static NSString *const ID = @"UITableViewCell";
         [section02 addObject:self.parentNameCell];
     }
     if (section02.count>0) [sections addObject:section02];
+    
+    NSMutableArray *section03 = [NSMutableArray array];
+    [section03 addObject:self.userRemarkCell];
+    if (section03.count>0) [sections addObject:section03];
     
     self.sections = [NSArray arrayWithArray:sections];
 }
@@ -183,6 +214,10 @@ static NSString *const ID = @"UITableViewCell";
 
 - (ProductDetailFreeApplyParentNameCell *)parentNameCell {
     return [self viewWithNib:@"ProductDetailFreeApplyParentNameCell"];
+}
+
+- (ProductDetailFreeApplyUserRemarkCell *)userRemarkCell {
+    return [self viewWithNib:@"ProductDetailFreeApplyUserRemarkCell"];
 }
 
 //footer

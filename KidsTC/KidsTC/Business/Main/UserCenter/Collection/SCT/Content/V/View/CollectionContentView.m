@@ -77,6 +77,20 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         ArticleHomeBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         cell.delegate = self;
         cell.item = item;
+        cell.deleteBtn.hidden = !self.editing;
+        cell.deleteNewsBlock = ^(ArticleHomeItem *item){
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeDelete value:item completion:^(id value) {
+                    BOOL success = [value boolValue];
+                    if (!success) return;
+                    NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
+                    if (row>=itemsAry.count) return;
+                    [itemsAry removeObjectAtIndex:row];
+                    self.items = [NSArray arrayWithArray:itemsAry];
+                    [self.tableView reloadData];
+                }];
+            }
+        };
         return cell;
     }else{
         return [tableView dequeueReusableCellWithIdentifier:ArticleHomeBaseCellID];
@@ -88,8 +102,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     NSInteger row = indexPath.row;
     if (row<self.items.count) {
         ArticleHomeItem *item = self.items[row];
-        if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-            [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel];
+        if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+            [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel completion:nil];
         }
     }
 }
@@ -167,8 +181,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
             }
         }
             break;

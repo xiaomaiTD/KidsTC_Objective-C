@@ -106,6 +106,7 @@
 - (void)parentingStrategyDetailView:(ParentingStrategyDetailView *)detailView didClickedRelatedServiceAtIndex:(NSUInteger)index {
     StrategyDetailServiceItemModel *serviceModel = [self.viewModel.detailModel.relatedServices objectAtIndex:index];
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
+    controller.type = serviceModel.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 
 }

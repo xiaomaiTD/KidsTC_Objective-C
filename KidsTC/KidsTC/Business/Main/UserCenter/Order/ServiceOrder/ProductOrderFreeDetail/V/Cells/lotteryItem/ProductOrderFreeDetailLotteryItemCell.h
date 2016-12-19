@@ -10,5 +10,5 @@
 #import "ProductOrderFreeDetailLotteryItem.h"
 
 @interface ProductOrderFreeDetailLotteryItemCell : ProductOrderFreeDetailInfoBaseCell
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryItem *item;
+
 @end

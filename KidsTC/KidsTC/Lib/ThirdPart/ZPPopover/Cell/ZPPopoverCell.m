@@ -8,22 +8,21 @@
 
 #import "ZPPopoverCell.h"
 
+@interface ZPPopoverCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@end
+
 @implementation ZPPopoverCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setItem:(ZPPopoverItem *)item{
     _item = item;
     self.itemImageView.image = [UIImage imageNamed:_item.imageName];
     self.itemTitleLabel.text = _item.title;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

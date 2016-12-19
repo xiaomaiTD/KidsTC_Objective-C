@@ -12,6 +12,7 @@
 #import "NSString+Category.h"
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
+#import "AppBaseManager.h"
 
 #import "ProductOrderListReplaceModel.h"
 #import "ProductOrderListAllTitleRowItem.h"
@@ -35,8 +36,7 @@
 #import "ProductDetailTicketSelectSeatViewController.h"
 
 @interface ProductOrderListViewController ()<ProductOrderListViewDelegate,CommentFoundingViewControllerDelegate,ProductOrderListAllTitleShowViewDelegate,OrderRefundViewControllerDelegate>
-@property (nonatomic, assign) ProductOrderListType type;
-@property (nonatomic, assign) ProductOrderListOrderType orderType;
+
 @property (nonatomic, strong) ProductOrderListView *listView;
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSArray *items;
@@ -80,10 +80,7 @@
         case ProductOrderListTypeCompleted://已完成订单
         case ProductOrderListTypeCancled://已取消订单
         {
-            _allTitleShowView = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListAllTitleShowView" owner:self options:nil].firstObject;
-            _allTitleShowView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
-            _allTitleShowView.delegate = self;
-            [self.view addSubview:_allTitleShowView];
+            [self.allTitleShowView insetOrderType:_orderType];
             
             _allTitleView = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListAllTitleView" owner:self options:nil].firstObject;
             _allTitleView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
@@ -131,6 +128,22 @@
 - (void)message {
     NotificationCenterViewController *controller = [[NotificationCenterViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (ProductOrderListAllTitleShowView *)allTitleShowView {
+    if (!_allTitleShowView) {
+        _allTitleShowView = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListAllTitleShowView" owner:self options:nil].firstObject;
+        _allTitleShowView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+        _allTitleShowView.delegate = self;
+        [self.view addSubview:_allTitleShowView];
+    }
+    return _allTitleShowView;
+}
+
+- (void)insetOrderType:(ProductOrderListOrderType)orderType {
+    _orderType = orderType;
+    [self.allTitleShowView insetOrderType:orderType];
+    self.allTitleView.title = self.allTitleShowView.currentRowItem.title;
 }
 
 #pragma mark - 更换单个Item
@@ -206,17 +219,17 @@
             break;
         case ProductOrderListViewActionTypeReserve:/// 我要预约
         {
-            [self booking:value];
+            [self connectSupplier:value];
         }
             break;
         case ProductOrderListViewActionTypeCancelTip:/// 取消提醒
         {
-            
+            [self tip:value want:NO];
         }
             break;
         case ProductOrderListViewActionTypeWantTip:/// 活动提醒
         {
-            
+            [self tip:value want:YES];
         }
             break;
         case ProductOrderListViewActionTypeReminder:/// 我要催单
@@ -367,7 +380,7 @@
         [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"获取消费码失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -378,6 +391,7 @@
 #pragma mark ================我要预约================
 
 - (void)booking:(ProductOrderListItem *)item {
+    
     OrderBookingViewController *controller = [[OrderBookingViewController alloc]init];
     controller.orderNo = item.orderNo;
     controller.mustEdit = NO;
@@ -385,6 +399,27 @@
         [self loadReplaceItem:item];
     };
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark ================活动提醒================
+
+- (void)tip:(ProductOrderListItem *)item want:(BOOL)want {
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    OrderRemindType type = want?OrderRemindTypeTip:OrderRemindTypeCancle;
+    NSDictionary *param = @{@"orderId":orderId,
+                            @"type":@(type)};
+    [Request startWithName:@"ORDER_REMIND" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSString *msg = want?@"提醒成功":@"已取消提醒";
+        [[iToast makeText:msg] show];
+        [self loadReplaceItem:item];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = want?@"设置提醒失败，请稍后再试":@"取消提醒失败，请稍后再试";
+        [[iToast makeText:msg] show];
+    }];
 }
 
 #pragma mark ================我要催单================
@@ -401,7 +436,7 @@
         [self loadReplaceItem:item];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"催单失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -423,7 +458,7 @@
         [self loadReplaceItem:item];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"确认收货失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -634,6 +669,8 @@
 #pragma mark ================更换类型================
 
 - (void)changeType:(ProductOrderListAllTitleRowItem *)item type:(ProductOrderListType)type {
+    self.items = nil;
+    [self.listView reloadData];
     self.type = type;
     self.orderType = ProductOrderListOrderTypeAll;
     self.allTitleView.title = item.title;
@@ -643,6 +680,8 @@
 #pragma mark ================更换订单类型================
 
 - (void)changeOrderType:(ProductOrderListAllTitleRowItem *)item orderType:(ProductOrderListOrderType)orderType {
+    self.items = nil;
+    [self.listView reloadData];
     self.type = ProductOrderListTypeAll;
     self.orderType = orderType;
     self.allTitleView.title = item.title;
@@ -666,7 +705,14 @@
 #pragma mark ================萝卜兑换================
 
 - (void)jumpToRadishOrderList:(ProductOrderListAllTitleRowItem *)item {
-    [[iToast makeText:@"该功能暂时还没有接入哦"] show];
+    NSString *str = [AppBaseManager shareAppBaseManager].data.radishOrderUrl;
+    if ([str isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc] init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
+    }else{
+        [[iToast makeText:@"该功能暂不支持"] show];
+    }
 }
 
 #pragma mark ================我的抽奖================

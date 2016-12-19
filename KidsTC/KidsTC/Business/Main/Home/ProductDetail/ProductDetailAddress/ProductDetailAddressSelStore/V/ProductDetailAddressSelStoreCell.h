@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductDetailStore.h"
+#import "ProductDetailAddressSelStoreModel.h"
 @interface ProductDetailAddressSelStoreCell : UITableViewCell
-@property (nonatomic, strong) ProductDetailStore *store;
+@property (nonatomic, strong) ProductDetailAddressSelStoreModel *place;
 @end

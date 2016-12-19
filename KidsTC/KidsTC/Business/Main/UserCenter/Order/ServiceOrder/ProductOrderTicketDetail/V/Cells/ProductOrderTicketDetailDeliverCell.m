@@ -48,7 +48,7 @@
     [self.data.deliver.items enumerateObjectsUsingBlock:^(ProductOrderTicketDetailDeliverItem *obj, NSUInteger idx, BOOL *stop) {
         StrongSelf(self)
         NSRange range = [self.data.deliver.deliverStr rangeOfString:obj.value];
-        if ((obj.isCall&&[obj.value isNotNull])||obj.segueModel) {
+        if ((obj.isCall&&[obj.value isNotNull])||(obj.segueModel.destination != SegueDestinationNone)) {
             [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
         }
         UIColor *color = [UIColor colorFromHexString:obj.color];

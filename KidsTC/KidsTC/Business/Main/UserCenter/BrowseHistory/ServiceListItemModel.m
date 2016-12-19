@@ -30,6 +30,8 @@
         self.promotionPrice = [[data objectForKey:@"price"] floatValue];
         self.saledCount = [[data objectForKey:@"sale"] integerValue];
         
+        self.productRedirect = [data[@"productRedirect"] integerValue];
+        
         BOOL supportGQT = [[data objectForKey:@"isGqt"] boolValue];
         BOOL supportSST = [[data objectForKey:@"isSst"] boolValue];
         BOOL supportBft = [[data objectForKey:@"isBft"] boolValue];

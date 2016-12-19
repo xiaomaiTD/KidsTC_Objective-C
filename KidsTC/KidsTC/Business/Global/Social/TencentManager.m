@@ -147,11 +147,18 @@ static TencentManager *_sharedInstance = nil;
         case TencentShareObjectTypeImage:
         {
             TencentImageShareObject *shareObj = (TencentImageShareObject *)object;
-            
-            if ([UIImage byteCountOfImage:shareObj.image] >= 1024 * 1024 * 5 * 8) {
+            NSInteger length =  [UIImage byteCountOfImage:shareObj.image];
+            if (length >= 1024 * 1024 * 5 * 8) {
                 return nil;
             }
             NSData *imageData = UIImageJPEGRepresentation(shareObj.image, 0);
+            
+            if (shareObj.thumbImage) {
+                NSUInteger byteCount = [UIImage byteCountOfImage:shareObj.thumbImage];
+                if (byteCount >=  1024 * 1024 * 8) {
+                    shareObj.thumbImage = [shareObj.thumbImage imageByScalingToSize:CGSizeMake(100, 100)];
+                }
+            }
             if ([UIImage byteCountOfImage:shareObj.thumbImage] >= 1024 * 1024 * 8) {
                 return nil;
             }

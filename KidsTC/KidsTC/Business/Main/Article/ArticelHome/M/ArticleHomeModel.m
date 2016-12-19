@@ -61,9 +61,33 @@
 
 @implementation ArticleHomeProduct
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
     NSString *pid = [_pid isNotNull]?_pid:@"";
     NSString *cid = [_cid isNotNull]?_cid:@"";
-    _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+    
+    switch (_productRedirect) {
+        case ProductDetailTypeNormal:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        default:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+    }
+    
     return YES;
 }
 @end

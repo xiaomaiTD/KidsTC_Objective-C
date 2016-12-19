@@ -75,9 +75,10 @@
     self.rightBarBtn.enabled = (searchType == SearchTypeProduct);
     
     NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
-    if ([searchKeyWords isNotNull]) {
-        self.tf.text = searchKeyWords;
+    if (![searchKeyWords isNotNull]) {
+        searchKeyWords = nil;
     }
+    self.tf.text = searchKeyWords;
     
     [self.resultView beginRefreshing];
 }
@@ -192,9 +193,10 @@
     self.tf = tf;
     
     NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
-    if ([searchKeyWords isNotNull]) {
-        self.tf.text = searchKeyWords;
+    if (![searchKeyWords isNotNull]) {
+        searchKeyWords = nil;
     }
+    self.tf.text = searchKeyWords;
     
 }
 
@@ -307,6 +309,10 @@
             break;
         case SearchResultToolBarActionTypeDidSelectStore:
         {
+            NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:self.params_store];
+            NSString *k = [NSString stringWithFormat:@"%@",self.params_product[kSearchKey_words]];
+            if ([k isNotNull]) [param setObject:k forKey:kSearchKey_words];
+            self.params_store = [NSDictionary dictionaryWithDictionary:param];
             self.searchType = SearchTypeStore;
         }
             break;
@@ -317,16 +323,20 @@
 - (void)toolBarSetParam:(id)value {
     
     if (![value isKindOfClass:[NSDictionary class]]) return;
-    
+    NSMutableDictionary *param = [NSMutableDictionary dictionaryWithDictionary:value];
     switch (self.searchType) {
         case SearchTypeProduct:
         {
-            self.params_product = value;
+            NSString *k = [NSString stringWithFormat:@"%@",self.params_product[kSearchKey_words]];
+            if ([k isNotNull]) [param setObject:k forKey:kSearchKey_words];
+            self.params_product = param;
         }
             break;
         case SearchTypeStore:
         {
-            self.params_store = value;
+            NSString *k = [NSString stringWithFormat:@"%@",self.params_store[kSearchKey_words]];
+            if ([k isNotNull]) [param setObject:k forKey:kSearchKey_words];
+            self.params_store = param;
         }
             break;
     }
@@ -387,9 +397,9 @@
     if ([pt isNotNull]) {
         [dic setObject:pt forKey:kSearchKey_populationType];
     }
-    if ([self.userLocation isNotNull]) {
-        [dic setObject:self.userLocation forKey:@"mapaddr"];
-    }
+    //if ([self.userLocation isNotNull]) {
+        //[dic setObject:self.userLocation forKey:@"mapaddr"];
+    //}
     NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
     [Request startWithName:@"SEARCH_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultProductModel *model = [SearchResultProductModel modelWithDictionary:dic];
@@ -414,9 +424,9 @@
     [dic setObject:@(kSearchResultViewPageCount) forKey:@"pageSize"];
     NSString *pt = [User shareUser].role.roleIdentifierString;
     [dic setObject:pt forKey:kSearchKey_populationType];
-    if ([self.userLocation isNotNull]) {
-        [dic setObject:self.userLocation forKey:@"mapaddr"];
-    }
+    //if ([self.userLocation isNotNull]) {
+        //[dic setObject:self.userLocation forKey:@"mapaddr"];
+    //}
     NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
     [Request startWithName:@"STORE_SEARCH_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultStoreModel *model = [SearchResultStoreModel modelWithDictionary:dic];

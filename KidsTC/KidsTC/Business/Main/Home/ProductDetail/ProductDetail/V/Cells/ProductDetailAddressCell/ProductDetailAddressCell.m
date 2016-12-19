@@ -11,12 +11,15 @@
 @interface ProductDetailAddressCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @end
 
 @implementation ProductDetailAddressCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.HLineH.constant = LINE_H;
     
     self.nameL.textColor = [UIColor colorFromHexString:@"222222"];
     self.addressL.textColor = [UIColor colorFromHexString:@"B4B4B4"];
@@ -29,11 +32,46 @@
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    if (data.store.count>0) {
-        ProductDetailStore *store = data.store.firstObject;
-        self.nameL.text = store.storeName;
-        self.addressL.text = store.address;
+    switch (data.type) {
+        case ProductDetailTypeNormal:
+        case ProductDetailTypeFree:
+        {
+            switch (data.placeType) {
+                case PlaceTypeStore:
+                {
+                    if (data.store.count>0) {
+                        ProductDetailStore *store = data.store.firstObject;
+                        self.nameL.text = store.storeName;
+                        self.addressL.text = store.address;
+                    }
+                }
+                    break;
+                case PlaceTypePlace:
+                {
+                    if (data.place.count>0) {
+                        ProductDetailPlace *place = data.place.firstObject;
+                        self.nameL.text = place.name;
+                        self.addressL.text = place.address;
+                    }
+                }
+                    break;
+                default:
+                    break;
+            }
+            
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            ProductDetailTheater *theater = data.theater;
+            self.nameL.text = theater.theaterName;
+            self.addressL.text = theater.address;
+        }
+            break;
+        default:
+            break;
     }
+    
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {

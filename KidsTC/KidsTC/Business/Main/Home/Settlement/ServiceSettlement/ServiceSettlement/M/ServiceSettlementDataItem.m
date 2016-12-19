@@ -15,7 +15,8 @@
 + (NSDictionary *)modelContainerPropertyGenericClass
 {
     return @{@"coupon" : [ServiceSettlementCouponItem class],
-             @"seats" : [ServiceSettlementSeat class]};
+             @"seats" : [ServiceSettlementSeat class],
+             @"place":[ServiceSettlementPlace class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
@@ -52,6 +53,7 @@
 }
 
 - (void)setType:(ProductDetailType)type {
+    _type = type;
     switch (type) {
         case ProductDetailTypeNormal:
         {

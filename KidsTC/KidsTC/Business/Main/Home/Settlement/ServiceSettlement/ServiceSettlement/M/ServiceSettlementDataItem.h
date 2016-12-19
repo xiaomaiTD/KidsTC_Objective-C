@@ -14,6 +14,7 @@
 #import "SettlementPickStoreModel.h"
 #import "ServiceSettlementSeat.h"
 #import "ServiceSettlementShowTime.h"
+#import "ServiceSettlementPlace.h"
 
 typedef enum : NSUInteger {
     ServiceSettlementTakeTicketWayCar = 1,//快递
@@ -44,6 +45,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isFreightDiscount;
 @property (nonatomic, assign) NSInteger minBuyNum;
 @property (nonatomic, assign) NSInteger maxBuyNum;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<ServiceSettlementPlace *> *place;
+
+@property (nonatomic, assign) NSInteger currentPlaceIndex;
+
 //forTicket
 @property (nonatomic, strong) NSString *theater;
 @property (nonatomic, strong) NSString *payPrice;

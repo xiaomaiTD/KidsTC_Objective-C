@@ -26,15 +26,6 @@
     _phone = [_phone stringByReplacingOccurrencesOfString:@" " withString:@""];
     _phone = [_phone stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     self.phones = [_phone componentsSeparatedByString:@";"];
-    
-    //location
-    CLLocationCoordinate2D coord = [ToolBox coordinateFromString:_mapAddress];
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
-    self.location = [[KTCLocation alloc] initWithLocation:loc locationDescription:self.storeName];
-    NSString *storeAddress = _address;
-    if ([storeAddress isKindOfClass:[NSString class]]) {
-        [self.location setMoreDescription:storeAddress];
-    }
 }
 
 

@@ -26,6 +26,7 @@
 @property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) NSString *productImg;
+@property (nonatomic, assign) PlaceType placeType;
 @property (nonatomic, strong) ProductOrderFreeDetailStore *storeInfo;
 @property (nonatomic, strong) NSString *LotteryTime;
 @property (nonatomic, strong) NSString *joinCount;
@@ -36,14 +37,18 @@
 @property (nonatomic, strong) ProductOrderFreeDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *rowCreateTime;
 @property (nonatomic, strong) ProductOrderFreeDetailBooking *onlineBespeak;
-@property (nonatomic, assign) BOOL isLottery;
+@property (nonatomic, assign) BOOL isLottery;//是否中奖
+@property (nonatomic, assign) BOOL isStartLottery;//是否开奖了
 @property (nonatomic, assign) BOOL isCanOnlineBespeak;
 @property (nonatomic, assign) BOOL isCanComment;
 @property (nonatomic, strong) NSArray<NSNumber *> *orderBtns;
 @property (nonatomic, assign) ProductOrderFreeDetailBtnType defaultBtn;
 @property (nonatomic, assign) OrderState orderStatus;
+@property (nonatomic, strong) NSString *userRemark;
+@property (nonatomic, strong) NSString *supplierMobie;
 //selfDefine
 @property (nonatomic, strong) NSString *countDownValueString;
+@property (nonatomic, strong) NSAttributedString *userRemarkStr;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @property (nonatomic, strong) NSArray<ProductOrderFreeDetailBtn *> *btns;
 @property (nonatomic, strong) SegueModel *segueModel;

@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *gotoBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nearbyBtn;
 @property (weak, nonatomic) IBOutlet UILabel *distanceL;
-
 @end
 
 @implementation NurseryAnnoView

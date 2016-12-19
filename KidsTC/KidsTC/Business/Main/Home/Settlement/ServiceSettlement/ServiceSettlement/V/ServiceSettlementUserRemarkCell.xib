@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="203" id="KGk-i7-Jjw" customClass="ServiceSettlementUserRemarkCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="202"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-x0-Ian">
+                        <rect key="frame" x="15" y="16" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtJ-8c-HTj" customClass="YYTextView">
+                        <rect key="frame" x="15" y="49" width="290" height="137.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="137.5" id="dox-lb-1iz"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderFontName_" value="对本次交易的说明"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
+                                <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="MDA-Hf-d3j"/>
+                        </connections>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ihe-x0-Ian" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="AVr-DB-a1H"/>
+                    <constraint firstAttribute="trailing" secondItem="GtJ-8c-HTj" secondAttribute="trailing" constant="15" id="DQ9-pX-hor"/>
+                    <constraint firstItem="GtJ-8c-HTj" firstAttribute="top" secondItem="ihe-x0-Ian" secondAttribute="bottom" constant="16" id="ew8-Eq-tZx"/>
+                    <constraint firstAttribute="bottom" secondItem="GtJ-8c-HTj" secondAttribute="bottom" constant="16" id="fRj-6H-2IQ"/>
+                    <constraint firstItem="GtJ-8c-HTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oIf-CL-jbb"/>
+                    <constraint firstItem="ihe-x0-Ian" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vaf-91-2wQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tv" destination="GtJ-8c-HTj" id="eIO-ra-4rx"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="64.5"/>
+        </tableViewCell>
+    </objects>
+</document>

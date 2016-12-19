@@ -81,7 +81,7 @@ static NSString *const kCellIdentifier = @"kCellIdentifier";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ServiceMoreDetailHotSalesItemModel *model = [self.listModels objectAtIndex:indexPath.row];
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.serviceId channelId:model.channelId];
-    [controller setHidesBottomBarWhenPushed:YES];
+    controller.type = model.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

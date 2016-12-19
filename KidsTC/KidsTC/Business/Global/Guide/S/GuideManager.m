@@ -11,11 +11,13 @@
 
 static NSString *const kGideTypeHome = @"GideTypeHome";
 static NSString *const kGideTypeArticle = @"GideTypeArticle";
+static NSString *const kGideTypeNearby = @"GideTypeNearby";
 static NSString *const kGideTypeOrderDetail = @"GideTypeOrderDetail";
 static NSString *const kGideTypeProductDetail = @"GideTypeProductDetail";
 
 NSString *const kHomeGuideViewControllerFinishShow = @"HomeGuideViewControllerFinishShow";
 NSString *const kArticleGuideViewControllerFinishShow = @"ArticleGuideViewControllerFinishShow";
+NSString *const kNearbyGuideViewControllerFinishShow = @"NearbyGuideViewControllerFinishShow";
 NSString *const kOrderDetailGuideViewControllerFinishShow = @"OrderDetailGuideViewControllerFinishShow";
 NSString *const kProductDetailGuideViewControllerFinishShow = @"ProductDetailGuideViewControllerFinishShow";
 @implementation GuideManager
@@ -32,6 +34,11 @@ singleM(GuideManager)
         case GuideTypeArticle:
         {
             model = [self articleGuideModel];
+        }
+            break;
+        case GuideTypeNearby:
+        {
+            model = [self nearbyGuideModel];
         }
             break;
         case GuideTypeOrderDetail:
@@ -62,6 +69,14 @@ singleM(GuideManager)
 
 - (GuideModel *)articleGuideModel {
     GuideDataItem *item_0 = [GuideDataItem itemWithImageName:@"article-0"
+                                                  btnCanShow:NO
+                                                btnImageName:nil
+                                                    btnFrame:CGRectZero];
+    return [GuideModel modelWithDatas:@[item_0]];
+}
+
+- (GuideModel *)nearbyGuideModel {
+    GuideDataItem *item_0 = [GuideDataItem itemWithImageName:@"nearby_guid_01"
                                                   btnCanShow:NO
                                                 btnImageName:nil
                                                     btnFrame:CGRectZero];
@@ -122,6 +137,11 @@ singleM(GuideManager)
             hasShow = [USERDEFAULTS boolForKey:kGideTypeArticle];
         }
             break;
+        case GuideTypeNearby:
+        {
+            hasShow = [USERDEFAULTS boolForKey:kGideTypeNearby];
+        }
+            break;
         case GuideTypeOrderDetail:
         {
             hasShow = [USERDEFAULTS boolForKey:kGideTypeOrderDetail];
@@ -148,6 +168,12 @@ singleM(GuideManager)
         {
             [USERDEFAULTS setBool:YES forKey:kGideTypeArticle];
             [NotificationCenter postNotificationName:kArticleGuideViewControllerFinishShow object:nil];
+        }
+            break;
+        case GuideTypeNearby:
+        {
+            [USERDEFAULTS setBool:YES forKey:kGideTypeNearby];
+            [NotificationCenter postNotificationName:kNearbyGuideViewControllerFinishShow object:nil];
         }
             break;
         case GuideTypeOrderDetail:

@@ -88,14 +88,37 @@
     }];
 }
 
-- (void)delete:(NSString *)productId completion:(void(^)(BOOL success))completion{
-    if (![productId isNotNull]) {
+- (void)delete:(CollectProductItem *)item completion:(void(^)(BOOL success))completion{
+    if (![item.productSysNo isNotNull]) {
         [[iToast makeText:@"服务编号为空"] show];
         if (completion) completion(NO);
         return;
     }
+    KTCFavouriteType type;
+    switch (item.productType) {
+        case ProductDetailTypeNormal:
+        {
+            type = KTCFavouriteTypeService;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            type = KTCFavouriteTypeTicketService;
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            type = KTCFavouriteTypeFreeService;
+        }
+            break;
+        default:
+        {
+            type = KTCFavouriteTypeService;
+        }
+            break;
+    }
     [TCProgressHUD showSVP];
-    [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:productId type:KTCFavouriteTypeService succeed:^(NSDictionary *data) {
+    [[KTCFavouriteManager sharedManager] deleteFavouriteWithIdentifier:item.productSysNo type:type succeed:^(NSDictionary *data) {
         [TCProgressHUD dismissSVP];
         if (completion) completion(YES);
     } failure:^(NSError *error) {

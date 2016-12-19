@@ -88,12 +88,26 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CollectionTarentoHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
+    header.deleteBtn.hidden = !self.editing;
     if (section<self.items.count) {
         CollectionTarentoItem *item = self.items[section];
         header.item = item;
         header.actionBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorNo];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
+            }
+        };
+        header.deleteBlock = ^(CollectionTarentoItem *item){
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeDelete value:item completion:^(id value) {
+                    BOOL success = [value boolValue];
+                    if (!success) return;
+                    NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
+                    if (section>=itemsAry.count) return;
+                    [itemsAry removeObjectAtIndex:section];
+                    self.items = [NSArray arrayWithArray:itemsAry];
+                    [self.tableView reloadData];
+                }];
             }
         };
     }
@@ -124,8 +138,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         CollectionTarentoItem *item = self.items[section];
         footer.item = item;
         footer.actionBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorNo];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
             }
         };
     }
@@ -142,8 +156,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
         if (row<articleLst.count) {
             ArticleHomeItem *articleItem = articleLst[row];
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:articleItem.segueModel];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:articleItem.segueModel completion:nil];
             }
         }
     }
@@ -222,8 +236,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
             }
         }
             break;

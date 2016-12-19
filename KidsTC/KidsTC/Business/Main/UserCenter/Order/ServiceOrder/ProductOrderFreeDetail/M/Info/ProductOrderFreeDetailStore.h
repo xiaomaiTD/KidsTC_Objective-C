@@ -14,10 +14,9 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *distance;
+@property (nonatomic, assign) PlaceType placeType;
 @property (nonatomic, strong) NSString *storeId;
 @property (nonatomic, strong) NSString *storeName;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *mapAddress;
-//selfDefine
-@property (nonatomic, strong) ProductDetailStore *addressStore;
 @end

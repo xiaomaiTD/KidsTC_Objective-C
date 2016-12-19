@@ -103,7 +103,9 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
 }
 
 - (void)loadUserInfo {
-    [Request startWithName:@"GET_USER_BASE_INFO" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    NSString *userId = [self.userId isNotNull]?self.userId:@"";
+    NSDictionary *param = @{@"userId":userId};
+    [Request startWithName:@"GET_USER_BASE_INFO" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         self.headerView.data = [ArticleHomeUserInfoModel modelWithDictionary:dic].data;
     } failure:nil];
 }
@@ -185,7 +187,6 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
     NSDictionary *param = @{@"page":@(_articlePage),
                             @"pageCount":@(kPageCount),
                             @"userId":userId};
-    
     [Request startWithName:@"ARTICLES_USER_GET" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [self loadArticleDataRefresh:refresh success:[ArticleUserCenterArticleModel modelWithDictionary:dic]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -226,7 +227,6 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
     NSDictionary *param = @{@"page":@(_commentPage),
                             @"pageCount":@(kPageCount),
                             @"userId":userId};
-    
     [Request startWithName:@"GET_USER_ARTICLE_COMMENT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [self loadCommentDataRefresh:refresh success:[ArticleUserCenterCommentModel modelWithDictionary:dic]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

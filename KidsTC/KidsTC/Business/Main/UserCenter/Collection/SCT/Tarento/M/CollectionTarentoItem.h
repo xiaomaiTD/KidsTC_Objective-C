@@ -10,6 +10,7 @@
 #import "ArticleHomeModel.h"
 
 @interface CollectionTarentoItem : NSObject
+@property (nonatomic, strong) NSString *authorUid;
 @property (nonatomic, strong) NSString *authorNo;
 @property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSString *authorSign;
@@ -18,5 +19,6 @@
 @property (nonatomic, strong) NSString *publishArticleNum;
 @property (nonatomic, strong) NSString *viewSumNum;
 @property (nonatomic, strong) NSString *newsCount;
+@property (nonatomic, strong) NSString *collectedTimeDesc;
 @property (nonatomic, strong) NSArray<ArticleHomeItem *> *articleLst;
 @end

@@ -113,7 +113,7 @@ CGFloat const kSearchResultToolBarH = 44;
     self.areaView.insetParam = _insetParam;
     self.sortView.insetParam = _insetParam;
     self.filterView.insetParam = _insetParam;
-    
+    self.lastClickedBtn = nil;
     switch (_searchType) {
         case SearchTypeProduct:
         {
@@ -320,13 +320,13 @@ CGFloat const kSearchResultToolBarH = 44;
 
 #pragma mark - SearchFactorSortViewDelegate
 - (void)searchFactorSortView:(SearchFactorSortView *)view didSelectItem:(SearchFactorSortDataItem *)item byClick:(BOOL)byClick {
-    [self.sortBtn setTitle:item.title forState:UIControlStateNormal];
+    [self.sortBtn setTitle:item.desc forState:UIControlStateNormal];
     self.sortBtn.selected = NO;
     if (byClick) {
         
         if (self.searchType != SearchTypeProduct) {
             if ([self.delegate respondsToSelector:@selector(searchResultToolBar:actionType:value:)]) {
-                [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:item.title];
+                [self.delegate searchResultToolBar:self actionType:SearchResultToolBarActionTypeDidSelectProduct value:item.value];
             }
         }else{
             [self setupSortBtn];

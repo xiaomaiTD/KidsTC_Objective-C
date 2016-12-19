@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ProductDetailFreeApplyShowModel.h"
 
+extern NSString *const KProductDetailFreeApplyUserRemark;
+
 typedef enum : NSUInteger {
     ProductDetailFreeApplyBaseCellActionTypeUserAddressTip = 1,
     ProductDetailFreeApplyBaseCellActionTypeUserAddress,
     ProductDetailFreeApplyBaseCellActionTypeActivityDate,
     ProductDetailFreeApplyBaseCellActionTypeActivityStore,
+    ProductDetailFreeApplyBaseCellActionTypeActivityPlace,
     ProductDetailFreeApplyBaseCellActionTypeSelectBirth,
     ProductDetailFreeApplyBaseCellActionTypeSelectAge,
     ProductDetailFreeApplyBaseCellActionTypeSelectSex,

@@ -325,7 +325,7 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
     if (self.browseHistoryType == KTCBrowseHistoryTypeService) {//服务
         ServiceListItemModel *model = [self.serviceAry objectAtIndex:indexPath.row];
         ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
-        [controller setHidesBottomBarWhenPushed:YES];
+        controller.type = model.productRedirect;
         [self.navigationController pushViewController:controller animated:YES];
 
     }else{//门店

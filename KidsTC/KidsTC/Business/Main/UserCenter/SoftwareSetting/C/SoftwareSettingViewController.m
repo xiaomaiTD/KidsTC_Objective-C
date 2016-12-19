@@ -14,6 +14,8 @@
 #import "TCProgressHUD.h"
 #import "iToast.h"
 #import "SoftwareSettingHeader.h"
+#import "AppBaseManager.h"
+#import "NSString+Category.h"
 
 @interface SoftwareSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, weak) UITableView *tableView;
@@ -160,7 +162,11 @@ static NSString *SoftwareSettingViewCellID = @"SoftwareSettingViewCellID";
 }
 
 - (void)contactUs{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://021-51135015"]];
+    NSString *mobile = [AppBaseManager shareAppBaseManager].data.mobile;
+    if (![mobile isNotNull]) {
+        mobile = @"021-61427322";
+    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",mobile]]];
 }
 
 @end

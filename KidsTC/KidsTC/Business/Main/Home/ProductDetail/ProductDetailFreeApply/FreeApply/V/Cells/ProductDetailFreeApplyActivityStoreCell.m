@@ -18,17 +18,64 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
 }
 
 - (void)setShowModel:(ProductDetailFreeApplyShowModel *)showModel {
     [super setShowModel:showModel];
-    self.storeNameL.text = showModel.activityStore.storeName;
+    switch (showModel.placeType) {
+        case PlaceTypeStore:
+        {
+            self.storeNameL.text = showModel.activityStore.storeName;
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            self.storeNameL.text = showModel.place.name;
+        }
+            break;
+        case PlaceTypeNone:
+        {
+            self.storeNameL.text = nil;
+        }
+            break;
+        default:
+        {
+            self.storeNameL.text = showModel.activityStore.storeName;
+        }
+            break;
+    }
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(productDetailFreeApplyBaseCell:actionType:value:)]) {
-        [self.delegate productDetailFreeApplyBaseCell:self actionType:ProductDetailFreeApplyBaseCellActionTypeActivityStore value:nil];
+    switch (self.showModel.placeType) {
+        case PlaceTypeStore:
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailFreeApplyBaseCell:actionType:value:)]) {
+                [self.delegate productDetailFreeApplyBaseCell:self actionType:ProductDetailFreeApplyBaseCellActionTypeActivityStore value:nil];
+            }
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailFreeApplyBaseCell:actionType:value:)]) {
+                [self.delegate productDetailFreeApplyBaseCell:self actionType:ProductDetailFreeApplyBaseCellActionTypeActivityPlace value:nil];
+            }
+        }
+            break;
+        case PlaceTypeNone:
+        {
+            
+        }
+            break;
+            
+        default:
+        {
+            if ([self.delegate respondsToSelector:@selector(productDetailFreeApplyBaseCell:actionType:value:)]) {
+                [self.delegate productDetailFreeApplyBaseCell:self actionType:ProductDetailFreeApplyBaseCellActionTypeActivityStore value:nil];
+            }
+        }
+            break;
     }
+    
 }
 @end

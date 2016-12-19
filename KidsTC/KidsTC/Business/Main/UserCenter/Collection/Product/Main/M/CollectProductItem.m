@@ -21,19 +21,34 @@
         if (![_channelId isNotNull]) _channelId = @"0";
         switch (_productType) {
             case ProductDetailTypeNormal:
+            {
+                NSDictionary *param = @{@"pid":_productSysNo,
+                                        @"cid":_channelId};
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
+            }
+                break;
             case ProductDetailTypeTicket:
+            {
+                NSDictionary *param = @{@"pid":_productSysNo,
+                                        @"cid":_channelId};
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:param];
+            }
+                break;
             case ProductDetailTypeFree:
+            {
+                NSDictionary *param = @{@"pid":_productSysNo,
+                                        @"cid":_channelId};
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:param];
+            }
                 break;
             default:
             {
-                _productType = ProductDetailTypeNormal;
+                NSDictionary *param = @{@"pid":_productSysNo,
+                                        @"cid":_channelId};
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
             }
                 break;
         }
-        NSDictionary *param = @{@"pid":_productSysNo,
-                                @"cid":_channelId,
-                                @"type":@(_productType)};
-        _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
     }
     
     return YES;

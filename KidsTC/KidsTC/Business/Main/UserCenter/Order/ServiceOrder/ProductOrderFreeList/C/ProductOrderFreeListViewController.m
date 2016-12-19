@@ -114,7 +114,7 @@
 #pragma mark - ProductOrderFreeListViewDelegate
 
 - (void)productOrderFreeListView:(ProductOrderFreeListView *)view actionType:(ProductOrderFreeListViewActionType)type value:(id)value {
-    if ([value isKindOfClass:[ProductOrderListItem class]]) self.currentItem = value;
+    if ([value isKindOfClass:[ProductOrderFreeListItem class]]) self.currentItem = value;
     switch (type) {
         case ProductOrderFreeListViewActionTypePay:/// 付款
         {
@@ -143,17 +143,17 @@
             break;
         case ProductOrderFreeListViewActionTypeReserve:/// 我要预约
         {
-            [self booking:value];
+            [self connectSupplier:value];
         }
             break;
         case ProductOrderFreeListViewActionTypeCancelTip:/// 取消提醒
         {
-            
+            [self tip:value want:NO];
         }
             break;
         case ProductOrderFreeListViewActionTypeWantTip:/// 活动提醒
         {
-            
+            [self tip:value want:YES];
         }
             break;
         case ProductOrderFreeListViewActionTypeReminder:/// 我要催单
@@ -292,7 +292,7 @@
         [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"获取消费码失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -312,6 +312,27 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark ================活动提醒================
+
+- (void)tip:(ProductOrderFreeListItem *)item want:(BOOL)want {
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    OrderRemindType type = want?OrderRemindTypeTip:OrderRemindTypeCancle;
+    NSDictionary *param = @{@"orderId":orderId,
+                            @"type":@(type)};
+    [Request startWithName:@"ORDER_REMIND" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSString *msg = want?@"提醒成功":@"已取消提醒";
+        [[iToast makeText:msg] show];
+        [self loadReplaceItem:item];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = want?@"设置提醒失败，请稍后再试":@"取消提醒失败，请稍后再试";
+        [[iToast makeText:msg] show];
+    }];
+}
+
 #pragma mark ================我要催单================
 
 - (void)reminder:(ProductOrderFreeListItem *)item {
@@ -326,7 +347,7 @@
         [self loadReplaceItem:self.currentItem];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"催单失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -348,7 +369,7 @@
         [self loadReplaceItem:item];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"确认收货失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }

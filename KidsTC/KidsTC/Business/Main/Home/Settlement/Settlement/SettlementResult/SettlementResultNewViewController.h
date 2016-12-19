@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-
+#import "ProductDetailData.h"
 @interface SettlementResultNewViewController : ViewController
-
+@property (nonatomic, strong) ProductDetailData *data;
+@property (nonatomic, strong) NSString *orderId;
 @end

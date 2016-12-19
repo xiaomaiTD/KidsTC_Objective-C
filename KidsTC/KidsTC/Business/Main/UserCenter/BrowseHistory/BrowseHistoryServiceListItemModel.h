@@ -20,6 +20,10 @@
 
 @property (nonatomic, assign) CGFloat price;
 
+@property (nonatomic, copy) NSString *priceStr;
+
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
 
 @end

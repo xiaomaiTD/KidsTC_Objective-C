@@ -37,11 +37,14 @@ typedef enum {
 
 @property (nonatomic, assign) NSUInteger saledCount;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 @property (nonatomic, strong) NSArray<Insurance *> *supportedInsurance;
 
 @property (nonatomic, strong) NSArray<ActivityLogoItem *> *activityLogoItems;
 
 @property (nonatomic, strong) NSArray<PromotionLogoItem *> *promotionLogoItems;
+
 
 - (instancetype)initWithRawData:(NSDictionary *)data;
 

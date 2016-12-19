@@ -98,7 +98,8 @@
         default:
         {
             if ([model.relationIdentifier length] > 0) {
-                ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
+                ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:@"0"];
+                controller.type = model.productRedirect;
                 [self.navigationController pushViewController:controller animated:YES];
             }
             return;

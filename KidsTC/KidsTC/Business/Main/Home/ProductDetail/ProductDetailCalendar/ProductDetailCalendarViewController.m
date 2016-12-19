@@ -52,6 +52,8 @@
     calendar.appearance.weekdayTextColor = [UIColor blackColor];
     calendar.placeholderType = FSCalendarPlaceholderTypeFillHeadTail;
     calendar.appearance.caseOptions = FSCalendarCaseOptionsWeekdayUsesSingleUpperCase|FSCalendarCaseOptionsHeaderUsesDefaultCase;
+    calendar.appearance.todayColor = [UIColor clearColor];
+    calendar.appearance.titleTodayColor = [UIColor blackColor];
     [self.view addSubview:calendar];
     self.calendar = calendar;
     

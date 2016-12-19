@@ -170,7 +170,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
                                 @"page":@(self.category.page),
                                 @"pageCount":@(pageCount),
                                 @"homeCategory":category};
-        [Request startSyncName:@"GET_PAGE_RECOMMEND_NEW_PRODUCE" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [Request startSyncName:@"GET_PAGE_RECOMMEND_NEW_V2" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
             TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
             [recommendFloors addObjectsFromArray:model.floors];
             recommendCount = recommendFloors.count;
@@ -260,7 +260,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
                             @"page":@(++self.category.page),
                             @"pageCount":@(pageCount),
                             @"homeCategory":category};
-    [Request startWithName:@"GET_PAGE_RECOMMEND_NEW_PRODUCE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startWithName:@"GET_PAGE_RECOMMEND_NEW_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
         [allFloors addObjectsFromArray:model.floors];
         recommendCount = model.floors.count;

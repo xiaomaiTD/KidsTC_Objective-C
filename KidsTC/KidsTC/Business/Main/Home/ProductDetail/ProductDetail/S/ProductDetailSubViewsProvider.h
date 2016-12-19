@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Single.h"
 
 #import "ProductDetailData.h"
 
@@ -20,7 +19,7 @@
 #import "ProductDetailTwoColumnWebViewCell.h"
 
 @interface ProductDetailSubViewsProvider : NSObject
-singleH(ProductDetailSubViewsProvider)
+
 @property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak  ) ProductDetailBaseCell *twoColumnCell;

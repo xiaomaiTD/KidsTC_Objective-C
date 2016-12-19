@@ -7,9 +7,10 @@
 //
 
 #import "CollectionContentViewController.h"
-
+#import "NSString+Category.h"
 #import "GHeader.h"
 #import "SegueMaster.h"
+#import "KTCFavouriteManager.h"
 
 #import "CollectionContentModel.h"
 #import "CollectionContentView.h"
@@ -35,10 +36,15 @@
     self.naviTheme = NaviThemeWihte;
 }
 
+- (void)setEditing:(BOOL)editing {
+    _editing = editing;
+    self.contentView.editing = editing;
+}
+
 
 #pragma mark - CollectionSCTBaseViewDelegate
 
-- (void)collectionSCTBaseView:(CollectionSCTBaseView *)view actionType:(CollectionSCTBaseViewActionType)type value:(id)value {
+- (void)collectionSCTBaseView:(CollectionSCTBaseView *)view actionType:(CollectionSCTBaseViewActionType)type value:(id)value completion:(void (^)(id))completion {
     switch (type) {
         case CollectionSCTBaseViewActionTypeLoadData:
         {
@@ -49,6 +55,13 @@
         case CollectionSCTBaseViewActionTypeSegue:
         {
             [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+        case CollectionSCTBaseViewActionTypeDelete:
+        {
+            [self delete:value completion:^(BOOL success) {
+                if(completion)completion(@(success));
+            }];
         }
             break;
         default:
@@ -73,6 +86,25 @@
         [self.contentView dealWithUI:model.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.contentView dealWithUI:0];
+    }];
+}
+
+- (void)delete:(ArticleHomeItem *)item completion:(void(^)(BOOL success))completion{
+    if (![item.articleSysNo isNotNull]) {
+        [[iToast makeText:@"资讯编号为空"] show];
+        if (completion) completion(NO);
+        return;
+    }
+    NSDictionary *parameters = @{@"relationSysNo":item.articleSysNo,
+                                 @"likeType":@"2",
+                                 @"isLike":@"0"};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"USER_LIKE_COLUMN" param:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(YES);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        if (completion) completion(NO);
     }];
 }
 

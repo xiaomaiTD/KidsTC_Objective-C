@@ -28,6 +28,7 @@ typedef enum : NSUInteger {
     
     ProductOrderTicketDetailViewActionTypeSegue = 50,//通用跳转
     ProductOrderTicketDetailViewActionTypeDeliberCall,//订单电话
+    ProductOrderTicketDetailViewActionTypeAddress,//地址
     ProductOrderTicketDetailViewActionTypeContact,//联系商家
     
 } ProductOrderTicketDetailViewActionType;

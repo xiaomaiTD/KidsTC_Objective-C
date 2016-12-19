@@ -25,6 +25,8 @@
         self.imageUrl = [NSURL URLWithString:[data objectForKey:@"imgUrl"]];
         self.name = [data objectForKey:@"title"];
         self.price = [[data objectForKey:@"desc"] floatValue];
+        
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

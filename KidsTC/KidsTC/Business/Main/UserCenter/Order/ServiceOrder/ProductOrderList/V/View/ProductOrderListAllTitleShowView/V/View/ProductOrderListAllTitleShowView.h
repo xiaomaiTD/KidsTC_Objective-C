@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ProductOrderListAllTitleRowItem.h"
 
 typedef enum : NSUInteger {
     ProductOrderListAllTitleShowViewActionTypeAll = 1,//全部订单
@@ -32,4 +33,7 @@ typedef enum : NSUInteger {
 @interface ProductOrderListAllTitleShowView : UIView
 @property (nonatomic, assign) BOOL open;
 @property (nonatomic, weak) id<ProductOrderListAllTitleShowViewDelegate> delegate;
+@property (nonatomic, strong) ProductOrderListAllTitleRowItem *currentRowItem;
+- (void)insetOrderType:(ProductOrderListOrderType)orderType;
+
 @end

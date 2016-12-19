@@ -28,6 +28,7 @@
         self.serviceDescription = [data objectForKey:@"promotionText"];
         self.ageDescription = [data objectForKey:@"ageDes"];
         self.saleCount = [[data objectForKey:@"saleCount"] integerValue];
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

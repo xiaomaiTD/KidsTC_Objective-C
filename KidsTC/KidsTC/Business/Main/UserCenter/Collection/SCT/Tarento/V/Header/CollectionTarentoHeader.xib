@@ -45,7 +45,6 @@
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-Kz-hlA">
                     <rect key="frame" x="15" y="16" width="37" height="37"/>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Adf-Kz-hlA" secondAttribute="height" multiplier="1:1" id="etE-lS-WJf"/>
                         <constraint firstAttribute="width" constant="37" id="k7u-yc-r5k"/>
@@ -114,9 +113,21 @@
                         <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="9Io-0t-12B"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdW-gi-JLI">
+                    <rect key="frame" x="7" y="8" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Wou-kD-ZKY"/>
+                        <constraint firstAttribute="width" secondItem="MdW-gi-JLI" secondAttribute="height" multiplier="1:1" id="cKq-9P-wrE"/>
+                    </constraints>
+                    <state key="normal" image="icon_close_pink_round"/>
+                    <connections>
+                        <action selector="deleteActioin:" destination="iN0-l3-epB" eventType="touchUpInside" id="tUH-SS-xbl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="ssP-4J-c1l" firstAttribute="top" secondItem="MdW-gi-JLI" secondAttribute="top" constant="8" id="4R7-vu-ybw"/>
                 <constraint firstItem="Adf-Kz-hlA" firstAttribute="bottom" secondItem="ssP-4J-c1l" secondAttribute="bottom" id="5C2-x1-2RD"/>
                 <constraint firstItem="hac-WT-o5N" firstAttribute="centerY" secondItem="Adf-Kz-hlA" secondAttribute="centerY" id="6NO-Zj-YTv"/>
                 <constraint firstItem="Adf-Kz-hlA" firstAttribute="top" secondItem="ssP-4J-c1l" secondAttribute="top" id="BSw-o1-isb"/>
@@ -130,15 +141,20 @@
                 <constraint firstItem="w5w-d5-Bj6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="L2m-Uh-VQO" secondAttribute="bottom" constant="12" id="PUp-Tg-bad"/>
                 <constraint firstItem="Adf-Kz-hlA" firstAttribute="trailing" secondItem="ssP-4J-c1l" secondAttribute="trailing" id="PeG-GX-AJ7"/>
                 <constraint firstItem="w5w-d5-Bj6" firstAttribute="bottom" secondItem="hac-WT-o5N" secondAttribute="bottom" constant="-2" id="UAe-W5-lRj"/>
+                <constraint firstItem="ssP-4J-c1l" firstAttribute="leading" secondItem="MdW-gi-JLI" secondAttribute="leading" constant="8" id="Xbe-ph-Va4"/>
                 <constraint firstItem="hac-WT-o5N" firstAttribute="leading" secondItem="Adf-Kz-hlA" secondAttribute="trailing" constant="15" id="Xt8-hh-tub"/>
+                <constraint firstItem="MdW-gi-JLI" firstAttribute="width" secondItem="MdW-gi-JLI" secondAttribute="height" multiplier="1:1" id="e1n-kU-Og9"/>
                 <constraint firstAttribute="bottom" secondItem="FWB-tx-LgV" secondAttribute="bottom" id="eLH-cb-eb7"/>
                 <constraint firstAttribute="bottom" secondItem="Adf-Kz-hlA" secondAttribute="bottom" constant="16" id="g1Z-ZZ-xv8"/>
+                <constraint firstItem="MdW-gi-JLI" firstAttribute="width" secondItem="MdW-gi-JLI" secondAttribute="height" multiplier="1:1" id="jyV-IN-ZVy"/>
+                <constraint firstItem="MdW-gi-JLI" firstAttribute="width" secondItem="MdW-gi-JLI" secondAttribute="height" multiplier="1:1" id="ndv-KT-4FA"/>
                 <constraint firstItem="FWB-tx-LgV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rXS-UK-Vze"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="articleNumL" destination="9St-VW-5ia" id="0Cd-hf-IaF"/>
+                <outlet property="deleteBtn" destination="MdW-gi-JLI" id="n0F-OY-aeO"/>
                 <outlet property="icon" destination="Adf-Kz-hlA" id="qhq-Dd-20n"/>
                 <outlet property="lineH" destination="hS8-ue-dz5" id="MXg-gP-S8Q"/>
                 <outlet property="nameL" destination="AA8-r5-0lK" id="P5g-Jw-zhl"/>
@@ -152,5 +168,6 @@
     <resources>
         <image name="collection_article" width="42" height="50"/>
         <image name="collection_see" width="73" height="46"/>
+        <image name="icon_close_pink_round" width="46" height="46"/>
     </resources>
 </document>

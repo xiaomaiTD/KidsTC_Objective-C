@@ -12,4 +12,13 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"errNo":@"errno"};
 }
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"data":[ProductOrderFreeDetailLotteryItem class]};
+}
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [_data enumerateObjectsUsingBlock:^(ProductOrderFreeDetailLotteryItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.index = idx;
+    }];
+    return YES;
+}
 @end

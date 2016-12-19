@@ -45,22 +45,17 @@
     }
 }
 
-/*
- @property (nonatomic, strong) NSString *authorNo;
- @property (nonatomic, strong) NSString *authorName;
- @property (nonatomic, strong) NSString *authorSign;
- @property (nonatomic, strong) NSString *authorDesc;
- @property (nonatomic, strong) NSString *headSculpture;
- @property (nonatomic, strong) NSString *publishArticleNum;
- @property (nonatomic, strong) NSString *viewSumNum;
- @property (nonatomic, strong) NSString *newsCount;
- */
+- (IBAction)deleteActioin:(UIButton *)sender {
+    if (self.deleteBlock) {
+        self.deleteBlock(_item);
+    }
+}
 
 - (void)setItem:(CollectionTarentoItem *)item {
     _item = item;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.headSculpture] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
     self.nameL.text = _item.authorName;
-//    self.timeL.text = _item.
+    self.timeL.text = _item.collectedTimeDesc;
     self.signL.text = _item.authorSign;
     self.articleNumL.text = _item.publishArticleNum;
     self.seeNumL.text = _item.viewSumNum;

@@ -50,18 +50,12 @@ static NSString *const CellID = @"NearbyTableViewCell";
     if (_data.data.count<1) {
         [self.tableView.mj_header beginRefreshing];
     }
-    if (_index == 0) {
-        self.tableView.tableHeaderView = self.header;
-        NearbyPlaceInfo *placeInfo = _data.placeInfo;
-        if (placeInfo) self.header.placeInfo = placeInfo;
-    }else {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
-    }
+    [self setupHeader];
     [self.tableView reloadData];
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-44-49) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-MultiItemsToolBarScrollViewHeight-49) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -95,6 +89,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 }
 
 - (void)dealWithUI:(NSUInteger)loadCount {
+    [self setupHeader];
     if (self.data.data.count>0) {
         self.tableView.tableHeaderView.hidden = NO;
     }
@@ -109,6 +104,16 @@ static NSString *const CellID = @"NearbyTableViewCell";
                                                                           image:nil description:@"啥都没有啊…"
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
+}
+
+- (void)setupHeader {
+    NearbyPlaceInfo *placeInfo = _data.placeInfo;
+    if ((_index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData)) {
+        self.tableView.tableHeaderView = self.header;
+        self.header.placeInfo = placeInfo;
+    }else {
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+    }
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -126,7 +131,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.001;
+    return (section == self.data.data.count - 1)?10:0.001;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -160,7 +165,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 
 #pragma mark - NearbyTableViewHeaderDelegate
 
-- (void)nearbyTableViewHeader:(NearbyTableViewHeader *)header actionType:(NearbyTableViewHeaderActionType)type value:(id)value {
+- (void)nearbyTableViewHeader:(NearbyTableViewHeader *)header actionType:(NurseryType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(nearbyCollectionViewCell:actionType:value:)]) {
         [self.delegate nearbyCollectionViewCell:self actionType:(NearbyCollectionViewCellActionType)type value:value];
     }

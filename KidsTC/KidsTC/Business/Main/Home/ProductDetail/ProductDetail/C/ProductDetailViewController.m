@@ -39,10 +39,12 @@
 #import "ProductDetailTicketSelectSeatViewController.h"
 #import "ProductDetailFreeApplyViewController.h"
 #import "StoreDetailViewController.h"
+#import "CommentFoundingViewController.h"
+#import "NavigationController.h"
 
 #import "KTCBrowseHistoryView.h"
 
-@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate,ZPPopoverDelegate>
+@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate,ZPPopoverDelegate,CommentFoundingViewControllerDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) ProductDetailView *detailView;
@@ -67,9 +69,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type = ProductDetailTypeFree;
-    _productId = @"3000000008";//100001  //3000000004   3000000013   3000000008
-    _channelId = @"0";
+    //_type = ProductDetailTypeTicket;
+    //_productId = @"100001";//100001  //3000000004   3000000013   3000000008
+    //_channelId = @"0";
     
     switch (_type) {
         case ProductDetailTypeNormal:
@@ -116,12 +118,12 @@
             break;
     }
     
-    _dataManager = [ProductDetailDataManager shareProductDetailDataManager];
+    _dataManager = [ProductDetailDataManager new];
     _dataManager.type = _type;
     _dataManager.productId = _productId;
     _dataManager.channelId = _channelId;
     
-    _subViewsProvider = [ProductDetailSubViewsProvider shareProductDetailSubViewsProvider];
+    _subViewsProvider = [ProductDetailSubViewsProvider new];
     _subViewsProvider.type = _type;
     
     [self loadData];
@@ -132,6 +134,7 @@
 - (ProductDetailView *)detailView {
     if (!_detailView) {
         _detailView = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _detailView.subViewProvider = _subViewsProvider;
         _detailView.delegate = self;
         [self.view addSubview:_detailView];
     }
@@ -192,6 +195,11 @@
         case ProductDetailViewActionTypeSegue://通用跳转
         {
             [self segue:value];
+        }
+            break;
+        case ProductDetailViewActionTypeCountDownOver://倒计时结束
+        {
+            [self loadData];
         }
             break;
         case ProductDetailViewActionTypeShowDate://显示日期
@@ -268,7 +276,7 @@
             break;
         case ProductDetailViewActionTypeTicketStar://票务 - 评分
         {
-            
+            [self ticketComment:value];
         }
             break;
         case ProductDetailViewActionTypeTicketOpenDes://票务 - 展开描述
@@ -318,7 +326,7 @@
             break;
         case ProductDetailViewActionTypeTicketToolBarComment://票务 - 评价
         {
-            [self ticketToolBarComment:value];
+            [self ticketComment:value];
         }
             break;
         case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
@@ -367,7 +375,6 @@
         }
             break;
     }
-
 }
 
 #pragma mark - segue 
@@ -387,11 +394,30 @@
 #pragma mark - showAddress
 
 - (void)showAddress:(id)value{
-    if (_data.store.count<1) {
+    PlaceType placeType = _data.placeType;
+    NSArray<ProductDetailAddressSelStoreModel *> *places = nil;
+    switch (_data.type) {
+        case ProductDetailTypeNormal:
+        case ProductDetailTypeFree:
+        {
+            places = [ProductDetailAddressSelStoreModel modelsWithPlaceType:_data.placeType stores:_data.store places:_data.place];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            placeType = PlaceTypePlace;
+            places = [ProductDetailAddressSelStoreModel modelsWithProductDetailData:_data];
+        }
+            break;
+        default:
+            break;
+    }
+    if (places.count<1) {
         return;
     }
     ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
-    controller.store = _data.store;
+    controller.placeType = placeType;
+    controller.places = places;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -438,6 +464,7 @@
 - (void)standard:(id)value {
     ProductDetailStandard *standard = value;
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:standard.productId channelId:standard.channelId];
+    controller.type = standard.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -446,23 +473,37 @@
 - (void)buyStandard:(id)value {
     
     ProductDetailStandard *standard = value;
-    NSString *storeno = standard.storeNo;
-    if (![storeno isNotNull]) {
-        [[iToast makeText:@"门店编号为空！"] show];
-        return;
-    }
+    
     NSString *productid = standard.productId;
     if (![productid isNotNull]) {
         [[iToast makeText:@"服务编号为空！"] show];
         return;
     }
-    NSString *chid = [standard.channelId isNotNull]?standard.channelId:@"0";
-    NSInteger buynum = standard.buyMinNum>0?standard.buyMinNum:1;
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
     
-    NSDictionary *param = @{@"storeno":storeno,
-                            @"productid":productid,
-                            @"chid":chid,
-                            @"buynum":@(buynum)};
+    [param setObject:productid forKey:@"productid"];
+    
+    NSString *storeno = standard.storeNo;
+    if ([storeno isNotNull]) {
+        [param setObject:storeno forKey:@"storeno"];
+    }
+    
+    NSString *chid = [standard.channelId isNotNull]?standard.channelId:@"0";
+    [param setObject:chid forKey:@"chid"];
+    
+    NSInteger buynum = standard.buyMinNum>0?standard.buyMinNum:1;
+    [param setObject:@(buynum) forKey:@"buynum"];
+    
+    if (_data.placeType == PlaceTypePlace) {
+        if (_data.place.count>0) {
+            ProductDetailPlace *place = _data.place.firstObject;
+            NSString *placeNo = place.sysNo;
+            if ([place.sysNo isNotNull]) {
+                [param setObject:placeNo forKey:@"placeNo"];
+            }
+        }
+    }
+    
     [TCProgressHUD showSVP];
     [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -532,8 +573,29 @@
 #pragma mark - Contact
 
 - (void)contact:(id)value {
-    NSArray<ProductDetailStore *> *store = value;
+    
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        case ProductDetailTypeFree:
+        {
+            [self contactByStore:value];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            [self contactPhone:value];
+        }
+            break;
+        default:
+        {
+        }
+            break;
+    }
+}
 
+- (void)contactByStore:(id)value {
+    NSArray<ProductDetailStore *> *store = _data.store;
+    
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择门店" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [store enumerateObjectsUsingBlock:^(ProductDetailStore *obj, NSUInteger idx, BOOL *stop) {
         UIAlertAction *action = [UIAlertAction actionWithTitle:obj.storeName style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -543,16 +605,15 @@
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [controller addAction:cancelAction];
-    if (controller.actions.count>0) {
+    if (controller.actions.count>1) {
         [self presentViewController:controller animated:YES completion:nil];
     }else{
         [[iToast makeText:@"暂无商户电话哦，您可选择在线咨询~"] show];
     }
-    
 }
 
 - (void)makePhoneCallWithNumbers:(NSArray *)numbers {
-    if (!numbers || ![numbers isKindOfClass:[NSArray class]]) {
+    if (!numbers || numbers.count<1 || ![numbers isKindOfClass:[NSArray class]]) {
         [[iToast makeText:@"该门店暂无联系方式"] show];
         return;
     }
@@ -575,16 +636,64 @@
     }
 }
 
+- (void)contactPhone:(id)value {
+    NSArray *phones = _data.supplierPhones;
+    if (phones && phones.count == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phones[0]]]];
+    }else if (phones && phones.count > 1){
+        UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"请选择客服电话" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        for (NSString *phone in phones) {
+            UIAlertAction *phoneAction = [UIAlertAction actionWithTitle:phone style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", phone]]];
+            }];
+            [controller addAction:phoneAction];
+        }
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [controller addAction:cancelAction];
+        [self presentViewController:controller animated:YES completion:nil];
+    }else{
+        [[iToast makeText:@"该商家暂无联系方式，您可以选择联系客服"] show];
+    }
+}
+
 #pragma mark - Comment
 
 - (void)comment:(id)value {
     NSUInteger index = [value integerValue];
     if (index<_data.commentItemsArray.count) {
         CommentListItemModel *model = _data.commentItemsArray[index];
-        model.relationIdentifier = self.productId;
+        NSString *identifier = nil;
+        CommentRelationType type;
+        switch (_type) {
+            case ProductDetailTypeNormal:
+            {
+                identifier = self.productId;
+                type = (CommentRelationType)(_data.productType);
+            }
+                break;
+            case ProductDetailTypeTicket:
+            {
+                identifier = self.data.commentNo;
+                type = (CommentRelationType)self.data.commentRelationType;
+            }
+                break;
+            case ProductDetailTypeFree:
+            {
+                identifier = self.productId;
+                type = (CommentRelationType)self.data.commentRelationType;
+            }
+                break;
+            default:
+            {
+                identifier = self.productId;
+                type = (CommentRelationType)(_data.productType);
+            }
+                break;
+        }
+        model.relationIdentifier = identifier;
         CommentDetailViewController *controller =
         [[CommentDetailViewController alloc] initWithSource:CommentDetailViewSourceServiceOrStore
-                                               relationType:(CommentRelationType)(_data.productType)
+                                               relationType:type
                                                 headerModel:model];
         [self.navigationController pushViewController:controller animated:YES];
     }
@@ -593,15 +702,45 @@
 #pragma mark - MoreComment
 
 - (void)moreComment:(id)value {
+    
+    NSString *identifier = nil;
+    CommentRelationType type;
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            identifier = self.productId;
+            type = (CommentRelationType)(_data.productType);
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            identifier = self.data.commentNo;
+            type = (CommentRelationType)self.data.commentRelationType;
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            identifier = self.productId;
+            type = (CommentRelationType)self.data.commentRelationType;
+        }
+            break;
+        default:
+        {
+            identifier = self.productId;
+            type = (CommentRelationType)(_data.productType);
+        }
+            break;
+    }
     ProductDetailComment *comment = _data.comment;
     NSDictionary *commentNumberDic = @{CommentListTabNumberKeyAll:@(comment.all),
                                        CommentListTabNumberKeyGood:@(comment.good),
                                        CommentListTabNumberKeyNormal:@(comment.normal),
                                        CommentListTabNumberKeyBad:@(comment.bad),
                                        CommentListTabNumberKeyPicture:@(comment.pic)};
+    
     CommentListViewController *controller =
-    [[CommentListViewController alloc] initWithIdentifier:self.productId
-                                             relationType:(CommentRelationType)(_data.productType)
+    [[CommentListViewController alloc] initWithIdentifier:identifier
+                                             relationType:type
                                          commentNumberDic:commentNumberDic];
     [self.navigationController pushViewController:controller animated:YES];
     
@@ -615,6 +754,7 @@
 - (void)recommend:(id)value {
     ProductDetailRecommendItem *item = value;
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.productNo channelId:item.channelId];
+    controller.type = item.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
     
     [BuryPointManager trackEvent:@"event_skip_server_promserver" actionId:20405 params:nil];
@@ -651,23 +791,37 @@
 #pragma mark - buyNow
 
 - (void)buyNow:(id)value {
-    NSString *storeno = _data.store.firstObject.storeId;
-    if (![storeno isNotNull]) {
-        [[iToast makeText:@"门店编号为空！"] show];
-        return;
-    }
+    
     NSString *productid = _data.serveId;
     if (![productid isNotNull]) {
         [[iToast makeText:@"服务编号为空！"] show];
         return;
     }
-    NSString *chid = [_data.chId isNotNull]?_data.chId:@"0";
-    NSInteger buynum = _data.buyMinNum>0?_data.buyMinNum:1;
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
     
-    NSDictionary *param = @{@"storeno":storeno,
-                            @"productid":productid,
-                            @"chid":chid,
-                            @"buynum":@(buynum)};
+    [param setObject:productid forKey:@"productid"];
+    
+    NSString *storeno = _data.store.firstObject.storeId;
+    if ([storeno isNotNull]) {
+        [param setObject:storeno forKey:@"storeno"];
+    }
+    
+    NSString *chid = [_data.chId isNotNull]?_data.chId:@"0";
+    [param setObject:chid forKey:@"chid"];
+    
+    NSInteger buynum = _data.buyMinNum>0?_data.buyMinNum:1;
+    [param setObject:@(buynum) forKey:@"buynum"];
+    
+    if (_data.placeType == PlaceTypePlace) {
+        if (_data.place.count>0) {
+            ProductDetailPlace *place = _data.place.firstObject;
+            NSString *placeNo = place.sysNo;
+            if ([place.sysNo isNotNull]) {
+                [param setObject:placeNo forKey:@"placeNo"];
+            }
+        }
+    }
+    
     [TCProgressHUD showSVP];
     [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -690,9 +844,17 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)ticketToolBarComment:(id)value {
-    
+#pragma mark - ticketComment
+
+- (void)ticketComment:(id)value {
+    [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
+        CommentFoundingViewController *controller = [[CommentFoundingViewController alloc] initWithCommentFoundingModel:[CommentFoundingModel modelFromProductDetailData:_data]];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
 }
+
+- (void)commentFoundingViewControllerDidFinishSubmitComment:(CommentFoundingViewController *)vc {}
 
 #pragma mark - ticketSelectSeat
 
@@ -706,9 +868,11 @@
 #pragma mark - FreeToolBarApply
 
 - (void)freeToolBarApply:(id)value {
-    ProductDetailFreeApplyViewController *controller = [[ProductDetailFreeApplyViewController alloc] init];
-    controller.data = self.data;
-    [self.navigationController pushViewController:controller animated:YES];
+    [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
+        ProductDetailFreeApplyViewController *controller = [[ProductDetailFreeApplyViewController alloc] init];
+        controller.data = self.data;
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
 }
 
 #pragma mark - FreeToolBarShare
@@ -720,32 +884,43 @@
 #pragma mark - freeToolBarRelateBuy
 
 - (void)freeToolBarRelateBuy:(id)value {
-//    NSString *storeno = _data.store.firstObject.storeId;
-//    if (![storeno isNotNull]) {
-//        [[iToast makeText:@"门店编号为空！"] show];
-//        return;
-//    }
-    NSString *productid = _data.relatedProduct.productSysNo;
-    if (![productid isNotNull]) {
-        [[iToast makeText:@"服务编号为空！"] show];
-        return;
-    }
-    NSString *chid = _data.relatedProduct.channelId;
-    if (![chid isNotNull]) {
-        chid = @"0";
-    }
-    NSInteger buynum = _data.buyMinNum>0?_data.buyMinNum:1;
-    
-    NSDictionary *param = @{@"productid":productid,
-                            @"chid":chid,
-                            @"buynum":@(buynum)};
-    [TCProgressHUD showSVP];
-    [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
-        [self goSettlement:ProductDetailTypeNormal];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
+    [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
+        ProductDetailFreeRelatedProduct *relatedProduct = _data.relatedProduct;
+        
+        NSString *productid = relatedProduct.productSysNo;
+        if (![productid isNotNull]) {
+            [[iToast makeText:@"服务编号为空！"] show];
+            return;
+        }
+        NSMutableDictionary *param = [NSMutableDictionary dictionary];
+        
+        [param setObject:productid forKey:@"productid"];
+        
+        NSString *chid = relatedProduct.channelId;
+        if (![chid isNotNull]) chid = @"0";
+        [param setObject:chid forKey:@"chid"];
+        
+        NSInteger buynum = 1;
+        [param setObject:@(buynum) forKey:@"buynum"];
+        
+        if (_data.placeType == PlaceTypePlace) {
+            if (_data.place.count>0) {
+                ProductDetailPlace *place = _data.place.firstObject;
+                NSString *placeNo = place.sysNo;
+                if ([place.sysNo isNotNull]) {
+                    [param setObject:placeNo forKey:@"placeNo"];
+                }
+            }
+        }
+        
+        [TCProgressHUD showSVP];
+        [Request startWithName:@"SHOPPINGCART_SET_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [TCProgressHUD dismissSVP];
+            [self goSettlement:ProductDetailTypeNormal];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [TCProgressHUD dismissSVP];
+            [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
+        }];
     }];
 }
 
@@ -856,11 +1031,11 @@
     CGFloat rightMargin = 28;
     if ([UIScreen mainScreen].bounds.size.width>400) rightMargin = 32;
     CGFloat barBtnX = CGRectGetWidth([[UIScreen mainScreen] bounds]) - rightMargin;
-    CGFloat barBtnY = 46;
+    CGFloat barBtnY = 48;
     
-    ZPPopoverItem *popoverItem1 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_home"  title:@"首页"];
-    ZPPopoverItem *popoverItem2 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_share" title:@"搜索"];
-    ZPPopoverItem *popoverItem3 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_topic" title:@"分享"];
+    ZPPopoverItem *popoverItem1 = [ZPPopoverItem makeZpMenuItemWithImageName:@"productDetail_popover_home"  title:@"首页"];
+    ZPPopoverItem *popoverItem2 = [ZPPopoverItem makeZpMenuItemWithImageName:@"productDetail_popover_search" title:@"搜索"];
+    ZPPopoverItem *popoverItem3 = [ZPPopoverItem makeZpMenuItemWithImageName:@"productDetail_popover_share" title:@"分享"];
     ZPPopover *popover = [ZPPopover popoverWithTopPointInWindow:CGPointMake(barBtnX, barBtnY) items:@[popoverItem1,popoverItem2,popoverItem3]];
     popover.delegate = self;
     [popover show];
@@ -873,7 +1048,8 @@
         [[TabBarController shareTabBarController] selectIndex:0];
     }else if (index == 1) {
         SearchViewController *controller = [[SearchViewController alloc]init];
-        [self.navigationController pushViewController:controller animated:YES];
+        NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
+        [self presentViewController:navi animated:NO completion:nil];
     }else if (index == 2){
         [self share];
     }
@@ -915,6 +1091,7 @@
         {
             BrowseHistoryServiceListItemModel *model = [array objectAtIndex:index];
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
+            controller.type = model.productRedirect;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

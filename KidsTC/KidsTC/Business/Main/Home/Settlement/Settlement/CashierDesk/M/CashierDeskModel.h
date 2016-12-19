@@ -25,7 +25,7 @@
 @end
 
 @interface CashierDeskOrder : NSObject
-@property (nonatomic, assign) CGFloat payMoney;
+@property (nonatomic, strong) NSString *payMoney;
 @property (nonatomic, strong) NSString *orderNo;
 @property (nonatomic, assign) PayType payType;
 @property (nonatomic, strong) PayInfo *payInfo;

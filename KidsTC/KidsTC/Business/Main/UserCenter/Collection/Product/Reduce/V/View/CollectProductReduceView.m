@@ -71,7 +71,7 @@ static NSString *const ID = @"CollectProductReduceCell";
     if (section>=self.items.count) return;
     CollectProductItem *item = self.items[section];
     if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
-        [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeDelete value:item.productSysNo completion:^(id value) {
+        [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeDelete value:item completion:^(id value) {
             BOOL success = [value boolValue];
             if (!success) return;
             NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];

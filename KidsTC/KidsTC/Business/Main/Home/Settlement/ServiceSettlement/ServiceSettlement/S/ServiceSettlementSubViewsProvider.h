@@ -7,15 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Single.h"
 
 #import "ServiceSettlementModel.h"
-
 #import "ServiceSettlementBaseCell.h"
 #import "ServiceSettlementToolBar.h"
 
 @interface ServiceSettlementSubViewsProvider : NSObject
-singleH(ServiceSettlementSubViewsProvider)
 @property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) ServiceSettlementModel *model;
 - (NSArray<NSArray<ServiceSettlementBaseCell *> *> *)sections;

@@ -10,56 +10,67 @@
 #import "UIButton+Category.h"
 #import "Colours.h"
 #import "YYKit.h"
+#import "NSString+Category.h"
 
 @interface ProductDetailTicketSelectSeatCollectionViewSeatCell ()
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipLX;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipLY;
+@property (weak, nonatomic) IBOutlet UIView *line;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HlineH;
 @end
 
 @implementation ProductDetailTicketSelectSeatCollectionViewSeatCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.btn.titleLabel.numberOfLines = 0;
-    self.btn.layer.borderColor = [UIColor colorFromHexString:@"dedede"].CGColor;
-    self.btn.layer.borderWidth = 1;
-    
-    [self.btn setBackgroundColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.btn setBackgroundColor:[UIColor colorFromHexString:@"EEEEEE"] forState:UIControlStateDisabled];
-    [self.btn setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
+    [self layoutIfNeeded];
+    self.HlineH.constant = LINE_H;
+    self.bgView.layer.borderColor = [UIColor colorFromHexString:@"dedede"].CGColor;
+    self.bgView.layer.borderWidth = 1;
 }
 
-- (void)setIndexPath:(NSIndexPath *)indexPath {
-    _indexPath = indexPath;
-    self.btn.tag = indexPath.row;
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.tipLX.constant = CGRectGetWidth(self.frame)*0.5 - CGRectGetHeight(self.frame)*0.25;
+    self.tipLY.constant = - CGRectGetHeight(self.frame)*0.25;
+    self.tipL.transform = CGAffineTransformMakeRotation(M_PI_4);
 }
 
 - (void)setSeat:(ProductDetailTicketSelectSeatSeat *)seat {
     _seat = seat;
     
-    [self setBtnTitleColor:[UIColor colorFromHexString:@"555555"] forState:UIControlStateNormal];
-    [self setBtnTitleColor:[UIColor colorFromHexString:@"FFFFFF"] forState:UIControlStateSelected];
-    [self setBtnTitleColor:[UIColor colorFromHexString:@"A9A9A9"] forState:UIControlStateDisabled];
-    
-    self.btn.enabled = seat.maxBuyNum>=1;
-    if (seat.selected) {
-        [self delegateAction:self.btn reload:NO];
-    }
-}
-
-- (void)setBtnTitleColor:(UIColor *)color forState:(UIControlState)state {
-    NSMutableAttributedString *attInfoStr = [_seat.attInfoStr mutableCopy];
-    attInfoStr.color = color;
-    [self.btn setAttributedTitle:attInfoStr forState:state];
-}
-
-- (IBAction)action:(UIButton *)sender {
-    [self delegateAction:self.btn reload:YES];
-}
-
-- (void)delegateAction:(UIButton *)btn reload:(BOOL)reload {
-    if ([self.delegate respondsToSelector:@selector(productDetailTicketSelectSeatCollectionViewSeatCell:actionType:value:)]) {
-        [self.delegate productDetailTicketSelectSeatCollectionViewSeatCell:self actionType:ProductDetailTicketSelectSeatCollectionViewSeatCellActionTypeClickBtn value:@(reload)];
+    self.priceL.text = [NSString stringWithFormat:@"%@",@(seat.price)];
+    BOOL showOriginal = seat.orignalPrice>seat.price;
+    self.origionalPriceL.text = showOriginal?[NSString stringWithFormat:@"¥%@",@(_seat.orignalPrice)]:nil;
+    self.tipL.text = _seat.priceSortName;
+    self.tipL.hidden = ![_seat.priceSortName isNotNull];
+    self.userInteractionEnabled = seat.maxBuyNum>=1;
+    if (self.userInteractionEnabled) {
+        if (seat.selected) {
+            self.bgView.layer.borderColor = [UIColor colorFromHexString:@"FF8888"].CGColor;
+            self.bgView.backgroundColor = [UIColor whiteColor];
+            self.seatL.textColor = [UIColor colorFromHexString:@"FF8888"];
+            self.priceL.textColor = [UIColor colorFromHexString:@"FF8888"];
+            self.origionalPriceL.textColor = [UIColor colorFromHexString:@"999999"];
+            self.line.backgroundColor = self.origionalPriceL.textColor;
+            self.tipL.backgroundColor = [UIColor colorFromHexString:@"61CEF2"];
+        }else{
+            self.bgView.layer.borderColor = [UIColor colorFromHexString:@"DEDEDE"].CGColor;
+            self.bgView.backgroundColor = [UIColor whiteColor];
+            self.seatL.textColor = [UIColor colorFromHexString:@"555555"];
+            self.priceL.textColor = [UIColor colorFromHexString:@"555555"];
+            self.origionalPriceL.textColor = [UIColor colorFromHexString:@"999999"];
+            self.line.backgroundColor = self.origionalPriceL.textColor;
+            self.tipL.backgroundColor = [UIColor colorFromHexString:@"61CEF2"];
+        }
+    }else{
+        self.bgView.layer.borderColor = [UIColor clearColor].CGColor;
+        self.bgView.backgroundColor = [UIColor colorFromHexString:@"EEEEEE"];
+        self.seatL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
+        self.priceL.textColor = [UIColor colorFromHexString:@"A9A9A9"];
+        self.origionalPriceL.textColor = [UIColor colorFromHexString:@"999999"];
+        self.line.backgroundColor = self.origionalPriceL.textColor;
+        self.tipL.backgroundColor = [UIColor colorFromHexString:@"A9A9A9"];
     }
 }
 

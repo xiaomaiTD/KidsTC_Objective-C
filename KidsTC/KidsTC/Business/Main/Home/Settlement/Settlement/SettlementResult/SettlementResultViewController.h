@@ -16,5 +16,6 @@ typedef enum : NSUInteger {
 @interface SettlementResultViewController : ViewController
 @property (nonatomic, assign) BOOL paid;
 @property (nonatomic, strong) NSString *orderId;
+@property (nonatomic, assign) ProductDetailType productType;
 @property (nonatomic, assign) SettlementResultType type;
 @end

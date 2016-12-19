@@ -69,10 +69,13 @@
 @property (nonatomic, strong) NSArray<NSNumber *> *orderBtns;
 @property (nonatomic, assign) ProductOrderNormalDetailBtnType defaultBtn;
 @property (nonatomic, strong) ProductOrderNormalDetailDeliver *deliver;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSString *userRemark;
 //selfDefine
 @property (nonatomic, assign) BOOL canShowButton;
 @property (nonatomic, strong) NSAttributedString *remarksStr;
 @property (nonatomic, strong) NSAttributedString *orderInfoStr;
+@property (nonatomic, strong) NSAttributedString *userRemarkStr;
 @property (nonatomic, strong) NSArray<ProductOrderNormalDetailBtn *> *btns;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @property (nonatomic, strong) SegueModel *productSegueModel;

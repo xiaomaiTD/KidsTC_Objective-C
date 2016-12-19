@@ -37,7 +37,6 @@ static NSString *const kCouponUseRuleUrlString = @"http://m.kidstc.com/tools/cou
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"可用优惠券";
-    self.pageId = @"pv_coupons_select";
     // Do any additional setup after loading the view from its nib.
     self.listView.dataSource = self;
     self.listView.delegate = self;

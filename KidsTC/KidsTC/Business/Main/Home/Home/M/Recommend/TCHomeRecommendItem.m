@@ -9,12 +9,34 @@
 #import "TCHomeRecommendItem.h"
 #import "NSAttributedString+YYText.h"
 #import "NSString+Category.h"
+#import "Colours.h"
 
 @implementation TCHomeRecommendItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     NSString *pid = [NSString stringWithFormat:@"%@",_serveId];
     NSString *cid = [NSString stringWithFormat:@"%@",_channelId];
-    _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+    switch (_productRedirect) {
+        case ProductDetailTypeNormal:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+        default:
+        {
+            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
+        }
+            break;
+    }
     return YES;
 }
 - (TCHomeFloor *)conventToFloor {
@@ -50,15 +72,14 @@
     }
     content.tipImgName = tipImgName;
     
-    NSMutableAttributedString *attNum = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%zd",_saleNum]];
-    attNum.color = COLOR_BLUE;
-    NSMutableAttributedString *attSaleNum= [[NSMutableAttributedString alloc] initWithString:@"已售 "];
-    attSaleNum.color = [UIColor lightGrayColor];
-    [attSaleNum appendAttributedString:attNum];
-    attSaleNum.font = [UIFont systemFontOfSize:15];
-    attSaleNum.lineBreakMode = NSLineBreakByTruncatingTail;
-    attSaleNum.alignment = NSTextAlignmentRight;
-    content.attSaleNum = attSaleNum;
+    if ([_joinDesc isNotNull]) {
+        NSMutableAttributedString *attSaleNum= [[NSMutableAttributedString alloc] initWithString:_joinDesc];
+        attSaleNum.color = [UIColor colorFromHexString:@"222222"];
+        attSaleNum.font = [UIFont systemFontOfSize:14];
+        attSaleNum.lineBreakMode = NSLineBreakByTruncatingTail;
+        attSaleNum.alignment = NSTextAlignmentRight;
+        content.attSaleNum = attSaleNum;
+    }
     
     NSString *processDesc = @" 进行中";
     if ([_processDesc isNotNull]) {
@@ -66,13 +87,13 @@
     }
     NSTextAttachment *imgAtt = [NSTextAttachment new];
     imgAtt.image = [UIImage imageNamed:@"icon_clock"];
-    imgAtt.bounds = CGRectMake(0, -2, 13, 13);
+    imgAtt.bounds = CGRectMake(0, -1, 13, 13);
     NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
     NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
     [attStatus insertAttributedString:imgAttStr atIndex:0];
     attStatus.lineSpacing = 0;
-    attStatus.color = [UIColor lightGrayColor];
-    attStatus.font = [UIFont systemFontOfSize:13];
+    attStatus.color = [UIColor colorFromHexString:@"333333"];
+    attStatus.font = [UIFont systemFontOfSize:14];
     attStatus.alignment = NSTextAlignmentRight;
     content.attStatus = attStatus;
     
@@ -89,8 +110,8 @@
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
         [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
-        attStoreAddress.color = [UIColor lightGrayColor];
-        attStoreAddress.font = [UIFont systemFontOfSize:13];
+        attStoreAddress.color = [UIColor colorFromHexString:@"333333"];
+        attStoreAddress.font = [UIFont systemFontOfSize:14];
         attStoreAddress.lineBreakMode = NSLineBreakByTruncatingTail;
         attStoreAddress.alignment = NSTextAlignmentLeft;
         content.attStoreAddress = attStoreAddress;
@@ -127,6 +148,25 @@
     }
     content.subImgName = subImgName;
     
+    if ([_priceRate isNotNull]) {
+        NSMutableAttributedString *attDiscountDesc = [[NSMutableAttributedString alloc] initWithString:_priceRate];
+        attDiscountDesc.lineSpacing = 1;
+        attDiscountDesc.color = [UIColor whiteColor];
+        attDiscountDesc.font = [UIFont systemFontOfSize:10];
+        attDiscountDesc.lineBreakMode = NSLineBreakByTruncatingTail;
+        attDiscountDesc.alignment = NSTextAlignmentCenter;
+        content.attDiscountDesc = attDiscountDesc;
+    }
+    
+    if ([_btnName isNotNull]) {
+        NSMutableAttributedString *attBtnDesc = [[NSMutableAttributedString alloc] initWithString:_btnName];
+        attBtnDesc.lineSpacing = 1;
+        attBtnDesc.color = [UIColor whiteColor];
+        attBtnDesc.font = [UIFont systemFontOfSize:16];
+        attBtnDesc.lineBreakMode = NSLineBreakByTruncatingTail;
+        attBtnDesc.alignment = NSTextAlignmentCenter;
+        content.attBtnDesc = attBtnDesc;
+    }
     
     TCHomeFloor *floor = [TCHomeFloor new];
     floor.contents = @[content];

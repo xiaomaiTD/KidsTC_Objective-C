@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
-
 @interface ProductOrderListViewController : ViewController
+@property (nonatomic, assign) ProductOrderListType type;
+@property (nonatomic, assign) ProductOrderListOrderType orderType;
 - (instancetype)initWithType:(ProductOrderListType)type;
+- (void)insetOrderType:(ProductOrderListOrderType)orderType;
 @end

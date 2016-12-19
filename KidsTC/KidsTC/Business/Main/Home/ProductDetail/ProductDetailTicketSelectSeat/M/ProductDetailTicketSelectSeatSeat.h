@@ -10,12 +10,15 @@
 
 @interface ProductDetailTicketSelectSeatSeat : NSObject
 @property (nonatomic, strong) NSString *sku;
-@property (nonatomic, strong) NSString *price;
+@property (nonatomic, assign) CGFloat price;
+@property (nonatomic, assign) CGFloat orignalPrice;
 @property (nonatomic, strong) NSString *seat;
 @property (nonatomic, assign) NSInteger maxBuyNum;
-//selfDefine
+@property (nonatomic, strong) NSString *chId;
+@property (nonatomic, assign) PriceSort priceSort;
+@property (nonatomic, strong) NSString *priceSortName;
 @property (nonatomic, assign) NSInteger minBuyNum;
-@property (nonatomic, assign) NSInteger count;;
-@property (nonatomic, strong) NSAttributedString *attInfoStr;
+//selfDefine
+@property (nonatomic, assign) NSInteger count;
 @property (nonatomic, assign) BOOL selected;
 @end

@@ -38,6 +38,7 @@
 #import "FlashBalanceSettlementViewController.h"
 #import "CashierDeskViewController.h"
 #import "FlashServiceOrderDetailViewController.h"
+#import "NavigationController.h"
 
 #import "FlashSettlementModel.h"
 
@@ -245,6 +246,7 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
         case FDToolBarViewBtnType_BuyNow:
         {
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.data.serveId channelId:@"0"];
+            controller.type = self.data.productRedirect;
             [self.navigationController pushViewController:controller animated:YES];
             
             NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -421,8 +423,9 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
             break;
         case KTCActionViewTagSearch:
         {
-            SearchViewController *controller = [[SearchViewController alloc] init];
-            [self.navigationController pushViewController:controller animated:YES];
+            SearchViewController *controller = [[SearchViewController alloc]init];
+            NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:NO completion:nil];
         }
             break;
         case KTCActionViewTagShare:

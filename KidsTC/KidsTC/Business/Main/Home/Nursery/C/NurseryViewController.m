@@ -11,6 +11,7 @@
 #import "KTCMapService.h"
 #import "KTCMapUtil.h"
 #import "RouteAnnotation.h"
+#import "NSString+Category.h"
 
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
@@ -37,22 +38,24 @@ static NSString *const ID = @"NurseryCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *titleStr = @"";
-    switch (_type) {
-        case NurseryTypeNursery:
-        {
-            titleStr = @"育儿室";
-        }
-            break;
-        case NurseryTypeExhibitionHall:
-        {
-            titleStr = @"展览馆";
-        }
-            break;
-        default:
-            break;
-    }
-    self.navigationItem.title = titleStr;
+    /*
+     NSString *titleStr = @"";
+     switch (_type) {
+     case NurseryTypeNursery:
+     {
+     titleStr = @"育儿室";
+     }
+     break;
+     case NurseryTypeExhibitionHall:
+     {
+     titleStr = @"展览馆";
+     }
+     break;
+     default:
+     break;
+     }
+     self.navigationItem.title = titleStr;
+     */
     self.naviTheme = NaviThemeWihte;
     
     
@@ -122,15 +125,23 @@ static NSString *const ID = @"NurseryCell";
     [self.tableView reloadData];
     
     if (model.data.count<pageCount) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    [self dealiWithBG];
 }
 
 - (void)loadDataFailure{
     [self dealWithHeaderFooter];
+    [self dealiWithBG];
 }
 
 - (void)dealWithHeaderFooter{
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
+}
+
+- (void)dealiWithBG {
+    if (self.data.count<1) {
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:self.tableView.bounds image:nil description:@"啥都没有啊…" needGoHome:YES];
+    } else self.tableView.backgroundView = nil;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -154,9 +165,9 @@ static NSString *const ID = @"NurseryCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NurseryCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     cell.delegate = self;
-    NSUInteger row = indexPath.row;
-    if (row<self.data.count) {
-        cell.item = self.data[row];
+    NSUInteger section = indexPath.section;
+    if (section<self.data.count) {
+        cell.item = self.data[section];
     }
     return cell;
 }
@@ -259,13 +270,9 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 #pragma mark - helpers
 
 - (void)nearbyStoreWithCoordinate:(NSString *)coordinate{
+    coordinate = [coordinate isNotNull]?coordinate:@"";
     SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-    #warning TODO...
-//    SearchParmsProductOrStoreModel *searchParmsModel = [[SearchParmsProductOrStoreModel alloc]init];
-//    searchParmsModel.mapaddr = coordinate;
-//    searchParmsModel.st = @"6";
-//    controller.searchParmsModel = searchParmsModel;
-//    controller.searchType = SearchType_Store;
+    [controller setSearchType:SearchTypeProduct params:@{@"mapaddr":coordinate}];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -22,6 +22,7 @@
 #import "ProductOrderTicketDetailAddressCell.h"
 #import "ProductOrderTicketDetailProductCell.h"
 #import "ProductOrderTicketDetailContactCell.h"
+#import "ProductOrderTicketDetailUserRemarkCell.h"
 #import "ProductOrderTicketDetailPayInfoTitleCell.h"
 #import "ProductOrderTicketDetailEmptyCell.h"
 #import "ProductOrderTicketDetailPayInfoCell.h"
@@ -42,6 +43,7 @@ static NSString *const AddressCellID = @"ProductOrderTicketDetailAddressCell";
 static NSString *const StoreCellID = @"ProductOrderTicketDetailStoreCell";
 static NSString *const ProductCellID = @"ProductOrderTicketDetailProductCell";
 static NSString *const ContactCellID = @"ProductOrderTicketDetailContactCell";
+static NSString *const UserRemarkCellID = @"ProductOrderTicketDetailUserRemarkCell";
 static NSString *const PayInfoTitleCellID = @"ProductOrderTicketDetailPayInfoTitleCell";
 static NSString *const EmptyCellID = @"ProductOrderTicketDetailEmptyCell";
 static NSString *const PayInfoCellID = @"ProductOrderTicketDetailPayInfoCell";
@@ -118,6 +120,7 @@ static NSString *const TheatherAddressCellID = @"ProductOrderTicketDetailTheathe
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailStoreCell"] forCellReuseIdentifier:StoreCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailProductCell"] forCellReuseIdentifier:ProductCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailContactCell"] forCellReuseIdentifier:ContactCellID];
+    [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailUserRemarkCell"] forCellReuseIdentifier:UserRemarkCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailPayInfoTitleCell"] forCellReuseIdentifier:PayInfoTitleCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailEmptyCell"] forCellReuseIdentifier:EmptyCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderTicketDetailPayInfoCell"] forCellReuseIdentifier:PayInfoCellID];
@@ -186,6 +189,12 @@ static NSString *const TheatherAddressCellID = @"ProductOrderTicketDetailTheathe
     }
     if (sectionForTime.count>0) [sections addObject:sectionForTime];
     
+    NSMutableArray *sectionForUserRemark = [NSMutableArray array];
+    if (self.data.userRemarkStr.length>0) {
+        ProductOrderTicketDetailUserRemarkCell *userRemarkCell = [self cellWithID:UserRemarkCellID];
+        if (userRemarkCell) [sectionForUserRemark addObject:userRemarkCell];
+    }
+    if (sectionForUserRemark.count>0) [sections addObject:sectionForUserRemark];
     
     NSMutableArray *section04 = [NSMutableArray array];
     ProductOrderTicketDetailPayInfoTitleCell *payInfoTitleCell = [self cellWithID:PayInfoTitleCellID];

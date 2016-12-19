@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface CollectionContentViewController : ViewController
-
+@property (nonatomic, assign) BOOL editing;
 @end

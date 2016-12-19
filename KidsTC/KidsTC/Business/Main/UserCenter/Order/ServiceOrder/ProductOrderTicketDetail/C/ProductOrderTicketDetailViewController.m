@@ -22,6 +22,7 @@
 #import "ServiceSettlementViewController.h"
 #import "OrderRefundViewController.h"
 #import "ProductDetailTicketSelectSeatViewController.h"
+#import "ProductDetailAddressViewController.h"
 
 @interface ProductOrderTicketDetailViewController ()<ProductOrderTicketDetailViewDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, strong) ProductOrderTicketDetailView *detailView;
@@ -108,12 +109,12 @@
             break;
         case ProductOrderTicketDetailViewActionTypeCancelTip:// 取消提醒
         {
-            
+            [self tip:value want:NO];
         }
             break;
         case ProductOrderTicketDetailViewActionTypeWantTip:// 活动提醒
         {
-            
+            [self tip:value want:YES];
         }
             break;
         case ProductOrderTicketDetailViewActionTypeReminder:// 我要催单
@@ -161,6 +162,11 @@
             [self call:value];
         }
             break;
+        case ProductOrderTicketDetailViewActionTypeAddress://地址
+        {
+            [self address:value];
+        }
+            break;
         case ProductOrderTicketDetailViewActionTypeContact://联系商家
         {
             [self connectSupplier:value];
@@ -168,7 +174,6 @@
             break;
     }
 }
-
 
 #pragma mark ================立即支付================
 
@@ -261,7 +266,7 @@
         [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"获取消费码失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -281,6 +286,27 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark ================活动提醒================
+
+- (void)tip:(id)value want:(BOOL)want {
+    NSString *orderId = self.data.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    OrderRemindType type = want?OrderRemindTypeTip:OrderRemindTypeCancle;
+    NSDictionary *param = @{@"orderId":orderId,
+                            @"type":@(type)};
+    [Request startWithName:@"ORDER_REMIND" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSString *msg = want?@"提醒成功":@"已取消提醒";
+        [[iToast makeText:msg] show];
+        [self loadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = want?@"设置提醒失败，请稍后再试":@"取消提醒失败，请稍后再试";
+        [[iToast makeText:msg] show];
+    }];
+}
+
 #pragma mark ================我要催单================
 
 - (void)reminder:(id)value {
@@ -295,7 +321,7 @@
         [self loadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"催单失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -317,7 +343,7 @@
         [self loadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"确认收货失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -388,5 +414,17 @@
     }
 }
 
+#pragma mark ================跳转地址================
+
+- (void)address:(id)value {
+    NSArray<ProductDetailAddressSelStoreModel *> *places = [ProductDetailAddressSelStoreModel modelsWithProductOrderTicketDetailData:_data];
+    if (places.count<1) {
+        return;
+    }
+    ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
+    controller.placeType = PlaceTypePlace;
+    controller.places = places;
+    [self.navigationController pushViewController:controller animated:YES];
+}
 
 @end

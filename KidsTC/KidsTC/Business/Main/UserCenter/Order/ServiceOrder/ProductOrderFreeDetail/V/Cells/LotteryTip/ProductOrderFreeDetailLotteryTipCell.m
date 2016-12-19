@@ -24,9 +24,6 @@
     [super setInfoData:infoData];
 }
 
-- (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
-    [super setLotteryData:lotteryData];
-}
 
 
 

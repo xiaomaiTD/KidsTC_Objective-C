@@ -9,20 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ProductDetailTicketSelectSeatSeat.h"
 
-typedef enum : NSUInteger {
-    ProductDetailTicketSelectSeatCollectionViewSeatCellActionTypeClickBtn = 1,
-} ProductDetailTicketSelectSeatCollectionViewSeatCellActionType;
-
-
-@class ProductDetailTicketSelectSeatCollectionViewSeatCell;
-@protocol ProductDetailTicketSelectSeatCollectionViewSeatCellDelegate <NSObject>\
-- (void)productDetailTicketSelectSeatCollectionViewSeatCell:(ProductDetailTicketSelectSeatCollectionViewSeatCell *)cell actionType:(ProductDetailTicketSelectSeatCollectionViewSeatCellActionType)type value:(id)value;
-
-@end
-
 @interface ProductDetailTicketSelectSeatCollectionViewSeatCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIButton *btn;
-@property (nonatomic, strong) NSIndexPath *indexPath;
-@property (nonatomic, weak) id<ProductDetailTicketSelectSeatCollectionViewSeatCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
+@property (weak, nonatomic) IBOutlet UILabel *seatL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *origionalPriceL;
 @property (nonatomic, strong) ProductDetailTicketSelectSeatSeat *seat;
 @end

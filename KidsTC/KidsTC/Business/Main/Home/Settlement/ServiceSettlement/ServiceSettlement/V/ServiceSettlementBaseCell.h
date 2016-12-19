@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ServiceSettlementModel.h"
 #import "Colours.h"
-
+extern NSString *const KServiceSettlementUserRemark;
 typedef enum : NSUInteger {
     ServiceSettlementBaseCellActionTypeTipAddress=1,
     ServiceSettlementBaseCellActionTypeAddress,
     ServiceSettlementBaseCellActionTypeStore,
+    ServiceSettlementBaseCellActionTypePlace,
     ServiceSettlementBaseCellActionTypeCoupon,
     ServiceSettlementBaseCellActionTypeScore,
     ServiceSettlementBaseCellActionTypeChangePayType,

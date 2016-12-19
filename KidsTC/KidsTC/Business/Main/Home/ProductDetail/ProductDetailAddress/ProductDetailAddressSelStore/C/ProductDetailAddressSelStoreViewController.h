@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ProductDetailStore.h"
+#import "ProductDetailAddressSelStoreModel.h"
 
 @class ProductDetailAddressSelStoreViewController;
 @protocol ProductDetailAddressSelStoreViewControllerDelegate <NSObject>
@@ -15,6 +15,7 @@
 @end
 
 @interface ProductDetailAddressSelStoreViewController : ViewController
-@property (nonatomic, strong) NSArray<ProductDetailStore *> *store;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<ProductDetailAddressSelStoreModel *> *places;
 @property (nonatomic, weak) id<ProductDetailAddressSelStoreViewControllerDelegate> delegate;
 @end

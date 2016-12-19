@@ -7,7 +7,6 @@
 //
 
 #import "SettlementResultViewController.h"
-#import "ServiceOrderDetailViewController.h"
 #import "FlashServiceOrderDetailViewController.h"
 #import "SettlementResultShareViewController.h"
 #import "CommonShareViewController.h"
@@ -18,6 +17,9 @@
 #import "SettlementResultShareModel.h"
 #import "NSString+Category.h"
 
+#import "ProductOrderNormalDetailViewController.h"
+#import "ProductOrderTicketDetailViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
 
 @interface SettlementResultViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
@@ -83,9 +85,36 @@
         switch (self.type) {
             case SettlementResultTypeService:
             {
-                ServiceOrderDetailViewController *controller = [[ServiceOrderDetailViewController alloc]init];
-                controller.orderId = self.orderId;
-                [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+                switch (self.productType) {
+                    case ProductDetailTypeNormal:
+                    {
+                        ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                        controller.orderId = self.orderId;
+                        [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+                    }
+                        break;
+                    case ProductDetailTypeTicket:
+                    {
+                        ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+                        controller.orderId = self.orderId;
+                        [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+                    }
+                        break;
+                    case ProductDetailTypeFree:
+                    {
+                        ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                        controller.orderId = self.orderId;
+                        [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+                    }
+                        break;
+                    default:
+                    {
+                        ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                        controller.orderId = self.orderId;
+                        [[TabBarController shareTabBarController].selectedViewController pushViewController:controller animated:YES];
+                    }
+                        break;
+                }
             }
                 break;
                 

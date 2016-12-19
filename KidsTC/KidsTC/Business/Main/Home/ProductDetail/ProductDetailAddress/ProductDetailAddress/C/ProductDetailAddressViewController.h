@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "ProductDetailStore.h"
+#import "ProductDetailAddressSelStoreModel.h"
 
 @interface ProductDetailAddressViewController : ViewController
-@property (nonatomic, strong) NSArray<ProductDetailStore *> *store;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<ProductDetailAddressSelStoreModel *> *places;
 @property (nonatomic, assign) NSUInteger currentIndex;
 @end

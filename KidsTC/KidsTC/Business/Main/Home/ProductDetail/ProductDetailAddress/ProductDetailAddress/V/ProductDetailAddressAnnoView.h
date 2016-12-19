@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductDetailStore.h"
+#import "ProductDetailAddressSelStoreModel.h"
 
 typedef enum : NSUInteger {
     ProductDetailAddressAnnoViewActionTypeGoto =1,
@@ -19,6 +19,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailAddressAnnoView : UIView
-@property (nonatomic, strong) ProductDetailStore *store;
+@property (nonatomic, strong) ProductDetailAddressSelStoreModel *place;
 @property (nonatomic, weak) id<ProductDetailAddressAnnoViewDelegate> delegate;
 @end

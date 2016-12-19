@@ -23,11 +23,7 @@
 
 - (void)setInfoData:(ProductOrderFreeDetailData *)infoData {
     [super setInfoData:infoData];
-}
-
-- (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
-    [super setLotteryData:lotteryData];
-    self.lotteryL.text = lotteryData.IsSuccess?@"活动已中奖":@"活动未中奖";
+    self.lotteryL.text = infoData.isLottery?@"活动已中奖":@"活动未中奖";
 }
 
 @end

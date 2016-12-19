@@ -26,6 +26,8 @@
 #import "ProductDetailOnlineBespeak.h"
 #import "ProductDetailEnrollInfo.h"
 #import "ProductDetailFreeRelatedProduct.h"
+#import "ProductDetailCountDown.h"
+#import "ProductDetailPlace.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -46,7 +48,7 @@ typedef enum : NSUInteger {
 @interface ProductDetailData : NSObject
 @property (nonatomic, strong) NSString *serveId;
 @property (nonatomic, strong) NSString *chId;
-@property (nonatomic, strong) NSString *priceSort;
+@property (nonatomic, assign) PriceSort priceSort;
 @property (nonatomic, strong) NSString *priceSortName;
 @property (nonatomic, strong) NSString *simpleName;
 @property (nonatomic, strong) NSString *serveName;
@@ -67,8 +69,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) ProductDetailComment *comment;
 @property (nonatomic, assign) NSUInteger commentImgCount;
 @property (nonatomic, strong) NSArray<ProduceDetialCommentItem *> *commentList;
-@property (nonatomic, assign) BOOL showCountDown;
-@property (nonatomic, assign) NSTimeInterval countDownTime;
 @property (nonatomic, strong) NSArray<ProdectDetailCoupon *> *coupon_provide;
 @property (nonatomic, assign) BOOL canProvideCoupon;
 @property (nonatomic, strong) NSString *detailUrl;
@@ -99,7 +99,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger favorCount;
 @property (nonatomic, strong) NSString *xiaoBianNote;
 @property (nonatomic, assign) FreeType freeType;
-//@property (nonatomic, strong) <#type#> *productCombo;
+@property (nonatomic, strong) NSString *freeTypeDesc;
 @property (nonatomic, strong) NSString *productText;
 @property (nonatomic, strong) NSString *trickName;
 @property (nonatomic, strong) NSArray<NSString *> *tricks;
@@ -114,7 +114,13 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat storePrice;
 @property (nonatomic, strong) NSArray<NSString *> *joinMember;
 @property (nonatomic, strong) ProductDetailFreeRelatedProduct *relatedProduct;
-
+@property (nonatomic, strong) ProductDetailCountDown *countDown;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<ProductDetailPlace *> *place;
+@property (nonatomic, assign) NSInteger currentPlaceIndex;
+@property (nonatomic, strong) NSString *commentNo;
+@property (nonatomic, assign) NSInteger commentRelationType;
+@property (nonatomic, strong) NSString *phone;
 #pragma mark - selfDefine
 
 //type
@@ -155,6 +161,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSAttributedString *attSynopsis;
 
 @property (nonatomic, strong) NSAttributedString *attTicketPromise;
+
+@property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 
 @property (nonatomic, assign) BOOL synopsisOpen;
 

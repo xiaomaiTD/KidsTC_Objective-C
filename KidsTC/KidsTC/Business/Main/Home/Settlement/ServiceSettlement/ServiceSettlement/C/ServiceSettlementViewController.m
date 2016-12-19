@@ -27,6 +27,7 @@
 #import "ServiceSettlementPickCouponViewController.h"
 #import "SettlementResultViewController.h"
 #import "NavigationController.h"
+#import "ServiceSettlementSelectPlaceViewController.h"
 
 #import "KTCPaymentService.h"
 #import "PayModel.h"
@@ -43,7 +44,7 @@
 
 @property (nonatomic, assign) PayType payType;
 
-@property (nonatomic, assign) ServiceSettlementSubViewsProvider *subViewsProvider;
+@property (nonatomic, strong) ServiceSettlementSubViewsProvider *subViewsProvider;
 @property (nonatomic, strong) ServiceSettlementDataManager *dataManager;
 
 @end
@@ -65,10 +66,10 @@
             break;
     }
     
-    _subViewsProvider = [ServiceSettlementSubViewsProvider shareServiceSettlementSubViewsProvider];
+    _subViewsProvider = [ServiceSettlementSubViewsProvider new];
     _subViewsProvider.type = _type;
     
-    _dataManager = [ServiceSettlementDataManager shareServiceSettlementDataManager];
+    _dataManager = [ServiceSettlementDataManager new];
     _dataManager.type = _type;
     
     self.pageId = 10501;
@@ -90,7 +91,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    //tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tableView.estimatedRowHeight = 44.0f;
     tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
@@ -121,11 +122,21 @@
             NSString *couponCode = self.couponCode.length>0?self.couponCode:@"";
             NSString *buyNum = [self.buyNum isNotNull]?self.buyNum:@"";
             NSString *storeNo = [item.store.storeId isNotNull]?item.store.storeId:@"";
+            NSString *placeNo = @"";
+            if (item.placeType == PlaceTypePlace) {
+                if (item.place.count>item.currentPlaceIndex) {
+                    ServiceSettlementPlace *place = item.place[item.currentPlaceIndex];
+                    if ([place.sysNo isNotNull]) {
+                        placeNo = place.sysNo;
+                    }
+                }
+            }
             NSDictionary *param = @{@"couponCode":couponCode,
                                     @"scoreNum":@(self.scoreNum),
                                     @"isCancelCoupon":@(self.isCancelCoupon),
                                     @"buyNum":buyNum,
-                                    @"storeNo":storeNo};
+                                    @"storeNo":storeNo,
+                                    @"placeNo":placeNo};
             return param;
         }
             break;
@@ -265,6 +276,18 @@
             [BuryPointManager trackEvent:@"event_skip_balance_store" actionId:20701 params:params];
         }
             break;
+        case ServiceSettlementBaseCellActionTypePlace:
+        {
+            ServiceSettlementSelectPlaceViewController *controller = [[ServiceSettlementSelectPlaceViewController alloc] initWithNibName:@"ServiceSettlementSelectPlaceViewController" bundle:nil];
+            controller.currentIndex = self.model.data.currentPlaceIndex;
+            controller.places = self.model.data.place;
+            controller.actionBlock = ^(NSInteger selectIndex){
+                self.model.data.currentPlaceIndex = selectIndex;
+                [self.tableView reloadData];
+            };
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
         case ServiceSettlementBaseCellActionTypeCoupon:
         {
             ServiceSettlementPickCouponViewController *controller = [[ServiceSettlementPickCouponViewController alloc]init];
@@ -322,8 +345,7 @@
             break;
         case ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange:
         {
-            _sections = _subViewsProvider.sections;
-            [self.tableView reloadData];
+            [self loadShoppingCart];
         }
             break;
     }
@@ -409,6 +431,23 @@
                 storeId = @"";
             }
             [param setObject:storeId forKey:@"storeId"];
+            
+            //placeNo
+            if (item.placeType == PlaceTypePlace) {
+                if (item.place.count>item.currentPlaceIndex) {
+                    ServiceSettlementPlace *place = item.place[item.currentPlaceIndex];
+                    NSString *placeNo = place.sysNo;
+                    if ([placeNo isNotNull]) {
+                        [param setObject:placeNo forKey:@"placeNo"];
+                    }
+                }
+            }
+            
+            NSString *userRemark = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:KServiceSettlementUserRemark]];
+            if ([userRemark isNotNull]) {
+                [param setObject:userRemark forKey:@"userRemark"];
+            }
+            
 
             return param;
         }
@@ -480,7 +519,13 @@
                     [[iToast makeText:@"座位信息编号不合法，请稍后再试！"] show];
                     return;
                 }
+                NSString *ChId = seat.chid;
+                if (![ChId isNotNull]) {
+                    [[iToast makeText:@"座位信息渠道id不合法，请稍后再试！"] show];
+                    return;
+                }
                 NSDictionary *skuDic = @{@"SkuId":SkuId,
+                                         @"ChId":ChId,
                                          @"BuyNum":@(seat.num)};
                 if (skuDic) {
                     [skuAry appendObject:skuDic];
@@ -525,12 +570,12 @@
                     
                     NSString *UserName = item.ticketUserName;
                     if (![UserName isNotNull]) {
-                        [[iToast makeText:@"请填写上门自取人姓名"] show];
+                        [[iToast makeText:@"请填写取票人姓名"] show];
                         return nil;
                     }
                     NSString *UserMobile = item.ticketUserMobile;
                     if (![UserMobile isNotNull]) {
-                        [[iToast makeText:@"请填写上门自取人联系方式"] show];
+                        [[iToast makeText:@"请填写取票人电话"] show];
                         return nil;
                     }
                     
@@ -552,6 +597,11 @@
                     break;
             }
             [param setObject:@(takeTicketWay) forKey:@"takeTicketWay"];
+            
+            NSString *userRemark = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:KServiceSettlementUserRemark]];
+            if ([userRemark isNotNull]) {
+                [param setObject:userRemark forKey:@"userRemark"];
+            }
             
             return [NSDictionary dictionaryWithDictionary:param];
         }
@@ -598,7 +648,7 @@
     } failure:^(NSError *error) {
         [self settlementPaid:NO orderId:orderId];
         NSString *errMsg = @"结算失败";
-        NSString *text = [[error userInfo] objectForKey:kErrMsgKey];
+        NSString *text = error.userInfo[@"kErrMsgKey"];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
     }];
@@ -617,17 +667,29 @@
     SettlementResultViewController *controller = [[SettlementResultViewController alloc]initWithNibName:@"SettlementResultViewController" bundle:nil];
     controller.paid = paid;
     controller.orderId = orderId;
+    controller.productType = self.type;
     controller.type = SettlementResultTypeService;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
-        [self.navigationController popViewControllerAnimated:NO];
+        [self.navigationController popToRootViewControllerAnimated:NO];
         self.tableView.delegate = nil;
         self.tableView.dataSource = nil;
     }];
 }
 
+- (void)keyboardWillShow:(NSNotification *)noti {
+    [super keyboardWillShow:noti];
+    self.tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - self.keyboardHeight);
+}
+
+- (void)keyboardWillDisappear:(NSNotification *)noti {
+    self.tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kServiceSettlementToolBarH);
+}
+
 - (void)dealloc {
     [_subViewsProvider nilSubViews];
+    [USERDEFAULTS setObject:@"" forKey:KServiceSettlementUserRemark];
+    [USERDEFAULTS synchronize];
 }
 
 @end

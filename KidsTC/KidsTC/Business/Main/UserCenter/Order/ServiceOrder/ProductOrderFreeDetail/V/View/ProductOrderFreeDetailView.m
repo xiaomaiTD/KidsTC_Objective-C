@@ -16,6 +16,7 @@
 
 #import "ProductOrderFreeDetailInfoBaseCell.h"
 #import "ProductOrderFreeDetailProductCell.h"
+#import "ProductOrderFreeDetailUserRemarkCell.h"
 #import "ProductOrderFreeDetailStoreCell.h"
 #import "ProductOrderFreeDetailAddressCell.h"
 #import "ProductOrderFreeDetailTimeCell.h"
@@ -26,6 +27,7 @@
 
 static NSString *const CellID = @"ProductOrderFreeDetailInfoBaseCell";
 static NSString *const ProductCellID = @"ProductOrderFreeDetailProductCell";
+static NSString *const UserRemarkCellID = @"ProductOrderFreeDetailUserRemarkCell";
 static NSString *const StoreCellID = @"ProductOrderFreeDetailStoreCell";
 static NSString *const AddressCellID = @"ProductOrderFreeDetailAddressCell";
 static NSString *const TimeCellID = @"ProductOrderFreeDetailTimeCell";
@@ -61,6 +63,7 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailInfoBaseCell" bundle:nil] forCellReuseIdentifier:CellID];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailProductCell" bundle:nil] forCellReuseIdentifier:ProductCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailUserRemarkCell" bundle:nil] forCellReuseIdentifier:UserRemarkCellID];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailStoreCell" bundle:nil] forCellReuseIdentifier:StoreCellID];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailTimeCell" bundle:nil] forCellReuseIdentifier:TimeCellID];
@@ -92,39 +95,51 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
     }
     if (section00.count>0) [sections addObject:section00];
     
+    NSMutableArray *sectionForUserRemark = [NSMutableArray array];
+    if (self.infoData.userRemarkStr.length>0) {
+        ProductOrderFreeDetailUserRemarkCell *userRemarkCell = [self cellWithID:UserRemarkCellID];
+        if (userRemarkCell) [sectionForUserRemark addObject:userRemarkCell];
+    }
+    if (sectionForUserRemark.count>0) [sections addObject:sectionForUserRemark];
+    
     NSMutableArray *section01 = [NSMutableArray array];
-    if (self.infoData.storeInfo) {
+    if (self.infoData.storeInfo && (self.infoData.placeType != PlaceTypeNone)) {
         [section01 addObject:[self cellWithID:StoreCellID]];
         [section01 addObject:[self cellWithID:AddressCellID]];
     }
     if (self.infoData.time) {
         [section01 addObject:[self cellWithID:TimeCellID]];
     }
-    if (!self.infoData.isLottery) {
-        [section01 addObject:[self cellWithID:LotteryTipCellID]];
-        [section01 addObject:[self cellWithID:LotteryCellID]];
-        if (self.infoData.freeType == FreeTypeLottery) {
-            [section01 addObjectsFromArray:[self resultListsCells:count]];
+    if (self.infoData.isStartLottery) {
+        if (!self.infoData.isLottery) {
+            [section01 addObject:[self cellWithID:LotteryTipCellID]];
+            [section01 addObject:[self cellWithID:LotteryCellID]];
+            if (self.infoData.freeType == FreeTypeLottery) {
+                [section01 addObjectsFromArray:[self resultListsCells:count]];
+            }
+            if (section01.count>0) [sections addObject:section01];
+        }else{
+            if (section01.count>0) [sections addObject:section01];
+            NSMutableArray *section02 = [NSMutableArray array];
+            [section02 addObject:[self cellWithID:LotteryCellID]];
+            if (self.infoData.freeType == FreeTypeLottery) {
+                [section02 addObjectsFromArray:[self resultListsCells:count]];
+            }
+            if (section02.count>0) [sections addObject:section02];
         }
-        if (section01.count>0) [sections addObject:section01];
     }else{
         if (section01.count>0) [sections addObject:section01];
-        NSMutableArray *section02 = [NSMutableArray array];
-        [section02 addObject:[self cellWithID:LotteryCellID]];
-        if (self.infoData.freeType == FreeTypeLottery) {
-            [section02 addObjectsFromArray:[self resultListsCells:count]];
-        }
-        if (section02.count>0) [sections addObject:section02];
     }
+    
     self.sections = [NSArray arrayWithArray:sections];
 }
 
 - (NSArray *)resultListsCells:(NSInteger)count {
     NSMutableArray *section = [NSMutableArray array];
-    NSArray<ProductOrderFreeDetailLotteryItem *> *resultLists = self.lotteryData.ResultLists;
-    [resultLists enumerateObjectsUsingBlock:^(ProductOrderFreeDetailLotteryItem *obj, NSUInteger idx, BOOL *stop) {
+    NSArray<ProductOrderFreeDetailLotteryItem *> *lotteryData = self.lotteryData;
+    [lotteryData enumerateObjectsUsingBlock:^(ProductOrderFreeDetailLotteryItem *obj, NSUInteger idx, BOOL *stop) {
         ProductOrderFreeDetailLotteryItemCell *lotteryItemCell = [self.tableView dequeueReusableCellWithIdentifier:LotteryItemCellID];
-        lotteryItemCell.item = obj;
+        lotteryItemCell.tag = idx;
         if (lotteryItemCell) [section addObject:lotteryItemCell];
     }];
     if (count>=TCPAGECOUNT) [section addObject:[self cellWithID:MoreLotteryCellID]];
@@ -159,8 +174,8 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
         NSArray<ProductOrderFreeDetailInfoBaseCell *> *rows = self.sections[section];
         if (row<rows.count) {
             ProductOrderFreeDetailInfoBaseCell *cell = rows[row];
-            cell.lotteryData = self.lotteryData;
             cell.infoData = self.infoData;
+            cell.lotteryData = self.lotteryData;
             cell.delegate = self;
             return cell;
         }

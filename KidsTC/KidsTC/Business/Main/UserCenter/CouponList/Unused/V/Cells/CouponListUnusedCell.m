@@ -75,6 +75,7 @@
     self.icon.image = [UIImage imageNamed:imageName];
     self.useBtn.layer.borderColor = color.CGColor;
     [self.useBtn setTitleColor:color forState:UIControlStateNormal];
+    self.useBtn.hidden = !_item.isLink;
     
 }
 

@@ -12,6 +12,7 @@
 #import "SegueMaster.h"
 #import "KTCFavouriteManager.h"
 #import "NSString+Category.h"
+#import "GuideManager.h"
 
 #import "NearbyModel.h"
 #import "NearbyView.h"
@@ -96,13 +97,9 @@
 - (void)nearbyView:(NearbyView *)view nearbyCollectionViewCell:(NearbyCollectionViewCell *)cell actionType:(NearbyViewActionType)type value:(id)value {
     switch (type) {
         case NearbyViewActionTypeNursery:
-        {
-            [self nursery:value];
-        }
-            break;
         case NearbyViewActionTypeExhibition:
         {
-            [self exhibition:value];
+            [self nursery:type data:value];
         }
             break;
         case NearbyViewActionTypeCalendar:
@@ -130,30 +127,23 @@
             [self didSelectCategory:value];
         }
             break;
+            default:
+        {
+            [self nursery:type data:value];
+        }
+            break;
     }
 }
 
 #pragma mark ============ 育儿室 ============
 
-- (void)nursery:(id)value {
+- (void)nursery:(NearbyViewActionType)type data:(NearbyPlaceInfoData *)data{
+    if (![data isKindOfClass:[NearbyPlaceInfoData class]]) {
+        return;
+    }
     NurseryViewController *controller = [[NurseryViewController alloc] init];
-    controller.type = NurseryTypeNursery;
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-#pragma mark ============ 展览馆 ============
-
-- (void)exhibition:(id)value {
-    if (![value isKindOfClass:[NearbyPlaceInfo class]]) {
-        return;
-    }
-    NearbyPlaceInfo *info = value;
-    NSString *linkUrl = info.linkUrl;
-    if (![linkUrl isNotNull]) {
-        return;
-    }
-    WebViewController *controller = [[WebViewController alloc] init];
-    controller.urlString = linkUrl;
+    controller.type = (NurseryType)type;
+    controller.navigationItem.title = data.title;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -203,6 +193,9 @@
         if (refresh) {
             data.data = items;
             data.placeInfo = placeInfo;
+            if ((index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData)) {
+                [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeNearby resultBlock:nil];
+            }
         }else{
             NSMutableArray *datas = [NSMutableArray arrayWithArray:data.data];
             [datas addObjectsFromArray:items];

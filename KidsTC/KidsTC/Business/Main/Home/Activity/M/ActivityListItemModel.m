@@ -30,6 +30,8 @@
         self.percent = [[data objectForKey:@"percentage"] floatValue];
         self.leftNumber = [[data objectForKey:@"leftCount"] integerValue];
         self.ratio = 0.6;
+        
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

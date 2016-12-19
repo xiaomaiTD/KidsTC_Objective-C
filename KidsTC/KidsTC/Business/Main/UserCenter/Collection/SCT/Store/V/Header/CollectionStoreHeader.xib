@@ -32,6 +32,9 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GGk-YQ-D78">
                     <rect key="frame" x="282" y="25" width="78" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="eP1-kq-Ycl"/>
+                    </constraints>
                     <state key="normal" title="  进入门店  ">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -39,23 +42,35 @@
                         <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="JZw-Ea-1DH"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tf3-lA-5xS">
-                    <rect key="frame" x="15" y="97" width="345" height="80"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="th9-Cd-ZlJ">
+                    <rect key="frame" x="0.0" y="81" width="375" height="112"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tf3-lA-5xS">
+                            <rect key="frame" x="15" y="16" width="345" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JhX-tA-fLK">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="bQy-hg-s8y"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="NS8-we-jV8"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="spy-qJ-ce6"/>
+                        <constraint firstAttribute="trailing" secondItem="Tf3-lA-5xS" secondAttribute="trailing" constant="15" id="9Pr-qa-8or"/>
+                        <constraint firstItem="Tf3-lA-5xS" firstAttribute="leading" secondItem="th9-Cd-ZlJ" secondAttribute="leading" constant="15" id="E8K-v6-Vjg"/>
+                        <constraint firstItem="Tf3-lA-5xS" firstAttribute="leading" secondItem="th9-Cd-ZlJ" secondAttribute="leading" constant="15" id="R0c-1o-eNa"/>
+                        <constraint firstAttribute="height" constant="112" id="ca4-eP-H5Y"/>
+                        <constraint firstItem="Tf3-lA-5xS" firstAttribute="top" secondItem="th9-Cd-ZlJ" secondAttribute="top" constant="16" id="dK9-ss-LRB"/>
+                        <constraint firstAttribute="bottom" secondItem="Tf3-lA-5xS" secondAttribute="bottom" constant="16" id="dgY-YR-xeM"/>
+                        <constraint firstAttribute="trailing" secondItem="Tf3-lA-5xS" secondAttribute="trailing" constant="15" id="hSW-Eb-gZ7"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JhX-tA-fLK">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="iN0-l3-epB" id="bQy-hg-s8y"/>
-                        <outlet property="delegate" destination="iN0-l3-epB" id="NS8-we-jV8"/>
-                    </connections>
-                </collectionView>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8c-6J-bcW">
                     <rect key="frame" x="0.0" y="80" width="375" height="1"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -64,16 +79,16 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWC-Tn-RPq">
-                    <rect key="frame" x="75" y="20.5" width="115" height="39.5"/>
+                    <rect key="frame" x="75" y="20" width="199" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝创意谷静安店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUy-aD-C4G">
-                            <rect key="frame" x="0.0" y="0.0" width="115" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="199" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量 854  收藏 874" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiR-C2-zxM">
-                            <rect key="frame" x="0.0" y="25" width="115" height="14.5"/>
+                            <rect key="frame" x="0.0" y="25" width="199" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -90,31 +105,48 @@
                         <constraint firstAttribute="bottom" secondItem="RiR-C2-zxM" secondAttribute="bottom" id="f28-cB-tsd"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwD-I2-ifG">
+                    <rect key="frame" x="7" y="8" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ZwD-I2-ifG" secondAttribute="height" multiplier="1:1" id="1km-k9-4jU"/>
+                        <constraint firstAttribute="width" constant="20" id="c02-Rg-vEt"/>
+                    </constraints>
+                    <state key="normal" image="icon_close_pink_round"/>
+                    <connections>
+                        <action selector="delete:" destination="iN0-l3-epB" eventType="touchUpInside" id="IyO-ie-mIM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="G8c-6J-bcW" firstAttribute="top" secondItem="w9Q-kM-w88" secondAttribute="bottom" constant="16" id="2Bi-KO-VCG"/>
+                <constraint firstItem="w9Q-kM-w88" firstAttribute="leading" secondItem="ZwD-I2-ifG" secondAttribute="leading" constant="8" id="2FH-ew-TDa"/>
                 <constraint firstAttribute="trailing" secondItem="fBB-QV-GUI" secondAttribute="trailing" constant="12" id="5J5-gC-8Xf"/>
                 <constraint firstAttribute="trailing" secondItem="GGk-YQ-D78" secondAttribute="trailing" constant="15" id="8Wc-Vg-UBV"/>
-                <constraint firstAttribute="trailing" secondItem="Tf3-lA-5xS" secondAttribute="trailing" constant="15" id="Hd5-9a-Vdj"/>
+                <constraint firstItem="ZwD-I2-ifG" firstAttribute="width" secondItem="ZwD-I2-ifG" secondAttribute="height" multiplier="1:1" id="Dxf-R3-vpR"/>
+                <constraint firstItem="ZwD-I2-ifG" firstAttribute="width" secondItem="ZwD-I2-ifG" secondAttribute="height" multiplier="1:1" id="F4p-hd-47k"/>
                 <constraint firstAttribute="bottom" secondItem="fBB-QV-GUI" secondAttribute="bottom" id="O37-3b-ITH"/>
+                <constraint firstItem="w9Q-kM-w88" firstAttribute="top" secondItem="ZwD-I2-ifG" secondAttribute="top" constant="8" id="OLW-ur-uXm"/>
                 <constraint firstAttribute="trailing" secondItem="G8c-6J-bcW" secondAttribute="trailing" id="R0Q-CF-xTJ"/>
                 <constraint firstItem="w9Q-kM-w88" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="RqP-cl-Zla"/>
                 <constraint firstItem="oWC-Tn-RPq" firstAttribute="centerY" secondItem="w9Q-kM-w88" secondAttribute="centerY" id="SHL-bY-NoH"/>
                 <constraint firstItem="fBB-QV-GUI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="UHL-Ut-IMj"/>
                 <constraint firstItem="GGk-YQ-D78" firstAttribute="centerY" secondItem="w9Q-kM-w88" secondAttribute="centerY" id="UuR-fq-CfK"/>
-                <constraint firstItem="Tf3-lA-5xS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Xvn-YE-5eC"/>
                 <constraint firstItem="oWC-Tn-RPq" firstAttribute="leading" secondItem="w9Q-kM-w88" secondAttribute="trailing" constant="12" id="YeA-zw-jcS"/>
                 <constraint firstItem="G8c-6J-bcW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gCY-Ol-t1b"/>
+                <constraint firstItem="th9-Cd-ZlJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nAK-KL-xEw"/>
+                <constraint firstItem="fBB-QV-GUI" firstAttribute="top" secondItem="th9-Cd-ZlJ" secondAttribute="bottom" id="oab-RY-Psm"/>
+                <constraint firstAttribute="trailing" secondItem="th9-Cd-ZlJ" secondAttribute="trailing" id="pX8-eV-nsR"/>
+                <constraint firstItem="th9-Cd-ZlJ" firstAttribute="top" secondItem="G8c-6J-bcW" secondAttribute="bottom" id="rLu-CR-5X1"/>
+                <constraint firstItem="GGk-YQ-D78" firstAttribute="leading" secondItem="oWC-Tn-RPq" secondAttribute="trailing" constant="8" id="tT9-4e-vF2"/>
                 <constraint firstItem="w9Q-kM-w88" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="uqi-k8-nAS"/>
-                <constraint firstItem="fBB-QV-GUI" firstAttribute="top" secondItem="Tf3-lA-5xS" secondAttribute="bottom" constant="16" id="wha-ep-P9h"/>
-                <constraint firstItem="Tf3-lA-5xS" firstAttribute="top" secondItem="G8c-6J-bcW" secondAttribute="bottom" constant="16" id="xHy-yi-NOw"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="Tf3-lA-5xS" id="xbV-Cd-Nx5"/>
-                <outlet property="collectionViewH" destination="spy-qJ-ce6" id="P7X-UP-pav"/>
+                <outlet property="collectionViewBGH" destination="ca4-eP-H5Y" id="EXo-n3-3qY"/>
+                <outlet property="deleteBtn" destination="ZwD-I2-ifG" id="vim-mP-VRo"/>
                 <outlet property="enterBtn" destination="GGk-YQ-D78" id="Nx4-ar-2SY"/>
                 <outlet property="icon" destination="w9Q-kM-w88" id="5VU-mh-Z8A"/>
                 <outlet property="lineOneH" destination="lYr-CF-dlS" id="rnO-cn-fY9"/>
@@ -122,7 +154,10 @@
                 <outlet property="nameL" destination="IUy-aD-C4G" id="gwD-bb-bIa"/>
                 <outlet property="numL" destination="RiR-C2-zxM" id="cga-U6-zRF"/>
             </connections>
-            <point key="canvasLocation" x="-266.5" y="-178"/>
+            <point key="canvasLocation" x="-232.5" y="-416.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_close_pink_round" width="46" height="46"/>
+    </resources>
 </document>

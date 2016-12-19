@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet FiveStarsView *starsView;
 @property (weak, nonatomic) IBOutlet UILabel *locationL;
 @property (weak, nonatomic) IBOutlet UILabel *distanceL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
 
@@ -23,21 +24,21 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.distanceL.textColor = COLOR_BLUE;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.iconImageView.layer.cornerRadius = 4;
     self.iconImageView.layer.masksToBounds = YES;
     self.iconImageView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     self.iconImageView.layer.borderWidth = LINE_H;
-    
+    self.HLineH.constant = LINE_H;
 }
 
-- (void)setStore:(ProductDetailStore *)store {
-    _store = store;
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:store.imageUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-    self.nameL.text = store.storeName;
-    [self.starsView setStarNumber:store.level];
-    self.locationL.text = store.address;
-    self.distanceL.text = store.distance;
+- (void)setPlace:(ProductDetailAddressSelStoreModel *)place {
+    _place = place;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:_place.imageUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.nameL.text = _place.name;
+    [self.starsView setStarNumber:_place.level];
+    self.locationL.text = _place.address;
+    self.distanceL.text = _place.distance;
 }
 
 @end

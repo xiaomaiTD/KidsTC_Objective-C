@@ -43,7 +43,7 @@
     self.nameL.text = _item.productName;
     self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.storeName,_item.distanceDesc];
     self.statusL.text = _item.validTimeDesc;
-    self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.nowPrice];
+    self.priceL.text = [NSString stringWithFormat:@"%@",_item.nowPrice];
     self.bannerH.constant = CGRectGetWidth(self.banner.frame) * _item.picRatio;
     
     switch (_item.priceStatus) {

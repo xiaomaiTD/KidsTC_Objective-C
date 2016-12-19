@@ -13,10 +13,10 @@
 + (instancetype)modelFromServiceOrderModel:(OrderModel *)orderModel {
     CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
     commentModel.orderId = orderModel.orderId;
-    commentModel.relationSysNo = orderModel.serviceId;
-    commentModel.sourceType = (CommentFoundingSourceType)orderModel.productType;
-    commentModel.objectId = orderModel.serviceId;
-    commentModel.relationType = (CommentRelationType)orderModel.productType;
+    commentModel.relationSysNo = orderModel.commentNo;
+    commentModel.sourceType = (CommentFoundingSourceType)orderModel.commentRelationType;
+    commentModel.objectId = orderModel.commentNo;
+    commentModel.relationType = (CommentRelationType)orderModel.commentRelationType;
     commentModel.objectName = orderModel.orderName;
     commentModel.imageUrl = orderModel.imageUrl;
     return commentModel;
@@ -70,19 +70,6 @@
     return commentModel;
 }
 
-+ (instancetype)modelFromServiceOrderDetailModel:(ServiceOrderDetailModel *)orderModel {
-    ServiceOrderDetailData *data  = orderModel.data;
-    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
-    commentModel.orderId = data.oderId;
-    commentModel.relationSysNo = data.serveId;
-    commentModel.sourceType = (CommentFoundingSourceType)data.productType;
-    commentModel.objectId = data.serveId;
-    commentModel.relationType = (CommentRelationType)data.productType;
-    commentModel.objectName = data.name;
-    commentModel.imageUrl = [NSURL URLWithString:data.imgUrl];
-    return commentModel;
-}
-
 + (instancetype)modelFromProductOrderListItem:(ProductOrderListItem *)item {
     CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
     commentModel.orderId = item.orderNo;
@@ -99,9 +86,9 @@
     CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
     commentModel.orderId = item.orderNo;
     commentModel.relationSysNo = item.productSysNo;
-    commentModel.sourceType = (CommentFoundingSourceType)item.productType;
+    commentModel.sourceType = (CommentFoundingSourceType)item.commentType;
     commentModel.objectId = item.productSysNo;
-    commentModel.relationType = (CommentRelationType)item.productType;
+    commentModel.relationType = (CommentRelationType)item.commentType;
     commentModel.objectName = item.productName;
     commentModel.imageUrl = [NSURL URLWithString:item.productImg];
     return commentModel;
@@ -111,9 +98,9 @@
     CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
     commentModel.orderId = data.orderNo;
     commentModel.relationSysNo = data.productSysNo;
-    commentModel.sourceType = (CommentFoundingSourceType)data.productType;
+    commentModel.sourceType = (CommentFoundingSourceType)data.commentType;
     commentModel.objectId = data.productSysNo;
-    commentModel.relationType = (CommentRelationType)data.productType;
+    commentModel.relationType = (CommentRelationType)data.commentType;
     commentModel.objectName = data.productName;
     commentModel.imageUrl = [NSURL URLWithString:data.productImg];
     return commentModel;
@@ -134,10 +121,21 @@
 + (instancetype)modelFromProductOrderTicketDetailData:(ProductOrderTicketDetailData *)data {
     CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
     commentModel.orderId = data.orderNo;
-    commentModel.relationSysNo = data.productNo;
-    commentModel.sourceType = CommentFoundingSourceTypeTicketProduct;
-    commentModel.objectId = data.productNo;
-    commentModel.relationType = CommentRelationTypeTicketProduct;
+    commentModel.relationSysNo = data.commentNo;
+    commentModel.sourceType = (CommentFoundingSourceType)data.commentRelationType;
+    commentModel.objectId = data.commentNo;
+    commentModel.relationType = (CommentRelationType)data.commentRelationType;
+    commentModel.objectName = data.serveName;
+    commentModel.imageUrl = [NSURL URLWithString:data.img];
+    return commentModel;
+}
+
++ (instancetype)modelFromProductDetailData:(ProductDetailData *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.relationSysNo = data.commentNo;
+    commentModel.sourceType = (CommentFoundingSourceType)data.commentRelationType;
+    commentModel.objectId = data.commentNo;
+    commentModel.relationType = (CommentRelationType)data.commentRelationType;
     commentModel.objectName = data.serveName;
     commentModel.imageUrl = [NSURL URLWithString:data.img];
     return commentModel;

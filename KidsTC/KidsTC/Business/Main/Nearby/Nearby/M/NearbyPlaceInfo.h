@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "NearbyPlaceInfoData.h"
 @interface NearbyPlaceInfo : NSObject
-@property (nonatomic, assign) NurseryType placeType;
-@property (nonatomic, strong) NSString *linkUrl;
+@property (nonatomic, assign) BOOL isShow;
+@property (nonatomic, strong) NearbyPlaceInfoData *leftData;
+@property (nonatomic, strong) NearbyPlaceInfoData *rightData;
 @end

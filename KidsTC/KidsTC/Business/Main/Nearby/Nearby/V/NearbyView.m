@@ -10,7 +10,6 @@
 #import "Colours.h"
 #import "NSString+Category.h"
 
-#import "MultiItemsToolBar.h"
 #import "NearbyCategoryToolBar.h"
 #import "NearbyViewFlowLayout.h"
 

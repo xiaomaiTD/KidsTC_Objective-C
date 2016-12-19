@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductDetailData.h"
+#import "ProductDetailSubViewsProvider.h"
 
 typedef enum : NSUInteger {
     
     //cells
     ProductDetailViewActionTypeSegue = 1,
+    ProductDetailViewActionTypeCountDownOver,//倒计时结束
     ProductDetailViewActionTypeShowDate,//显示日期
     ProductDetailViewActionTypeShowAddress,//显示位置
     ProductDetailViewActionTypeOpenWebView,//展开detail
@@ -66,6 +68,7 @@ typedef enum : NSUInteger {
 @end
 
 @interface ProductDetailView : UIView
+@property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailViewDelegate> delegate;
 @end

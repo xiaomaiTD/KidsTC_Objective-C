@@ -109,7 +109,7 @@ static CGFloat const kAnimationDuration = 0.2;
         return;
     }
     NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@(_type+1),
+                            @"advisoryType":@(_type),
                             @"content":content};
     [TCProgressHUD showSVP];
     [Request startWithName:@"ADD_ADVISORY" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {

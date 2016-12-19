@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *statusDesc;
 @property (nonatomic, strong) NSString *storeNo;
 @property (nonatomic, assign) NSUInteger buyMinNum;
+@property (nonatomic, assign) ProductDetailType productRedirect;
 //selfDefine
 @property (nonatomic, assign) BOOL isCanBuy;
 @property (nonatomic, strong) NSString *priceStr;

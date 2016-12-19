@@ -104,7 +104,7 @@ static NSString *const StoreProductCellID = @"SearchResultStoreProductCell";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<kSearchResultViewPageCount) {
+    if (loadCount==0) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {
@@ -156,7 +156,9 @@ static NSString *const StoreProductCellID = @"SearchResultStoreProductCell";
         {
             if (section<self.items.count) {
                 SearchResultStore *store = self.items[section];
-                return store.products.count;
+                if ([store isKindOfClass:[SearchResultStore class]]) {
+                    return store.products.count;
+                } return 0;
             }
         }
             break;

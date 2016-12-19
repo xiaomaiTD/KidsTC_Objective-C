@@ -8,6 +8,8 @@
 
 #import "ProductDetailFreeApplyBaseCell.h"
 
+NSString *const KProductDetailFreeApplyUserRemark = @"ProductDetailFreeApplyUserRemark";
+
 @implementation ProductDetailFreeApplyBaseCell
 
 - (void)awakeFromNib {

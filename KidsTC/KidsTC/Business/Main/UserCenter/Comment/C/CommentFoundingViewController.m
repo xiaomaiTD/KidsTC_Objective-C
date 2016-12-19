@@ -93,6 +93,7 @@
     if (![self isValidateComment]) return;
     
     if (_selectedPhotos.count>0) {
+        [TCProgressHUD showSVP];
         __weak CommentFoundingViewController *weakSelf = self;
         [[KTCImageUploader sharedInstance]  startUploadWithImagesArray:_selectedPhotos splitCount:2 withSucceed:^(NSArray *locateUrlStrings) {
             weakSelf.commentModel.uploadPhotoLocationStrings = locateUrlStrings;
@@ -166,7 +167,6 @@
             return NO;
         }
     }
-    
     return YES;
 }
 

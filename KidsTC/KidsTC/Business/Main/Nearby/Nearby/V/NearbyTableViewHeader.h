@@ -14,7 +14,7 @@ extern CGFloat const kNearbyTableViewHeaderH;
 
 @class NearbyTableViewHeader;
 @protocol NearbyTableViewHeaderDelegate <NSObject>
-- (void)nearbyTableViewHeader:(NearbyTableViewHeader *)header actionType:(NearbyTableViewHeaderActionType)type value:(id)value;
+- (void)nearbyTableViewHeader:(NearbyTableViewHeader *)header actionType:(NurseryType)type value:(id)value;
 @end
 
 @interface NearbyTableViewHeader : UIView

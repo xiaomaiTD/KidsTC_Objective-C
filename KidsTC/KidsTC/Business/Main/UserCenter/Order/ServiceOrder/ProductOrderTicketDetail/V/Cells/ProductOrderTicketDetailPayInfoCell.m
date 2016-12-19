@@ -50,9 +50,9 @@
             break;
         case ProductOrderTicketDetailPayInfoCellTypeTransportationExpenses:
         {
-            tip = data.discountAmt?@"+运费":@"-运输优惠";
+            tip = data.transportationExpenses>0?@"+运费":nil;
             sub = nil;
-            price = [NSString stringWithFormat:@"%@¥%.1f",data.discountAmt?@"":@"-",data.transportationExpenses];
+            price = [NSString stringWithFormat:@"%@¥%.1f",@"+",data.transportationExpenses];
         }
             break;
     }

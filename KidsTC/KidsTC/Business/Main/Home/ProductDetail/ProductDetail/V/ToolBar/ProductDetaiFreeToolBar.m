@@ -53,31 +53,20 @@
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    switch (data.freeType) {
-        case FreeTypeFreeActivity:
-        {
-            self.freeBGView.hidden = NO;
-            self.lotteryBGView.hidden = YES;
-            self.likeBtn.selected = data.isFavor;
-            self.applyBtn.enabled = data.isCanBuy;
-            [self.applyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
-        }
-            break;
-        case FreeTypeLottery:
-        {
-            self.freeBGView.hidden = YES;
-            self.lotteryBGView.hidden = NO;
-            self.lotteryApplyBtn.enabled = data.isCanBuy;
-            [self.lotteryApplyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
-            self.buyPriceL.text = data.relatedProduct.price;
-        }
-            break;
-        default:
-        {
-            self.freeBGView.hidden = YES;
-            self.lotteryBGView.hidden = YES;
-        }
-            break;
+    if (data.relatedProduct) {
+        self.freeBGView.hidden = YES;
+        self.lotteryBGView.hidden = NO;
+        self.lotteryApplyBtn.enabled = data.isCanBuy;
+        [self.lotteryApplyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
+        self.buyPriceL.text = data.relatedProduct.price;
+    }else{
+        self.freeBGView.hidden = NO;
+        self.lotteryBGView.hidden = YES;
+        self.likeBtn.selected = data.isFavor;
+        NSString *likeTitle = data.isFavor?@"取消关注":@"关注";
+        [self.likeBtn setTitle:likeTitle forState:UIControlStateNormal];
+        self.applyBtn.enabled = data.isCanBuy;
+        [self.applyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
     }
 }
 
@@ -89,6 +78,8 @@
             [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
                 self.data.isFavor = !self.data.isFavor;
                 self.likeBtn.selected = self.data.isFavor;
+                NSString *likeTitle = self.data.isFavor?@"取消关注":@"关注";
+                [self.likeBtn setTitle:likeTitle forState:UIControlStateNormal];
             }];
         }
     }

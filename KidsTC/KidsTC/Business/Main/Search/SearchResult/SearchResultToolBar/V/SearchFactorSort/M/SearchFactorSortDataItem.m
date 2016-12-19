@@ -9,10 +9,11 @@
 #import "SearchFactorSortDataItem.h"
 
 @implementation SearchFactorSortDataItem
-+ (instancetype)itemWithImg:(NSString *)img title:(NSString *)title value:(NSString *)value {
++ (instancetype)itemWithImg:(NSString *)img title:(NSString *)title desc:(NSString *)desc value:(NSString *)value {
     SearchFactorSortDataItem *item = [SearchFactorSortDataItem new];
     item.img = img;
     item.title = title;
+    item.desc = desc;
     item.value = value;
     item.selected = NO;
     return item;

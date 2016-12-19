@@ -29,16 +29,36 @@
     [super setInfoData:infoData];
     ProductOrderFreeDetailStore *storeInfo = infoData.storeInfo;
     self.titleL.text = storeInfo.storeName;
+    switch (infoData.placeType) {
+        case PlaceTypeStore:
+        {
+            self.arrowImg.hidden = NO;
+        }
+            break;
+            
+        default:
+        {
+            self.arrowImg.hidden = YES;
+        }
+            break;
+    }
 }
 
-- (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
-    [super setLotteryData:lotteryData];
-}
+
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
-        [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeStore value:self.infoData];
+    switch (self.infoData.placeType) {
+        case PlaceTypeStore:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
+                [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeStore value:self.infoData];
+            }
+        }
+            break;
+        default:
+            break;
     }
+    
 }
 
 @end

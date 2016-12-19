@@ -24,7 +24,8 @@
              @"product_standards":[ProductDetailStandard class],
              @"store":[ProductDetailStore class],
              @"actors":[ProductDetailActor class],
-             @"joinMember":[NSString class]};
+             @"joinMember":[NSString class],
+             @"place":[ProductDetailPlace class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
@@ -35,8 +36,6 @@
     _showType = ProductDetailTwoColumnShowTypeDetail;
     
     _simpleName = [_simpleName isNotNull]?_simpleName:@"服务详情";
-    
-    _priceSort = [NSString stringWithFormat:@"%@",@(_priceSort.floatValue)];
     
     _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
     
@@ -65,7 +64,7 @@
         {
             [self setupTicketInfo];
             
-            [self setupTicketStore];
+            [self setupMoblies];
             
             [self setupTicketSynopsis];
             
@@ -94,7 +93,7 @@
     if ([_promote isNotNull]) {
         NSMutableAttributedString *attPromote = [[NSMutableAttributedString alloc] initWithString:_promote];
         attPromote.font = [UIFont systemFontOfSize:12];
-        attPromote.color = [UIColor colorFromHexString:@"777777"];
+        attPromote.color = COLOR_PINK;
         attPromote.lineSpacing = 6;
         _attPromote = [[NSAttributedString alloc] initWithAttributedString:attPromote];
     }
@@ -223,14 +222,23 @@
     return [[NSAttributedString alloc] initWithString:@"\n"];
 }
 
-- (void)setupTicketStore {
-    if (_theater) {
-        ProductDetailStore *store = [ProductDetailStore new];
-        store.storeName = _theater.theaterName;
-        store.address = _theater.address;
-        store.mapAddress = _theater.mapAddress;
-        [store setupStoreInfo];
-        _store = @[store];
+- (void)setupMoblies {
+    NSString *phonesString =  _phone;
+    if ([phonesString isNotNull]) {
+        NSMutableArray *phonesAry = [NSMutableArray new];
+        if ([phonesString containsString:@";"]) {
+            NSArray *ary = [phonesString componentsSeparatedByString:@";"];
+            for (NSString *str in ary) {
+                if (str && ![str isEqualToString:@""]) {
+                    [phonesAry addObject:str];
+                }
+            }
+        }else{
+            if (phonesString && ![phonesString isEqualToString:@""]) {
+                [phonesAry addObject:phonesString];
+            }
+        }
+        _supplierPhones = [NSArray arrayWithArray:phonesAry];
     }
 }
 

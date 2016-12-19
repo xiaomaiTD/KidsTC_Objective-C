@@ -306,6 +306,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addressIcon" destination="5HQ-0C-bqs" id="5Nz-Df-daH"/>
                 <outlet property="addressL" destination="zsY-De-tj2" id="wws-Wb-sn5"/>
                 <outlet property="btnsView" destination="jto-16-jys" id="gnH-cs-rli"/>
                 <outlet property="btnsViewH" destination="hfo-a7-jZT" id="zpM-Kw-iC0"/>
@@ -318,7 +319,9 @@
                 <outlet property="productNameL" destination="VU6-3B-dSr" id="caj-Bv-SOw"/>
                 <outlet property="remarkL" destination="dS1-ZU-WDf" id="3DE-wp-Q9y"/>
                 <outlet property="statusNameL" destination="ha6-tj-Q03" id="dmV-IG-56W"/>
+                <outlet property="storeArrowImg" destination="aBg-Al-1ar" id="QJ6-Jj-vT7"/>
                 <outlet property="storeBtn" destination="jpz-03-n7k" id="IYw-21-png"/>
+                <outlet property="storeIcon" destination="rDH-hB-hgB" id="Kqz-bG-4L8"/>
                 <outlet property="storeNameL" destination="a0f-sG-KRN" id="2MZ-qh-atL"/>
                 <outlet property="timeL" destination="Gzz-ZH-vXa" id="9E2-CS-OH2"/>
             </connections>

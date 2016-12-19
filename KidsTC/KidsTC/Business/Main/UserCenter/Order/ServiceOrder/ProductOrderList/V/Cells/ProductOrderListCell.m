@@ -14,6 +14,7 @@
 #import "Colours.h"
 
 @interface ProductOrderListCell ()<ProductOrderListCellBtnsViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *storeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *storeNameL;
 @property (weak, nonatomic) IBOutlet UIImageView *storeArrowImg;
 @property (weak, nonatomic) IBOutlet UIButton *storeBtn;
@@ -72,7 +73,6 @@
     self.storeNameL.text = _item.storeName;
     self.statusNameL.text = _item.statusName;
     [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
-    
     [self countDown];
     self.realPriceTipL.text = _item.payDesc;
     self.realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
@@ -86,8 +86,8 @@
         self.btnsViewH.constant = 0;
     }
     
-    switch (_item.orderType) {
-        case ProductOrderListOrderTypeTicket:
+    switch (_item.orderKind) {
+        case OrderKindTicket:
         {
             self.storeArrowImg.hidden = YES;
             self.normalBGView.hidden = YES;
@@ -99,9 +99,33 @@
             self.theaterNameL.text = _item.venueName;
         }
             break;
+            
         default:
         {
-            self.storeArrowImg.hidden = NO;
+            switch (_item.placeType) {
+                case PlaceTypeStore:
+                {
+                    self.storeIcon.hidden = NO;
+                    self.storeArrowImg.hidden = NO;
+                    self.storeNameL.hidden = NO;
+                }
+                    break;
+                case PlaceTypeNone:
+                {
+                    self.storeIcon.hidden = YES;
+                    self.storeArrowImg.hidden = YES;
+                    self.storeNameL.hidden = YES;
+                }
+                    break;
+                default:
+                {
+                    self.storeIcon.hidden = NO;
+                    self.storeArrowImg.hidden = YES;
+                    self.storeNameL.hidden = NO;
+                }
+                    break;
+            }
+            
             self.normalBGView.hidden = NO;
             self.ticketBGView.hidden = YES;
             self.productNameL.text = _item.productName;
@@ -137,7 +161,7 @@
     [_item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
         StrongSelf(self)
         NSRange range = [_item.deliver.deliverStr rangeOfString:obj.value];
-        if ((obj.isCall&&[obj.value isNotNull])||obj.segueModel) {
+        if ((obj.isCall&&[obj.value isNotNull])||(obj.segueModel.destination != SegueDestinationNone)) {
             [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
         }
         UIColor *color = [UIColor colorFromHexString:obj.color];
@@ -179,8 +203,13 @@
     }
 }
 
+- (void)dealloc {
+    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
+}
+
 - (IBAction)action:(UIButton *)sender {
-    if (_item.orderType == ProductOrderListOrderTypeTicket) return;
+    if (_item.orderKind == OrderKindTicket) return;
+    if (_item.placeType != PlaceTypeStore) return;
     if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
         [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)sender.tag value:_item];
     }
@@ -194,5 +223,7 @@
         [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)btn.tag value:_item];
     }
 }
+
+
 
 @end

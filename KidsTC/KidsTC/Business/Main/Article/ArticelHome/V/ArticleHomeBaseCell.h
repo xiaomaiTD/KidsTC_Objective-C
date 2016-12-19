@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 @end
 
 @interface ArticleHomeBaseCell : UITableViewCell
+@property (nonatomic, strong) UIButton *deleteBtn;
 @property (nonatomic, weak) ArticleHomeItem *item;
 @property (nonatomic, weak) id<ArticleHomeBaseCellDelegate> delegate;
+@property (nonatomic, copy) void(^deleteNewsBlock)(ArticleHomeItem *item);
 @end

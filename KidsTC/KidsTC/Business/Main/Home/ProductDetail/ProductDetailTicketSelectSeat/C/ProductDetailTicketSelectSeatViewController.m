@@ -31,7 +31,7 @@ static NSString *const NumFooterId  = @"NumFooter";
 
 static CGFloat kSelectSeatMargin = 15;
 
-@interface ProductDetailTicketSelectSeatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ProductDetailTicketSelectSeatCollectionViewTimeCellDelegate,ProductDetailTicketSelectSeatCollectionViewSeatCellDelegate,ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate>
+@interface ProductDetailTicketSelectSeatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *selectDoneBtn;
 @property (weak, nonatomic) IBOutlet UILabel *priceTipL;
@@ -40,8 +40,8 @@ static CGFloat kSelectSeatMargin = 15;
 @property (weak, nonatomic) IBOutlet UIView *priceBGView;
 @property (nonatomic, strong) ProductDetailTicketSelectSeatData *data;
 
-@property (nonatomic, strong) UIButton *timeSelectBtn;
-@property (nonatomic, strong) UIButton *seatSelectBtn;
+@property (nonatomic, strong) ProductDetailTicketSelectSeatTime *selectSeatTime;
+@property (nonatomic, strong) ProductDetailTicketSelectSeatSeat *selectSeatSeat;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomMargin;
 @end
@@ -98,6 +98,18 @@ static CGFloat kSelectSeatMargin = 15;
 
 - (void)loadDataSuccess:(ProductDetailTicketSelectSeatData *)data {
     self.data = data;
+    [self.data.seatTimes enumerateObjectsUsingBlock:^(ProductDetailTicketSelectSeatTime *time, NSUInteger idx, BOOL *stopTime) {
+        if (time.selected) {
+            self.selectSeatTime = time;
+            [time.seats enumerateObjectsUsingBlock:^(ProductDetailTicketSelectSeatSeat *seat, NSUInteger idx, BOOL *stopSeat) {
+                if (seat.selected) {
+                    self.selectSeatSeat = seat;
+                    *stopSeat = YES;
+                }
+            }];
+            *stopTime = YES;
+        }
+    }];
     [self.collectionView reloadData];
 }
 
@@ -119,7 +131,7 @@ static CGFloat kSelectSeatMargin = 15;
         return;
     }
     
-    ProductDetailTicketSelectSeatSeat *seat = self.currentSelectSeat;
+    ProductDetailTicketSelectSeatSeat *seat = self.selectSeatSeat;
     if (!seat) {
         [[iToast makeText:@"请选则座位"] show];
         return;
@@ -131,8 +143,15 @@ static CGFloat kSelectSeatMargin = 15;
         return;
     }
     
+    NSString *ChId = seat.chId;
+    if (![ChId isNotNull]) {
+        [[iToast makeText:@"您选择的座位存在问题，请选择其他座位"] show];
+        return;
+    }
+    
     NSDictionary *skuDic = @{@"SkuId":SkuId,
-                            @"BuyNum":@(self.buyCount)};
+                             @"ChId":ChId,
+                             @"BuyNum":@(self.buyCount)};
     
     NSArray *skuAry = @[skuDic];
     
@@ -196,32 +215,22 @@ static CGFloat kSelectSeatMargin = 15;
     if (section==0) {
         return self.data.seatTimes.count;
     }else{
-        if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-            NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.data.seatTimes[self.timeSelectBtn.tag].seats;
-            return seats.count;
-        }
-        return 0;
+        return self.selectSeatTime.seats.count;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         ProductDetailTicketSelectSeatCollectionViewTimeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TimeCellID forIndexPath:indexPath];
-        cell.indexPath = indexPath;
-        cell.delegate =  self;
         if (indexPath.row<self.data.seatTimes.count) {
             cell.time = self.data.seatTimes[indexPath.row];
         }
         return cell;
     }else{
         ProductDetailTicketSelectSeatCollectionViewSeatCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:SeatCellID forIndexPath:indexPath];
-        cell.indexPath = indexPath;
-        cell.delegate =  self;
-        if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-            NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.data.seatTimes[self.timeSelectBtn.tag].seats;
-            if (indexPath.row<seats.count) {
-                cell.seat = seats[indexPath.row];
-            }
+        NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.selectSeatTime.seats;
+        if (indexPath.row<seats.count) {
+            cell.seat = seats[indexPath.row];
         }
         return cell;
     }
@@ -246,92 +255,41 @@ static CGFloat kSelectSeatMargin = 15;
         }else{
             ProductDetailTicketSelectSeatCollectionViewNumFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:NumFooterId forIndexPath:indexPath];
             footerView.delegate = self;
-            if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-                NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.data.seatTimes[self.timeSelectBtn.tag].seats;
-                if (self.seatSelectBtn.tag<seats.count) {
-                    footerView.seat = seats[self.seatSelectBtn.tag];
-                }
-            }
+            footerView.seat = self.selectSeatSeat;
             return  footerView;
         }
     }
     return nil;
 }
 
-#pragma mark - ProductDetailTicketSelectSeatCollectionViewTimeCellDelegate
-
-- (void)productDetailTicketSelectSeatCollectionViewTimeCell:(ProductDetailTicketSelectSeatCollectionViewTimeCell *)cell actionType:(ProductDetailTicketSelectSeatCollectionViewTimeCellActionType)type value:(id)value {
-    switch (type) {
-        case ProductDetailTicketSelectSeatCollectionViewTimeCellActionTypeClickBtn:
-        {
-            BOOL reload = [value boolValue];
-            self.timeSelectBtn.selected = NO;
-            if(reload)[self setTimeSelect];
-            
-            UIButton *btn = cell.btn;
-            btn.selected = YES;
-            self.timeSelectBtn = btn;
-            if(reload)[self setTimeSelect];
-            if (reload) {
-                NSIndexSet *set = [NSIndexSet indexSetWithIndex:1];
-                [self.collectionView reloadSections:set];
-            }
-            
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    if (section == 0) {
+        if (row<self.data.seatTimes.count) {
+            self.selectSeatTime.selected = NO;
+            ProductDetailTicketSelectSeatTime *time = self.data.seatTimes[row];
+            time.selected = YES;
+            self.selectSeatTime = time;
+            [time.seats enumerateObjectsUsingBlock:^(ProductDetailTicketSelectSeatSeat *seat, NSUInteger idx, BOOL *stop) {
+                if (seat.selected) {
+                    self.selectSeatSeat = seat;
+                    *stop = YES;
+                }
+            }];
         }
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)setTimeSelect {
-    if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-        ProductDetailTicketSelectSeatTime *time = self.data.seatTimes[self.timeSelectBtn.tag];
-        time.selected = self.timeSelectBtn.selected;
-    }
-}
-
-#pragma mark - ProductDetailTicketSelectSeatCollectionViewSeatCellDelegate
-
-- (void)productDetailTicketSelectSeatCollectionViewSeatCell:(ProductDetailTicketSelectSeatCollectionViewSeatCell *)cell actionType:(ProductDetailTicketSelectSeatCollectionViewSeatCellActionType)type value:(id)value {
-    switch (type) {
-        case ProductDetailTicketSelectSeatCollectionViewSeatCellActionTypeClickBtn:
-        {
-            BOOL reload = [value boolValue];
-            self.seatSelectBtn.selected = NO;
-            if(reload)[self setSeatSelect];
-            UIButton *btn = cell.btn;
-            btn.selected = YES;
-            self.seatSelectBtn = btn;
-            if(reload)[self setSeatSelect];
-            
-            if (reload) {
-                NSIndexSet *set = [NSIndexSet indexSetWithIndex:1];
-                [self.collectionView reloadSections:set];
-            }
-            self.buyCount = self.currentSelectSeat.count;
+        [self.collectionView reloadData];
+    }else{
+        if (row<self.selectSeatTime.seats.count) {
+            self.selectSeatSeat.selected = NO;
+            ProductDetailTicketSelectSeatSeat *seat = self.selectSeatTime.seats[row];
+            seat.selected = YES;
+            self.selectSeatSeat = seat;
         }
-            break;
-        default:
-            break;
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:1];
+        [self.collectionView reloadSections:set];
     }
-}
-
-- (void)setSeatSelect {
-    ProductDetailTicketSelectSeatSeat *seat = self.currentSelectSeat;
-    if (seat) {
-        seat.selected = self.seatSelectBtn.selected;
-    }
-}
-
-- (ProductDetailTicketSelectSeatSeat *)currentSelectSeat {
-    if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-        NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.data.seatTimes[self.timeSelectBtn.tag].seats;
-        if (self.seatSelectBtn.tag<seats.count) {
-            return  seats[self.seatSelectBtn.tag];
-        }
-    }
-    return nil;
+    
 }
 
 #pragma mark - ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate
@@ -349,6 +307,11 @@ static CGFloat kSelectSeatMargin = 15;
     }
 }
 
+- (void)setSelectSeatSeat:(ProductDetailTicketSelectSeatSeat *)selectSeatSeat {
+    _selectSeatSeat = selectSeatSeat;
+    self.buyCount = selectSeatSeat.count;
+}
+
 - (void)setBuyCount:(NSInteger)buyCount {
     _buyCount = buyCount;
     self.priceBGView.hidden = buyCount<1;
@@ -356,14 +319,9 @@ static CGFloat kSelectSeatMargin = 15;
 }
 
 - (void)resetPrice {
-    if (self.timeSelectBtn.tag<self.data.seatTimes.count) {
-        NSArray<ProductDetailTicketSelectSeatSeat *> *seats = self.data.seatTimes[self.timeSelectBtn.tag].seats;
-        if (self.seatSelectBtn.tag<seats.count) {
-            ProductDetailTicketSelectSeatSeat *seat = seats[self.seatSelectBtn.tag];
-            CGFloat totalPrice = seat.price.floatValue * self.buyCount;
-            self.priceL.text = [NSString stringWithFormat:@"¥%@",@(totalPrice)];
-        }
-    }
+    ProductDetailTicketSelectSeatSeat *seat = self.selectSeatSeat;
+    CGFloat totalPrice = seat.price * self.buyCount;
+    self.priceL.text = [NSString stringWithFormat:@"¥%0.2f",totalPrice];
 }
 
 #pragma mark - noti

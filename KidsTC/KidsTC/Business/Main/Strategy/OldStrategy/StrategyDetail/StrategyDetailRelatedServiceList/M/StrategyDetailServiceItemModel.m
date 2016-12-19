@@ -28,6 +28,8 @@
         self.price = [[data objectForKey:@"promotionPrice"] floatValue];
         self.saleCount = [[data objectForKey:@"buyNum"] integerValue];
         self.storeCount = [[data objectForKey:@"storeCount"] integerValue];
+        
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

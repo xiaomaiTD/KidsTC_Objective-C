@@ -30,7 +30,7 @@
         calendar.appearance.headerDateFormat = @"yyyy年MM月";
         calendar.appearance.headerTitleColor = [UIColor darkGrayColor];
         calendar.appearance.weekdayTextColor = [UIColor blackColor];
-        calendar.appearance.selectionColor = COLOR_PINK;
+        calendar.appearance.selectionColor = [COLOR_PINK colorWithAlphaComponent:0.5];
         calendar.placeholderType = FSCalendarPlaceholderTypeFillHeadTail;
         calendar.appearance.caseOptions = FSCalendarCaseOptionsWeekdayUsesSingleUpperCase|FSCalendarCaseOptionsHeaderUsesDefaultCase;
         calendar.appearance.todayColor = [UIColor clearColor];

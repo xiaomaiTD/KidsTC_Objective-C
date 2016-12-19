@@ -29,7 +29,7 @@
 @interface ProductOrderFreeDetailViewController ()<ProductOrderFreeDetailViewDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, strong) ProductOrderFreeDetailView *detailView;
 @property (nonatomic, strong) ProductOrderFreeDetailData *infoData;
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryData *lotteryData;
+@property (nonatomic, strong) NSArray<ProductOrderFreeDetailLotteryItem* > *lotteryData;
 @property (nonatomic, assign) NSInteger page;
 @end
 
@@ -132,12 +132,12 @@
             break;
         case ProductOrderFreeDetailViewActionTypeCancelTip:/// 取消提醒
         {
-            
+            [self tip:value want:NO];
         }
             break;
         case ProductOrderFreeDetailViewActionTypeWantTip:/// 活动提醒
         {
-            
+            [self tip:value want:YES];
         }
             break;
         case ProductOrderFreeDetailViewActionTypeReminder:/// 我要催单
@@ -292,7 +292,7 @@
         [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"获取消费码失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -312,6 +312,27 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark ================活动提醒================
+
+- (void)tip:(ProductOrderFreeDetailData *)data want:(BOOL)want {
+    NSString *orderId = data.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    OrderRemindType type = want?OrderRemindTypeTip:OrderRemindTypeCancle;
+    NSDictionary *param = @{@"orderId":orderId,
+                            @"type":@(type)};
+    [Request startWithName:@"ORDER_REMIND" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSString *msg = want?@"提醒成功":@"已取消提醒";
+        [[iToast makeText:msg] show];
+        [self loadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSString *msg = want?@"设置提醒失败，请稍后再试":@"取消提醒失败，请稍后再试";
+        [[iToast makeText:msg] show];
+    }];
+}
+
 #pragma mark ================我要催单================
 
 - (void)reminder:(ProductOrderFreeListItem *)item {
@@ -326,7 +347,7 @@
         [self loadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"催单失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -348,7 +369,7 @@
         [self loadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"确认收货失败";
-        NSString *errMsg = error.userInfo[@"data"];
+        NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([errMsg isNotNull]) {
             msg = errMsg;
         }
@@ -406,12 +427,13 @@
 #pragma mark ================门店位置信息================
 
 - (void)address:(ProductOrderFreeDetailData *)data {
-    ProductDetailStore *addressStore = data.storeInfo.addressStore;
-    if (!addressStore) {
+    NSArray<ProductDetailAddressSelStoreModel *> *places = [ProductDetailAddressSelStoreModel modelsWithProductOrderFreeDetailStore:data.storeInfo];
+    if (places.count<1) {
         return;
     }
     ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
-    controller.store = @[addressStore];
+    controller.placeType = data.placeType;
+    controller.places = places;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -435,7 +457,7 @@
         ProductOrderFreeDetailLotteryModel *model = [ProductOrderFreeDetailLotteryModel modelWithDictionary:dic];
         self.lotteryData = model.data;
         self.detailView.lotteryData = self.lotteryData;
-        [self.detailView reloadLotteryData:model.data.ResultLists.count];
+        [self.detailView reloadLotteryData:model.data.count];
     } failure:nil];
 }
 

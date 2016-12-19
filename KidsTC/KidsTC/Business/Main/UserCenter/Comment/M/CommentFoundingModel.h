@@ -12,7 +12,6 @@
 #import "StoreDetailModel.h"
 #import "KTCCommentManager.h"
 #import "CommentScoreConfigModel.h"
-#import "ServiceOrderDetailModel.h"
 #import "FlashServiceOrderDetailModel.h"
 #import "FlashServiceOrderListModel.h"
 #import "ProductOrderListItem.h"
@@ -20,6 +19,7 @@
 #import "ProductOrderFreeDetailData.h"
 #import "ProductOrderNormalDetailData.h"
 #import "ProductOrderTicketDetailData.h"
+#import "ProductDetailData.h"
 
 @interface CommentFoundingModel : NSObject
 
@@ -55,8 +55,6 @@
 
 + (instancetype)modelFromFlashServiceOrderDetailData:(FlashServiceOrderDetailData *)data;
 
-+ (instancetype)modelFromServiceOrderDetailModel:(ServiceOrderDetailModel *)orderModel;
-
 + (instancetype)modelFromProductOrderListItem:(ProductOrderListItem *)item;
 
 + (instancetype)modelFromProductOrderFreeListItem:(ProductOrderFreeListItem *)item;
@@ -66,5 +64,7 @@
 + (instancetype)modelFromProductOrderNormalDetailData:(ProductOrderNormalDetailData *)data;
 
 + (instancetype)modelFromProductOrderTicketDetailData:(ProductOrderTicketDetailData *)data;
+
++ (instancetype)modelFromProductDetailData:(ProductDetailData *)data;
 
 @end

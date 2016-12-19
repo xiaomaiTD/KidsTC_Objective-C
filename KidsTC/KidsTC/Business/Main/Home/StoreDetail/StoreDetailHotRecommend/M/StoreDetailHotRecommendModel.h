@@ -43,6 +43,8 @@
 
 @property (nonatomic, copy) NSString *serviceDescription;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
 
 @end

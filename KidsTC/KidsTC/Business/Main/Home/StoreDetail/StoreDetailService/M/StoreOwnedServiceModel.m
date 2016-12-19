@@ -28,6 +28,8 @@
         self.priceDescription = [data objectForKey:@"priceRuleName"];
         self.serviceDescription = [data objectForKey:@"ageGroup"];
         self.storeCount = [[data objectForKey:@"storeCount"] integerValue];
+        
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

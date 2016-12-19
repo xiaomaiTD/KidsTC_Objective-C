@@ -21,7 +21,7 @@
     if (!_attTitle) {
         NSString *title = [NSString stringWithFormat:@"%@",_title];
         NSString *subTitle = [NSString stringWithFormat:@"%@",_subTitle];
-        NSString *price = [NSString stringWithFormat:@"¥ %@",_price];
+        NSString *price = [NSString stringWithFormat:@"%@",_price];
         switch (_type) {
             case TCHomeFloorContentTypeBanner:
             {
@@ -138,23 +138,23 @@
             {
                 NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
                 attTitle.lineSpacing = 4;
-                attTitle.color = [UIColor blackColor];
+                attTitle.color = [UIColor colorFromHexString:@"222222"];
                 attTitle.font = [UIFont systemFontOfSize:17];
                 attTitle.alignment = NSTextAlignmentLeft;
                 _attTitle = attTitle;
                 
                 NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
                 attPrice.lineSpacing = 0;
-                attPrice.color = COLOR_PINK;
-                attPrice.font = [UIFont systemFontOfSize:18];
+                attPrice.color = [UIColor colorFromHexString:@"F36863"];
+                attPrice.font = [UIFont systemFontOfSize:17];
                 attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
                 attPrice.alignment = NSTextAlignmentRight;
                 _attPrice = attPrice;
                 
                 NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
                 attSubTitle.lineSpacing = 0;
-                attSubTitle.color = [UIColor colorFromHexString:@"#606060"];
-                attSubTitle.font = [UIFont systemFontOfSize:15];
+                attSubTitle.color = [UIColor colorFromHexString:@"9C9C9C"];
+                attSubTitle.font = [UIFont systemFontOfSize:14];
                 attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
                 attSubTitle.alignment = NSTextAlignmentLeft;
                 _attSubTitle = attSubTitle;

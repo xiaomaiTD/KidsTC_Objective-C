@@ -30,6 +30,9 @@ typedef enum {
 
 
 struct TCHomeContentLayoutAttributes {
+    
+    BOOL showBGView;
+    
     BOOL showImg;
     BOOL showTipImg;
     
@@ -44,7 +47,14 @@ struct TCHomeContentLayoutAttributes {
     BOOL showStatus;
     BOOL showStoreAddress;
     
+    BOOL showDiscount;
+    BOOL showBtnDesc;
+    
+    BOOL isProductRecommend;
+    
     BOOL showLine;
+    
+    CGRect bgViewFrame;
     
     CGRect imgFrame;
     CGRect tipImgFrame;
@@ -59,6 +69,9 @@ struct TCHomeContentLayoutAttributes {
     
     CGRect statusFrame;
     CGRect storeAddressFrme;
+    
+    CGRect discountFrame;
+    CGRect btnDescFrame;
     
     CGRect lineFrame;
 };
@@ -112,6 +125,10 @@ TCHomeContentLayoutAttributesMake(BOOL showImg,
     att.showStatus = showStatus;
     att.showStoreAddress = showStoreAddress;
     
+    att.showDiscount = NO;
+    att.showBtnDesc = NO;
+    att.isProductRecommend = NO;
+    
     att.showLine = showLine;
     
     att.imgFrame = imgFrame;
@@ -160,6 +177,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSAttributedString *attSaleNum;
 @property (nonatomic, strong) NSAttributedString *attSubTitle;
 @property (nonatomic, strong) NSAttributedString *attStatus;
+@property (nonatomic, strong) NSAttributedString *attDiscountDesc;
+@property (nonatomic, strong) NSAttributedString *attBtnDesc;
 @property (nonatomic, strong) NSString *subImgName;
 @property (nonatomic, assign) TCHomeFloorContentSubImgType subImgType;
 @property (nonatomic, strong) NSString *tipImgName;

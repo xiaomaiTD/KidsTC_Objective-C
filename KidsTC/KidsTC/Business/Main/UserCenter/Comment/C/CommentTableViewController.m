@@ -14,13 +14,15 @@
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "ProductDetailViewController.h"
-#import "OrderListModel.h"
-#import "OrderListViewCell.h"
-#import "ServiceOrderDetailViewController.h"
 #import "CashierDeskViewController.h"
 #import "CommentFoundingViewController.h"
 #import "OrderRefundViewController.h"
 #import "SegueMaster.h"
+#import "OrderListViewCell.h"
+#import "OrderListModel.h"
+#import "ProductOrderNormalDetailViewController.h"
+#import "ProductOrderTicketDetailViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
 
 #import "GHeader.h"
 #import "KTCEmptyDataView.h"
@@ -28,7 +30,7 @@
 static NSString *const waitToCommentCellIdentifier = @"OrderListViewCellCellIdentifier";
 static NSString *const myCommentListCellIdentifier = @"myCommentListCellIdentifier";
 
-@interface CommentTableViewController ()<UITableViewDelegate,UITableViewDataSource,MyCommentListViewCellDelegate,CommentEditViewControllerDelegate,OrderListCellDelegate,ServiceOrderDetailViewControllerDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
+@interface CommentTableViewController ()<UITableViewDelegate,UITableViewDataSource,MyCommentListViewCellDelegate,CommentEditViewControllerDelegate,OrderListCellDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 
@@ -314,8 +316,6 @@ static NSUInteger pageSize = 10;
     }
     
 }
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.segmentControl.selectedSegmentIndex == 0) {//待评价
@@ -334,10 +334,31 @@ static NSUInteger pageSize = 10;
     
     if (self.segmentControl.selectedSegmentIndex == 0) {//待评价
         OrderListModel *model = self.waitToCommentListAry[indexPath.section];
-        ServiceOrderDetailViewController *controller = [[ServiceOrderDetailViewController alloc]init];
-        controller.orderId = model.orderId;
-        controller.delegate = self;
-        [self.navigationController pushViewController:controller animated:YES];
+        switch (model.orderKind) {
+            case OrderKindNormal:
+            {
+                ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+                controller.orderId = model.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+                break;
+            case OrderKindTicket:
+            {
+                ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+                controller.orderId = model.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+                break;
+            case OrderKindFree:
+            {
+                ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                controller.orderId = model.orderId;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+                break;
+            default:
+                break;
+        }
     }else{//我的评价
         MyCommentListItemModel *model = [self.myCommentListAry objectAtIndex:indexPath.section];
         switch (model.relationType) {
@@ -380,7 +401,8 @@ static NSUInteger pageSize = 10;
             default:
             {
                 if ([model.relationIdentifier length] > 0) {
-                    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:nil];
+                    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.relationIdentifier channelId:@"0"];
+                    controller.type = model.productRedirect;
                     [self.navigationController pushViewController:controller animated:YES];
                 }
                 return;
@@ -400,7 +422,6 @@ static NSUInteger pageSize = 10;
     
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = model.orderId;
-#warning TODO......
     //controller.orderKind = CashierDeskOrderKindService;
     [self.navigationController pushViewController:controller animated:YES];
 }

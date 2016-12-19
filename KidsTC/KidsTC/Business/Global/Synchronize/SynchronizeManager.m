@@ -20,6 +20,7 @@
 #import "AppVersionManager.h"
 #import "HomeRefreshManager.h"
 #import "ComposeManager.h"
+#import "AppBaseManager.h"
 
 @implementation SynchronizeManager
 
@@ -36,6 +37,8 @@
     [[AreaAndAgeDataManager shareAreaAndAgeDataManager] synchronize];
     
     [[AddressDataManager shareAddressDataManager] synchronize];
+    
+    [[AppBaseManager shareAppBaseManager] synchronize];
     
     //=============================================================
     

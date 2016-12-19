@@ -7,6 +7,7 @@
 //
 
 #import "NearbyTableViewHeaderItemView.h"
+#import "UIImageView+WebCache.h"
 
 @interface NearbyTableViewHeaderItemView ()
 @property (nonatomic, weak) IBOutlet UIView *titleBGView;
@@ -24,39 +25,17 @@
     self.layer.masksToBounds = YES;
 }
 
-- (void)setType:(NearbyTableViewHeaderActionType)type {
-    _type = type;
-    NSString *mainTitleL,*subTitleL,*imageName;
-    switch (type) {
-        case NearbyTableViewHeaderActionTypeNursery:
-        {
-            mainTitleL = @"育儿室";
-            subTitleL = @"紧急情况点这里";
-            imageName = @"Nearby_nursery";
-        }
-            break;
-        case NearbyTableViewHeaderActionTypeExhibition:
-        {
-            mainTitleL = @"展览馆";
-            subTitleL = @"要学习到这里";
-            imageName = @"Nearby_exhibition";
-        }
-            break;
-        case NearbyTableViewHeaderActionTypeCalendar:
-        {
-            mainTitleL = @"日历";
-            subTitleL = @"用日历搜活动";
-            imageName = @"Nearby_date";
-        }
-            break;
-    }
-    self.mainTitleL.text = mainTitleL;
-    self.subTitleL.text = subTitleL;
-    self.icon.image = [UIImage imageNamed:imageName];
+- (void)setData:(NearbyPlaceInfoData *)data {
+    _data = data;
+    self.hidden = _data==nil;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_data.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.mainTitleL.text = _data.title;
+    self.subTitleL.text = _data.desc;
 }
+
 - (IBAction)action:(UIButton *)sender{
     if ([self.delegate respondsToSelector:@selector(nearbyTableViewHeaderItemView:actionType:value:)]) {
-        [self.delegate nearbyTableViewHeaderItemView:self actionType:_type value:nil];
+        [self.delegate nearbyTableViewHeaderItemView:self actionType:_data.placeType value:_data];
     }
 }
 

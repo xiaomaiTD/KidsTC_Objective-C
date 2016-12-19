@@ -16,8 +16,7 @@
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
-#import "ServiceOrderDetailViewController.h"
-#import "OrderListViewController.h"
+#import "ProductOrderListViewController.h"
 #import "NotificationCenterViewController.h"
 #import "ArticleColumnViewController.h"
 #import "ZPPhotoBrowserViewController.h"
@@ -65,6 +64,8 @@
         case SegueDestinationServiceDetail:
         case SegueDestinationStoreDetail:
         case SegueDestinationStrategyDetail:
+        case SegueDestinationProductTicketDetail:
+        case SegueDestinationProductFreeDetail:
         {
             if (resultBlock) resultBlock();
         }
@@ -73,6 +74,8 @@
         case SegueDestinationCouponList:
         case SegueDestinationOrderDetail:
         case SegueDestinationOrderList:
+        case SegueDestinationOrderTicketDetail:
+        case SegueDestinationOrderFreeDetail:
         {
             [[User shareUser] checkLoginWithTarget:fromVC resultBlock:^(NSString *uid, NSError *error) {
                 if (resultBlock) resultBlock();
@@ -97,6 +100,11 @@
 {
     UIViewController *toController = nil;
     switch (model.destination) {
+        case SegueDestinationNone:
+        {
+            
+        }
+            break;
         case SegueDestinationH5:
         {
             WebViewController *controller = [[WebViewController alloc] init];
@@ -111,11 +119,7 @@
             break;
         case SegueDestinationNewsList:
         {
-            SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-#warning TODO...
-//            controller.searchType = SearchType_Article;
-//            controller.searchParmsModel = [SearchParmsArticleModel modelWithDic :model.segueParam];
-            toController = controller;
+            
         }
             break;
         case SegueDestinationActivity:
@@ -146,18 +150,14 @@
         case SegueDestinationServiceList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-#warning TODO...
-//            controller.searchType = SearchType_Product;
-//            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic :model.segueParam];
+            [controller setSearchType:SearchTypeProduct params:model.segueParam];
             toController = controller;
         }
             break;
         case SegueDestinationStoreList:
         {
             SearchResultViewController *controller = [[SearchResultViewController alloc]init];
-#warning TODO...
-//            controller.searchType = SearchType_Store;
-//            controller.searchParmsModel = [SearchParmsProductOrStoreModel modelWithDic:model.segueParam];
+            [controller setSearchType:SearchTypeStore params:model.segueParam];
             toController = controller;
         }
             break;
@@ -166,9 +166,8 @@
             NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
             NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
             channelId = [channelId isNotNull]?channelId:@"0";
-            ProductDetailType type = (ProductDetailType)[model.segueParam[@"type"] integerValue];
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
-            controller.type = type;
+            controller.type = ProductDetailTypeNormal;
             toController = controller;
         }
             break;
@@ -188,85 +187,20 @@
             break;
         case SegueDestinationCouponList:
         {
-#warning TODO...
-//            CouponStatus status = (CouponStatus)[[NSString stringWithFormat:@"%@",model.segueParam[@"type"]] integerValue];
-//            CouponListViewTag tag = CouponListViewTagUnused;
-//            switch (status) {
-//                case CouponStatusUnused:
-//                {
-//                    tag = CouponListViewTagUnused;
-//                }
-//                    break;
-//                case CouponStatusHasUsed:
-//                {
-//                    tag = CouponListViewTagHasUsed;
-//                }
-//                    break;
-//                case CouponStatusHasOverTime:
-//                {
-//                    tag = CouponListViewTagHasOverTime;
-//                }
-//                    break;
-//                default:
-//                {
-//                    tag = CouponListViewTagUnused;
-//                }
-//                    break;
-//            }
-//            toController = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
+            toController = [[CouponListViewController alloc] init];
         }
             break;
         case SegueDestinationOrderDetail:
         {
-            OrderKind kind = OrderKindNormal;
-            id orderKindid = model.segueParam[@"kind"];
-            if ([orderKindid respondsToSelector:@selector(integerValue)]) {
-                kind = (OrderKind)[orderKindid integerValue];
-            }
-            switch (kind) {
-                case OrderKindNormal://普通订单
-                {
-                    ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
-                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
-                    toController = controller;
-                }
-                    break;
-                case OrderKindFlash://闪购订单
-                {
-                    
-                }
-                    break;
-                case OrderKindRadish:// 萝卜订单
-                {
-                    
-                }
-                    break;
-                case OrderKindTicket:// 票务订单
-                {
-                    ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
-                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
-                    toController = controller;
-                }
-                    break;
-                case OrderKindFree:// 免费商品报名订单
-                {
-                    ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
-                    controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
-                    toController = controller;
-                }
-                    break;
-                case OrderKindFight:// 拼团
-                {
-                    
-                }
-                    break;
-            }
+            ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
+            controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+            toController = controller;
         }
             break;
         case SegueDestinationOrderList:
         {
-            OrderListType type = (OrderListType)[[NSString stringWithFormat:@"%@",model.segueParam[@"type"]] integerValue];
-            toController = [[OrderListViewController alloc] initWithOrderListType:type];
+            ProductOrderListType type = (ProductOrderListType)[[NSString stringWithFormat:@"%@",model.segueParam[@"type"]] integerValue];
+            toController = [[ProductOrderListViewController alloc] initWithType:type];
         }
             break;
         case SegueDestinationFlashDetail:
@@ -310,7 +244,39 @@
             toController = controller;
         }
             break;
-        default:
+        case SegueDestinationProductTicketDetail:
+        {
+            NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
+            NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
+            channelId = [channelId isNotNull]?channelId:@"0";
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+            controller.type = ProductDetailTypeTicket;
+            toController = controller;
+        }
+            break;
+        case SegueDestinationProductFreeDetail:
+        {
+            NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
+            NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
+            channelId = [channelId isNotNull]?channelId:@"0";
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+            controller.type = ProductDetailTypeFree;
+            toController = controller;
+        }
+            break;
+        case SegueDestinationOrderTicketDetail:
+        {
+            ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+            controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+            toController = controller;
+        }
+            break;
+        case SegueDestinationOrderFreeDetail:
+        {
+            ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+            controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+            toController = controller;
+        }
             break;
     }
     if (toController && fromVC.navigationController) [fromVC.navigationController pushViewController:toController animated:YES];

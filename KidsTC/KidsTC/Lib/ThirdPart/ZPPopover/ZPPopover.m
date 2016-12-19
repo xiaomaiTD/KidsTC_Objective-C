@@ -9,15 +9,16 @@
 #import "ZPPopover.h"
 #import "ZPPopoverCell.h"
 #import "AppDelegate.h"
+#import "Colours.h"
 
 static NSString *identifier = @"ZPPopoverCellReuseIdentifier";
-#define ViewBackgroundColor [UIColor colorWithWhite:0 alpha:0.1]//整个大视图的背景色
-#define MenuBackgroundColor [UIColor colorWithWhite:0 alpha:0.8] //视图的背景色
+#define ViewBackgroundColor [UIColor clearColor] //整个大视图的背景色
+#define MenuBackgroundColor [[UIColor colorFromHexString:@"3D3D3D"] colorWithAlphaComponent:0.94] //视图的背景色
 
 CGFloat const PopoverItemHight = 44; //每一行的高度
-CGFloat const PopoverItemWidth = 100; //每一行的宽度,也就是tableView的宽度
-CGFloat const PopoverTipHight = 10; //小三角的高度
-CGFloat const PopoverTipWidth = 14; //小三角的宽度
+CGFloat const PopoverItemWidth = 156; //每一行的宽度,也就是tableView的宽度
+CGFloat const PopoverTipHight = 8; //小三角的高度
+CGFloat const PopoverTipWidth = 15; //小三角的宽度
 CGFloat const PopoverEdgeInset = 8; //tableView的左右下最少间距
 CGFloat const PopoverCornerRadius = 8; //tableView的圆角半径
 

@@ -26,6 +26,7 @@
         if ([data objectForKey:@"rId"]) {
             self.relationIdentifier = [NSString stringWithFormat:@"%@", [data objectForKey:@"rId"]];
         }
+        self.productRedirect = [data[@"productRedirect"] integerValue];
         self.relationType = (CommentRelationType)[[data objectForKey:@"type"] integerValue];
         self.linkType = [data[@"linkType"] integerValue];
         self.params = data[@"params"];

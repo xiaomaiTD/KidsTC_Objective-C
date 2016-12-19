@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Single.h"
 #import "ServiceSettlementModel.h"
 #import "PayModel.h"
 
 @interface ServiceSettlementDataManager : NSObject
-singleH(ServiceSettlementDataManager)
+
 @property (nonatomic, assign) ProductDetailType type;
 - (void)loadDataWithParam:(NSDictionary *)param
              successBlock:(void(^)(ServiceSettlementModel *model))successBlock

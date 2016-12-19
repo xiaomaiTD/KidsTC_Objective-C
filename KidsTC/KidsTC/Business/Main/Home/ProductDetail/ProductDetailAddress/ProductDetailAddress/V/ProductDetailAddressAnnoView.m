@@ -16,17 +16,14 @@
 
 @implementation ProductDetailAddressAnnoView
 
-- (void)setStore:(ProductDetailStore *)store {
-    _store = store;
-    self.label.text = store.location.moreDescription;
-    
-    
+- (void)setPlace:(ProductDetailAddressSelStoreModel *)place {
+    _place = place;
+    self.label.text = _place.location.moreDescription;
 }
-
 
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(productDetailAddressAnnoView:actionType:value:)]) {
-        [self.delegate productDetailAddressAnnoView:self actionType:ProductDetailAddressAnnoViewActionTypeGoto value:self.store];
+        [self.delegate productDetailAddressAnnoView:self actionType:ProductDetailAddressAnnoViewActionTypeGoto value:_place];
     }
 }
 @end

@@ -12,6 +12,7 @@
 
 typedef enum : NSUInteger {
     CollectionStoreHeaderActionTypeSegue = 1,
+    CollectionStoreHeaderActionTypeDelete
 } CollectionStoreHeaderActionType;
 
 @class CollectionStoreHeader;
@@ -21,6 +22,8 @@ typedef enum : NSUInteger {
 @end
 
 @interface CollectionStoreHeader : UITableViewHeaderFooterView
+@property (nonatomic, assign) NSInteger section;
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic, strong) CollectionStoreItem *item;
 @property (nonatomic, weak) id<CollectionStoreHeaderDelegate> delegate;
 @end

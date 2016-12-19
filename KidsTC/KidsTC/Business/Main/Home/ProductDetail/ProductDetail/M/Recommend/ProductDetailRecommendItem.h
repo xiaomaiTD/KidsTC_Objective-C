@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *distance;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *process;
+@property (nonatomic, assign) ProductDetailType productRedirect;
 //selfDefine
 @property (nonatomic, strong) NSString *priceStr;
 @property (nonatomic, strong) NSString *locationStr;

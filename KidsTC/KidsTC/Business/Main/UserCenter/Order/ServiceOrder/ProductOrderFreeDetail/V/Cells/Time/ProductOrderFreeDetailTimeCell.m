@@ -28,10 +28,6 @@
     self.titleL.text = time.desc;
 }
 
-- (void)setLotteryData:(ProductOrderFreeDetailLotteryData *)lotteryData {
-    [super setLotteryData:lotteryData];
-}
-
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailInfoBaseCell:actionType:value:)]) {
         [self.delegate productOrderFreeDetailInfoBaseCell:self actionType:ProductOrderFreeDetailInfoBaseCellActionTypeDate value:self.infoData];

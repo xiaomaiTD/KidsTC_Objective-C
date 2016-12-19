@@ -47,7 +47,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYo-bf-sTp">
-                        <rect key="frame" x="0.0" y="47" width="320" height="0.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="1aC-Tz-lLK"/>
@@ -56,14 +56,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="heZ-66-ehW" firstAttribute="leading" secondItem="LX4-cu-6rx" secondAttribute="leading" constant="15" id="1r0-Om-WC0"/>
+                    <constraint firstItem="RYo-bf-sTp" firstAttribute="top" secondItem="LX4-cu-6rx" secondAttribute="top" id="4jX-DE-qKv"/>
                     <constraint firstItem="Y6K-e5-YB6" firstAttribute="centerY" secondItem="LX4-cu-6rx" secondAttribute="centerY" id="IYY-Hr-0gU"/>
+                    <constraint firstAttribute="bottom" secondItem="heZ-66-ehW" secondAttribute="bottom" constant="16" id="Wce-vm-nuO"/>
                     <constraint firstItem="heZ-66-ehW" firstAttribute="top" secondItem="LX4-cu-6rx" secondAttribute="top" constant="16" id="YEF-r2-OcO"/>
                     <constraint firstItem="Y6K-e5-YB6" firstAttribute="leading" secondItem="heZ-66-ehW" secondAttribute="trailing" constant="16" id="ejv-nn-k48"/>
                     <constraint firstAttribute="trailing" secondItem="fyT-DR-CcS" secondAttribute="trailing" constant="15" id="hEi-5O-M9A"/>
                     <constraint firstItem="fyT-DR-CcS" firstAttribute="centerY" secondItem="LX4-cu-6rx" secondAttribute="centerY" id="ij0-kS-rh0"/>
                     <constraint firstItem="6SF-0j-Q3t" firstAttribute="width" relation="lessThanOrEqual" secondItem="LX4-cu-6rx" secondAttribute="width" multiplier="0.5" id="mDy-Kx-QOF"/>
-                    <constraint firstItem="RYo-bf-sTp" firstAttribute="top" secondItem="heZ-66-ehW" secondAttribute="bottom" constant="16" id="tgE-tw-3IA"/>
-                    <constraint firstAttribute="bottom" secondItem="RYo-bf-sTp" secondAttribute="bottom" id="tlR-HR-PIx"/>
                     <constraint firstItem="fyT-DR-CcS" firstAttribute="leading" secondItem="6SF-0j-Q3t" secondAttribute="trailing" constant="8" id="urS-Tu-IBE"/>
                     <constraint firstItem="RYo-bf-sTp" firstAttribute="leading" secondItem="LX4-cu-6rx" secondAttribute="leading" id="uzY-dy-8Sv"/>
                     <constraint firstItem="6SF-0j-Q3t" firstAttribute="leading" secondItem="Y6K-e5-YB6" secondAttribute="trailing" id="xaF-T1-qZx"/>
@@ -72,6 +72,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="HLineH" destination="1aC-Tz-lLK" id="bSH-Z2-Tcj"/>
                 <outlet property="addressL" destination="6SF-0j-Q3t" id="aeJ-Ni-Ms6"/>
                 <outlet property="nameL" destination="Y6K-e5-YB6" id="i1m-Hd-NYu"/>
             </connections>

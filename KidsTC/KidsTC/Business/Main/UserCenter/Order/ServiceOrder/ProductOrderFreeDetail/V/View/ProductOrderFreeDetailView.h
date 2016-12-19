@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductOrderFreeDetailLotteryData.h"
 #import "ProductOrderFreeDetailData.h"
+#import "ProductOrderFreeDetailLotteryItem.h"
 
 typedef enum : NSUInteger {
     ProductOrderFreeDetailViewActionTypePay = 1,/// 付款
@@ -42,7 +42,7 @@ typedef enum : NSUInteger {
 
 @interface ProductOrderFreeDetailView : UIView
 @property (nonatomic, weak) id<ProductOrderFreeDetailViewDelegate> delegate;
-@property (nonatomic, strong) ProductOrderFreeDetailLotteryData *lotteryData;
+@property (nonatomic, strong) NSArray<ProductOrderFreeDetailLotteryItem* > *lotteryData;
 @property (nonatomic, strong) ProductOrderFreeDetailData *infoData;
 - (void)reloadInfoData;
 - (void)reloadLotteryData:(NSInteger)count;

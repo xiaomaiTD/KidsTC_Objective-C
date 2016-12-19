@@ -6,6 +6,10 @@
 //  Copyright © 2016年 詹平. All rights reserved.
 //
 
+#import "UIImageView+Category.h"
+#import "UIImage+Category.h"
+#import "Colours.h"
+
 #define URL_APP_STORE_UPDATE ([NSString stringWithFormat: @"http://itunes.apple.com/cn/app/id%@", kAppIDInAppStore])
 
 #pragma mark - 获取屏幕宽度与高度
@@ -86,10 +90,10 @@ pathForResource:path ofType:@"" inDirectory:@"SynchronizedData"]
 #define PRODUCT_DETAIL_BLUE [UIColor colorWithRed:0.455 green:0.694 blue:0.910 alpha:1]//蓝色
 
 #pragma mark - 站位图片
-#define PLACEHOLDERIMAGE_SMALL ([UIImage imageWithColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.3]])
-#define PLACEHOLDERIMAGE_BIG ([UIImage imageWithColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.3]])
-#define PLACEHOLDERIMAGE_SMALL_LOG ([UIImage imageNamed:@"placeholder_50_50"])
-#define PLACEHOLDERIMAGE_BIG_LOG ([UIImage imageNamed:@"placeholder_100_100"])
+#define PLACEHOLDERIMAGE_SMALL ([UIImage imageWithColor:[UIColor colorFromHexString:@"f4dfdf"]])
+#define PLACEHOLDERIMAGE_BIG ([UIImage imageWithColor:[UIColor colorFromHexString:@"f4dfdf"]])
+#define PLACEHOLDERIMAGE_SMALL_LOG ([UIImage imageWithColor:[UIColor colorFromHexString:@"f4dfdf"]])
+#define PLACEHOLDERIMAGE_BIG_LOG ([UIImage imageWithColor:[UIColor colorFromHexString:@"f4dfdf"]])
 
 #pragma mark - 桌面同步路径
 #define DESKTOP_SYNCHRONIZEDDATA(path) [NSString stringWithFormat:@"/Users/zhanping/Desktop/SynchronizedData/%@",path]

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="1zS-GL-okb" customClass="ProductDetailFreeApplySelectPlaceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zS-GL-okb" id="atQ-yV-qxX">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf0-bn-lPP">
+                        <rect key="frame" x="15" y="16" width="290" height="62"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="上海当途教育科技有限公司" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GO6-gi-2Ah">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国内首款AR拼音识字产品" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tde-SZ-npZ">
+                                <rect key="frame" x="0.0" y="29" width="250" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="7.9KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b71-qT-Sv4">
+                                <rect key="frame" x="258" y="29" width="32" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.4941176471" green="0.73725490199999999" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tde-SZ-npZ" firstAttribute="leading" secondItem="bf0-bn-lPP" secondAttribute="leading" id="1VO-Wb-LLE"/>
+                            <constraint firstAttribute="trailing" secondItem="b71-qT-Sv4" secondAttribute="trailing" id="OIa-uv-vJ0"/>
+                            <constraint firstAttribute="bottom" secondItem="tde-SZ-npZ" secondAttribute="bottom" id="Psh-HX-n5Z"/>
+                            <constraint firstItem="b71-qT-Sv4" firstAttribute="leading" secondItem="tde-SZ-npZ" secondAttribute="trailing" constant="8" id="Rl8-7i-cIQ"/>
+                            <constraint firstAttribute="trailing" secondItem="GO6-gi-2Ah" secondAttribute="trailing" id="UTb-Wu-tAp"/>
+                            <constraint firstItem="b71-qT-Sv4" firstAttribute="top" secondItem="tde-SZ-npZ" secondAttribute="top" id="Uek-5r-VCV"/>
+                            <constraint firstItem="GO6-gi-2Ah" firstAttribute="leading" secondItem="bf0-bn-lPP" secondAttribute="leading" id="c08-tR-25E"/>
+                            <constraint firstItem="tde-SZ-npZ" firstAttribute="top" secondItem="GO6-gi-2Ah" secondAttribute="bottom" constant="12" id="i9T-mP-Zjq"/>
+                            <constraint firstItem="GO6-gi-2Ah" firstAttribute="top" secondItem="bf0-bn-lPP" secondAttribute="top" id="rM5-gz-Awv"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDY-8Y-43c">
+                        <rect key="frame" x="0.0" y="93.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="xf9-wq-Onk"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xDY-8Y-43c" secondAttribute="bottom" id="Blg-Tm-dWu"/>
+                    <constraint firstAttribute="bottom" secondItem="bf0-bn-lPP" secondAttribute="bottom" constant="16" id="G8m-sS-Jpr"/>
+                    <constraint firstItem="xDY-8Y-43c" firstAttribute="leading" secondItem="atQ-yV-qxX" secondAttribute="leading" id="MjA-4o-kDU"/>
+                    <constraint firstAttribute="trailing" secondItem="xDY-8Y-43c" secondAttribute="trailing" id="VIi-tn-Mlo"/>
+                    <constraint firstItem="bf0-bn-lPP" firstAttribute="leading" secondItem="atQ-yV-qxX" secondAttribute="leading" constant="15" id="XcA-se-azO"/>
+                    <constraint firstItem="bf0-bn-lPP" firstAttribute="top" secondItem="atQ-yV-qxX" secondAttribute="top" constant="16" id="bPJ-nw-OvT"/>
+                    <constraint firstAttribute="trailing" secondItem="bf0-bn-lPP" secondAttribute="trailing" constant="15" id="nOC-ap-vKG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="xf9-wq-Onk" id="WG4-9d-NqT"/>
+                <outlet property="distanceL" destination="b71-qT-Sv4" id="tjY-El-JBc"/>
+                <outlet property="locationL" destination="tde-SZ-npZ" id="3Fo-ji-hVa"/>
+                <outlet property="nameL" destination="GO6-gi-2Ah" id="aB8-7J-yeC"/>
+            </connections>
+            <point key="canvasLocation" x="24" y="21"/>
+        </tableViewCell>
+    </objects>
+</document>

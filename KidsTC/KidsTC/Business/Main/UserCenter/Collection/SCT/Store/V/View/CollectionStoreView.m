@@ -50,9 +50,11 @@ static NSString *const FootID = @"CollectionStoreFooter";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CollectionStoreHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
+    header.section = section;
     if (section<self.items.count) {
         header.item = self.items[section];
     }
+    header.deleteBtn.hidden = !self.editing;
     header.delegate = self;
     return header;
 }
@@ -75,8 +77,8 @@ static NSString *const FootID = @"CollectionStoreFooter";
     if (section<self.items.count) {
         footer.item = self.items[section];
         footer.actionBlock = ^(CollectionStoreItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel completion:nil];
             }
         };
     }
@@ -92,8 +94,8 @@ static NSString *const FootID = @"CollectionStoreFooter";
         NSArray<CollectionStoreProduct *> *productLst = item.productLst;
         if (row<productLst.count) {
             CollectionStoreProduct *product = productLst[row];
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:product.segueModel];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:product.segueModel completion:nil];
             }
         }
     }
@@ -105,12 +107,26 @@ static NSString *const FootID = @"CollectionStoreFooter";
     switch (type) {
         case CollectionStoreHeaderActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value];
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
             }
         }
             break;
-            
+        case CollectionStoreHeaderActionTypeDelete:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeDelete value:value completion:^(id value) {
+                    BOOL success = [value boolValue];
+                    if (!success) return;
+                    NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
+                    if (header.section>=itemsAry.count) return;
+                    [itemsAry removeObjectAtIndex:header.section];
+                    self.items = [NSArray arrayWithArray:itemsAry];
+                    [self.tableView reloadData];
+                }];
+            }
+        }
+            break;
         default:
             break;
     }

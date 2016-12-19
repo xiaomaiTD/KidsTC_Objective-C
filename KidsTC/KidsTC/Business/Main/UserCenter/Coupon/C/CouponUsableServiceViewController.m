@@ -115,8 +115,8 @@ static NSString *const kCellIdentifier = @"ServiceListViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ServiceListItemModel *item = [self.listModels objectAtIndex:indexPath.row];
-
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.identifier channelId:item.channelId];
+    controller.type = item.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

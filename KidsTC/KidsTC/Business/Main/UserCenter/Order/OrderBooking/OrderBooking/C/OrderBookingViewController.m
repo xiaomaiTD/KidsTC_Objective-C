@@ -225,7 +225,8 @@
 }
 
 - (void)serviceInfo {
-    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.data.productInfo.productId channelId:@""];
+    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:self.data.productInfo.productId channelId:@"0"];
+    controller.type = self.data.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

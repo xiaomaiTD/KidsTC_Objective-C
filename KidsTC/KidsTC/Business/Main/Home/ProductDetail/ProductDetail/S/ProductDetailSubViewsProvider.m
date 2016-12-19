@@ -12,7 +12,9 @@
 #import "ProductDetailViewTicketHeader.h"
 
 #import "ProductDetailBannerCell.h"
+#import "ProductDetailSecondKillCell.h"
 #import "ProductDetailInfoCell.h"
+#import "ProductDetailPriceCell.h"
 #import "ProductDetailDateCell.h"
 #import "ProductDetailAddressCell.h"
 #import "ProductDetailTitleCell.h"
@@ -51,7 +53,9 @@
 @property (nonatomic, strong) ProductDetailViewBaseHeader *header;
 
 @property (nonatomic, strong) ProductDetailBannerCell *bannerCell;
+@property (nonatomic, strong) ProductDetailSecondKillCell *secondKillCell;
 @property (nonatomic, strong) ProductDetailInfoCell *infoCell;
+@property (nonatomic, strong) ProductDetailPriceCell *priceCell;
 @property (nonatomic, strong) ProductDetailDateCell *dateCell;
 @property (nonatomic, strong) ProductDetailAddressCell *addressCell;
 @property (nonatomic, strong) ProductDetailJoinCell *joinCell;
@@ -82,7 +86,6 @@
 @end
 
 @implementation ProductDetailSubViewsProvider
-singleM(ProductDetailSubViewsProvider)
 
 #pragma mark - cells
 
@@ -94,12 +97,28 @@ singleM(ProductDetailSubViewsProvider)
     return _bannerCell;
 }
 
+- (ProductDetailSecondKillCell *)secondKillCell {
+    if (!_secondKillCell)
+    {
+        _secondKillCell = [self viewWithNib:@"ProductDetailSecondKillCell"];
+    }
+    return _secondKillCell;
+}
+
 - (ProductDetailInfoCell *)infoCell {
     if (!_infoCell)
     {
         _infoCell = [self viewWithNib:@"ProductDetailInfoCell"];
     }
     return _infoCell;
+}
+
+- (ProductDetailPriceCell *)priceCell {
+    if (!_priceCell)
+    {
+        _priceCell = [self viewWithNib:@"ProductDetailPriceCell"];
+    }
+    return _priceCell;
 }
 
 - (ProductDetailDateCell *)dateCell {
@@ -350,11 +369,17 @@ singleM(ProductDetailSubViewsProvider)
     if (_data.narrowImg.count>0) {
         [section00 addObject:self.bannerCell];
     }
+    if (_data.priceSort == PriceSortSecKill) {
+        [section00 addObject:self.secondKillCell];
+    }
     [section00 addObject:self.infoCell];
+    if (_data.priceSort != PriceSortSecKill) {
+        [section00 addObject:self.priceCell];
+    }
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section00 addObject:self.dateCell];
     }
-    if (_data.store.count>0) {
+    if (_data.store.count>0 && (_data.placeType != PlaceTypeNone)) {
         [section00 addObject:self.addressCell];
     }
     if (section00.count>0) [sections addObject:section00];
@@ -502,9 +527,12 @@ singleM(ProductDetailSubViewsProvider)
     //info
     NSMutableArray *section00 = [NSMutableArray array];
     [section00 addObject:self.ticketInfoCell];
+    if (_data.priceSort == PriceSortSecKill) {
+        [section00 addObject:self.secondKillCell];
+    }
     if (_data.attSynopsis.length>0) {
         [section00 addObject:self.ticketDesCell];
-        [section00 addObject:self.ticketDesBtnCell];
+        //[section00 addObject:self.ticketDesBtnCell];
     }
     if (section00.count>0) [sections addObject:section00];
     
@@ -513,7 +541,9 @@ singleM(ProductDetailSubViewsProvider)
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section01 addObject:self.dateCell];
     }
-    if (_data.store.count>0) {
+    
+    ProductDetailTheater *theater = _data.theater;
+    if ([theater.theaterName isNotNull] && [theater.address isNotNull]) {
         [section01 addObject:self.addressCell];
     }
     [section01 addObject:self.ticketPromiseCell];
@@ -692,7 +722,7 @@ singleM(ProductDetailSubViewsProvider)
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section02 addObject:self.dateCell];
     }
-    if (_data.store.count>0) {
+    if (_data.place.count>0 && (_data.placeType != PlaceTypeNone)) {
         [section02 addObject:self.addressCell];
     }
     if (section02.count>0) [sections addObject:section02];
@@ -878,7 +908,9 @@ singleM(ProductDetailSubViewsProvider)
 - (void)nilCells {
     
     _bannerCell = nil;
+    _secondKillCell = nil;
     _infoCell = nil;
+    _priceCell = nil;
     _dateCell = nil;
     _addressCell = nil;
     _joinCell = nil;

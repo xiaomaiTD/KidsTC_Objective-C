@@ -8,6 +8,8 @@
 
 #import "ServiceSettlementBaseCell.h"
 
+NSString *const KServiceSettlementUserRemark = @"ServiceSettlementUserRemark";
+
 @implementation ServiceSettlementBaseCell
 
 - (void)awakeFromNib {

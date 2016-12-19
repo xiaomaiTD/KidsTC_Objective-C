@@ -25,6 +25,7 @@
 #import "ProductOrderNormalDetailStoreCell.h"
 #import "ProductOrderNormalDetailProductCell.h"
 #import "ProductOrderNormalDetailContactCell.h"
+#import "ProductOrderNormalDetailUserRemarkCell.h"
 #import "ProductOrderNormalDetailPayInfoTitleCell.h"
 #import "ProductOrderNormalDetailPayInfoEmptyCell.h"
 #import "ProductOrderNormalDetailPayInfoCell.h"
@@ -46,6 +47,7 @@ static NSString *const BookingCellID = @"ProductOrderNormalDetailBookingCell";
 static NSString *const StoreCellID = @"ProductOrderNormalDetailStoreCell";
 static NSString *const ProductCellID = @"ProductOrderNormalDetailProductCell";
 static NSString *const ContactCellID = @"ProductOrderNormalDetailContactCell";
+static NSString *const UserRemarkCellID = @"ProductOrderNormalDetailUserRemarkCell";
 static NSString *const PayInfoTitleCellID = @"ProductOrderNormalDetailPayInfoTitleCell";
 static NSString *const PayInfoEmptyCellID = @"ProductOrderNormalDetailPayInfoEmptyCell";
 static NSString *const PayInfoCellID = @"ProductOrderNormalDetailPayInfoCell";
@@ -123,6 +125,7 @@ static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailStoreCell"] forCellReuseIdentifier:StoreCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailProductCell"] forCellReuseIdentifier:ProductCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailContactCell"] forCellReuseIdentifier:ContactCellID];
+    [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailUserRemarkCell"] forCellReuseIdentifier:UserRemarkCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailPayInfoTitleCell"] forCellReuseIdentifier:PayInfoTitleCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailPayInfoEmptyCell"] forCellReuseIdentifier:PayInfoEmptyCellID];
     [self.tableView registerNib:[self nibWithName:@"ProductOrderNormalDetailPayInfoCell"] forCellReuseIdentifier:PayInfoCellID];
@@ -157,7 +160,7 @@ static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
     if (section02.count>0) [sections addObject:section02];
     
     NSMutableArray *section03 = [NSMutableArray array];
-    if (self.data.storeInfo) {
+    if (self.data.storeInfo && (self.data.placeType != PlaceTypeNone)) {
         ProductOrderNormalDetailStoreCell *storeCell = [self cellWithID:StoreCellID];
         if (storeCell) [section03 addObject:storeCell];
     }
@@ -180,6 +183,13 @@ static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
         if (bookingCell) [sectionForBooking addObject:bookingCell];
     }
     if (sectionForBooking.count>0) [sections addObject:sectionForBooking];
+    
+    NSMutableArray *sectionForUserRemark = [NSMutableArray array];
+    if (self.data.userRemarkStr.length>0) {
+        ProductOrderNormalDetailUserRemarkCell *userRemarkCell = [self cellWithID:UserRemarkCellID];
+        if (userRemarkCell) [sectionForUserRemark addObject:userRemarkCell];
+    }
+    if (sectionForUserRemark.count>0) [sections addObject:sectionForUserRemark];
     
     NSMutableArray *section04 = [NSMutableArray array];
     ProductOrderNormalDetailPayInfoTitleCell *payInfoTitleCell = [self cellWithID:PayInfoTitleCellID];

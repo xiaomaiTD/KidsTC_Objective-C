@@ -56,7 +56,7 @@
     self.icon.hidden = ![_item.supplierIconImg isNotNull];
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.supplierIconImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
     self.nameL.text = _item.name;
-    self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.price];
+    self.priceL.text = [NSString stringWithFormat:@"%@",_item.price];
     self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.address,_item.distanceDesc];
     self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
     

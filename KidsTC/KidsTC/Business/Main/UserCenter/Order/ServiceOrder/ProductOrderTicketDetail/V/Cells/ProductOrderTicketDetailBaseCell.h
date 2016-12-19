@@ -13,7 +13,9 @@ typedef enum : NSUInteger {
     
     ProductOrderTicketDetailBaseCellActionTypeSegue = 50,//通用跳转
     ProductOrderTicketDetailBaseCellActionTypeDeliberCall,//订单电话
+    ProductOrderTicketDetailBaseCellActionTypeAddress,//地址
     ProductOrderTicketDetailBaseCellActionTypeContact,//联系商家
+    
 } ProductOrderTicketDetailBaseCellActionType;
 
 @class ProductOrderTicketDetailBaseCell;

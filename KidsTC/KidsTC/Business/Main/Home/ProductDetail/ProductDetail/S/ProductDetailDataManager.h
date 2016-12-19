@@ -12,7 +12,7 @@
 #import "ProductDetailConsultModel.h"
 
 @interface ProductDetailDataManager : NSObject
-singleH(ProductDetailDataManager)
+
 @property (nonatomic, assign) ProductDetailType type;
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;

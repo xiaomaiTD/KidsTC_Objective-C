@@ -44,6 +44,9 @@
 
 @property (nonatomic, strong) NSDictionary *params;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
+
 - (CGFloat)cellHeight;
 
 - (instancetype)initWithRawData:(NSDictionary *)data;

@@ -21,5 +21,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface ServiceSettlementBuyNumTfInputView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
 @property (nonatomic, weak) id<ServiceSettlementBuyNumTfInputViewDelegate> delegate;
 @end

@@ -237,7 +237,7 @@ singleM(ThemeManager)
                                                       image_Sel_name:@"tabbar_discovery_h"];
     
     TabBarItemElement *element3 = [TabBarItemElement elementWithType:TabBarItemElementTypeStrategy
-                                                               title:@"亲子攻略"
+                                                               title:@"附近"
                                                       image_Nor_name:@"tabbar_parantingStrategy_n"
                                                       image_Sel_name:@"tabbar_parantingStrategy_h"];
     

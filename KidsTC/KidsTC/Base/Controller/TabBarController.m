@@ -61,7 +61,7 @@ singleM(TabBarController)
     _fpsLabel.bottom = SCREEN_HEIGHT - (YYFPSLabelInset+49);
     _fpsLabel.left = YYFPSLabelInset;
     _fpsLabel.alpha = 1;
-    [self.view addSubview:_fpsLabel];
+    //[self.view addSubview:_fpsLabel];
 #endif
 }
 

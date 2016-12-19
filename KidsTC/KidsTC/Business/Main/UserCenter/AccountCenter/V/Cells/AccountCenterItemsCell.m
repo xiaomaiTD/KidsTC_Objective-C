@@ -100,12 +100,20 @@
     self.shareTipL.backgroundColor = COLOR_PINK;
     self.radishTipL.layer.cornerRadius = CGRectGetHeight(self.radishTipL.frame) * 0.5;
     self.radishTipL.layer.masksToBounds = YES;
+    self.radishTipL.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.radishTipL.layer.borderWidth = 1;
     self.flashTipL.layer.cornerRadius = CGRectGetHeight(self.flashTipL.frame) * 0.5;
     self.flashTipL.layer.masksToBounds = YES;
+    self.flashTipL.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.flashTipL.layer.borderWidth = 1;
     self.appoinmentTipL.layer.cornerRadius = CGRectGetHeight(self.appoinmentTipL.frame) * 0.5;
     self.appoinmentTipL.layer.masksToBounds = YES;
+    self.appoinmentTipL.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.appoinmentTipL.layer.borderWidth = 1;
     self.shareTipL.layer.cornerRadius = CGRectGetHeight(self.shareTipL.frame) * 0.5;
     self.shareTipL.layer.masksToBounds = YES;
+    self.shareTipL.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.shareTipL.layer.borderWidth = 1;
     
     [self layoutIfNeeded];
 }

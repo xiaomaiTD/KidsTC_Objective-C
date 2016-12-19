@@ -80,7 +80,7 @@ static int const pageSize = 10;
 - (void)loadData:(BOOL)refresh {
     _page = refresh?1:++_page;
     NSDictionary *param = @{@"relationNo":self.productId,
-                            @"advisoryType":@(_type+1),
+                            @"advisoryType":@(_type),
                             @"pageIndex":@(_page),
                             @"pageSize":@(pageSize)};
     [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {

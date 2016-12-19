@@ -36,7 +36,7 @@
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    
+    self.freeL.text = data.freeTypeDesc;
     self.contentL.attributedText = data.attServeName;
     self.collectionNumL.text = [NSString stringWithFormat:@"%zd人关注",data.favorCount];
     self.countL.text = [NSString stringWithFormat:@"%zd",data.remainCount];

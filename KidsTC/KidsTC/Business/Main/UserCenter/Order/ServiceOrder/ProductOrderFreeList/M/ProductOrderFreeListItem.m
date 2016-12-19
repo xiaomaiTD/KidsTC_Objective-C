@@ -20,9 +20,8 @@
     [self setupBtns];
     
     if ([_orderNo isNotNull]) {
-        NSDictionary *param = @{@"kind":@(OrderKindFree),
-                                @"sid":_orderNo};
-        _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderDetail paramRawData:param];
+        NSDictionary *param = @{@"sid":_orderNo};
+        _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderFreeDetail paramRawData:param];
     }
     return YES;
 }
@@ -43,7 +42,7 @@
 }
 
 - (void)setupMoblies {
-    NSString *phonesString =  _storeInfo.phone;
+    NSString *phonesString =  _supplierMobie;
     if ([phonesString isNotNull]) {
         NSMutableArray *phonesAry = [NSMutableArray new];
         if ([phonesString containsString:@";"]) {

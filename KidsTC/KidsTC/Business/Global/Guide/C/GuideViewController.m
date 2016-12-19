@@ -20,6 +20,7 @@ static NSString *const GuideViewCellID = @"GuideViewCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.naviTheme = NaviThemeWihte;
     [self initui];
 }
 

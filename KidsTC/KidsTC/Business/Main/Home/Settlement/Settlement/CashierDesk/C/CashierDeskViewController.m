@@ -83,7 +83,7 @@
     self.contentView.hidden = NO;
     CashierDeskOrder *order = model.data.order;
     self.orderIdLabel.text = order.orderNo;
-    self.orderPriceLabel.text = [NSString stringWithFormat:@"¥%0.1f",order.payMoney];
+    self.orderPriceLabel.text = order.payMoney;
     
     CashierDeskPayChannel *payChannel = model.data.payChannel;
     self.aliBtn.enabled = payChannel.ali>0;

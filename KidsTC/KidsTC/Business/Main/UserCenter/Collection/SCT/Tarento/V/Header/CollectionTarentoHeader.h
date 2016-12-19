@@ -10,6 +10,8 @@
 #import "CollectionTarentoItem.h"
 
 @interface CollectionTarentoHeader : UITableViewHeaderFooterView
+@property (weak, nonatomic) IBOutlet UIButton *deleteBtn;
 @property (nonatomic, strong) CollectionTarentoItem *item;
 @property (nonatomic, copy) void(^actionBlock)(CollectionTarentoItem *item);
+@property (nonatomic, copy) void(^deleteBlock)(CollectionTarentoItem *item);
 @end

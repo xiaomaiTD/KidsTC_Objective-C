@@ -11,6 +11,8 @@
 #import "UIBarButtonItem+Category.h"
 #import "TCProgressHUD.h"
 #import "iToast.h"
+#import "Colours.h"
+
 #import "RouteAnnotation.h"
 #import "ProductDetailAddressAnnoView.h"
 #import "ProductDetailAddressTitleView.h"
@@ -29,6 +31,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (_places.count<1) {
+        [[iToast makeText:@"暂无地址信息"] show];
+        [self back];
+        return;
+    }
+    
+    switch (_placeType) {
+        case PlaceTypeNone:
+        {
+            [[iToast makeText:@"暂不支持的类型"] show];
+            [self back];
+            return;
+        }
+            break;
+        default:
+            break;
+    }
     
     self.naviTheme = NaviThemeWihte;
     
@@ -66,16 +86,14 @@
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex {
     _currentIndex = currentIndex;
-    if (self.store.count>_currentIndex) {
+    if (self.places.count>_currentIndex) {
         [KTCMapUtil cleanMap:self.mapView];
         [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
         
-        ProductDetailStore *storeItem = self.store[_currentIndex];
-        [self setDestinationAnnotationCoordinate:storeItem.location.location.coordinate];
-        CLLocation *location = storeItem.location.location;
-        if (location) {
-            [KTCMapUtil resetMapView:self.mapView toFitLocations:@[location]];
-        }
+        ProductDetailAddressSelStoreModel *place = self.places[_currentIndex];
+        [self setDestinationAnnotationCoordinate:place.location.location.coordinate];
+        CLLocation *location = place.location.location;
+        if (location) [KTCMapUtil resetMapView:self.mapView toFitLocations:@[location]];
     }
 }
 
@@ -131,8 +149,8 @@
     //指南针必须在加载完成后设置
     [self.mapView setCompassPosition:CGPointMake(SCREEN_WIDTH - 50, 70)];
     [self setStartAnnotationCoordinate:[KTCMapService shareKTCMapService].currentLocation.location.coordinate];
-    if (self.store.count>_currentIndex) {
-        ProductDetailStore *storeItem = self.store[_currentIndex];
+    if (self.places.count>_currentIndex) {
+        ProductDetailAddressSelStoreModel *storeItem = self.places[_currentIndex];
         [self setDestinationAnnotationCoordinate:storeItem.location.location.coordinate];
         CLLocation *location = storeItem.location.location;
         if (location) {
@@ -154,16 +172,16 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
     if (annotation == self.startAnnotation) {
         annotationView.image = [KTCMapUtil startAnnotationImage];
     }else if (annotation == self.destinationAnnotation){
-        if (self.store.count>_currentIndex) {
-            ProductDetailStore *store = self.store[_currentIndex];
+        if (self.places.count>_currentIndex) {
+            ProductDetailAddressSelStoreModel *place = self.places[_currentIndex];
             ProductDetailAddressAnnoView *tipView = [[[NSBundle mainBundle] loadNibNamed:@"ProductDetailAddressAnnoView" owner:self options:nil] firstObject];
-            CGSize size = [store.location.moreDescription sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+            CGSize size = [place.location.moreDescription sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
             CGFloat min_w = 177;
             CGFloat self_w = size.width + 77;
             self_w = self_w<min_w?min_w:self_w;
             tipView.frame = CGRectMake(0, 0, self_w, 44);
             tipView.delegate = self;
-            tipView.store = store;
+            tipView.place = place;
             annotationView.paopaoView = [[BMKActionPaopaoView alloc]initWithCustomView:tipView];
             //设置是否可以拖拽
             annotationView.draggable = NO;
@@ -181,9 +199,9 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 - (BMKOverlayView*)mapView:(BMKMapView *)mapView viewForOverlay:(id<BMKOverlay>)overlay {
     if ([overlay isKindOfClass:[BMKPolyline class]]) {
         BMKPolylineView* polylineView = [[BMKPolylineView alloc] initWithOverlay:overlay];
-        polylineView.fillColor = COLOR_BLUE;
-        polylineView.strokeColor = COLOR_BLUE;
-        polylineView.lineWidth = 3.0;
+        polylineView.fillColor = [UIColor colorFromHexString:@"4f83ff"];
+        polylineView.strokeColor = [UIColor colorFromHexString:@"4f83ff"];
+        polylineView.lineWidth = 4.0;
         return polylineView;
     }
     return nil;
@@ -209,14 +227,27 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 #pragma mark - initNaviItems
 
 - (void)initNaviItems {
-    if (_store.count>1) {
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"其他门店" postion:UIBarButtonPositionRight
-                                                                         target:self
-                                                                         action:@selector(rightBarButtonItemAction)
-                                                                   andGetButton:^(UIButton *btn) {
-                                                                       [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                                                                   }];
+    NSString *title = nil;
+    switch (_placeType) {
+        case PlaceTypeStore:
+        {
+            title = @"其他门店";
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            title = @"其他地址";
+        }
+            break;
+        default:
+            break;
     }
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:title postion:UIBarButtonPositionRight
+                                                                     target:self
+                                                                     action:@selector(rightBarButtonItemAction)
+                                                               andGetButton:^(UIButton *btn) {
+                                                                   [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                                                               }];
     
     
     ProductDetailAddressTitleView *titleView = [self viewWithNib:@"ProductDetailAddressTitleView"];
@@ -228,7 +259,8 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
 
 - (void)rightBarButtonItemAction{
     ProductDetailAddressSelStoreViewController *controller = [[ProductDetailAddressSelStoreViewController alloc] init];
-    controller.store = self.store;
+    controller.placeType = self.placeType;
+    controller.places = self.places;
     controller.delegate = self;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.modalPresentationStyle = UIModalPresentationCustom;
@@ -289,7 +321,8 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
         [self drawRouteLineDetailWithSearchResult:result];
     } failure:^(NSError *error) {
         [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"没有找到合适的路线"] show];
+        [[iToast makeText:@"没有找到合适的路线，建议选择步行！"] show];
+        [KTCMapUtil resetMapView:self.mapView toFitStart:self.startAnnotation.coordinate andDestination:self.destinationAnnotation.coordinate];
     }];
 }
 

@@ -30,6 +30,8 @@
         self.name = [data objectForKey:@"serveName"];
         self.starNumber = [[data objectForKey:@"level"] integerValue];
         self.price = [[data objectForKey:@"price"] floatValue];
+        
+        self.productRedirect = [data[@"productRedirect"] integerValue];
     }
     return self;
 }

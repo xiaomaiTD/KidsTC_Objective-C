@@ -20,11 +20,27 @@
     [self setupMoblies];
     
     if ([_orderNo isNotNull]) {
-        NSDictionary *param = @{@"kind":@(_orderKind),
-                                @"sid":_orderNo};
-        _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderDetail paramRawData:param];
+        NSDictionary *param = @{@"sid":_orderNo};
+        switch (_orderKind) {
+            case OrderKindNormal:
+            {
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderDetail paramRawData:param];
+            }
+                break;
+            case OrderKindTicket:
+            {
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderTicketDetail paramRawData:param];
+            }
+                break;
+            case OrderKindFree:
+            {
+                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderFreeDetail paramRawData:param];
+            }
+                break;
+            default:
+                break;
+        }
     }
-    
     return YES;
 }
 

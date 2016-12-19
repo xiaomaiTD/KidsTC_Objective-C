@@ -7,7 +7,7 @@
 //
 
 #import "TCHomeFloor.h"
-
+#import "Colours.h"
 #import "TCHomeCollectionViewBaseLayout.h"
 #import "NSString+Category.h"
 
@@ -671,39 +671,33 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     TCHomeLayoutMargins margins = TCHomeLayoutMarginsMake(0, 0, 0, 0, 0, 0);
     CGFloat item_w = SCREEN_WIDTH - margins.left - margins.right;
     
-    CGFloat margin = 8;
+    CGFloat margin = 15 + 10;
     
-    CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = margin * 2 + 2, img_x = 0;
-    CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
-    
-    CGRect tipImgFrame = CGRectMake(margin, img_y - 3.6, 51, 41);
-    
-    CGFloat price_y = CGRectGetMaxY(imgFrame) + margin * 2 - 2;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent *obj, NSUInteger idx, BOOL *stop) {
         
-        CGSize price_size = [obj.attPrice size];
-        CGFloat price_w = price_size.width;
-        CGFloat price_x = item_w - margin - price_w;
-        CGFloat price_h = price_size.height;
-        CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
+        CGFloat bgView_x = 10;
+        CGFloat bgView_y = 10;
+        CGFloat bgView_w = SCREEN_WIDTH - 20;
         
-        CGSize saleNum_s = [obj.attSaleNum size];
-        CGFloat saleNum_w = saleNum_s.width;
+        CGFloat img_x = 10;
+        CGFloat img_y = 10;
+        CGFloat img_w = SCREEN_WIDTH-20;
+        CGFloat img_h = img_w * _ratio;
+        CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
         
-        CGFloat lift_max_x = item_w - (price_w>=saleNum_w?price_w:saleNum_w) - margin;
+        CGRect tipImgFrame = CGRectMake(margin, img_y - 3.6, 51, 41);
         
-        CGFloat title_y = price_y;
+        CGFloat title_y = CGRectGetMaxY(imgFrame) + 16;
         CGFloat title_x = margin;
-        CGFloat title_w = lift_max_x - title_x;
+        CGFloat title_w = SCREEN_WIDTH - 2*margin;
         CGSize title_size = [obj.attTitle boundingRectWithSize:CGSizeMake(title_w, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
         CGFloat title_h = title_size.height;
         CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
         
         BOOL subImgShow = [obj.subImgName isNotNull];
-        
         CGFloat subImg_x = margin;
-        CGFloat subImg_y = CGRectGetMaxY(titleFrame) + 19;
+        CGFloat subImg_y = CGRectGetMaxY(titleFrame) + 12;
         CGFloat subImg_w = 15;
         CGFloat subImg_h = 15;
         CGRect subImgFrame = CGRectMake(subImg_x, subImg_y, subImg_w, subImg_h);
@@ -711,50 +705,81 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
             subImgFrame = CGRectZero;
         }
         
-        CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + 16;
-        CGFloat subTitle_x = CGRectGetMaxX(subImgFrame) + 4;
-        CGFloat subTitle_w = lift_max_x - subTitle_x;
+        CGFloat subTitle_y = CGRectGetMaxY(titleFrame) + 10;
+        CGFloat subTitle_x = subImgShow?(CGRectGetMaxX(subImgFrame) + 2):margin;
+        CGFloat subTitle_w = SCREEN_WIDTH-2*margin;
         CGFloat subTitle_h = 21;
         CGRect subTtitleFrme = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
         
         CGSize storeAddress_s = [obj.attStoreAddress size];
         CGFloat storeAddress_w = storeAddress_s.width;
+        if (storeAddress_w>subTitle_w*0.5) {
+            storeAddress_w = subTitle_w*0.5;
+        }
         CGFloat storeAddress_x = margin;
-        CGFloat storeAddress_y = CGRectGetMaxY(subTtitleFrme) + 9;
+        CGFloat storeAddress_y = obj.attSubTitle.length>0?(CGRectGetMaxY(subTtitleFrme) + 10):CGRectGetMaxY(titleFrame) + 10;
         CGFloat storeAddress_h = 21;
+        CGRect storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
         
         CGSize status_size = [obj.attStatus size];
         CGFloat status_w = status_size.width;
-        CGFloat status_h = status_size.height;
-        CGFloat status_y = CGRectGetMaxY(subTtitleFrme) + 11;
-        
-        CGFloat status_x;
-        if ((storeAddress_x + storeAddress_w + margin + status_w)>lift_max_x) {
-            status_x = lift_max_x - status_w - margin;
-            storeAddress_w = status_x - subTitle_x - margin;
-        }else{
-            status_x = storeAddress_x + storeAddress_w + margin;
+        if (status_w>subTitle_w*0.5) {
+            status_w = subTitle_w*0.5;
         }
-        
-        CGRect storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
-        
+        CGFloat status_h = storeAddress_h;
+        CGFloat status_x = CGRectGetMaxX(storeAddressFrme) + 4;
+        CGFloat status_y = storeAddress_y;
         CGRect statusFrame = CGRectMake(status_x, status_y, status_w, status_h);
         
+        CGSize saleNum_s = [obj.attSaleNum size];
+        CGFloat saleNum_w = saleNum_s.width;
         CGFloat saleNum_h = saleNum_s.height;
-        CGFloat saleNum_x = item_w - margin - saleNum_w;
-        CGFloat saleNum_y = CGRectGetMaxY(subTtitleFrme) + 9;
+        CGFloat saleNum_x = margin;
+        CGFloat saleNum_y = CGRectGetMaxY(storeAddressFrme) + 12;
         CGRect saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
         
+        CGSize price_size = [obj.attPrice size];
+        CGFloat price_w = price_size.width;
+        CGFloat price_x = CGRectGetMaxX(saleNumFrame);
+        CGFloat price_h = price_size.height;
+        CGFloat price_y = CGRectGetMaxY(storeAddressFrme) + 10;
+        CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
+        
+        CGSize discount_size = [obj.attDiscountDesc size];
+        CGFloat discount_w = discount_size.width + 8;
+        CGFloat discount_x = CGRectGetMaxX(priceFrame) + 8;
+        CGFloat discount_h = discount_size.height;
+        CGFloat discount_y = price_y + (price_h - discount_h)*0.5;
+        CGRect discountFrame = CGRectMake(discount_x, discount_y, discount_w, discount_h);
+        
+        CGSize btnDesc_size = [obj.attBtnDesc size];
+        CGFloat btnDesc_w = btnDesc_size.width + 16;
+        CGFloat btnDesc_x = SCREEN_WIDTH - margin - btnDesc_w;
+        CGFloat btnDesc_h = 30;
+        CGFloat btnDesc_y = price_y + (price_h - btnDesc_h)*0.5;
+        CGRect btnDescFrame = CGRectMake(btnDesc_x, btnDesc_y, btnDesc_w, btnDesc_h);
         
         CGFloat line_x = 0;
         CGFloat line_h = LINE_H;
-        CGFloat line_y = CGRectGetMaxY(storeAddressFrme) + 15 - line_h;
+        CGFloat line_y = CGRectGetMaxY(priceFrame) + 15 - line_h;
         CGFloat line_w = item_w - 2 * line_x;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         
-        obj.layoutAttributes =
-        TCHomeContentLayoutAttributesMake(YES, [obj.tipImgName isNotNull], YES, YES, subImgShow, YES, YES, YES, YES,YES,
+        CGFloat bgView_h = CGRectGetMaxY(lineFrame);
+        CGRect bgViewFrame = CGRectMake(bgView_x, bgView_y, bgView_w, bgView_h);
+        
+        TCHomeContentLayoutAttributes layoutAttributes =
+        TCHomeContentLayoutAttributesMake(YES, [obj.tipImgName isNotNull], YES, YES, subImgShow, YES, YES, YES, YES,NO,
                                           imgFrame, tipImgFrame, priceFrame, titleFrame, subImgFrame, saleNumFrame, subTtitleFrme, statusFrame, storeAddressFrme, lineFrame);
+        layoutAttributes.showDiscount = obj.attDiscountDesc.length>0;
+        layoutAttributes.discountFrame = discountFrame;
+        layoutAttributes.showBtnDesc = obj.attBtnDesc.length>0;
+        layoutAttributes.btnDescFrame = btnDescFrame;
+        layoutAttributes.showBGView = YES;
+        layoutAttributes.bgViewFrame = bgViewFrame;
+        layoutAttributes.isProductRecommend = YES;
+        
+        obj.layoutAttributes = layoutAttributes;
         
         _floorHeight = CGRectGetMaxY(lineFrame);
         

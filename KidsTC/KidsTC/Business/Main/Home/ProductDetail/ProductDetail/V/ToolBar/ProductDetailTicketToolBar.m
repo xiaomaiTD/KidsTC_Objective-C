@@ -9,6 +9,7 @@
 #import "ProductDetailTicketToolBar.h"
 #import "ProductDetailToolBarButton.h"
 #import "User.h"
+#import "UIButton+Category.h"
 
 @interface ProductDetailTicketToolBar ()
 @property (weak, nonatomic) IBOutlet ProductDetailToolBarButton *commentBtn;
@@ -16,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectSeatBtn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
-
 @end
 
 @implementation ProductDetailTicketToolBar
@@ -25,7 +25,8 @@
     [super awakeFromNib];
     self.VLineH.constant = LINE_H;
     self.HLineH.constant = LINE_H;
-    self.selectSeatBtn.backgroundColor = COLOR_PINK;
+    [self.selectSeatBtn setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
+    [self.selectSeatBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     self.commentBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarComment;
     self.starBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarStar;
     self.selectSeatBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarSelectSeat;

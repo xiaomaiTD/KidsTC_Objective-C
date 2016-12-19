@@ -28,14 +28,14 @@
                                     <constraint firstAttribute="height" constant="0.5" id="OLv-i3-3St"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqO-tc-s8V">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="姓名：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqO-tc-s8V">
                                 <rect key="frame" x="15" y="16" width="43" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KrL-Iw-3Y6">
-                                <rect key="frame" x="58" y="16.5" width="247" height="17"/>
+                                <rect key="frame" x="58" y="0.0" width="247" height="49"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -52,9 +52,10 @@
                             <constraint firstAttribute="trailing" secondItem="hYR-om-900" secondAttribute="trailing" id="PSA-Vk-Z43"/>
                             <constraint firstItem="dqO-tc-s8V" firstAttribute="top" secondItem="1pE-OT-bGE" secondAttribute="top" constant="16" id="Qa0-Wj-9HJ"/>
                             <constraint firstItem="KrL-Iw-3Y6" firstAttribute="leading" secondItem="dqO-tc-s8V" secondAttribute="trailing" id="V5u-kM-8ar"/>
-                            <constraint firstItem="KrL-Iw-3Y6" firstAttribute="centerY" secondItem="1pE-OT-bGE" secondAttribute="centerY" id="VHc-lO-KHb"/>
+                            <constraint firstItem="KrL-Iw-3Y6" firstAttribute="top" secondItem="1pE-OT-bGE" secondAttribute="top" id="jac-w8-hvX"/>
                             <constraint firstItem="hYR-om-900" firstAttribute="leading" secondItem="1pE-OT-bGE" secondAttribute="leading" constant="15" id="p30-9u-WAi"/>
                             <constraint firstAttribute="trailing" secondItem="KrL-Iw-3Y6" secondAttribute="trailing" constant="15" id="rso-4r-yny"/>
+                            <constraint firstItem="hYR-om-900" firstAttribute="top" secondItem="KrL-Iw-3Y6" secondAttribute="bottom" id="uNK-bk-nsA"/>
                             <constraint firstItem="dqO-tc-s8V" firstAttribute="leading" secondItem="1pE-OT-bGE" secondAttribute="leading" constant="15" id="w6f-BO-vaY"/>
                         </constraints>
                     </view>
@@ -68,17 +69,17 @@
                                     <constraint firstAttribute="height" constant="0.5" id="MUJ-Th-FTx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg1-jh-hIg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="电话：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg1-jh-hIg">
                                 <rect key="frame" x="15" y="16" width="43" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入电话" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIr-vo-YZM">
-                                <rect key="frame" x="58" y="16.5" width="247" height="17"/>
+                                <rect key="frame" x="58" y="0.0" width="247" height="49"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <connections>
                                     <outlet property="delegate" destination="KGk-i7-Jjw" id="pWn-GS-h5U"/>
                                 </connections>
@@ -86,7 +87,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bIr-vo-YZM" firstAttribute="centerY" secondItem="NFo-UL-Rxg" secondAttribute="centerY" id="BDo-IG-cZm"/>
                             <constraint firstItem="sg1-jh-hIg" firstAttribute="leading" secondItem="NFo-UL-Rxg" secondAttribute="leading" constant="15" id="BwN-6s-o1P"/>
                             <constraint firstItem="sg1-jh-hIg" firstAttribute="top" secondItem="NFo-UL-Rxg" secondAttribute="top" constant="16" id="ES8-9Q-HLs"/>
                             <constraint firstAttribute="bottom" secondItem="yfY-zS-z2Z" secondAttribute="bottom" id="NWS-ha-bVf"/>
@@ -94,6 +94,8 @@
                             <constraint firstItem="yfY-zS-z2Z" firstAttribute="leading" secondItem="NFo-UL-Rxg" secondAttribute="leading" constant="15" id="YBB-h4-xUf"/>
                             <constraint firstAttribute="trailing" secondItem="yfY-zS-z2Z" secondAttribute="trailing" id="YNq-In-gN4"/>
                             <constraint firstItem="yfY-zS-z2Z" firstAttribute="top" secondItem="sg1-jh-hIg" secondAttribute="bottom" constant="16" id="ePY-9h-PbJ"/>
+                            <constraint firstItem="yfY-zS-z2Z" firstAttribute="top" secondItem="bIr-vo-YZM" secondAttribute="bottom" id="hCO-sN-Aoz"/>
+                            <constraint firstItem="bIr-vo-YZM" firstAttribute="top" secondItem="NFo-UL-Rxg" secondAttribute="top" id="kTy-uR-nm8"/>
                             <constraint firstAttribute="trailing" secondItem="bIr-vo-YZM" secondAttribute="trailing" constant="15" id="olg-oc-Lnd"/>
                         </constraints>
                     </view>
@@ -109,6 +111,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="HLineOneH" destination="OLv-i3-3St" id="WS4-Qa-Pv6"/>
+                <outlet property="HLineTwoH" destination="MUJ-Th-FTx" id="hdV-qF-rXZ"/>
                 <outlet property="nameTf" destination="KrL-Iw-3Y6" id="f4W-zk-2OY"/>
                 <outlet property="nameTipL" destination="dqO-tc-s8V" id="ddB-4a-l9z"/>
                 <outlet property="phoneTf" destination="bIr-vo-YZM" id="eEK-bf-Al9"/>

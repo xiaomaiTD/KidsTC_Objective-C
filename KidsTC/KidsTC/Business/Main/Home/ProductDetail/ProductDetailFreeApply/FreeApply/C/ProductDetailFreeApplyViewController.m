@@ -10,6 +10,7 @@
 #import "GHeader.h"
 #import "NSString+Category.h"
 #import "NSString+ZP.h"
+#import "ZPDateFormate.h"
 #import "SettlementResultNewViewController.h"
 #import "ProductDetailFreeApplyView.h"
 #import "ProductDetailFreeApplyShowModel.h"
@@ -24,6 +25,7 @@
 #import "ProductDetailFreeApplySelectBirthViewController.h"
 #import "ProductDetailFreeApplySelectAgeViewController.h"
 #import "ProductDetailFreeApplySelectSexViewController.h"
+#import "ProductDetailFreeApplySelectPlaceViewController.h"
 
 
 @interface ProductDetailFreeApplyViewController ()<ProductDetailFreeApplyViewDelegate>
@@ -35,14 +37,19 @@
 
 - (ProductDetailFreeApplyShowModel *)showModel {
     if (!_showModel) {
+        ProductDetailData *data = self.data;
         _showModel = [ProductDetailFreeApplyShowModel new];
         _showModel.userPhone = [User shareUser].phone;
         _showModel.userAddress = nil;
-        _showModel.activityDate = self.data.time;
-        NSArray<ProductDetailStore *> *stores = self.data.store;
+        _showModel.activityDate = data.time;
+        NSArray<ProductDetailStore *> *stores = data.store;
         if (stores.count>0) {
             _showModel.activityStore = stores.firstObject;
         }
+        if (data.place.count>data.currentPlaceIndex) {
+            _showModel.place = data.place[data.currentPlaceIndex];
+        }
+        _showModel.placeType = data.placeType;
         _showModel.babyName = @"";
         _showModel.babyBirth = nil;
         _showModel.babyAge = 0;
@@ -94,6 +101,11 @@
         case ProductDetailFreeApplyViewActionTypeActivityStore:
         {
             [self activityStore:value];
+        }
+            break;
+        case ProductDetailFreeApplyViewActionTypeActivityPlace:
+        {
+            [self activityPlace:value];
         }
             break;
         case ProductDetailFreeApplyViewActionTypeSelectBirth:
@@ -165,6 +177,20 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)activityPlace:(id)value {
+    ProductDetailFreeApplySelectPlaceViewController *controller = [[ProductDetailFreeApplySelectPlaceViewController alloc] initWithNibName:@"ProductDetailFreeApplySelectPlaceViewController" bundle:nil];
+    controller.currentIndex = self.data.currentPlaceIndex;
+    controller.places = self.data.place;
+    controller.actionBlock = ^(NSInteger selectIndex){
+        if (selectIndex<self.data.place.count) {
+            self.data.currentPlaceIndex = selectIndex;
+            self.showModel.place = self.data.place[selectIndex];
+            [self.applyView reloadData];
+        }
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)selectBirth:(id)value {
     ProductDetailFreeApplySelectBirthViewController *controller = [[ProductDetailFreeApplySelectBirthViewController alloc] initWithNibName:@"ProductDetailFreeApplySelectBirthViewController" bundle:nil];
     controller.makeSureBlock = ^(NSDate *date) {
@@ -208,10 +234,10 @@
         [[iToast makeText:@"恭喜您，报名成功"] show];
         
         SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc] initWithNibName:@"SettlementResultNewViewController" bundle:nil];
+        controller.data = self.data;
+        controller.orderId = dic[@"data"];
         NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
-        
         UIViewController *target = [TabBarController shareTabBarController].selectedViewController;
-        
         [target presentViewController:navi animated:YES completion:^{
             [self.navigationController popToRootViewControllerAnimated:NO];
         }];
@@ -246,6 +272,16 @@
         return nil;
     }
     
+    if (_data.placeType == PlaceTypePlace) {
+        NSString *theaterNo = self.showModel.place.sysNo;
+        if ([theaterNo isNotNull]) {
+            [param setObject:theaterNo forKey:@"theaterNo"];
+        }else{
+            [[iToast makeText:@"地址编号为空！"] show];
+            return nil;
+        }
+    }
+    
     ProductDetailEnrollInfo *enrollInfo = self.data.enrollInfo;
     
     NSMutableDictionary *enrollJsonDic = [NSMutableDictionary dictionary];
@@ -260,8 +296,8 @@
     
     if (enrollInfo.isBabyBirthday) {
         if (self.showModel.babyBirth) {
-            NSNumber *number = [NSNumber numberWithLongLong:[self.showModel.babyBirth timeIntervalSince1970]];
-            [enrollJsonDic setObject:number forKey:@"BabyBirthday"];
+            NSString *babyBirth = [NSString zp_stringWithDate:self.showModel.babyBirth Format:DF_yMd];
+            [enrollJsonDic setObject:babyBirth forKey:@"BabyBirthday"];
         }else{
             [[iToast makeText:@"请填写您宝宝的生日"] show];
             return nil;
@@ -310,7 +346,7 @@
     if (enrollInfo.isUserAddress) {
         UserAddressManageDataItem *userAddress = self.showModel.userAddress;
         if ([userAddress.ID isNotNull]) {
-            [enrollJsonDic setObject:userAddress.ID forKey:@"UserAddress"];
+            [enrollJsonDic setObject:userAddress.ID forKey:@"UserAddressNo"];
         }else{
             [[iToast makeText:@"请填写收货地址"] show];
             return nil;
@@ -318,14 +354,30 @@
     }
     
     NSString *enrollJson = [NSString zp_stringWithJsonObj:enrollJsonDic];
-    
     if ([enrollJson isNotNull]) {
         [param setObject:enrollJson forKey:@"enrollJson"];
+    }
+    
+    NSString *userRemark = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:KProductDetailFreeApplyUserRemark]];
+    if ([userRemark isNotNull]) {
+        [param setObject:userRemark forKey:@"userRemark"];
     }
     
     return [NSDictionary dictionaryWithDictionary:param];
 }
 
+- (void)keyboardWillShow:(NSNotification *)noti {
+    [super keyboardWillShow:noti];
+    //self.applyView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - self.keyboardHeight);
+}
 
+- (void)keyboardWillDisappear:(NSNotification *)noti {
+    //self.applyView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+}
+
+- (void)dealloc {
+    [USERDEFAULTS setObject:@"" forKey:KProductDetailFreeApplyUserRemark];
+    [USERDEFAULTS synchronize];
+}
 
 @end

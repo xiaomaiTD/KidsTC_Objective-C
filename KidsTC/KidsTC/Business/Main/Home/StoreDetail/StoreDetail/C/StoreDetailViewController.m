@@ -39,6 +39,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "StoreDetailAppointmentViewController.h"
 #import "NSString+Category.h"
+#import "NavigationController.h"
 
 
 @interface StoreDetailViewController () <StoreDetailViewDelegate, StoreDetailBottomViewDelegate, KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate, CommentFoundingViewControllerDelegate,KTCActionViewDelegate>
@@ -160,6 +161,7 @@
 - (void)storeDetailView:(StoreDetailView *)detailView didClickedServiceAtIndex:(NSUInteger)index {
     StoreOwnedServiceModel *serviceModel = [self.viewModel.detailModel.serviceModelsArray objectAtIndex:index];
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceModel.serviceId channelId:serviceModel.channelId];
+    controller.type = serviceModel.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
     
     NSMutableDictionary *params = [NSMutableDictionary new];
@@ -200,7 +202,7 @@
 - (void)storeDetailView:(StoreDetailView *)detailView didSelectedHotRecommendAtIndex:(NSUInteger)index {
     StoreDetailHotRecommendItem *item = [[self.viewModel.detailModel.hotRecommedService recommendItems] objectAtIndex:index];
     ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.serviceId channelId:item.channelId];
-    [controller setHidesBottomBarWhenPushed:YES];
+    controller.type = item.productRedirect;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -390,7 +392,7 @@
         {
             BrowseHistoryServiceListItemModel *model = [array objectAtIndex:index];
             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
-            [controller setHidesBottomBarWhenPushed:YES];
+            controller.type = model.productRedirect;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;
@@ -398,7 +400,6 @@
         {
             BrowseHistoryStoreListItemModel *model = [array objectAtIndex:index];
             StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
-            [controller setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;
@@ -429,7 +430,8 @@
         case KTCActionViewTagSearch:
         {
             SearchViewController *controller = [[SearchViewController alloc]init];
-            [self.navigationController pushViewController:controller animated:YES];
+            NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
+            [self presentViewController:navi animated:NO completion:nil];
         }
             break;
         case KTCActionViewTagShare:

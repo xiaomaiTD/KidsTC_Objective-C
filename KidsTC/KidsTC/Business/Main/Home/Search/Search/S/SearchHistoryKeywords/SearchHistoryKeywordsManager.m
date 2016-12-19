@@ -37,6 +37,10 @@ singleM(SearchHistoryKeywordsManager)
     if (![item.name isNotNull]) {
         return;
     }
+    NSString *text = [item.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (![text isNotNull]) {
+        return;
+    }
     [self.model.history enumerateObjectsUsingBlock:^(SearchHotKeywordsItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([item.name isEqualToString:obj.name]) {
             [self.model.history removeObjectAtIndex:idx];

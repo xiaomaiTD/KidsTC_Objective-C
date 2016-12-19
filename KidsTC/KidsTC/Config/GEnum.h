@@ -13,6 +13,13 @@ typedef enum : NSUInteger {
 } ProductDetailType;//商详类型
 
 typedef enum : NSUInteger {
+    PriceSortPlatForm = 1,//童成专享价
+    PriceSortPromotion = 2,//童成专享促销
+    PriceSortGroup = 3,//童成专享团购
+    PriceSortSecKill = 4,//童成专享秒杀
+} PriceSort;
+
+typedef enum : NSUInteger {
     CollectProductTypeAll = 1,//全部
     CollectProductTypeCategory,//分类
     CollectProductTypeReduct,//降价
@@ -103,6 +110,7 @@ typedef enum : NSUInteger {
 typedef enum : NSUInteger {
     NurseryTypeNursery = 1, //育婴室
     NurseryTypeExhibitionHall,//展览馆
+    NurseryTypeClander,//日历
 } NurseryType;
 
 typedef enum : NSUInteger {
@@ -122,3 +130,53 @@ typedef enum : NSUInteger {
     SearchTypeProduct,//搜索服务
     SearchTypeStore,//搜索门店
 } SearchType;
+
+typedef enum : NSUInteger {
+    PlaceTypeStore = 1,//门店
+    PlaceTypePlace = 2,//场地
+    PlaceTypeNone = 3,//不显示地址
+} PlaceType;
+
+typedef enum : NSUInteger {
+    RecommendProductTypeDefault = 1,//默认
+    RecommendProductTypeUserCenter = 2,//个人中心
+    RecommendProductTypeCollect = 3,//个人中心收藏页面
+    RecommendProductTypeOrderList = 4,//订单列表
+    RecommendProductTypeTicket = 5,//票务服务
+    RecommendProductTypeNormal = 6,//普通服务
+    RecommendProductTypeFree = 7,//免费
+} RecommendProductType;
+
+typedef enum : NSUInteger {
+    OrderRemindTypeTip = 1,//提醒
+    OrderRemindTypeCancle = 2,//取消
+} OrderRemindType;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

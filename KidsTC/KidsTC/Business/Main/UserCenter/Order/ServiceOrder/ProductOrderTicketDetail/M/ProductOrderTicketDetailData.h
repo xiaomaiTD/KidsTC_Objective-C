@@ -14,6 +14,7 @@
 #import "ProductOrderTicketDetailRefund.h"
 #import "ProductOrderTicketDetailDeliver.h"
 #import "ProductOrderTicketDetailBtn.h"
+#import "ProductDetailStore.h"
 
 @interface ProductOrderTicketDetailData : NSObject
 @property (nonatomic, strong) NSString *orderNo;
@@ -49,8 +50,13 @@
 @property (nonatomic, strong) NSArray<NSNumber *> *orderBtns;
 @property (nonatomic, assign) ProductOrderTicketDetailBtnType defaultBtn;
 @property (nonatomic, strong) ProductOrderTicketDetailDeliver *deliver;
+@property (nonatomic, strong) NSString *userRemark;
+@property (nonatomic, strong) NSString *commentNo;
+@property (nonatomic, assign) NSInteger commentRelationType;
+
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *remarksStr;
+@property (nonatomic, strong) NSAttributedString *userRemarkStr;
 @property (nonatomic, strong) NSArray<ProductOrderTicketDetailBtn *> *btns;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @property (nonatomic, strong) SegueModel *productSegueModel;

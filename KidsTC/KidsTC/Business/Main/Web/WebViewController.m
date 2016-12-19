@@ -24,7 +24,6 @@
 #import "ZPPhotoBrowserViewController.h"
 #import "ArticleCommentViewController.h"
 #import "MWPhotoBrowser.h"
-#import "ServiceOrderDetailViewController.h"
 #import "ProductDetailViewController.h"
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
@@ -34,6 +33,14 @@
 #import "TZImagePickerController.h"
 #import "AUIKeyboardAdhesiveView.h"
 #import "ArticleColumnViewController.h"
+#import "ProductOrderNormalDetailViewController.h"
+#import "ProductOrderTicketDetailViewController.h"
+#import "ProductOrderFreeDetailViewController.h"
+#import "FlashServiceOrderDetailViewController.h"
+#import "ProductOrderListViewController.h"
+#import "CommentTableViewController.h"
+#import "FlashServiceOrderListViewController.h"
+#import "ProductOrderFreeListViewController.h"
 
 static NSString *const Prefix         = @"hook::";            //前缀
 typedef enum : NSUInteger {
@@ -74,6 +81,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self checkValiteAndBury];
+    
     [self setupWebView];
     
     [self loadData];
@@ -88,12 +97,21 @@ typedef enum : NSUInteger {
 }
 
 - (void)checkValiteAndBury {
-    
-    if (![_urlString isNotNull]) {
+    NSString *urlStr = [NSString stringWithFormat:@"%@",_urlString];
+    if (![urlStr isNotNull]) {
         [[iToast makeText:@"网页地址为空"] show];
         [self back];
         return;
     }
+    
+    /*
+     if (![[urlStr lowercaseString] hasPrefix:@"http"]) {
+     [[iToast makeText:@"无效的网页地址"] show];
+     [self back];
+     return;
+     }
+     */
+    
     NSDictionary *params = @{@"url":self.urlString};
     [BuryPointManager trackEvent:@"event_navi_h5" actionId:30100 params:params];
 }
@@ -377,34 +395,130 @@ typedef enum : NSUInteger {
     NSRange range = [param rangeOfString:@"pid="];
     NSString *pid = [param substringFromIndex:(range.location+range.length)];
     if ([pid isNotNull]) {
-        FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
-        controller.pid = pid;
-        [self makeSegue:controller];
-        
-        NSDictionary *params = @{@"url":self.urlString,
-                                 @"pid":pid};
-        [BuryPointManager trackEvent:@"event_skip_flash_detail" actionId:30002 params:params];
+        [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+            FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
+            controller.pid = pid;
+            [self makeSegue:controller];
+            
+            NSDictionary *params = @{@"url":self.urlString,
+                                     @"pid":pid};
+            [BuryPointManager trackEvent:@"event_skip_flash_detail" actionId:30002 params:params];
+        }];
     }else{
         [[iToast makeText:@"闪购详情关联id为空"] show];
     }
 }
 #pragma mark 订单详情
 - (void)orderDetail:(NSString *)param {
-    NSRange range = [param rangeOfString:@"orderId="];
-    NSString *orderId = [param substringFromIndex:(range.location+range.length)];
-    if ([orderId isNotNull]) {
-        [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-            ServiceOrderDetailViewController *controller = [[ServiceOrderDetailViewController alloc] init];
-            controller.orderId = orderId;
-            [self makeSegue:controller];
-            
-            NSDictionary *params = @{@"url":self.urlString,
-                                     @"orderId":orderId};
-            [BuryPointManager trackEvent:@"event_skip_order_detail" actionId:30005 params:params];
-        }];
-    }else{
+    /*
+     NSRange range = [param rangeOfString:@"orderId="];
+     NSString *orderId = [param substringFromIndex:(range.location+range.length)];
+     */
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    NSString *orderId = [NSString stringWithFormat:@"%@",dic[@"orderId"]];
+    if (![orderId isNotNull]) {
         [[iToast makeText:@"关联id为空"] show];
+        return;
     }
+    OrderKind kind = OrderKindNormal;
+    id kindId = dic[@"type"];
+    if ([kindId respondsToSelector:@selector(integerValue)]) {
+        kind = (OrderKind)[kindId integerValue];
+    }
+    
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        ViewController *controller = nil;
+        switch (kind) {
+            case OrderKindNormal:
+            {
+                ProductOrderNormalDetailViewController *vc = [[ProductOrderNormalDetailViewController alloc]init];
+                vc.orderId = orderId;
+                controller = vc;
+            }
+                break;
+            case OrderKindTicket:
+            {
+                ProductOrderTicketDetailViewController *vc = [[ProductOrderTicketDetailViewController alloc]init];
+                vc.orderId = orderId;
+                controller = vc;
+            }
+                break;
+            case OrderKindFree:
+            {
+                ProductOrderFreeDetailViewController *vc = [[ProductOrderFreeDetailViewController alloc]init];
+                vc.orderId = orderId;
+                controller = vc;
+            }
+                break;
+            default:
+            {
+                [[iToast makeText:@"暂不支持的订单类型"] show];
+                return;
+            }
+                break;
+        }
+        [self makeSegue:controller];
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"orderId":orderId};
+        [BuryPointManager trackEvent:@"event_skip_order_detail" actionId:30005 params:params];
+    }];
+}
+#pragma mark 闪购订单详情
+- (void)flashOrderDetail:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    NSString *orderId = [NSString stringWithFormat:@"%@",dic[@"orderId"]];
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"关联id为空"] show];
+        return;
+    }
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        FlashServiceOrderDetailViewController *controller = [[FlashServiceOrderDetailViewController alloc]init];
+        controller.orderId = orderId;
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 普通订单列表
+- (void)orderList:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    ProductOrderListOrderType type = ProductOrderListOrderTypeAll;
+    id typeId = dic[@"kind"];
+    if ([typeId respondsToSelector:@selector(integerValue)]) {
+        type = (ProductOrderListOrderType)[typeId integerValue];
+    }
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        ProductOrderListViewController *controller = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeAll];
+        [controller insetOrderType:type];
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 票务订单列表
+- (void)ticketOrderList:(NSString *)param {
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        ProductOrderListViewController *controller = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeAll];
+        controller.orderType = ProductOrderListOrderTypeTicket;
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 闪购订单列表
+- (void)flashOrderList:(NSString *)param {
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        FlashServiceOrderListViewController *controller = [[FlashServiceOrderListViewController alloc] init];
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 报名订单列表
+- (void)enrollOrderList:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    FreeType type = FreeTypeFreeActivity;
+    id typeId = dic[@"freeType"];
+    if ([typeId respondsToSelector:@selector(integerValue)]) {
+        type = (FreeType)[typeId integerValue];
+    }
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        ProductOrderFreeListViewController *controller = [[ProductOrderFreeListViewController alloc] init];
+        controller.type = type;
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
 }
 #pragma mark 回到首页
 - (void)home:(NSString *)param {
@@ -437,6 +551,8 @@ typedef enum : NSUInteger {
 //            }
 //                break;
 //        }
+        CouponListViewController *controller = [[CouponListViewController alloc] init];
+        [self makeSegue:controller];
     }else{
         [[iToast makeText:@"所选优惠券状态为空"] show];
     }

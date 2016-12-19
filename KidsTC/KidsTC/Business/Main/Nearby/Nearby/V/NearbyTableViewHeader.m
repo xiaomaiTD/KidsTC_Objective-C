@@ -20,39 +20,21 @@ CGFloat const kNearbyTableViewHeaderH = 112;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    self.leftItemView.type = NearbyTableViewHeaderActionTypeNursery;
-    self.rightItemView.type = NearbyTableViewHeaderActionTypeCalendar;
     self.leftItemView.delegate = self;
     self.rightItemView.delegate = self;
 }
 
 - (void)setPlaceInfo:(NearbyPlaceInfo *)placeInfo {
     _placeInfo = placeInfo;
-    NearbyTableViewHeaderActionType actionType = NearbyTableViewHeaderActionTypeNursery;
-    switch (_placeInfo.placeType) {
-        case NurseryTypeNursery:
-        {
-            actionType = NearbyTableViewHeaderActionTypeNursery;
-        }
-            break;
-        case NurseryTypeExhibitionHall:
-        {
-            actionType = NearbyTableViewHeaderActionTypeExhibition;
-        }
-            break;
-        default:
-        {
-            actionType = NearbyTableViewHeaderActionTypeNursery;
-        }
-            break;
-    }
-    self.leftItemView.type = actionType;
+    self.leftItemView.data = placeInfo.leftData;
+    self.rightItemView.data = placeInfo.rightData;
 }
 
-- (void)nearbyTableViewHeaderItemView:(NearbyTableViewHeaderItemView *)view actionType:(NearbyTableViewHeaderActionType)type value:(id)value {
+#pragma mark - NearbyTableViewHeaderItemViewDelegate
+
+- (void)nearbyTableViewHeaderItemView:(NearbyTableViewHeaderItemView *)view actionType:(NurseryType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(nearbyTableViewHeader:actionType:value:)]) {
-        [self.delegate nearbyTableViewHeader:self actionType:type value:_placeInfo];
+        [self.delegate nearbyTableViewHeader:self actionType:type value:value];
     }
 }
 

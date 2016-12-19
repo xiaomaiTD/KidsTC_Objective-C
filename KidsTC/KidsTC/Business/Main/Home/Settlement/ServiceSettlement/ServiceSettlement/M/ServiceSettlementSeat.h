@@ -13,4 +13,5 @@
 @property (nonatomic, assign) NSUInteger num;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *skuId;
+@property (nonatomic, strong) NSString *chid;
 @end

@@ -13,6 +13,7 @@
 typedef enum : NSUInteger {
     
     ProductDetailBaseCellActionTypeSegue = 1,
+    ProductDetailBaseCellActionTypeCountDownOver,//倒计时结束
     ProductDetailBaseCellActionTypeShowDate,//显示日期
     ProductDetailBaseCellActionTypeShowAddress,//显示位置
     ProductDetailBaseCellActionTypeOpenWebView,//展开detail
@@ -31,6 +32,7 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeTicketOpenDes,//票务 - 展开描述
     ProductDetailBaseCellActionTypeFreeStoreDetail,//免费 - 门店详情
     ProductDetailBaseCellActionTypeFreeMoreTricks,//免费 - 更多生活小窍门
+    
 } ProductDetailBaseCellActionType;
 
 @class ProductDetailBaseCell;

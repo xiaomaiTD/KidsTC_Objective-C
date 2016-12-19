@@ -19,6 +19,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.HLineH.constant = LINE_H;
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.contentView addGestureRecognizer:tapGR];
 }
 
 - (void)setData:(ProductOrderTicketDetailData *)data {
@@ -27,4 +29,9 @@
     self.addressL.text = data.address;
 }
 
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(productOrderTicketDetailBaseCell:actionType:value:)]) {
+        [self.delegate productOrderTicketDetailBaseCell:self actionType:ProductOrderTicketDetailBaseCellActionTypeAddress value:self.data.productSegueModel];
+    }
+}
 @end

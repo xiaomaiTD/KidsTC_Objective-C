@@ -32,6 +32,8 @@
 
 @property (nonatomic, assign) NSUInteger saleCount;
 
+@property (nonatomic, assign) ProductDetailType productRedirect;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
 
 @end

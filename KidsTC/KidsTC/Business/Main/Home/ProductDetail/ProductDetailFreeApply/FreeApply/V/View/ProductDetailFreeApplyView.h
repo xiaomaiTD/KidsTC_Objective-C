@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ProductDetailData.h"
 #import "ProductDetailFreeApplyShowModel.h"
+#import "ProductDetailFreeApplyBaseCell.h"
 
 typedef enum : NSUInteger {
     ProductDetailFreeApplyViewActionTypeUserAddressTip = 1,
     ProductDetailFreeApplyViewActionTypeUserAddress,
     ProductDetailFreeApplyViewActionTypeActivityDate,
     ProductDetailFreeApplyViewActionTypeActivityStore,
+    ProductDetailFreeApplyViewActionTypeActivityPlace,
     ProductDetailFreeApplyViewActionTypeSelectBirth,
     ProductDetailFreeApplyViewActionTypeSelectAge,
     ProductDetailFreeApplyViewActionTypeSelectSex,

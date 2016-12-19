@@ -11,7 +11,8 @@
 @interface SearchFactorSortDataItem : NSObject
 @property (nonatomic, strong) NSString *img;
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *value;
 @property (nonatomic, assign) BOOL selected;
-+ (instancetype)itemWithImg:(NSString *)img title:(NSString *)title value:(NSString *)value;
++ (instancetype)itemWithImg:(NSString *)img title:(NSString *)title desc:(NSString *)desc value:(NSString *)value;
 @end

@@ -72,7 +72,7 @@ static CGFloat const kBtn_h = 80;
     layer.frame = CGRectMake(0, SCREEN_HEIGHT - layer_h - 49, SCREEN_WIDTH, layer_h);
     [self.view.layer addSublayer:layer];
     layer.opacity = 0.0;
-    self.layer = layer;
+    //self.layer = layer;
     
 }
 

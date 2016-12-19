@@ -12,6 +12,7 @@
 #import "GHeader.h"
 #import "UIButton+Category.h"
 #import "KTCEmptyDataView.h"
+#import "Colours.h"
 
 
 static NSString *const kServiceCellIdentifier = @"kServiceCellIdentifier";
@@ -70,7 +71,7 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     [self.tableView setBackgroundColor:COLOR_BG_CEll];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.estimatedRowHeight = 200;
     self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 4, 0.01)];
     if (!self.serviceCellNib) {
         self.serviceCellNib = [UINib nibWithNibName:NSStringFromClass([KTCBrowseHistoryViewServiceCell class]) bundle:nil];
@@ -84,11 +85,6 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     WeakSelf(self)
     RefreshFooter *mj_footer = [RefreshFooter footerWithRefreshingBlock:^{
         StrongSelf(self)
-//        BOOL noMore = [[self.noMoreDataDic objectForKey:[NSString stringWithFormat:@"%zd", self.currentTag]] boolValue];
-//        if (noMore) {
-//            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-//            return;
-//        }
         [self pullToLoadMoreData];
     }];
     mj_footer.automaticallyChangeAlpha = YES;
@@ -105,15 +101,19 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     
     [self.activityIndicator setColor:COLOR_PINK];
     
-    [self.serviceButton setBackgroundColor:[COLOR_PINK colorWithAlphaComponent:0.7] forState:UIControlStateNormal];
+    self.serviceButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.serviceButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [self.serviceButton setBackgroundColor:[UIColor colorFromHexString:@"EDEDED"] forState:UIControlStateNormal];
     [self.serviceButton setBackgroundColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.serviceButton setImage:[UIImage imageNamed:@"bizicon_service_n"] forState:UIControlStateNormal];
-    [self.serviceButton setImage:[UIImage imageNamed:@"bizicon_service_h"] forState:UIControlStateSelected];
+    [self.serviceButton setImage:[UIImage imageNamed:@"productDetail_history_product_unsel"] forState:UIControlStateNormal];
+    [self.serviceButton setImage:[UIImage imageNamed:@"productDetail_history_product_sel"] forState:UIControlStateSelected];
     
-    [self.storeButton setBackgroundColor:[COLOR_PINK colorWithAlphaComponent:0.7] forState:UIControlStateNormal];
+    self.storeButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.storeButton setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [self.storeButton setBackgroundColor:[UIColor colorFromHexString:@"EDEDED"] forState:UIControlStateNormal];
     [self.storeButton setBackgroundColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [self.storeButton setImage:[UIImage imageNamed:@"bizicon_store_n"] forState:UIControlStateNormal];
-    [self.storeButton setImage:[UIImage imageNamed:@"bizicon_store_h"] forState:UIControlStateSelected];
+    [self.storeButton setImage:[UIImage imageNamed:@"productDetail_history_store_unsel"] forState:UIControlStateNormal];
+    [self.storeButton setImage:[UIImage imageNamed:@"productDetail_history_store_sel"] forState:UIControlStateSelected];
     
     [self selectViewTag:KTCBrowseHistoryViewTagService];
     
@@ -156,25 +156,6 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     }
     
     return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = 0;
-    switch (self.currentTag) {
-        case KTCBrowseHistoryViewTagService:
-        {
-            height = [KTCBrowseHistoryViewServiceCell cellHeight];
-        }
-            break;
-        case KTCBrowseHistoryViewTagStore:
-        {
-            height = [KTCBrowseHistoryViewStoreCell cellHeight];
-        }
-        default:
-            break;
-    }
-    return height;
 }
 
 

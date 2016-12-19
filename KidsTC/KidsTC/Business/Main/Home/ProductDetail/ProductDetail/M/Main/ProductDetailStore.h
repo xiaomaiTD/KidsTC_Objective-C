@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KTCMapService.h"
 @interface ProductDetailStore : NSObject
 @property (nonatomic, strong) NSString *storeId;
 @property (nonatomic, strong) NSString *storeName;
@@ -19,7 +18,6 @@
 @property (nonatomic, strong) NSString *distance;
 //selfDefine
 @property (nonatomic, strong) NSArray<NSString *> *phones;
-@property (nonatomic, strong) KTCLocation *location;
 //select
 @property (nonatomic, assign) BOOL selected;
 

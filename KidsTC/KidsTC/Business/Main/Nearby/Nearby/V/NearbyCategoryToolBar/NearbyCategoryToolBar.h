@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    NearbyCategoryToolBarActionTypeDidSelectCategory = 50
+    NearbyCategoryToolBarActionTypeDidSelectCategory = 200
 } NearbyCategoryToolBarActionType;
 
 @class NearbyCategoryToolBar;

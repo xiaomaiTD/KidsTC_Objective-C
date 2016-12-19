@@ -32,9 +32,12 @@ CGFloat const kProductDetailCountDownViewHeight = 30;
     self.countdownLabel.textColor = yell;
     self.gapView.backgroundColor = yell;
     
-    if (data.showCountDown && data.countDownTime>0) {
+    ProductDetailCountDown *countDown = data.countDown;
+    if (countDown.showCountDown && countDown.countDownTime>0 && (_data.priceSort != PriceSortSecKill)) {
         self.hidden = NO;
-        [self startCountDown:data.countDownTime];
+        [self startCountDown:countDown.countDownTime];
+    }else{
+        self.hidden = YES;
     }
 }
 

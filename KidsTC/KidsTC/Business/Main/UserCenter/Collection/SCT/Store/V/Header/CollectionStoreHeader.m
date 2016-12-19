@@ -17,8 +17,6 @@
 
 static NSString *const ID = @"CollectionStoreHeaderCollectionViewCell";
 
-static CGFloat const margin = 12;
-
 @interface CollectionStoreHeader ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
@@ -27,7 +25,7 @@ static CGFloat const margin = 12;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineTwoH;
 @property (weak, nonatomic) IBOutlet UIButton *enterBtn;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionViewBGH;
 @property (nonatomic, assign) CGFloat collectionViewCellW;
 @end
 
@@ -50,7 +48,6 @@ static CGFloat const margin = 12;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"CollectionStoreHeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     _collectionViewCellW = (SCREEN_WIDTH - 2*15 - 2*10) / 3;
-    self.collectionViewH.constant = _collectionViewCellW * 0.48;
     
     self.nameL.textColor = [UIColor colorFromHexString:@"333333"];
     self.numL.textColor = [UIColor colorFromHexString:@"888888"];
@@ -67,11 +64,21 @@ static CGFloat const margin = 12;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:item.storeImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
     self.nameL.text = item.storeName;
     self.numL.text = [NSString stringWithFormat:@"销量 %@  收藏 %@",item.saleNum,item.interestNum];
+    
     [self.collectionView reloadData];
+    
+    BOOL hasCount = self.item.couponModeLst.count>0;
+    self.collectionViewBGH.constant = hasCount?(_collectionViewCellW * 0.48 + 32):0;
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     [self goToStoreAction];
+}
+
+- (IBAction)delete:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(collectionStoreHeader:actionType:value:)]) {
+        [self.delegate collectionStoreHeader:self actionType:CollectionStoreHeaderActionTypeDelete value:self.item];
+    }
 }
 
 - (IBAction)action:(UIButton *)sender {
@@ -87,7 +94,7 @@ static CGFloat const margin = 12;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     [self layoutIfNeeded];
-    CGFloat h = self.collectionViewH.constant;
+    CGFloat h = _collectionViewCellW-32;
     CGFloat w = _collectionViewCellW;
     return CGSizeMake(w, h);
 }

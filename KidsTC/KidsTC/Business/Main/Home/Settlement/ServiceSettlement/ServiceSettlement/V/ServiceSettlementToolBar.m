@@ -36,8 +36,22 @@ CGFloat const kServiceSettlementToolBarH = 49;
 - (void)setItem:(ServiceSettlementDataItem *)item {
     _item = item;
     self.hidden = _item == nil;
-    if (!self.hidden) {
-        self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.totalPrice];
+    switch (self.item.type) {
+        case ProductDetailTypeNormal:
+        {
+            self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.totalPrice];
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
+        }
+            break;
+        default:
+        {
+            self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.totalPrice];
+        }
+            break;
     }
 }
 

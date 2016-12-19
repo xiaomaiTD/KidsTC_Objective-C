@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface CollectionTarentoViewController : ViewController
-
+@property (nonatomic, assign) BOOL editing;
 @end

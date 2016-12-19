@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *phoneL;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
+@property (nonatomic, strong) ProductOrderFreeDetailLotteryItem *item;
 @end
 
 @implementation ProductOrderFreeDetailLotteryItemCell
@@ -20,6 +21,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)setLotteryData:(NSArray<ProductOrderFreeDetailLotteryItem *> *)lotteryData {
+    [super setLotteryData:lotteryData];
+    if (self.tag<lotteryData.count) {
+        ProductOrderFreeDetailLotteryItem *item = lotteryData[self.tag];
+        self.item = item;
+    }
 }
 
 - (void)setItem:(ProductOrderFreeDetailLotteryItem *)item {

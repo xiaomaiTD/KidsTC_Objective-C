@@ -27,7 +27,7 @@ static CGFloat const title_b = 4;
 }
 
 - (CGRect)titleRectForContentRect:(CGRect)contentRect {
-    return CGRectMake(0, CGRectGetHeight(contentRect) - title_b - title_h, CGRectGetWidth(contentRect), title_h);
+    return CGRectMake((CGRectGetWidth(contentRect)-80)*0.5, CGRectGetHeight(contentRect) - title_b - title_h, 80, title_h);
 }
 
 @end
@@ -54,7 +54,7 @@ static CGFloat const title_b = 4;
     [self.selfBtn setTitleColor:[UIColor colorFromHexString:@"D5D5D5"] forState:UIControlStateNormal];
     [self.selfBtn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
     _lineH.constant = LINE_H;
-    [self selectedBtn:_carBtn];
+    [self selectedBtn:_selfBtn];
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
@@ -78,19 +78,21 @@ static CGFloat const title_b = 4;
         return;
     }
     [self selectedBtn:sender];
-    
+    if (sender == _selfBtn) {
+        self.item.takeTicketWay = ServiceSettlementTakeTicketWaySelf;
+    }else if (sender == _carBtn) {
+        self.item.takeTicketWay = ServiceSettlementTakeTicketWayCar;
+    }
     if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
         [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange value:nil];
     }
 }
 
 - (void)selectedBtn:(ServiceSettlementTicketGetButton *)sender {
-    if (sender == _carBtn) {
+    if (sender == _selfBtn) {
         _upImgCenterX.constant = 0;
-        self.item.takeTicketWay = ServiceSettlementTakeTicketWayCar;
-    }else if (sender == _selfBtn) {
+    }else if (sender == _carBtn) {
         _upImgCenterX.constant = 78;
-        self.item.takeTicketWay = ServiceSettlementTakeTicketWaySelf;
     }
     [self layoutIfNeeded];
     _selectBtn.selected = NO;

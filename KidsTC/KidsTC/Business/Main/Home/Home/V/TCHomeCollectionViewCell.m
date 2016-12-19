@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
 #import "YYKit.h"
+#import "Colours.h"
 
 @interface TCHomeCollectionViewCell ()
 @property (nonatomic, strong) UIImageView *imageView;
@@ -21,13 +22,25 @@
 @property (nonatomic, strong) UIImageView *subImageView;
 @property (nonatomic, strong) YYLabel *subTitleLabel;
 @property (nonatomic, strong) UILabel *statusLabel;
-@property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UILabel *discountL;
+@property (nonatomic, strong) UILabel *btnDescL;
+@property (nonatomic, strong) UIView  *bgView;
+@property (nonatomic, strong) UIView  *line;
 @end
 
 @implementation TCHomeCollectionViewCell
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        UIView *bgView = [[UIView alloc] init];
+        bgView.layer.cornerRadius = 4;
+        bgView.clipsToBounds = YES;
+        bgView.layer.masksToBounds = YES;
+        bgView.hidden = YES;
+        bgView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:bgView];
+        self.bgView = bgView;
         
         //self.backgroundColor = [UIColor whiteColor];
         
@@ -79,6 +92,24 @@
         //storeAddressLabel.backgroundColor = [UIColor purpleColor];
         [self addSubview:storeAddressLabel];
         self.storeAddressLabel = storeAddressLabel;
+        
+        UILabel *discountL = [UILabel new];
+        discountL.hidden = YES;
+        discountL.layer.cornerRadius = 2;
+        discountL.layer.masksToBounds = YES;
+        discountL.textAlignment = NSTextAlignmentCenter;
+        discountL.backgroundColor = [UIColor colorFromHexString:@"66cef0"];
+        [self addSubview:discountL];
+        self.discountL = discountL;
+        
+        UILabel *btnDescL = [UILabel new];
+        btnDescL.hidden = YES;
+        btnDescL.textAlignment = NSTextAlignmentCenter;
+        btnDescL.layer.cornerRadius = 4;
+        btnDescL.layer.masksToBounds = YES;
+        btnDescL.backgroundColor = [UIColor colorFromHexString:@"fd898a"];
+        [self addSubview:btnDescL];
+        self.btnDescL = btnDescL;
         
         UIView *line = [UIView new];
         line.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -164,10 +195,33 @@
         _storeAddressLabel.attributedText = _content.attStoreAddress;
     }
     
+    _discountL.hidden = !att.showDiscount;
+    if (!_discountL.hidden) {
+        _discountL.frame = att.discountFrame;
+        _discountL.attributedText = _content.attDiscountDesc;
+    }
+    
+    _btnDescL.hidden = !att.showBtnDesc;
+    if (!_btnDescL.hidden) {
+        _btnDescL.frame = att.btnDescFrame;
+        _btnDescL.attributedText = _content.attBtnDesc;
+    }
+    
     _line.hidden = !att.showLine;
     if (!_line.hidden) {
         _line.frame = att.lineFrame;
     }
+    
+    self.bgView.hidden = !att.isProductRecommend;
+    if (!self.bgView.hidden) {
+        self.bgView.frame = att.bgViewFrame;
+        self.bgView.layer.cornerRadius = 4;
+    }
+    
+    self.imageView.layer.cornerRadius = att.isProductRecommend?4:0.0001;
+    
+    
+    self.contentView.backgroundColor = att.isProductRecommend?[UIColor colorFromHexString:@"F7F7F7"]:[UIColor clearColor];
     
     switch (_content.type) {
         case TCHomeFloorContentTypeWholeImageNews:

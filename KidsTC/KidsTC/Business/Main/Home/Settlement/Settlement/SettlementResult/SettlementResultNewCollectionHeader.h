@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductDetailData.h"
+
+typedef enum : NSUInteger {
+    SettlementResultNewCollectionHeaderActionTypeDetail = 1,
+    SettlementResultNewCollectionHeaderActionTypeHome,
+} SettlementResultNewCollectionHeaderActionType;
+
+@class SettlementResultNewCollectionHeader;
+@protocol SettlementResultNewCollectionHeaderDelegate <NSObject>
+- (void)settlementResultNewCollectionHeader:(SettlementResultNewCollectionHeader *)header actionType:(SettlementResultNewCollectionHeaderActionType)type value:(id)value;
+@end
 
 @interface SettlementResultNewCollectionHeader : UICollectionReusableView
-
+@property (nonatomic, strong) ProductDetailData *data;
+@property (nonatomic, weak) id<SettlementResultNewCollectionHeaderDelegate> delegate;
 @end

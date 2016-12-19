@@ -7,9 +7,10 @@
 //
 
 #import "ProductDetailDataManager.h"
+#import "KTCMapService.h"
 
 @implementation ProductDetailDataManager
-singleM(ProductDetailDataManager)
+
 
 - (void)loadDataWithSuccessBlock:(void(^)(ProductDetailData *data))successBlock
                     failureBlock:(void(^)(NSError *error))failureBlock
@@ -31,36 +32,47 @@ singleM(ProductDetailDataManager)
         }
             break;
     }
-    
 }
 
 - (void)loadRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
                      failureBlock:(void(^)(NSError *error))failureBlock
 {
+    RecommendProductType  recommendType = RecommendProductTypeDefault;
     switch (_type) {
         case ProductDetailTypeNormal:
         {
-            [self loadNormalRecommendSuccessBlock:successBlock failureBlock:failureBlock];
+            recommendType = RecommendProductTypeNormal;
         }
             break;
         case ProductDetailTypeTicket:
         {
-            [self loadTicketRecommendSuccessBlock:successBlock failureBlock:failureBlock];
+            recommendType = RecommendProductTypeTicket;
         }
             break;
         case ProductDetailTypeFree:
         {
-            [self loadFreeRecommendSuccessBlock:successBlock failureBlock:failureBlock];
+            recommendType = RecommendProductTypeFree;
         }
             break;
     }
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:@(1) forKey:@"pageIndex"];
+    [param setObject:@(20) forKey:@"pageSize"];
+    [param setObject:@(recommendType) forKey:@"type"];
+    
+    [Request startWithName:@"GET_RECOMMEND_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (void)loadConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock
                    failureBlock:(void(^)(NSError *error))failureBlock
 {
     NSDictionary *param = @{@"relationNo":_productId,
-                            @"advisoryType":@(_type+1),
+                            @"advisoryType":@(_type),
                             @"pageIndex":@(1),
                             @"pageSize":@(20)};
     [Request startWithName:@"GET_ADVISORY_ADN_REPLIES" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {

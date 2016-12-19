@@ -11,7 +11,6 @@
 #import "NSString+Category.h"
 
 @implementation ServiceSettlementDataManager
-singleM(ServiceSettlementDataManager)
 
 - (void)loadDataWithParam:(NSDictionary *)param
              successBlock:(void(^)(ServiceSettlementModel *model))successBlock

@@ -30,6 +30,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     self.bgView.layer.cornerRadius = 4;
     self.bgView.layer.masksToBounds = YES;
     self.likeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;

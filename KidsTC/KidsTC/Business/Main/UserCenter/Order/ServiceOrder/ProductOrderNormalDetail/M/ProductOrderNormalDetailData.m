@@ -26,7 +26,7 @@
     [self setupMoblies];
     [self setupSegueModel];
     [self setupCanShowBtn];
-    
+    [self setupUserRemarkStr];
     return YES;
 }
 
@@ -120,8 +120,7 @@
             _channelId = @"0";
         }
         NSDictionary *param = @{@"pid":_serveId,
-                                @"cid":_channelId,
-                                @"type":@(ProductDetailTypeNormal)};
+                                @"cid":_channelId};
         _productSegueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
     }
 }
@@ -142,6 +141,17 @@
             _canShowButton = NO;
         }
             break;
+    }
+}
+
+- (void)setupUserRemarkStr {
+    if ([_userRemark isNotNull]) {
+        NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc]init];
+        paragraph.lineSpacing = 8;
+        NSDictionary *att = @{NSFontAttributeName:[UIFont systemFontOfSize:14],
+                              NSForegroundColorAttributeName:[UIColor colorFromHexString:@"222222"],
+                              NSParagraphStyleAttributeName:paragraph};
+        _userRemarkStr = [[NSMutableAttributedString alloc]initWithString:_userRemark attributes:att];
     }
 }
 

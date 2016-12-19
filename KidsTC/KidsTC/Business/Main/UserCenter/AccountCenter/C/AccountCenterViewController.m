@@ -12,6 +12,7 @@
 #import "BuryPointManager.h"
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
+#import "NSString+Category.h"
 
 #import "AccountCenterModel.h"
 
@@ -47,6 +48,7 @@
     accountCenterView.delegate = self;
     self.view = accountCenterView;
     self.accountCenterView = accountCenterView;
+    accountCenterView.model = nil;
 }
 
 - (void)viewDidLoad {
@@ -199,29 +201,29 @@
         case AccountCenterViewActionTypeAllOrder:
         {
             toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeAll];
-//            NSDictionary *params = @{@"type":@(OrderListTypeAll)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeAll)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitPay:
         {
             toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaitPay];
-//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingPayment)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeWaitPay)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitUse:
         {
             toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaiatUse];
-//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeWaiatUse)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitReceipt:
         {
             toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeWaitRecive];
-//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingUse)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeWaitRecive)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeWaitComment:
@@ -229,15 +231,15 @@
             CommentTableViewController *controller = [[CommentTableViewController alloc]init];
             controller.isHaveWaitToComment = self.model.data.userCount.order_wait_evaluate>0;
             toController = controller;
-//            NSDictionary *params = @{@"type":@(OrderListTypeWaitingComment)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeWaitComment)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeRefund:
         {
             toController = [[ProductOrderListViewController alloc] initWithType:ProductOrderListTypeRefund];
-//            NSDictionary *params = @{@"type":@(OrderListTypeRefund)};
-//            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
+            NSDictionary *params = @{@"type":@(ProductOrderListTypeRefund)};
+            [BuryPointManager trackEvent:@"event_skip_usr_orderlist" actionId:21508 params:params];
         }
             break;
         case AccountCenterViewActionTypeScore:
@@ -274,10 +276,13 @@
             break;
         case AccountCenterViewActionTypeRadishMall:
         {
-            WebViewController *controller = [[WebViewController alloc]init];
-            controller.urlString = self.model.data.radish.linkUrl;
-            toController = controller;
-            [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            NSString *urlString = self.model.data.radish.linkUrl;
+            if ([urlString isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = urlString;
+                toController = controller;
+                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            }
         }
             break;
         case AccountCenterViewActionTypeMyFlash:
@@ -294,10 +299,13 @@
             break;
         case AccountCenterViewActionTypeShareMakeMoney:
         {
-            WebViewController *controller = [[WebViewController alloc]init];
-            controller.urlString = self.model.data.radish.linkUrl;
-            toController = controller;
-            [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            NSString *urlString = self.model.data.invite.linkUrl;
+            if ([urlString isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = urlString;
+                toController = controller;
+                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            }
         }
             break;
         case AccountCenterViewActionTypeBringUpHeadline:
@@ -309,14 +317,21 @@
         case AccountCenterViewActionTypeCustomerServices:
         {
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
-            WebViewController *controller = [[WebViewController alloc]init];
-            controller.urlString = str;
-            [self.navigationController pushViewController:controller animated:YES];
+            if ([str isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = str;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
         }
             break;
         case AccountCenterViewActionTypeOpinion:
         {
-            
+            NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
+            if ([str isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = str;
+                [self.navigationController pushViewController:controller animated:YES];
+            }
         }
             break;
         case AccountCenterViewActionTypeSegue:

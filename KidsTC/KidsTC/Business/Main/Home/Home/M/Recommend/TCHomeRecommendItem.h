@@ -32,6 +32,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger saleNum;
 @property (nonatomic, assign) BOOL isPrivilege;
 @property (nonatomic, strong) NSString *processDesc;
+@property (nonatomic, assign) ProductDetailType productRedirect;
+@property (nonatomic, strong) NSString *joinDesc;
+@property (nonatomic, strong) NSString *priceRate;
+@property (nonatomic, strong) NSString *btnName;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 - (TCHomeFloor *)conventToFloor;

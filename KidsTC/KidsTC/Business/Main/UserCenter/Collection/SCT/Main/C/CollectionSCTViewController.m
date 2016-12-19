@@ -20,6 +20,9 @@
 @property (nonatomic, strong) MultiItemsToolBar *toolBar;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIButton *naviRightBtn;
+@property (nonatomic, strong) CollectionStoreViewController *storeVC;
+@property (nonatomic, strong) CollectionContentViewController *contentVC;
+@property (nonatomic, strong) CollectionTarentoViewController *tarentoVC;
 @end
 
 @implementation CollectionSCTViewController
@@ -33,6 +36,8 @@
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"编辑" postion:UIBarButtonPositionRight target:self action:@selector(edit) andGetButton:^(UIButton *btn) {
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [btn setTitle:@"完成" forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
         self.naviRightBtn = btn;
     }];
     
@@ -63,23 +68,23 @@
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    CollectionStoreViewController *allVC = [[CollectionStoreViewController alloc] init];
-    UIView *allView = allVC.view;
+    _storeVC = [[CollectionStoreViewController alloc] init];
+    UIView *allView = _storeVC.view;
     allView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:allView];
-    [self addChildViewController:allVC];
+    [self addChildViewController:_storeVC];
     
-    CollectionContentViewController *contentVC = [[CollectionContentViewController alloc] init];
-    UIView *categoryView = contentVC.view;
+    _contentVC = [[CollectionContentViewController alloc] init];
+    UIView *categoryView = _contentVC.view;
     categoryView.frame = CGRectMake(scrollView_w, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:categoryView];
-    [self addChildViewController:contentVC];
+    [self addChildViewController:_contentVC];
     
-    CollectionTarentoViewController *tarentoVC = [[CollectionTarentoViewController alloc] init];
-    UIView *reduceView = tarentoVC.view;
+    _tarentoVC = [[CollectionTarentoViewController alloc] init];
+    UIView *reduceView = _tarentoVC.view;
     reduceView.frame = CGRectMake(scrollView_w * 2, 0, scrollView_w, scrollView_h);
     [scrollView addSubview:reduceView];
-    [self addChildViewController:tarentoVC];
+    [self addChildViewController:_tarentoVC];
     
     scrollView.contentSize = CGSizeMake(scrollView_w * 3, 1);
     
@@ -90,7 +95,17 @@
 }
 
 - (void)edit {
-    TCLog(@"---");
+    self.naviRightBtn.selected = !self.naviRightBtn.selected;
+    CGFloat offsetX = self.scrollView.contentOffset.x;
+    CGFloat scrollView_w = CGRectGetWidth(self.scrollView.bounds);
+    NSUInteger currentIndex = offsetX/scrollView_w;
+    if (currentIndex == 0) {
+        _storeVC.editing = self.naviRightBtn.selected;
+    }else if (currentIndex == 1) {
+        _contentVC.editing = self.naviRightBtn.selected;
+    }else if (currentIndex == 2) {
+        _tarentoVC.editing = self.naviRightBtn.selected;
+    }
 }
 
 #pragma mark - MultiItemsToolBarDelegate
@@ -111,6 +126,14 @@
     CGFloat progress = (offsetX - smallIndex * scrollView_w)/scrollView_w;
     
     [self.toolBar changeTipPlaceWithSmallIndex:smallIndex bigIndex:bigIndex progress:progress animate:YES];
+    
+    if (smallIndex == 0) {
+        self.naviRightBtn.selected = _storeVC.editing;
+    }else if (smallIndex == 1) {
+        self.naviRightBtn.selected = _contentVC.editing;
+    }else if (smallIndex == 2) {
+        self.naviRightBtn.selected = _tarentoVC.editing;
+    }
 }
 
 @end
