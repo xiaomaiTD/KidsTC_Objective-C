@@ -18,6 +18,7 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeShowDate,//显示日期
     ProductDetailViewActionTypeShowAddress,//显示位置
     ProductDetailViewActionTypeOpenWebView,//展开detail
+    ProductDetailViewActionTypeWebViewFinishLoad,//WebView完成加载
     ProductDetailViewActionTypeAddNewConsult,//新增咨询
     ProductDetailViewActionTypeMoreConsult,//查看更多咨询
     ProductDetailViewActionTypeStandard,//套餐信息

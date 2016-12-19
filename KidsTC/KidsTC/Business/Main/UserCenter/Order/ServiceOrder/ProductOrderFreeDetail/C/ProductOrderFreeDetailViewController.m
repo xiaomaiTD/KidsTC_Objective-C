@@ -84,7 +84,7 @@
     self.detailView.infoData = data;
     [self.detailView reloadInfoData];
     if (data.freeType == FreeTypeLottery) {
-        [self loadLottery];
+        [self loadLottery:@(YES)];
     }
 }
 
@@ -197,7 +197,7 @@
             break;
         case ProductOrderFreeDetailViewActionTypeMoreLottery:
         {
-            [self loadLottery];
+            [self loadLottery:value];
         }
             break;
     }
@@ -446,7 +446,12 @@
 }
 
 #pragma mark ================获取中奖名单================
-- (void)loadLottery {
+- (void)loadLottery:(id)value {
+    if (![value respondsToSelector:@selector(boolValue)]) {
+        return;
+    }
+    BOOL refresh = [value boolValue];
+    
     if (![_orderId isNotNull]) {
         return;
     }
@@ -455,7 +460,13 @@
                             @"orderId":_orderId};
     [Request startWithName:@"GET_ENROLL_PRIZE_PAGE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         ProductOrderFreeDetailLotteryModel *model = [ProductOrderFreeDetailLotteryModel modelWithDictionary:dic];
-        self.lotteryData = model.data;
+        if (refresh) {
+            self.lotteryData = model.data;
+        }else{
+            NSMutableArray *lotteryData = [NSMutableArray arrayWithArray:self.lotteryData];
+            [lotteryData addObjectsFromArray:self.lotteryData];
+            self.lotteryData = [NSArray arrayWithArray:lotteryData];
+        }
         self.detailView.lotteryData = self.lotteryData;
         [self.detailView reloadLotteryData:model.data.count];
     } failure:nil];

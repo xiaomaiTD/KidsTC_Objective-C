@@ -77,10 +77,16 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     self.data.webViewHasLoad = YES;
+    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeWebViewFinishLoad value:nil];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     self.data.webViewHasLoad = YES;
+    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeWebViewFinishLoad value:nil];
+    }
 }
 
 

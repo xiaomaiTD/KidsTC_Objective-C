@@ -213,6 +213,7 @@
         }
             break;
         case ProductDetailViewActionTypeOpenWebView://展开detail
+        case ProductDetailViewActionTypeWebViewFinishLoad://WebView完成加载
         {}
             break;
         case ProductDetailViewActionTypeAddNewConsult://新增咨询

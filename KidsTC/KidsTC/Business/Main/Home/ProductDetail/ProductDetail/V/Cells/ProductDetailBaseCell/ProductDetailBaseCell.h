@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeShowDate,//显示日期
     ProductDetailBaseCellActionTypeShowAddress,//显示位置
     ProductDetailBaseCellActionTypeOpenWebView,//展开detail
+    ProductDetailBaseCellActionTypeWebViewFinishLoad,//WebView完成加载
     ProductDetailBaseCellActionTypeAddNewConsult,//新增咨询
     ProductDetailBaseCellActionTypeMoreConsult,//查看更多咨询
     ProductDetailBaseCellActionTypeStandard,//套餐信息

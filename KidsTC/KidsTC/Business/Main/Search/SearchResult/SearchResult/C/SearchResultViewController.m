@@ -401,6 +401,7 @@
         //[dic setObject:self.userLocation forKey:@"mapaddr"];
     //}
     NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
+    _toolBar.userInteractionEnabled = NO;
     [Request startWithName:@"SEARCH_NEW" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultProductModel *model = [SearchResultProductModel modelWithDictionary:dic];
         if (refresh) {
@@ -412,8 +413,10 @@
         }
         self.resultView.items = self.items;
         [self.resultView dealWithUI:model.data.count];
+        _toolBar.userInteractionEnabled = YES;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.resultView dealWithUI:0];
+        _toolBar.userInteractionEnabled = YES;
     }];
 }
 
@@ -428,6 +431,7 @@
         //[dic setObject:self.userLocation forKey:@"mapaddr"];
     //}
     NSDictionary *param = [NSDictionary dictionaryWithDictionary:dic];
+    _toolBar.userInteractionEnabled = NO;
     [Request startWithName:@"STORE_SEARCH_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         SearchResultStoreModel *model = [SearchResultStoreModel modelWithDictionary:dic];
         if (refresh) {
@@ -439,8 +443,10 @@
         }
         self.resultView.items = self.items;
         [self.resultView dealWithUI:model.data.count];
+        _toolBar.userInteractionEnabled = YES;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.resultView dealWithUI:0];
+        _toolBar.userInteractionEnabled = YES;
     }];
 }
 

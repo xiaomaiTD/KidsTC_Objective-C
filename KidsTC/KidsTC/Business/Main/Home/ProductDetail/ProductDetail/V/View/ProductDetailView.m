@@ -159,6 +159,7 @@ static NSString *const ID = @"UITableViewCell";
     
     switch (type) {
         case ProductDetailViewActionTypeOpenWebView:
+        case ProductDetailViewActionTypeWebViewFinishLoad:
         {
             [self reload];
         }

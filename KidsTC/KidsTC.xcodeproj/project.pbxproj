@@ -1461,6 +1461,7 @@
 		ECBCCF011DBF2EE9001B9571 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECBCCEFF1DBF2EE9001B9571 /* ComposeViewController.m */; };
 		ECE18A561DFED294002813B4 /* ProductOrderNormalDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE18A551DFED294002813B4 /* ProductOrderNormalDetailHeader.m */; };
 		ECE18A581DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */; };
+		ECEE2B301E07B0C100FAB7C2 /* RecommendDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B2F1E07B0C100FAB7C2 /* RecommendDataManager.m */; };
 		ECF5D0C11DB8C4FE00A1B268 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */; };
 		ECF5D0C21DB8C4FE00A1B268 /* QRCodeAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AB1DB8C4FE00A1B268 /* QRCodeAnimateView.m */; };
 		ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AD1DB8C4FE00A1B268 /* QRCodeView.m */; };
@@ -4009,6 +4010,8 @@
 		ECE18A541DFED294002813B4 /* ProductOrderNormalDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderNormalDetailHeader.h; sourceTree = "<group>"; };
 		ECE18A551DFED294002813B4 /* ProductOrderNormalDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderNormalDetailHeader.m; sourceTree = "<group>"; };
 		ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderNormalDetailHeader.xib; sourceTree = "<group>"; };
+		ECEE2B2E1E07B0C100FAB7C2 /* RecommendDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendDataManager.h; sourceTree = "<group>"; };
+		ECEE2B2F1E07B0C100FAB7C2 /* RecommendDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendDataManager.m; sourceTree = "<group>"; };
 		ECF5D0A71DB8C4FE00A1B268 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		ECF5D0AA1DB8C4FE00A1B268 /* QRCodeAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeAnimateView.h; sourceTree = "<group>"; };
@@ -7717,6 +7720,7 @@
 		EC4FBCFD1D77CEE300BBD050 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				ECEE2B2D1E07B09B00FAB7C2 /* Recommend */,
 				EC4E27701DF0134E00622711 /* Nearby */,
 				ECA59B901DEC1FDA00B3B1F7 /* Search */,
 				EC4FBCFE1D77CEE300BBD050 /* Article */,
@@ -11848,6 +11852,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		ECEE2B2D1E07B09B00FAB7C2 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B2E1E07B0C100FAB7C2 /* RecommendDataManager.h */,
+				ECEE2B2F1E07B0C100FAB7C2 /* RecommendDataManager.m */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
 		ECF5D0A41DB8C4FE00A1B268 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -13812,6 +13825,7 @@
 				EC0B6D911D8E693A00EC20EA /* ArticleModel.m in Sources */,
 				EC00434B1DE56A9C0042B701 /* NurseryItem.m in Sources */,
 				EC1E2F981D827EA4002381E7 /* ArticleWriteViewController.m in Sources */,
+				ECEE2B301E07B0C100FAB7C2 /* RecommendDataManager.m in Sources */,
 				ECF704D51D88E74600650C0A /* ArticleUserCenterTableHeaderView.m in Sources */,
 				EC0044141DE6B8970042B701 /* ProductDetailContentEleCell.m in Sources */,
 				ECAA49361D79A45B00799CBE /* ArticleHomeAlbumEntrysCell.m in Sources */,

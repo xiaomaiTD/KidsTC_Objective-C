@@ -77,7 +77,6 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"服务详情";
-    self.pageId = @"pv_server_dtl";
     
     self.detailView.delegate = self;
     
