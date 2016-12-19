@@ -26,7 +26,7 @@
 @property (nonatomic, assign) NSUInteger maxBuyNum;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, strong) NSString *statusDesc;
-@property (nonatomic, assign) NSInteger remainStock;
+@property (nonatomic, strong) NSString *remainStock;
 @property (nonatomic, strong) NSArray<ServiceDetailConfigStoreItem *> *stores;
 @end
 

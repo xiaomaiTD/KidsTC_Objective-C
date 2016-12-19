@@ -20,6 +20,7 @@ typedef enum : NSUInteger {
     ProductDetailBaseCellActionTypeWebViewFinishLoad,//WebView完成加载
     ProductDetailBaseCellActionTypeAddNewConsult,//新增咨询
     ProductDetailBaseCellActionTypeMoreConsult,//查看更多咨询
+    ProductDetailBaseCellActionTypeSelectStandard,//选择套餐
     ProductDetailBaseCellActionTypeStandard,//套餐信息
     ProductDetailBaseCellActionTypeBuyStandard,//购买套餐
     ProductDetailBaseCellActionTypeCoupon,//优惠券

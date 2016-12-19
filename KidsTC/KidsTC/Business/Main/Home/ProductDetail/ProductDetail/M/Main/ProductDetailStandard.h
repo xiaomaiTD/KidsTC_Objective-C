@@ -20,6 +20,7 @@
 @property (nonatomic, assign) NSUInteger buyMinNum;
 @property (nonatomic, assign) ProductDetailType productRedirect;
 //selfDefine
+@property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) BOOL isCanBuy;
 @property (nonatomic, strong) NSString *priceStr;
 @end

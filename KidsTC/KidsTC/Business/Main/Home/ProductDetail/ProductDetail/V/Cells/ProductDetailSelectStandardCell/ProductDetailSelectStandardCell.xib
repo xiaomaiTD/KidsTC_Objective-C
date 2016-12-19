@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="ProductDetailSelectStandardCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nB-bq-YBM">
+                        <rect key="frame" x="113" y="16" width="95" height="15"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小学生课程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLx-JA-miP">
+                                <rect key="frame" x="23" y="0.0" width="72" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meal_selected" translatesAutoresizingMaskIntoConstraints="NO" id="O92-yJ-ovo">
+                                <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O92-yJ-ovo" secondAttribute="height" multiplier="1:1" id="KCY-cY-NKp"/>
+                                    <constraint firstAttribute="width" constant="15" id="pEC-b7-f6g"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rLx-JA-miP" firstAttribute="top" secondItem="3nB-bq-YBM" secondAttribute="top" id="NdX-Je-jLe"/>
+                            <constraint firstItem="O92-yJ-ovo" firstAttribute="top" secondItem="3nB-bq-YBM" secondAttribute="top" id="QiR-Zw-Y0H"/>
+                            <constraint firstAttribute="trailing" secondItem="rLx-JA-miP" secondAttribute="trailing" id="dXQ-48-sUP"/>
+                            <constraint firstAttribute="bottom" secondItem="rLx-JA-miP" secondAttribute="bottom" id="n53-Rq-rNi"/>
+                            <constraint firstItem="rLx-JA-miP" firstAttribute="leading" secondItem="O92-yJ-ovo" secondAttribute="trailing" constant="8" id="puy-LM-lla"/>
+                            <constraint firstItem="O92-yJ-ovo" firstAttribute="leading" secondItem="3nB-bq-YBM" secondAttribute="leading" id="yGI-v1-wbi"/>
+                            <constraint firstAttribute="bottom" secondItem="O92-yJ-ovo" secondAttribute="bottom" id="yQD-kd-giv"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUH-Sh-Hry">
+                        <rect key="frame" x="108" y="48" width="105" height="11"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看更多套餐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPs-z1-Q1S">
+                                <rect key="frame" x="0.0" y="0.0" width="86" height="11"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_ticket_arrow_d" translatesAutoresizingMaskIntoConstraints="NO" id="YVs-o9-oLC">
+                                <rect key="frame" x="94" y="0.0" width="11" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="11" id="BSr-OX-zRk"/>
+                                    <constraint firstAttribute="width" secondItem="YVs-o9-oLC" secondAttribute="height" multiplier="1:1" id="iw4-2c-fVf"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YVs-o9-oLC" firstAttribute="leading" secondItem="gPs-z1-Q1S" secondAttribute="trailing" constant="8" id="2bw-UN-G3p"/>
+                            <constraint firstAttribute="bottom" secondItem="YVs-o9-oLC" secondAttribute="bottom" id="PaH-y5-8kP"/>
+                            <constraint firstItem="gPs-z1-Q1S" firstAttribute="top" secondItem="yUH-Sh-Hry" secondAttribute="top" id="Sf9-7d-bkP"/>
+                            <constraint firstAttribute="bottom" secondItem="gPs-z1-Q1S" secondAttribute="bottom" id="SpE-Bc-32i"/>
+                            <constraint firstItem="YVs-o9-oLC" firstAttribute="top" secondItem="yUH-Sh-Hry" secondAttribute="top" id="WQr-ct-0zM"/>
+                            <constraint firstItem="gPs-z1-Q1S" firstAttribute="leading" secondItem="yUH-Sh-Hry" secondAttribute="leading" id="iJK-Od-9Bq"/>
+                            <constraint firstAttribute="trailing" secondItem="YVs-o9-oLC" secondAttribute="trailing" id="qYi-dO-Pfc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yUH-Sh-Hry" firstAttribute="top" secondItem="3nB-bq-YBM" secondAttribute="bottom" constant="16" id="DIs-jh-BKV"/>
+                    <constraint firstAttribute="bottom" secondItem="yUH-Sh-Hry" secondAttribute="bottom" constant="16" id="M45-v2-xlh"/>
+                    <constraint firstItem="yUH-Sh-Hry" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="N2B-kc-wUx"/>
+                    <constraint firstItem="3nB-bq-YBM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="RFF-XY-YLI"/>
+                    <constraint firstItem="3nB-bq-YBM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="TL1-mW-4hm"/>
+                    <constraint firstItem="3nB-bq-YBM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="a5Z-Hc-bZm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameL" destination="rLx-JA-miP" id="jYn-70-uiR"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="67.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductDetail_ticket_arrow_d" width="33" height="18"/>
+        <image name="meal_selected" width="45" height="45"/>
+    </resources>
+</document>

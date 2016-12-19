@@ -21,6 +21,7 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeWebViewFinishLoad,//WebView完成加载
     ProductDetailViewActionTypeAddNewConsult,//新增咨询
     ProductDetailViewActionTypeMoreConsult,//查看更多咨询
+    ProductDetailViewActionTypeSelectStandard,//选择套餐
     ProductDetailViewActionTypeStandard,//套餐信息
     ProductDetailViewActionTypeBuyStandard,//购买套餐
     ProductDetailViewActionTypeCoupon,//优惠券

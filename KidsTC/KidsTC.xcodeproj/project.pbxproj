@@ -1462,6 +1462,17 @@
 		ECE18A561DFED294002813B4 /* ProductOrderNormalDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE18A551DFED294002813B4 /* ProductOrderNormalDetailHeader.m */; };
 		ECE18A581DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */; };
 		ECEE2B301E07B0C100FAB7C2 /* RecommendDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B2F1E07B0C100FAB7C2 /* RecommendDataManager.m */; };
+		ECEE2B3D1E07C7B600FAB7C2 /* ProductStandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B391E07C7B600FAB7C2 /* ProductStandardViewController.m */; };
+		ECEE2B3E1E07C7B600FAB7C2 /* ProductStandardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEE2B3A1E07C7B600FAB7C2 /* ProductStandardViewController.xib */; };
+		ECEE2B421E07C91600FAB7C2 /* ProductStandardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B401E07C91600FAB7C2 /* ProductStandardCell.m */; };
+		ECEE2B431E07C91600FAB7C2 /* ProductStandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEE2B411E07C91600FAB7C2 /* ProductStandardCell.xib */; };
+		ECEE2B461E07C97700FAB7C2 /* ProductStandardView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B451E07C97700FAB7C2 /* ProductStandardView.m */; };
+		ECEE2B491E07CA0D00FAB7C2 /* ProductStandardHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B481E07CA0D00FAB7C2 /* ProductStandardHeaderView.m */; };
+		ECEE2B4E1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B4C1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.m */; };
+		ECEE2B4F1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECEE2B4D1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.xib */; };
+		ECEE2B521E07DF1C00FAB7C2 /* ProductStandardDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B511E07DF1C00FAB7C2 /* ProductStandardDetailModel.m */; };
+		ECEE2B551E07DF3700FAB7C2 /* ProductStandardDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B541E07DF3700FAB7C2 /* ProductStandardDetailData.m */; };
+		ECEE2B581E07DF7300FAB7C2 /* ProductStandardDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B571E07DF7300FAB7C2 /* ProductStandardDetailStore.m */; };
 		ECF5D0C11DB8C4FE00A1B268 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */; };
 		ECF5D0C21DB8C4FE00A1B268 /* QRCodeAnimateView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AB1DB8C4FE00A1B268 /* QRCodeAnimateView.m */; };
 		ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECF5D0AD1DB8C4FE00A1B268 /* QRCodeView.m */; };
@@ -4012,6 +4023,25 @@
 		ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderNormalDetailHeader.xib; sourceTree = "<group>"; };
 		ECEE2B2E1E07B0C100FAB7C2 /* RecommendDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendDataManager.h; sourceTree = "<group>"; };
 		ECEE2B2F1E07B0C100FAB7C2 /* RecommendDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendDataManager.m; sourceTree = "<group>"; };
+		ECEE2B381E07C7B600FAB7C2 /* ProductStandardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardViewController.h; sourceTree = "<group>"; };
+		ECEE2B391E07C7B600FAB7C2 /* ProductStandardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardViewController.m; sourceTree = "<group>"; };
+		ECEE2B3A1E07C7B600FAB7C2 /* ProductStandardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductStandardViewController.xib; sourceTree = "<group>"; };
+		ECEE2B3F1E07C91600FAB7C2 /* ProductStandardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardCell.h; sourceTree = "<group>"; };
+		ECEE2B401E07C91600FAB7C2 /* ProductStandardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardCell.m; sourceTree = "<group>"; };
+		ECEE2B411E07C91600FAB7C2 /* ProductStandardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductStandardCell.xib; sourceTree = "<group>"; };
+		ECEE2B441E07C97700FAB7C2 /* ProductStandardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardView.h; sourceTree = "<group>"; };
+		ECEE2B451E07C97700FAB7C2 /* ProductStandardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardView.m; sourceTree = "<group>"; };
+		ECEE2B471E07CA0D00FAB7C2 /* ProductStandardHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardHeaderView.h; sourceTree = "<group>"; };
+		ECEE2B481E07CA0D00FAB7C2 /* ProductStandardHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardHeaderView.m; sourceTree = "<group>"; };
+		ECEE2B4B1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSelectStandardCell.h; sourceTree = "<group>"; };
+		ECEE2B4C1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSelectStandardCell.m; sourceTree = "<group>"; };
+		ECEE2B4D1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailSelectStandardCell.xib; sourceTree = "<group>"; };
+		ECEE2B501E07DF1C00FAB7C2 /* ProductStandardDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardDetailModel.h; sourceTree = "<group>"; };
+		ECEE2B511E07DF1C00FAB7C2 /* ProductStandardDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardDetailModel.m; sourceTree = "<group>"; };
+		ECEE2B531E07DF3700FAB7C2 /* ProductStandardDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardDetailData.h; sourceTree = "<group>"; };
+		ECEE2B541E07DF3700FAB7C2 /* ProductStandardDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardDetailData.m; sourceTree = "<group>"; };
+		ECEE2B561E07DF7300FAB7C2 /* ProductStandardDetailStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductStandardDetailStore.h; sourceTree = "<group>"; };
+		ECEE2B571E07DF7300FAB7C2 /* ProductStandardDetailStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductStandardDetailStore.m; sourceTree = "<group>"; };
 		ECF5D0A71DB8C4FE00A1B268 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		ECF5D0A81DB8C4FE00A1B268 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
 		ECF5D0AA1DB8C4FE00A1B268 /* QRCodeAnimateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeAnimateView.h; sourceTree = "<group>"; };
@@ -4286,6 +4316,7 @@
 				EC0043A11DE6B8970042B701 /* ProductDetailNoticeCell */,
 				EC0043A81DE6B8970042B701 /* ProductDetailRecommendCell */,
 				EC0043AC1DE6B8970042B701 /* ProductDetailStandardCell */,
+				ECEE2B4A1E07CC6400FAB7C2 /* ProductDetailSelectStandardCell */,
 				EC0043B01DE6B8970042B701 /* ProductDetailTicketActorCell */,
 				EC0043B41DE6B8970042B701 /* ProductDetailTicketActorCollectionViewCell */,
 				EC0043B81DE6B8970042B701 /* ProductDetailTicketDesBtnCell */,
@@ -11861,6 +11892,63 @@
 			path = Recommend;
 			sourceTree = "<group>";
 		};
+		ECEE2B311E07C77700FAB7C2 /* ProductStandard */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B371E07C7B600FAB7C2 /* C */,
+				ECEE2B3B1E07C7B600FAB7C2 /* M */,
+				ECEE2B3C1E07C7B600FAB7C2 /* V */,
+			);
+			path = ProductStandard;
+			sourceTree = "<group>";
+		};
+		ECEE2B371E07C7B600FAB7C2 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B381E07C7B600FAB7C2 /* ProductStandardViewController.h */,
+				ECEE2B391E07C7B600FAB7C2 /* ProductStandardViewController.m */,
+				ECEE2B3A1E07C7B600FAB7C2 /* ProductStandardViewController.xib */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		ECEE2B3B1E07C7B600FAB7C2 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B501E07DF1C00FAB7C2 /* ProductStandardDetailModel.h */,
+				ECEE2B511E07DF1C00FAB7C2 /* ProductStandardDetailModel.m */,
+				ECEE2B531E07DF3700FAB7C2 /* ProductStandardDetailData.h */,
+				ECEE2B541E07DF3700FAB7C2 /* ProductStandardDetailData.m */,
+				ECEE2B561E07DF7300FAB7C2 /* ProductStandardDetailStore.h */,
+				ECEE2B571E07DF7300FAB7C2 /* ProductStandardDetailStore.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		ECEE2B3C1E07C7B600FAB7C2 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B3F1E07C91600FAB7C2 /* ProductStandardCell.h */,
+				ECEE2B401E07C91600FAB7C2 /* ProductStandardCell.m */,
+				ECEE2B411E07C91600FAB7C2 /* ProductStandardCell.xib */,
+				ECEE2B441E07C97700FAB7C2 /* ProductStandardView.h */,
+				ECEE2B451E07C97700FAB7C2 /* ProductStandardView.m */,
+				ECEE2B471E07CA0D00FAB7C2 /* ProductStandardHeaderView.h */,
+				ECEE2B481E07CA0D00FAB7C2 /* ProductStandardHeaderView.m */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		ECEE2B4A1E07CC6400FAB7C2 /* ProductDetailSelectStandardCell */ = {
+			isa = PBXGroup;
+			children = (
+				ECEE2B4B1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.h */,
+				ECEE2B4C1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.m */,
+				ECEE2B4D1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.xib */,
+			);
+			path = ProductDetailSelectStandardCell;
+			sourceTree = "<group>";
+		};
 		ECF5D0A41DB8C4FE00A1B268 /* QRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -12087,6 +12175,7 @@
 		ECFFC6401DC363C1002DBFB9 /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
+				ECEE2B311E07C77700FAB7C2 /* ProductStandard */,
 				EC5CDCE31DE538F200F95C6F /* ProductDetailFreeApply */,
 				EC2F26031DD6BE7300B67BBA /* ProductDetailTicketSelectSeat */,
 				EC7FBC001DC4D074007B326C /* ProductDetailConsult */,
@@ -12744,6 +12833,7 @@
 				EC4FC3B81D77CEE400BBD050 /* StoreDetailServiceCell.xib in Resources */,
 				EC4FC2C81D77CEE400BBD050 /* FDStoreCell.xib in Resources */,
 				EC4FC5C51D77CEEF00BBD050 /* ImageSelectedSmallOn.png in Resources */,
+				ECEE2B431E07C91600FAB7C2 /* ProductStandardCell.xib in Resources */,
 				EC0044081DE6B8970042B701 /* ProductDetailBannerCell.xib in Resources */,
 				ECAA49331D79A45B00799CBE /* ArticleHomeAlbumCell.xib in Resources */,
 				EC4FC4751D77CEE400BBD050 /* FavourateSegmentViewCell.xib in Resources */,
@@ -12796,6 +12886,7 @@
 				ECB3E7991D92C96B0059267D /* FlashServiceOrderListCell.xib in Resources */,
 				EC4FC4461D77CEE400BBD050 /* CommentDetailViewNormalHeaderCell.xib in Resources */,
 				EC4FC5D01D77CEEF00BBD050 /* UIBarButtonItemArrowLeft@3x.png in Resources */,
+				ECEE2B3E1E07C7B600FAB7C2 /* ProductStandardViewController.xib in Resources */,
 				EC486F971DFA908D005CA365 /* SearchResultProductLargeCell.xib in Resources */,
 				EC2F26271DD6E4F100B67BBA /* ServiceSettlementTicketGetCell.xib in Resources */,
 				EC4FC2C41D77CEE400BBD050 /* FDMoreCell.xib in Resources */,
@@ -12831,6 +12922,7 @@
 				EC4FC3EB1D77CEE400BBD050 /* ParentingStrategyDetailView.xib in Resources */,
 				EC4FC3FB1D77CEE400BBD050 /* AccountSettingViewCell.xib in Resources */,
 				EC4FC4311D77CEE400BBD050 /* CommentEditViewController.xib in Resources */,
+				ECEE2B4F1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.xib in Resources */,
 				EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */,
 				EC4FC5C41D77CEEF00BBD050 /* ImageSelectedSmallOff@3x.png in Resources */,
 				EC4FC5BE1D77CEEF00BBD050 /* ImageSelectedOff@3x.png in Resources */,
@@ -13241,6 +13333,7 @@
 				EC4FC2B51D77CEE400BBD050 /* CategoryDataManager.m in Sources */,
 				EC30AB681DFF971E007380B0 /* ProductOrderTicketDetailRemark.m in Sources */,
 				EC31CF6B1DA9E98B00C49E29 /* NotificationModel.m in Sources */,
+				ECEE2B3D1E07C7B600FAB7C2 /* ProductStandardViewController.m in Sources */,
 				EC4C60BA1DF5B0CB00830126 /* ProductOrderListAllTitleView.m in Sources */,
 				EC4FC3E81D77CEE400BBD050 /* ParentingStrategyDetailModel.m in Sources */,
 				EC30AB311DFF1302007380B0 /* ProductOrderNormalDetailCountDown.m in Sources */,
@@ -13262,6 +13355,7 @@
 				EC7264361D7D27BC00AA739B /* ArticleColumnViewController.m in Sources */,
 				EC13B4ED1DD1F3430040F760 /* AccountCenterViewController.m in Sources */,
 				EC3CE0BF1DF17A57005729E2 /* NearbyCategoryToolBarCell.m in Sources */,
+				ECEE2B461E07C97700FAB7C2 /* ProductStandardView.m in Sources */,
 				EC4FC2C71D77CEE400BBD050 /* FDStoreCell.m in Sources */,
 				EC30ABCC1DFF9CD3007380B0 /* ProductOrderTicketDetailProductCell.m in Sources */,
 				EC0044051DE6B8970042B701 /* ProductDetailApplyCell.m in Sources */,
@@ -13280,6 +13374,7 @@
 				EC4FC5B81D77CEEF00BBD050 /* InsuranceView.m in Sources */,
 				ECFFC6EE1DC363C1002DBFB9 /* ProdectDetailCoupon.m in Sources */,
 				ECA59C041DED61A600B3B1F7 /* SearchFactorAreaCell.m in Sources */,
+				ECEE2B491E07CA0D00FAB7C2 /* ProductStandardHeaderView.m in Sources */,
 				EC4C60911DF5968500830126 /* ProductOrderFreeListModel.m in Sources */,
 				EC1E2FB21D8286F9002381E7 /* ArticleWriteImageCell.m in Sources */,
 				EC4FC2721D77CEE400BBD050 /* TencentManager.m in Sources */,
@@ -13334,6 +13429,7 @@
 				EC4FC4111D77CEE400BBD050 /* AppointmentOrderListView.m in Sources */,
 				EC2289461DE880A700EC324A /* CollectProductCategoryModel.m in Sources */,
 				EC5505B41E00E9AF00180A2C /* ProductDetailSecondKillCell.m in Sources */,
+				ECEE2B4E1E07CC7F00FAB7C2 /* ProductDetailSelectStandardCell.m in Sources */,
 				EC4FC5F21D77CEEF00BBD050 /* ZPPopover.m in Sources */,
 				EC4FC24C1D77CEE400BBD050 /* GuideViewCell.m in Sources */,
 				EC4FC2BE1D77CEE400BBD050 /* FlashDetailModel.m in Sources */,
@@ -13551,6 +13647,7 @@
 				EC72642A1D7D279A00AA739B /* ArticleLikeViewController.m in Sources */,
 				ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */,
 				ECAA494F1D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.m in Sources */,
+				ECEE2B521E07DF1C00FAB7C2 /* ProductStandardDetailModel.m in Sources */,
 				ECFFC6ED1DC363C1002DBFB9 /* ProductDetailViewController.m in Sources */,
 				EC45601A1DFECA0C000BD822 /* ProductOrderNormalDetailConsumeCode.m in Sources */,
 				EC3CE0A61DF167DB005729E2 /* NearbyView.m in Sources */,
@@ -13691,6 +13788,7 @@
 				EC4FC48A1D77CEE400BBD050 /* FlashServiceOrderDetailCountDownCell.m in Sources */,
 				EC4870AF1DFC3FFB005CA365 /* ProductOrderFreeDetailMoreLotteryCell.m in Sources */,
 				EC5CDD341DE538F200F95C6F /* ProductDetailFreeApplyUserAddressTipCell.m in Sources */,
+				ECEE2B581E07DF7300FAB7C2 /* ProductStandardDetailStore.m in Sources */,
 				EC4FC2BA1D77CEE400BBD050 /* HeaderView.m in Sources */,
 				EC4FC26A1D77CEE400BBD050 /* Request.m in Sources */,
 				ECA59B4E1DEBE1E200B3B1F7 /* CouponListItem.m in Sources */,
@@ -13702,6 +13800,7 @@
 				EC5CDD2F1DE538F200F95C6F /* ProductDetailFreeApplyBaseCell.m in Sources */,
 				EC455FFF1DFEB435000BD822 /* ProductOrderNormalDetailModel.m in Sources */,
 				EC4E27111DEE812E00622711 /* MyTracksDateItem.m in Sources */,
+				ECEE2B551E07DF3700FAB7C2 /* ProductStandardDetailData.m in Sources */,
 				EC00434F1DE56E010042B701 /* NurseryCell.m in Sources */,
 				EC13B5211DD1F6250040F760 /* AccountCenterHotProduct.m in Sources */,
 				EC2F26F21DDB0AE500B67BBA /* MyTracksCell.m in Sources */,
@@ -13875,6 +13974,7 @@
 				EC4E27941DF0134E00622711 /* NearbyTableViewHeaderItemView.m in Sources */,
 				EC0044031DE6B8970042B701 /* ProductDetailAddressCell.m in Sources */,
 				EC4FC2A11D77CEE400BBD050 /* ArticleWeChatTimeView.m in Sources */,
+				ECEE2B421E07C91600FAB7C2 /* ProductStandardCell.m in Sources */,
 				EC2F26A11DD9B7E000B67BBA /* CollectionSCTBaseView.m in Sources */,
 				EC810A611D8FE0C700B4B87A /* ZPDateFormate.m in Sources */,
 				ECFFC6FE1DC363C1002DBFB9 /* ProductDetailTime.m in Sources */,

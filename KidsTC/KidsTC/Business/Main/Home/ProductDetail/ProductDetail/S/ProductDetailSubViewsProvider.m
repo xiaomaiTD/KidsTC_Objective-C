@@ -27,6 +27,7 @@
 #import "ProductDetailTwoColumnConsultEmptyCell.h"
 #import "ProductDetailTwoColumnConsultConsultCell.h"
 #import "ProductDetailTwoColumnConsultMoreCell.h"
+#import "ProductDetailSelectStandardCell.h"
 #import "ProductDetailStandardCell.h"
 #import "ProductDetailCouponCell.h"
 #import "ProductDetailNoticeCell.h"
@@ -63,6 +64,7 @@
 @property (nonatomic, strong) ProductDetailTwoColumnConsultTipCell *twoColumnConsultTipCell;
 @property (nonatomic, strong) ProductDetailTwoColumnConsultEmptyCell *twoColumnConsultEmptyCell;
 @property (nonatomic, strong) ProductDetailTwoColumnConsultMoreCell *twoColumnConsultMoreCell;
+@property (nonatomic, strong) ProductDetailSelectStandardCell *selectStandardCell;
 @property (nonatomic, strong) ProductDetailCouponCell *couponCell;
 @property (nonatomic, strong) ProductDetailNoticeCell *noticeCell;
 @property (nonatomic, strong) ProductDetailContactCell *contactCell;
@@ -191,6 +193,13 @@
         _twoColumnConsultMoreCell = [self viewWithNib:@"ProductDetailTwoColumnConsultMoreCell"];
     }
     return _twoColumnConsultMoreCell;
+}
+
+- (ProductDetailSelectStandardCell *)selectStandardCell {
+    if (!_selectStandardCell) {
+        _selectStandardCell = [self viewWithNib:@"ProductDetailSelectStandardCell"];
+    }
+    return _selectStandardCell;
 }
 
 - (ProductDetailStandardCell *)standardCell {
@@ -444,6 +453,15 @@
     _twoColumnSectionUsed = sections.count;
     if (section04.count>0) [sections addObject:section04];
     
+    //已选套餐
+    if (_data.product_standards.count>1) {
+        NSMutableArray *sectionForSelectStandard = [NSMutableArray array];
+        ProductDetailTitleCell *selectStandardtitleCell = self.titleCell;
+        selectStandardtitleCell.text = @"已选套餐";
+        [sectionForSelectStandard addObject:selectStandardtitleCell];
+        [sectionForSelectStandard addObject:self.selectStandardCell];
+        if (sectionForSelectStandard.count>0) [sections addObject:sectionForSelectStandard];
+    }
     
     //套餐明细
     if (_data.product_standards.count>0) {

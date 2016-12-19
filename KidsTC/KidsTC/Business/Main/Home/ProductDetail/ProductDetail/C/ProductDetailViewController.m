@@ -41,10 +41,11 @@
 #import "StoreDetailViewController.h"
 #import "CommentFoundingViewController.h"
 #import "NavigationController.h"
+#import "ProductStandardViewController.h"
 
 #import "KTCBrowseHistoryView.h"
 
-@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate,ZPPopoverDelegate,CommentFoundingViewControllerDelegate>
+@interface ProductDetailViewController ()<ProductDetailViewDelegate,ProductDetailAddNewConsultViewControllerDelegate,KTCBrowseHistoryViewDataSource, KTCBrowseHistoryViewDelegate,ProductDetailGetCouponListViewControllerDelegate,ZPPopoverDelegate,CommentFoundingViewControllerDelegate,ProductStandardViewControllerDelegate>
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) ProductDetailView *detailView;
@@ -226,6 +227,11 @@
         case ProductDetailViewActionTypeMoreConsult://更多咨询
         {
             [self moreConsult:value];
+        }
+            break;
+        case ProductDetailViewActionTypeSelectStandard://选择套餐
+        {
+            [self selectStandard:value];
         }
             break;
         case ProductDetailViewActionTypeStandard://套餐信息
@@ -458,6 +464,43 @@
     controller.productId = self.productId;
     controller.consultStr = self.consultStr;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - selectStandard
+
+- (void)selectStandard:(id)value {
+    if (self.data.product_standards.count<2) {
+        [[iToast makeText:@"无更多套餐信息"] show];
+        return;
+    }
+    ProductStandardViewController *controller = [[ProductStandardViewController alloc] initWithNibName:@"ProductStandardViewController" bundle:nil];
+    controller.delegate = self;
+    controller.product_standards = self.data.product_standards;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:NO completion:nil];
+}
+
+- (void)productStandardViewController:(ProductStandardViewController *)controller actionType:(ProductStandardViewControllerActionTyp)type value:(id)value {
+    switch (type) {
+        case ProductStandardViewControllerActionTypDidSelectStandard:
+        {
+            if (![value isNotNull]) {
+                return;
+            }
+            self.productId = value;
+            _dataManager.productId = _productId;
+            [self loadData];
+        }
+            break;
+        case ProductStandardViewControllerActionTypBuyStandard:
+        {
+            [self buyStandard:value];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Standard
