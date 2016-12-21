@@ -12,6 +12,7 @@
 #import "SegueMaster.h"
 #import "NSString+Category.h"
 #import "KTCFavouriteManager.h"
+#import "RecommendDataManager.h"
 
 #import "CollectProductAllModel.h"
 #import "CollectProductAllView.h"
@@ -68,24 +69,32 @@
 
 - (void)loadData:(BOOL)refresh {
     
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"sort":@(CollectProductTypeAll),
-                            @"page":@(self.page),
-                            @"pagecount":@(CollectProductPageCount)};
-    [Request startWithName:@"GET_USER_INTEREST_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        CollectProductAllModel *model = [CollectProductAllModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.allView.items = self.items;
-        [self.allView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.allView dealWithUI:0];
-    }];
+    if (!self.allView.noMoreCollectData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"sort":@(CollectProductTypeAll),
+                                @"page":@(self.page),
+                                @"pagecount":@(CollectProductPageCount)};
+        [Request startWithName:@"GET_USER_INTEREST_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            CollectProductAllModel *model = [CollectProductAllModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.allView.items = self.items;
+            [self.allView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.allView dealWithUI:0 isRecommend:NO];
+        }];
+    }else{
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeCollect refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+            [self.allView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.allView dealWithUI:0 isRecommend:YES];
+        }];
+    }
 }
 
 - (void)delete:(CollectProductItem *)item completion:(void(^)(BOOL success))completion{

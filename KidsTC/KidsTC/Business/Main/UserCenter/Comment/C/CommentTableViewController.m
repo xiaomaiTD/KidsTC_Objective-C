@@ -422,7 +422,24 @@ static NSUInteger pageSize = 10;
     
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = model.orderId;
-    //controller.orderKind = CashierDeskOrderKindService;
+    controller.orderKind = CashierDeskOrderKindService;
+    switch (model.orderKind) {
+        case OrderKindTicket:
+        {
+            controller.productType = ProductDetailTypeTicket;
+        }
+            break;
+        case OrderKindFree:
+        {
+            controller.productType = ProductDetailTypeFree;
+        }
+            break;
+        default:
+        {
+            controller.productType = ProductDetailTypeNormal;
+        }
+            break;
+    }
     [self.navigationController pushViewController:controller animated:YES];
 }
 

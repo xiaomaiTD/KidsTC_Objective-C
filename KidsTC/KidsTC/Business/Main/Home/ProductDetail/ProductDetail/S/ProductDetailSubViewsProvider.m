@@ -528,7 +528,7 @@
         ProductDetailTitleCell *titleCell09 = self.titleCell;
         titleCell09.text = @"为您推荐";
         [section09 addObject:titleCell09];
-        [_data.recommends enumerateObjectsUsingBlock:^(ProductDetailRecommendItem *obj, NSUInteger idx, BOOL *stop) {
+        [_data.recommends enumerateObjectsUsingBlock:^(RecommendProduct *obj, NSUInteger idx, BOOL *stop) {
             ProductDetailRecommendCell *recommendCell = self.recommendCell;
             recommendCell.index = idx;
             [section09 addObject:recommendCell];
@@ -688,7 +688,7 @@
         ProductDetailTitleCell *titleCell09 = self.titleCell;
         titleCell09.text = @"为您推荐";
         [section09 addObject:titleCell09];
-        [_data.recommends enumerateObjectsUsingBlock:^(ProductDetailRecommendItem *obj, NSUInteger idx, BOOL *stop) {
+        [_data.recommends enumerateObjectsUsingBlock:^(RecommendProduct *obj, NSUInteger idx, BOOL *stop) {
             ProductDetailRecommendCell *recommendCell = self.recommendCell;
             recommendCell.index = idx;
             [section09 addObject:recommendCell];
@@ -854,7 +854,7 @@
         ProductDetailTitleCell *titleCell09 = self.titleCell;
         titleCell09.text = @"为您推荐";
         [section11 addObject:titleCell09];
-        [_data.recommends enumerateObjectsUsingBlock:^(ProductDetailRecommendItem *obj, NSUInteger idx, BOOL *stop) {
+        [_data.recommends enumerateObjectsUsingBlock:^(RecommendProduct *obj, NSUInteger idx, BOOL *stop) {
             ProductDetailRecommendCell *recommendCell = self.recommendCell;
             recommendCell.index = idx;
             [section11 addObject:recommendCell];

@@ -10,6 +10,7 @@
 
 #import "GHeader.h"
 #import "SegueMaster.h"
+#import "RecommendDataManager.h"
 
 #import "CollectProductCategoryModel.h"
 #import "CollectProductCategoryView.h"
@@ -53,24 +54,33 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"sort":@(CollectProductTypeCategory),
-                            @"page":@(self.page),
-                            @"pagecount":@(CollectProductPageCount)};
-    [Request startWithName:@"GET_USER_INTEREST_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        CollectProductCategoryModel *model = [CollectProductCategoryModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.categoryView.items = self.items;
-        [self.categoryView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.categoryView dealWithUI:0];
-    }];
+    
+    if (!self.categoryView.noMoreCollectData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"sort":@(CollectProductTypeCategory),
+                                @"page":@(self.page),
+                                @"pagecount":@(CollectProductPageCount)};
+        [Request startWithName:@"GET_USER_INTEREST_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            CollectProductCategoryModel *model = [CollectProductCategoryModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.categoryView.items = self.items;
+            [self.categoryView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.categoryView dealWithUI:0 isRecommend:NO];
+        }];
+    }else {
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeCollect refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+            [self.categoryView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.categoryView dealWithUI:0 isRecommend:YES];
+        }];
+    }
 }
 
 @end

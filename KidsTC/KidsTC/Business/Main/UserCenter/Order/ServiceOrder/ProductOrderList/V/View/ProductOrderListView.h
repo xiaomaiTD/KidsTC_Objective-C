@@ -45,7 +45,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) id<ProductOrderListViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, assign) BOOL noMoreOrderListData;
+@property (nonatomic, assign) BOOL noMoreRecommendData;
 - (void)beginRefreshing;
 - (void)reloadData;
-- (void)dealWithUI:(NSUInteger)loadCount;
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend;
 @end

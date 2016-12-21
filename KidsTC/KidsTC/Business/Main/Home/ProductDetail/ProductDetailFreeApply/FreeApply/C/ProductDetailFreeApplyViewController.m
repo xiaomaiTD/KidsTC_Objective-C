@@ -234,8 +234,11 @@
         [[iToast makeText:@"恭喜您，报名成功"] show];
         
         SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc] initWithNibName:@"SettlementResultNewViewController" bundle:nil];
+        controller.type = SettlementResultTypeService;
+        controller.productType = ProductDetailTypeFree;
+        controller.paid = YES;
         controller.data = self.data;
-        controller.orderId = dic[@"data"];
+        controller.orderId = [NSString stringWithFormat:@"%@",dic[@"data"]];
         NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
         UIViewController *target = [TabBarController shareTabBarController].selectedViewController;
         [target presentViewController:navi animated:YES completion:^{

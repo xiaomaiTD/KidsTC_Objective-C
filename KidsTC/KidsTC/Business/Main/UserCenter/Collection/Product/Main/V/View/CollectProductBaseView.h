@@ -27,5 +27,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) id<CollectProductBaseViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, assign) BOOL editing;
-- (void)dealWithUI:(NSUInteger)loadCount;
+@property (nonatomic, assign) BOOL noMoreCollectData;
+@property (nonatomic, assign) BOOL noMoreRecommendData;
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend;
 @end

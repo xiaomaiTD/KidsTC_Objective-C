@@ -8,8 +8,8 @@
 
 #import "GHeader.h"
 #import "ProductDetailModel.h"
-#import "ProductDetailRecommendModel.h"
 #import "ProductDetailConsultModel.h"
+#import "RecommendProduct.h"
 
 @interface ProductDetailDataManager : NSObject
 
@@ -20,7 +20,7 @@
 - (void)loadDataWithSuccessBlock:(void(^)(ProductDetailData *data))successBlock
                     failureBlock:(void(^)(NSError *error))failureBlock;
 
-- (void)loadRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
+- (void)loadRecommendSuccessBlock:(void(^)(NSArray<RecommendProduct *> *recommends))successBlock
                      failureBlock:(void(^)(NSError *error))failureBlock;
 
 - (void)loadConsultSuccessBlock:(void(^)(NSArray<ProductDetailConsultItem *> *items))successBlock

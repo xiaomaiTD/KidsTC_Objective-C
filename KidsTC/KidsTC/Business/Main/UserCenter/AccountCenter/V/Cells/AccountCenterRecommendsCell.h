@@ -9,5 +9,5 @@
 #import "AccountCenterBaseCell.h"
 
 @interface AccountCenterRecommendsCell : AccountCenterBaseCell
-
+- (void)reloadRecommends;
 @end

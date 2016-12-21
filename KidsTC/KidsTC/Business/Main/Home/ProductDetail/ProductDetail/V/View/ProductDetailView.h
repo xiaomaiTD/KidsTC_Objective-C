@@ -29,7 +29,6 @@ typedef enum : NSUInteger {
     ProductDetailViewActionTypeContact,//联系商家
     ProductDetailViewActionTypeComment,//查看评论
     ProductDetailViewActionTypeMoreComment,//查看全部评论
-    ProductDetailViewActionTypeRecommend,//为您推荐
     ProductDetailViewActionTypeTicketLike,//票务 - 想看
     ProductDetailViewActionTypeTicketStar,//票务 - 评分
     ProductDetailViewActionTypeTicketOpenDes,//票务 - 展开描述

@@ -25,8 +25,6 @@ static NSString *const ID = @"CollectProductAllCell";
     return self;
 }
 
-
-
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

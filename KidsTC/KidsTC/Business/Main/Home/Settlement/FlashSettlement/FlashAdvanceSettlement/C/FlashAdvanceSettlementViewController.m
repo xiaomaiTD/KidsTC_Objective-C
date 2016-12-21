@@ -21,7 +21,7 @@
 #import "UserAddressEditViewController.h"
 #import "UserAddressManageViewController.h"
 #import "SettlementPickStoreViewController.h"
-#import "SettlementResultViewController.h"
+#import "SettlementResultNewViewController.h"
 #import "NavigationController.h"
 #import "WebViewController.h"
 
@@ -319,17 +319,13 @@
     
     [KTCPaymentService startPay:model.data.payInfo succeed:^{
         [self settlementPaid:YES orderId:orderId];
-        
         [[iToast makeText:@"结算成功"] show];
-
     } failure:^(NSError *error) {
         [self settlementPaid:NO orderId:orderId];
-        
         NSString *errMsg = @"结算失败";
         NSString *text = [[error userInfo] objectForKey:kErrMsgKey];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
-
     }];
 }
 
@@ -343,7 +339,7 @@
 
 #pragma mark - 结算结果
 - (void)settlementPaid:(BOOL)paid orderId:(NSString *)orderId{
-    SettlementResultViewController *controller = [[SettlementResultViewController alloc]initWithNibName:@"SettlementResultViewController" bundle:nil];
+    SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc]initWithNibName:@"SettlementResultNewViewController" bundle:nil];
     controller.paid = paid;
     controller.orderId = orderId;
     controller.type = SettlementResultTypeFlash;

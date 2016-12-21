@@ -27,6 +27,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self setNeedsLayout];
     [self layoutIfNeeded];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -48,7 +49,8 @@
 
 - (void)setItem:(CollectProductItem *)item {
     _item = item;
-    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
     [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_item.img] placeholderImage:PLACEHOLDERIMAGE_BIG];
     self.icon.hidden = ![_item.supplierIconImg isNotNull];
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_item.supplierIconImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
@@ -58,6 +60,9 @@
     self.statusL.text = [NSString stringWithFormat:@"%@",_item.endTimeDesc];
     
     self.bannerIconH.constant = CGRectGetWidth(self.bannerIcon.frame) * _item.imgRatio;
+    
+    [self setNeedsUpdateConstraints];
+    [self updateConstraintsIfNeeded];
     [self setNeedsLayout];
     [self layoutIfNeeded];
 }

@@ -10,6 +10,7 @@
 #import "Colours.h"
 #import "MultiItemsToolBar.h"
 #import "UIBarButtonItem+Category.h"
+#import "RecommendDataManager.h"
 
 #import "CollectProductAllViewController.h"
 #import "CollectProductCategoryViewController.h"
@@ -133,6 +134,8 @@
         self.naviRightBtn.hidden = NO;
     }
 }
+
+
 
 
 @end

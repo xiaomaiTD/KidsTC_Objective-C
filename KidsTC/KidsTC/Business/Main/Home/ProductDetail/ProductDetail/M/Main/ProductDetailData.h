@@ -16,7 +16,7 @@
 #import "ProductDetailStandard.h"
 #import "ProductDetailStore.h"
 #import "ProductDetailTime.h"
-#import "ProductDetailRecommendItem.h"
+#import "RecommendProduct.h"
 #import "CommentListItemModel.h"
 #import "ProductDetailConsultItem.h"
 #import "CommonShareObject.h"
@@ -136,7 +136,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSArray<NSAttributedString *> *attApply;
 
 //recommend
-@property (nonatomic, strong) NSArray<ProductDetailRecommendItem *> *recommends;
+@property (nonatomic, strong) NSArray<RecommendProduct *> *recommends;
 
 //consult
 @property (nonatomic, strong) NSArray<ProductDetailConsultItem *> *consults;

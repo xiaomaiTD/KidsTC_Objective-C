@@ -171,7 +171,7 @@
 #pragma mark - loadRecommend
 
 - (void)loadRecommend {
-    [_dataManager loadRecommendSuccessBlock:^(NSArray<ProductDetailRecommendItem *> *recommends) {
+    [_dataManager loadRecommendSuccessBlock:^(NSArray<RecommendProduct *> *recommends) {
         _data.recommends = recommends;
         self.detailView.data = _data;
     } failureBlock:nil];
@@ -269,11 +269,6 @@
         case ProductDetailViewActionTypeMoreComment://查看全部评论
         {
             [self moreComment:value];                  
-        }
-            break;
-        case ProductDetailViewActionTypeRecommend://为您推荐
-        {
-            [self recommend:value];
         }
             break;
         case ProductDetailViewActionTypeTicketLike://票务 - 想看
@@ -791,17 +786,6 @@
     NSDictionary *params = @{@"pid":_productId,
                              @"cid":_channelId};
     [BuryPointManager trackEvent:@"event_skip_server_evalist" actionId:20403 params:params];
-}
-
-#pragma mark - recommend
-
-- (void)recommend:(id)value {
-    ProductDetailRecommendItem *item = value;
-    ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:item.productNo channelId:item.channelId];
-    controller.type = item.productRedirect;
-    [self.navigationController pushViewController:controller animated:YES];
-    
-    [BuryPointManager trackEvent:@"event_skip_server_promserver" actionId:20405 params:nil];
 }
 
 #pragma mark - attention

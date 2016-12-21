@@ -8,18 +8,29 @@
 
 #import "ProductOrderListView.h"
 #import "Colours.h"
+#import "RecommendDataManager.h"
 
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
 #import "ProductOrderListCell.h"
 #import "ProductOrderListHeader.h"
+#import "RecommendProductOrderListView.h"
 
 static NSString *const CellID = @"ProductOrderListCell";
-@interface ProductOrderListView ()<ProductOrderListCellDelegate>
+@interface ProductOrderListView ()<ProductOrderListCellDelegate,RecommendProductViewDelegate>
+@property (nonatomic, strong) RecommendProductOrderListView *footerView;
 @end
 
 @implementation ProductOrderListView
+
+- (RecommendProductOrderListView *)footerView {
+    if (!_footerView) {
+        _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendProductOrderListView" owner:self options:nil].firstObject;
+        _footerView.delegate = self;
+    }
+    return _footerView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -52,13 +63,25 @@ static NSString *const CellID = @"ProductOrderListCell";
     };
     tableView.tableHeaderView = header;
     
+    [self resetFooterView];
+    
     [self setupMJ];
+}
+
+- (void)resetFooterView {
+    [self.footerView reloadData];
+    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
+    self.tableView.tableFooterView = self.footerView;
 }
 
 - (void)setupMJ {
     WeakSelf(self);
     RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self);
+        self.noMoreOrderListData = NO;
+        self.noMoreRecommendData = NO;
+        [self.footerView nilData];
+        [self resetFooterView];
         [self loadData:YES];
     }];
     self.tableView.mj_header = header;
@@ -84,14 +107,28 @@ static NSString *const CellID = @"ProductOrderListCell";
     [self.tableView reloadData];
 }
 
-- (void)dealWithUI:(NSUInteger)loadCount {
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend {
+    
     if (self.items.count>0) {
         self.tableView.tableHeaderView.hidden = NO;
     }
-    [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<ProductOrderListPageCount) {
+    if (!isRecommend) {
+        if (loadCount<ProductOrderListPageCount) {
+            self.noMoreOrderListData = YES;
+        }
+    }else{
+        if (loadCount<ProductOrderListPageCount) {
+            self.noMoreRecommendData = YES;
+        }
+    }
+    
+    [self resetFooterView];
+    
+    [self.tableView reloadData];
+    
+    if (self.noMoreRecommendData) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {
@@ -100,6 +137,7 @@ static NSString *const CellID = @"ProductOrderListCell";
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
 }
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
@@ -149,6 +187,26 @@ static NSString *const CellID = @"ProductOrderListCell";
     if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
         [self.delegate productOrderListView:self actionType:(ProductOrderListViewActionType)type value:value];
     }
+}
+
+#pragma mark - RecommendProductViewDelegate
+
+- (void)recommendProductView:(RecommendProductView *)view actionType:(RecommendProductViewActionType)type value:(id)value {
+    switch (type) {
+        case RecommendProductViewActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
+                [self.delegate productOrderListView:self actionType:ProductOrderListViewActionTypeSegue value:value];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)dealloc {
+    TCLog(@"ProductOrderListView挂掉了...");
 }
 
 @end

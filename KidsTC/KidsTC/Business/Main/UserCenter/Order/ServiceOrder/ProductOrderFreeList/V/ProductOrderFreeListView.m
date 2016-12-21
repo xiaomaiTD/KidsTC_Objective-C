@@ -9,6 +9,7 @@
 #import "ProductOrderFreeListView.h"
 
 #import "Colours.h"
+#import "RecommendProductOrderListView.h"
 
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
@@ -18,12 +19,20 @@
 
 static NSString *const CellID = @"ProductOrderFreeListCell";
 
-@interface ProductOrderFreeListView ()<ProductOrderFreeListCellDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ProductOrderFreeListView ()<ProductOrderFreeListCellDelegate,UITableViewDelegate,UITableViewDataSource,RecommendProductViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) RecommendProductOrderListView *footerView;
 @end
 
 @implementation ProductOrderFreeListView
 
+- (RecommendProductOrderListView *)footerView {
+    if (!_footerView) {
+        _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendProductOrderListView" owner:self options:nil].firstObject;
+        _footerView.delegate = self;
+    }
+    return _footerView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -57,7 +66,15 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
     };
     tableView.tableHeaderView = header;
     
+    [self resetFooterView];
+    
     [self setupMJ];
+}
+
+- (void)resetFooterView {
+    [self.footerView reloadData];
+    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
+    self.tableView.tableFooterView = self.footerView;
 }
 
 - (void)setupMJ {
@@ -89,14 +106,28 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
     [self.tableView.mj_header beginRefreshing];
 }
 
-- (void)dealWithUI:(NSUInteger)loadCount {
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend {
+    
     if (self.items.count>0) {
         self.tableView.tableHeaderView.hidden = NO;
     }
-    [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<ProductOrderFreeListPageCount) {
+    if (!isRecommend) {
+        if (loadCount<ProductOrderFreeListPageCount) {
+            self.noMoreOrderListData = YES;
+        }
+    }else{
+        if (loadCount<ProductOrderFreeListPageCount) {
+            self.noMoreRecommendData = YES;
+        }
+    }
+    
+    [self resetFooterView];
+    
+    [self.tableView reloadData];
+    
+    if (self.noMoreRecommendData) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {
@@ -155,6 +186,26 @@ static NSString *const CellID = @"ProductOrderFreeListCell";
     if ([self.delegate respondsToSelector:@selector(productOrderFreeListView:actionType:value:)]) {
         [self.delegate productOrderFreeListView:self actionType:(ProductOrderFreeListViewActionType)type value:value];
     }
+}
+
+#pragma mark - RecommendProductViewDelegate
+
+- (void)recommendProductView:(RecommendProductView *)view actionType:(RecommendProductViewActionType)type value:(id)value {
+    switch (type) {
+        case RecommendProductViewActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeListView:actionType:value:)]) {
+                [self.delegate productOrderFreeListView:self actionType:ProductOrderFreeListViewActionTypeSegue value:value];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)dealloc {
+    TCLog(@"ProductOrderListView挂掉了...");
 }
 
 @end

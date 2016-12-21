@@ -13,6 +13,7 @@
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
 #import "AppBaseManager.h"
+#import "RecommendDataManager.h"
 
 #import "ProductOrderListReplaceModel.h"
 #import "ProductOrderListAllTitleRowItem.h"
@@ -297,6 +298,23 @@
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderNo;
     controller.orderKind = CashierDeskOrderKindService;
+    switch (item.orderKind) {
+        case OrderKindTicket:
+        {
+            controller.productType = ProductDetailTypeTicket;
+        }
+            break;
+        case OrderKindFree:
+        {
+            controller.productType = ProductDetailTypeFree;
+        }
+            break;
+        default:
+        {
+            controller.productType = ProductDetailTypeNormal;
+        }
+            break;
+    }
     controller.resultBlock = ^void (BOOL needRefresh){
         if (needRefresh) [self loadReplaceItem:item];
     };
@@ -576,25 +594,34 @@
 #pragma mark ================加载数据================
 
 - (void)loadData:(BOOL)refresh {
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"page":@(self.page),
-                            @"pageCount":@(ProductOrderListPageCount),
-                            @"type":@(self.type),
-                            @"orderType":@(self.orderType)};
-    [Request startWithName:@"SEARCH_ORDER_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        ProductOrderListModel *model = [ProductOrderListModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.listView.items = self.items;
-        [self.listView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.listView dealWithUI:0];
-    }];
+    if (!self.listView.noMoreOrderListData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"page":@(self.page),
+                                @"pageCount":@(ProductOrderListPageCount),
+                                @"type":@(self.type),
+                                @"orderType":@(self.orderType)};
+        [Request startWithName:@"SEARCH_ORDER_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            ProductOrderListModel *model = [ProductOrderListModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.listView.items = self.items;
+            [self.listView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.listView dealWithUI:0 isRecommend:NO];
+        }];
+    }else{
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeOrderList refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+            [self.listView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.listView dealWithUI:0 isRecommend:YES];
+        }];
+    }
+    
 }
 
 #pragma mark - ProductOrderListAllTitleShowViewDelegate

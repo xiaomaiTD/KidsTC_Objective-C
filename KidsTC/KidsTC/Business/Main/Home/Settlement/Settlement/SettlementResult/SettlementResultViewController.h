@@ -8,11 +8,6 @@
 
 #import "ViewController.h"
 
-typedef enum : NSUInteger {
-    SettlementResultTypeService=1,
-    SettlementResultTypeFlash,
-} SettlementResultType;
-
 @interface SettlementResultViewController : ViewController
 @property (nonatomic, assign) BOOL paid;
 @property (nonatomic, strong) NSString *orderId;

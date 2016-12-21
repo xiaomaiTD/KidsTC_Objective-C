@@ -12,6 +12,7 @@
 #import "OnlineCustomerService.h"
 #import "UIBarButtonItem+Category.h"
 #import "SegueMaster.h"
+#import "RecommendDataManager.h"
 
 #import "ProductOrderFreeListModel.h"
 #import "ProductOrderFreeListReplaceModel.h"
@@ -210,6 +211,7 @@
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderNo;
     controller.orderKind = CashierDeskOrderKindService;
+    controller.productType = ProductDetailTypeFree;
     controller.resultBlock = ^void (BOOL needRefresh){
         if(needRefresh)[self loadReplaceItem:self.currentItem];
     };
@@ -421,24 +423,33 @@
 #pragma mark ================加载数据================
 
 - (void)loadData:(BOOL)refresh {
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"page":@(self.page),
-                            @"pageCount":@(ProductOrderFreeListPageCount),
-                            @"type":@(self.type)};
-    [Request startWithName:@"GET_USER_ENROLL_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        ProductOrderFreeListModel *model = [ProductOrderFreeListModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.listView.items = self.items;
-        [self.listView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.listView dealWithUI:0];
-    }];
+    
+    if (!self.listView.noMoreOrderListData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"page":@(self.page),
+                                @"pageCount":@(ProductOrderFreeListPageCount),
+                                @"type":@(self.type)};
+        [Request startWithName:@"GET_USER_ENROLL_LIST" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            ProductOrderFreeListModel *model = [ProductOrderFreeListModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.listView.items = self.items;
+            [self.listView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.listView dealWithUI:0 isRecommend:NO];
+        }];
+    }else{
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeOrderList refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+            [self.listView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.listView dealWithUI:0 isRecommend:YES];
+        }];
+    }
 }
 
 #pragma mark ================通用跳转================

@@ -32,9 +32,9 @@ singleM(InterfaceManager)
 
 - (void)synchronize{
     
-    NSString *cfgver = self.model.version.length>0?self.model.version:@"";
+    NSString *cfgver = self.model.version.length>0?self.model.version:@"0";
 #if DEBUG
-    cfgver = @"";
+    cfgver = @"0";
 #endif
     NSDictionary *param = @{@"cfgver":cfgver,@"app":@"1",@"appVersion":APP_VERSION};
     TCLog(@"[接口列表]:开始请求，本地cfgver:%@",cfgver);

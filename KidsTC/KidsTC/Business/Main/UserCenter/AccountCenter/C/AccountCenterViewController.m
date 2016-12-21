@@ -13,6 +13,7 @@
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
 #import "NSString+Category.h"
+#import "RecommendDataManager.h"
 
 #import "AccountCenterModel.h"
 
@@ -55,6 +56,7 @@
     [super viewDidLoad];
     self.pageId = 10901;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self loadRecommend:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -133,7 +135,7 @@
         case AccountCenterViewActionTypeCustomerServices:
         case AccountCenterViewActionTypeOpinion:
         case AccountCenterViewActionTypeSegue:
-        case AccountCenterViewActionTypeLoadRecommend:
+        case AccountCenterViewActionTypeLoadData:
         {
             if(resultBlock)resultBlock();
         }
@@ -345,24 +347,29 @@
             [BuryPointManager trackEvent:@"event_skip_usr_banner" actionId:21513 params:params];
         }
             break;
-        case AccountCenterViewActionTypeLoadRecommend:
+        case AccountCenterViewActionTypeLoadData:
         {
-            [self loadRecommend];
+            [self loadData:[value boolValue]];
         }
             break;
     }
     if (toController) [self.navigationController pushViewController:toController animated:YES];
-    
 }
 
-- (void)loadRecommend {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [NSThread sleepForTimeInterval:2];
-       dispatch_async(dispatch_get_main_queue(), ^{
-           [self.accountCenterView endRefresh:NO];
-       });
-    });
+- (void)loadData:(BOOL)refresh {
+    if (refresh) [self loadData];
+    [self loadRecommend:refresh];
 }
+
+- (void)loadRecommend:(BOOL)refresh {
+    [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeUserCenter refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+        [self.accountCenterView dealWithUI:data.count];
+    } failureBlock:^(NSError *error) {
+        [self.accountCenterView dealWithUI:0];
+    }];
+}
+
+
 
 
 @end

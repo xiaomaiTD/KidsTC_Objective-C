@@ -17,5 +17,6 @@ typedef enum : NSUInteger {
 @interface CashierDeskViewController : ViewController
 @property (nonatomic, strong) NSString *orderId;
 @property (nonatomic, assign) CashierDeskOrderKind orderKind;
+@property (nonatomic, assign) ProductDetailType productType;
 @property (nonatomic, copy) void (^resultBlock)(BOOL needRefresh);
 @end

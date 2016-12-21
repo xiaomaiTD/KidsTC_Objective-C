@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="152" id="KGk-i7-Jjw" customClass="SettlementResultNewFreeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：你需要提前1天预约额！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fd-wS-Pk7">
+                        <rect key="frame" x="41" y="166" width="237" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1yG-FV-eOh">
+                        <rect key="frame" x="72" y="24" width="175" height="24"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_applySuccess" translatesAutoresizingMaskIntoConstraints="NO" id="tg9-r1-wYd">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tg9-r1-wYd" secondAttribute="height" multiplier="1:1" id="EjI-wK-HR8"/>
+                                    <constraint firstAttribute="width" constant="24" id="Zwr-3g-35u"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您报名成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MY7-oX-sIl">
+                                <rect key="frame" x="32" y="0.0" width="143" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MY7-oX-sIl" firstAttribute="leading" secondItem="tg9-r1-wYd" secondAttribute="trailing" constant="8" id="B9y-1v-XGw"/>
+                            <constraint firstAttribute="trailing" secondItem="MY7-oX-sIl" secondAttribute="trailing" id="SDp-z5-hHs"/>
+                            <constraint firstItem="MY7-oX-sIl" firstAttribute="centerY" secondItem="1yG-FV-eOh" secondAttribute="centerY" id="ZNx-mi-7CB"/>
+                            <constraint firstItem="tg9-r1-wYd" firstAttribute="leading" secondItem="1yG-FV-eOh" secondAttribute="leading" id="epz-Qg-kg9"/>
+                            <constraint firstItem="tg9-r1-wYd" firstAttribute="top" secondItem="1yG-FV-eOh" secondAttribute="top" id="nye-ec-4tf"/>
+                            <constraint firstAttribute="bottom" secondItem="tg9-r1-wYd" secondAttribute="bottom" id="od1-Ca-ybC"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="活动名称：宝贝一起来县城面试路演" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="or0-k2-u0f">
+                        <rect key="frame" x="45" y="64" width="229" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="754" text="活动名称：宝贝一起来县城面试路演" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofb-b4-9ex">
+                        <rect key="frame" x="45" y="91" width="229" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyD-sD-C72">
+                        <rect key="frame" x="62" y="123" width="196" height="28"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF1-iX-rqQ">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="去首页">
+                                    <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="D3w-T9-OdA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4q-1T-7NU">
+                                <rect key="frame" x="106" y="0.0" width="90" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="etM-7W-kGx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="查看报名">
+                                    <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LxS-C3-rIh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g4q-1T-7NU" firstAttribute="top" secondItem="fyD-sD-C72" secondAttribute="top" id="0Db-gf-jJe"/>
+                            <constraint firstAttribute="bottom" secondItem="OF1-iX-rqQ" secondAttribute="bottom" id="7MK-vY-VtY"/>
+                            <constraint firstAttribute="height" constant="28" id="GyY-j7-itX"/>
+                            <constraint firstItem="OF1-iX-rqQ" firstAttribute="top" secondItem="fyD-sD-C72" secondAttribute="top" id="Prx-KU-eri"/>
+                            <constraint firstItem="g4q-1T-7NU" firstAttribute="width" secondItem="OF1-iX-rqQ" secondAttribute="width" id="UBa-b7-aJ2"/>
+                            <constraint firstAttribute="bottom" secondItem="g4q-1T-7NU" secondAttribute="bottom" id="fik-aZ-xuS"/>
+                            <constraint firstAttribute="trailing" secondItem="g4q-1T-7NU" secondAttribute="trailing" id="iFU-gg-ERl"/>
+                            <constraint firstItem="OF1-iX-rqQ" firstAttribute="leading" secondItem="fyD-sD-C72" secondAttribute="leading" id="q7w-2m-T9T"/>
+                            <constraint firstItem="g4q-1T-7NU" firstAttribute="leading" secondItem="OF1-iX-rqQ" secondAttribute="trailing" constant="16" id="uG9-Ek-GOT"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5Fd-wS-Pk7" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="380-pP-Gi7"/>
+                    <constraint firstItem="or0-k2-u0f" firstAttribute="top" secondItem="1yG-FV-eOh" secondAttribute="bottom" constant="16" id="DhA-iz-rMH"/>
+                    <constraint firstItem="fyD-sD-C72" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Jln-tw-aiP"/>
+                    <constraint firstItem="1yG-FV-eOh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Kmn-2E-Wli"/>
+                    <constraint firstItem="fyD-sD-C72" firstAttribute="top" secondItem="Ofb-b4-9ex" secondAttribute="bottom" constant="15" id="Li5-RJ-Z0B"/>
+                    <constraint firstItem="Ofb-b4-9ex" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RdJ-aw-awm"/>
+                    <constraint firstItem="5Fd-wS-Pk7" firstAttribute="top" secondItem="fyD-sD-C72" secondAttribute="bottom" constant="15" id="aVa-1m-lDc"/>
+                    <constraint firstAttribute="bottom" secondItem="5Fd-wS-Pk7" secondAttribute="bottom" constant="16" id="aWi-uY-560"/>
+                    <constraint firstItem="or0-k2-u0f" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ay5-nq-QHd"/>
+                    <constraint firstItem="Ofb-b4-9ex" firstAttribute="top" secondItem="or0-k2-u0f" secondAttribute="bottom" constant="10" id="fQo-aU-vwi"/>
+                    <constraint firstItem="1yG-FV-eOh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="lYi-FX-A6x"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="goHomeBtn" destination="OF1-iX-rqQ" id="PKp-K6-f8X"/>
+                <outlet property="nameL" destination="or0-k2-u0f" id="P1s-EP-UbB"/>
+                <outlet property="showDetailBtn" destination="g4q-1T-7NU" id="xrE-lY-DlM"/>
+                <outlet property="timeL" destination="Ofb-b4-9ex" id="oSX-dB-8Oc"/>
+                <outlet property="tipL" destination="5Fd-wS-Pk7" id="uyX-3O-T30"/>
+            </connections>
+            <point key="canvasLocation" x="55" y="70"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductDetail_applySuccess" width="100" height="100"/>
+    </resources>
+</document>

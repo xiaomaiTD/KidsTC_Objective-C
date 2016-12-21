@@ -42,19 +42,19 @@
     [super setData:data];
     
     if (_index<data.recommends.count) {
-        ProductDetailRecommendItem *item = data.recommends[_index];
+        RecommendProduct *item = data.recommends[_index];
         self.nameL.text = item.productName;
-        [self.productImg sd_setImageWithURL:[NSURL URLWithString:item.img] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+        [self.productImg sd_setImageWithURL:[NSURL URLWithString:item.picUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
         self.priceL.text = item.priceStr;
-        self.addressL.text = item.locationStr;
-        self.statusL.text = item.process;
+        self.addressL.text = [NSString stringWithFormat:@"%@ %@",item.address,item.distanceDesc];
+        self.statusL.text = item.useValidTimeDesc;
     }
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
     if (_index<self.data.recommends.count) {
         if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeRecommend value:self.data.recommends[_index]];
+            [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeSegue value:self.data.recommends[_index].segueModel];
         }
     }
 }

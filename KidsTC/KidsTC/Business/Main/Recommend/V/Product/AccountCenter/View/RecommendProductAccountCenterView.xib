@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecommendProductAccountCenterView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5N0-O4-YGa">
+                    <rect key="frame" x="0.0" y="39.5" width="375" height="627.5"/>
+                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Eav-9x-H33">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="K0Z-dZ-Yzr"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="067-ap-GMc"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlD-mz-dvF">
+                    <rect key="frame" x="117.5" y="4" width="141.5" height="19.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="为您推荐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDI-IN-M6A">
+                            <rect key="frame" x="38" y="0.0" width="65.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_lineRight" translatesAutoresizingMaskIntoConstraints="NO" id="Qz0-zW-Jbe">
+                            <rect key="frame" x="111.5" y="5.5" width="30" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="f6B-Nq-jIR"/>
+                                <constraint firstAttribute="width" secondItem="Qz0-zW-Jbe" secondAttribute="height" multiplier="15:4" id="q3J-Hn-yjg"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_lineLeft" translatesAutoresizingMaskIntoConstraints="NO" id="4tZ-mW-Jxx">
+                            <rect key="frame" x="0.0" y="5.5" width="30" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="4tZ-mW-Jxx" secondAttribute="height" multiplier="15:4" id="cuV-8i-CY9"/>
+                                <constraint firstAttribute="height" constant="8" id="fQV-ca-TbP"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="4tZ-mW-Jxx" firstAttribute="centerY" secondItem="hlD-mz-dvF" secondAttribute="centerY" id="5x4-qP-lJL"/>
+                        <constraint firstAttribute="trailing" secondItem="Qz0-zW-Jbe" secondAttribute="trailing" id="KiH-XW-ZbN"/>
+                        <constraint firstItem="gDI-IN-M6A" firstAttribute="top" secondItem="hlD-mz-dvF" secondAttribute="top" id="Lem-5n-34c"/>
+                        <constraint firstAttribute="bottom" secondItem="gDI-IN-M6A" secondAttribute="bottom" id="UUK-dj-0Yf"/>
+                        <constraint firstItem="Qz0-zW-Jbe" firstAttribute="leading" secondItem="gDI-IN-M6A" secondAttribute="trailing" constant="8" id="Uct-Cw-Vvu"/>
+                        <constraint firstItem="Qz0-zW-Jbe" firstAttribute="centerY" secondItem="hlD-mz-dvF" secondAttribute="centerY" id="XHD-TZ-nWg"/>
+                        <constraint firstItem="4tZ-mW-Jxx" firstAttribute="leading" secondItem="hlD-mz-dvF" secondAttribute="leading" id="hhi-hf-bK4"/>
+                        <constraint firstItem="gDI-IN-M6A" firstAttribute="leading" secondItem="4tZ-mW-Jxx" secondAttribute="trailing" constant="8" id="j8J-Mq-f6O"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hlD-mz-dvF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="04s-wd-Hwr"/>
+                <constraint firstItem="5N0-O4-YGa" firstAttribute="top" secondItem="hlD-mz-dvF" secondAttribute="bottom" constant="16" id="1dH-6q-jSf"/>
+                <constraint firstAttribute="bottom" secondItem="5N0-O4-YGa" secondAttribute="bottom" id="8G5-SY-g7q"/>
+                <constraint firstItem="5N0-O4-YGa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AJX-UK-bML"/>
+                <constraint firstAttribute="trailing" secondItem="5N0-O4-YGa" secondAttribute="trailing" id="T65-sV-lDx"/>
+                <constraint firstItem="hlD-mz-dvF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vDd-cf-5eg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="collectionView" destination="5N0-O4-YGa" id="Mv4-Kq-qOK"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="accountCenter_lineLeft" width="113" height="30"/>
+        <image name="accountCenter_lineRight" width="113" height="30"/>
+    </resources>
+</document>

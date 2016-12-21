@@ -19,7 +19,7 @@
 #import "FlashBalanceSettlementToolBar.h"
 
 #import "SettlementPickScoreViewController.h"
-#import "SettlementResultViewController.h"
+#import "SettlementResultNewViewController.h"
 #import "NavigationController.h"
 
 #import "PayModel.h"
@@ -282,7 +282,7 @@
 
 #pragma mark - 结算结果
 - (void)settlementPaid:(BOOL)paid orderId:(NSString *)orderId{
-    SettlementResultViewController *controller = [[SettlementResultViewController alloc]initWithNibName:@"SettlementResultViewController" bundle:nil];
+    SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc]initWithNibName:@"SettlementResultNewViewController" bundle:nil];
     controller.paid = paid;
     controller.orderId = orderId;
     controller.type = SettlementResultTypeFlash;

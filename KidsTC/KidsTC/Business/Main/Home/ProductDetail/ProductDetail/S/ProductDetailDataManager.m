@@ -8,9 +8,9 @@
 
 #import "ProductDetailDataManager.h"
 #import "KTCMapService.h"
+#import "RecommendDataManager.h"
 
 @implementation ProductDetailDataManager
-
 
 - (void)loadDataWithSuccessBlock:(void(^)(ProductDetailData *data))successBlock
                     failureBlock:(void(^)(NSError *error))failureBlock
@@ -34,16 +34,11 @@
     }
 }
 
-- (void)loadRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
+- (void)loadRecommendSuccessBlock:(void(^)(NSArray<RecommendProduct *> *recommends))successBlock
                      failureBlock:(void(^)(NSError *error))failureBlock
 {
-    RecommendProductType  recommendType = RecommendProductTypeDefault;
+    RecommendProductType recommendType = RecommendProductTypeNormal;
     switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            recommendType = RecommendProductTypeNormal;
-        }
-            break;
         case ProductDetailTypeTicket:
         {
             recommendType = RecommendProductTypeTicket;
@@ -54,17 +49,16 @@
             recommendType = RecommendProductTypeFree;
         }
             break;
+        default:
+        {
+            recommendType = RecommendProductTypeNormal;
+        }
+            break;
     }
-    
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:@(1) forKey:@"pageIndex"];
-    [param setObject:@(20) forKey:@"pageSize"];
-    [param setObject:@(recommendType) forKey:@"type"];
-    
-    [Request startWithName:@"GET_RECOMMEND_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+    [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:recommendType refresh:YES pageCount:TCPAGECOUNT productNos:_productId successBlock:^(NSArray<RecommendProduct *> *data) {
+        if(successBlock)successBlock(data);
+    } failureBlock:^(NSError *error) {
+        if(failureBlock)failureBlock(error);
     }];
 }
 
@@ -109,21 +103,6 @@
     }];
 }
 
-- (void)loadNormalRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
-                           failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"pid":_productId};
-    [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailRecommendItem *> *recommends = [ProductDetailRecommendModel modelWithDictionary:dic].data;
-        if (recommends.count>0) {
-            if (successBlock) successBlock(recommends);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
 
 #pragma mark - ticket
 
@@ -146,21 +125,6 @@
     }];
 }
 
-- (void)loadTicketRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
-                           failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"pid":_productId};
-    [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailRecommendItem *> *recommends = [ProductDetailRecommendModel modelWithDictionary:dic].data;
-        if (recommends.count>0) {
-            if (successBlock) successBlock(recommends);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
 
 #pragma mark - free
 
@@ -175,22 +139,6 @@
         ProductDetailData *data = [ProductDetailModel modelWithDictionary:dic].data;
         if (data) {
             if (successBlock) successBlock(data);
-        }else{
-            if (failureBlock) failureBlock(nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failureBlock) failureBlock(error);
-    }];
-}
-
-- (void)loadFreeRecommendSuccessBlock:(void(^)(NSArray<ProductDetailRecommendItem *> *recommends))successBlock
-                         failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSDictionary *param = @{@"pid":_productId};
-    [Request startWithName:@"GET_PRODUCT_RECOMMENDS" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        NSArray<ProductDetailRecommendItem *> *recommends = [ProductDetailRecommendModel modelWithDictionary:dic].data;
-        if (recommends.count>0) {
-            if (successBlock) successBlock(recommends);
         }else{
             if (failureBlock) failureBlock(nil);
         }

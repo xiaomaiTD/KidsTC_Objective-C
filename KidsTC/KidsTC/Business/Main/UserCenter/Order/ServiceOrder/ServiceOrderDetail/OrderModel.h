@@ -53,4 +53,5 @@ typedef enum {
 
 @property (nonatomic, assign) NSInteger commentRelationType;
 
+
 @end

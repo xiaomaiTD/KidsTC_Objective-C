@@ -7,6 +7,7 @@
 //
 
 #import "AccountCenterView.h"
+#import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "Colours.h"
 
@@ -18,7 +19,6 @@
 #import "AccountCenterActivitiesCell.h"
 #import "AccountCenterItemsCell.h"
 #import "AccountCenterBannersCell.h"
-#import "AccountCenterTipsCell.h"
 #import "AccountCenterRecommendsCell.h"
 
 static NSString *const ID = @"UITableViewCell";
@@ -34,8 +34,7 @@ static NSString *const ID = @"UITableViewCell";
 @property (nonatomic, strong) AccountCenterActivitiesCell *activitiesCell;
 @property (nonatomic, strong) AccountCenterItemsCell *itemsCell;
 @property (nonatomic, strong) AccountCenterBannersCell *bannersCell;
-@property (nonatomic, strong) AccountCenterTipsCell *tipsCell;
-//@property (nonatomic, strong) AccountCenterRecommendsCell *recommendsCell;
+@property (nonatomic, strong) AccountCenterRecommendsCell *recommendsCell;
 @end
 
 @implementation AccountCenterView
@@ -55,14 +54,21 @@ static NSString *const ID = @"UITableViewCell";
         [self addSubview:tableView];
         self.tableView = tableView;
         [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
-        /*
-         WeakSelf(self)
-         RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
-         StrongSelf(self)
-         [self loadRecommend];
-         }];
-         tableView.mj_footer = footer;
-         */
+        
+        WeakSelf(self)
+        
+        RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
+            StrongSelf(self)
+            [self loadData:YES];
+        }];
+        tableView.mj_header = header;
+        
+        RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
+            StrongSelf(self)
+            [self loadData:NO];
+        }];
+        tableView.mj_footer = footer;
+        
     }
     return self;
 }
@@ -74,17 +80,20 @@ static NSString *const ID = @"UITableViewCell";
     [self.tableView reloadData];
 }
 
-- (void)endRefresh:(BOOL)noMoreData {
-    if (noMoreData) {
+- (void)dealWithUI:(NSUInteger)loadCount {
+    [self setupMainSections];
+    [self.recommendsCell reloadRecommends];
+    [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    if (loadCount<TCPAGECOUNT) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
-    }else{
-        [self.tableView.mj_footer endRefreshing];
     }
 }
 
-- (void)loadRecommend {
+- (void)loadData:(BOOL)refresh {
     if ([self.delegate respondsToSelector:@selector(accountCenterView:actionType:value:)]) {
-        [self.delegate accountCenterView:self actionType:AccountCenterViewActionTypeLoadRecommend value:nil];
+        [self.delegate accountCenterView:self actionType:AccountCenterViewActionTypeLoadData value:@(refresh)];
     }
 }
 
@@ -150,15 +159,12 @@ static NSString *const ID = @"UITableViewCell";
     return _bannersCell;
 }
 
-- (AccountCenterTipsCell *)tipsCell {
-    if (!_tipsCell) {
-        _tipsCell = [self viewWithNib:@"AccountCenterTipsCell"];
-    }
-    return _tipsCell;
-}
-
 - (AccountCenterRecommendsCell *)recommendsCell {
-    return [self viewWithNib:@"AccountCenterRecommendsCell"];
+    if (!_recommendsCell)
+    {
+        _recommendsCell = [self viewWithNib:@"AccountCenterRecommendsCell"];
+    }
+    return _recommendsCell;
 }
 
 - (void)setupMainSections {
@@ -207,22 +213,11 @@ static NSString *const ID = @"UITableViewCell";
         [sections addObject:section05];
     }
     
-    /*
-    NSMutableArray *section06 = [NSMutableArray array];
-    if (sections.count>0) {
-        [section06 addObject:self.tipsCell];
+    NSMutableArray *section07 = [NSMutableArray array];
+    [section07 addObject:self.recommendsCell];
+    if (section07.count>0) {
+        [sections addObject:section07];
     }
-    if (section06.count>0) {
-        [sections addObject:section06];
-    }
-    
-     NSMutableArray *section07 = [NSMutableArray array];
-     [section07 addObject:self.recommendsCell];
-     [section07 addObject:self.recommendsCell];
-     if (section07.count>0) {
-     [sections addObject:section07];
-     }
-     */
     
     self.sections = [NSMutableArray arrayWithArray:sections];
 }
