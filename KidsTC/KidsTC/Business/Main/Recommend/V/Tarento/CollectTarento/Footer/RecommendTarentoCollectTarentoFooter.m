@@ -1,15 +1,14 @@
 //
-//  CollectionTarentoFooter.m
+//  RecommendTarentoCollectTarentoFooter.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/15.
+//  Created by 詹平 on 2016/12/22.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "CollectionTarentoFooter.h"
-#import "Colours.h"
+#import "RecommendTarentoCollectTarentoFooter.h"
 
-@interface CollectionTarentoFooter ()
+@interface RecommendTarentoCollectTarentoFooter ()
 @property (weak, nonatomic) IBOutlet UIImageView *arrowIcon;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
 @property (weak, nonatomic) IBOutlet UILabel *preL;
@@ -17,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *marginView;
 @end
 
-@implementation CollectionTarentoFooter
+@implementation RecommendTarentoCollectTarentoFooter
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -28,15 +27,7 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if (self.actionBlock) {
-        self.actionBlock(_item);
-    }
+    
 }
-
-- (void)setItem:(CollectionTarentoItem *)item {
-    _item = item;
-    self.numL.text = _item.newsCount;
-}
-
 
 @end

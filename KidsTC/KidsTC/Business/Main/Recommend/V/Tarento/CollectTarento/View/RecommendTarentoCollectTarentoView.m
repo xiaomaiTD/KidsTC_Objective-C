@@ -1,23 +1,16 @@
 //
-//  CollectionTarentoView.m
+//  RecommendTarentoCollectTarentoView.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/14.
+//  Created by 詹平 on 2016/12/22.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "CollectionTarentoView.h"
-
 #import "RecommendTarentoCollectTarentoView.h"
+#import "RecommendDataManager.h"
 
-#import "CollectionTarentoHeader.h"
-#import "CollectionTarentoCell.h"
-#import "CollectionTarentoFooter.h"
-
-static NSString *const HeadID = @"CollectionTarentoHeader";
-static NSString *const FootID = @"CollectionTarentoFooter";
-
-#import "CollectionTarentoItem.h"
+#import "RecommendTarentoCollectTarentoHeader.h"
+#import "RecommendTarentoCollectTarentoFooter.h"
 
 #import "ArticleHomeBaseCell.h"
 #import "ArticleHomeIconCell.h"
@@ -31,6 +24,9 @@ static NSString *const FootID = @"CollectionTarentoFooter";
 #import "ArticleHomeColumnTitleCell.h"
 #import "ArticleHomeAlbumEntrysCell.h"
 
+static NSString *const HeadID = @"RecommendTarentoCollectTarentoHeader";
+static NSString *const FootID = @"RecommendTarentoCollectTarentoFooter";
+
 static NSString *const ArticleHomeBaseCellID        = @"ArticleHomeBaseCellID";
 static NSString *const ArticleHomeIconCellID        = @"ArticleHomeIconCellID";
 static NSString *const ArticleHomeNoIconCellID      = @"ArticleHomeNoIconCellID";
@@ -43,29 +39,23 @@ static NSString *const ArticleHomeUserArticleCellID = @"ArticleHomeUserArticleCe
 static NSString *const ArticleHomeColumnTitleCellID = @"ArticleHomeColumnTitleCellID";
 static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCellID";
 
-@interface CollectionTarentoView ()<ArticleHomeBaseCellDelegate>
-@property (nonatomic, strong) RecommendTarentoCollectTarentoView *footerView;
+@interface RecommendTarentoCollectTarentoView ()<UITableViewDelegate,UITableViewDataSource,ArticleHomeBaseCellDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
-@implementation CollectionTarentoView
+@implementation RecommendTarentoCollectTarentoView
 
-- (RecommendTarentoCollectTarentoView *)footerView {
-    if (!_footerView) {
-        _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendTarentoCollectTarentoView" owner:self options:nil].firstObject;
-    }
-    return _footerView;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.tableView.backgroundColor = [UIColor whiteColor];
-        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
-        [self registerCells];
-        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
-        [self resetFooterView];
-    }
-    return self;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.estimatedSectionFooterHeight = 60;
+    self.tableView.estimatedSectionHeaderHeight = 80;
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
+    [self registerCells];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
+    
 }
 
 - (void)registerCells {
@@ -82,55 +72,40 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleHomeAlbumEntrysCell" bundle:nil] forCellReuseIdentifier:ArticleHomeAlbumEntrysCellID];
 }
 
-- (void)resetFooterView {
-    [self.footerView reloadData];
-    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
-    self.tableView.tableFooterView = self.footerView;
+- (void)setTarentos:(NSArray<RecommendTarento *> *)tarentos {
+    _tarentos = tarentos;
+    self.hidden = _tarentos.count<1;
+    [self.tableView reloadData];
 }
 
-- (void)nilRecommendData {
-    [self.footerView nilData];
-    [self resetFooterView];
+- (void)reloadData {
+    self.tarentos = [[RecommendDataManager shareRecommendDataManager] recommendTarento];
+}
+- (CGFloat)contentHeight {
+    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
+    return height;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.items.count;
+    return self.tarentos.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section<self.items.count) {
-        CollectionTarentoItem *item = self.items[section];
+    if (section<self.tarentos.count) {
+        RecommendTarento *item = self.tarentos[section];
         return item.articleLst.count;
     }
     return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CollectionTarentoHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
-    header.deleteBtn.hidden = !self.editing;
-    if (section<self.items.count) {
-        CollectionTarentoItem *item = self.items[section];
+    RecommendTarentoCollectTarentoHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
+    if (section<self.tarentos.count) {
+        RecommendTarento *item = self.tarentos[section];
         header.item = item;
-        header.actionBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
-            }
-        };
-        header.deleteBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeDelete value:item completion:^(id value) {
-                    BOOL success = [value boolValue];
-                    if (!success) return;
-                    NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
-                    if (section>=itemsAry.count) return;
-                    [itemsAry removeObjectAtIndex:section];
-                    self.items = [NSArray arrayWithArray:itemsAry];
-                    [self.tableView reloadData];
-                }];
-            }
-        };
+
     }
     return header;
 }
@@ -138,8 +113,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if (section<self.items.count) {
-        CollectionTarentoItem *item = self.items[section];
+    if (section<self.tarentos.count) {
+        RecommendTarento *item = self.tarentos[section];
         NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
         if (row<articleLst.count) {
             ArticleHomeItem *articleItem = articleLst[row];
@@ -154,15 +129,10 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    CollectionTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
-    if (section<self.items.count) {
-        CollectionTarentoItem *item = self.items[section];
+    RecommendTarentoCollectTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+    if (section<self.tarentos.count) {
+        RecommendTarento *item = self.tarentos[section];
         footer.item = item;
-        footer.actionBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
-            }
-        };
     }
     return footer;
 }
@@ -172,17 +142,16 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if (section<self.items.count) {
-        CollectionTarentoItem *item = self.items[section];
+    if (section<self.tarentos.count) {
+        RecommendTarento *item = self.tarentos[section];
         NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
         if (row<articleLst.count) {
             ArticleHomeItem *articleItem = articleLst[row];
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:articleItem.segueModel completion:nil];
-            }
+            
         }
     }
 }
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource helper
 
@@ -257,12 +226,18 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
-            }
+            
         }
             break;
         default:break;
     }
+}
+
+- (void)nilData {
+    [[RecommendDataManager shareRecommendDataManager] nilRecommendTarento];
+}
+
+- (void)dealloc {
+    [self nilData];
 }
 @end

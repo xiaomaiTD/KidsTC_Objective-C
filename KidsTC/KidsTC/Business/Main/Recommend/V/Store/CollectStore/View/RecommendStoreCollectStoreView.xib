@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecommendStoreCollectStoreView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dMj-yF-gyZ">
+                    <rect key="frame" x="0.0" y="39.5" width="375" height="627.5"/>
+                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="eXq-3O-fxu"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="w7K-AA-E1f"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX8-c6-ghc">
+                    <rect key="frame" x="92.5" y="4" width="190.5" height="19.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收藏夹猜您喜欢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4W-3r-W0z">
+                            <rect key="frame" x="38" y="0.0" width="114.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_lineRight" translatesAutoresizingMaskIntoConstraints="NO" id="Q2R-UZ-8dr">
+                            <rect key="frame" x="160.5" y="5.5" width="30" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="Bwj-ey-sIU"/>
+                                <constraint firstAttribute="width" secondItem="Q2R-UZ-8dr" secondAttribute="height" multiplier="15:4" id="d1V-7Y-h86"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_lineLeft" translatesAutoresizingMaskIntoConstraints="NO" id="QL6-YQ-Bqd">
+                            <rect key="frame" x="0.0" y="5.5" width="30" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="QL6-YQ-Bqd" secondAttribute="height" multiplier="15:4" id="Qb9-5G-nhc"/>
+                                <constraint firstAttribute="height" constant="8" id="Rl1-ep-rnK"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="V4W-3r-W0z" firstAttribute="leading" secondItem="QL6-YQ-Bqd" secondAttribute="trailing" constant="8" id="3Sh-S2-TDS"/>
+                        <constraint firstItem="Q2R-UZ-8dr" firstAttribute="leading" secondItem="V4W-3r-W0z" secondAttribute="trailing" constant="8" id="FQ3-8X-5S0"/>
+                        <constraint firstAttribute="trailing" secondItem="Q2R-UZ-8dr" secondAttribute="trailing" id="Gau-eO-53k"/>
+                        <constraint firstItem="V4W-3r-W0z" firstAttribute="top" secondItem="BX8-c6-ghc" secondAttribute="top" id="SCd-tX-nPJ"/>
+                        <constraint firstItem="Q2R-UZ-8dr" firstAttribute="centerY" secondItem="BX8-c6-ghc" secondAttribute="centerY" id="X8G-4q-NjB"/>
+                        <constraint firstItem="QL6-YQ-Bqd" firstAttribute="centerY" secondItem="BX8-c6-ghc" secondAttribute="centerY" id="dvZ-Dj-LcZ"/>
+                        <constraint firstItem="QL6-YQ-Bqd" firstAttribute="leading" secondItem="BX8-c6-ghc" secondAttribute="leading" id="fDH-yk-xGJ"/>
+                        <constraint firstAttribute="bottom" secondItem="V4W-3r-W0z" secondAttribute="bottom" id="l5D-On-xdF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dMj-yF-gyZ" firstAttribute="top" secondItem="BX8-c6-ghc" secondAttribute="bottom" constant="16" id="1F8-8b-zaN"/>
+                <constraint firstAttribute="trailing" secondItem="dMj-yF-gyZ" secondAttribute="trailing" id="8Kh-GY-sgP"/>
+                <constraint firstItem="dMj-yF-gyZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Phc-nq-c5y"/>
+                <constraint firstItem="BX8-c6-ghc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VNL-uv-OrF"/>
+                <constraint firstAttribute="bottom" secondItem="dMj-yF-gyZ" secondAttribute="bottom" id="fJ6-JS-kby"/>
+                <constraint firstItem="BX8-c6-ghc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="isM-jT-iGh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="dMj-yF-gyZ" id="Kt2-l5-1PE"/>
+            </connections>
+            <point key="canvasLocation" x="-331" y="34"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="accountCenter_lineLeft" width="113" height="30"/>
+        <image name="accountCenter_lineRight" width="113" height="30"/>
+    </resources>
+</document>

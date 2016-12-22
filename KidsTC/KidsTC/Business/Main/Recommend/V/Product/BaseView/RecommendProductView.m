@@ -25,4 +25,6 @@
     return 0;
 }
 
+- (void)nilData{}
+
 @end

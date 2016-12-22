@@ -1,26 +1,28 @@
 //
-//  CollectionTarentoFooter.m
+//  RecommendStoreCollectStoreFooter.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/15.
+//  Created by 詹平 on 2016/12/22.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "CollectionTarentoFooter.h"
-#import "Colours.h"
+#import "RecommendStoreCollectStoreFooter.h"
 
-@interface CollectionTarentoFooter ()
+@interface RecommendStoreCollectStoreFooter ()
 @property (weak, nonatomic) IBOutlet UIImageView *arrowIcon;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
 @property (weak, nonatomic) IBOutlet UILabel *preL;
 @property (weak, nonatomic) IBOutlet UILabel *subL;
 @property (weak, nonatomic) IBOutlet UIView *marginView;
+
 @end
 
-@implementation CollectionTarentoFooter
+@implementation RecommendStoreCollectStoreFooter
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
     self.numL.textColor = COLOR_PINK;
     self.preL.textColor = [UIColor colorFromHexString:@"999999"];
     self.subL.textColor = [UIColor colorFromHexString:@"999999"];
@@ -28,15 +30,15 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if (self.actionBlock) {
-        self.actionBlock(_item);
+    if ([self.delegate respondsToSelector:@selector(recommendStoreCollectStoreFooter:actionType:value:)]) {
+        [self.delegate recommendStoreCollectStoreFooter:self actionType:RecommendStoreCollectStoreFooterActionTypeSegue value:_store.segueModel];
     }
 }
 
-- (void)setItem:(CollectionTarentoItem *)item {
-    _item = item;
-    self.numL.text = _item.newsCount;
+- (void)setStore:(RecommendStore *)store {
+    _store = store;
+    self.numL.text = store.newsCount;
+    [self layoutIfNeeded];
 }
-
 
 @end

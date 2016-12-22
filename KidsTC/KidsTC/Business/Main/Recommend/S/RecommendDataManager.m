@@ -10,6 +10,9 @@
 #import "NSString+Category.h"
 
 @interface RecommendDataManager ()
+
+#pragma mark - product
+
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductAccountCenterData;
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductCollectProductData;
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductOrderListData;
@@ -23,10 +26,28 @@
 @property (nonatomic, assign) NSInteger ticketProductPage;
 @property (nonatomic, assign) NSInteger normalProductPage;
 @property (nonatomic, assign) NSInteger freeProductPage;
+
+#pragma mark - store
+
+@property (nonatomic, strong) NSArray<RecommendStore *> *recommendStoreCollectStoreData;
+@property (nonatomic, assign) NSInteger collectStorePage;
+
+#pragma mark - content
+
+@property (nonatomic, strong) NSArray<ArticleHomeItem *> *recommendContentCollectContentData;
+@property (nonatomic, assign) NSInteger collectContentPage;
+
+#pragma mark - tarento
+
+@property (nonatomic, strong) NSArray<RecommendTarento *> *recommendTarentoCollectTarentoData;
+@property (nonatomic, assign) NSInteger collectTarentoPage;
+
 @end
 
 @implementation RecommendDataManager
 singleM(RecommendDataManager)
+
+#pragma mark - product
 
 - (void)loadRecommendProductType:(RecommendProductType)type
                          refresh:(BOOL)refresh
@@ -35,7 +56,7 @@ singleM(RecommendDataManager)
                     successBlock:(void(^)(NSArray<RecommendProduct *> *data))successBlock
                     failureBlock:(void(^)(NSError *error))failureBlock
 {
-    NSInteger page = [self pageWithType:type refresh:refresh];
+    NSInteger page = [self recommendProductWithType:type refresh:refresh];
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObject:@(type) forKey:@"type"];
@@ -46,14 +67,14 @@ singleM(RecommendDataManager)
     }
     [Request startWithName:@"GET_RECOMMEND_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         NSArray<RecommendProduct *> *data = [RecommendProductModel modelWithDictionary:dic].data;
-        [self dealWithData:data type:type refresh:refresh];
+        [self dealWithRecommendProductData:data type:type refresh:refresh];
         if(successBlock)successBlock(data);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if(failureBlock)failureBlock(error);
     }];
 }
 
-- (NSInteger)pageWithType:(RecommendProductType)type refresh:(BOOL)refresh {
+- (NSInteger)recommendProductWithType:(RecommendProductType)type refresh:(BOOL)refresh {
     switch (type) {
         case RecommendProductTypeUserCenter:
         {
@@ -99,7 +120,7 @@ singleM(RecommendDataManager)
     }
 }
 
-- (void)dealWithData:(NSArray<RecommendProduct *> *)data type:(RecommendProductType)type refresh:(BOOL)refresh {
+- (void)dealWithRecommendProductData:(NSArray<RecommendProduct *> *)data type:(RecommendProductType)type refresh:(BOOL)refresh {
     switch (type) {
         case RecommendProductTypeUserCenter:
         {
@@ -173,51 +194,6 @@ singleM(RecommendDataManager)
         }
             break;
     }
-}
-
-- (void)loadRecommendStorePage:(NSInteger)page
-                     pageCount:(NSInteger)pageCount
-                  successBlock:(void(^)(NSDictionary *dic))successBlock
-                  failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:@(page) forKey:@"page"];
-    [param setObject:@(pageCount) forKey:@"pageCount"];
-    [Request startWithName:@"GET_RECOMMEND_STORE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(successBlock)successBlock(dic);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(failureBlock)failureBlock(error);
-    }];
-}
-
-- (void)loadRecommendContentPage:(NSInteger)page
-                       pageCount:(NSInteger)pageCount
-                    successBlock:(void(^)(NSDictionary *dic))successBlock
-                    failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:@(page) forKey:@"page"];
-    [param setObject:@(pageCount) forKey:@"pageCount"];
-    [Request startWithName:@"RECOMMEND_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(successBlock)successBlock(dic);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(failureBlock)failureBlock(error);
-    }];
-}
-
-- (void)loadRecommendTarentoPage:(NSInteger)page
-                       pageCount:(NSInteger)pageCount
-                    successBlock:(void(^)(NSDictionary *dic))successBlock
-                    failureBlock:(void(^)(NSError *error))failureBlock
-{
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:@(page) forKey:@"page"];
-    [param setObject:@(pageCount) forKey:@"pageCount"];
-    [Request startWithName:@"RECOMMEND_ARTICLE_AUTHOR" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(successBlock)successBlock(dic);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(failureBlock)failureBlock(error);
-    }];
 }
 
 - (BOOL)hasRecommendProductsWithType:(RecommendProductType)type {
@@ -309,6 +285,128 @@ singleM(RecommendDataManager)
         }
             break;
     }
+}
+
+
+#pragma mark - store
+
+
+- (void)loadRecommendStoreRefresh:(BOOL)refresh
+                        pageCount:(NSInteger)pageCount
+                     successBlock:(void(^)(NSArray<RecommendStore *> *data))successBlock
+                     failureBlock:(void(^)(NSError *error))failureBlock
+{
+    self.collectStorePage = refresh?1:++self.collectStorePage;
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:@(self.collectStorePage) forKey:@"page"];
+    [param setObject:@(pageCount) forKey:@"pageCount"];
+    [Request startWithName:@"GET_RECOMMEND_STORE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<RecommendStore *> *data = [RecommendStoreModel modelWithDictionary:dic].data;
+        if (refresh) {
+            self.recommendStoreCollectStoreData = [NSArray arrayWithArray:data];
+        }else{
+            NSMutableArray *ary = [NSMutableArray arrayWithArray:self.recommendStoreCollectStoreData];
+            [ary addObjectsFromArray:data];
+            self.recommendStoreCollectStoreData = [NSArray arrayWithArray:ary];
+        }
+        if(successBlock)successBlock(data);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(failureBlock)failureBlock(error);
+    }];
+}
+
+- (BOOL)hasRecommendStore {
+    return self.recommendStore.count>0;
+}
+
+- (NSArray<RecommendStore *> *)recommendStore{
+    return self.recommendStoreCollectStoreData;
+}
+
+- (void)nilRecommendStore {
+    self.recommendStoreCollectStoreData = nil;
+    self.collectStorePage = 1;
+}
+
+
+#pragma mark - content
+
+
+- (void)loadRecommendContentRefresh:(BOOL)refresh
+                          pageCount:(NSInteger)pageCount
+                       successBlock:(void(^)(NSArray<ArticleHomeItem *> *data))successBlock
+                       failureBlock:(void(^)(NSError *error))failureBlock
+{
+    self.collectContentPage = refresh?1:(++self.collectContentPage);
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:@(self.collectContentPage) forKey:@"page"];
+    [param setObject:@(pageCount) forKey:@"pageCount"];
+    [Request startWithName:@"RECOMMEND_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<ArticleHomeItem *> *data = [RecommendContentModel modelWithDictionary:dic].data;
+        if (refresh) {
+            self.recommendContentCollectContentData = [NSArray arrayWithArray:data];
+        }else{
+            NSMutableArray *ary = [NSMutableArray arrayWithArray:self.recommendContentCollectContentData];
+            [ary addObjectsFromArray:data];
+            self.recommendContentCollectContentData = [NSArray arrayWithArray:ary];
+        }
+        if(successBlock)successBlock(data);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(failureBlock)failureBlock(error);
+    }];
+}
+
+- (BOOL)hasRecommendContent {
+    return self.recommendContent.count>0;
+}
+
+- (NSArray<ArticleHomeItem *> *)recommendContent {
+    return self.recommendContentCollectContentData;
+}
+
+- (void)nilRecommendContent {
+    self.recommendContentCollectContentData = nil;
+    self.collectContentPage = 1;
+}
+
+#pragma mark - tarento
+
+
+- (void)loadRecommendTarentoRefresh:(BOOL)refresh
+                          pageCount:(NSInteger)pageCount
+                       successBlock:(void(^)(NSArray<RecommendTarento *> *data))successBlock
+                       failureBlock:(void(^)(NSError *error))failureBlock
+{
+    self.collectTarentoPage = refresh?1:(++self.collectTarentoPage);
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    [param setObject:@(self.collectTarentoPage) forKey:@"page"];
+    [param setObject:@(pageCount) forKey:@"pageCount"];
+    [Request startWithName:@"RECOMMEND_ARTICLE_AUTHOR" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<RecommendTarento *> *data = [RecommendTarentoModel modelWithDictionary:dic].data;
+        if (refresh) {
+            self.recommendTarentoCollectTarentoData = [NSArray arrayWithArray:data];
+        }else{
+            NSMutableArray *ary = [NSMutableArray arrayWithArray:self.recommendTarentoCollectTarentoData];
+            [ary addObjectsFromArray:data];
+            self.recommendTarentoCollectTarentoData = [NSArray arrayWithArray:ary];
+        }
+        if(successBlock)successBlock(data);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(failureBlock)failureBlock(error);
+    }];
+}
+
+- (BOOL)hasRecommendTarento {
+    return self.recommendTarento.count>0;
+}
+
+- (NSArray<id> *)recommendTarento {
+    return self.recommendTarentoCollectTarentoData;
+}
+
+- (void)nilRecommendTarento {
+    self.recommendTarentoCollectTarentoData = nil;
+    self.collectTarentoPage = 1;
 }
 
 @end

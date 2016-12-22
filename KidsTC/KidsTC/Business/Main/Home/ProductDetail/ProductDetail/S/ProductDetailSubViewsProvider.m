@@ -740,7 +740,7 @@
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section02 addObject:self.dateCell];
     }
-    if (_data.place.count>0 && (_data.placeType != PlaceTypeNone)) {
+    if ((_data.place.count>0 || _data.store.count>0) && (_data.placeType != PlaceTypeNone)) {
         [section02 addObject:self.addressCell];
     }
     if (section02.count>0) [sections addObject:section02];

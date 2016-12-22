@@ -304,6 +304,9 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TCHomeMainCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTCHomeMainCollectionCellID forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[TCHomeMainCollectionCell alloc] init];
+    }
     if (indexPath.row<self.categorys.count) {
         cell.delegate = self;
         cell.category = self.categorys[indexPath.row];

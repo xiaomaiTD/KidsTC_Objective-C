@@ -11,6 +11,7 @@
 #import "GHeader.h"
 #import "SegueMaster.h"
 #import "KTCFavouriteManager.h"
+#import "RecommendDataManager.h"
 
 #import "CollectionContentModel.h"
 #import "CollectionContentView.h"
@@ -70,23 +71,31 @@
 }
 
 - (void)loadData:(BOOL)refresh {
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"page":@(self.page),
-                            @"pageCount":@(CollectionSCTPageCount)};
-    [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.contentView.items = self.items;
-        [self.contentView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.contentView dealWithUI:0];
-    }];
+    if (!self.contentView.noMoreListData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"page":@(self.page),
+                                @"pageCount":@(CollectionSCTPageCount)};
+        [Request startWithName:@"GET_USER_COLLECT_ARTICLE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            CollectionContentModel *model = [CollectionContentModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.contentView.items = self.items;
+            [self.contentView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.contentView dealWithUI:0 isRecommend:NO];
+        }];
+    }else{
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendContentRefresh:YES pageCount:5 successBlock:^(NSArray<ArticleHomeItem *> *data) {
+            [self.contentView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.contentView dealWithUI:0 isRecommend:YES];
+        }];
+    }
 }
 
 - (void)delete:(ArticleHomeItem *)item completion:(void(^)(BOOL success))completion{

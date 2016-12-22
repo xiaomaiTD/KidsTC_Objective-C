@@ -1,17 +1,25 @@
 //
-//  CollectionContentView.m
+//  RecommendContentCollectContentView.m
 //  KidsTC
 //
-//  Created by 詹平 on 2016/11/14.
+//  Created by 詹平 on 2016/12/22.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "CollectionContentView.h"
-#import "ArticleHomeBaseCell.h"
-
 #import "RecommendContentCollectContentView.h"
+#import "RecommendDataManager.h"
 
-static NSString *const ID = @"CollectionContentCell";
+#import "ArticleHomeBaseCell.h"
+#import "ArticleHomeIconCell.h"
+#import "ArticleHomeNoIconCell.h"
+#import "ArticleHomeBigImgCell.h"
+#import "ArticleHomeTagImgCell.h"
+#import "ArticleHomeBannerCell.h"
+#import "ArticleHomeVideoCell.h"
+#import "ArticleHomeAlbumCell.h"
+#import "ArticleHomeUserArticleCell.h"
+#import "ArticleHomeColumnTitleCell.h"
+#import "ArticleHomeAlbumEntrysCell.h"
 
 static NSString *const ArticleHomeBaseCellID        = @"ArticleHomeBaseCellID";
 static NSString *const ArticleHomeIconCellID        = @"ArticleHomeIconCellID";
@@ -25,26 +33,18 @@ static NSString *const ArticleHomeUserArticleCellID = @"ArticleHomeUserArticleCe
 static NSString *const ArticleHomeColumnTitleCellID = @"ArticleHomeColumnTitleCellID";
 static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCellID";
 
-@interface CollectionContentView ()<ArticleHomeBaseCellDelegate>
-@property (nonatomic, strong) RecommendContentCollectContentView *footerView;
+@interface RecommendContentCollectContentView ()<UITableViewDelegate,UITableViewDataSource,ArticleHomeBaseCellDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
-@implementation CollectionContentView
+@implementation RecommendContentCollectContentView
 
-- (RecommendContentCollectContentView *)footerView {
-    if (!_footerView) {
-        _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendContentCollectContentView" owner:self options:nil].firstObject;
-    }
-    return _footerView;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self registerCells];
-        [self resetFooterView];
-    }
-    return self;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.tableView.estimatedRowHeight = 100;
+    
+    [self registerCells];
 }
 
 - (void)registerCells {
@@ -61,15 +61,18 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleHomeAlbumEntrysCell" bundle:nil] forCellReuseIdentifier:ArticleHomeAlbumEntrysCellID];
 }
 
-- (void)resetFooterView {
-    [self.footerView reloadData];
-    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
-    self.tableView.tableFooterView = self.footerView;
+- (void)setContents:(NSArray<id> *)contents {
+    _contents = contents;
+    self.hidden = _contents.count<1;
+    [self.tableView reloadData];
 }
 
-- (void)nilRecommendData {
-    [self.footerView nilData];
-    [self resetFooterView];
+- (void)reloadData {
+    self.contents = [[RecommendDataManager shareRecommendDataManager] recommendContent];
+}
+- (CGFloat)contentHeight {
+    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
+    return height;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -79,39 +82,18 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.items.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return self.contents.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     NSInteger row = indexPath.row;
-    if (row<self.items.count) {
-        ArticleHomeItem *item = self.items[row];
+    if (row<self.contents.count) {
+        ArticleHomeItem *item = self.contents[row];
         NSString *ID = [self cellIdWtith:item.listTemplate];
         ArticleHomeBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         cell.delegate = self;
         cell.item = item;
-        cell.deleteBtn.hidden = !self.editing;
-        cell.deleteNewsBlock = ^(ArticleHomeItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeDelete value:item completion:^(id value) {
-                    BOOL success = [value boolValue];
-                    if (!success) return;
-                    NSMutableArray *itemsAry = [NSMutableArray arrayWithArray:self.items];
-                    if (row>=itemsAry.count) return;
-                    [itemsAry removeObjectAtIndex:row];
-                    self.items = [NSArray arrayWithArray:itemsAry];
-                    [self.tableView reloadData];
-                }];
-            }
-        };
         return cell;
     }else{
         return [tableView dequeueReusableCellWithIdentifier:ArticleHomeBaseCellID];
@@ -121,11 +103,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger row = indexPath.row;
-    if (row<self.items.count) {
-        ArticleHomeItem *item = self.items[row];
-        if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-            [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel completion:nil];
-        }
+    if (row<self.contents.count) {
+        ArticleHomeItem *item = self.contents[row];
+        
     }
 }
 
@@ -202,13 +182,19 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
-            }
+            
         }
             break;
         default:break;
     }
+}
+
+- (void)nilData {
+    [[RecommendDataManager shareRecommendDataManager] nilRecommendContent];
+}
+
+- (void)dealloc {
+    [self nilData];
 }
 
 @end

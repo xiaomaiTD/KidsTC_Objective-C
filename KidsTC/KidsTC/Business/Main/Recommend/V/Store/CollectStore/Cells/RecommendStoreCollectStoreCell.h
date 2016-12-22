@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "RecommendStoreProduct.h"
 @interface RecommendStoreCollectStoreCell : UITableViewCell
-
+@property (nonatomic, strong) RecommendStoreProduct *storeProduct;
 @end

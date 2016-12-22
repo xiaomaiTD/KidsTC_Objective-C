@@ -51,6 +51,9 @@ static NSString *const ID = @"UITableViewCell";
     WeakSelf(self);
     RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self);
+        self.noMoreListData = NO;
+        self.noMoreRecommendData = NO;
+        [self nilRecommendData];
         [self loadData:YES];
     }];
     self.tableView.mj_header = header;
@@ -69,11 +72,28 @@ static NSString *const ID = @"UITableViewCell";
     }
 }
 
-- (void)dealWithUI:(NSUInteger)loadCount {
-    [self.tableView reloadData];
+- (void)resetFooterView {}
+
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend{
+    
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<CollectionSCTPageCount) {
+    
+    if (!isRecommend) {
+        if (loadCount<CollectionSCTPageCount) {
+            self.noMoreListData = YES;
+        }
+    }else{
+        if (loadCount<CollectionSCTPageCount) {
+            self.noMoreRecommendData = YES;
+        }
+    }
+    
+    [self resetFooterView];
+    
+    [self.tableView reloadData];
+    
+    if (self.noMoreRecommendData) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {
@@ -82,6 +102,8 @@ static NSString *const ID = @"UITableViewCell";
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
 }
+
+- (void)nilRecommendData {}
 
 - (void)setEditing:(BOOL)editing {
     _editing = editing;

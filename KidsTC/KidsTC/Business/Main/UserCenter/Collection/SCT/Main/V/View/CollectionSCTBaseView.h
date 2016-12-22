@@ -14,7 +14,8 @@ typedef enum : NSUInteger {
     CollectionSCTBaseViewActionTypeLoadData = 1,
     CollectionSCTBaseViewActionTypeSegue,//通用跳转
     CollectionSCTBaseViewActionTypeUserArticleCenter,
-    CollectionSCTBaseViewActionTypeDelete
+    CollectionSCTBaseViewActionTypeDelete,
+    CollectionSCTBaseViewActionTypeCollect,
 } CollectionSCTBaseViewActionType;
 
 @class CollectionSCTBaseView;
@@ -28,5 +29,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) id<CollectionSCTBaseViewDelegate> delegate;
 @property (nonatomic, assign) BOOL editing;
 @property (nonatomic, strong) NSArray *items;
-- (void)dealWithUI:(NSUInteger)loadCount;
+@property (nonatomic, assign) BOOL noMoreListData;
+@property (nonatomic, assign) BOOL noMoreRecommendData;
+- (void)resetFooterView;
+- (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend;
+- (void)nilRecommendData;
 @end

@@ -10,6 +10,7 @@
 #import "NSString+Category.h"
 #import "GHeader.h"
 #import "SegueMaster.h"
+#import "RecommendDataManager.h"
 
 #import "CollectionTarentoModel.h"
 #import "CollectionTarentoView.h"
@@ -70,27 +71,37 @@
             }];
         }
             break;
+        default:
+            break;
     }
 }
 
 - (void)loadData:(BOOL)refresh {
-    self.page = refresh?1:++self.page;
-    NSDictionary *param = @{@"page":@(self.page),
-                            @"pagecount":@(CollectionSCTPageCount)};
-    [Request startWithName:@"GET_USER_COLLECTED_ARTICLE_AUTHOR" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        CollectionTarentoModel *model = [CollectionTarentoModel modelWithDictionary:dic];
-        if (refresh) {
-            self.items = model.data;
-        }else{
-            NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
-            [items addObjectsFromArray:model.data];
-            self.items = [NSArray arrayWithArray:items];
-        }
-        self.tarentoView.items = self.items;
-        [self.tarentoView dealWithUI:model.data.count];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.tarentoView dealWithUI:0];
-    }];
+    if (!self.tarentoView.noMoreListData) {
+        self.page = refresh?1:++self.page;
+        NSDictionary *param = @{@"page":@(self.page),
+                                @"pagecount":@(CollectionSCTPageCount)};
+        [Request startWithName:@"GET_USER_COLLECTED_ARTICLE_AUTHOR" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            CollectionTarentoModel *model = [CollectionTarentoModel modelWithDictionary:dic];
+            if (refresh) {
+                self.items = model.data;
+            }else{
+                NSMutableArray *items = [NSMutableArray arrayWithArray:self.items];
+                [items addObjectsFromArray:model.data];
+                self.items = [NSArray arrayWithArray:items];
+            }
+            self.tarentoView.items = self.items;
+            [self.tarentoView dealWithUI:model.data.count isRecommend:NO];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self.tarentoView dealWithUI:0 isRecommend:NO];
+        }];
+    }else{
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendTarentoRefresh:YES pageCount:5 successBlock:^(NSArray<RecommendTarento *> *data) {
+            [self.tarentoView dealWithUI:data.count isRecommend:YES];
+        } failureBlock:^(NSError *error) {
+            [self.tarentoView dealWithUI:0 isRecommend:YES];
+        }];
+    }
 }
 
 - (void)delete:(CollectionTarentoItem *)item completion:(void(^)(BOOL success))completion{

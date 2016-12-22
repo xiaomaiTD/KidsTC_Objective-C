@@ -13,15 +13,25 @@
 
 #import "CollectionStoreItem.h"
 
+#import "RecommendStoreCollectStoreView.h"
+
 static NSString *const CellID = @"CollectionStoreCell";
 static NSString *const HeadID = @"CollectionStoreHeader";
 static NSString *const FootID = @"CollectionStoreFooter";
 
-@interface CollectionStoreView ()<CollectionStoreHeaderDelegate>
-
+@interface CollectionStoreView ()<CollectionStoreHeaderDelegate,RecommendStoreCollectStoreViewDelegate>
+@property (nonatomic, strong) RecommendStoreCollectStoreView *footerView;
 @end
 
 @implementation CollectionStoreView
+
+- (RecommendStoreCollectStoreView *)footerView {
+    if (!_footerView) {
+        _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendStoreCollectStoreView" owner:self options:nil].firstObject;
+        _footerView.delegate = self;
+    }
+    return _footerView;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -30,8 +40,20 @@ static NSString *const FootID = @"CollectionStoreFooter";
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreCell" bundle:nil] forCellReuseIdentifier:CellID];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
+        [self resetFooterView];
     }
     return self;
+}
+
+- (void)resetFooterView {
+    [self.footerView reloadData];
+    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
+    self.tableView.tableFooterView = self.footerView;
+}
+
+- (void)nilRecommendData {
+    [self.footerView nilData];
+    [self resetFooterView];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -132,5 +154,32 @@ static NSString *const FootID = @"CollectionStoreFooter";
     }
 }
 
+#pragma mark - RecommendStoreCollectStoreViewDelegate
+
+- (void)recommendStoreCollectStoreView:(RecommendStoreCollectStoreView *)view actionType:(RecommendStoreCollectStoreViewActionType)type value:(id)value {
+    switch (type) {
+        case RecommendStoreCollectStoreViewActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
+            }
+        }
+            break;
+        case RecommendStoreCollectStoreViewActionTypeCollect:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeCollect value:value completion:nil];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (void)dealloc {
+    [self.footerView nilData];
+}
 
 @end
