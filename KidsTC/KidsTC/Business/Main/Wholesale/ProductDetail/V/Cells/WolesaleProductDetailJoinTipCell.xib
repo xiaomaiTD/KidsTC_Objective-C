@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WolesaleProductDetailJoinTipCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="以下小伙伴要成团了，快来助攻！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oas-SO-bcN">
+                        <rect key="frame" x="12" y="12" width="296" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMj-Y1-a7l">
+                        <rect key="frame" x="0.0" y="42.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="ego-Iw-mbR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Oas-SO-bcN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Cz8-hZ-ZyR"/>
+                    <constraint firstAttribute="trailing" secondItem="Oas-SO-bcN" secondAttribute="trailing" constant="12" id="E9C-uk-aRR"/>
+                    <constraint firstAttribute="trailing" secondItem="SMj-Y1-a7l" secondAttribute="trailing" id="Y2a-kk-nfD"/>
+                    <constraint firstAttribute="bottom" secondItem="SMj-Y1-a7l" secondAttribute="bottom" id="Zgz-B3-AUU"/>
+                    <constraint firstItem="SMj-Y1-a7l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jvY-kc-Ign"/>
+                    <constraint firstItem="Oas-SO-bcN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="oYm-18-gLl"/>
+                    <constraint firstAttribute="bottom" secondItem="Oas-SO-bcN" secondAttribute="bottom" constant="12" id="rKD-72-wYd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="ego-Iw-mbR" id="nUT-2l-bxL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

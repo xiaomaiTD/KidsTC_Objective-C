@@ -35,6 +35,7 @@
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
 #import "NurseryViewController.h"
+#import "WolesaleProductDetailViewController.h"
 
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
@@ -312,8 +313,10 @@
             break;
         case AccountCenterViewActionTypeBringUpHeadline:
         {
-            toController = [[ArticleWeChatTableViewController alloc] init];
-            [BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
+            //toController = [[ArticleWeChatTableViewController alloc] init];
+            //[BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
+            
+            toController = [[WolesaleProductDetailViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeCustomerServices:
