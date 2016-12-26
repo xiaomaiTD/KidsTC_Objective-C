@@ -42,6 +42,7 @@
 }
 
 - (void)setStore:(SearchResultStore *)store {
+    if (![store isKindOfClass:[SearchResultStore class]]) return;
     _store = store;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_store.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = _store.storeName;

@@ -72,4 +72,5 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) ProductDetailSubViewsProvider *subViewProvider;
 @property (nonatomic, strong) ProductDetailData *data;
 @property (nonatomic, weak) id<ProductDetailViewDelegate> delegate;
+- (void)scroll;
 @end

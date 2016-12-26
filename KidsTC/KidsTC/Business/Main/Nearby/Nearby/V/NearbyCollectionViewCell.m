@@ -101,7 +101,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
     }
     if (self.data.data.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-                                                                          image:nil description:@"啥都没有啊…"
+                                                                          image:nil description:@"超出服务范围啦~"
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
 }

@@ -246,37 +246,37 @@ singleM(RecommendDataManager)
         case RecommendProductTypeUserCenter:
         {
             self.recommendProductAccountCenterData = nil;
-            self.accountCenterPage = 1;
+            self.accountCenterPage = 0;
         }
             break;
         case RecommendProductTypeCollect:
         {
             self.recommendProductCollectProductData = nil;
-            self.collectProductPage = 1;
+            self.collectProductPage = 0;
         }
             break;
         case RecommendProductTypeOrderList:
         {
             self.recommendProductOrderListData = nil;
-            self.orderListPage = 1;
+            self.orderListPage = 0;
         }
             break;
         case RecommendProductTypeTicket:
         {
             self.recommendProductTicketProductData = nil;
-            self.ticketProductPage = 1;
+            self.ticketProductPage = 0;
         }
             break;
         case RecommendProductTypeNormal:
         {
             self.recommendProductNormalProductData = nil;
-            self.normalProductPage = 1;
+            self.normalProductPage = 0;
         }
             break;
         case RecommendProductTypeFree:
         {
             self.recommendProductFreeProductData = nil;
-            self.freeProductPage = 1;
+            self.freeProductPage = 0;
         }
             break;
         default:
@@ -325,7 +325,7 @@ singleM(RecommendDataManager)
 
 - (void)nilRecommendStore {
     self.recommendStoreCollectStoreData = nil;
-    self.collectStorePage = 1;
+    self.collectStorePage = 0;
 }
 
 
@@ -366,7 +366,7 @@ singleM(RecommendDataManager)
 
 - (void)nilRecommendContent {
     self.recommendContentCollectContentData = nil;
-    self.collectContentPage = 1;
+    self.collectContentPage = 0;
 }
 
 #pragma mark - tarento
@@ -406,7 +406,7 @@ singleM(RecommendDataManager)
 
 - (void)nilRecommendTarento {
     self.recommendTarentoCollectTarentoData = nil;
-    self.collectTarentoPage = 1;
+    self.collectTarentoPage = 0;
 }
 
 @end

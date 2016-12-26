@@ -132,6 +132,11 @@
     [self buildRightBarButtons];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.detailView scroll];
+}
+
 - (ProductDetailView *)detailView {
     if (!_detailView) {
         _detailView = [[ProductDetailView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -968,7 +973,7 @@
                     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
                     [self.backBtn setImage:[UIImage imageNamed:@"navi_back_white"] forState:UIControlStateNormal];
                     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:19]};
                     [navigationBar setTitleTextAttributes:textAttrs];
                     [self.historyBtn setImage:[UIImage imageNamed:@"ProductDetail_ticket_time"] forState:UIControlStateNormal];
                     [self.shareBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_more_white"] forState:UIControlStateNormal];
@@ -979,7 +984,7 @@
                     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
                     [self.backBtn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
                     UINavigationBar *navigationBar = self.navigationController.navigationBar;
-                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor blackColor]};
+                    NSDictionary *textAttrs = @{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:19]};
                     [navigationBar setTitleTextAttributes:textAttrs];
                     [self.historyBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_clock"] forState:UIControlStateNormal];
                     [self.shareBtn setImage:[UIImage imageNamed:@"ProductDetail_navi_more"] forState:UIControlStateNormal];
@@ -1013,6 +1018,7 @@
     [historyButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
     [historyButton setBackgroundColor:[UIColor clearColor]];
     historyButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    historyButton.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2);
     [historyButton setImage:[UIImage imageNamed:@"ProductDetail_navi_clock"] forState:UIControlStateNormal];
     [historyButton addTarget:self action:@selector(showHistoryView) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:historyButton];

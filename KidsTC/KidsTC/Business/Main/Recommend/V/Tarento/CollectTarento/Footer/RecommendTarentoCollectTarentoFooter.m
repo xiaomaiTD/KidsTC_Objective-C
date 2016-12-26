@@ -27,7 +27,14 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    
+    if (self.actionBlock) {
+        self.actionBlock(_tarento);
+    }
+}
+
+- (void)setTarento:(RecommendTarento *)tarento {
+    _tarento = tarento;
+    self.numL.text = _tarento.newsCount;
 }
 
 @end

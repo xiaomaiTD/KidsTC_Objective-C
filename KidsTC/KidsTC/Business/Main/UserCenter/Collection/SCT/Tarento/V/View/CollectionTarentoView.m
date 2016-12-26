@@ -43,7 +43,7 @@ static NSString *const ArticleHomeUserArticleCellID = @"ArticleHomeUserArticleCe
 static NSString *const ArticleHomeColumnTitleCellID = @"ArticleHomeColumnTitleCellID";
 static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCellID";
 
-@interface CollectionTarentoView ()<ArticleHomeBaseCellDelegate>
+@interface CollectionTarentoView ()<ArticleHomeBaseCellDelegate,RecommendTarentoCollectTarentoViewDelegate>
 @property (nonatomic, strong) RecommendTarentoCollectTarentoView *footerView;
 @end
 
@@ -52,6 +52,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (RecommendTarentoCollectTarentoView *)footerView {
     if (!_footerView) {
         _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendTarentoCollectTarentoView" owner:self options:nil].firstObject;
+        _footerView.delegate = self;
     }
     return _footerView;
 }
@@ -265,4 +266,37 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         default:break;
     }
 }
+
+#pragma mark - RecommendTarentoCollectTarentoViewDelegate
+
+- (void)recommendTarentoCollectTarentoView:(RecommendTarentoCollectTarentoView *)view actionType:(RecommendTarentoCollectTarentoViewActionType)type value:(id)value {
+    switch (type) {
+        case RecommendTarentoCollectTarentoViewActionTypeUserArticleCenter:
+        {
+            if (![value isKindOfClass:[RecommendTarento class]]) return;
+            RecommendTarento *tarento = value;
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:tarento.authorUid completion:nil];
+            }
+        }
+            break;
+        case RecommendTarentoCollectTarentoViewActionTypeCollect:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeCollect value:value completion:nil];
+            }
+        }
+            break;
+        case RecommendTarentoCollectTarentoViewActionTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 @end

@@ -25,7 +25,7 @@ static NSString *const ArticleHomeUserArticleCellID = @"ArticleHomeUserArticleCe
 static NSString *const ArticleHomeColumnTitleCellID = @"ArticleHomeColumnTitleCellID";
 static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCellID";
 
-@interface CollectionContentView ()<ArticleHomeBaseCellDelegate>
+@interface CollectionContentView ()<ArticleHomeBaseCellDelegate,RecommendContentCollectContentViewDelegate>
 @property (nonatomic, strong) RecommendContentCollectContentView *footerView;
 @end
 
@@ -34,6 +34,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (RecommendContentCollectContentView *)footerView {
     if (!_footerView) {
         _footerView = [[NSBundle mainBundle] loadNibNamed:@"RecommendContentCollectContentView" owner:self options:nil].firstObject;
+        _footerView.delegate = self;
     }
     return _footerView;
 }
@@ -208,6 +209,32 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         }
             break;
         default:break;
+    }
+}
+
+#pragma mark - RecommendContentCollectContentViewDelegate
+
+- (void)recommendContentCollectContentView:(RecommendContentCollectContentView *)view
+                                actionType:(RecommendContentCollectContentViewActioType)type
+                                     value:(id)value
+{
+    switch (type) {
+        case RecommendContentCollectContentViewActioTypeSegue:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:value completion:nil];
+            }
+        }
+            break;
+        case RecommendContentCollectContentViewActioTypeCollect:
+        {
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeCollect value:value completion:nil];
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 

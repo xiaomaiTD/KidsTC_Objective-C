@@ -2,8 +2,8 @@
 //  StoreDetailAnnotationTipView.m
 //  KidsTC
 //
-//  Created by zhanping on 8/2/16.
-//  Copyright © 2016 詹平. All rights reserved.
+//  Created by 詹平 on 2016/12/23.
+//  Copyright © 2016年 zhanping. All rights reserved.
 //
 
 #import "StoreDetailAnnotationTipView.h"
@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstranitHeight;
 
 @end
-
 @implementation StoreDetailAnnotationTipView
 
 - (void)awakeFromNib {

@@ -32,11 +32,9 @@
 @property (nonatomic, weak) SearchResultView *resultView;
 @property (nonatomic, strong) UIButton *rightBarBtn;
 
-
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSString *userLocation;
 @property (nonatomic, strong) NSArray *items;
-
 
 @property (nonatomic, assign) SearchType searchType;
 @property (nonatomic, strong) NSDictionary *params_store;

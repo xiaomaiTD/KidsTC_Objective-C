@@ -53,6 +53,7 @@
 }
 
 - (void)setProduct:(SearchResultProduct *)product {
+    if (![product isKindOfClass:[SearchResultProduct class]]) return;
     _product = product;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_product.imgurl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = _product.name;

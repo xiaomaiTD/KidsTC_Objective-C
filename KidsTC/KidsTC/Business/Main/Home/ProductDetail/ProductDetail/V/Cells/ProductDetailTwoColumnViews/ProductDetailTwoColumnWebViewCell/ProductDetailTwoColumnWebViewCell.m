@@ -45,11 +45,25 @@
 - (CGSize)sizeThatFits:(CGSize)size {
     [self layoutIfNeeded];
     CGFloat web_h = self.webView.scrollView.contentSize.height;
-    CGFloat h = self.data.webViewHasOpen ? web_h:web_h*0.3;
-    if (h<44) {
-        h = 44;
+    if (self.data.webViewHasOpen) {
+        return CGSizeMake(size.width, web_h);
+    }else{
+        if (self.data.webViewHasLoad) {
+            if (web_h<=SCREEN_HEIGHT) {
+                if (web_h<44) web_h = 44;
+                return CGSizeMake(size.width, web_h);
+            }else{
+                CGFloat h = web_h*0.5;
+                if (h<=SCREEN_HEIGHT) {
+                    return CGSizeMake(size.width, SCREEN_HEIGHT);
+                }else{
+                    return CGSizeMake(size.width, h);
+                }
+            }
+        }else{
+            return CGSizeMake(size.width, SCREEN_HEIGHT);
+        }
     }
-    return CGSizeMake(size.width, h);
 }
 
 - (void)setData:(ProductDetailData *)data {
@@ -76,20 +90,21 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    self.data.webViewHasLoad = YES;
-    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
-        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeWebViewFinishLoad value:nil];
-    }
+    [self webViewFinishLoad];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    [self webViewFinishLoad];
+}
+
+#pragma mark - UIWebViewDelegate helper
+
+- (void)webViewFinishLoad {
     self.data.webViewHasLoad = YES;
     if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
         [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeWebViewFinishLoad value:nil];
     }
 }
-
-
 
 
 @end

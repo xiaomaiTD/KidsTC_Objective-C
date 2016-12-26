@@ -13,7 +13,7 @@ singleM(SearchFactorSortDataManager)
 - (NSArray<SearchFactorSortDataItem *> *)items {
     NSMutableArray<SearchFactorSortDataItem *> *items = [NSMutableArray array];
     SearchFactorSortDataItem *intelligence = [SearchFactorSortDataItem itemWithImg:@"search_toolBar_sort_intelligence" title:@"智能排序" desc:@"智能排序" value:@"1"];
-    SearchFactorSortDataItem *star = [SearchFactorSortDataItem itemWithImg:@"search_toolBar_sort_star" title:@"按星级排序" desc:@"按星级排序" value:@"7"];
+    SearchFactorSortDataItem *star = [SearchFactorSortDataItem itemWithImg:@"search_toolBar_sort_star" title:@"按星级排序" desc:@"星级" value:@"7"];
     SearchFactorSortDataItem *price_up = [SearchFactorSortDataItem itemWithImg:@"search_toolBar_sort_price_up" title:@"价格从低到高" desc:@"价格" value:@"4"];
     SearchFactorSortDataItem *price_down = [SearchFactorSortDataItem itemWithImg:@"search_toolBar_sort_price_down" title:@"价格从高到低" desc:@"价格" value:@"5"];
     if (intelligence) [items addObject:intelligence];

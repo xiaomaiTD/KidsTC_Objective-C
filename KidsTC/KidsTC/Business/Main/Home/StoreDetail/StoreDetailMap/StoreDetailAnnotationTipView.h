@@ -2,8 +2,8 @@
 //  StoreDetailAnnotationTipView.h
 //  KidsTC
 //
-//  Created by zhanping on 8/2/16.
-//  Copyright © 2016 詹平. All rights reserved.
+//  Created by 詹平 on 2016/12/23.
+//  Copyright © 2016年 zhanping. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 - (void)storeDetailAnnotationTipView:(StoreDetailAnnotationTipView *)view actionType:(StoreDetailAnnotationTipViewActionType)type;
 @end
 @protocol BMKAnnotation;
-@interface StoreDetailAnnotationTipView : UITableViewCell
+@interface StoreDetailAnnotationTipView : UIView
 @property (nonatomic, weak) id<StoreDetailAnnotationTipViewDelegate> delegate;
 @property (nonatomic, strong) StoreListItemModel *model;
 @property (nonatomic, assign) id<BMKAnnotation> annotation;

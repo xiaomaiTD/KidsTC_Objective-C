@@ -54,7 +54,6 @@
     [NotificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [NotificationCenter addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
     [NotificationCenter addObserver:self selector:@selector(reachabilityStatusChange:) name:kReachabilityStatusChangeNoti object:nil];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -210,7 +209,7 @@
         self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(back) andGetButton:^(UIButton *btn) {
             [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
             [btn setImage:[UIImage imageNamed:highImageName] forState:UIControlStateHighlighted];
-            btn.imageEdgeInsets = UIEdgeInsetsMake(3, 0, 3, 0);
+            btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
             btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
             self.backBtn = btn;
         }];

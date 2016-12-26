@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "RecommendTarento.h"
 @interface RecommendTarentoCollectTarentoFooter : UITableViewHeaderFooterView
-@property (nonatomic, strong) RecommendTarento *item;
+@property (nonatomic, strong) RecommendTarento *tarento;
+@property (nonatomic, copy) void(^actionBlock)(RecommendTarento *tarento);
 @end

@@ -72,7 +72,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 - (CGFloat)contentHeight {
     CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
-    return height;
+    return self.contents.count>0?height:0.001;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -105,7 +105,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     NSInteger row = indexPath.row;
     if (row<self.contents.count) {
         ArticleHomeItem *item = self.contents[row];
-        
+        if ([self.delegate respondsToSelector:@selector(recommendContentCollectContentView:actionType:value:)]) {
+            [self.delegate recommendContentCollectContentView:self actionType:RecommendContentCollectContentViewActioTypeSegue value:item.segueModel];
+        }
     }
 }
 
@@ -182,7 +184,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            
+            if ([self.delegate respondsToSelector:@selector(recommendContentCollectContentView:actionType:value:)]) {
+                [self.delegate recommendContentCollectContentView:self actionType:RecommendContentCollectContentViewActioTypeSegue value:value];
+            }
         }
             break;
         default:break;

@@ -63,7 +63,7 @@
         self.freeBGView.hidden = NO;
         self.lotteryBGView.hidden = YES;
         self.likeBtn.selected = data.isFavor;
-        NSString *likeTitle = data.isFavor?@"取消关注":@"关注";
+        NSString *likeTitle = data.isFavor?@"已关注":@"关注";
         [self.likeBtn setTitle:likeTitle forState:UIControlStateNormal];
         self.applyBtn.enabled = data.isCanBuy;
         [self.applyBtn setTitle:data.statusDesc forState:UIControlStateNormal];
@@ -78,7 +78,7 @@
             [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
                 self.data.isFavor = !self.data.isFavor;
                 self.likeBtn.selected = self.data.isFavor;
-                NSString *likeTitle = self.data.isFavor?@"取消关注":@"关注";
+                NSString *likeTitle = self.data.isFavor?@"已关注":@"关注";
                 [self.likeBtn setTitle:likeTitle forState:UIControlStateNormal];
             }];
         }

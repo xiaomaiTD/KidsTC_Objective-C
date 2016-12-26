@@ -39,7 +39,7 @@ static NSString *const ArticleHomeUserArticleCellID = @"ArticleHomeUserArticleCe
 static NSString *const ArticleHomeColumnTitleCellID = @"ArticleHomeColumnTitleCellID";
 static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCellID";
 
-@interface RecommendTarentoCollectTarentoView ()<UITableViewDelegate,UITableViewDataSource,ArticleHomeBaseCellDelegate>
+@interface RecommendTarentoCollectTarentoView ()<UITableViewDelegate,UITableViewDataSource,ArticleHomeBaseCellDelegate,RecommendTarentoCollectTarentoHeaderDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -82,8 +82,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     self.tarentos = [[RecommendDataManager shareRecommendDataManager] recommendTarento];
 }
 - (CGFloat)contentHeight {
-    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
-    return height;
+    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height + self.tarentos.count*130;
+    return self.tarentos.count>0?height:0.001;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -94,8 +94,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section<self.tarentos.count) {
-        RecommendTarento *item = self.tarentos[section];
-        return item.articleLst.count;
+        RecommendTarento *tarento = self.tarentos[section];
+        return tarento.articleLst.count;
     }
     return 0;
 }
@@ -103,9 +103,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     RecommendTarentoCollectTarentoHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeadID];
     if (section<self.tarentos.count) {
-        RecommendTarento *item = self.tarentos[section];
-        header.item = item;
-
+        RecommendTarento *tarento = self.tarentos[section];
+        header.tarento = tarento;
+        header.delegate = self;
     }
     return header;
 }
@@ -114,8 +114,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     if (section<self.tarentos.count) {
-        RecommendTarento *item = self.tarentos[section];
-        NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
+        RecommendTarento *tarento = self.tarentos[section];
+        NSArray<ArticleHomeItem *> *articleLst = tarento.articleLst;
         if (row<articleLst.count) {
             ArticleHomeItem *articleItem = articleLst[row];
             NSString *ID = [self cellIdWtith:articleItem.listTemplate];
@@ -131,8 +131,13 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     RecommendTarentoCollectTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
     if (section<self.tarentos.count) {
-        RecommendTarento *item = self.tarentos[section];
-        footer.item = item;
+        RecommendTarento *tarento = self.tarentos[section];
+        footer.tarento = tarento;
+        footer.actionBlock = ^(RecommendTarento *tarento){
+            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeUserArticleCenter value:tarento];
+            }
+        };
     }
     return footer;
 }
@@ -147,7 +152,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         NSArray<ArticleHomeItem *> *articleLst = item.articleLst;
         if (row<articleLst.count) {
             ArticleHomeItem *articleItem = articleLst[row];
-            
+            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeSegue value:articleItem.segueModel];
+            }
         }
     }
 }
@@ -220,13 +227,41 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     return ID;
 }
 
+#pragma mark - RecommendTarentoCollectTarentoHeaderDelegate
+
+- (void)recommendTarentoCollectTarentoHeader:(RecommendTarentoCollectTarentoHeader *)header
+                                  actionType:(RecommendTarentoCollectTarentoHeaderActionType)type
+                                       value:(id)value
+{
+    switch (type) {
+        case RecommendTarentoCollectTarentoHeaderActionTypeUserArticleCenter:
+        {
+            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeUserArticleCenter value:value];
+            }
+        }
+            break;
+        case RecommendTarentoCollectTarentoHeaderActionTypeCollect:
+        {
+            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeCollect value:value];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
 #pragma mark - ArticleHomeBaseCellDelegate
 
 - (void)articleHomeBaseCell:(ArticleHomeBaseCell *)cell actionType:(ArticleHomeBaseCellActionType)type value:(id)value {
     switch (type) {
         case ArticleHomeBaseCellActionTypeSegue:
         {
-            
+            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeSegue value:value];
+            }
         }
             break;
         default:break;

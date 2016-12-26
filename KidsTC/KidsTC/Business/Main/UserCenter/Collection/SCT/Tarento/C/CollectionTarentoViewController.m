@@ -71,6 +71,11 @@
             }];
         }
             break;
+        case CollectionSCTBaseViewActionTypeCollect:
+        {
+            [self collect:value];
+        }
+            break;
         default:
             break;
     }
@@ -120,6 +125,19 @@
         [TCProgressHUD dismissSVP];
         if (completion) completion(NO);
     }];
+}
+
+- (void)collect:(id)value {
+    if (![value isKindOfClass:[RecommendTarento class]]) return;
+    RecommendTarento *tarento = value;
+    if (![tarento.authorNo isNotNull]) {
+        [[iToast makeText:@"作者编号为空"] show];
+        return;
+    }
+    BOOL isFollow = tarento.isCollected;
+    NSDictionary *param = @{@"authorId":tarento.authorNo,
+                            @"isFollow":@(isFollow)};
+    [Request startWithName:@"USER_FOLLOW_AUTHOR" param:param progress:nil success:nil failure:nil];
 }
 
 @end

@@ -44,7 +44,7 @@
             [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
                 self.data.isFavor = !self.data.isFavor;
                 self.attentionBtn.selected = self.data.isFavor;
-                NSString *likeTitle = self.data.isFavor?@"取消关注":@"关注";
+                NSString *likeTitle = self.data.isFavor?@"已关注":@"关注";
                 [self.attentionBtn setTitle:likeTitle forState:UIControlStateNormal];
             }];
         }
@@ -54,7 +54,7 @@
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
     self.attentionBtn.selected = self.data.isFavor;
-    NSString *likeTitle = self.data.isFavor?@"取消关注":@"关注";
+    NSString *likeTitle = self.data.isFavor?@"已关注":@"关注";
     [self.attentionBtn setTitle:likeTitle forState:UIControlStateNormal];
     self.buyBtn.enabled = data.isCanBuy;
     [self.buyBtn setTitle:data.statusDesc forState:UIControlStateNormal];

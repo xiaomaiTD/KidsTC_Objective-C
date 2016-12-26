@@ -31,6 +31,10 @@ static NSString *const ID = @"UITableViewCell";
 
 @implementation ProductDetailView
 
+- (void)scroll {
+    [self scrollViewDidScroll:self.tableView];
+}
+
 - (void)setSubViewProvider:(ProductDetailSubViewsProvider *)subViewProvider {
     _subViewProvider = subViewProvider;
     [self setupSubViews];
