@@ -8,6 +8,11 @@
 
 #import "WholesaleSettlementStoreInfoCell.h"
 
+@interface WholesaleSettlementStoreInfoCell ()
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *addressL;
+@end
+
 @implementation WholesaleSettlementStoreInfoCell
 
 - (void)awakeFromNib {

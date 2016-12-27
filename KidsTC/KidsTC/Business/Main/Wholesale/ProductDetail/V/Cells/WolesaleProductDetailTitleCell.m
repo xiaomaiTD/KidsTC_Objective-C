@@ -21,10 +21,9 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    self.titleL.text = _title;
 }
 
 @end

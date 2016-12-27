@@ -15,12 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLE-89-J4d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="W7H-4p-NcA"/>
+                        </connections>
                     </webView>
                 </subviews>
                 <constraints>
@@ -30,6 +33,9 @@
                     <constraint firstAttribute="trailing" secondItem="XLE-89-J4d" secondAttribute="trailing" id="vsa-nd-v6U"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="webView" destination="XLE-89-J4d" id="y5r-IW-UgT"/>
+            </connections>
             <point key="canvasLocation" x="35" y="80.5"/>
         </tableViewCell>
     </objects>

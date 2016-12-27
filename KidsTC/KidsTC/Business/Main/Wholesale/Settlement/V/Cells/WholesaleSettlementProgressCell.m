@@ -8,16 +8,20 @@
 
 #import "WholesaleSettlementProgressCell.h"
 
+@interface WholesaleSettlementProgressCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@end
+
 @implementation WholesaleSettlementProgressCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

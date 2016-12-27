@@ -12,40 +12,83 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WolesaleProductDetailRuleTipCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="379" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="379" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*开团邀请3人参加，人数不足自动退换，详见拼团玩法" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-ZA-l6L">
-                        <rect key="frame" x="12" y="12" width="296" height="19"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*开团邀请" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea1-ZA-l6L">
+                        <rect key="frame" x="12" y="12" width="56" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPO-1P-cYa">
-                        <rect key="frame" x="0.0" y="42.5" width="320" height="0.5"/>
+                        <rect key="frame" x="0.0" y="43" width="379" height="0.0"/>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="7oE-O8-o2x"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cK-gs-yHJ">
+                        <rect key="frame" x="68" y="14" width="8" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="人参加，人数不足自动退换，详见" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4af-x4-JoR">
+                        <rect key="frame" x="76" y="14" width="184" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHB-K7-abp">
+                        <rect key="frame" x="260" y="8" width="50" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="拼团玩法">
+                            <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kle-nQ-K4F"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-Io-txE">
+                        <rect key="frame" x="260" y="28" width="50" height="0.0"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="aIc-4H-kRe"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
+                    <constraint firstItem="Dm4-Io-txE" firstAttribute="trailing" secondItem="BHB-K7-abp" secondAttribute="trailing" id="7xR-RI-M2w"/>
                     <constraint firstItem="Ea1-ZA-l6L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="AOU-Fh-0AS"/>
+                    <constraint firstItem="BHB-K7-abp" firstAttribute="leading" secondItem="4af-x4-JoR" secondAttribute="trailing" id="B9z-7w-DRP"/>
                     <constraint firstItem="Ea1-ZA-l6L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="G2d-Yb-Mko"/>
                     <constraint firstAttribute="bottom" secondItem="Ea1-ZA-l6L" secondAttribute="bottom" constant="12" id="PWg-mK-JmY"/>
+                    <constraint firstItem="Dm4-Io-txE" firstAttribute="centerY" secondItem="BHB-K7-abp" secondAttribute="centerY" constant="7" id="Uso-lt-d8k"/>
+                    <constraint firstItem="BHB-K7-abp" firstAttribute="centerY" secondItem="4af-x4-JoR" secondAttribute="centerY" id="ZpO-7d-OgN"/>
                     <constraint firstItem="gPO-1P-cYa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="a7R-Sl-Ne5"/>
-                    <constraint firstAttribute="trailing" secondItem="Ea1-ZA-l6L" secondAttribute="trailing" constant="12" id="d7X-6R-U37"/>
+                    <constraint firstItem="0cK-gs-yHJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c9q-cc-8Up"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BHB-K7-abp" secondAttribute="trailing" constant="12" id="fex-ee-pi4"/>
+                    <constraint firstItem="0cK-gs-yHJ" firstAttribute="centerY" secondItem="Ea1-ZA-l6L" secondAttribute="centerY" id="jBr-T6-T7s"/>
+                    <constraint firstItem="0cK-gs-yHJ" firstAttribute="leading" secondItem="Ea1-ZA-l6L" secondAttribute="trailing" id="kCe-sc-ubu"/>
+                    <constraint firstItem="4af-x4-JoR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="l0M-W0-U68"/>
+                    <constraint firstItem="Dm4-Io-txE" firstAttribute="leading" secondItem="BHB-K7-abp" secondAttribute="leading" id="oAk-R5-gm7"/>
                     <constraint firstAttribute="bottom" secondItem="gPO-1P-cYa" secondAttribute="bottom" id="rZw-59-93Q"/>
                     <constraint firstAttribute="trailing" secondItem="gPO-1P-cYa" secondAttribute="trailing" id="sVI-v1-Xu5"/>
+                    <constraint firstItem="4af-x4-JoR" firstAttribute="leading" secondItem="0cK-gs-yHJ" secondAttribute="trailing" id="uIJ-d0-M4v"/>
+                    <constraint firstItem="4af-x4-JoR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zge-PG-P2Q"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="HLineH" destination="7oE-O8-o2x" id="Xaz-xZ-gZd"/>
+                <outlet property="btn" destination="BHB-K7-abp" id="ZQB-RM-b0i"/>
+                <outlet property="countL" destination="0cK-gs-yHJ" id="QJM-S0-P87"/>
             </connections>
+            <point key="canvasLocation" x="-122.5" y="-14"/>
         </tableViewCell>
     </objects>
 </document>

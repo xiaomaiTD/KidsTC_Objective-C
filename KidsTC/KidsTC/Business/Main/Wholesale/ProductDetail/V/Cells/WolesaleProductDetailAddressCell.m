@@ -9,6 +9,8 @@
 #import "WolesaleProductDetailAddressCell.h"
 
 @interface WolesaleProductDetailAddressCell ()
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *addressL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
@@ -20,10 +22,12 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WolesaleProductDetailData *)data {
+    [super setData:data];
+    WholesaleProductDetailStore *store = data.fightGroupBase.store;
+    self.nameL.text = store.storeName;
+    self.addressL.text = store.address;
+    
 }
 
 @end

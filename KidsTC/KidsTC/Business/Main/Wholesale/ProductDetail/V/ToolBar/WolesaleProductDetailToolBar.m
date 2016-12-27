@@ -11,9 +11,9 @@
 CGFloat const kWolesaleProductDetailToolBarH = 49;
 
 @interface WolesaleProductDetailToolBar ()
-@property (weak, nonatomic) IBOutlet UIView *homeBGView;
-@property (weak, nonatomic) IBOutlet UIButton *homeBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *homeLineH;
+@property (weak, nonatomic) IBOutlet UIView *shareBGView;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *shareLineH;
 
 @property (weak, nonatomic) IBOutlet UIView *originalBGView;
 @property (weak, nonatomic) IBOutlet UILabel *originalPriceL;
@@ -30,10 +30,18 @@ CGFloat const kWolesaleProductDetailToolBarH = 49;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.homeLineH.constant = LINE_H;
+    self.shareLineH.constant = LINE_H;
     self.originalBGView.backgroundColor = [UIColor colorFromHexString:@"FF9C9C"];
     self.teamBGView.backgroundColor = [UIColor colorFromHexString:@"F36863"];
-    
+}
+
+- (void)setData:(WolesaleProductDetailData *)data {
+    _data = data;
+    WholesaleProductDetailBase *base = data.fightGroupBase;
+    self.hidden = base == nil;
+    self.originalPriceL.text = base.platFormPrice;
+    self.teamPriceL.text = base.fightGroupPrice;
+    self.teamPriceTipL.text = [NSString stringWithFormat:@"%@人团",base.openGroupUserCount];
 }
 
 

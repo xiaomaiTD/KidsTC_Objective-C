@@ -21,6 +21,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5oj-tG-ocu">
                         <rect key="frame" x="12" y="16" width="67" height="67"/>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.40784313729999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="5oj-tG-ocu" secondAttribute="height" multiplier="1:1" id="Mm7-wh-dY6"/>
                             <constraint firstAttribute="width" constant="67" id="U64-ov-fhE"/>
@@ -59,6 +60,13 @@
                             <constraint firstAttribute="bottom" secondItem="wXu-0B-INY" secondAttribute="bottom" constant="1" id="xZd-2t-RV1"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbb-7t-hFC">
+                        <rect key="frame" x="0.0" y="98.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="ujn-PH-Frm"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5oj-tG-ocu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="2g0-U3-VXa"/>
@@ -66,10 +74,20 @@
                     <constraint firstItem="s2M-hz-far" firstAttribute="top" secondItem="5oj-tG-ocu" secondAttribute="top" id="PDQ-Su-OeZ"/>
                     <constraint firstAttribute="bottom" secondItem="5oj-tG-ocu" secondAttribute="bottom" constant="16" id="V8A-2t-AOR"/>
                     <constraint firstItem="s2M-hz-far" firstAttribute="leading" secondItem="5oj-tG-ocu" secondAttribute="trailing" constant="12" id="bHY-Sb-sZ0"/>
+                    <constraint firstAttribute="trailing" secondItem="gbb-7t-hFC" secondAttribute="trailing" id="btJ-CE-p0l"/>
                     <constraint firstAttribute="trailing" secondItem="s2M-hz-far" secondAttribute="trailing" constant="16" id="dox-HU-5v9"/>
+                    <constraint firstItem="gbb-7t-hFC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g5d-MZ-7oU"/>
                     <constraint firstItem="s2M-hz-far" firstAttribute="bottom" secondItem="5oj-tG-ocu" secondAttribute="bottom" id="qzE-Xl-Wha"/>
+                    <constraint firstAttribute="bottom" secondItem="gbb-7t-hFC" secondAttribute="bottom" id="z9B-nA-3O5"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="ujn-PH-Frm" id="tjo-72-agC"/>
+                <outlet property="icon" destination="5oj-tG-ocu" id="eiG-XM-UbL"/>
+                <outlet property="nameL" destination="Pds-FV-9LU" id="DOL-Ko-3Gb"/>
+                <outlet property="priceL" destination="wuZ-wR-krp" id="XFW-Nb-qJY"/>
+                <outlet property="priceTipL" destination="wXu-0B-INY" id="ysf-Wl-zM3"/>
+            </connections>
             <point key="canvasLocation" x="25" y="78"/>
         </tableViewCell>
     </objects>

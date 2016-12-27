@@ -9,5 +9,5 @@
 #import "WolesaleProductDetailBaseCell.h"
 
 @interface WolesaleProductDetailJoinTeamCell : WolesaleProductDetailBaseCell
-
+@property (nonatomic, strong) WholesaleProductDetailTeam *team;
 @end

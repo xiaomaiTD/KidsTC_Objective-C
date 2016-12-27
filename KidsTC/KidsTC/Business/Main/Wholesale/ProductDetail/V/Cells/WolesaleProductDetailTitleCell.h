@@ -9,5 +9,5 @@
 #import "WolesaleProductDetailBaseCell.h"
 
 @interface WolesaleProductDetailTitleCell : WolesaleProductDetailBaseCell
-
+@property (nonatomic, strong) NSString *title;
 @end

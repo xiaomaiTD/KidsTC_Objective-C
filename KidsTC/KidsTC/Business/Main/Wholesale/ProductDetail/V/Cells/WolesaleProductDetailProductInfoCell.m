@@ -7,6 +7,7 @@
 //
 
 #import "WolesaleProductDetailProductInfoCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface WolesaleProductDetailProductInfoCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -43,10 +44,15 @@
     
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WolesaleProductDetailData *)data {
+    [super setData:data];
+    WholesaleProductDetailBase *fightGroupBase = data.fightGroupBase;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:fightGroupBase.productImage] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    self.nameL.text = fightGroupBase.productName;
+    
+    self.originalPriceL.text = fightGroupBase.platFormPrice;
+    self.teamPriceTipL.text = [NSString stringWithFormat:@"%@人团",fightGroupBase.openGroupUserCount];
+    self.teamPriceL.text = fightGroupBase.fightGroupPrice;
 }
 
 @end

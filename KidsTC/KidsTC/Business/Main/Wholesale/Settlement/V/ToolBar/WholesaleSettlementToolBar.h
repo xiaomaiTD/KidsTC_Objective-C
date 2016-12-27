@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern CGFloat const kWholesaleSettlementToolBarH;
+
 @interface WholesaleSettlementToolBar : UIView
 
 @end

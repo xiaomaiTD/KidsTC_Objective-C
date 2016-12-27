@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="p93-tZ-xDf" customClass="WholesaleOrderDetailRuleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p93-tZ-xDf" id="4bY-fB-GUI">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拼团玩法" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGb-HO-ovs">
+                        <rect key="frame" x="12" y="16" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_detail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="fRC-0X-t1c">
+                        <rect key="frame" x="301" y="18.5" width="7" height="12.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="7" id="4rO-62-cjs"/>
+                            <constraint firstAttribute="width" secondItem="fRC-0X-t1c" secondAttribute="height" multiplier="5:9" id="b1Z-Y2-eZZ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVS-vC-PgG">
+                        <rect key="frame" x="239.5" y="17" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLk-wU-6gV">
+                        <rect key="frame" x="0.0" y="48.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Pim-Dh-tJA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fRC-0X-t1c" firstAttribute="leading" secondItem="NVS-vC-PgG" secondAttribute="trailing" constant="8" id="1cb-wF-DIs"/>
+                    <constraint firstItem="VGb-HO-ovs" firstAttribute="top" secondItem="4bY-fB-GUI" secondAttribute="top" constant="16" id="3Ef-Fc-7yN"/>
+                    <constraint firstItem="xLk-wU-6gV" firstAttribute="leading" secondItem="4bY-fB-GUI" secondAttribute="leading" id="7yd-k4-HTO"/>
+                    <constraint firstItem="VGb-HO-ovs" firstAttribute="leading" secondItem="4bY-fB-GUI" secondAttribute="leading" constant="12" id="OE7-eV-MPz"/>
+                    <constraint firstItem="fRC-0X-t1c" firstAttribute="centerY" secondItem="4bY-fB-GUI" secondAttribute="centerY" id="iNj-YP-h0K"/>
+                    <constraint firstItem="NVS-vC-PgG" firstAttribute="centerY" secondItem="4bY-fB-GUI" secondAttribute="centerY" id="rke-Mg-HrR"/>
+                    <constraint firstAttribute="trailing" secondItem="xLk-wU-6gV" secondAttribute="trailing" id="xU6-Ev-BZw"/>
+                    <constraint firstAttribute="trailing" secondItem="fRC-0X-t1c" secondAttribute="trailing" constant="12" id="zAp-xE-aIC"/>
+                    <constraint firstAttribute="bottom" secondItem="xLk-wU-6gV" secondAttribute="bottom" id="zjX-kd-Tao"/>
+                    <constraint firstAttribute="bottom" secondItem="VGb-HO-ovs" secondAttribute="bottom" constant="16" id="zqU-Wb-Dlh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="Pim-Dh-tJA" id="7zc-Yd-bKZ"/>
+                <outlet property="subL" destination="NVS-vC-PgG" id="GmT-XR-bOz"/>
+                <outlet property="tipL" destination="VGb-HO-ovs" id="QXo-If-dHg"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="wholesale_detail_arrow" width="20" height="36"/>
+    </resources>
+</document>

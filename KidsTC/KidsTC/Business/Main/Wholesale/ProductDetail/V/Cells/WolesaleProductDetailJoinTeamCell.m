@@ -7,6 +7,7 @@
 //
 
 #import "WolesaleProductDetailJoinTeamCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface WolesaleProductDetailJoinTeamCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
 @property (weak, nonatomic) IBOutlet UIView *actionBGView;
 @property (weak, nonatomic) IBOutlet UILabel *actionTipL;
+@property (weak, nonatomic) IBOutlet UIImageView *successLog;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @end
 
@@ -39,10 +41,15 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setTeam:(WholesaleProductDetailTeam *)team {
+    _team = team;
+    
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:team.userImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = team.userName;
+    self.tipL.text = [NSString stringWithFormat:@"还差%zd人成团",team.surplusCount];
+    self.tipL.hidden = team.surplusCount<=0;
+    self.successLog.hidden = team.surplusCount>0;
+    
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import "WholesaleSettlementToolBar.h"
 
+CGFloat const kWholesaleSettlementToolBarH = 49;
+
 @interface WholesaleSettlementToolBar ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 

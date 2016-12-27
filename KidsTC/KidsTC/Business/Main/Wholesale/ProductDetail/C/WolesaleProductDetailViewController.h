@@ -9,5 +9,5 @@
 #import "ViewController.h"
 
 @interface WolesaleProductDetailViewController : ViewController
-
+@property (nonatomic, strong) NSString *productId;
 @end

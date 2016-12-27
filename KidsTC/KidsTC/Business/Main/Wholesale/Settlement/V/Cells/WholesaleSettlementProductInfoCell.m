@@ -8,11 +8,24 @@
 
 #import "WholesaleSettlementProductInfoCell.h"
 
+@interface WholesaleSettlementProductInfoCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *priceTipL;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+
+@end
+
 @implementation WholesaleSettlementProductInfoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.icon.layer.cornerRadius = 4;
+    self.icon.layer.masksToBounds = YES;
+    self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    self.icon.layer.borderWidth = LINE_H;
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

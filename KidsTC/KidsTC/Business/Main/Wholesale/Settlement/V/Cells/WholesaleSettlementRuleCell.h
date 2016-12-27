@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WholesaleSettlementBaseCell.h"
 
-@interface WholesaleSettlementRuleCell : UITableViewCell
+@interface WholesaleSettlementRuleCell : WholesaleSettlementBaseCell
 
 @end

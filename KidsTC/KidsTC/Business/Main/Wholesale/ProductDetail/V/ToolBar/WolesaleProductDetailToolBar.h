@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WolesaleProductDetailData.h"
 extern CGFloat const kWolesaleProductDetailToolBarH;
 
 @interface WolesaleProductDetailToolBar : UIView
-
+@property (nonatomic, strong) WolesaleProductDetailData *data;
 @end

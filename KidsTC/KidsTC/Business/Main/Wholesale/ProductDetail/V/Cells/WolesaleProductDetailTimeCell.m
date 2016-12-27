@@ -9,6 +9,7 @@
 #import "WolesaleProductDetailTimeCell.h"
 
 @interface WolesaleProductDetailTimeCell ()
+@property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
@@ -20,10 +21,8 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WolesaleProductDetailData *)data {
+    [super setData:data];
+    self.timeL.text = data.fightGroupBase.productTime.desc;
 }
-
 @end

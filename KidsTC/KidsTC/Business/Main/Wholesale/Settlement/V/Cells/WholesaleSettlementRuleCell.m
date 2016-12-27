@@ -8,11 +8,17 @@
 
 #import "WholesaleSettlementRuleCell.h"
 
+@interface WholesaleSettlementRuleCell ()
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
+@property (weak, nonatomic) IBOutlet UILabel *subL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@end
+
 @implementation WholesaleSettlementRuleCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

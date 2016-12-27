@@ -1347,7 +1347,6 @@
 		EC9775851E10FBBE00980C4A /* WolesaleProductDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775841E10FBBE00980C4A /* WolesaleProductDetailToolBar.m */; };
 		EC9775871E10FBC600980C4A /* WolesaleProductDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775861E10FBC600980C4A /* WolesaleProductDetailToolBar.xib */; };
 		EC97758F1E114FFA00980C4A /* WholesaleSettlementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97758D1E114FFA00980C4A /* WholesaleSettlementViewController.m */; };
-		EC9775901E114FFA00980C4A /* WholesaleSettlementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC97758E1E114FFA00980C4A /* WholesaleSettlementViewController.xib */; };
 		EC9775961E11502500980C4A /* WholesaleSettlementView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775951E11502500980C4A /* WholesaleSettlementView.m */; };
 		EC9775991E11507700980C4A /* WholesaleSettlementToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775981E11507700980C4A /* WholesaleSettlementToolBar.m */; };
 		EC97759B1E11508100980C4A /* WholesaleSettlementToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC97759A1E11508100980C4A /* WholesaleSettlementToolBar.xib */; };
@@ -1365,6 +1364,46 @@
 		EC9775B91E1159F800980C4A /* WholesaleSettlementRuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775B71E1159F800980C4A /* WholesaleSettlementRuleCell.xib */; };
 		EC9775BD1E115A0700980C4A /* WholesaleSettlementProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775BB1E115A0700980C4A /* WholesaleSettlementProgressCell.m */; };
 		EC9775BE1E115A0700980C4A /* WholesaleSettlementProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775BC1E115A0700980C4A /* WholesaleSettlementProgressCell.xib */; };
+		EC9775C81E123ECB00980C4A /* WholesaleOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775C71E123ECB00980C4A /* WholesaleOrderDetailViewController.m */; };
+		EC9775CB1E123EE600980C4A /* WholesaleOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775CA1E123EE600980C4A /* WholesaleOrderDetailView.m */; };
+		EC9775CF1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775CD1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.m */; };
+		EC9775D01E123EFF00980C4A /* WholesaleOrderDetailBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775CE1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.xib */; };
+		EC9775D31E123F1700980C4A /* WholesaleOrderDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775D21E123F1700980C4A /* WholesaleOrderDetailToolBar.m */; };
+		EC9775D51E123F2200980C4A /* WholesaleOrderDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775D41E123F2200980C4A /* WholesaleOrderDetailToolBar.xib */; };
+		EC9775D91E123F9400980C4A /* WholesaleOrderDetailFailureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775D71E123F9400980C4A /* WholesaleOrderDetailFailureCell.m */; };
+		EC9775DA1E123F9400980C4A /* WholesaleOrderDetailFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775D81E123F9400980C4A /* WholesaleOrderDetailFailureCell.xib */; };
+		EC9775DE1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775DC1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.m */; };
+		EC9775DF1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775DD1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.xib */; };
+		EC9775E31E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775E11E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.m */; };
+		EC9775E41E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775E21E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.xib */; };
+		EC9775E81E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775E61E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.m */; };
+		EC9775E91E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775E71E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.xib */; };
+		EC9775ED1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775EB1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m */; };
+		EC9775EE1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775EC1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib */; };
+		EC9775F21E12405B00980C4A /* WholesaleOrderDetailRuleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775F01E12405B00980C4A /* WholesaleOrderDetailRuleCell.m */; };
+		EC9775F31E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775F11E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib */; };
+		EC9775F71E12406C00980C4A /* WholesaleOrderDetailProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775F51E12406C00980C4A /* WholesaleOrderDetailProgressCell.m */; };
+		EC9775F81E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775F61E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib */; };
+		EC9775FC1E12408400980C4A /* WholesaleOrderDetailWebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775FA1E12408400980C4A /* WholesaleOrderDetailWebCell.m */; };
+		EC9775FD1E12408400980C4A /* WholesaleOrderDetailWebCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9775FB1E12408400980C4A /* WholesaleOrderDetailWebCell.xib */; };
+		EC9776011E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9775FF1E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.m */; };
+		EC9776021E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9776001E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.xib */; };
+		EC9776061E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776041E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.m */; };
+		EC9776071E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC9776051E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.xib */; };
+		EC97760B1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776091E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.m */; };
+		EC97760C1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC97760A1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib */; };
+		EC97764D1E128CF500980C4A /* WholesaleProductDetailBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97763C1E128CF500980C4A /* WholesaleProductDetailBase.m */; };
+		EC97764E1E128CF500980C4A /* WholesaleProductDetailBuyNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97763E1E128CF500980C4A /* WholesaleProductDetailBuyNotice.m */; };
+		EC97764F1E128CF500980C4A /* WholesaleProductDetailCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776401E128CF500980C4A /* WholesaleProductDetailCountDown.m */; };
+		EC9776501E128CF500980C4A /* WholesaleProductDetailNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776421E128CF500980C4A /* WholesaleProductDetailNotice.m */; };
+		EC9776511E128CF500980C4A /* WholesaleProductDetailShare.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776441E128CF500980C4A /* WholesaleProductDetailShare.m */; };
+		EC9776521E128CF500980C4A /* WholesaleProductDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776461E128CF500980C4A /* WholesaleProductDetailStore.m */; };
+		EC9776531E128CF500980C4A /* WolesaleProductDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776481E128CF500980C4A /* WolesaleProductDetailData.m */; };
+		EC9776541E128CF500980C4A /* WolesaleProductDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97764A1E128CF500980C4A /* WolesaleProductDetailModel.m */; };
+		EC9776571E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776561E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.m */; };
+		EC97765A1E128D7400980C4A /* WholesaleProductDetailOtherProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9776591E128D7400980C4A /* WholesaleProductDetailOtherProduct.m */; };
+		EC97765D1E1296B000980C4A /* WholesaleProductDetailTeamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97765C1E1296B000980C4A /* WholesaleProductDetailTeamModel.m */; };
+		EC9776601E1296C400980C4A /* WholesaleProductDetailTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = EC97765F1E1296C400980C4A /* WholesaleProductDetailTeam.m */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		EC9CC51C1DC30E7F0093DCED /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC4FF1DC30E7F0093DCED /* FSCalendar+Deprecated.m */; };
 		EC9CC51D1DC30E7F0093DCED /* FSCalendar+IBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9CC5011DC30E7F0093DCED /* FSCalendar+IBExtension.m */; };
@@ -3899,7 +3938,6 @@
 		EC9775861E10FBC600980C4A /* WolesaleProductDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WolesaleProductDetailToolBar.xib; sourceTree = "<group>"; };
 		EC97758C1E114FFA00980C4A /* WholesaleSettlementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleSettlementViewController.h; sourceTree = "<group>"; };
 		EC97758D1E114FFA00980C4A /* WholesaleSettlementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleSettlementViewController.m; sourceTree = "<group>"; };
-		EC97758E1E114FFA00980C4A /* WholesaleSettlementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleSettlementViewController.xib; sourceTree = "<group>"; };
 		EC9775941E11502500980C4A /* WholesaleSettlementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleSettlementView.h; sourceTree = "<group>"; };
 		EC9775951E11502500980C4A /* WholesaleSettlementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleSettlementView.m; sourceTree = "<group>"; };
 		EC9775971E11507700980C4A /* WholesaleSettlementToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleSettlementToolBar.h; sourceTree = "<group>"; };
@@ -3926,6 +3964,73 @@
 		EC9775BA1E115A0700980C4A /* WholesaleSettlementProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleSettlementProgressCell.h; sourceTree = "<group>"; };
 		EC9775BB1E115A0700980C4A /* WholesaleSettlementProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleSettlementProgressCell.m; sourceTree = "<group>"; };
 		EC9775BC1E115A0700980C4A /* WholesaleSettlementProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleSettlementProgressCell.xib; sourceTree = "<group>"; };
+		EC9775C61E123ECB00980C4A /* WholesaleOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailViewController.h; sourceTree = "<group>"; };
+		EC9775C71E123ECB00980C4A /* WholesaleOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailViewController.m; sourceTree = "<group>"; };
+		EC9775C91E123EE600980C4A /* WholesaleOrderDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailView.h; sourceTree = "<group>"; };
+		EC9775CA1E123EE600980C4A /* WholesaleOrderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailView.m; sourceTree = "<group>"; };
+		EC9775CC1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailBaseCell.h; sourceTree = "<group>"; };
+		EC9775CD1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailBaseCell.m; sourceTree = "<group>"; };
+		EC9775CE1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailBaseCell.xib; sourceTree = "<group>"; };
+		EC9775D11E123F1700980C4A /* WholesaleOrderDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailToolBar.h; sourceTree = "<group>"; };
+		EC9775D21E123F1700980C4A /* WholesaleOrderDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailToolBar.m; sourceTree = "<group>"; };
+		EC9775D41E123F2200980C4A /* WholesaleOrderDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailToolBar.xib; sourceTree = "<group>"; };
+		EC9775D61E123F9400980C4A /* WholesaleOrderDetailFailureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailFailureCell.h; sourceTree = "<group>"; };
+		EC9775D71E123F9400980C4A /* WholesaleOrderDetailFailureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailFailureCell.m; sourceTree = "<group>"; };
+		EC9775D81E123F9400980C4A /* WholesaleOrderDetailFailureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailFailureCell.xib; sourceTree = "<group>"; };
+		EC9775DB1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailSuccessCell.h; sourceTree = "<group>"; };
+		EC9775DC1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailSuccessCell.m; sourceTree = "<group>"; };
+		EC9775DD1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailSuccessCell.xib; sourceTree = "<group>"; };
+		EC9775E01E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailProductInfoCell.h; sourceTree = "<group>"; };
+		EC9775E11E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailProductInfoCell.m; sourceTree = "<group>"; };
+		EC9775E21E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailProductInfoCell.xib; sourceTree = "<group>"; };
+		EC9775E51E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailJoinTipCell.h; sourceTree = "<group>"; };
+		EC9775E61E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailJoinTipCell.m; sourceTree = "<group>"; };
+		EC9775E71E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailJoinTipCell.xib; sourceTree = "<group>"; };
+		EC9775EA1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailJoinMemberCell.h; sourceTree = "<group>"; };
+		EC9775EB1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailJoinMemberCell.m; sourceTree = "<group>"; };
+		EC9775EC1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailJoinMemberCell.xib; sourceTree = "<group>"; };
+		EC9775EF1E12405B00980C4A /* WholesaleOrderDetailRuleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailRuleCell.h; sourceTree = "<group>"; };
+		EC9775F01E12405B00980C4A /* WholesaleOrderDetailRuleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailRuleCell.m; sourceTree = "<group>"; };
+		EC9775F11E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailRuleCell.xib; sourceTree = "<group>"; };
+		EC9775F41E12406C00980C4A /* WholesaleOrderDetailProgressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailProgressCell.h; sourceTree = "<group>"; };
+		EC9775F51E12406C00980C4A /* WholesaleOrderDetailProgressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailProgressCell.m; sourceTree = "<group>"; };
+		EC9775F61E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailProgressCell.xib; sourceTree = "<group>"; };
+		EC9775F91E12408400980C4A /* WholesaleOrderDetailWebCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailWebCell.h; sourceTree = "<group>"; };
+		EC9775FA1E12408400980C4A /* WholesaleOrderDetailWebCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailWebCell.m; sourceTree = "<group>"; };
+		EC9775FB1E12408400980C4A /* WholesaleOrderDetailWebCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailWebCell.xib; sourceTree = "<group>"; };
+		EC9775FE1E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WolesaleProductDetailBuyNoticeEmptyCell.h; sourceTree = "<group>"; };
+		EC9775FF1E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WolesaleProductDetailBuyNoticeEmptyCell.m; sourceTree = "<group>"; };
+		EC9776001E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WolesaleProductDetailBuyNoticeEmptyCell.xib; sourceTree = "<group>"; };
+		EC9776031E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WolesaleProductDetailBuyNoticeElementCell.h; sourceTree = "<group>"; };
+		EC9776041E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WolesaleProductDetailBuyNoticeElementCell.m; sourceTree = "<group>"; };
+		EC9776051E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WolesaleProductDetailBuyNoticeElementCell.xib; sourceTree = "<group>"; };
+		EC9776081E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WolesaleProductDetailOtherPorductCell.h; sourceTree = "<group>"; };
+		EC9776091E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WolesaleProductDetailOtherPorductCell.m; sourceTree = "<group>"; };
+		EC97760A1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WolesaleProductDetailOtherPorductCell.xib; sourceTree = "<group>"; };
+		EC97763B1E128CF500980C4A /* WholesaleProductDetailBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailBase.h; sourceTree = "<group>"; };
+		EC97763C1E128CF500980C4A /* WholesaleProductDetailBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailBase.m; sourceTree = "<group>"; };
+		EC97763D1E128CF500980C4A /* WholesaleProductDetailBuyNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailBuyNotice.h; sourceTree = "<group>"; };
+		EC97763E1E128CF500980C4A /* WholesaleProductDetailBuyNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailBuyNotice.m; sourceTree = "<group>"; };
+		EC97763F1E128CF500980C4A /* WholesaleProductDetailCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailCountDown.h; sourceTree = "<group>"; };
+		EC9776401E128CF500980C4A /* WholesaleProductDetailCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailCountDown.m; sourceTree = "<group>"; };
+		EC9776411E128CF500980C4A /* WholesaleProductDetailNotice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailNotice.h; sourceTree = "<group>"; };
+		EC9776421E128CF500980C4A /* WholesaleProductDetailNotice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailNotice.m; sourceTree = "<group>"; };
+		EC9776431E128CF500980C4A /* WholesaleProductDetailShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailShare.h; sourceTree = "<group>"; };
+		EC9776441E128CF500980C4A /* WholesaleProductDetailShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailShare.m; sourceTree = "<group>"; };
+		EC9776451E128CF500980C4A /* WholesaleProductDetailStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailStore.h; sourceTree = "<group>"; };
+		EC9776461E128CF500980C4A /* WholesaleProductDetailStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailStore.m; sourceTree = "<group>"; };
+		EC9776471E128CF500980C4A /* WolesaleProductDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WolesaleProductDetailData.h; sourceTree = "<group>"; };
+		EC9776481E128CF500980C4A /* WolesaleProductDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WolesaleProductDetailData.m; sourceTree = "<group>"; };
+		EC9776491E128CF500980C4A /* WolesaleProductDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WolesaleProductDetailModel.h; sourceTree = "<group>"; };
+		EC97764A1E128CF500980C4A /* WolesaleProductDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WolesaleProductDetailModel.m; sourceTree = "<group>"; };
+		EC9776551E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailOtherProductModel.h; sourceTree = "<group>"; };
+		EC9776561E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailOtherProductModel.m; sourceTree = "<group>"; };
+		EC9776581E128D7400980C4A /* WholesaleProductDetailOtherProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailOtherProduct.h; sourceTree = "<group>"; };
+		EC9776591E128D7400980C4A /* WholesaleProductDetailOtherProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailOtherProduct.m; sourceTree = "<group>"; };
+		EC97765B1E1296B000980C4A /* WholesaleProductDetailTeamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailTeamModel.h; sourceTree = "<group>"; };
+		EC97765C1E1296B000980C4A /* WholesaleProductDetailTeamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailTeamModel.m; sourceTree = "<group>"; };
+		EC97765E1E1296C400980C4A /* WholesaleProductDetailTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleProductDetailTeam.h; sourceTree = "<group>"; };
+		EC97765F1E1296C400980C4A /* WholesaleProductDetailTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleProductDetailTeam.m; sourceTree = "<group>"; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		EC9CC4FF1DC30E7F0093DCED /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -11469,6 +11574,7 @@
 		EC9775391E10F90500980C4A /* Wholesale */ = {
 			isa = PBXGroup;
 			children = (
+				EC9775BF1E123E7B00980C4A /* OrderDetail */,
 				EC9775881E114FBE00980C4A /* Settlement */,
 				EC97753A1E10F94800980C4A /* ProductDetail */,
 			);
@@ -11497,6 +11603,9 @@
 		EC97753C1E10F96400980C4A /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC97763A1E128CF500980C4A /* BaseInfo */,
+				EC97764B1E128CF500980C4A /* OtherProduct */,
+				EC97764C1E128CF500980C4A /* Team */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -11541,6 +11650,12 @@
 				EC97756F1E10FB3500980C4A /* WolesaleProductDetailTitleCell.h */,
 				EC9775701E10FB3500980C4A /* WolesaleProductDetailTitleCell.m */,
 				EC9775711E10FB3500980C4A /* WolesaleProductDetailTitleCell.xib */,
+				EC9775FE1E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.h */,
+				EC9775FF1E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.m */,
+				EC9776001E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.xib */,
+				EC9776031E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.h */,
+				EC9776041E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.m */,
+				EC9776051E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.xib */,
 				EC9775741E10FB4200980C4A /* WolesaleProductDetailTimeCell.h */,
 				EC9775751E10FB4200980C4A /* WolesaleProductDetailTimeCell.m */,
 				EC9775761E10FB4200980C4A /* WolesaleProductDetailTimeCell.xib */,
@@ -11550,6 +11665,9 @@
 				EC97757E1E10FB9B00980C4A /* WolesaleProductDetailWebCell.h */,
 				EC97757F1E10FB9B00980C4A /* WolesaleProductDetailWebCell.m */,
 				EC9775801E10FB9B00980C4A /* WolesaleProductDetailWebCell.xib */,
+				EC9776081E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.h */,
+				EC9776091E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.m */,
+				EC97760A1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -11588,7 +11706,6 @@
 			children = (
 				EC97758C1E114FFA00980C4A /* WholesaleSettlementViewController.h */,
 				EC97758D1E114FFA00980C4A /* WholesaleSettlementViewController.m */,
-				EC97758E1E114FFA00980C4A /* WholesaleSettlementViewController.xib */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -11655,6 +11772,140 @@
 				EC9775951E11502500980C4A /* WholesaleSettlementView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EC9775BF1E123E7B00980C4A /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775C01E123EA900980C4A /* C */,
+				EC9775C11E123EA900980C4A /* M */,
+				EC9775C21E123EA900980C4A /* V */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		EC9775C01E123EA900980C4A /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775C61E123ECB00980C4A /* WholesaleOrderDetailViewController.h */,
+				EC9775C71E123ECB00980C4A /* WholesaleOrderDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC9775C11E123EA900980C4A /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC9775C21E123EA900980C4A /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775C31E123EA900980C4A /* Cells */,
+				EC9775C41E123EA900980C4A /* ToolBar */,
+				EC9775C51E123EA900980C4A /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC9775C31E123EA900980C4A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775CC1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.h */,
+				EC9775CD1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.m */,
+				EC9775CE1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.xib */,
+				EC9775D61E123F9400980C4A /* WholesaleOrderDetailFailureCell.h */,
+				EC9775D71E123F9400980C4A /* WholesaleOrderDetailFailureCell.m */,
+				EC9775D81E123F9400980C4A /* WholesaleOrderDetailFailureCell.xib */,
+				EC9775DB1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.h */,
+				EC9775DC1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.m */,
+				EC9775DD1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.xib */,
+				EC9775E01E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.h */,
+				EC9775E11E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.m */,
+				EC9775E21E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.xib */,
+				EC9775E51E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.h */,
+				EC9775E61E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.m */,
+				EC9775E71E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.xib */,
+				EC9775EA1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.h */,
+				EC9775EB1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m */,
+				EC9775EC1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib */,
+				EC9775EF1E12405B00980C4A /* WholesaleOrderDetailRuleCell.h */,
+				EC9775F01E12405B00980C4A /* WholesaleOrderDetailRuleCell.m */,
+				EC9775F11E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib */,
+				EC9775F41E12406C00980C4A /* WholesaleOrderDetailProgressCell.h */,
+				EC9775F51E12406C00980C4A /* WholesaleOrderDetailProgressCell.m */,
+				EC9775F61E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib */,
+				EC9775F91E12408400980C4A /* WholesaleOrderDetailWebCell.h */,
+				EC9775FA1E12408400980C4A /* WholesaleOrderDetailWebCell.m */,
+				EC9775FB1E12408400980C4A /* WholesaleOrderDetailWebCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC9775C41E123EA900980C4A /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775D11E123F1700980C4A /* WholesaleOrderDetailToolBar.h */,
+				EC9775D21E123F1700980C4A /* WholesaleOrderDetailToolBar.m */,
+				EC9775D41E123F2200980C4A /* WholesaleOrderDetailToolBar.xib */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		EC9775C51E123EA900980C4A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC9775C91E123EE600980C4A /* WholesaleOrderDetailView.h */,
+				EC9775CA1E123EE600980C4A /* WholesaleOrderDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC97763A1E128CF500980C4A /* BaseInfo */ = {
+			isa = PBXGroup;
+			children = (
+				EC97763B1E128CF500980C4A /* WholesaleProductDetailBase.h */,
+				EC97763C1E128CF500980C4A /* WholesaleProductDetailBase.m */,
+				EC97763D1E128CF500980C4A /* WholesaleProductDetailBuyNotice.h */,
+				EC97763E1E128CF500980C4A /* WholesaleProductDetailBuyNotice.m */,
+				EC97763F1E128CF500980C4A /* WholesaleProductDetailCountDown.h */,
+				EC9776401E128CF500980C4A /* WholesaleProductDetailCountDown.m */,
+				EC9776411E128CF500980C4A /* WholesaleProductDetailNotice.h */,
+				EC9776421E128CF500980C4A /* WholesaleProductDetailNotice.m */,
+				EC9776431E128CF500980C4A /* WholesaleProductDetailShare.h */,
+				EC9776441E128CF500980C4A /* WholesaleProductDetailShare.m */,
+				EC9776451E128CF500980C4A /* WholesaleProductDetailStore.h */,
+				EC9776461E128CF500980C4A /* WholesaleProductDetailStore.m */,
+				EC9776471E128CF500980C4A /* WolesaleProductDetailData.h */,
+				EC9776481E128CF500980C4A /* WolesaleProductDetailData.m */,
+				EC9776491E128CF500980C4A /* WolesaleProductDetailModel.h */,
+				EC97764A1E128CF500980C4A /* WolesaleProductDetailModel.m */,
+			);
+			path = BaseInfo;
+			sourceTree = "<group>";
+		};
+		EC97764B1E128CF500980C4A /* OtherProduct */ = {
+			isa = PBXGroup;
+			children = (
+				EC9776551E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.h */,
+				EC9776561E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.m */,
+				EC9776581E128D7400980C4A /* WholesaleProductDetailOtherProduct.h */,
+				EC9776591E128D7400980C4A /* WholesaleProductDetailOtherProduct.m */,
+			);
+			path = OtherProduct;
+			sourceTree = "<group>";
+		};
+		EC97764C1E128CF500980C4A /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				EC97765B1E1296B000980C4A /* WholesaleProductDetailTeamModel.h */,
+				EC97765C1E1296B000980C4A /* WholesaleProductDetailTeamModel.m */,
+				EC97765E1E1296C400980C4A /* WholesaleProductDetailTeam.h */,
+				EC97765F1E1296C400980C4A /* WholesaleProductDetailTeam.m */,
+			);
+			path = Team;
 			sourceTree = "<group>";
 		};
 		EC99A05A1D7B219A008E6F33 /* YYHelper */ = {
@@ -13143,6 +13394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC97746B1E0A6D8200980C4A /* RecommendProductSettlementResultCell.xib in Resources */,
+				EC97760C1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib in Resources */,
 				EC30ABC91DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoTotalCell.xib in Resources */,
 				EC4FC5A91D77CEEF00BBD050 /* SheetCell.xib in Resources */,
 				ECF5D0CA1DB8C4FE00A1B268 /* QRCodeScanTextViewController.xib in Resources */,
@@ -13187,6 +13439,7 @@
 				EC4FC3771D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.xib in Resources */,
 				EC30ABC31DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoCell.xib in Resources */,
 				EC3168521E01CE5B009F0945 /* ProductOrderTicketDetailUserRemarkCell.xib in Resources */,
+				EC9775F81E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib in Resources */,
 				ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */,
 				EC4FC60A1D77DCFD00BBD050 /* Resources.bundle in Resources */,
 				EC4FC3F51D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.xib in Resources */,
@@ -13197,6 +13450,7 @@
 				ECA628691DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib in Resources */,
 				EC0044001DE6B8970042B701 /* ProductDetaiFreeLifeTipCell.xib in Resources */,
 				EC4FC28B1D77CEE400BBD050 /* AlbumToolBarView.xib in Resources */,
+				EC9776071E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.xib in Resources */,
 				EC5505B51E00E9AF00180A2C /* ProductDetailSecondKillCell.xib in Resources */,
 				EC31686C1E0243CD009F0945 /* ProductDetailFreeApplyUserRemarkCell.xib in Resources */,
 				EC4FC2BB1D77CEE400BBD050 /* HeaderView.xib in Resources */,
@@ -13268,6 +13522,7 @@
 				EC0D360F1DFEDC110028BC0E /* ProductOrderNormalDetailPayTipCell.xib in Resources */,
 				EC4FC37C1D77CEE400BBD050 /* CashierDeskViewController.xib in Resources */,
 				EC0044251DE6B8970042B701 /* ProductDetailRecommendCell.xib in Resources */,
+				EC9775D01E123EFF00980C4A /* WholesaleOrderDetailBaseCell.xib in Resources */,
 				EC486F391DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib in Resources */,
 				ECF704D71D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib in Resources */,
 				EC0D360A1DFEDA1F0028BC0E /* ProductOrderNormalDetailPayInfoCell.xib in Resources */,
@@ -13368,7 +13623,6 @@
 				EC4FC3E01D77CEE400BBD050 /* ParentingStrategyFilterView.xib in Resources */,
 				EC9775A51E1158AE00980C4A /* WholesaleSettlementProductInfoCell.xib in Resources */,
 				EC13B4F11DD1F3430040F760 /* AccountCenterBannersCell.xib in Resources */,
-				EC9775901E114FFA00980C4A /* WholesaleSettlementViewController.xib in Resources */,
 				EC4FC5D41D77CEEF00BBD050 /* UIBarButtonItemGrid.png in Resources */,
 				EC0044D51DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.xib in Resources */,
 				EC1E2FAE1D8286EC002381E7 /* ArticleWriteCoverCell.xib in Resources */,
@@ -13393,6 +13647,7 @@
 				ECB3E7851D92C82E0059267D /* OrderBookingServiceInfoCell.xib in Resources */,
 				EC4FC2B91D77CEE400BBD050 /* FooterView.xib in Resources */,
 				EC4870A01DFC3FC1005CA365 /* ProductOrderFreeDetailLotteryCell.xib in Resources */,
+				EC9775F31E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib in Resources */,
 				EC4FC2C21D77CEE400BBD050 /* FDCommentCell.xib in Resources */,
 				EC4FC3A21D77CEE400BBD050 /* StoreDetailAppointmentContactCell.xib in Resources */,
 				EC4FC5BB1D77CEEF00BBD050 /* ImageError@3x.png in Resources */,
@@ -13428,6 +13683,7 @@
 				EC4E27D31DF14CBD00622711 /* NearbyTitleView.xib in Resources */,
 				EC5CDD401DE538F200F95C6F /* ProductDetailFreeApplySelectSexViewController.xib in Resources */,
 				EC13B4FC1DD1F3430040F760 /* AccountCenterRecommendsCell.xib in Resources */,
+				EC9775D51E123F2200980C4A /* WholesaleOrderDetailToolBar.xib in Resources */,
 				EC4FC5CD1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
 				EC9775641E10FACB00980C4A /* WolesaleProductDetailJoinCountDownCell.xib in Resources */,
 				EC76B8DC1DC65FC6006518DE /* ServiceDetailSegmentCell.xib in Resources */,
@@ -13447,6 +13703,7 @@
 				EC2F26641DD9803B00B67BBA /* CollectProductAllCell.xib in Resources */,
 				EC5CDD2C1DE538F200F95C6F /* ProductDetailFreeApplyBabyNameCell.xib in Resources */,
 				EC4FC4911D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
+				EC9775EE1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib in Resources */,
 				EC30ABB51DFF9CD3007380B0 /* ProductOrderTicketDetailBaseCell.xib in Resources */,
 				EC4FC2341D77CEE400BBD050 /* BindPhoneViewController.xib in Resources */,
 				EC4FC34D1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.xib in Resources */,
@@ -13486,6 +13743,7 @@
 				EC4FC2CC1D77CEE400BBD050 /* FDChooseStoreView.xib in Resources */,
 				EC4FC2B01D77CEE400BBD050 /* ActivityViewCell.xib in Resources */,
 				EC00440F1DE6B8970042B701 /* ProductDetailCommentCellCollectionViewCell.xib in Resources */,
+				EC9775DF1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.xib in Resources */,
 				EC4FC3AA1D77CEE400BBD050 /* StoreDetailHotRecommendListViewController.xib in Resources */,
 				EC13B4EF1DD1F3430040F760 /* AccountCenterActivitiesCell.xib in Resources */,
 				EC0044171DE6B8970042B701 /* ProductDetailContentEleEmptyCell.xib in Resources */,
@@ -13506,6 +13764,7 @@
 				EC97759B1E11508100980C4A /* WholesaleSettlementToolBar.xib in Resources */,
 				EC4C60611DF5028100830126 /* ProductOrderListHeader.xib in Resources */,
 				EC0044231DE6B8970042B701 /* ProductDetailNoticeCollectionViewCell.xib in Resources */,
+				EC9775E91E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.xib in Resources */,
 				EC4FC4501D77CEE400BBD050 /* CommentListViewCell.xib in Resources */,
 				EC30ABDB1DFFAEF5007380B0 /* ProductOrderTicketDetailSeatCell.xib in Resources */,
 				EC4E27F11DF152F700622711 /* NearbyCalendarViewController.xib in Resources */,
@@ -13523,6 +13782,7 @@
 				EC0D36191DFEDD180028BC0E /* ProductOrderNormalDetailOrderInfoCell.xib in Resources */,
 				EC4E27F71DF152F700622711 /* NearbyCalendarToolBarCategoryCell.xib in Resources */,
 				EC4FC3491D77CEE400BBD050 /* FlashAdvanceSettlementReadRuleCell.xib in Resources */,
+				EC9776021E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.xib in Resources */,
 				EC31684D1E01CC93009F0945 /* ProductOrderNormalDetailUserRemarkCell.xib in Resources */,
 				EC4E27F51DF152F700622711 /* NearbyCalendarToolBar.xib in Resources */,
 				EC5CDD331DE538F200F95C6F /* ProductDetailFreeApplyUserAddressCell.xib in Resources */,
@@ -13540,6 +13800,7 @@
 				EC4FC44C1D77CEE400BBD050 /* CommentFoundingView.xib in Resources */,
 				EC76B8D01DC65FC6006518DE /* ServiceDetailActivityCell.xib in Resources */,
 				EC9774491E09680000980C4A /* RecommendProductCollectProductView.xib in Resources */,
+				EC9775DA1E123F9400980C4A /* WholesaleOrderDetailFailureCell.xib in Resources */,
 				EC154D4E1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.xib in Resources */,
 				EC00440A1DE6B8970042B701 /* ProductDetailBannerCollectionViewCell.xib in Resources */,
 				ECA59B821DEC077900B3B1F7 /* CouponUsableServiceViewController.xib in Resources */,
@@ -13554,6 +13815,7 @@
 				EC3168651E01D8E0009F0945 /* ProductDetailFreeApplySelectPlaceCell.xib in Resources */,
 				EC9774951E0A8F6300980C4A /* SettlementResultNewNormalCell.xib in Resources */,
 				EC9775691E10FAF700980C4A /* WolesaleProductDetailJoinTeamCell.xib in Resources */,
+				EC9775FD1E12408400980C4A /* WholesaleOrderDetailWebCell.xib in Resources */,
 				EC9775821E10FB9B00980C4A /* WolesaleProductDetailWebCell.xib in Resources */,
 				EC4FC23D1D77CEE400BBD050 /* ResetPasswordViewController.xib in Resources */,
 				ECB3E7871D92C82E0059267D /* OrderBookingStoreInfoCell.xib in Resources */,
@@ -13623,6 +13885,7 @@
 				EC13B5001DD1F3430040F760 /* AccountCenterHeader.xib in Resources */,
 				EC4FC36D1D77CEE400BBD050 /* ServiceSettlementPayTypeCell.xib in Resources */,
 				EC5505BB1E00FE7B00180A2C /* ProductDetailPriceCell.xib in Resources */,
+				EC9775E41E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.xib in Resources */,
 				ECAA49391D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.xib in Resources */,
 				EC0D35F11DFED9B40028BC0E /* ProductOrderNormalDetailOrderNoCell.xib in Resources */,
 				EC4FC33F1D77CEE400BBD050 /* ServiceDetailRelatedServiceListViewController.xib in Resources */,
@@ -13753,6 +14016,7 @@
 				EC4E278B1DF0134E00622711 /* NearbyViewController.m in Sources */,
 				EC4FC3B41D77CEE400BBD050 /* StoreDetailServiceListViewController.m in Sources */,
 				EC4FC5F11D77CEEF00BBD050 /* ZPPopoverItem.m in Sources */,
+				EC9776571E128D5F00980C4A /* WholesaleProductDetailOtherProductModel.m in Sources */,
 				EC2289401DE87CF200EC324A /* CollectProductCategory.m in Sources */,
 				EC4FC2961D77CEE400BBD050 /* ArticleCommentCell.m in Sources */,
 				EC9775811E10FB9B00980C4A /* WolesaleProductDetailWebCell.m in Sources */,
@@ -13920,6 +14184,7 @@
 				EC4FC42C1D77CEE400BBD050 /* StoreListViewCell.m in Sources */,
 				EC9774471E0967F600980C4A /* RecommendProductCollectProductView.m in Sources */,
 				EC4FC3F41D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.m in Sources */,
+				EC97760B1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.m in Sources */,
 				EC84C3B01DE2A25D00A42515 /* ServiceSettlementShowTime.m in Sources */,
 				EC4FC3E91D77CEE400BBD050 /* StrategyDetailRelatedStoreItemModel.m in Sources */,
 				EC4FC2651D77CEE400BBD050 /* RefreshFooter.m in Sources */,
@@ -13933,10 +14198,12 @@
 				EC154D4D1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.m in Sources */,
 				EC8486151DDF293D0039E9D3 /* ProductDetailTicketSelectSeatModel.m in Sources */,
 				EC4FC3DA1D77CEE400BBD050 /* StrategyTagColumnTableViewController.m in Sources */,
+				EC9776531E128CF500980C4A /* WolesaleProductDetailData.m in Sources */,
 				EC5CDD361DE538F200F95C6F /* ProductDetailFreeApplyUserPhoneCell.m in Sources */,
 				EC9774CA1E0B85CC00980C4A /* RecommendStoreCollectStoreHeader.m in Sources */,
 				EC0043541DE584870042B701 /* NurseryCollectionViewCell.m in Sources */,
 				EC4FC4D01D77CEE400BBD050 /* SoftwareSettingViewCell.m in Sources */,
+				EC9775E81E12402D00980C4A /* WholesaleOrderDetailJoinTipCell.m in Sources */,
 				EC30ABF51DFFFF1C007380B0 /* ProductDetaiFreeJoinCollectionCell.m in Sources */,
 				EC4FC47E1D77CEE400BBD050 /* FavouriteViewStrategyCell.m in Sources */,
 				EC45600E1DFEB877000BD822 /* ProductOrderNormalDetailRefund.m in Sources */,
@@ -13985,6 +14252,8 @@
 				EC4FC47C1D77CEE400BBD050 /* FavouriteViewStoreCell.m in Sources */,
 				EC4FC2181D77CEE400BBD050 /* NSString+Category.m in Sources */,
 				EC4FC35C1D77CEE400BBD050 /* FlashBalanceSettlementServiceInfoCell.m in Sources */,
+				EC97764E1E128CF500980C4A /* WholesaleProductDetailBuyNotice.m in Sources */,
+				EC9775D31E123F1700980C4A /* WholesaleOrderDetailToolBar.m in Sources */,
 				EC4FC2301D77CEE400BBD050 /* TCProgressHUD.m in Sources */,
 				EC0044261DE6B8970042B701 /* ProductDetailStandardCell.m in Sources */,
 				EC4FC3F61D77CEE400BBD050 /* AccountSettingViewController.m in Sources */,
@@ -13994,6 +14263,7 @@
 				EC76B8CD1DC65FC6006518DE /* ServiceCommentListViewHeaderCell.m in Sources */,
 				EC48709D1DFC3FC1005CA365 /* ProductOrderFreeDetailInfoBaseCell.m in Sources */,
 				EC30ABC01DFF9CD3007380B0 /* ProductOrderTicketDetailOrderNoCell.m in Sources */,
+				EC9776601E1296C400980C4A /* WholesaleProductDetailTeam.m in Sources */,
 				EC4FC34E1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.m in Sources */,
 				EC4C60971DF5984000830126 /* ProductOrderFreeListStore.m in Sources */,
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
@@ -14104,6 +14374,7 @@
 				EC4FC2981D77CEE400BBD050 /* MessageCenterViewController.m in Sources */,
 				EC4FC3701D77CEE400BBD050 /* ServiceSettlementStoreInfoCell.m in Sources */,
 				EC76B8CC1DC65FC6006518DE /* ServiceMoreDetailHotSalesItemModel.m in Sources */,
+				EC9775CF1E123EFF00980C4A /* WholesaleOrderDetailBaseCell.m in Sources */,
 				EC76B8D51DC65FC6006518DE /* ServiceDetailConfigView.m in Sources */,
 				EC9775961E11502500980C4A /* WholesaleSettlementView.m in Sources */,
 				ECF704E81D8917BD00650C0A /* ArticleHomeUserInfoModel.m in Sources */,
@@ -14144,6 +14415,7 @@
 				EC810A671D8FE53400B4B87A /* NSString+ZP.m in Sources */,
 				EC84860D1DDED5590039E9D3 /* ProductDetailPromise.m in Sources */,
 				ECF704EC1D89308300650C0A /* ArticleUserCenterCommentCollectionViewCell.m in Sources */,
+				EC9775F21E12405B00980C4A /* WholesaleOrderDetailRuleCell.m in Sources */,
 				EC4FC3F71D77CEE400BBD050 /* AccountSettingModel.m in Sources */,
 				EC4FC3831D77CEE400BBD050 /* SettlementPickStoreViewCell.m in Sources */,
 				EC30ABD61DFF9CD3007380B0 /* ProductOrderTicketDetailView.m in Sources */,
@@ -14160,6 +14432,7 @@
 				EC30AB771DFF9A51007380B0 /* ProductOrderTicketDetailDeliverItem.m in Sources */,
 				EC4FC2491D77CEE400BBD050 /* GuideViewController.m in Sources */,
 				EC4FC25D1D77CEE400BBD050 /* PosterModel.m in Sources */,
+				EC9776521E128CF500980C4A /* WholesaleProductDetailStore.m in Sources */,
 				EC4E27F41DF152F700622711 /* NearbyCalendarToolBar.m in Sources */,
 				EC486F321DF7C726005CA365 /* SearchFactorFilterAgeView.m in Sources */,
 				EC68C3C21D9BBC8D00D4401A /* HomeActivityViewController.m in Sources */,
@@ -14213,9 +14486,11 @@
 				EC4FC2451D77CEE400BBD050 /* ContactsManager.m in Sources */,
 				EC4FC3D11D77CEE400BBD050 /* StrategyTableViewCell.m in Sources */,
 				EC4FC2231D77CEE400BBD050 /* NavigationController.m in Sources */,
+				EC9775D91E123F9400980C4A /* WholesaleOrderDetailFailureCell.m in Sources */,
 				EC4FC2C01D77CEE400BBD050 /* FlashDetailAutoRollViewCell.m in Sources */,
 				ECA95AE21DDD59DF00990AAE /* CollectionTarentoHeader.m in Sources */,
 				EC4FC3911D77CEE400BBD050 /* StoreDetailBottomView.m in Sources */,
+				EC9775E31E123FCA00980C4A /* WholesaleOrderDetailProductInfoCell.m in Sources */,
 				EC13B5121DD1F4320040F760 /* AccountCenterExHistory.m in Sources */,
 				ECF5D11E1DB8D6EA00A1B268 /* TextSegueModel.m in Sources */,
 				EC4FC5EB1D77CEEF00BBD050 /* StepperView.m in Sources */,
@@ -14306,6 +14581,7 @@
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
 				EC486F961DFA908D005CA365 /* SearchResultProductLargeCell.m in Sources */,
 				EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */,
+				EC9775C81E123ECB00980C4A /* WholesaleOrderDetailViewController.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
 				EC3168851E03328A009F0945 /* AppBaseData.m in Sources */,
 				EC0D36131DFEDC9E0028BC0E /* ProductOrderNormalDetailRefundCell.m in Sources */,
@@ -14355,11 +14631,13 @@
 				EC0B6D941D8E693A00EC20EA /* ArticleAutoRollCell.m in Sources */,
 				EC68C3B51D9BBC5700D4401A /* HomeRefreshViewController.m in Sources */,
 				EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */,
+				EC97765D1E1296B000980C4A /* WholesaleProductDetailTeamModel.m in Sources */,
 				EC72642A1D7D279A00AA739B /* ArticleLikeViewController.m in Sources */,
 				ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */,
 				ECAA494F1D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.m in Sources */,
 				ECEE2B521E07DF1C00FAB7C2 /* ProductStandardDetailModel.m in Sources */,
 				ECFFC6ED1DC363C1002DBFB9 /* ProductDetailViewController.m in Sources */,
+				EC9776541E128CF500980C4A /* WolesaleProductDetailModel.m in Sources */,
 				EC45601A1DFECA0C000BD822 /* ProductOrderNormalDetailConsumeCode.m in Sources */,
 				EC3CE0A61DF167DB005729E2 /* NearbyView.m in Sources */,
 				ECFFC6FB1DC363C1002DBFB9 /* ProductDetailShare.m in Sources */,
@@ -14386,6 +14664,7 @@
 				ECB3E7841D92C82E0059267D /* OrderBookingServiceInfoCell.m in Sources */,
 				EC31686B1E0243CD009F0945 /* ProductDetailFreeApplyUserRemarkCell.m in Sources */,
 				EC76B8CF1DC65FC6006518DE /* ServiceDetailActivityCell.m in Sources */,
+				EC9776511E128CF500980C4A /* WholesaleProductDetailShare.m in Sources */,
 				EC4FC24F1D77CEE400BBD050 /* KTCLocation.m in Sources */,
 				EC97754A1E10F9ED00980C4A /* WolesaleProductDetailBaseCell.m in Sources */,
 				ECF5D1001DB8CE3900A1B268 /* TCHomeFloorContent.m in Sources */,
@@ -14449,7 +14728,9 @@
 				EC97752C1E0D54ED00980C4A /* SearchHotKeywordsData.m in Sources */,
 				EC4FC5F51D77CEEF00BBD050 /* ToolBox.m in Sources */,
 				EC486F2F1DF7C726005CA365 /* SearchFactorFilterAgeItem.m in Sources */,
+				EC9775ED1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m in Sources */,
 				EC5CDD301DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
+				EC9776011E12541C00980C4A /* WolesaleProductDetailBuyNoticeEmptyCell.m in Sources */,
 				EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */,
 				ECFFC6F71DC363C1002DBFB9 /* ProductDetailNote.m in Sources */,
 				EC48705F1DFC18B5005CA365 /* ProductOrderFreeDetailModel.m in Sources */,
@@ -14537,6 +14818,7 @@
 				EC13B51B1DD1F4790040F760 /* AccountCenterConfig.m in Sources */,
 				EC3168781E02862E009F0945 /* OrderModel.m in Sources */,
 				EC4FC2A51D77CEE400BBD050 /* UserArticleCommentsCell.m in Sources */,
+				EC9775CB1E123EE600980C4A /* WholesaleOrderDetailView.m in Sources */,
 				EC97752F1E0D54ED00980C4A /* SearchHotKeywordsModel.m in Sources */,
 				EC4FC3D31D77CEE400BBD050 /* StrategyLikeButton.m in Sources */,
 				EC4FC4781D77CEE400BBD050 /* FavouriteViewNewsCell.m in Sources */,
@@ -14551,6 +14833,7 @@
 				EC2F269B1DD9B7B300B67BBA /* CollectionContentViewController.m in Sources */,
 				EC68C3C81D9BD2B700D4401A /* SchemeManager.m in Sources */,
 				EC4FC2411D77CEE400BBD050 /* User.m in Sources */,
+				EC9776061E12543500980C4A /* WolesaleProductDetailBuyNoticeElementCell.m in Sources */,
 				EC4FC3931D77CEE400BBD050 /* StoreDetailCommentCell.m in Sources */,
 				EC5CDD4C1DE53A0E00F95C6F /* ProductDetailFreeApplySelectStoreViewController.m in Sources */,
 				EC4FC3531D77CEE400BBD050 /* FlashBalanceSettlementAddressCell.m in Sources */,
@@ -14584,6 +14867,7 @@
 				EC4FC34C1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.m in Sources */,
 				ECBCCECE1DBF145C001B9571 /* QRCodeScanBarCodeModel.m in Sources */,
 				ECA628671DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m in Sources */,
+				EC97764F1E128CF500980C4A /* WholesaleProductDetailCountDown.m in Sources */,
 				EC4FC5E41D77CEEF00BBD050 /* LICENSE.md in Sources */,
 				EC4FC5F41D77CEEF00BBD050 /* ZPTag.m in Sources */,
 				EC7264421D7D739800AA739B /* ArticleHomeClassView.m in Sources */,
@@ -14606,6 +14890,7 @@
 				EC154D581D88316C007137E8 /* ArticleUserCenterToolBar.m in Sources */,
 				ECA59B511DEBE4C000B3B1F7 /* CouponListUsedModel.m in Sources */,
 				EC889D061DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.m in Sources */,
+				EC9776501E128CF500980C4A /* WholesaleProductDetailNotice.m in Sources */,
 				EC4560141DFEB946000BD822 /* ProductOrderNormalDetailBtn.m in Sources */,
 				EC0044011DE6B8970042B701 /* ProductDetaiFreeStoreInfoCell.m in Sources */,
 				EC7FBBC51DC49F8A007B326C /* ProductDetailConsultModel.m in Sources */,
@@ -14635,6 +14920,7 @@
 				EC3CE0C11DF17A57005729E2 /* NearbyCategoryToolBarItem.m in Sources */,
 				EC486F3C1DF7C726005CA365 /* SearchFactorFilterToolBar.m in Sources */,
 				ECBC97CC1DFF0C7200B7386C /* ProductOrderNormalDetailRefundTitleCell.m in Sources */,
+				EC97765A1E128D7400980C4A /* WholesaleProductDetailOtherProduct.m in Sources */,
 				EC4FC2501D77CEE400BBD050 /* KTCMapService.mm in Sources */,
 				ECF5D0C31DB8C4FE00A1B268 /* QRCodeView.m in Sources */,
 				EC4C60CA1DF667C000830126 /* SearchHistoryCell.m in Sources */,
@@ -14666,6 +14952,7 @@
 				ECA59BA61DEC22FE00B3B1F7 /* SearchResultViewController.m in Sources */,
 				EC48709F1DFC3FC1005CA365 /* ProductOrderFreeDetailLotteryCell.m in Sources */,
 				EC97744D1E09696B00980C4A /* RecommendProductCollectProductCell.m in Sources */,
+				EC9775DE1E123FAB00980C4A /* WholesaleOrderDetailSuccessCell.m in Sources */,
 				EC7FBC0F1DC4D074007B326C /* ProductDetailConsultViewController.m in Sources */,
 				EC97752D1E0D54ED00980C4A /* SearchHotKeywordsItem.m in Sources */,
 				EC68C3B81D9BBC5700D4401A /* HomeRefreshHeader.m in Sources */,
@@ -14680,6 +14967,7 @@
 				EC9775721E10FB3500980C4A /* WolesaleProductDetailTitleCell.m in Sources */,
 				EC0D35F01DFED9B40028BC0E /* ProductOrderNormalDetailOrderNoCell.m in Sources */,
 				EC0044CE1DE7F4E40042B701 /* ProductDetailTwoColumnConsultConsultCell.m in Sources */,
+				EC9775FC1E12408400980C4A /* WholesaleOrderDetailWebCell.m in Sources */,
 				EC4FC5DD1D77CEEF00BBD050 /* MWPhoto.m in Sources */,
 				EC4FC38F1D77CEE400BBD050 /* StoreDetailModel.m in Sources */,
 				EC4FC29D1D77CEE400BBD050 /* ArticleWeChatLargeCell.m in Sources */,
@@ -14758,6 +15046,7 @@
 				EC30ABC81DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoTotalCell.m in Sources */,
 				ECA59B4B1DEBDFBF00B3B1F7 /* CouponListUnusedModel.m in Sources */,
 				EC4FC2221D77CEE400BBD050 /* UIView+Category.m in Sources */,
+				EC9775F71E12406C00980C4A /* WholesaleOrderDetailProgressCell.m in Sources */,
 				EC4FC39D1D77CEE400BBD050 /* StoreDetailViewCouponCell.m in Sources */,
 				EC2F26951DD9B77A00B67BBA /* CollectionSCTViewController.m in Sources */,
 				EC4FC29C1D77CEE400BBD050 /* ArticleWeChatModel.m in Sources */,
@@ -14798,6 +15087,7 @@
 				EC13B4EE1DD1F3430040F760 /* AccountCenterActivitiesCell.m in Sources */,
 				EC9774E71E0B86BE00980C4A /* RecommendContentCollectContentView.m in Sources */,
 				EC4FC2661D77CEE400BBD050 /* RefreshHeader.m in Sources */,
+				EC97764D1E128CF500980C4A /* WholesaleProductDetailBase.m in Sources */,
 				EC4FC21E1D77CEE400BBD050 /* UIImage+Category.m in Sources */,
 				EC4FC22F1D77CEE400BBD050 /* SharePaidInfoView.m in Sources */,
 				EC4FC2781D77CEE400BBD050 /* Theme.m in Sources */,

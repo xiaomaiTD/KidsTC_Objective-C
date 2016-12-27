@@ -9,6 +9,9 @@
 #import "WolesaleProductDetailRuleTipCell.h"
 
 @interface WolesaleProductDetailRuleTipCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *countL;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
@@ -20,10 +23,13 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setData:(WolesaleProductDetailData *)data {
+    [super setData:data];
+    self.countL.text = data.fightGroupBase.openGroupUserCount;
+}
 
-    // Configure the view for the selected state
+- (IBAction)action:(UIButton *)sender {
+    
 }
 
 @end

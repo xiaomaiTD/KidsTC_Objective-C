@@ -35,7 +35,11 @@
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
 #import "NurseryViewController.h"
+
+
 #import "WolesaleProductDetailViewController.h"
+#import "WholesaleSettlementViewController.h"
+#import "WholesaleOrderDetailViewController.h"
 
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
@@ -315,28 +319,35 @@
         {
             //toController = [[ArticleWeChatTableViewController alloc] init];
             //[BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
-            
-            toController = [[WolesaleProductDetailViewController alloc] init];
+            WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
+            controller.productId = @"1";
+            toController = controller;
         }
             break;
         case AccountCenterViewActionTypeCustomerServices:
         {
+            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
+            */
+            toController = [[WholesaleSettlementViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeOpinion:
         {
+            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
+            */
+            toController = [[WholesaleOrderDetailViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeSegue:

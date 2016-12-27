@@ -6,8 +6,8 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WholesaleSettlementBaseCell.h"
 
-@interface WholesaleSettlementPayTypeCell : UITableViewCell
+@interface WholesaleSettlementPayTypeCell : WholesaleSettlementBaseCell
 
 @end

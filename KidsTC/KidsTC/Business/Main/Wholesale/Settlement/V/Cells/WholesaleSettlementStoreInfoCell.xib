@@ -81,6 +81,10 @@
                     <constraint firstItem="qom-rJ-a5E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tSb-qS-4T1"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressL" destination="dTf-2M-JH0" id="Uxf-Cs-4uq"/>
+                <outlet property="nameL" destination="pYo-wD-SkY" id="Hpn-92-zdi"/>
+            </connections>
             <point key="canvasLocation" x="25" y="88.5"/>
         </tableViewCell>
     </objects>
