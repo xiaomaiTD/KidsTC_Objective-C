@@ -52,4 +52,9 @@
     
 }
 
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeJoinOther value:_team];
+    }
+}
 @end

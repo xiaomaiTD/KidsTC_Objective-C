@@ -13,10 +13,8 @@
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *userImg;
-@property (nonatomic, strong) NSString *unionId;
 @property (nonatomic, assign) NSTimeInterval remainTime;
 @property (nonatomic, assign) NSInteger surplusCount;
 @property (nonatomic, assign) BOOL canApply;
 @property (nonatomic, assign) BOOL isApply;
-@property (nonatomic, strong) NSString *unionIdM;
 @end

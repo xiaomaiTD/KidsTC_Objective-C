@@ -7,9 +7,12 @@
 //
 
 #import "WholesaleOrderDetailProgressCell.h"
+#import "WholesaleOrderDetailProgressItemView.h"
 
 @interface WholesaleOrderDetailProgressCell ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (strong, nonatomic) IBOutletCollection(WholesaleOrderDetailProgressItemView) NSArray *stepItems;
+
 @end
 
 @implementation WholesaleOrderDetailProgressCell
@@ -19,10 +22,12 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WholesaleOrderDetailData *)data {
+    [super setData:data];
+    [self.stepItems enumerateObjectsUsingBlock:^(WholesaleOrderDetailProgressItemView *obj, NSUInteger idx, BOOL *stop) {
+        obj.selected = (obj.tag == data.openGroupStep);
+    }];
+    
 }
 
 @end

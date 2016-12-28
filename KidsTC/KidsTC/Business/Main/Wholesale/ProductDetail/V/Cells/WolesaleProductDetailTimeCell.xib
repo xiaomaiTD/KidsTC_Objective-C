@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,23 +46,34 @@
                             <constraint firstAttribute="width" constant="5" id="nZ9-Nq-naV"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJf-tf-Guy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="keQ-8F-3sd"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ogT-rV-duR" secondAttribute="trailing" id="5cg-DJ-GCu"/>
                     <constraint firstAttribute="bottom" secondItem="ogT-rV-duR" secondAttribute="bottom" id="9Di-CV-hKh"/>
                     <constraint firstItem="cqf-gm-pBC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AWa-wP-1Ar"/>
+                    <constraint firstItem="EJf-tf-Guy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CS0-1m-qvr"/>
                     <constraint firstItem="hwJ-Z4-sdH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="H09-ME-WVI"/>
                     <constraint firstItem="ogT-rV-duR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Isy-nd-0UZ"/>
+                    <constraint firstItem="EJf-tf-Guy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lyg-WR-Kq8"/>
+                    <constraint firstItem="ogT-rV-duR" firstAttribute="top" secondItem="EJf-tf-Guy" secondAttribute="bottom" id="SGB-ix-q7c"/>
                     <constraint firstAttribute="trailing" secondItem="Krd-gI-xpS" secondAttribute="trailing" constant="15" id="SuU-hv-neN"/>
                     <constraint firstItem="cqf-gm-pBC" firstAttribute="leading" secondItem="hwJ-Z4-sdH" secondAttribute="trailing" constant="15" id="cYp-YB-bgP"/>
                     <constraint firstItem="hwJ-Z4-sdH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="cc3-9C-AUR"/>
                     <constraint firstItem="Krd-gI-xpS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dP9-G8-E2P"/>
+                    <constraint firstAttribute="trailing" secondItem="EJf-tf-Guy" secondAttribute="trailing" id="dck-fp-LaC"/>
                     <constraint firstItem="Krd-gI-xpS" firstAttribute="leading" secondItem="cqf-gm-pBC" secondAttribute="trailing" constant="8" id="w2j-aP-Pj1"/>
                     <constraint firstAttribute="bottom" secondItem="hwJ-Z4-sdH" secondAttribute="bottom" constant="16" id="zhT-ag-WOA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="HLineH" destination="RR9-LQ-Ct1" id="Ls7-Ns-beR"/>
+                <outlet property="arrowImg" destination="Krd-gI-xpS" id="wWl-yc-E3H"/>
                 <outlet property="timeL" destination="cqf-gm-pBC" id="ML0-Za-3VL"/>
             </connections>
             <point key="canvasLocation" x="-68" y="30"/>

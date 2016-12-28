@@ -9,5 +9,5 @@
 #import "WholesaleOrderDetailBaseCell.h"
 
 @interface WholesaleOrderDetailJoinMemberCell : WholesaleOrderDetailBaseCell
-
+@property (nonatomic, strong) WholesaleOrderDetailPartner *partner;
 @end

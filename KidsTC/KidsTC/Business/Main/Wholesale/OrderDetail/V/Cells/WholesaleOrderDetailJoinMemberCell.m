@@ -7,6 +7,7 @@
 //
 
 #import "WholesaleOrderDetailJoinMemberCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface WholesaleOrderDetailJoinMemberCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -28,10 +29,12 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setPartner:(WholesaleOrderDetailPartner *)partner {
+    _partner = partner;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:_partner.userImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    self.nameL.text = _partner.userName;
+    self.tipL.text = [NSString stringWithFormat:@"%@ %@",_partner.time,(_partner.isHead?@"开团":@"参团")];
+    self.leaderTipIcon.hidden  = !_partner.isHead;
 }
 
 @end

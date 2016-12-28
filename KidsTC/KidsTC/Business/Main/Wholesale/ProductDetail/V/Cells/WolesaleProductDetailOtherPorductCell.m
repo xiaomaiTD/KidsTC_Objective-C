@@ -43,5 +43,10 @@
     self.originalPriceL.text = [NSString stringWithFormat:@"¥%@",otherProduct.platformPrice];
 }
 
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeOtherProduct value:_otherProduct];
+    }
+}
 
 @end

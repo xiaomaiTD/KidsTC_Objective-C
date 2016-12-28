@@ -43,7 +43,7 @@ static NSString *const AddressCellID = @"WolesaleProductDetailAddressCell";
 static NSString *const WebCellID = @"WolesaleProductDetailWebCell";
 static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductCell";
 
-@interface WolesaleProductDetailView ()<UITableViewDelegate,UITableViewDataSource>
+@interface WolesaleProductDetailView ()<UITableViewDelegate,UITableViewDataSource,WolesaleProductDetailBaseCellDelegate,WolesaleProductDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<WolesaleProductDetailBaseCell *> *> *sections;
 
@@ -55,6 +55,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
         [self setupTableView];
         [self setupToolBar];
     }
@@ -71,7 +72,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-kWolesaleProductDetailToolBarH) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 66;
@@ -80,10 +81,6 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     [self addSubview:tableView];
     self.tableView = tableView;
     [self registerCells];
-    
-    [self setupSections];
-    
-    [self.tableView reloadData];
 }
 
 - (void)registerCells {
@@ -130,8 +127,10 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
         joinTeamCell.team = team;
         if (joinTeamCell) [section01 addObject:joinTeamCell];
     }];
-    if (base.teams.count>0) {
+    if (base.teamCounts.count>1) {
         WolesaleProductDetailJoinCountCell *joinCountCell = [self cellWithID:JoinCountCellID];
+        joinCountCell.tag = WolesaleProductDetailBaseCellActionTypeLoadTeam;
+        joinCountCell.counts = base.teamCounts;
         if (joinCountCell) [section01 addObject:joinCountCell];
     }
     if(section01.count>0) [sections addObject:section01];
@@ -186,8 +185,10 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
         otherPorductCell.otherProduct = otherProduct;
         if (otherPorductCell) [section04 addObject:otherPorductCell];
     }];
-    if (base.otherProducts.count>0) {
+    if (base.otherProductCounts.count>1) {
         WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
+        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
+        joinCountCell_otherProducts.counts = base.otherProductCounts;
         if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
     }
     if(section04.count>0) [sections addObject:section04];
@@ -195,7 +196,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     self.sections = [NSArray arrayWithArray:sections];
 }
 
-#pragma mark - UITableViewDelegate,UITableViewDataSource
+#pragma mark UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
@@ -213,7 +214,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return (section == self.sections.count - 1)?38:10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -223,6 +224,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
         NSArray<WolesaleProductDetailBaseCell *> *rows = self.sections[section];
         if (row<rows.count) {
             WolesaleProductDetailBaseCell *cell = rows[row];
+            cell.delegate = self;
             cell.data = self.data;
             return cell;
         }
@@ -230,15 +232,38 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     return [tableView dequeueReusableCellWithIdentifier:BaseCellID];
 }
 
+#pragma mark WolesaleProductDetailBaseCellDelegate
+
+- (void)wolesaleProductDetailBaseCell:(WolesaleProductDetailBaseCell *)cell actionType:(WolesaleProductDetailBaseCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailView:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailView:self actionType:(WolesaleProductDetailViewActionType)type value:value];
+    }
+    if (type == WolesaleProductDetailBaseCellActionTypeWebLoadFinish) {
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - setupToolBar
 
 - (void)setupToolBar {
     WolesaleProductDetailToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"WolesaleProductDetailToolBar" owner:self options:nil].firstObject;
     toolBar.hidden = YES;
+    toolBar.delegate = self;
     toolBar.frame = CGRectMake(0, SCREEN_HEIGHT-64-kWolesaleProductDetailToolBarH, SCREEN_WIDTH, kWolesaleProductDetailToolBarH);
     [self addSubview:toolBar];
     self.toolBar = toolBar;
 }
 
+#pragma mark WolesaleProductDetailToolBarDelegate
+
+- (void)wolesaleProductDetailToolBar:(WolesaleProductDetailToolBar *)toolBar actionType:(WolesaleProductDetailToolBarActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailView:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailView:self actionType:(WolesaleProductDetailViewActionType)type value:value];
+    }
+    if (type == WolesaleProductDetailViewActionTypeJoin) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+}
 
 @end

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,10 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzG-aw-b4s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSJ-OZ-4RV">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSJ-OZ-4RV" userLabel="step1" customClass="WholesaleOrderDetailProgressItemView">
                                 <rect key="frame" x="8" y="5" width="85.5" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_select_h" translatesAutoresizingMaskIntoConstraints="NO" id="sYX-Od-lW9">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_1_h" translatesAutoresizingMaskIntoConstraints="NO" id="sYX-Od-lW9">
                                         <rect key="frame" x="29.5" y="4" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="5IU-Yz-gO7"/>
@@ -47,6 +47,10 @@
                                     <constraint firstItem="sYX-Od-lW9" firstAttribute="top" secondItem="hSJ-OZ-4RV" secondAttribute="top" constant="4" id="hbF-hQ-2vh"/>
                                     <constraint firstItem="MAp-Rd-o5C" firstAttribute="centerX" secondItem="hSJ-OZ-4RV" secondAttribute="centerX" id="yr7-eq-2Y3"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="icon" destination="sYX-Od-lW9" id="ZhW-X5-dad"/>
+                                    <outlet property="titleL" destination="MAp-Rd-o5C" id="LeH-bQ-4Sh"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="mzV-Yg-Jvb">
                                 <rect key="frame" x="93.5" y="24" width="6" height="10"/>
@@ -55,10 +59,10 @@
                                     <constraint firstAttribute="width" constant="6" id="tq8-KX-lku"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CX4-vw-YPL">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CX4-vw-YPL" userLabel="step2" customClass="WholesaleOrderDetailProgressItemView">
                                 <rect key="frame" x="99.5" y="5" width="85" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_pay_n" translatesAutoresizingMaskIntoConstraints="NO" id="3YC-Kk-1JI">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_2_n" translatesAutoresizingMaskIntoConstraints="NO" id="3YC-Kk-1JI">
                                         <rect key="frame" x="29" y="4" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="3he-nx-3tG"/>
@@ -80,6 +84,10 @@
                                     <constraint firstItem="Gbu-wJ-o3V" firstAttribute="top" secondItem="3YC-Kk-1JI" secondAttribute="bottom" constant="6" id="ldA-xO-qHt"/>
                                     <constraint firstAttribute="bottom" secondItem="Gbu-wJ-o3V" secondAttribute="bottom" id="nW1-bR-dJa"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="icon" destination="3YC-Kk-1JI" id="zf5-KX-ojt"/>
+                                    <outlet property="titleL" destination="Gbu-wJ-o3V" id="Wft-RM-7CF"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="boB-df-Ziv">
                                 <rect key="frame" x="184.5" y="24" width="6" height="10"/>
@@ -88,10 +96,10 @@
                                     <constraint firstAttribute="width" constant="6" id="fr3-Jh-S6P"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjx-C5-obl">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjx-C5-obl" userLabel="step3" customClass="WholesaleOrderDetailProgressItemView">
                                 <rect key="frame" x="190.5" y="5" width="85.5" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_invite_n" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-IY-6F1">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_3_n" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-IY-6F1">
                                         <rect key="frame" x="30" y="4" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="eDm-Mu-kTx"/>
@@ -113,6 +121,10 @@
                                     <constraint firstItem="Lu7-Tg-UIN" firstAttribute="centerX" secondItem="fjx-C5-obl" secondAttribute="centerX" id="TaT-dA-jb9"/>
                                     <constraint firstItem="G5P-IY-6F1" firstAttribute="top" secondItem="fjx-C5-obl" secondAttribute="top" constant="4" id="eZW-hE-LCf"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="icon" destination="G5P-IY-6F1" id="IlW-53-Amv"/>
+                                    <outlet property="titleL" destination="Lu7-Tg-UIN" id="SZN-Pt-TLx"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="YNl-Kc-jRp">
                                 <rect key="frame" x="276" y="24" width="6" height="10"/>
@@ -121,10 +133,10 @@
                                     <constraint firstAttribute="width" secondItem="YNl-Kc-jRp" secondAttribute="height" multiplier="29:50" id="nsf-NA-owT"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ0-Zm-2ae">
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NJ0-Zm-2ae" userLabel="step4" customClass="WholesaleOrderDetailProgressItemView">
                                 <rect key="frame" x="282" y="6" width="85" height="48"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_ok_n" translatesAutoresizingMaskIntoConstraints="NO" id="pvS-1S-vqm">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_progress_4_n" translatesAutoresizingMaskIntoConstraints="NO" id="pvS-1S-vqm">
                                         <rect key="frame" x="29" y="4" width="26" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="4Vd-uJ-IEc"/>
@@ -146,6 +158,10 @@
                                     <constraint firstAttribute="bottom" secondItem="ra7-fr-B7z" secondAttribute="bottom" id="k16-eV-ncw"/>
                                     <constraint firstItem="pvS-1S-vqm" firstAttribute="top" secondItem="NJ0-Zm-2ae" secondAttribute="top" constant="4" id="sns-UO-tQv"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="icon" destination="pvS-1S-vqm" id="wLY-9B-jaz"/>
+                                    <outlet property="titleL" destination="ra7-fr-B7z" id="pn3-SX-8p1"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMq-9J-nXa">
                                 <rect key="frame" x="0.0" y="58.5" width="375" height="0.5"/>
@@ -191,15 +207,19 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="HLineH" destination="FtJ-gP-hr5" id="vl3-Jf-EdS"/>
+                <outletCollection property="stepItems" destination="hSJ-OZ-4RV" id="pAD-0H-Apw"/>
+                <outletCollection property="stepItems" destination="CX4-vw-YPL" id="d50-nA-Bnc"/>
+                <outletCollection property="stepItems" destination="fjx-C5-obl" id="O9L-Ku-NW8"/>
+                <outletCollection property="stepItems" destination="NJ0-Zm-2ae" id="rgv-U7-E4D"/>
             </connections>
             <point key="canvasLocation" x="-36" y="42"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="wholesale_progress_1_h" width="96" height="110"/>
+        <image name="wholesale_progress_2_n" width="92" height="107"/>
+        <image name="wholesale_progress_3_n" width="111" height="100"/>
+        <image name="wholesale_progress_4_n" width="111" height="111"/>
         <image name="wholesale_progress_arrow" width="29" height="50"/>
-        <image name="wholesale_progress_invite_n" width="111" height="100"/>
-        <image name="wholesale_progress_ok_n" width="111" height="111"/>
-        <image name="wholesale_progress_pay_n" width="92" height="107"/>
-        <image name="wholesale_progress_select_h" width="96" height="110"/>
     </resources>
 </document>

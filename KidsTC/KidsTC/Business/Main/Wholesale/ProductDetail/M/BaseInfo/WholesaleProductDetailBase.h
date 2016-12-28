@@ -13,7 +13,11 @@
 #import "WholesaleProductDetailShare.h"
 #import "WholesaleProductDetailCountDown.h"
 #import "WholesaleProductDetailTeam.h"
+#import "WholesaleProductDetailCount.h"
 #import "WholesaleProductDetailOtherProduct.h"
+#import "WolesaleProductDetailPlace.h"
+#import "WholesaleProductDetailStoreItem.h"
+#import "CommonShareObject.h"
 
 @interface WholesaleProductDetailBase : NSObject
 @property (nonatomic, strong) NSString *productNo;
@@ -31,12 +35,17 @@
 @property (nonatomic, strong) WholesaleProductDetailStore *store;
 @property (nonatomic, strong) WholesaleProductDetailShare *share;
 @property (nonatomic, assign) PlaceType placeType;
-@property (nonatomic, strong) NSString *place;
+@property (nonatomic, strong) NSArray<WolesaleProductDetailPlace *> *place;
+@property (nonatomic, strong) NSArray<WholesaleProductDetailStoreItem *> *stores;
 @property (nonatomic, strong) WholesaleProductDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *detailUrl;
 @property (nonatomic, strong) NSString *flowUrl;
 //selfDefine
 @property (nonatomic, assign) BOOL webViewHasLoad;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailTeam *> *teams;
+@property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *teamCounts;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailOtherProduct *> *otherProducts;
+@property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *otherProductCounts;
+//shareObj
+@property (nonatomic, strong) CommonShareObject *shareObject;
 @end

@@ -407,7 +407,7 @@
         case ProductDetailTypeNormal:
         case ProductDetailTypeFree:
         {
-            places = [ProductDetailAddressSelStoreModel modelsWithPlaceType:_data.placeType stores:_data.store places:_data.place];
+            places = [ProductDetailAddressSelStoreModel modelsWithProductDetailPlaceType:_data.placeType stores:_data.store places:_data.place];
         }
             break;
         case ProductDetailTypeTicket:

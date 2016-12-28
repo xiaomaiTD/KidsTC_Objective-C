@@ -7,10 +7,13 @@
 //
 
 #import "WholesaleProductDetailOtherProduct.h"
+#import "WholesaleProductDetailCount.h"
 
 @interface WholesaleProductDetailOtherProductModel : NSObject
 @property (nonatomic, assign) NSInteger errNo;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailOtherProduct *> *data;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSString *page;
+//selfDefine
+@property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *counts;
 @end

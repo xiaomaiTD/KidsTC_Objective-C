@@ -11,6 +11,19 @@
 @implementation WholesaleProductDetailBase
 + (NSDictionary *)modelContainerPropertyGenericClass
 {
-    return @{@"buyNotice" : [WholesaleProductDetailBuyNotice class]};
+    return @{@"buyNotice" : [WholesaleProductDetailBuyNotice class],
+             @"place":[WolesaleProductDetailPlace class],
+             @"stores":[WholesaleProductDetailStoreItem class]};
+}
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [self setupShareObj:dic];
+    return YES;
+}
+- (void)setupShareObj:(NSDictionary *)data {
+    self.shareObject = [CommonShareObject shareObjectWithRawData:[data objectForKey:@"share"]];
+    if (self.shareObject) {
+        self.shareObject.identifier = _productNo;
+        self.shareObject.followingContent = @"【童成】";
+    }
 }
 @end

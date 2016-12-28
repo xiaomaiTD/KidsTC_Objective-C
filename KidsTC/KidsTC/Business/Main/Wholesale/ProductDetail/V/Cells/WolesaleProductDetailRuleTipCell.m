@@ -7,11 +7,13 @@
 //
 
 #import "WolesaleProductDetailRuleTipCell.h"
-
+#import "NSString+Category.h"
 @interface WolesaleProductDetailRuleTipCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *countL;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
+
+@property (weak, nonatomic) IBOutlet UIView *line;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
@@ -25,11 +27,14 @@
 
 - (void)setData:(WolesaleProductDetailData *)data {
     [super setData:data];
+    self.line.hidden = ![data.fightGroupBase.flowUrl isNotNull];
     self.countL.text = data.fightGroupBase.openGroupUserCount;
 }
 
 - (IBAction)action:(UIButton *)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeRule value:nil];
+    }
 }
 
 @end

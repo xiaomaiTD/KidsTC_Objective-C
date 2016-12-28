@@ -11,6 +11,6 @@
 
 @interface WolesaleProductDetailData : NSObject
 @property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *openGroupSysNo;
+@property (nonatomic, assign) long long openGroupSysNo;
 @property (nonatomic, strong) WholesaleProductDetailBase *fightGroupBase;
 @end

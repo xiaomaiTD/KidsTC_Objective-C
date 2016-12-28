@@ -11,6 +11,7 @@
 @interface WolesaleProductDetailTimeCell ()
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImg;
 
 @end
 
@@ -24,5 +25,13 @@
 - (void)setData:(WolesaleProductDetailData *)data {
     [super setData:data];
     self.timeL.text = data.fightGroupBase.productTime.desc;
+    NSArray<ProductDetailTimeItem *> *times = self.data.fightGroupBase.productTime.times;
+    self.arrowImg.hidden = times.count<1;
+}
+
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeTime value:nil];
+    }
 }
 @end

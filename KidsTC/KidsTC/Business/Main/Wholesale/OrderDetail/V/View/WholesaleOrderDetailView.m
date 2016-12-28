@@ -7,15 +7,20 @@
 //
 
 #import "WholesaleOrderDetailView.h"
+#import "NSString+Category.h"
 
 #import "WholesaleOrderDetailBaseCell.h"
 #import "WholesaleOrderDetailFailureCell.h"
 #import "WholesaleOrderDetailSuccessCell.h"
 #import "WholesaleOrderDetailProductInfoCell.h"
+#import "WholesaleOrderDetailSurplusCell.h"
+#import "WholesaleOrderDetailCountDownCell.h"
+#import "WholesaleOrderDetailLeaderCell.h"
 #import "WholesaleOrderDetailJoinTipCell.h"
 #import "WholesaleOrderDetailJoinMemberCell.h"
 #import "WholesaleOrderDetailRuleCell.h"
 #import "WholesaleOrderDetailProgressCell.h"
+#import "WholesaleOrderDetailWebTipCell.h"
 #import "WholesaleOrderDetailWebCell.h"
 
 #import "WholesaleOrderDetailToolBar.h"
@@ -24,13 +29,17 @@ static NSString *const BaseCellID = @"WholesaleOrderDetailBaseCell";
 static NSString *const FailureCellID = @"WholesaleOrderDetailFailureCell";
 static NSString *const SuccessCellID = @"WholesaleOrderDetailSuccessCell";
 static NSString *const ProductInfoCellID = @"WholesaleOrderDetailProductInfoCell";
+static NSString *const SurplusCellID = @"WholesaleOrderDetailSurplusCell";
+static NSString *const CountDownCellID = @"WholesaleOrderDetailCountDownCell";
+static NSString *const LeaderCellID = @"WholesaleOrderDetailLeaderCell";
 static NSString *const JoinTipCellID = @"WholesaleOrderDetailJoinTipCell";
 static NSString *const JoinMemberCellID = @"WholesaleOrderDetailJoinMemberCell";
 static NSString *const RuleCellID = @"WholesaleOrderDetailRuleCell";
 static NSString *const ProgressCellID = @"WholesaleOrderDetailProgressCell";
+static NSString *const WebTipCellID = @"WholesaleOrderDetailWebTipCell";
 static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 
-@interface WholesaleOrderDetailView ()<UITableViewDelegate,UITableViewDataSource>
+@interface WholesaleOrderDetailView ()<UITableViewDelegate,UITableViewDataSource,WholesaleOrderDetailBaseCellDelegate,WholesaleOrderDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<WholesaleOrderDetailBaseCell *> *> *sections;
 
@@ -42,10 +51,18 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
         [self setupTableView];
         [self setupToolBar];
     }
     return self;
+}
+
+- (void)setData:(WholesaleOrderDetailData *)data {
+    _data = data;
+    self.toolBar.data = data;
+    [self setupSections];
+    [self.tableView reloadData];
 }
 
 #pragma mark - setupTableView
@@ -60,10 +77,6 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     [self addSubview:tableView];
     self.tableView = tableView;
     [self registerCells];
-    
-    [self setupSections];
-    
-    [self.tableView reloadData];
 }
 
 - (void)registerCells {
@@ -71,10 +84,14 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailFailureCell" bundle:nil] forCellReuseIdentifier:FailureCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailSuccessCell" bundle:nil] forCellReuseIdentifier:SuccessCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailProductInfoCell" bundle:nil] forCellReuseIdentifier:ProductInfoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailSurplusCell" bundle:nil] forCellReuseIdentifier:SurplusCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailCountDownCell" bundle:nil] forCellReuseIdentifier:CountDownCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailLeaderCell" bundle:nil] forCellReuseIdentifier:LeaderCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailJoinTipCell" bundle:nil] forCellReuseIdentifier:JoinTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailJoinMemberCell" bundle:nil] forCellReuseIdentifier:JoinMemberCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailRuleCell" bundle:nil] forCellReuseIdentifier:RuleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailProgressCell" bundle:nil] forCellReuseIdentifier:ProgressCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebTipCell" bundle:nil] forCellReuseIdentifier:WebTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
 }
 
@@ -84,23 +101,50 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 
 - (void)setupSections {
     
+    WholesaleOrderDetailData *data = self.data;
+    
     NSMutableArray *sections  = [NSMutableArray array];
     
     NSMutableArray *section01 = [NSMutableArray array];
-    WholesaleOrderDetailSuccessCell *successCell = [self cellWithID:SuccessCellID];
-    if (successCell) [section01 addObject:successCell];
-    WholesaleOrderDetailProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
-    if (productInfoCell) [section01 addObject:productInfoCell];
-    WholesaleOrderDetailJoinTipCell *joinTipCell = [self cellWithID:JoinTipCellID];
-    if (joinTipCell) [section01 addObject:joinTipCell];
-    WholesaleOrderDetailJoinMemberCell *joinMemberCell01 = [self cellWithID:JoinMemberCellID];
-    if (joinMemberCell01) [section01 addObject:joinMemberCell01];
-    WholesaleOrderDetailJoinMemberCell *joinMemberCell02 = [self cellWithID:JoinMemberCellID];
-    if (joinMemberCell02) [section01 addObject:joinMemberCell02];
-    WholesaleOrderDetailJoinMemberCell *joinMemberCell03 = [self cellWithID:JoinMemberCellID];
-    if (joinMemberCell03) [section01 addObject:joinMemberCell03];
-    WholesaleOrderDetailJoinMemberCell *joinMemberCell04 = [self cellWithID:JoinMemberCellID];
-    if (joinMemberCell04) [section01 addObject:joinMemberCell04];
+    switch (data.openGroupStatus) {
+        case FightGroupOpenGroupStatusOpenGroupSuccess:
+        case FightGroupOpenGroupStatusJoinGroupSuccess:
+        {
+            WholesaleOrderDetailSuccessCell *successCell = [self cellWithID:SuccessCellID];
+            if (successCell) [section01 addObject:successCell];
+        }
+            break;
+        case FightGroupOpenGroupStatusOpenGroupFailure:
+        case FightGroupOpenGroupStatusJoinGroupFailure:
+        {
+            WholesaleOrderDetailFailureCell *failureCell = [self cellWithID:FailureCellID];
+            if (failureCell) [section01 addObject:failureCell];
+        }
+            break;
+        default:
+            break;
+    }
+    if (data.fightGroupBase) {
+        WholesaleOrderDetailProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
+        if (productInfoCell) [section01 addObject:productInfoCell];
+    }
+    WholesaleOrderDetailSurplusCell *surplusCell = [self cellWithID:SurplusCellID];
+    if (surplusCell) [section01 addObject:surplusCell];
+    WholesaleOrderDetailCountDownCell *countDownCell = [self cellWithID:CountDownCellID];
+    if (countDownCell) [section01 addObject:countDownCell];
+    if (data.openGroupUser) {
+        WholesaleOrderDetailLeaderCell *leaderCell = [self cellWithID:LeaderCellID];
+        if (leaderCell) [section01 addObject:leaderCell];
+    }
+    if (data.partners.count>0) {
+        WholesaleOrderDetailJoinTipCell *joinTipCell = [self cellWithID:JoinTipCellID];
+        if (joinTipCell) [section01 addObject:joinTipCell];
+    }
+    [data.partners enumerateObjectsUsingBlock:^(WholesaleOrderDetailPartner *obj, NSUInteger idx, BOOL *stop) {
+        WholesaleOrderDetailJoinMemberCell *joinMemberCell = [self cellWithID:JoinMemberCellID];
+        joinMemberCell.partner = obj;
+        if (joinMemberCell) [section01 addObject:joinMemberCell];
+    }];
     if(section01.count>0) [sections addObject:section01];
     
     NSMutableArray *section02 = [NSMutableArray array];
@@ -108,8 +152,12 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     if (ruleCell) [section02 addObject:ruleCell];
     WholesaleOrderDetailProgressCell *progressCell = [self cellWithID:ProgressCellID];
     if (progressCell) [section02 addObject:progressCell];
-    WholesaleOrderDetailWebCell *webCell = [self cellWithID:WebCellID];
-    if (webCell) [section02 addObject:webCell];
+    if ([data.fightGroupBase.detailUrl isNotNull]) {
+        WholesaleOrderDetailWebTipCell *webTipCell = [self cellWithID:WebTipCellID];
+        if (webTipCell) [section02 addObject:webTipCell];
+        WholesaleOrderDetailWebCell *webCell = [self cellWithID:WebCellID];
+        if (webCell) [section02 addObject:webCell];
+    }
     if(section02.count>0) [sections addObject:section02];
     
     self.sections = [NSArray arrayWithArray:sections];
@@ -143,19 +191,40 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
         NSArray<WholesaleOrderDetailBaseCell *> *rows = self.sections[section];
         if (row<rows.count) {
             WholesaleOrderDetailBaseCell *cell = rows[row];
+            cell.delegate = self;
+            cell.data = self.data;
             return cell;
         }
     }
     return [tableView dequeueReusableCellWithIdentifier:BaseCellID];
 }
 
+#pragma mark WholesaleOrderDetailBaseCellDelegate
+
+- (void)wholesaleOrderDetailBaseCell:(WholesaleOrderDetailBaseCell *)cell actionType:(WholesaleOrderDetailBaseCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailView:actionType:value:)]) {
+        [self.delegate wholesaleOrderDetailView:self actionType:(WholesaleOrderDetailViewActionType)type value:nil];
+    }
+}
+
 #pragma mark - setupToolBar
 
 - (void)setupToolBar {
     WholesaleOrderDetailToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"WholesaleOrderDetailToolBar" owner:self options:nil].firstObject;
+    toolBar.hidden = YES;
+    toolBar.delegate = self;
     toolBar.frame = CGRectMake(0, SCREEN_HEIGHT-64-kWholesaleOrderDetailToolBarH, SCREEN_WIDTH, kWholesaleOrderDetailToolBarH);
     [self addSubview:toolBar];
     self.toolBar = toolBar;
 }
+
+#pragma mark WholesaleOrderDetailToolBarDelegate
+
+- (void)wholesaleOrderDetailToolBar:(WholesaleOrderDetailToolBar *)toolBar actionType:(WholesaleOrderDetailToolBarActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailView:actionType:value:)]) {
+        [self.delegate wholesaleOrderDetailView:self actionType:(WholesaleOrderDetailViewActionType)type value:nil];
+    }
+}
+
 
 @end

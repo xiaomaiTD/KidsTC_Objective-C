@@ -30,4 +30,9 @@
     
 }
 
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeAddress value:nil];
+    }
+}
 @end

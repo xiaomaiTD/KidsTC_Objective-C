@@ -39,7 +39,12 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    size.height = self.webView.scrollView.contentSize.height;
+    WholesaleProductDetailBase *base = self.data.fightGroupBase;
+    if (base.webViewHasLoad) {
+        size.height = self.webView.scrollView.contentSize.height;
+    }else{
+        size.height = SCREEN_HEIGHT;
+    }
     return size;
 }
 
@@ -50,10 +55,17 @@
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView {}
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    self.data.fightGroupBase.webViewHasLoad = YES;
+    [self webLoadFinish];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    [self webLoadFinish];
+}
+#pragma mark - UIWebViewDelegate helper
+- (void)webLoadFinish {
     self.data.fightGroupBase.webViewHasLoad = YES;
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeWebLoadFinish value:nil];
+    }
 }
 
 @end

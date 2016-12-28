@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="KGk-i7-Jjw" customClass="WholesaleOrderDetailLeaderCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_upArrow" translatesAutoresizingMaskIntoConstraints="NO" id="4RE-Vl-qIl">
+                        <rect key="frame" x="153" y="0.0" width="14" height="7"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="7" id="4Jz-7m-QRc"/>
+                            <constraint firstAttribute="width" secondItem="4RE-Vl-qIl" secondAttribute="height" multiplier="61:31" id="Hq3-4q-Dsf"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1d-BX-px8">
+                        <rect key="frame" x="0.0" y="7" width="320" height="56"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Fk-gh-KG3">
+                                <rect key="frame" x="12" y="12" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9Fk-gh-KG3" secondAttribute="height" multiplier="1:1" id="2DN-0H-Mvx"/>
+                                    <constraint firstAttribute="width" constant="32" id="5EX-rh-BYz"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="团长：萌宝爸爸" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9P-yJ-ERX">
+                                <rect key="frame" x="56" y="20" width="137" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9D-0r-3Os">
+                                <rect key="frame" x="201" y="14" width="107" height="28"/>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="5JN-Dd-pgS"/>
+                                    <constraint firstAttribute="height" constant="28" id="QfJ-yz-2cF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="更多组团"/>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CbR-Cr-RqG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="9Fk-gh-KG3" secondAttribute="bottom" constant="12" id="5AM-0w-J5x"/>
+                            <constraint firstItem="v9D-0r-3Os" firstAttribute="centerY" secondItem="i1d-BX-px8" secondAttribute="centerY" id="Cr7-mF-Nq2"/>
+                            <constraint firstAttribute="trailing" secondItem="v9D-0r-3Os" secondAttribute="trailing" constant="12" id="Mvu-EX-M1d"/>
+                            <constraint firstItem="b9P-yJ-ERX" firstAttribute="centerY" secondItem="i1d-BX-px8" secondAttribute="centerY" id="S8D-o5-PJD"/>
+                            <constraint firstItem="b9P-yJ-ERX" firstAttribute="leading" secondItem="9Fk-gh-KG3" secondAttribute="trailing" constant="12" id="i6V-So-QSS"/>
+                            <constraint firstItem="v9D-0r-3Os" firstAttribute="leading" secondItem="b9P-yJ-ERX" secondAttribute="trailing" constant="8" id="jcz-zR-BF8"/>
+                            <constraint firstItem="9Fk-gh-KG3" firstAttribute="top" secondItem="i1d-BX-px8" secondAttribute="top" constant="12" id="k1Q-Xb-YOV"/>
+                            <constraint firstItem="9Fk-gh-KG3" firstAttribute="leading" secondItem="i1d-BX-px8" secondAttribute="leading" constant="12" id="wFy-UB-pIW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.94117647058823528" green="0.94901960784313721" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                <constraints>
+                    <constraint firstItem="4RE-Vl-qIl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1UE-JZ-37W"/>
+                    <constraint firstAttribute="trailing" secondItem="i1d-BX-px8" secondAttribute="trailing" id="Bmz-Gs-rsV"/>
+                    <constraint firstItem="4RE-Vl-qIl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FEj-oZ-dNv"/>
+                    <constraint firstItem="i1d-BX-px8" firstAttribute="top" secondItem="4RE-Vl-qIl" secondAttribute="bottom" id="JD0-uR-6Fh"/>
+                    <constraint firstAttribute="bottom" secondItem="i1d-BX-px8" secondAttribute="bottom" id="R8W-bh-dD9"/>
+                    <constraint firstItem="i1d-BX-px8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nu1-d2-DgJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn" destination="v9D-0r-3Os" id="DVB-Jw-bX6"/>
+                <outlet property="icon" destination="9Fk-gh-KG3" id="7oU-Fe-inC"/>
+                <outlet property="nameL" destination="b9P-yJ-ERX" id="Tjt-Wu-3z9"/>
+            </connections>
+            <point key="canvasLocation" x="73" y="-66"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="wholesale_upArrow" width="61" height="30"/>
+    </resources>
+</document>

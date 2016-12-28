@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,10 +93,17 @@
                             <constraint firstAttribute="width" secondItem="PxJ-bK-cjG" secondAttribute="height" multiplier="1:1" id="nsv-Rv-2LO"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEL-Qb-GJN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wxn-I3-IxN"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5tq-gn-rTB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="19y-4d-jhG"/>
                     <constraint firstItem="5tq-gn-rTB" firstAttribute="leading" secondItem="PxJ-bK-cjG" secondAttribute="leading" id="2Tn-34-t4m"/>
+                    <constraint firstItem="gEL-Qb-GJN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="728-hj-j06"/>
                     <constraint firstAttribute="bottom" secondItem="5tq-gn-rTB" secondAttribute="bottom" constant="12" id="Eh5-gC-qBb"/>
                     <constraint firstAttribute="trailing" secondItem="5tq-gn-rTB" secondAttribute="trailing" constant="16" id="G2X-id-EtJ"/>
                     <constraint firstAttribute="bottom" secondItem="PxJ-bK-cjG" secondAttribute="bottom" constant="8" id="R7x-k2-D4i"/>
@@ -104,6 +111,9 @@
                     <constraint firstItem="QTD-iz-T48" firstAttribute="trailing" secondItem="5tq-gn-rTB" secondAttribute="trailing" constant="-80" id="Z3u-Oj-cQR"/>
                     <constraint firstItem="SMk-I2-mav" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="a6R-9f-TA2"/>
                     <constraint firstItem="PxJ-bK-cjG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="byU-u1-pGA"/>
+                    <constraint firstAttribute="bottom" secondItem="gEL-Qb-GJN" secondAttribute="bottom" id="ezS-j2-3or"/>
+                    <constraint firstAttribute="trailing" secondItem="gEL-Qb-GJN" secondAttribute="trailing" id="gDq-gN-Ol3"/>
+                    <constraint firstItem="gEL-Qb-GJN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lEh-Tx-QDh"/>
                     <constraint firstItem="QTD-iz-T48" firstAttribute="centerY" secondItem="5tq-gn-rTB" secondAttribute="centerY" id="v4q-I3-11m"/>
                     <constraint firstItem="5tq-gn-rTB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wO2-8E-K5E"/>
                     <constraint firstAttribute="bottom" secondItem="SMk-I2-mav" secondAttribute="bottom" id="xID-WR-fau"/>

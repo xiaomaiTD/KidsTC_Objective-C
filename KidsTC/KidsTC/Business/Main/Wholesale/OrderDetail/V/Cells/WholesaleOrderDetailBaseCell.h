@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WholesaleOrderDetailData.h"
+
+typedef enum : NSUInteger {
+    WholesaleOrderDetailBaseCellActionType01,
+    WholesaleOrderDetailBaseCellActionType02,
+} WholesaleOrderDetailBaseCellActionType;
+@class WholesaleOrderDetailBaseCell;
+@protocol WholesaleOrderDetailBaseCellDelegate <NSObject>
+- (void)wholesaleOrderDetailBaseCell:(WholesaleOrderDetailBaseCell *)cell actionType:(WholesaleOrderDetailBaseCellActionType)type value:(id)value;
+@end
 
 @interface WholesaleOrderDetailBaseCell : UITableViewCell
-
+@property (nonatomic, strong) WholesaleOrderDetailData *data;
+@property (nonatomic, weak) id<WholesaleOrderDetailBaseCellDelegate> delegate;
 @end

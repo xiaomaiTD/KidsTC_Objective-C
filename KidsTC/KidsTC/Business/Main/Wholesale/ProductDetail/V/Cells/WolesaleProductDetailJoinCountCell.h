@@ -9,5 +9,6 @@
 #import "WolesaleProductDetailBaseCell.h"
 
 @interface WolesaleProductDetailJoinCountCell : WolesaleProductDetailBaseCell
-
+@property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *counts;
+@property (nonatomic, copy) void (^actionBlock)(WholesaleProductDetailCount *item);
 @end

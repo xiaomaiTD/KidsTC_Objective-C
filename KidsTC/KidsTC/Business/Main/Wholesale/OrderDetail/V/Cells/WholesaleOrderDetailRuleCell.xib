@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,13 +45,23 @@
                             <constraint firstAttribute="height" constant="0.5" id="Pim-Dh-tJA"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGN-Sk-gxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <connections>
+                            <action selector="action:" destination="p93-tZ-xDf" eventType="touchUpInside" id="Z2n-7d-9PB"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fRC-0X-t1c" firstAttribute="leading" secondItem="NVS-vC-PgG" secondAttribute="trailing" constant="8" id="1cb-wF-DIs"/>
+                    <constraint firstItem="tGN-Sk-gxZ" firstAttribute="leading" secondItem="4bY-fB-GUI" secondAttribute="leading" id="1nh-7P-cyX"/>
                     <constraint firstItem="VGb-HO-ovs" firstAttribute="top" secondItem="4bY-fB-GUI" secondAttribute="top" constant="16" id="3Ef-Fc-7yN"/>
                     <constraint firstItem="xLk-wU-6gV" firstAttribute="leading" secondItem="4bY-fB-GUI" secondAttribute="leading" id="7yd-k4-HTO"/>
+                    <constraint firstItem="tGN-Sk-gxZ" firstAttribute="top" secondItem="4bY-fB-GUI" secondAttribute="top" id="BeU-Ur-6Ew"/>
                     <constraint firstItem="VGb-HO-ovs" firstAttribute="leading" secondItem="4bY-fB-GUI" secondAttribute="leading" constant="12" id="OE7-eV-MPz"/>
+                    <constraint firstAttribute="trailing" secondItem="tGN-Sk-gxZ" secondAttribute="trailing" id="TcU-If-KnE"/>
                     <constraint firstItem="fRC-0X-t1c" firstAttribute="centerY" secondItem="4bY-fB-GUI" secondAttribute="centerY" id="iNj-YP-h0K"/>
+                    <constraint firstAttribute="bottom" secondItem="tGN-Sk-gxZ" secondAttribute="bottom" id="oE0-h5-v10"/>
                     <constraint firstItem="NVS-vC-PgG" firstAttribute="centerY" secondItem="4bY-fB-GUI" secondAttribute="centerY" id="rke-Mg-HrR"/>
                     <constraint firstAttribute="trailing" secondItem="xLk-wU-6gV" secondAttribute="trailing" id="xU6-Ev-BZw"/>
                     <constraint firstAttribute="trailing" secondItem="fRC-0X-t1c" secondAttribute="trailing" constant="12" id="zAp-xE-aIC"/>
