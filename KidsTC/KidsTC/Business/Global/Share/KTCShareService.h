@@ -19,11 +19,13 @@ typedef enum {
 typedef enum {
     KTCShareServiceTypeUnknow = 0,
     KTCShareServiceTypeStore = 1,
-    KTCShareServiceTypeService,
-    KTCShareServiceTypeNews,
-    KTCShareServiceTypeStrategy,
-    KTCShareServiceTypeActivity,
-    KTCShareServiceTypeTicketService,
+    KTCShareServiceTypeService = 2,
+    KTCShareServiceTypeNews = 3,
+    KTCShareServiceTypeStrategy = 4,
+    KTCShareServiceTypeActivity = 5,
+    KTCShareServiceTypeTicketService = 6,
+    KTCShareServiceTypeFree = 7,
+    KTCShareServiceTypeWholesale = 8,
 }KTCShareServiceType;
 
 @interface KTCShareService : NSObject

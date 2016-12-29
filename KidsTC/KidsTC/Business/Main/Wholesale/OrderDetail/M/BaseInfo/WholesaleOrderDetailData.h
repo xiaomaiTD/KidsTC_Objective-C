@@ -38,7 +38,7 @@ typedef enum : NSUInteger {
 @interface WholesaleOrderDetailData : NSObject
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) WholesaleProductDetailBase *fightGroupBase;
-@property (nonatomic, strong) NSString *openGroupSysNo;
+@property (nonatomic, assign) long long openGroupSysNo;
 @property (nonatomic, assign) FightGroupOpenGroupStep openGroupStep;
 @property (nonatomic, assign) FightGroupBtnStatus btnStatus;
 @property (nonatomic, strong) WholesaleOrderDetailUser *openGroupUser;

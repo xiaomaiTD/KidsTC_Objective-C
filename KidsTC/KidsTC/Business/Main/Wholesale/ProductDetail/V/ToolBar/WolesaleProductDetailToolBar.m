@@ -74,7 +74,7 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
         _countDownL.text = str;
     }else{
         _countDownView.hidden = YES;
-        [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
+        //[NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
         if (countDown.showCountDown && !countDown.countDownOver) {
             countDown.countDownOver = YES;
             if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailToolBar:actionType:value:)]) {

@@ -30,6 +30,7 @@
 #import "WebViewController.h"
 #import "StoreDetailViewController.h"
 #import "FlashServiceOrderListViewController.h"
+#import "WholesaleOrderListViewController.h"
 #import "AppointmentOrderListViewController.h"
 #import "ProductOrderFreeListViewController.h"
 #import "NotificationCenterViewController.h"
@@ -621,7 +622,6 @@
             [self.listView dealWithUI:0 isRecommend:YES];
         }];
     }
-    
 }
 
 #pragma mark - ProductOrderListAllTitleShowViewDelegate
@@ -718,7 +718,7 @@
 #pragma mark  ================闪购================
 
 - (void)jumpToFlashOrderList:(ProductOrderListAllTitleRowItem *)item {
-    FlashServiceOrderListViewController *controller = [[FlashServiceOrderListViewController alloc] init];
+    WholesaleOrderListViewController *controller = [[WholesaleOrderListViewController alloc]init];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

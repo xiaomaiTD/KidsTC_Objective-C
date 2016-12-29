@@ -9,5 +9,6 @@
 #import "ViewController.h"
 
 @interface WholesaleSettlementViewController : ViewController
-
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *openGroupId;
 @end

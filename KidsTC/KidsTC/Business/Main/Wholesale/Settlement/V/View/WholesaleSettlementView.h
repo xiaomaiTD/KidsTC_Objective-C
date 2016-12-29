@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WholesaleSettlementView : UIView
+#import "WholesaleSettlementData.h"
 
+typedef enum : NSUInteger {
+    WholesaleSettlementViewActionTypeSelectStore = 1,//切换门店
+    WholesaleSettlementViewActionTypeSelectPlace,//切换地址
+    WholesaleSettlementViewActionTypeRule,//查看活动规则
+    WholesaleSettlementViewActionTypePlaceOrder = 50,//下单
+} WholesaleSettlementViewActionType;
+
+@class WholesaleSettlementView;
+@protocol WholesaleSettlementViewDelegate <NSObject>
+- (void)wholesaleSettlementView:(WholesaleSettlementView *)view actionType:(WholesaleSettlementViewActionType)type value:(id)value;
+@end
+
+@interface WholesaleSettlementView : UIView
+@property (nonatomic, strong) WholesaleSettlementData *data;
+@property (nonatomic, weak) id<WholesaleSettlementViewDelegate> delegate;
+- (void)reloadData;
 @end

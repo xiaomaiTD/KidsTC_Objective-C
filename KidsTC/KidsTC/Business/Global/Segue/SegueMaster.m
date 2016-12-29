@@ -30,6 +30,8 @@
 #import "ProductOrderNormalDetailViewController.h"
 #import "ProductOrderTicketDetailViewController.h"
 #import "ProductOrderFreeDetailViewController.h"
+#import "WholesaleOrderDetailViewController.h"
+#import "WolesaleProductDetailViewController.h"
 
 @implementation SegueMaster
 
@@ -66,6 +68,7 @@
         case SegueDestinationStrategyDetail:
         case SegueDestinationProductTicketDetail:
         case SegueDestinationProductFreeDetail:
+        case SegueDestinationOrderWholesaleDetail:
         {
             if (resultBlock) resultBlock();
         }
@@ -276,6 +279,24 @@
             ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
             controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
             toController = controller;
+        }
+            break;
+        case SegueDestinationOrderWholesaleDetail:
+        {
+            NSString *pid = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
+            id gidID = model.segueParam[@"gid"];
+            if (![gidID respondsToSelector:@selector(longLongValue)]) return nil;
+            long long gid = [gidID longLongValue];
+            if (gid>0) {
+                WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+                controller.productId = pid;
+                controller.openGroupId = [NSString stringWithFormat:@"%lld",gid];
+                toController = controller;
+            }else{
+                WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
+                controller.productId = pid;
+                toController = controller;
+            }
         }
             break;
     }

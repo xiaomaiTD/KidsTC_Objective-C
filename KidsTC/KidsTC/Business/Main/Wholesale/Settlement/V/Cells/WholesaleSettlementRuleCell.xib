@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,22 +45,33 @@
                             <constraint firstAttribute="height" constant="0.5" id="vpV-De-Dyb"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67U-mU-nbN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f3B-Tn-eEs"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="IQR-k1-w7r" secondAttribute="bottom" constant="16" id="DmV-tI-d8S"/>
                     <constraint firstItem="IQR-k1-w7r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ILS-JO-bU3"/>
                     <constraint firstItem="g0Y-Dr-OML" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IiM-fA-WCa"/>
+                    <constraint firstItem="67U-mU-nbN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="M1U-c2-Ecu"/>
                     <constraint firstAttribute="trailing" secondItem="g0Y-Dr-OML" secondAttribute="trailing" constant="12" id="O4F-Vy-Z4F"/>
                     <constraint firstItem="IQR-k1-w7r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Oqo-Zw-ybW"/>
                     <constraint firstAttribute="bottom" secondItem="5hm-ai-1WM" secondAttribute="bottom" id="Psn-y3-8w5"/>
                     <constraint firstAttribute="trailing" secondItem="5hm-ai-1WM" secondAttribute="trailing" id="Vfx-Q3-PoN"/>
+                    <constraint firstAttribute="trailing" secondItem="67U-mU-nbN" secondAttribute="trailing" id="W4b-Fj-Uxq"/>
                     <constraint firstItem="T2R-ij-5tO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eR2-mo-dqM"/>
                     <constraint firstItem="g0Y-Dr-OML" firstAttribute="leading" secondItem="T2R-ij-5tO" secondAttribute="trailing" constant="8" id="oGn-UO-f9B"/>
+                    <constraint firstItem="67U-mU-nbN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wMU-Yt-TrZ"/>
+                    <constraint firstAttribute="bottom" secondItem="67U-mU-nbN" secondAttribute="bottom" id="yGm-Cy-ljc"/>
                     <constraint firstItem="5hm-ai-1WM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yO5-cX-aJ3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="HLineH" destination="vpV-De-Dyb" id="6CR-Uq-dkU"/>
+                <outlet property="btn" destination="67U-mU-nbN" id="lZQ-yx-RtZ"/>
                 <outlet property="subL" destination="T2R-ij-5tO" id="LjC-Kj-OnZ"/>
                 <outlet property="tipL" destination="IQR-k1-w7r" id="h7a-uX-fS5"/>
             </connections>

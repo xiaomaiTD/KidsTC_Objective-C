@@ -269,15 +269,19 @@
 #pragma mark 分享
 
 - (void)share {
-    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.fightGroupBase.shareObject sourceType:KTCShareServiceTypeService];
+    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.fightGroupBase.shareObject sourceType:KTCShareServiceTypeWholesale];
     [self presentViewController:controller animated:YES completion:nil];
 }
 
 #pragma mark 我要组团
 
 - (void)sale {
-    WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
-    [self.navigationController pushViewController:controller animated:YES];
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
+        controller.productId = self.productId;
+        controller.openGroupId = [NSString stringWithFormat:@"%zd",self.data.openGroupSysNo];
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
 }
 
 #pragma mark 我的拼团

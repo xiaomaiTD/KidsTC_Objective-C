@@ -24,6 +24,7 @@
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, strong) NSAttributedString *storeDesc;
 @property (nonatomic, strong) NSAttributedString *pickStoreDesc;
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic;
 @end
 
 @interface SettlementPickStoreModel : NSObject

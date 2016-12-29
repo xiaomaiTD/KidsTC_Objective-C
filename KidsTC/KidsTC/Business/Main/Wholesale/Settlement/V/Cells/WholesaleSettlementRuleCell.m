@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
 @property (weak, nonatomic) IBOutlet UILabel *subL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @end
 
 @implementation WholesaleSettlementRuleCell
@@ -21,10 +22,15 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WholesaleSettlementData *)data {
+    [super setData:data];
 }
+
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(wholesaleSettlementBaseCell:actionType:value:)]) {
+        [self.delegate wholesaleSettlementBaseCell:self actionType:WholesaleSettlementBaseCellActionTypeRule value:nil];
+    }
+}
+
 
 @end

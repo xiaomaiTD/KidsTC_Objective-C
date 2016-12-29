@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,13 +36,13 @@
                                     <constraint firstAttribute="width" secondItem="0Gm-YK-11t" secondAttribute="height" multiplier="1:1" id="YSv-lM-Scv"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝创意谷静安店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-wD-SkY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝创意谷静安店" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-wD-SkY">
                                 <rect key="frame" x="37" y="15.5" width="257" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市静安区江宁路2286弄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTf-2M-JH0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市静安区江宁路2286弄" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTf-2M-JH0">
                                 <rect key="frame" x="37" y="44.5" width="257" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
@@ -71,14 +71,24 @@
                             <constraint firstAttribute="width" secondItem="t5G-XE-X3L" secondAttribute="height" multiplier="5:9" id="jt8-U2-K9C"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCR-aS-Y0c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bxn-tC-Bg2"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bCR-aS-Y0c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="M9q-nj-ktx"/>
+                    <constraint firstAttribute="trailing" secondItem="bCR-aS-Y0c" secondAttribute="trailing" id="Uln-bO-PVM"/>
                     <constraint firstAttribute="bottom" secondItem="qom-rJ-a5E" secondAttribute="bottom" id="lBJ-UW-rm1"/>
                     <constraint firstItem="t5G-XE-X3L" firstAttribute="leading" secondItem="qom-rJ-a5E" secondAttribute="trailing" constant="8" id="mvh-Ev-I3J"/>
                     <constraint firstItem="qom-rJ-a5E" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pkv-J0-WH5"/>
                     <constraint firstAttribute="trailing" secondItem="t5G-XE-X3L" secondAttribute="trailing" constant="11" id="ppD-lY-p9f"/>
                     <constraint firstItem="t5G-XE-X3L" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rhP-F7-xcf"/>
+                    <constraint firstAttribute="bottom" secondItem="bCR-aS-Y0c" secondAttribute="bottom" id="riq-NW-tFb"/>
                     <constraint firstItem="qom-rJ-a5E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tSb-qS-4T1"/>
+                    <constraint firstItem="bCR-aS-Y0c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xEA-bz-3ic"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

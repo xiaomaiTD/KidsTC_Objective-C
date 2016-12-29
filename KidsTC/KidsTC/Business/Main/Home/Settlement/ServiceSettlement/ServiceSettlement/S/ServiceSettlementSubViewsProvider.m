@@ -57,6 +57,11 @@
             return self.normalSections;
         }
             break;
+            default:
+        {
+            return nil;
+        }
+            break;
     }
 }
 

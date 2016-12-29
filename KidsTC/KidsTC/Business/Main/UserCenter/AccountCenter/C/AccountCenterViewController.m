@@ -31,6 +31,7 @@
 #import "CouponListViewController.h"
 #import "MyTracksViewController.h"
 #import "FlashServiceOrderListViewController.h"
+#import "WholesaleOrderListViewController.h"
 #import "AppointmentOrderListViewController.h"
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
@@ -294,8 +295,8 @@
             break;
         case AccountCenterViewActionTypeMyFlash:
         {
-            toController = [[FlashServiceOrderListViewController alloc]init];
-            [BuryPointManager trackEvent:@"event_skip_usr_flashlist" actionId:21511 params:nil];
+            toController = [[WholesaleOrderListViewController alloc]init];
+            //[BuryPointManager trackEvent:@"event_skip_usr_flashlist" actionId:21511 params:nil];
         }
             break;
         case AccountCenterViewActionTypeMyAppoinment:

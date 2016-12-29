@@ -7,6 +7,7 @@
 //
 
 #import "WholesaleSettlementProductInfoCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface WholesaleSettlementProductInfoCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -28,10 +29,13 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setData:(WholesaleSettlementData *)data {
+    [super setData:data];
+    
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:data.productImage] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    self.nameL.text = data.productName;
+    self.priceTipL.text = [NSString stringWithFormat:@"%@人拼团价：",data.openGroupUserCount];
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.fightGroupPrice];
 }
 
 @end

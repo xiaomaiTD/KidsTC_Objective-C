@@ -41,10 +41,6 @@ static NSString *const CellID = @"ProductOrderListCell";
     return self;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-}
-
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -108,10 +104,7 @@ static NSString *const CellID = @"ProductOrderListCell";
 }
 
 - (void)dealWithUI:(NSUInteger)loadCount isRecommend:(BOOL)isRecommend {
-    
-    if (self.items.count>0) {
-        self.tableView.tableHeaderView.hidden = NO;
-    }
+    self.tableView.tableHeaderView.hidden = self.items.count<1;
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     if (!isRecommend) {

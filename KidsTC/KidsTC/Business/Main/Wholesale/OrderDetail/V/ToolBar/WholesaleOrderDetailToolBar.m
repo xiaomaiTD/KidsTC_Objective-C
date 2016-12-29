@@ -56,6 +56,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
     }
     self.leftIcon.image = [UIImage imageNamed:leftIconName];
     self.leftTitle.text = leftTitle;
+    self.leftBtn.tag = leftTag;
     
     /*
      FightGroupBtnStatusShare = 1,//邀请好友参团
@@ -69,7 +70,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
     WholesaleOrderDetailToolBarActionType rightTag;
     if (!data.countDown || !data.countDown.showCountDown || data.countDown.countDownOver)
     {
-        rightBtnTitle = @"更多拼团";//跳到第一个商品详情页面
+        rightBtnTitle = @"更多组团";//跳到第一个商品详情页面
         btnEnable = YES;
         rightTag = WholesaleOrderDetailToolBarActionTypeProductHome;
     }else{
@@ -103,7 +104,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
                 break;
             case FightGroupBtnStatusProductHome:
             {
-                rightBtnTitle = @"更多拼团";//跳到第一个商品详情页面
+                rightBtnTitle = @"更多组团";//跳到第一个商品详情页面
                 btnEnable = YES;
                 rightTag = WholesaleOrderDetailToolBarActionTypeProductHome;
             }

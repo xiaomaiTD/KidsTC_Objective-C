@@ -148,8 +148,10 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     if(section01.count>0) [sections addObject:section01];
     
     NSMutableArray *section02 = [NSMutableArray array];
-    WholesaleOrderDetailRuleCell *ruleCell = [self cellWithID:RuleCellID];
-    if (ruleCell) [section02 addObject:ruleCell];
+    if ([data.fightGroupBase.flowUrl isNotNull]) {
+        WholesaleOrderDetailRuleCell *ruleCell = [self cellWithID:RuleCellID];
+        if (ruleCell) [section02 addObject:ruleCell];
+    }
     WholesaleOrderDetailProgressCell *progressCell = [self cellWithID:ProgressCellID];
     if (progressCell) [section02 addObject:progressCell];
     if ([data.fightGroupBase.detailUrl isNotNull]) {

@@ -181,7 +181,7 @@
                         </constraints>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_success_log" translatesAutoresizingMaskIntoConstraints="NO" id="7F8-NT-L0V">
-                        <rect key="frame" x="192" y="10" width="92" height="92"/>
+                        <rect key="frame" x="204" y="10" width="92" height="92"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="7F8-NT-L0V" secondAttribute="height" multiplier="1:1" id="osm-d1-b4H"/>
                             <constraint firstAttribute="width" constant="92" id="yNa-ko-N4Y"/>
@@ -191,9 +191,9 @@
                 <constraints>
                     <constraint firstItem="S4V-82-9hG" firstAttribute="top" secondItem="T5D-Xq-8Pc" secondAttribute="top" constant="12" id="BiM-ZG-lPa"/>
                     <constraint firstAttribute="bottom" secondItem="S4V-82-9hG" secondAttribute="bottom" constant="12" id="CJk-BD-W0l"/>
+                    <constraint firstAttribute="trailing" secondItem="7F8-NT-L0V" secondAttribute="trailing" constant="24" id="Gr2-8k-xDT"/>
                     <constraint firstAttribute="trailing" secondItem="tBQ-V5-K5B" secondAttribute="trailing" constant="22" id="KBO-U9-8lK"/>
                     <constraint firstItem="tBQ-V5-K5B" firstAttribute="top" secondItem="S4V-82-9hG" secondAttribute="top" id="OAk-YH-a4K"/>
-                    <constraint firstItem="7F8-NT-L0V" firstAttribute="centerX" secondItem="tBQ-V5-K5B" secondAttribute="centerX" constant="12" id="goA-eP-vnl"/>
                     <constraint firstItem="tBQ-V5-K5B" firstAttribute="bottom" secondItem="S4V-82-9hG" secondAttribute="bottom" constant="-2" id="jKA-7q-iyF"/>
                     <constraint firstItem="S4V-82-9hG" firstAttribute="leading" secondItem="T5D-Xq-8Pc" secondAttribute="leading" constant="22" id="osn-rf-4Rs"/>
                     <constraint firstItem="tBQ-V5-K5B" firstAttribute="leading" secondItem="S4V-82-9hG" secondAttribute="trailing" constant="32" id="sVo-mt-1Hs"/>

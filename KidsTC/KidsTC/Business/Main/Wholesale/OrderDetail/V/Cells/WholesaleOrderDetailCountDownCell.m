@@ -69,7 +69,7 @@
     }else{
         self.countDownView.hidden = YES;
         self.doneView.hidden = NO;
-        [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
+        //[NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
         if (countDown.showCountDown && !countDown.countDownOver) {
             countDown.countDownOver = YES;
             

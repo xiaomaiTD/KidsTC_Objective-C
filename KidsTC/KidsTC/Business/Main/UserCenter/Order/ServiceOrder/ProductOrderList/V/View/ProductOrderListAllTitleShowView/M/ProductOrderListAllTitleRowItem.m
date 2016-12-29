@@ -52,7 +52,7 @@
             break;
         case ProductOrderListAllTitleRowItemActionTypeFlash:
         {
-            item.title = @"闪购";
+            item.title = @"拼团";
             item.canSelected = NO;
         }
             break;

@@ -19,10 +19,8 @@
     self.HLineH.constant = LINE_H;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
+- (void)setData:(WholesaleSettlementData *)data {
+    [super setData:data];
 }
 
 @end

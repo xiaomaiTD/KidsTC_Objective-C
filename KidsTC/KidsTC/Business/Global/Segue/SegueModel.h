@@ -35,6 +35,7 @@ typedef enum {
     SegueDestinationProductFreeDetail       = 25,    //免费商品详情
     SegueDestinationOrderTicketDetail       = 26,    //票务订单详情
     SegueDestinationOrderFreeDetail         = 27,    //免费订单详情
+    SegueDestinationOrderWholesaleDetail    = 28,    //拼团详情、拼团订单详情
 }SegueDestination;
 
 //H5

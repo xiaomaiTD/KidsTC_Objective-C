@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WholesaleSettlementData.h"
 
 extern CGFloat const kWholesaleSettlementToolBarH;
 
-@interface WholesaleSettlementToolBar : UIView
+@class WholesaleSettlementToolBar;
+@protocol WholesaleSettlementToolBarDelegate <NSObject>
+- (void)didClickWholesaleSettlementToolBar:(WholesaleSettlementToolBar *)toolBar;
+@end
 
+@interface WholesaleSettlementToolBar : UIView
+@property (nonatomic, strong) WholesaleSettlementData *data;
+@property (nonatomic, weak) id<WholesaleSettlementToolBarDelegate> delegate;
 @end

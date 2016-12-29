@@ -15,7 +15,13 @@
 #import "WholesaleOrderDetailPartnerModel.h"
 #import "WholesaleOrderDetailView.h"
 
-@interface WholesaleOrderDetailViewController ()
+#import "WebViewController.h"
+#import "WholesaleSettlementViewController.h"
+#import "WolesaleProductDetailViewController.h"
+#import "CommonShareViewController.h"
+#import "TabBarController.h"
+
+@interface WholesaleOrderDetailViewController ()<WholesaleOrderDetailViewDelegate>
 @property (nonatomic, strong) WholesaleOrderDetailView *orderDetailView;
 @property (nonatomic, strong) WholesaleOrderDetailData *data;
 @end
@@ -40,19 +46,16 @@
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     WholesaleOrderDetailView *orderDetailView = [[WholesaleOrderDetailView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    orderDetailView.delegate = self;
     [self.view addSubview:orderDetailView];
     self.orderDetailView = orderDetailView;
     
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(rightBarButtonItemAction:) andGetButton:^(UIButton *btn) {
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(share) andGetButton:^(UIButton *btn) {
         [btn setImageEdgeInsets:UIEdgeInsetsMake(3, 3, 3, 3)];
         [btn setImage:[UIImage imageNamed:@"wholesale_share"] forState:UIControlStateNormal];
     }];
     
     [self loadData];
-}
-
-- (void)rightBarButtonItemAction:(UIButton *)btn {
-    TCLog(@"");
 }
 
 - (void)loadData {
@@ -103,6 +106,97 @@
         if(showProgress)[TCProgressHUD dismissSVP];
         [self loadDataFailure:error];
     }];
+}
+
+#pragma mark - WholesaleOrderDetailViewDelegate
+
+- (void)wholesaleOrderDetailView:(WholesaleOrderDetailView *)view actionType:(WholesaleOrderDetailViewActionType)type value:(id)value {
+    
+    switch (type) {
+        case WholesaleOrderDetailViewActionTypeRule://拼团玩法
+        {
+            [self rule];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeBuy://去支付
+        {
+            [self buy];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeMySale://用户自己的拼团信息
+        {
+            [self mySale];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeProductHome://更多拼团
+        {
+            [self productHome];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeShare://分享
+        {
+            [self share];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeHome://首页
+        {
+            [self home];
+        }
+            break;
+    }
+}
+
+#pragma mark 拼团玩法
+
+- (void)rule {
+    NSString *url = self.data.fightGroupBase.flowUrl;
+    if ([url isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc] init];
+        controller.urlString = url;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
+#pragma mark 去支付
+
+- (void)buy {
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
+        controller.productId = self.productId;
+        controller.openGroupId = self.openGroupId;
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
+}
+
+#pragma mark 用户自己的拼团信息
+
+- (void)mySale {
+    long long openGroupSysNo = self.data.openGroupSysNo;
+    WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+    controller.productId = self.productId;
+    controller.openGroupId = [NSString stringWithFormat:@"%lld",openGroupSysNo];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark 更多拼团
+
+- (void)productHome {
+    WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
+    controller.productId = self.productId;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark 分享
+
+- (void)share {
+    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.fightGroupBase.shareObject sourceType:KTCShareServiceTypeWholesale];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+#pragma mark 首页
+
+- (void)home {
+    [[TabBarController shareTabBarController] selectIndex:0];
 }
 
 @end

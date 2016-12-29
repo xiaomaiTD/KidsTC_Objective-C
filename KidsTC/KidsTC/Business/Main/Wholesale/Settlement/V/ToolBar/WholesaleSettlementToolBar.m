@@ -11,6 +11,8 @@
 CGFloat const kWholesaleSettlementToolBarH = 49;
 
 @interface WholesaleSettlementToolBar ()
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
@@ -22,4 +24,17 @@ CGFloat const kWholesaleSettlementToolBarH = 49;
     self.HLineH.constant = LINE_H;
 }
 
+- (void)setData:(WholesaleSettlementData *)data {
+    _data = data;
+    self.hidden = data == nil;
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.fightGroupPrice];
+    NSString *title = data.isOpen?@"我要开团":@"我要参团";
+    [self.btn setTitle:title forState:UIControlStateNormal];
+}
+
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(didClickWholesaleSettlementToolBar:)]) {
+        [self.delegate didClickWholesaleSettlementToolBar:self];
+    }
+}
 @end

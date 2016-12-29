@@ -43,28 +43,33 @@
     
     NSString *rightBtnTitle = nil;
     BOOL btnEnable = NO;
+    WholesaleOrderDetailBaseCellActionType rightTag;
     if (!data.countDown || !data.countDown.showCountDown || data.countDown.countDownOver)
     {
-        rightBtnTitle = @"更多拼团";//跳到第一个商品详情页面
+        rightBtnTitle = @"更多组团";//跳到第一个商品详情页面
         btnEnable = YES;
+        rightTag = WholesaleOrderDetailBaseCellActionTypeProductHome;
     }else{
         switch (data.btnStatus) {
             case FightGroupBtnStatusShare:
             {
                 rightBtnTitle = @"邀请好友参团";//分享
                 btnEnable = YES;
+                rightTag = WholesaleOrderDetailBaseCellActionTypeShare;
             }
                 break;
             case FightGroupBtnStatusBuy:
             {
                 rightBtnTitle = @"我要参团";//去支付
                 btnEnable = YES;
+                rightTag = WholesaleOrderDetailBaseCellActionTypeBuy;
             }
                 break;
             case FightGroupBtnStatusMySale://用户自己的拼团信息
             {
                 rightBtnTitle = @"我的拼团";
                 btnEnable = YES;
+                rightTag = WholesaleOrderDetailBaseCellActionTypeMySale;
             }
                 break;
             case FightGroupBtnStatusFull://置为灰色不可点击
@@ -75,8 +80,9 @@
                 break;
             case FightGroupBtnStatusProductHome:
             {
-                rightBtnTitle = @"更多拼团";//跳到第一个商品详情页面
+                rightBtnTitle = @"更多组团";//跳到第一个商品详情页面
                 btnEnable = YES;
+                rightTag = WholesaleOrderDetailBaseCellActionTypeProductHome;
             }
                 break;
             default:
@@ -85,10 +91,13 @@
     }
     [self.btn setTitle:rightBtnTitle forState:UIControlStateNormal];
     self.btn.enabled = btnEnable;
+    self.btn.tag = rightTag;
 }
 
 - (IBAction)action:(UIButton *)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailBaseCell:actionType:value:)]) {
+        [self.delegate wholesaleOrderDetailBaseCell:self actionType:sender.tag value:nil];
+    }
 }
 
 @end

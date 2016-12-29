@@ -22,7 +22,9 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailBaseCell:actionType:value:)]) {
+        [self.delegate wholesaleOrderDetailBaseCell:self actionType:WholesaleOrderDetailBaseCellActionTypeRule value:nil];
+    }
 }
 
 

@@ -10,8 +10,11 @@
 #import "WholesaleOrderDetailData.h"
 
 typedef enum : NSUInteger {
-    WholesaleOrderDetailBaseCellActionType01,
-    WholesaleOrderDetailBaseCellActionType02,
+    WholesaleOrderDetailBaseCellActionTypeRule = 1,//拼团玩法
+    WholesaleOrderDetailBaseCellActionTypeBuy = 50,//去支付
+    WholesaleOrderDetailBaseCellActionTypeMySale,//用户自己的拼团信息
+    WholesaleOrderDetailBaseCellActionTypeProductHome,//更多拼团
+    WholesaleOrderDetailBaseCellActionTypeShare,//分享
 } WholesaleOrderDetailBaseCellActionType;
 @class WholesaleOrderDetailBaseCell;
 @protocol WholesaleOrderDetailBaseCellDelegate <NSObject>

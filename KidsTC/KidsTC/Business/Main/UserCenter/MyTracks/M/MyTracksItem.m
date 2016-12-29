@@ -8,6 +8,7 @@
 
 #import "MyTracksItem.h"
 #import "NSString+Category.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation MyTracksItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -40,6 +41,11 @@
                 _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:param];
             }
                 break;
+            case ProductDetailTypeWholesale:
+            {
+                
+            }
+                break;
             default:
             {
                 NSDictionary *param = @{@"pid":_productSysNo,
@@ -49,7 +55,7 @@
                 break;
         }
     }
-    
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productType productId:_productSysNo channelId:_channelId];
     return YES;
 }
 @end

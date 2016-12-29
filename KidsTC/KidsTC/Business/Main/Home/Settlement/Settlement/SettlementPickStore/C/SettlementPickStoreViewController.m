@@ -17,22 +17,13 @@
 
 @interface SettlementPickStoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, strong) SettlementPickStoreModel *model;
+
 @end
 static NSString *const ID = @"SettlementPickStoreViewCellID";
 @implementation SettlementPickStoreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (![_serveId isNotNull]) {
-        [[iToast makeText:@"商品编号为空"] show];
-        [self back];
-        return;
-    }
-    
-    self.pageId = 10505;
-    self.trackParams = @{@"pid":_serveId};
     
     self.navigationItem.title = @"选择门店";
     
@@ -49,14 +40,28 @@ static NSString *const ID = @"SettlementPickStoreViewCellID";
     self.tableView = tableView;
     [tableView registerNib:[UINib nibWithNibName:@"SettlementPickStoreViewCell" bundle:nil] forCellReuseIdentifier:ID];
     
-    WeakSelf(self)
-    RefreshHeader *mj_header = [RefreshHeader headerWithRefreshingBlock:^{
-        StrongSelf(self)
-        [self loadData];
-    }];
-    mj_header.automaticallyChangeAlpha = YES;
-    tableView.mj_header = mj_header;
-    [mj_header beginRefreshing];
+    if (self.stores.count>0) {
+        [self setSelectedStoreId:self.storeId stores:self.stores];
+        [self.tableView reloadData];
+    }else{
+        if (![_serveId isNotNull]) {
+            [[iToast makeText:@"商品编号为空"] show];
+            [self back];
+            return;
+        }
+        
+        self.pageId = 10505;
+        self.trackParams = @{@"pid":_serveId};
+        
+        WeakSelf(self)
+        RefreshHeader *mj_header = [RefreshHeader headerWithRefreshingBlock:^{
+            StrongSelf(self)
+            [self loadData];
+        }];
+        mj_header.automaticallyChangeAlpha = YES;
+        tableView.mj_header = mj_header;
+        [mj_header beginRefreshing];
+    }
 }
 
 - (void)loadData{
@@ -75,27 +80,27 @@ static NSString *const ID = @"SettlementPickStoreViewCellID";
 }
 
 - (void)loadDataSuccess:(SettlementPickStoreModel *)model {
-    [self setSelectedStoreId:self.storeId model:model];
-    self.model = model;
-    [self.tableView reloadData];
+    self.stores = model.data;
     [self.tableView.mj_header endRefreshing];
+    [self setSelectedStoreId:self.storeId stores:self.stores];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.model.data.count;
+    return self.stores.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SettlementPickStoreViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    cell.item = self.model.data[indexPath.row];
+    cell.item = self.stores[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SettlementPickStoreDataItem *store = self.model.data[indexPath.row];
-    [self setSelectedStoreId:store.storeId model:self.model];
+    SettlementPickStoreDataItem *store = self.stores[indexPath.row];
+    [self setSelectedStoreId:store.storeId stores:self.stores];
     [tableView reloadData];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self back];
@@ -105,8 +110,8 @@ static NSString *const ID = @"SettlementPickStoreViewCellID";
 
 #pragma mark - helpers
 
-- (void)setSelectedStoreId:(NSString *)storeId model:(SettlementPickStoreModel *)model {
-    [model.data enumerateObjectsUsingBlock:^(SettlementPickStoreDataItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+- (void)setSelectedStoreId:(NSString *)storeId stores:(NSArray<SettlementPickStoreDataItem *> *)stores {
+    [stores enumerateObjectsUsingBlock:^(SettlementPickStoreDataItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.selected = [obj.storeId isEqualToString:storeId];
     }];
 }

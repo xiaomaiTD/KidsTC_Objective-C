@@ -61,4 +61,14 @@
     if(imageAttStr.length>0) [mutableAttStr insertAttributedString:imageAttStr atIndex:0];
     return mutableAttStr;
 }
+
++ (instancetype)placeWith:(WholesaleSettlementPlace *)place {
+    ServiceSettlementPlace *obj = [ServiceSettlementPlace new];
+    obj.sysNo = place.sysNo;
+    obj.name = place.name;
+    obj.address = place.address;
+    obj.mapAddress = place.mapAddress;
+    obj.distance = place.distance;
+    return obj;
+}
 @end

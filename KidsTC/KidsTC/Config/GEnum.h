@@ -10,6 +10,7 @@ typedef enum : NSUInteger {
     ProductDetailTypeNormal = 1,//普通商详
     ProductDetailTypeTicket,//票务商详
     ProductDetailTypeFree,//免费商详
+    ProductDetailTypeWholesale,//拼团商详
 } ProductDetailType;//商详类型
 
 typedef enum : NSUInteger {

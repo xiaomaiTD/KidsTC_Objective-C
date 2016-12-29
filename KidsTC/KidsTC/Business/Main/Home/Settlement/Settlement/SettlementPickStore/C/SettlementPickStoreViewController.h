@@ -12,5 +12,6 @@
 @property (nonatomic, strong) NSString *serveId;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, strong) NSString *storeId;
+@property (nonatomic, strong) NSArray<SettlementPickStoreDataItem *> *stores;
 @property (nonatomic, copy) void (^pickStoreBlock)(SettlementPickStoreDataItem *store);
 @end

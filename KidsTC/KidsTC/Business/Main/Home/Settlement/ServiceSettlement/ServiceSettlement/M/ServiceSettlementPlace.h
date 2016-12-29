@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "WholesaleSettlementPlace.h"
+
 @interface ServiceSettlementPlace : NSObject
 @property (nonatomic, strong) NSString *sysNo;
 @property (nonatomic, strong) NSString *name;
@@ -16,4 +18,5 @@
 @property (nonatomic, strong) NSString *distance;
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *placeDesc;
++ (instancetype)placeWith:(WholesaleSettlementPlace *)place;
 @end

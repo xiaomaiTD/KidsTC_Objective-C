@@ -26,7 +26,7 @@ static NSString *const PhoneCellID = @"WholesaleSettlementPhoneCell";
 static NSString *const RuleCellID = @"WholesaleSettlementRuleCell";
 static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
 
-@interface WholesaleSettlementView ()<UITableViewDelegate,UITableViewDataSource>
+@interface WholesaleSettlementView ()<UITableViewDelegate,UITableViewDataSource,WholesaleSettlementBaseCellDelegate,WholesaleSettlementToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<WholesaleSettlementBaseCell *> *> *sections;
 
@@ -38,10 +38,22 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
         [self setupTableView];
         [self setupToolBar];
     }
     return self;
+}
+
+- (void)setData:(WholesaleSettlementData *)data {
+    _data = data;
+    self.toolBar.data = data;
+    [self setupSections];
+    [self.tableView reloadData];
+}
+
+- (void)reloadData {
+    [self.tableView reloadData];
 }
 
 #pragma mark - setupTableView
@@ -56,10 +68,6 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
     [self addSubview:tableView];
     self.tableView = tableView;
     [self registerCells];
-    
-    [self setupSections];
-    
-    [self.tableView reloadData];
 }
 
 - (void)registerCells {
@@ -83,20 +91,22 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
     NSMutableArray *section01 = [NSMutableArray array];
     WholesaleSettlementProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
     if (productInfoCell) [section01 addObject:productInfoCell];
-    WholesaleSettlementStoreInfoCell *storeInfoCell = [self cellWithID:StoreInfoCellID];
-    if (storeInfoCell) [section01 addObject:storeInfoCell];
+    if (self.data.placeType != PlaceTypeNone && (self.data.store || self.data.place.count>0)) {
+        WholesaleSettlementStoreInfoCell *storeInfoCell = [self cellWithID:StoreInfoCellID];
+        if (storeInfoCell) [section01 addObject:storeInfoCell];
+    }
     if(section01.count>0) [sections addObject:section01];
     
     NSMutableArray *section02 = [NSMutableArray array];
     WholesaleSettlementPayTypeCell *payTypeCell = [self cellWithID:PayTypeCellID];
     if (payTypeCell) [section02 addObject:payTypeCell];
     if(section02.count>0) [sections addObject:section02];
-    
-    NSMutableArray *section03 = [NSMutableArray array];
-    WholesaleSettlementPhoneCell *phoneCell = [self cellWithID:PhoneCellID];
-    if (phoneCell) [section03 addObject:phoneCell];
-    if(section03.count>0) [sections addObject:section03];
-    
+    /*
+     NSMutableArray *section03 = [NSMutableArray array];
+     WholesaleSettlementPhoneCell *phoneCell = [self cellWithID:PhoneCellID];
+     if (phoneCell) [section03 addObject:phoneCell];
+     if(section03.count>0) [sections addObject:section03];
+     */
     NSMutableArray *section04 = [NSMutableArray array];
     WholesaleSettlementRuleCell *ruleCell = [self cellWithID:RuleCellID];
     if (ruleCell) [section04 addObject:ruleCell];
@@ -107,7 +117,7 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
     self.sections = [NSArray arrayWithArray:sections];
 }
 
-#pragma mark - UITableViewDelegate,UITableViewDataSource
+#pragma mark UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
@@ -135,19 +145,39 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
         NSArray<WholesaleSettlementBaseCell *> *rows = self.sections[section];
         if (row<rows.count) {
             WholesaleSettlementBaseCell *cell = rows[row];
+            cell.delegate = self;
+            cell.data = self.data;
             return cell;
         }
     }
     return [tableView dequeueReusableCellWithIdentifier:BaseCellID];
 }
 
+#pragma mark WholesaleSettlementBaseCellDelegate
+
+- (void)wholesaleSettlementBaseCell:(WholesaleSettlementBaseCell *)cell actionType:(WholesaleSettlementBaseCellActionType)type value:(id)value {
+    if ([self.delegate respondsToSelector:@selector(wholesaleSettlementView:actionType:value:)]) {
+        [self.delegate wholesaleSettlementView:self actionType:(WholesaleSettlementViewActionType)type value:value];
+    }
+}
+
 #pragma mark - setupToolBar
 
 - (void)setupToolBar {
     WholesaleSettlementToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"WholesaleSettlementToolBar" owner:self options:nil].firstObject;
+    toolBar.hidden = YES;
+    toolBar.delegate = self;
     toolBar.frame = CGRectMake(0, SCREEN_HEIGHT-64-kWholesaleSettlementToolBarH, SCREEN_WIDTH, kWholesaleSettlementToolBarH);
     [self addSubview:toolBar];
     self.toolBar = toolBar;
+}
+
+#pragma mark WholesaleSettlementToolBarDelegate
+
+- (void)didClickWholesaleSettlementToolBar:(WholesaleSettlementToolBar *)toolBar {
+    if ([self.delegate respondsToSelector:@selector(wholesaleSettlementView:actionType:value:)]) {
+        [self.delegate wholesaleSettlementView:self actionType:WholesaleSettlementViewActionTypePlaceOrder value:nil];
+    }
 }
 
 @end

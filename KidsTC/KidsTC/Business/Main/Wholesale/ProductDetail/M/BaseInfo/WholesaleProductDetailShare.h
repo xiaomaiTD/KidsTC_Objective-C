@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSString *descption;
 @property (nonatomic, strong) NSString *img;
 @property (nonatomic, strong) NSString *temp;
+@property (nonatomic, strong) NSString *url;
 @end

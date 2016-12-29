@@ -12,11 +12,11 @@
 extern CGFloat const kWholesaleOrderDetailToolBarH;
 
 typedef enum : NSUInteger {
-    WholesaleOrderDetailToolBarActionTypeShare = 50,//分享
-    WholesaleOrderDetailToolBarActionTypeHome,//首页
-    WholesaleOrderDetailToolBarActionTypeBuy,//去支付
+    WholesaleOrderDetailToolBarActionTypeBuy = 50,//去支付
     WholesaleOrderDetailToolBarActionTypeMySale,//用户自己的拼团信息
     WholesaleOrderDetailToolBarActionTypeProductHome,//更多拼团
+    WholesaleOrderDetailToolBarActionTypeShare,//分享
+    WholesaleOrderDetailToolBarActionTypeHome,//首页
 } WholesaleOrderDetailToolBarActionType;
 
 @class WholesaleOrderDetailToolBar;
