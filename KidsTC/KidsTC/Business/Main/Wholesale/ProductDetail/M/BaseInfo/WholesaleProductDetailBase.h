@@ -46,6 +46,5 @@
 @property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *teamCounts;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailOtherProduct *> *otherProducts;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *otherProductCounts;
-//shareObj
 @property (nonatomic, strong) CommonShareObject *shareObject;
 @end

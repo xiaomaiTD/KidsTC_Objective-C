@@ -10,33 +10,11 @@
 #import "NSAttributedString+YYText.h"
 #import "NSString+Category.h"
 #import "Colours.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation TCHomeRecommendItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    NSString *pid = [NSString stringWithFormat:@"%@",_serveId];
-    NSString *cid = [NSString stringWithFormat:@"%@",_channelId];
-    switch (_productRedirect) {
-        case ProductDetailTypeNormal:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        default:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-    }
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productRedirect productId:_serveId channelId:_channelId openGroupId:nil];
     return YES;
 }
 - (TCHomeFloor *)conventToFloor {

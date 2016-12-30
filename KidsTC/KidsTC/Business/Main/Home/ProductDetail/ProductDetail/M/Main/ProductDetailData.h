@@ -28,6 +28,7 @@
 #import "ProductDetailFreeRelatedProduct.h"
 #import "ProductDetailCountDown.h"
 #import "ProductDetailPlace.h"
+#import "ProductDetailSecKillInfo.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -121,6 +122,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *commentNo;
 @property (nonatomic, assign) NSInteger commentRelationType;
 @property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) ProductDetailSecKillInfo *secKillInfo;
+@property (nonatomic, assign) BOOL isShowRemainCount;
+
 #pragma mark - selfDefine
 
 //type

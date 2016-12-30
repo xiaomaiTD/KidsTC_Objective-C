@@ -42,12 +42,12 @@
             case UIBarButtonPositionRight:
             {
                 self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-                insets = UIEdgeInsetsMake(0, -6, 0, 6);
+                insets = UIEdgeInsetsMake(0, -3, 0, 3);
             }
                 break;
             case UIBarButtonPositionRightCenter:
             {
-                insets = UIEdgeInsetsMake(0, -6, 0, 6);
+                insets = UIEdgeInsetsMake(0, -3, 0, 3);
             }
                 break;
                 

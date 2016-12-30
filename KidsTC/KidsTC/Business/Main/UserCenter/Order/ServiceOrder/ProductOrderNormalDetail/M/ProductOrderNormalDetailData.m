@@ -9,6 +9,7 @@
 #import "ProductOrderNormalDetailData.h"
 #import "NSString+Category.h"
 #import "Colours.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation ProductOrderNormalDetailData
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -115,14 +116,7 @@
 }
 
 - (void)setupSegueModel {
-    if ([_serveId isNotNull]) {
-        if (![_channelId isNotNull]) {
-            _channelId = @"0";
-        }
-        NSDictionary *param = @{@"pid":_serveId,
-                                @"cid":_channelId};
-        _productSegueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
-    }
+    _productSegueModel = [ProductDetailSegueParser segueModelWithProductType:ProductDetailTypeNormal productId:_serveId channelId:_channelId openGroupId:nil];
 }
 
 - (void)setupCanShowBtn {

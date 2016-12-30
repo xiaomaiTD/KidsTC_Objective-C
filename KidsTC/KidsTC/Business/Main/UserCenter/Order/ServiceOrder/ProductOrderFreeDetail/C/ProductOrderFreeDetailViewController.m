@@ -48,6 +48,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
+    self.pageId = 11009;
+    self.trackParams = @{@"orderId":_orderId};
+    
     ProductOrderFreeDetailView *detailView = [[ProductOrderFreeDetailView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     detailView.delegate = self;
     [self.view addSubview:detailView];

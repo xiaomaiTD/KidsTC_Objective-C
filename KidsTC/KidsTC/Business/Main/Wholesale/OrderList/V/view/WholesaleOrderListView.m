@@ -152,6 +152,17 @@ static NSString *const CellID = @"WholesaleOrderListCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger section = indexPath.section;
+    if (section<self.items.count) {
+        WholesaleOrderListItem *item = self.items[section];
+        if ([self.delegate respondsToSelector:@selector(wholesaleOrderListView:actionType:value:)]) {
+            [self.delegate wholesaleOrderListView:self actionType:WholesaleOrderListViewActionTypeSegue value:item.segueModel];
+        }
+    }
+}
+
 #pragma mark WholesaleOrderListCellDelegate
 
 - (void)wholesaleOrderListCell:(WholesaleOrderListCell *)cell actionType:(WholesaleOrderListCellActionType)type value:(id)value {

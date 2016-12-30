@@ -73,7 +73,21 @@
     _dataManager = [ServiceSettlementDataManager new];
     _dataManager.type = _type;
     
-    self.pageId = 10501;
+    
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            self.pageId = 10501;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            self.pageId = 10507;
+        }
+            break;
+        default:
+            break;
+    }
     
     self.navigationItem.title = @"结算";
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -157,6 +171,8 @@
             return nil;
         }
             break;
+            default:
+            break;
     }
     return nil;
 }
@@ -197,6 +213,7 @@
     if ([cid isNotNull]) {
         [params setValue:cid forKey:@"cid"];
     }
+    self.trackParams = [NSDictionary dictionaryWithDictionary:params];
 }
 
 - (void)loadShoppingCartFailure:(NSError *)error {

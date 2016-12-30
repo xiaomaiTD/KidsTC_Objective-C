@@ -48,15 +48,37 @@
 
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    CGFloat price = data.price.floatValue;
-    NSString *priceStr = [NSString stringWithFormat:@"%0.2f",price];
-    NSArray<NSString *> *prices = [priceStr componentsSeparatedByString:@"."];
-    if (prices.count==2) {
-        self.priceIntegerL.text = prices.firstObject;
-        self.smallNumberL.text = [NSString stringWithFormat:@".%@",prices.lastObject];
+    
+    switch (data.type) {
+        case ProductDetailTypeTicket:
+        {
+            CGFloat price = data.secKillInfo.price.floatValue;
+            NSString *priceStr = [NSString stringWithFormat:@"%0.2f",price];
+            NSArray<NSString *> *prices = [priceStr componentsSeparatedByString:@"."];
+            if (prices.count==2) {
+                self.priceIntegerL.text = prices.firstObject;
+                self.smallNumberL.text = [NSString stringWithFormat:@".%@",prices.lastObject];
+            }
+            self.secondKillTipL.text = data.priceSortName;
+            self.storePriceL.text = [NSString stringWithFormat:@"¥%0.2f",data.secKillInfo.platformPrice.floatValue];
+        }
+            break;
+            
+        default:
+        {
+            CGFloat price = data.price.floatValue;
+            NSString *priceStr = [NSString stringWithFormat:@"%0.2f",price];
+            NSArray<NSString *> *prices = [priceStr componentsSeparatedByString:@"."];
+            if (prices.count==2) {
+                self.priceIntegerL.text = prices.firstObject;
+                self.smallNumberL.text = [NSString stringWithFormat:@".%@",prices.lastObject];
+            }
+            self.secondKillTipL.text = data.priceSortName;
+            self.storePriceL.text = [NSString stringWithFormat:@"¥%0.2f",data.originalPrice.floatValue];
+        }
+            break;
     }
-    self.secondKillTipL.text = data.priceSortName;
-    self.storePriceL.text = [NSString stringWithFormat:@"¥%0.2f",data.originalPrice.floatValue];
+    
     self.timeLeftTipL.text = data.countDown.countDownDesc;
     [self countDown];
 }

@@ -63,8 +63,6 @@ typedef enum : NSUInteger {
 
 + (instancetype)defaultShareObjWithTitle:(NSString *)title url:(NSString *)urlString;
 
-+ (instancetype)shareObjectWithImage:(UIImage *)image;
-
 - (CommonShareObject *)copyObject;
 
 @end

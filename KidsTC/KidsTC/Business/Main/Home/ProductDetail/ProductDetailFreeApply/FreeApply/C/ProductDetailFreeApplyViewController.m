@@ -67,6 +67,18 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
+    self.pageId = 10508;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *pid = self.data.serveId;
+    if ([pid isNotNull]) {
+        [params setValue:pid forKey:@"pid"];
+    }
+    NSString *cid = self.data.chId;
+    if ([cid isNotNull]) {
+        [params setValue:cid forKey:@"cid"];
+    }
+    self.trackParams = [NSDictionary dictionaryWithDictionary:params];
+    
     ProductDetailFreeApplyView *applyView = [[ProductDetailFreeApplyView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     applyView.delegate = self;
     applyView.data = self.data;

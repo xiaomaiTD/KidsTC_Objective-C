@@ -80,6 +80,7 @@
     
     self.pageId = 10701;
     
+    self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self setupNaviItems];

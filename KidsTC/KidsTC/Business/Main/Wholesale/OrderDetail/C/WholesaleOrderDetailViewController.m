@@ -42,6 +42,10 @@
         return;
     }
     
+    self.pageId = 10407;
+    self.trackParams = @{@"pid":_productId,
+                         @"gid":_openGroupId};
+    
     self.navigationItem.title = @"拼团";
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;

@@ -17,45 +17,7 @@
     _storeName = [_storeName isNotNull]?_storeName:@"";
     _distanceDesc = [_distanceDesc isNotNull]?_distanceDesc:@"";
     _validTimeDesc = [_validTimeDesc isNotNull]?_validTimeDesc:@"";
-    if ([_productSysNo isNotNull]) {
-        if (![_channelId isNotNull]) _channelId = @"0";
-        switch (_productType) {
-            case ProductDetailTypeNormal:
-            {
-                NSDictionary *param = @{@"pid":_productSysNo,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
-            }
-                break;
-            case ProductDetailTypeTicket:
-            {
-                NSDictionary *param = @{@"pid":_productSysNo,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:param];
-            }
-                break;
-            case ProductDetailTypeFree:
-            {
-                NSDictionary *param = @{@"pid":_productSysNo,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:param];
-            }
-                break;
-            case ProductDetailTypeWholesale:
-            {
-                
-            }
-                break;
-            default:
-            {
-                NSDictionary *param = @{@"pid":_productSysNo,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
-            }
-                break;
-        }
-    }
-    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productType productId:_productSysNo channelId:_channelId];
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productType productId:_productSysNo channelId:_channelId openGroupId:nil];
     return YES;
 }
 @end

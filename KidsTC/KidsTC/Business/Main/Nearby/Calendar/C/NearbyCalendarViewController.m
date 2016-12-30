@@ -16,6 +16,7 @@
 #import "NSString+ZP.h"
 #import "ZPDateFormate.h"
 #import "SegueMaster.h"
+#import "BuryPointManager.h"
 
 #import "NearbyCalendarView.h"
 
@@ -32,6 +33,7 @@
     self.navigationItem.title = @"日历";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
+    self.pageId = 11201;
     self.time = [NSString zp_stringWithDate:[NSDate date] Format:DF_yMd];
     self.filterView.delegate = self;
 }
@@ -69,13 +71,14 @@
     }
 }
 
-#pragma mark ============选择分类============
+#pragma mark ============选择时间============
 
 - (void)didSelectDate:(id)value {
     if (![value isKindOfClass:[NSDate class]]) return;
     NSDate *date = value;
     self.time = [NSString zp_stringWithDate:date Format:DF_yMd];
     self.filterView.data = nil;
+    [BuryPointManager trackEvent:@"event_skip_nearby_time" actionId:21705 params:nil];
 }
 
 

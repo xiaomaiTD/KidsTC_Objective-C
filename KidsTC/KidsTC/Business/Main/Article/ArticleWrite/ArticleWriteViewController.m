@@ -156,6 +156,7 @@ typedef enum : NSUInteger {
 }
 
 - (void)dismiss {
+    [self.view endEditing:YES];
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"确定离开投稿嘛？" preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *makeSure = [UIAlertAction actionWithTitle:@"离开" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {

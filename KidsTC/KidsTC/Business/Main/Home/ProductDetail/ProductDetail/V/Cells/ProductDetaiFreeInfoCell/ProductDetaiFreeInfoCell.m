@@ -40,6 +40,8 @@
     self.contentL.attributedText = data.attServeName;
     self.collectionNumL.text = [NSString stringWithFormat:@"%zd人关注",data.favorCount];
     self.countL.text = [NSString stringWithFormat:@"%zd",data.remainCount];
+    self.countL.hidden = !data.isShowRemainCount;
+    self.countTipL.hidden = !data.isShowRemainCount;
     if (data.storePrice>0 && [data.originalPriceDesc isNotNull]) {
         self.storePriceL.hidden = NO;
         self.storePriceLine.hidden = NO;

@@ -7,6 +7,7 @@
 //
 
 #import "WholesaleOrderListItem.h"
+#import "NSString+Category.h"
 
 @implementation WholesaleOrderListItem
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -15,10 +16,14 @@
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     [self setupBtns];
     [self setupShareObj:dic];
+    if(_isRedirect)[self setupSegueModel];
     return YES;
 }
 - (void)setupShareObj:(NSDictionary *)data {
-    self.shareObject = [CommonShareObject shareObjectWithRawData:[data objectForKey:@"share"]];
+    self.shareObject = [CommonShareObject shareObjectWithTitle:_share.title
+                                                   description:_share.descption
+                                                 thumbImageUrl:[NSURL URLWithString:_share.img]
+                                                     urlString:_share.url];
     if (self.shareObject) {
         self.shareObject.identifier = _orderNo;
         self.shareObject.followingContent = @"【童成】";
@@ -37,5 +42,15 @@
         }
     }
     _orderBtns = [NSArray arrayWithArray:orderBtns];
+}
+- (void)setupSegueModel {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([_fightGroupSysNo isNotNull]) {
+        [params setObject:_fightGroupSysNo forKey:@"pid"];
+    }
+    if ([_fightGroupOpenGroupSysNo isNotNull]) {
+        [params setObject:_fightGroupOpenGroupSysNo forKey:@"gid"];
+    }
+    _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderWholesaleDetail paramRawData:params];
 }
 @end

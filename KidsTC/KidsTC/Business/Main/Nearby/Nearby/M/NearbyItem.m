@@ -8,44 +8,12 @@
 
 #import "NearbyItem.h"
 #import "NSString+Category.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation NearbyItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     _bigImgRatio = _bigImgRatio>0?_bigImgRatio:0.6;
-    if ([_serveId isNotNull]) {
-        if (![_channelId isNotNull]) _channelId = @"0";
-        switch (_productSearchType) {
-            case ProductDetailTypeNormal:
-            {
-                NSDictionary *param = @{@"pid":_serveId,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
-            }
-                break;
-            case ProductDetailTypeTicket:
-            {
-                NSDictionary *param = @{@"pid":_serveId,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:param];
-            }
-                break;
-            case ProductDetailTypeFree:
-            {
-                NSDictionary *param = @{@"pid":_serveId,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:param];
-            }
-                break;
-            default:
-            {
-                NSDictionary *param = @{@"pid":_serveId,
-                                        @"cid":_channelId};
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:param];
-            }
-                break;
-        }
-    }
-    
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productSearchType productId:_serveId channelId:_channelId openGroupId:nil];
     return YES;
 }
 @end

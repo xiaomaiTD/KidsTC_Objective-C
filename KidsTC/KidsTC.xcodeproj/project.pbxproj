@@ -1196,6 +1196,7 @@
 		EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7264B11D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m */; };
 		EC7264B41D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */; };
 		EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC72C2371DAB3C10003DF2CB /* GameKit.framework */; };
+		EC739D8B1E161B6A0027E91E /* ProductDetailSecKillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */; };
 		EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */; };
 		EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */; };
 		EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A41DC65FC6006518DE /* ServiceDetailConfigModel.m */; };
@@ -3721,6 +3722,8 @@
 		EC7264B11D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleHomeUserArticleCollectionViewCell.m; sourceTree = "<group>"; };
 		EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleHomeUserArticleCollectionViewCell.xib; sourceTree = "<group>"; };
 		EC72C2371DAB3C10003DF2CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		EC739D891E161B6A0027E91E /* ProductDetailSecKillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSecKillInfo.h; sourceTree = "<group>"; };
+		EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSecKillInfo.m; sourceTree = "<group>"; };
 		EC76B89F1DC65FC6006518DE /* ServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailViewController.h; sourceTree = "<group>"; };
 		EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailViewController.m; sourceTree = "<group>"; };
 		EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDetailViewController.xib; sourceTree = "<group>"; };
@@ -8399,7 +8402,6 @@
 		EC4FBD661D77CEE300BBD050 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				EC9775371E0D65A100980C4A /* WholesaleDetail */,
 				EC0043381DE5567F0042B701 /* Nursery */,
 				ECFFC6401DC363C1002DBFB9 /* ProductDetail */,
 				ECF5D0CB1DB8CE3900A1B268 /* Home */,
@@ -11676,13 +11678,6 @@
 			path = AreaAndAge;
 			sourceTree = "<group>";
 		};
-		EC9775371E0D65A100980C4A /* WholesaleDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WholesaleDetail;
-			sourceTree = "<group>";
-		};
 		EC9775391E10F90500980C4A /* Wholesale */ = {
 			isa = PBXGroup;
 			children = (
@@ -13447,6 +13442,8 @@
 				EC5505BD1E011DB000180A2C /* ProductDetailCountDown.m */,
 				EC5505BF1E01700700180A2C /* ProductDetailPlace.h */,
 				EC5505C01E01700700180A2C /* ProductDetailPlace.m */,
+				EC739D891E161B6A0027E91E /* ProductDetailSecKillInfo.h */,
+				EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -14920,6 +14917,7 @@
 				EC9776541E128CF500980C4A /* WolesaleProductDetailModel.m in Sources */,
 				EC45601A1DFECA0C000BD822 /* ProductOrderNormalDetailConsumeCode.m in Sources */,
 				EC3CE0A61DF167DB005729E2 /* NearbyView.m in Sources */,
+				EC739D8B1E161B6A0027E91E /* ProductDetailSecKillInfo.m in Sources */,
 				ECFFC6FB1DC363C1002DBFB9 /* ProductDetailShare.m in Sources */,
 				EC9774901E0A8F6300980C4A /* SettlementResultNewBaseCell.m in Sources */,
 				EC4FC2541D77CEE400BBD050 /* MapLocateViewController.m in Sources */,

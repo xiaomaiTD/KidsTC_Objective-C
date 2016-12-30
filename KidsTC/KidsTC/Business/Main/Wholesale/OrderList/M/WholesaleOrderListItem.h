@@ -11,6 +11,7 @@
 #import "WholesaleOrderListCountDown.h"
 #import "WholesaleProductDetailShare.h"
 #import "CommonShareObject.h"
+#import "SegueModel.h"
 
 @interface WholesaleOrderListItem : NSObject
 @property (nonatomic, strong) NSString *orderNo;
@@ -19,10 +20,6 @@
 @property (nonatomic, strong) NSString *fightGroupOpenGroupSysNo;
 @property (nonatomic, strong) NSString *price;
 @property (nonatomic, strong) NSString *count;
-@property (nonatomic, assign) BOOL isShare;
-@property (nonatomic, assign) BOOL isInvite;
-@property (nonatomic, assign) BOOL isConnectService;
-@property (nonatomic, assign) BOOL isPay;
 @property (nonatomic, assign) BOOL isRedirect;
 @property (nonatomic, strong) NSString *statusDesc;
 @property (nonatomic, strong) WholesaleProductDetailShare *share;
@@ -36,6 +33,7 @@
 @property (nonatomic, strong) NSArray<NSNumber *> *btns;
 @property (nonatomic, assign) WholesaleOrderListBtnType defaultBtn;
 //selfDefine
+@property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, strong) NSArray<WholesaleOrderListBtn *> *orderBtns;
 @property (nonatomic, strong) CommonShareObject *shareObject;
 @end

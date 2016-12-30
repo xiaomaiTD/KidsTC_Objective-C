@@ -151,11 +151,15 @@
         }
             break;
     }
+    if (self.webViewShareCallBackType == WebViewShareCallBackTypeClickBtn) {
+        KTCShareServiceChannel channel = type + 1;
+        if (self.webViewCallBack) self.webViewCallBack(channel,YES);
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (void)shareLink:(CommonShareType)type obj:(CommonShareObject *)object {
+    KTCShareServiceChannel channel = type + 1;
     [[CommonShareService sharedService] startThirdPartyShareWithType:type object:object succeed:^{
         [[iToast makeText:@"分享成功"] show];
         NSString *name = @"";
@@ -164,17 +168,24 @@
         }else{
             name = object.title;
         }
-        [[KTCShareService service] sendShareSucceedFeedbackToServerWithIdentifier:object.identifier channel:type + 1 type:self.sourceType title:name];
+        if (self.webViewShareCallBackType == WebViewShareCallBackTypeDidHasResult) {
+            if (self.webViewCallBack) self.webViewCallBack(channel,YES);
+        }
+        [[KTCShareService service] sendShareSucceedFeedbackToServerWithIdentifier:object.identifier channel:channel type:self.sourceType title:name];
     } failure:^(NSError *error) {
         NSString *errMsg = [error.userInfo objectForKey:kErrMsgKey];
         if ([errMsg length] == 0) {
             errMsg = @"分享失败";
         }
         [[iToast makeText:errMsg] show];
+        if (self.webViewShareCallBackType == WebViewShareCallBackTypeDidHasResult) {
+            if (self.webViewCallBack) self.webViewCallBack(channel,NO);
+        }
     }];
 }
 
 - (void)shareImage:(CommonShareType)type obj:(CommonShareObject *)object {
+    KTCShareServiceChannel channel = type + 1;
     [[CommonShareService sharedService] startThirdPartyShareImageWithType:type object:object succeed:^{
         [[iToast makeText:@"分享成功"] show];
         NSString *name = @"";
@@ -183,13 +194,19 @@
         }else{
             name = object.title;
         }
-        [[KTCShareService service] sendShareSucceedFeedbackToServerWithIdentifier:object.identifier channel:type + 1 type:self.sourceType title:name];
+        if (self.webViewShareCallBackType == WebViewShareCallBackTypeDidHasResult) {
+            if (self.webViewCallBack) self.webViewCallBack(channel,YES);
+        }
+        [[KTCShareService service] sendShareSucceedFeedbackToServerWithIdentifier:object.identifier channel:channel type:self.sourceType title:name];
     } failure:^(NSError *error) {
         NSString *errMsg = [error.userInfo objectForKey:kErrMsgKey];
         if ([errMsg length] == 0) {
             errMsg = @"分享失败";
         }
         [[iToast makeText:errMsg] show];
+        if (self.webViewShareCallBackType == WebViewShareCallBackTypeDidHasResult) {
+            if (self.webViewCallBack) self.webViewCallBack(channel,NO);
+        }
     }];
 }
 

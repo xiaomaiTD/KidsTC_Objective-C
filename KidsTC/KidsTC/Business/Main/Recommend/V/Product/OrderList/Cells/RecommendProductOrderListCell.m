@@ -8,6 +8,7 @@
 
 #import "RecommendProductOrderListCell.h"
 #import "UIImageView+WebCache.h"
+#import "NSString+Category.h"
 
 @interface RecommendProductOrderListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -26,7 +27,8 @@
     _product = product;
     [self.icon sd_setImageWithURL:[NSURL URLWithString:product.picUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = product.productName;
-    self.distanceL.text = [NSString stringWithFormat:@"距离%@",product.distanceDesc];
+    NSString *distance = [product.distanceDesc isNotNull]?[NSString stringWithFormat:@"距离%@",product.distanceDesc]:nil;
+    self.distanceL.text = distance;
     
     switch (product.productType) {
         case ProductDetailTypeFree:
@@ -34,6 +36,7 @@
             self.freeL.text = @"免费名额";
             self.freeNumL.text = product.freeProductTotalNum;
             self.signL.text = [NSString stringWithFormat:@"已有%@人报名",product.freeProductSaleNum];
+            self.priceL.text = @" ";
             self.priceL.hidden = YES;
             self.signL.hidden = NO;
         }
@@ -41,7 +44,8 @@
         default:
         {
             self.freeL.text = @"限时特卖";
-            self.freeNumL.text = nil;
+            self.freeNumL.text = @" ";
+            self.signL.text = @" ";
             self.priceL.text = product.priceStr;
             self.priceL.hidden = NO;
             self.signL.hidden = YES;

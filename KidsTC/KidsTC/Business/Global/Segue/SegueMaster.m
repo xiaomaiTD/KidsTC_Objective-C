@@ -285,18 +285,21 @@
         {
             NSString *pid = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
             id gidID = model.segueParam[@"gid"];
-            if (![gidID respondsToSelector:@selector(longLongValue)]) return nil;
-            long long gid = [gidID longLongValue];
-            if (gid>0) {
-                WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
-                controller.productId = pid;
-                controller.openGroupId = [NSString stringWithFormat:@"%lld",gid];
-                toController = controller;
-            }else{
+            if (gidID && [gidID respondsToSelector:@selector(longLongValue)]) {
+                long long gid = [gidID longLongValue];
+                if (gid>0) {
+                    WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+                    controller.productId = pid;
+                    controller.openGroupId = [NSString stringWithFormat:@"%lld",gid];
+                    toController = controller;
+                }
+            }
+            if (!toController) {
                 WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
                 controller.productId = pid;
                 toController = controller;
             }
+            
         }
             break;
     }

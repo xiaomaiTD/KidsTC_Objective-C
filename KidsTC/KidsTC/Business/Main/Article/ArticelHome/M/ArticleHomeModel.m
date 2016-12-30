@@ -11,6 +11,7 @@
 #import "NSString+Category.h"
 #import "NSObject+YYModel.h"
 #import "Colours.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation ArticleHomeBanner
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -61,33 +62,7 @@
 
 @implementation ArticleHomeProduct
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    
-    NSString *pid = [_pid isNotNull]?_pid:@"";
-    NSString *cid = [_cid isNotNull]?_cid:@"";
-    
-    switch (_productRedirect) {
-        case ProductDetailTypeNormal:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductTicketDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationProductFreeDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-        default:
-        {
-            _segueModel = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:@{@"pid":pid,@"cid":cid}];
-        }
-            break;
-    }
-    
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productRedirect productId:_pid channelId:_cid openGroupId:nil];
     return YES;
 }
 @end

@@ -41,6 +41,8 @@
 #import "CommentTableViewController.h"
 #import "FlashServiceOrderListViewController.h"
 #import "ProductOrderFreeListViewController.h"
+#import "WholesaleOrderDetailViewController.h"
+#import "WolesaleProductDetailViewController.h"
 
 static NSString *const Prefix         = @"hook::";            //前缀
 typedef enum : NSUInteger {
@@ -66,6 +68,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak  ) UIButton                *backWebBtn;
 @property (nonatomic, weak  ) UIButton                *closeBtn;
 @property (nonatomic, strong) CommonShareObject       *shareObject;
+@property (nonatomic, assign) WebViewShareCallBackType webViewShareCallBackType;
+@property (nonatomic, strong) NSString *shareCallBack;
 
 @property (nonatomic, assign) WebViewUploadImgType    uploadImgType;
 @property (nonatomic, strong) NSString                *callBackJS;
@@ -74,6 +78,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) KTCCommentManager       *commentManager;
 @property (nonatomic, strong) AUIKeyboardAdhesiveView *keyboardAdhesiveView;
 @property (nonatomic, strong) NSDictionary            *commentParam;
+
 @end
 
 @implementation WebViewController
@@ -82,6 +87,8 @@ typedef enum : NSUInteger {
     [super viewDidLoad];
     
     [self checkValiteAndBury];
+    
+    self.naviTheme = NaviThemeWihte;
     
     [self setupWebView];
     
@@ -106,9 +113,9 @@ typedef enum : NSUInteger {
     
     /*
      if (![[urlStr lowercaseString] hasPrefix:@"http"]) {
-     [[iToast makeText:@"无效的网页地址"] show];
-     [self back];
-     return;
+        [[iToast makeText:@"无效的网页地址"] show];
+        [self back];
+        return;
      }
      */
     
@@ -150,18 +157,19 @@ typedef enum : NSUInteger {
     if(!self.navigationController) return;
     
     UIBarButtonItem *backBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(webBack) andGetButton:^(UIButton *btn) {
-        [btn setImage:[UIImage imageNamed:@"navigation_back_n"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"navi_back_black"] forState:UIControlStateNormal];
         btn.hidden = YES;
         self.backWebBtn = btn;
     }];
     UIBarButtonItem *closeBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionLeft target:self action:@selector(webClose) andGetButton:^(UIButton *btn) {
+        [btn setImageEdgeInsets:UIEdgeInsetsMake(4, 4, 4, 4)];
         [btn setImage:[UIImage imageNamed:@"navigation_close"] forState:UIControlStateNormal];
         btn.hidden = YES;
         self.closeBtn = btn;
     }];
     self.navigationItem.leftBarButtonItems = @[backBarButtonItem,closeBarButtonItem];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigation_more"] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonItemAction)];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"ProductDetail_navi_more" highImageName:nil postion:UIBarButtonPositionRightCenter target:self action:@selector(rightBarButtonItemAction)];
 }
 
 - (void)webBack {
@@ -177,8 +185,8 @@ typedef enum : NSUInteger {
 }
 
 - (void)rightBarButtonItemAction{
-    CGFloat rightMargin = 30;
-    if ([UIScreen mainScreen].bounds.size.width>400) rightMargin = 34;
+    CGFloat rightMargin = 25;
+    if ([UIScreen mainScreen].bounds.size.width>400) rightMargin = 29;
     CGFloat barBtnX = CGRectGetWidth([[UIScreen mainScreen] bounds]) - rightMargin;
     CGFloat barBtnY = 46;
     ZPPopoverItem *popoverItem1 = [ZPPopoverItem makeZpMenuItemWithImageName:@"menu_share" title:@"分享"];
@@ -408,6 +416,28 @@ typedef enum : NSUInteger {
         [[iToast makeText:@"闪购详情关联id为空"] show];
     }
 }
+#pragma mark 拼团详情
+- (void)fightGroupDetail:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    ViewController *toController = nil;
+    NSString *pid = [NSString stringWithFormat:@"%@", dic[@"pid"]];
+    id gidID = dic[@"gid"];
+    if (gidID && [gidID respondsToSelector:@selector(longLongValue)]) {
+        long long gid = [gidID longLongValue];
+        if (gid>0) {
+            WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+            controller.productId = pid;
+            controller.openGroupId = [NSString stringWithFormat:@"%lld",gid];
+            toController = controller;
+        }
+    }
+    if (!toController) {
+        WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
+        controller.productId = pid;
+        toController = controller;
+    }
+    if(toController)[self makeSegue:toController];
+}
 #pragma mark 订单详情
 - (void)orderDetail:(NSString *)param {
     /*
@@ -528,34 +558,10 @@ typedef enum : NSUInteger {
 }
 #pragma mark 优惠券列表
 - (void)couponList:(NSString *)param {
-    NSRange range = [param rangeOfString:@"status="];
-    NSString *status = [param substringFromIndex:(range.location+range.length)];
-    if ([status isNotNull]) {
-#warning TODO..
-//        CouponListViewTag tag = (CouponListViewTag)[status integerValue];
-//        switch (tag) {
-//            case CouponListViewTagUnused:
-//            case CouponListViewTagHasUsed:
-//            case CouponListViewTagHasOverTime:
-//            {
-//                CouponListViewController *controller = [[CouponListViewController alloc] initWithCouponListViewTag:tag];
-//                [self makeSegue:controller];
-//                
-//                NSDictionary *params = @{@"url":self.urlString};
-//                [BuryPointManager trackEvent:@"event_skip_coupon" actionId:30007 params:params];
-//            }
-//                break;
-//            default:
-//            {
-//                [[iToast makeText:@"所选优惠券状态不正确"] show];
-//            }
-//                break;
-//        }
-        CouponListViewController *controller = [[CouponListViewController alloc] init];
-        [self makeSegue:controller];
-    }else{
-        [[iToast makeText:@"所选优惠券状态为空"] show];
-    }
+    //NSRange range = [param rangeOfString:@"status="];
+    //NSString *status = [param substringFromIndex:(range.location+range.length)];
+    CouponListViewController *controller = [[CouponListViewController alloc] init];
+    [self makeSegue:controller];
 }
 #pragma mark 检查登录
 - (void)login:(NSString *)param {
@@ -750,6 +756,12 @@ typedef enum : NSUInteger {
 
 #pragma mark actions helpers
 
+- (void)executeJS:(NSString *)js {
+    TCLog(@"callBackJS:%@",js);
+    NSString *jsMyAlert = [NSString stringWithFormat:@"setTimeout(function(){%@}, 1);",js];
+    [self.webView stringByEvaluatingJavaScriptFromString:jsMyAlert];
+}
+
 - (CommonShareObject *)shareObjWithParam:(NSString *)paramString {
     NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] init];
     NSArray *paramsArray = [paramString componentsSeparatedByString:@";"];
@@ -758,6 +770,8 @@ typedef enum : NSUInteger {
         NSRange descRange  = [string rangeOfString:@"desc="];
         NSRange picRange   = [string rangeOfString:@"pic="];
         NSRange urlRange   = [string rangeOfString:@"url="];
+        NSRange callBackRange = [string rangeOfString:@"callBack="];
+        NSRange callBackTypeRange = [string rangeOfString:@"callBackType="];
         if (titleRange.location != NSNotFound) {
             NSString *title = [string substringFromIndex:titleRange.length];
             [tempDic setObject:title forKey:@"title"];
@@ -783,6 +797,14 @@ typedef enum : NSUInteger {
             }
             continue;
         }
+        if (callBackRange.location != NSNotFound) {
+            self.shareCallBack = [string substringFromIndex:callBackRange.length];
+            continue;
+        }
+        if (callBackTypeRange.location != NSNotFound) {
+            self.webViewShareCallBackType = [[string substringFromIndex:callBackTypeRange.length] integerValue];
+            continue;
+        }
     }
     NSString *title          = [tempDic objectForKey:@"title"];
     NSString *desc           = [tempDic objectForKey:@"desc"];
@@ -797,6 +819,19 @@ typedef enum : NSUInteger {
 
 - (void)shareWithObj:(CommonShareObject *)obj {
     CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:obj sourceType:KTCShareServiceTypeNews];
+    controller.webViewShareCallBackType = self.webViewShareCallBackType;
+    controller.webViewCallBack = ^(KTCShareServiceChannel channel, BOOL success){
+        if (!success)return;
+        if([self.shareCallBack isNotNull]) {
+            NSString *channelStr = [NSString stringWithFormat:@"\"%zd\"",channel];
+            NSMutableString *callBackJS = [[NSMutableString alloc]initWithString:self.shareCallBack];
+            if ([self.shareCallBack containsString:@"()"]) {
+                NSRange range = [self.shareCallBack rangeOfString:@"("];
+                [callBackJS insertString:channelStr atIndex:range.location+1];
+            }
+            [self executeJS:callBackJS];
+        }
+    };
     [self presentViewController:controller animated:YES completion:nil];
 }
 
@@ -889,10 +924,8 @@ typedef enum : NSUInteger {
             NSRange range = [self.callBackJS rangeOfString:@"("];
             [callBackJS insertString:allImgUrlString atIndex:range.location+1];
         }
-        TCLog(@"callBackJS:%@",callBackJS);
-        [self.webView stringByEvaluatingJavaScriptFromString:callBackJS];
+        [self executeJS:callBackJS];
     }
-    self.callBackJS = nil;
     [TCProgressHUD dismissSVP];
 }
 

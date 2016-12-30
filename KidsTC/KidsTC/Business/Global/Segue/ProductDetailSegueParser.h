@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "SegueModel.h"
 @interface ProductDetailSegueParser : NSObject
-+ (SegueModel *)segueModelWithProductType:(ProductDetailType)productType productId:(NSString *)productId channelId:(NSString *)channelId;
++ (SegueModel *)segueModelWithProductType:(ProductDetailType)productType
+                                productId:(NSString *)productId
+                                channelId:(NSString *)channelId
+                              openGroupId:(NSString *)openGroupId;
 @end

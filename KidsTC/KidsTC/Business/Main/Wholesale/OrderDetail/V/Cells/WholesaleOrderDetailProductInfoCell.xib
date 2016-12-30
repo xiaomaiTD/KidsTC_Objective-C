@@ -16,12 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EIw-yw-eYf" id="T5D-Xq-8Pc">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="174"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4V-82-9hG">
                         <rect key="frame" x="22" y="12" width="100" height="150"/>
-                        <color key="backgroundColor" red="0.95294117649999999" green="0.40784313729999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="150" id="MTP-fI-4vW"/>
                             <constraint firstAttribute="width" secondItem="S4V-82-9hG" secondAttribute="height" multiplier="2:3" id="P4T-AL-365"/>
@@ -31,8 +30,8 @@
                         <rect key="frame" x="154" y="12" width="144" height="148"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20人团|8月22日送达，5支向日葵19.9仅限江浙沪包邮送货额…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-Mm-XfR">
-                                <rect key="frame" x="0.0" y="0.0" width="144" height="50.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="0.0" y="0.0" width="144" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -103,22 +102,22 @@
                                 <rect key="frame" x="0.0" y="113" width="144" height="35"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fq-kw-TOA">
-                                        <rect key="frame" x="29" y="13" width="86" height="17"/>
+                                        <rect key="frame" x="27" y="12" width="90.5" height="19.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-4E-Rcp">
-                                                <rect key="frame" x="0.0" y="3" width="8" height="14"/>
+                                                <rect key="frame" x="0.0" y="5.5" width="8" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" red="0.95294117649999999" green="0.40784313729999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19.90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apf-YI-r0Q">
-                                                <rect key="frame" x="10" y="0.0" width="38" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="10" y="0.0" width="42.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起／组" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7q-05-bIu">
-                                                <rect key="frame" x="52" y="3" width="34" height="14"/>
+                                                <rect key="frame" x="56.5" y="5.5" width="34" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <nil key="highlightedColor"/>
@@ -212,7 +211,7 @@
                 <outlet property="teamPriceTipL" destination="7wy-yy-5YM" id="FYE-bg-T6g"/>
                 <outlet property="teamPriceView" destination="D3h-nb-qag" id="Qr6-MB-mv2"/>
             </connections>
-            <point key="canvasLocation" x="-107" y="-6"/>
+            <point key="canvasLocation" x="-262" y="-30"/>
         </tableViewCell>
     </objects>
     <resources>

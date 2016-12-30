@@ -59,6 +59,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
+    self.pageId = 11008;
+    
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"ProductOrderList_message" highImageName:@"ProductOrderList_message" postion:UIBarButtonPositionRight target:self action:@selector(message)];
     
     ProductOrderFreeListView *listView = [[ProductOrderFreeListView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];

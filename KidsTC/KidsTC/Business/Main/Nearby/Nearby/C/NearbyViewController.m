@@ -13,6 +13,7 @@
 #import "KTCFavouriteManager.h"
 #import "NSString+Category.h"
 #import "GuideManager.h"
+#import "BuryPointManager.h"
 
 #import "NearbyModel.h"
 #import "NearbyView.h"
@@ -57,6 +58,7 @@
     
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.pageId = 11200;
     
     NearbyView *nearbyView = [[NearbyView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     nearbyView.delegate = self;
@@ -79,6 +81,7 @@
         {
             MapLocateViewController *controller = [[MapLocateViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
+            [BuryPointManager trackEvent:@"event_skip_nearby_location" actionId:21700 params:nil];
         }
             break;
             
@@ -87,6 +90,7 @@
             SearchViewController *controller = [[SearchViewController alloc]init];
             NavigationController *navi = [[NavigationController alloc] initWithRootViewController:controller];
             [self presentViewController:navi animated:NO completion:nil];
+            [BuryPointManager trackEvent:@"event_skip_nearby_search" actionId:21701 params:nil];
         }
             break;
     }
@@ -152,6 +156,7 @@
 - (void)calendar:(id)value {
     NearbyCalendarViewController *controller = [[NearbyCalendarViewController alloc] initWithNibName:@"NearbyCalendarViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_nearby_calendar" actionId:21702 params:nil];
 }
 
 #pragma mark ============加载数据============
@@ -241,6 +246,16 @@
     } else {
         [[KTCFavouriteManager sharedManager] addFavouriteWithIdentifier:serveId type:type succeed:nil failure:nil];
     }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *pid = serveId;
+    if ([pid isNotNull]) {
+        [params setValue:pid forKey:@"pid"];
+    }
+    NSString *cid = item.channelId;
+    if ([cid isNotNull]) {
+        [params setValue:cid forKey:@"cid"];
+    }
+    [BuryPointManager trackEvent:@"event_click_nearby_favor" actionId:21703 params:params];
 }
 
 #pragma mark ============选择分类============

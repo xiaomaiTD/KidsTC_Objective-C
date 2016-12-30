@@ -93,10 +93,6 @@
     }
     if (![_channelId isNotNull])_channelId=@"0";
     
-    self.pageId = 10401;
-    self.trackParams = @{@"pid":_productId,
-                         @"cid":_channelId};
-    
     self.navigationItem.title = @"服务详情";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
@@ -104,20 +100,27 @@
     switch (_type) {
         case ProductDetailTypeNormal:
         {
+            self.pageId = 10401;
             
         }
             break;
         case ProductDetailTypeTicket:
         {
             self.naviColor = [UIColor clearColor];
+            self.pageId = 10404;
         }
             break;
         case ProductDetailTypeFree:
         {
-            
+            self.pageId = 10405;
         }
             break;
+            default:
+            break;
     }
+    
+    self.trackParams = @{@"pid":_productId,
+                         @"cid":_channelId};
     
     _dataManager = [ProductDetailDataManager new];
     _dataManager.type = _type;

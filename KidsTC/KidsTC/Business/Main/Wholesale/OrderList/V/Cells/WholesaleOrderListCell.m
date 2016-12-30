@@ -63,7 +63,7 @@
     
     [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.productImgae] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.productNameL.text = item.productName;
-    self.priceL.text = item.price;
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",item.price];
     self.countL.text = [NSString stringWithFormat:@"x%@",item.count];
     self.timeL.text = item.orderTime;
     

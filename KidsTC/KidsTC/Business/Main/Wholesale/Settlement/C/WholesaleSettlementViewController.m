@@ -21,6 +21,7 @@
 #import "WebViewController.h"
 #import "SettlementResultNewViewController.h"
 #import "NavigationController.h"
+#import "WholesaleOrderDetailViewController.h"
 
 @interface WholesaleSettlementViewController ()<WholesaleSettlementViewDelegate>
 @property (nonatomic, strong) WholesaleSettlementView *settlementView;
@@ -201,7 +202,6 @@
         [self settlementPaid:YES orderId:orderId];
         [[iToast makeText:@"结算成功"] show];
     } failure:^(NSError *error) {
-        [self settlementPaid:NO orderId:orderId];
         NSString *errMsg = @"结算失败";
         NSString *text = error.userInfo[@"kErrMsgKey"];
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
@@ -219,11 +219,9 @@
 
 #pragma mark - 结算结果
 - (void)settlementPaid:(BOOL)paid orderId:(NSString *)orderId{
-    SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc]initWithNibName:@"SettlementResultNewViewController" bundle:nil];
-    controller.paid = paid;
-    controller.orderId = orderId;
-    controller.productType = ProductDetailTypeWholesale;
-    controller.type = SettlementResultTypeService;
+    WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc]init];
+    controller.productId = self.productId;
+    controller.openGroupId = self.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:NO];

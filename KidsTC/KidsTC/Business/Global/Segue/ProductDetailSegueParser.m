@@ -10,34 +10,46 @@
 #import "NSString+Category.h"
 
 @implementation ProductDetailSegueParser
-+ (SegueModel *)segueModelWithProductType:(ProductDetailType)productType productId:(NSString *)productId channelId:(NSString *)channelId{
++ (SegueModel *)segueModelWithProductType:(ProductDetailType)productType
+                                productId:(NSString *)productId
+                                channelId:(NSString *)channelId
+                              openGroupId:(NSString *)openGroupId
+{
+    if (![productId isNotNull]) return nil;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:productId forKey:@"pid"];
     SegueDestination dest = SegueDestinationNone;
     switch (productType) {
         case ProductDetailTypeTicket:
         {
             dest = SegueDestinationProductTicketDetail;
+            if (![channelId isNotNull]) channelId = @"0";
+            [params setObject:channelId forKey:@"cid"];
         }
             break;
         case ProductDetailTypeFree:
         {
             dest = SegueDestinationProductFreeDetail;
+            if (![channelId isNotNull]) channelId = @"0";
+            [params setObject:channelId forKey:@"cid"];
         }
             break;
         case ProductDetailTypeWholesale:
         {
             dest = SegueDestinationOrderWholesaleDetail;
+            if ([openGroupId isNotNull]) {
+                [params setObject:openGroupId forKey:@"gid"];
+            }
         }
             break;
         default:
         {
             dest = SegueDestinationServiceDetail;
+            if (![channelId isNotNull]) channelId = @"0";
+            [params setObject:channelId forKey:@"cid"];
         }
             break;
     }
-    if (![productId isNotNull]) return nil;
-    if (![channelId isNotNull]) channelId = @"0";
-    NSDictionary *param = @{@"pid":productId,
-                            @"cid":channelId};
-    return [SegueModel modelWithDestination:dest paramRawData:param];
+    return [SegueModel modelWithDestination:dest paramRawData:params];
 }
 @end

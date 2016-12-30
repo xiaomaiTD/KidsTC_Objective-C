@@ -15,6 +15,7 @@
 #import "SegueMaster.h"
 #import "ArticleColumnViewController.h"
 #import "NSString+Category.h"
+#import "ProductDetailSegueParser.h"
 
 @interface FavourateViewController () <FavourateViewDelegate>
 @property (weak, nonatomic) IBOutlet FavourateView *favourateView;
@@ -164,10 +165,8 @@
  *  @param targetItem
  */
 - (void)articleCell:(ArticleCell *)cell didClickOnProductsItem:(AIProductsItem *)targetItem{
-    NSString *pid = [targetItem.pid isNotNull]?targetItem.pid:@"";
-    NSDictionary *params = @{@"pid":pid};
-    SegueModel *segue = [SegueModel modelWithDestination:SegueDestinationServiceDetail paramRawData:params];
-    [SegueMaster makeSegueWithModel:segue fromController:self];
+    SegueModel *segueModel = [ProductDetailSegueParser segueModelWithProductType:ProductDetailTypeNormal productId:targetItem.pid channelId:nil openGroupId:nil];
+    [SegueMaster makeSegueWithModel:segueModel fromController:self];
 }
 
 /**

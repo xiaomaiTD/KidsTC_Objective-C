@@ -545,7 +545,7 @@
     //info
     NSMutableArray *section00 = [NSMutableArray array];
     [section00 addObject:self.ticketInfoCell];
-    if (_data.priceSort == PriceSortSecKill) {
+    if (_data.priceSort == PriceSortSecKill && _data.secKillInfo) {
         [section00 addObject:self.secondKillCell];
     }
     if (_data.attSynopsis.length>0) {
