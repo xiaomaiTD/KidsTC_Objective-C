@@ -38,11 +38,6 @@
 #import "NurseryViewController.h"
 
 
-#import "WolesaleProductDetailViewController.h"
-#import "WholesaleSettlementViewController.h"
-#import "WholesaleOrderDetailViewController.h"
-
-
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
 @property (nonatomic, strong) AccountCenterModel *model;
 @property (nonatomic, strong) AccountCenterView *accountCenterView;
@@ -50,18 +45,18 @@
 
 @implementation AccountCenterViewController
 
-- (void)loadView {
-    AccountCenterView *accountCenterView = [[AccountCenterView alloc] init];
-    accountCenterView.delegate = self;
-    self.view = accountCenterView;
-    self.accountCenterView = accountCenterView;
-    accountCenterView.model = nil;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.pageId = 10901;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    AccountCenterView *accountCenterView = [[AccountCenterView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    accountCenterView.delegate = self;
+    [self.view addSubview:accountCenterView];
+    self.accountCenterView = accountCenterView;
+    accountCenterView.model = nil;
+    
     [self loadRecommend:YES];
 }
 
@@ -82,6 +77,9 @@
 - (void)loadDataSuccess:(AccountCenterModel *)model {
     self.model = model;
     self.accountCenterView.model = model;
+    if (!model.data.userInfo) {
+        [[User shareUser] logoutManually:NO withSuccess:nil failure:nil];
+    }
 }
 
 - (void)loadDataFailure:(NSError *)error {
@@ -296,7 +294,7 @@
         case AccountCenterViewActionTypeMyFlash:
         {
             toController = [[WholesaleOrderListViewController alloc]init];
-            //[BuryPointManager trackEvent:@"event_skip_usr_flashlist" actionId:21511 params:nil];
+            [BuryPointManager trackEvent:@"event_skip_usr_fightgroup" actionId:21515 params:nil];
         }
             break;
         case AccountCenterViewActionTypeMyAppoinment:
@@ -318,37 +316,28 @@
             break;
         case AccountCenterViewActionTypeBringUpHeadline:
         {
-            //toController = [[ArticleWeChatTableViewController alloc] init];
-            //[BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
-            WolesaleProductDetailViewController *controller = [[WolesaleProductDetailViewController alloc] init];
-            controller.productId = @"1";
-            toController = controller;
+            toController = [[ArticleWeChatTableViewController alloc] init];
+            [BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
         }
             break;
         case AccountCenterViewActionTypeCustomerServices:
         {
-            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
-            */
-            toController = [[WholesaleSettlementViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeOpinion:
         {
-            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
-            */
-            toController = [[WholesaleOrderDetailViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeSegue:

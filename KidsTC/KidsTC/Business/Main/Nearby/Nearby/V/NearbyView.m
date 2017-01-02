@@ -9,6 +9,7 @@
 #import "NearbyView.h"
 #import "Colours.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #import "NearbyCategoryToolBar.h"
 #import "NearbyViewFlowLayout.h"
@@ -115,6 +116,14 @@ static NSString *CellID = @"NearbyCollectionViewCell";
         CGPoint contentOffset = self.collectionView.contentOffset;
         contentOffset.x = scrollView_w*index;
         self.collectionView.contentOffset = contentOffset;
+        
+        NearbyData *data = self.datas[index];
+        NSString *stValue = [NSString stringWithFormat:@"%@",data.stValue];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        if ([stValue isNotNull]) {
+            [params setObject:stValue forKey:@"type"];
+        }
+        [BuryPointManager trackEvent:@"event_change_nearby_category" actionId:21704 params:params];
     }
 }
 

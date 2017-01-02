@@ -116,7 +116,7 @@
         [btn setImage:self.headBtnPlaceHolder forState:UIControlStateNormal];
         btn.layer.cornerRadius = CGRectGetWidth(btn.frame)*0.5;
         btn.layer.masksToBounds = YES;
-        btn.layer.borderColor = [UIColor whiteColor].CGColor;
+        btn.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         btn.layer.borderWidth = LINE_H;
         self.headBtn = btn;
     }];

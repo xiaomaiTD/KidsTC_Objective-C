@@ -48,12 +48,18 @@ singleM(User)
 
 - (NSString *)uid {
     if (!_uid) {
+        [self getUserLocalSave];
+    }
+    if (!_uid) {
         _uid = @"";
     }
     return _uid;
 }
 
 - (NSString *)skey {
+    if (!_skey) {
+        [self getUserLocalSave];
+    }
     if (!_skey) {
         _skey = @"";
     }
@@ -67,9 +73,10 @@ singleM(User)
         _uid = uid;
         _skey = skey;
         _hasLogin = YES;
+        [[CookieManager shareCookieManager] setCookieWithName:CookieKey_uid andValue:_uid];
+        [[CookieManager shareCookieManager] setCookieWithName:CookieKey_skey andValue:_skey];
         [[NotificationService shareNotificationService] bindAccount:YES];
         [self userLocalSave];
-        [[CookieManager shareCookieManager] setCookies];
     }else{
         [self logoutLocal];
     }
@@ -96,7 +103,8 @@ singleM(User)
         [Request startWithName:@"LOGIN_IS_LOGIN" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
             TCLog(@"checkLoginStatusFromServer - 服务器端已经登录");
             _hasLogin = YES;
-            [[CookieManager shareCookieManager] setCookies];
+            [[CookieManager shareCookieManager] setCookieWithName:CookieKey_uid andValue:_uid];
+            [[CookieManager shareCookieManager] setCookieWithName:CookieKey_skey andValue:_skey];
             [self getUserPopulation];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             if (error.code == -1000) {
@@ -107,14 +115,14 @@ singleM(User)
             }
         }];
     }else{
+        //[self logoutLocal];
         TCLog(@"checkLoginStatusFromServer - 本地没有存储uid和skey，不用检查是否登录");
-        [self logoutLocal];
     }
 }
 
 - (void)logoutManually:(BOOL)manually withSuccess:(void (^)())success failure:(void (^)(NSError *error))failure{
     if (manually) {//手动
-        if ([_uid isNotNull] && [_skey isNotNull]) {
+        if ([_uid isNotNull] && [_skey isNotNull] && _hasLogin) {
             NSDictionary *param = @{@"uid":_uid,
                                     @"skey":_skey};
             [Request startWithName:@"LOGIN_LOGINOUT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
@@ -153,6 +161,7 @@ singleM(User)
     if ([_uid isNotNull]) {
         _skey = [SAMKeychain passwordForService:KEYCHAIN_SERVICE_UIDSKEY account:_uid];
     }
+    _hasLogin = ([_uid isNotNull] && [_skey isNotNull]);
 }
 
 - (void)deleteLocalSave{
@@ -170,7 +179,8 @@ singleM(User)
     _uid = nil;
     _skey = nil;
     _hasLogin = NO;
-    [[CookieManager shareCookieManager] setCookies];
+    [[CookieManager shareCookieManager] deleteCookieWithName:CookieKey_uid];
+    [[CookieManager shareCookieManager] deleteCookieWithName:CookieKey_skey];
 }
 
 #pragma mark - ===================ROLE===================

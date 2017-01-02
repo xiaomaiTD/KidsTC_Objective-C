@@ -90,7 +90,7 @@
             [self.contentView dealWithUI:0 isRecommend:NO];
         }];
     }else{
-        [[RecommendDataManager shareRecommendDataManager] loadRecommendContentRefresh:YES pageCount:5 successBlock:^(NSArray<ArticleHomeItem *> *data) {
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendContentRefresh:refresh pageCount:5 successBlock:^(NSArray<ArticleHomeItem *> *data) {
             [self.contentView dealWithUI:data.count isRecommend:YES];
         } failureBlock:^(NSError *error) {
             [self.contentView dealWithUI:0 isRecommend:YES];

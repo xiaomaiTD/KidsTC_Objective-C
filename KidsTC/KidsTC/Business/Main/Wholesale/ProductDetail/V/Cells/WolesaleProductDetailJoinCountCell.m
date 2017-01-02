@@ -12,6 +12,7 @@
 static NSString *const CellID = @"WolesaleProductDetailJoinCountCollectionCell";
 
 static CGFloat const CellWidth = 74;
+static CGFloat const CellMargin = 12;
 
 @interface WolesaleProductDetailJoinCountCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -30,7 +31,7 @@ static CGFloat const CellWidth = 74;
     _counts = counts;
     NSInteger count = _counts.count;
     if (count>0) {
-        self.margin = (SCREEN_WIDTH - count * CellWidth)/(count+1);
+        self.margin = (SCREEN_WIDTH - count * CellWidth - CellMargin*(count-1))*0.5;
         if (self.margin<15) self.margin = 15;
     }
     [_counts enumerateObjectsUsingBlock:^(WholesaleProductDetailCount *obj, NSUInteger idx, BOOL *stop) {
@@ -48,10 +49,10 @@ static CGFloat const CellWidth = 74;
     return UIEdgeInsetsMake(0, self.margin, 0, self.margin);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return self.margin;
+    return CellMargin;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return self.margin;
+    return CellMargin;
 }
 
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
@@ -72,8 +73,9 @@ static CGFloat const CellWidth = 74;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     if (row<self.counts.count) {
-        self.selectedItem.selected = NO;
         WholesaleProductDetailCount *item = self.counts[row];
+        if (item == self.selectedItem) return;
+        self.selectedItem.selected = NO;
         item.selected = YES;
         self.selectedItem = item;
         [collectionView reloadData];

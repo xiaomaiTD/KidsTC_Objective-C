@@ -36,19 +36,15 @@ static NSString *const FooterID = @"RecommendStoreCollectStoreFooter";
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendStoreCollectStoreFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FooterID];
 }
 
-- (void)setStores:(NSArray<RecommendStore *> *)stores {
-    _stores = stores;
-    self.hidden = _stores.count<1;
-    [self.tableView reloadData];
-}
-
 - (void)reloadData {
     self.stores = [[RecommendDataManager shareRecommendDataManager] recommendStore];
+    [self.tableView reloadData];
+    self.hidden = _stores.count<1;
 }
 
 - (CGFloat)contentHeight {
     __block CGFloat height = 39.5;
-    [self.stores enumerateObjectsUsingBlock:^(RecommendStore * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.stores enumerateObjectsUsingBlock:^(RecommendStore *obj, NSUInteger idx, BOOL *stop) {
         height += 81+61+obj.productLst.count*122;
     }];
     return self.stores.count>0? height:0.001;

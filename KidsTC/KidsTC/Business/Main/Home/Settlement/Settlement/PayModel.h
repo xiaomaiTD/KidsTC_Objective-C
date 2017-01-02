@@ -30,6 +30,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *orderNo;
 @property (nonatomic, assign) PayType  payType;
 @property (nonatomic, strong) PayInfo  *payInfo;
+//fightGroupId[拼团专享字段]
+@property (nonatomic, strong) NSString *openGroupId;
 @end
 
 @interface PayModel : NSObject

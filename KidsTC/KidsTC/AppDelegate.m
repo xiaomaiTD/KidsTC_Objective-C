@@ -17,6 +17,7 @@
 #import "BuryPointManager.h"
 #import <JSPatchPlatform/JSPatch.h>
 #import "NotificationService.h"
+#import <Bugly/Bugly.h>
 
 #import "User.h"
 #import "CookieManager.h"
@@ -106,6 +107,8 @@
     [self setupUserAgent];
     
     [self JSPatchRemote:YES];
+    
+    [Bugly startWithAppId:@"900055771"];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
     

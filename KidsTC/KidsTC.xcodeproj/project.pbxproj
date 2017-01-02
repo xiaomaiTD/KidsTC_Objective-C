@@ -1197,6 +1197,17 @@
 		EC7264B41D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */; };
 		EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC72C2371DAB3C10003DF2CB /* GameKit.framework */; };
 		EC739D8B1E161B6A0027E91E /* ProductDetailSecKillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */; };
+		EC739D8F1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D8D1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.m */; };
+		EC739D901E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739D8E1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.xib */; };
+		EC739D941E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D921E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m */; };
+		EC739D951E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739D931E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.xib */; };
+		EC739D9C1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D971E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.m */; };
+		EC739D9D1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739D981E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.xib */; };
+		EC739D9E1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D9A1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m */; };
+		EC739D9F1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739D9B1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib */; };
+		EC739DA31E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DA11E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.m */; };
+		EC739DA41E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739DA21E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.xib */; };
+		EC739DA71E1A7E8B0027E91E /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC739DA61E1A7E8B0027E91E /* Bugly.framework */; };
 		EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */; };
 		EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */; };
 		EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A41DC65FC6006518DE /* ServiceDetailConfigModel.m */; };
@@ -3724,6 +3735,22 @@
 		EC72C2371DAB3C10003DF2CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EC739D891E161B6A0027E91E /* ProductDetailSecKillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSecKillInfo.h; sourceTree = "<group>"; };
 		EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSecKillInfo.m; sourceTree = "<group>"; };
+		EC739D8C1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailJoinCountCell.h; sourceTree = "<group>"; };
+		EC739D8D1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailJoinCountCell.m; sourceTree = "<group>"; };
+		EC739D8E1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailJoinCountCell.xib; sourceTree = "<group>"; };
+		EC739D911E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailJoinCountCollectionCell.h; sourceTree = "<group>"; };
+		EC739D921E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailJoinCountCollectionCell.m; sourceTree = "<group>"; };
+		EC739D931E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailJoinCountCollectionCell.xib; sourceTree = "<group>"; };
+		EC739D961E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailBuyNoticeElementCell.h; sourceTree = "<group>"; };
+		EC739D971E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailBuyNoticeElementCell.m; sourceTree = "<group>"; };
+		EC739D981E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailBuyNoticeElementCell.xib; sourceTree = "<group>"; };
+		EC739D991E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailBuyNoticeEmptyCell.h; sourceTree = "<group>"; };
+		EC739D9A1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailBuyNoticeEmptyCell.m; sourceTree = "<group>"; };
+		EC739D9B1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailBuyNoticeEmptyCell.xib; sourceTree = "<group>"; };
+		EC739DA01E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailTitleCell.h; sourceTree = "<group>"; };
+		EC739DA11E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailTitleCell.m; sourceTree = "<group>"; };
+		EC739DA21E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailTitleCell.xib; sourceTree = "<group>"; };
+		EC739DA61E1A7E8B0027E91E /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		EC76B89F1DC65FC6006518DE /* ServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailViewController.h; sourceTree = "<group>"; };
 		EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailViewController.m; sourceTree = "<group>"; };
 		EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDetailViewController.xib; sourceTree = "<group>"; };
@@ -4618,6 +4645,7 @@
 				EC4FC5A01D77CEEF00BBD050 /* AlipaySDK.framework in Frameworks */,
 				EC4FC5A41D77CEEF00BBD050 /* libWeChatSDK.a in Frameworks */,
 				7D40FF20A143CED91220CB23 /* Pods_KidsTC.framework in Frameworks */,
+				EC739DA71E1A7E8B0027E91E /* Bugly.framework in Frameworks */,
 				ECBCCEAE1DBDE1F7001B9571 /* iflyMSC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10357,6 +10385,7 @@
 		EC4FC4F41D77CEEE00BBD050 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				EC739DA51E1A7E8B0027E91E /* Bugly */,
 				EC8163B91DB0D9560079865A /* iflyMSC */,
 				EC4FC4F51D77CEEE00BBD050 /* AliSDK */,
 				EC4FC4FD1D77CEEE00BBD050 /* TencentOpenAPI */,
@@ -11141,6 +11170,14 @@
 				EC7264351D7D27BC00AA739B /* ArticleColumnHeader.xib */,
 			);
 			path = V;
+			sourceTree = "<group>";
+		};
+		EC739DA51E1A7E8B0027E91E /* Bugly */ = {
+			isa = PBXGroup;
+			children = (
+				EC739DA61E1A7E8B0027E91E /* Bugly.framework */,
+			);
+			path = Bugly;
 			sourceTree = "<group>";
 		};
 		EC76B89D1DC65FC6006518DE /* ServiceDetail */ = {
@@ -11967,6 +12004,12 @@
 				EC9775EA1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.h */,
 				EC9775EB1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.m */,
 				EC9775EC1E12404300980C4A /* WholesaleOrderDetailJoinMemberCell.xib */,
+				EC739D8C1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.h */,
+				EC739D8D1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.m */,
+				EC739D8E1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.xib */,
+				EC739D911E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.h */,
+				EC739D921E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m */,
+				EC739D931E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.xib */,
 				EC9775EF1E12405B00980C4A /* WholesaleOrderDetailRuleCell.h */,
 				EC9775F01E12405B00980C4A /* WholesaleOrderDetailRuleCell.m */,
 				EC9775F11E12405B00980C4A /* WholesaleOrderDetailRuleCell.xib */,
@@ -11975,6 +12018,15 @@
 				EC9775F61E12406C00980C4A /* WholesaleOrderDetailProgressCell.xib */,
 				ECAD70F71E13E04F00B45416 /* WholesaleOrderDetailProgressItemView.h */,
 				ECAD70F81E13E04F00B45416 /* WholesaleOrderDetailProgressItemView.m */,
+				EC739D991E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.h */,
+				EC739D9A1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m */,
+				EC739D9B1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib */,
+				EC739D961E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.h */,
+				EC739D971E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.m */,
+				EC739D981E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.xib */,
+				EC739DA01E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.h */,
+				EC739DA11E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.m */,
+				EC739DA21E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.xib */,
 				ECAD71091E13FCD800B45416 /* WholesaleOrderDetailWebTipCell.h */,
 				ECAD710A1E13FCD800B45416 /* WholesaleOrderDetailWebTipCell.m */,
 				ECAD710B1E13FCD800B45416 /* WholesaleOrderDetailWebTipCell.xib */,
@@ -13644,6 +13696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC97746B1E0A6D8200980C4A /* RecommendProductSettlementResultCell.xib in Resources */,
+				EC739D9F1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib in Resources */,
 				EC97760C1E1255FE00980C4A /* WolesaleProductDetailOtherPorductCell.xib in Resources */,
 				EC30ABC91DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoTotalCell.xib in Resources */,
 				EC4FC5A91D77CEEF00BBD050 /* SheetCell.xib in Resources */,
@@ -13731,6 +13784,7 @@
 				EC0043451DE559110042B701 /* NurseryViewController.xib in Resources */,
 				EC486F3B1DF7C726005CA365 /* SearchFactorFilterCategoryView.xib in Resources */,
 				EC7FBC0E1DC4D074007B326C /* ProductDetailAddNewConsultViewController.xib in Resources */,
+				EC739DA41E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.xib in Resources */,
 				EC4FC4331D77CEE400BBD050 /* CommentFoundingViewController.xib in Resources */,
 				EC97744E1E09696B00980C4A /* RecommendProductCollectProductCell.xib in Resources */,
 				EC5CDD3E1DE538F200F95C6F /* ProductDetailFreeApplySelectBirthViewController.xib in Resources */,
@@ -13799,6 +13853,7 @@
 				EC4FC34F1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.xib in Resources */,
 				EC0044D91DE7F4E40042B701 /* ProductDetailTwoColumnWebViewCell.xib in Resources */,
 				ECA59C071DED61A600B3B1F7 /* SearchFactorAreaView.xib in Resources */,
+				EC739D901E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.xib in Resources */,
 				EC0044271DE6B8970042B701 /* ProductDetailStandardCell.xib in Resources */,
 				EC30ABCD1DFF9CD3007380B0 /* ProductOrderTicketDetailProductCell.xib in Resources */,
 				EC4FC4381D77CEE400BBD050 /* MyCommentListViewController.xib in Resources */,
@@ -13874,6 +13929,7 @@
 				EC4E278F1DF0134E00622711 /* NearbyCollectionViewCell.xib in Resources */,
 				EC97745B1E0A392C00980C4A /* RecommendProductOrderListCell.xib in Resources */,
 				EC4FC3E01D77CEE400BBD050 /* ParentingStrategyFilterView.xib in Resources */,
+				EC739D9D1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.xib in Resources */,
 				EC9775A51E1158AE00980C4A /* WholesaleSettlementProductInfoCell.xib in Resources */,
 				EC13B4F11DD1F3430040F760 /* AccountCenterBannersCell.xib in Resources */,
 				EC4FC5D41D77CEEF00BBD050 /* UIBarButtonItemGrid.png in Resources */,
@@ -14011,6 +14067,7 @@
 				EC30ABF11DFFFD2F007380B0 /* ProductDetaiFreeJoinCell.xib in Resources */,
 				EC4C60CB1DF667C000830126 /* SearchHistoryCell.xib in Resources */,
 				EC97755F1E10FAB300980C4A /* WolesaleProductDetailJoinTipCell.xib in Resources */,
+				EC739D951E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.xib in Resources */,
 				ECA95A781DDB2A3E00990AAE /* CouponListUsedCell.xib in Resources */,
 				EC0044111DE6B8970042B701 /* ProductDetailCommentMoreCell.xib in Resources */,
 				EC43A2D61DC8D5BB00A99638 /* HomeRefreshGuideView.xib in Resources */,
@@ -14290,6 +14347,7 @@
 				EC4FC3FC1D77CEE400BBD050 /* AddressDataManager.m in Sources */,
 				ECA95A721DDB2A2600990AAE /* CouponListUnusedCell.m in Sources */,
 				ECAA49381D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.m in Sources */,
+				EC739D9C1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeElementCell.m in Sources */,
 				EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */,
 				EC84C3C11DE3392900A42515 /* ProductDetailEnrollInfo.m in Sources */,
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
@@ -14380,6 +14438,7 @@
 				ECFFC7401DC363C1002DBFB9 /* ProductDetailCalendarViewController.m in Sources */,
 				EC9774CE1E0B85CD00980C4A /* RecommendStoreCollectStoreView.m in Sources */,
 				EC4E27901DF0134E00622711 /* NearbyTableViewCell.m in Sources */,
+				EC739DA31E1A5DC70027E91E /* WholesaleOrderDetailTitleCell.m in Sources */,
 				EC31CF681DA9E2D100C49E29 /* UIAlertView+Category.m in Sources */,
 				EC4C60E11DF68F4700830126 /* SearchSectionItem.m in Sources */,
 				EC0044481DE6B8980042B701 /* ProductDetaiFreeToolBar.m in Sources */,
@@ -14461,6 +14520,7 @@
 				EC4FC2A91D77CEE400BBD050 /* ActivityFilterModel.m in Sources */,
 				EC154D4D1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.m in Sources */,
 				EC8486151DDF293D0039E9D3 /* ProductDetailTicketSelectSeatModel.m in Sources */,
+				EC739D9E1E1A5B220027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m in Sources */,
 				EC4FC3DA1D77CEE400BBD050 /* StrategyTagColumnTableViewController.m in Sources */,
 				EC9776531E128CF500980C4A /* WolesaleProductDetailData.m in Sources */,
 				EC5CDD361DE538F200F95C6F /* ProductDetailFreeApplyUserPhoneCell.m in Sources */,
@@ -15267,6 +15327,7 @@
 				EC4FC43E1D77CEE400BBD050 /* CommentScoreConfigModel.m in Sources */,
 				EC4FC5E71D77CEEF00BBD050 /* MBProgressHUD.m in Sources */,
 				EC0044181DE6B8970042B701 /* ProductDetailCouponCell.m in Sources */,
+				EC739D8F1E1A24680027E91E /* WholesaleOrderDetailJoinCountCell.m in Sources */,
 				EC4FC3671D77CEE400BBD050 /* ServiceSettlementBaseCell.m in Sources */,
 				EC4FC4921D77CEE400BBD050 /* FlashServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC8486221DDF40B40039E9D3 /* ProductDetailTicketSelectSeatCollectionViewNumFooter.m in Sources */,
@@ -15380,6 +15441,7 @@
 				EC97764D1E128CF500980C4A /* WholesaleProductDetailBase.m in Sources */,
 				EC4FC21E1D77CEE400BBD050 /* UIImage+Category.m in Sources */,
 				EC4FC22F1D77CEE400BBD050 /* SharePaidInfoView.m in Sources */,
+				EC739D941E1A24E90027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m in Sources */,
 				EC4FC2781D77CEE400BBD050 /* Theme.m in Sources */,
 				EC4FC40A1D77CEE400BBD050 /* UserAddressManageViewController.m in Sources */,
 				ECA2BC121DF2A12600EAE79C /* ProductOrderListItem.m in Sources */,
@@ -15571,6 +15633,7 @@
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/AliSDK",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/TencentOpenAPI",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/iflyMSC",
+					"$(PROJECT_DIR)/KidsTC/Lib/SDK/Bugly",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -15607,6 +15670,7 @@
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/AliSDK",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/TencentOpenAPI",
 					"$(PROJECT_DIR)/KidsTC/Lib/SDK/iflyMSC",
+					"$(PROJECT_DIR)/KidsTC/Lib/SDK/Bugly",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -8,6 +8,7 @@
 
 #import "WolesaleProductDetailToolBar.h"
 #import "NSString+Category.h"
+#import "UIButton+Category.h"
 
 CGFloat const kWolesaleProductDetailToolBarH = 77;
 
@@ -31,9 +32,13 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.backgroundColor = [UIColor clearColor];
+    
     self.shareLineH.constant = LINE_H;
     self.joinBtn.backgroundColor = [UIColor colorFromHexString:@"FF9C9C"];
-    self.saleBtn.backgroundColor = [UIColor colorFromHexString:@"F36863"];
+    
+    [self.saleBtn setBackgroundColor:[UIColor colorFromHexString:@"F36863"] forState:UIControlStateNormal];
+    [self.saleBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     
     self.countDownLineH.constant = LINE_H;
     [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
@@ -72,8 +77,10 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
     if ([str isNotNull]) {
         _countDownView.hidden = NO;
         _countDownL.text = str;
+        self.saleBtn.enabled = YES;
     }else{
         _countDownView.hidden = YES;
+        self.saleBtn.enabled = NO;
         //[NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
         if (countDown.showCountDown && !countDown.countDownOver) {
             countDown.countDownOver = YES;

@@ -8,6 +8,7 @@
 
 #import "WolesaleProductDetailJoinTeamCell.h"
 #import "UIImageView+WebCache.h"
+#import "NSString+Category.h"
 
 @interface WolesaleProductDetailJoinTeamCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -18,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *actionTipL;
 @property (weak, nonatomic) IBOutlet UIImageView *successLog;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @end
 
 @implementation WolesaleProductDetailJoinTeamCell
@@ -39,6 +41,8 @@
     self.infoView.layer.borderColor = [UIColor colorFromHexString:@"F36863"].CGColor;
     
     self.HLineH.constant = LINE_H;
+    
+    [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
 }
 
 - (void)setTeam:(WholesaleProductDetailTeam *)team {
@@ -49,12 +53,31 @@
     self.tipL.text = [NSString stringWithFormat:@"还差%zd人成团",team.surplusCount];
     self.tipL.hidden = team.surplusCount<=0;
     self.successLog.hidden = team.surplusCount>0;
-    
+    self.actionTipL.text = team.surplusCount>0?@"去参团":@"已成团";
+    [self countDown];
 }
 
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailBaseCell:actionType:value:)]) {
         [self.delegate wolesaleProductDetailBaseCell:self actionType:WolesaleProductDetailBaseCellActionTypeJoinOther value:_team];
     }
+}
+
+- (void)countDown {
+    NSString *str = self.team.countDownValueString;
+    if ([str isNotNull] && self.team.surplusCount>0) {
+        _countDownL.hidden = NO;
+        _countDownL.text = str;
+    }else{
+        _countDownL.hidden = YES;
+        //[NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
+        if (!self.team.countDownOver) {
+            self.team.countDownOver = YES;
+        }
+    }
+}
+
+- (void)dealloc{
+    [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
 }
 @end

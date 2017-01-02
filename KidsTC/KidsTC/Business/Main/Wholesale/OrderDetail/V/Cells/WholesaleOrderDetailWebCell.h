@@ -9,5 +9,5 @@
 #import "WholesaleOrderDetailBaseCell.h"
 
 @interface WholesaleOrderDetailWebCell : WholesaleOrderDetailBaseCell
-
+@property (nonatomic, strong) NSString *webUrl;
 @end

@@ -26,7 +26,11 @@
     self.webView.scrollView.scrollsToTop = NO;
     self.webView.scrollView.showsVerticalScrollIndicator = NO;
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.webView.scrollView.contentSize.height != self.frame.size.height) {
+            [self webLoadFinish];
+        }
+    });
 }
 
 - (void)setData:(WolesaleProductDetailData *)data {

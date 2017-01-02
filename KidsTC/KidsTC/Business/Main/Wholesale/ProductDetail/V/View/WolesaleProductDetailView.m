@@ -260,7 +260,7 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailView:actionType:value:)]) {
         [self.delegate wolesaleProductDetailView:self actionType:(WolesaleProductDetailViewActionType)type value:value];
     }
-    if (type == WolesaleProductDetailViewActionTypeJoin) {
+    if (type == WolesaleProductDetailViewActionTypeJoin && self.data.fightGroupBase.teams.count>0) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }

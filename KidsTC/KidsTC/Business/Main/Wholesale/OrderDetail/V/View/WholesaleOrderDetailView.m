@@ -18,8 +18,12 @@
 #import "WholesaleOrderDetailLeaderCell.h"
 #import "WholesaleOrderDetailJoinTipCell.h"
 #import "WholesaleOrderDetailJoinMemberCell.h"
+#import "WholesaleOrderDetailJoinCountCell.h"
 #import "WholesaleOrderDetailRuleCell.h"
 #import "WholesaleOrderDetailProgressCell.h"
+#import "WholesaleOrderDetailBuyNoticeEmptyCell.h"
+#import "WholesaleOrderDetailBuyNoticeElementCell.h"
+#import "WholesaleOrderDetailTitleCell.h"
 #import "WholesaleOrderDetailWebTipCell.h"
 #import "WholesaleOrderDetailWebCell.h"
 
@@ -34,8 +38,12 @@ static NSString *const CountDownCellID = @"WholesaleOrderDetailCountDownCell";
 static NSString *const LeaderCellID = @"WholesaleOrderDetailLeaderCell";
 static NSString *const JoinTipCellID = @"WholesaleOrderDetailJoinTipCell";
 static NSString *const JoinMemberCellID = @"WholesaleOrderDetailJoinMemberCell";
+static NSString *const JoinCountCellID = @"WholesaleOrderDetailJoinCountCell";
 static NSString *const RuleCellID = @"WholesaleOrderDetailRuleCell";
 static NSString *const ProgressCellID = @"WholesaleOrderDetailProgressCell";
+static NSString *const BuyNoticeEmptyCellID = @"WholesaleOrderDetailBuyNoticeEmptyCell";
+static NSString *const BuyNoticeElementCellID = @"WholesaleOrderDetailBuyNoticeElementCell";
+static NSString *const TitleCellID = @"WholesaleOrderDetailTitleCell";
 static NSString *const WebTipCellID = @"WholesaleOrderDetailWebTipCell";
 static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 
@@ -89,8 +97,12 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailLeaderCell" bundle:nil] forCellReuseIdentifier:LeaderCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailJoinTipCell" bundle:nil] forCellReuseIdentifier:JoinTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailJoinMemberCell" bundle:nil] forCellReuseIdentifier:JoinMemberCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailJoinCountCell" bundle:nil] forCellReuseIdentifier:JoinCountCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailRuleCell" bundle:nil] forCellReuseIdentifier:RuleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailProgressCell" bundle:nil] forCellReuseIdentifier:ProgressCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailBuyNoticeEmptyCell" bundle:nil] forCellReuseIdentifier:BuyNoticeEmptyCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailBuyNoticeElementCell" bundle:nil] forCellReuseIdentifier:BuyNoticeElementCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailTitleCell" bundle:nil] forCellReuseIdentifier:TitleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebTipCell" bundle:nil] forCellReuseIdentifier:WebTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
 }
@@ -145,6 +157,12 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
         joinMemberCell.partner = obj;
         if (joinMemberCell) [section01 addObject:joinMemberCell];
     }];
+    if (data.partnerCounts.count>1) {
+        WholesaleOrderDetailJoinCountCell *joinCountCell = [self cellWithID:JoinCountCellID];
+        joinCountCell.tag = WholesaleOrderDetailBaseCellActionTypeLoadPartners;
+        joinCountCell.counts = data.partnerCounts;
+        if (joinCountCell) [section01 addObject:joinCountCell];
+    }
     if(section01.count>0) [sections addObject:section01];
     
     NSMutableArray *section02 = [NSMutableArray array];
@@ -154,13 +172,38 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     }
     WholesaleOrderDetailProgressCell *progressCell = [self cellWithID:ProgressCellID];
     if (progressCell) [section02 addObject:progressCell];
-    if ([data.fightGroupBase.detailUrl isNotNull]) {
-        WholesaleOrderDetailWebTipCell *webTipCell = [self cellWithID:WebTipCellID];
-        if (webTipCell) [section02 addObject:webTipCell];
-        WholesaleOrderDetailWebCell *webCell = [self cellWithID:WebCellID];
-        if (webCell) [section02 addObject:webCell];
-    }
     if(section02.count>0) [sections addObject:section02];
+    
+    
+    [data.fightGroupBase.buyNotice enumerateObjectsUsingBlock:^(WholesaleProductDetailBuyNotice *buyNotice, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section03 = [NSMutableArray array];
+        WholesaleOrderDetailTitleCell *titleCell_buyNotice = [self cellWithID:TitleCellID];
+        titleCell_buyNotice.title = buyNotice.title;
+        if (titleCell_buyNotice) [section03 addObject:titleCell_buyNotice];
+        [buyNotice.notice enumerateObjectsUsingBlock:^(WholesaleProductDetailNotice *notice, NSUInteger idx, BOOL *stop) {
+            WholesaleOrderDetailBuyNoticeEmptyCell *buyNoticeEmptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell) [section03 addObject:buyNoticeEmptyCell];
+            WholesaleOrderDetailBuyNoticeElementCell *buyNoticeElementCell = [self cellWithID:BuyNoticeElementCellID];
+            buyNoticeElementCell.notice = notice;
+            if (buyNoticeElementCell) [section03 addObject:buyNoticeElementCell];
+        }];
+        if (buyNotice.notice.count>0) {
+            WholesaleOrderDetailBuyNoticeEmptyCell *buyNoticeEmptyCell_last = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell_last) [section03 addObject:buyNoticeEmptyCell_last];
+        }
+        if(section03.count>0) [sections addObject:section03];
+    }];
+    
+    if ([data.fightGroupBase.detailUrl isNotNull]) {
+        NSMutableArray *section04 = [NSMutableArray array];
+        WholesaleOrderDetailTitleCell *titleCell_web = [self cellWithID:TitleCellID];
+        titleCell_web.title = @"活动详情";
+        if (titleCell_web) [section04 addObject:titleCell_web];
+        WholesaleOrderDetailWebCell *webCell = [self cellWithID:WebCellID];
+        webCell.webUrl = data.fightGroupBase.detailUrl;
+        if (webCell) [section04 addObject:webCell];
+        if(section04.count>0) [sections addObject:section04];
+    }
     
     self.sections = [NSArray arrayWithArray:sections];
 }
@@ -205,7 +248,10 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 
 - (void)wholesaleOrderDetailBaseCell:(WholesaleOrderDetailBaseCell *)cell actionType:(WholesaleOrderDetailBaseCellActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailView:actionType:value:)]) {
-        [self.delegate wholesaleOrderDetailView:self actionType:(WholesaleOrderDetailViewActionType)type value:nil];
+        [self.delegate wholesaleOrderDetailView:self actionType:(WholesaleOrderDetailViewActionType)type value:value];
+    }
+    if (type == WholesaleOrderDetailBaseCellActionTypeWebLoadFinish) {
+        [self.tableView reloadData];
     }
 }
 

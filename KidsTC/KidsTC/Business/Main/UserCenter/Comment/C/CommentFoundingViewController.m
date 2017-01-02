@@ -199,6 +199,7 @@
         [TCProgressHUD dismissSVP];
         [weakSelf submitCommentFailed:error];
     }];
+    
 }
 
 - (void)submitCommentSucceed:(NSDictionary *)data {

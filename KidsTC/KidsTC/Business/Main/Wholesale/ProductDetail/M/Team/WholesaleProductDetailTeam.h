@@ -17,4 +17,8 @@
 @property (nonatomic, assign) NSInteger surplusCount;
 @property (nonatomic, assign) BOOL canApply;
 @property (nonatomic, assign) BOOL isApply;
+
+//selfDefine
+@property (nonatomic, assign) BOOL countDownOver;
+@property (nonatomic, strong) NSString *countDownValueString;
 @end

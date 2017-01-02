@@ -47,8 +47,10 @@ static NSString *const FootID = @"CollectionStoreFooter";
 
 - (void)resetFooterView {
     [self.footerView reloadData];
-    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
-    self.tableView.tableFooterView = self.footerView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
+        self.tableView.tableFooterView = self.footerView;
+    });
 }
 
 - (void)nilRecommendData {

@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "GHeader.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #import "WolesaleProductDetailModel.h"
 #import "WolesaleProductDetailView.h"
@@ -178,12 +179,23 @@
 #pragma mark 参加其他团
 
 - (void)joinOther:(id)value {
+    
     if ([value isKindOfClass:[WholesaleProductDetailTeam class]]) {
+        
         WholesaleProductDetailTeam *team = value;
         WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
         controller.productId = self.productId;
         controller.openGroupId = team.openGroupSysNo;
         [self.navigationController pushViewController:controller animated:YES];
+        
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        if ([self.productId isNotNull]) {
+            [params setObject:self.productId forKey:@"pid"];
+        }
+        if ([team.openGroupSysNo isNotNull]) {
+            [params setObject:team.openGroupSysNo forKey:@"gid"];
+        }
+        [BuryPointManager trackEvent:@"event_click_attent_group" actionId:21800 params:params];
     }
 }
 
@@ -275,6 +287,13 @@
 - (void)share {
     CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.fightGroupBase.shareObject sourceType:KTCShareServiceTypeWholesale];
     [self presentViewController:controller animated:YES completion:nil];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self.productId isNotNull]) {
+        [params setObject:self.productId forKey:@"pid"];
+    }
+    [params setObject:@(self.data.openGroupSysNo) forKey:@"gid"];
+    [BuryPointManager trackEvent:@"event_click_group_share" actionId:21801 params:params];
 }
 
 #pragma mark 我要组团

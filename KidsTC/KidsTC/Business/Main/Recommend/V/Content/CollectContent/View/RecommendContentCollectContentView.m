@@ -41,9 +41,8 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    [self layoutIfNeeded];
     self.tableView.estimatedRowHeight = 100;
-    
     [self registerCells];
 }
 
@@ -61,16 +60,16 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleHomeAlbumEntrysCell" bundle:nil] forCellReuseIdentifier:ArticleHomeAlbumEntrysCellID];
 }
 
-- (void)setContents:(NSArray<id> *)contents {
-    _contents = contents;
-    self.hidden = _contents.count<1;
-    [self.tableView reloadData];
-}
-
 - (void)reloadData {
     self.contents = [[RecommendDataManager shareRecommendDataManager] recommendContent];
+    self.hidden = _contents.count<1;
+    [self.tableView reloadData];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 - (CGFloat)contentHeight {
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
     CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
     return self.contents.count>0?height:0.001;
 }

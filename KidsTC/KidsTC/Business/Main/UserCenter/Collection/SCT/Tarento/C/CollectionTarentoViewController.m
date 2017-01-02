@@ -101,7 +101,7 @@
             [self.tarentoView dealWithUI:0 isRecommend:NO];
         }];
     }else{
-        [[RecommendDataManager shareRecommendDataManager] loadRecommendTarentoRefresh:YES pageCount:5 successBlock:^(NSArray<RecommendTarento *> *data) {
+        [[RecommendDataManager shareRecommendDataManager] loadRecommendTarentoRefresh:refresh pageCount:5 successBlock:^(NSArray<RecommendTarento *> *data) {
             [self.tarentoView dealWithUI:data.count isRecommend:YES];
         } failureBlock:^(NSError *error) {
             [self.tarentoView dealWithUI:0 isRecommend:YES];

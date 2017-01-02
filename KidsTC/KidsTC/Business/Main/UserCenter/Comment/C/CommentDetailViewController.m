@@ -54,7 +54,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
     self.navigationItem.title = @"用户评价";
     switch (self.viewSource) {
         case CommentDetailViewSourceServiceOrStore:
@@ -78,7 +78,7 @@
     if ([self.relationIdentifier isNotNull]) {
         self.trackParams = @{@"relationNo":self.relationIdentifier};
     }
-    // Do any additional setup after loading the view from its nib.
+    
     self.detailView.delegate = self;
     self.viewModel = [[CommentDetailViewModel alloc] initWithView:self.detailView];
     [self.viewModel.detailModel setModelSource:self.viewSource];

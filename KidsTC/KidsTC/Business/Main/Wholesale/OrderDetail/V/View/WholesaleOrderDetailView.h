@@ -11,6 +11,7 @@
 
 typedef enum : NSUInteger {
     WholesaleOrderDetailViewActionTypeRule = 1,//拼团玩法
+    WholesaleOrderDetailViewActionTypeLoadPartners,//加载参团记录
     WholesaleOrderDetailViewActionTypeBuy = 50,//去支付
     WholesaleOrderDetailViewActionTypeMySale,//用户自己的拼团信息
     WholesaleOrderDetailViewActionTypeProductHome,//更多拼团

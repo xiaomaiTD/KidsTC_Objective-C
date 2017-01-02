@@ -39,11 +39,18 @@
         return;
     }
     
+    /*
+    ProductDetailTimeItem *item = [ProductDetailTimeItem new];
+    item.startTime = @"2018-12-24";
+    item.endTime = @"2018-12-25";
+    self.times = @[item];
+     */
+    
     self.navigationItem.title = @"活动日期";
     FSCalendar *calendar = [[FSCalendar alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     calendar.dataSource = self;
     calendar.delegate = self;
-    calendar.pagingEnabled = NO; // important
+    calendar.pagingEnabled = NO;
     calendar.allowsSelection = NO;
     calendar.allowsMultipleSelection = NO;
     calendar.focusOnSingleSelectedDate = NO;
@@ -64,21 +71,18 @@
     ProductDetailTimeItem *lastItem = self.times.lastObject;
     NSDate *minimumDate = [self.dateFormatter dateFromString:firstItem.startTime];
     NSDate *maximumDate = [self.dateFormatter dateFromString:lastItem.endTime];
-    NSTimeInterval minNum = [minimumDate timeIntervalSince1970] - 30 * 24 * 60 * 60;
-    NSTimeInterval maxNum = [maximumDate timeIntervalSince1970] + 30 * 24 * 60 * 60;
+    NSTimeInterval minNum = [minimumDate timeIntervalSince1970] - 2*31 * 24 * 60 * 60;
+    NSTimeInterval maxNum = [maximumDate timeIntervalSince1970] + 2*31 * 24 * 60 * 60;
     self.minimumDate = [NSDate dateWithTimeIntervalSince1970:minNum];
     self.maximumDate = [NSDate dateWithTimeIntervalSince1970:maxNum];
     
     NSMutableDictionary *fillDefaultColors = [NSMutableDictionary dictionary];
     NSMutableDictionary *titleDefaultColors = [NSMutableDictionary dictionary];
     [_times enumerateObjectsUsingBlock:^(ProductDetailTimeItem *obj, NSUInteger idx, BOOL *stop) {
-        
         NSDate *date_s = [NSDate zp_dateWithTimeString:obj.startTime withDateFormat:DF_yMd];
         NSTimeInterval timeInterval_s = [date_s timeIntervalSince1970];
-        
         NSDate *date_e = [NSDate zp_dateWithTimeString:obj.endTime withDateFormat:DF_yMd];
         NSTimeInterval timeInterval_e = [date_e timeIntervalSince1970];
-        
         while (timeInterval_s<=timeInterval_e) {
             NSString *timeStr = [NSString zp_stringWithTimeInterval:timeInterval_s Format:DF_yMd];
             [fillDefaultColors setObject:[COLOR_PINK colorWithAlphaComponent:0.8] forKey:timeStr];

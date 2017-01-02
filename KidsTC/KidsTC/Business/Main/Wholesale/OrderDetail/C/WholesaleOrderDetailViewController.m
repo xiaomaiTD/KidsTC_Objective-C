@@ -10,6 +10,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "NSString+Category.h"
 #import "GHeader.h"
+#import "BuryPointManager.h"
 
 #import "WholesaleOrderDetailModel.h"
 #import "WholesaleOrderDetailPartnerModel.h"
@@ -54,6 +55,10 @@
     [self.view addSubview:orderDetailView];
     self.orderDetailView = orderDetailView;
     
+    if (!self.navigationItem.leftBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navi_back_black" highImageName:@"navi_back_black" postion:UIBarButtonPositionLeft target:self action:@selector(back)];
+    }
+    
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(share) andGetButton:^(UIButton *btn) {
         [btn setImageEdgeInsets:UIEdgeInsetsMake(3, 3, 3, 3)];
         [btn setImage:[UIImage imageNamed:@"wholesale_share"] forState:UIControlStateNormal];
@@ -91,26 +96,7 @@
     [self back];
 }
 
-- (void)loadPartners:(id)value showProgress:(BOOL)showProgress {
-    if (![value respondsToSelector:@selector(integerValue)]) return;
-    NSInteger pageIndex = [value integerValue];
-    NSDictionary *param = @{@"page":@(pageIndex),
-                            @"pageCount":@(5),
-                            @"openGroupId":_openGroupId};
-    if(showProgress)[TCProgressHUD showSVP];
-    [Request startWithName:@"GET_PRODUCT_TUAN_USER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(showProgress)[TCProgressHUD dismissSVP];
-        WholesaleOrderDetailPartnerModel *model = [WholesaleOrderDetailPartnerModel modelWithDictionary:dic];
-        self.data.partners = model.data;
-        if (self.data.partnerCounts.count<1) {
-            self.data.partnerCounts = model.counts;
-        }
-        self.orderDetailView.data = self.data;
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(showProgress)[TCProgressHUD dismissSVP];
-        [self loadDataFailure:error];
-    }];
-}
+
 
 #pragma mark - WholesaleOrderDetailViewDelegate
 
@@ -120,6 +106,11 @@
         case WholesaleOrderDetailViewActionTypeRule://拼团玩法
         {
             [self rule];
+        }
+            break;
+        case WholesaleOrderDetailViewActionTypeLoadPartners://加载参团记录
+        {
+            [self loadPartners:value showProgress:YES];
         }
             break;
         case WholesaleOrderDetailViewActionTypeBuy://去支付
@@ -161,6 +152,29 @@
     }
 }
 
+#pragma mark 加载参团记录
+
+- (void)loadPartners:(id)value showProgress:(BOOL)showProgress {
+    if (![value respondsToSelector:@selector(integerValue)]) return;
+    NSInteger pageIndex = [value integerValue];
+    NSDictionary *param = @{@"page":@(pageIndex),
+                            @"pageCount":@(5),
+                            @"openGroupId":_openGroupId};
+    if(showProgress)[TCProgressHUD showSVP];
+    [Request startWithName:@"GET_PRODUCT_TUAN_USER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        if(showProgress)[TCProgressHUD dismissSVP];
+        WholesaleOrderDetailPartnerModel *model = [WholesaleOrderDetailPartnerModel modelWithDictionary:dic];
+        self.data.partners = model.data;
+        if (self.data.partnerCounts.count<1) {
+            self.data.partnerCounts = model.counts;
+        }
+        self.orderDetailView.data = self.data;
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if(showProgress)[TCProgressHUD dismissSVP];
+        [self loadDataFailure:error];
+    }];
+}
+
 #pragma mark 去支付
 
 - (void)buy {
@@ -195,6 +209,13 @@
 - (void)share {
     CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.fightGroupBase.shareObject sourceType:KTCShareServiceTypeWholesale];
     [self presentViewController:controller animated:YES completion:nil];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self.productId isNotNull]) {
+        [params setObject:self.productId forKey:@"pid"];
+    }
+    [params setObject:@(self.data.openGroupSysNo) forKey:@"gid"];
+    [BuryPointManager trackEvent:@"event_click_group_share" actionId:21801 params:params];
 }
 
 #pragma mark 首页

@@ -22,8 +22,8 @@ static CGFloat const margin = 8;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self layoutIfNeeded];
     [self.collectionView registerNib:[UINib nibWithNibName:@"RecommendProductAccountCenterCell" bundle:nil] forCellWithReuseIdentifier:CellID];
+    [self layoutIfNeeded];
 }
 
 - (void)setProducts:(NSArray<RecommendProduct *> *)products {

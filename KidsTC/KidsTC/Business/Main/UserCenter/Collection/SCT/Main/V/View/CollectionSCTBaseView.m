@@ -62,6 +62,7 @@ static NSString *const ID = @"UITableViewCell";
         [self loadData:NO];
     }];
     self.tableView.mj_footer = footer;
+    footer.automaticallyRefresh = YES;
     
     [self.tableView.mj_header beginRefreshing];
 }

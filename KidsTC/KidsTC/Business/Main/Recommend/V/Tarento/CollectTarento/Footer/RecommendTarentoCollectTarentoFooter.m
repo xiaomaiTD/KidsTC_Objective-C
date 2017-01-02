@@ -20,6 +20,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self layoutIfNeeded];
     self.numL.textColor = COLOR_PINK;
     self.preL.textColor = [UIColor colorFromHexString:@"999999"];
     self.subL.textColor = [UIColor colorFromHexString:@"999999"];

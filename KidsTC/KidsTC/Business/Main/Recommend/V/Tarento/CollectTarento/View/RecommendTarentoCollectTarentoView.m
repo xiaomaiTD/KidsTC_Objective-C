@@ -56,6 +56,10 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self registerCells];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
     
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
 - (void)registerCells {
@@ -72,17 +76,24 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self.tableView registerNib:[UINib nibWithNibName:@"ArticleHomeAlbumEntrysCell" bundle:nil] forCellReuseIdentifier:ArticleHomeAlbumEntrysCellID];
 }
 
-- (void)setTarentos:(NSArray<RecommendTarento *> *)tarentos {
-    _tarentos = tarentos;
-    self.hidden = _tarentos.count<1;
-    [self.tableView reloadData];
-}
-
 - (void)reloadData {
     self.tarentos = [[RecommendDataManager shareRecommendDataManager] recommendTarento];
+    self.hidden = _tarentos.count<1;
+    [self.tableView reloadData];
+    
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 - (CGFloat)contentHeight {
-    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height + self.tarentos.count*130;
+    
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+    
+    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
     return self.tarentos.count>0?height:0.001;
 }
 

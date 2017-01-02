@@ -35,14 +35,10 @@
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:_countDownTime];
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    int unit = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    int unit = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *components = [calendar components:unit fromDate:now toDate:date options:0];
     NSString *time = nil;
-    if (components.year>0) {
-        time = [NSString stringWithFormat:@"%.2zd年%.2zd月%.2zd天%.2zd时%.2zd分%.2zd秒",components.year,components.month,components.day,components.hour,components.minute,components.second];
-    }else if (components.month>0){
-        time = [NSString stringWithFormat:@"%.2zd月%.2zd天%.2zd时%.2zd分%.2zd秒",components.month,components.day,components.hour,components.minute,components.second];
-    }else if (components.day>0){
+    if (components.day>0){
         time = [NSString stringWithFormat:@"%.2zd天%.2zd时%.2zd分%.2zd秒",components.day,components.hour,components.minute,components.second];
     }else if (components.hour>0){
         time = [NSString stringWithFormat:@"%.2zd时%.2zd分%.2zd秒",components.hour,components.minute,components.second];
@@ -51,7 +47,7 @@
     }else if (components.second>=0){
         time = [NSString stringWithFormat:@"%.2zd秒",components.second];
     }
-    _countDownValueString = [NSString stringWithFormat:@"%@%@",_countDownDesc,time];
+    _countDownValueString = [NSString stringWithFormat:@"%@：%@",_countDownDesc,time];
     _countDownTime--;
 }
 

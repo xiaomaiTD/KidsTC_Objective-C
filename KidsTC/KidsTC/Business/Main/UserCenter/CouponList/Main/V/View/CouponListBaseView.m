@@ -50,6 +50,7 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)setupMJ {
+    
     WeakSelf(self);
     RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self);

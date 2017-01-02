@@ -58,7 +58,7 @@ CGFloat const ThirdLoginBtnMargin = 30;
     self.navigationItem.title = @"登录";
     
     self.navigationItem.leftBarButtonItem =
-    [UIBarButtonItem itemWithImageName:@"navigation_close" highImageName:@"navigation_close" postion:UIBarButtonPositionLeft target:self action:@selector(back)];
+    [UIBarButtonItem itemWithImageName:@"navigation_close_white" highImageName:@"navigation_close_white" postion:UIBarButtonPositionLeft target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"注册" postion:UIBarButtonPositionRight target:self action:@selector(gotoRegister)];
     self.leftLine.backgroundColor = COLOR_LINE;
     self.rightLine.backgroundColor = COLOR_LINE;

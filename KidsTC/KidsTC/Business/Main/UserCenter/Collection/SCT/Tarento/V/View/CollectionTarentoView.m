@@ -85,8 +85,18 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 
 - (void)resetFooterView {
     [self.footerView reloadData];
-    self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
-    self.tableView.tableFooterView = self.footerView;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat height = [self.footerView contentHeight];
+        TCLog(@"footerView---height1111:%f",height);
+        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+        self.tableView.tableFooterView = self.footerView;
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat height = [self.footerView contentHeight];
+        TCLog(@"footerView---height2222:%f",height);
+        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+        self.tableView.tableFooterView = self.footerView;
+    });
 }
 
 - (void)nilRecommendData {
@@ -297,6 +307,10 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         default:
             break;
     }
+}
+
+- (void)dealloc {
+    self.footerView = nil;
 }
 
 @end

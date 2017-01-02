@@ -11,6 +11,7 @@
 #import "GHeader.h"
 #import "NSString+Category.h"
 #import "KTCPaymentService.h"
+#import "BuryPointManager.h"
 
 #import "WholesaleSettlementModel.h"
 #import "WholesaleSettlementView.h"
@@ -47,10 +48,12 @@
     [self.view addSubview:settlementView];
     self.settlementView = settlementView;
     
+    /*
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(share) andGetButton:^(UIButton *btn) {
         [btn setImageEdgeInsets:UIEdgeInsetsMake(3, 3, 3, 3)];
         [btn setImage:[UIImage imageNamed:@"wholesale_share"] forState:UIControlStateNormal];
     }];
+    */
     
     [self loadData];
 }
@@ -191,15 +194,23 @@
         [TCProgressHUD dismissSVP];
         [self placeOrderFailure:error];
     }];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([self.productId isNotNull]) {
+        [params setObject:self.productId forKey:@"pid"];
+    }
+    if ([self.openGroupId isNotNull]) {
+        [params setObject:self.openGroupId forKey:@"gid"];
+    }
+    [BuryPointManager trackEvent:@"event_click_group_pay" actionId:21802 params:params];
 }
 
 #pragma mark - 下单结果
 
 /** 下单成功 -> 结算 */
 - (void)placeOrderSucceed:(PayModel *)model {
-    NSString *orderId = model.data.orderNo;
     [KTCPaymentService startPay:model.data.payInfo succeed:^{
-        [self settlementPaid:YES orderId:orderId];
+        [self settlementPaid:YES model:model];
         [[iToast makeText:@"结算成功"] show];
     } failure:^(NSError *error) {
         NSString *errMsg = @"结算失败";
@@ -218,10 +229,10 @@
 }
 
 #pragma mark - 结算结果
-- (void)settlementPaid:(BOOL)paid orderId:(NSString *)orderId{
+- (void)settlementPaid:(BOOL)paid model:(PayModel *)model{
     WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc]init];
     controller.productId = self.productId;
-    controller.openGroupId = self.openGroupId;
+    controller.openGroupId = model.data.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:NO];
