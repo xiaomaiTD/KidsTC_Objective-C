@@ -133,11 +133,22 @@
     [self loadData];
     
     [self buildRightBarButtons];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.detailView scroll];
+    if (_type == ProductDetailTypeTicket) {
+        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (_type == ProductDetailTypeTicket) {
+        [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor lightGrayColor] size:CGSizeMake(SCREEN_WIDTH, LINE_H)]];
+    }
 }
 
 - (ProductDetailView *)detailView {
@@ -1001,13 +1012,14 @@
             
         }
             break;
+            default:
+            break;
     }
 }
 
 #pragma mark - buildRightBarButtons
 
 - (void)buildRightBarButtons {
-    
     
     CGFloat buttonWidth = 24;
     CGFloat buttonHeight = 24;

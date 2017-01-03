@@ -366,6 +366,8 @@
             sections = self.freeSections;
         }
             break;
+            default:
+            break;
     }
     return sections;
 }
@@ -393,6 +395,15 @@
     }
     if (section00.count>0) [sections addObject:section00];
     
+    //已选套餐
+    if (_data.product_standards.count>1 && _data.isShowProductStandards) {
+        NSMutableArray *sectionForSelectStandard = [NSMutableArray array];
+        ProductDetailTitleCell *selectStandardtitleCell = self.titleCell;
+        selectStandardtitleCell.text = _data.standardTitle;
+        [sectionForSelectStandard addObject:selectStandardtitleCell];
+        [sectionForSelectStandard addObject:self.selectStandardCell];
+        if (sectionForSelectStandard.count>0) [sections addObject:sectionForSelectStandard];
+    }
     
     //content
     [_data.buyNotice enumerateObjectsUsingBlock:^(ProductDetailBuyNotice *obj1, NSUInteger idx, BOOL *stop) {
@@ -412,7 +423,6 @@
         }
         if (section01.count>0) [sections addObject:section01];
     }];
-    
     
     //他们已参加
     if (_data.comment.userHeadImgs.count>0) {
@@ -452,16 +462,6 @@
     }
     _twoColumnSectionUsed = sections.count;
     if (section04.count>0) [sections addObject:section04];
-    
-    //已选套餐
-    if (_data.product_standards.count>1) {
-        NSMutableArray *sectionForSelectStandard = [NSMutableArray array];
-        ProductDetailTitleCell *selectStandardtitleCell = self.titleCell;
-        selectStandardtitleCell.text = @"已选套餐";
-        [sectionForSelectStandard addObject:selectStandardtitleCell];
-        [sectionForSelectStandard addObject:self.selectStandardCell];
-        if (sectionForSelectStandard.count>0) [sections addObject:sectionForSelectStandard];
-    }
     
     //套餐明细
     if (_data.product_standards.count>0) {

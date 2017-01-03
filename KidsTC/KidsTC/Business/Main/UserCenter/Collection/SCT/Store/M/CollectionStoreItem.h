@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *mapAddress;
 @property (nonatomic, strong) NSString *interestNum;
 @property (nonatomic, strong) NSString *level;
-@property (nonatomic, strong) NSString *newsCount;
+@property (nonatomic, assign) NSInteger newsCount;
 @property (nonatomic, strong) NSString *saleNum;
 @property (nonatomic, strong) NSArray<CollectionStoreCoupon *> *couponModeLst;
 @property (nonatomic, strong) NSArray<CollectionStoreProduct *> *productLst;

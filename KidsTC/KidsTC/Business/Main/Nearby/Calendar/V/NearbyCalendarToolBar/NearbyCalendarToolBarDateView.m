@@ -9,7 +9,6 @@
 #import "NearbyCalendarToolBarDateView.h"
 #import <EventKit/EventKit.h>
 #import "FSCalendar.h"
-#import "FSCalendarHeader.h"
 
 @interface NearbyCalendarToolBarDateView ()<FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance>
 @property (nonatomic, strong) FSCalendar *calendar;
@@ -26,7 +25,7 @@
         calendar.pagingEnabled = NO; // important
         calendar.allowsSelection = YES;
         calendar.allowsMultipleSelection = NO;
-        calendar.focusOnSingleSelectedDate = NO;
+        //calendar.focusOnSingleSelectedDate = NO;
         calendar.appearance.headerDateFormat = @"yyyy年MM月";
         calendar.appearance.headerTitleColor = [UIColor darkGrayColor];
         calendar.appearance.weekdayTextColor = [UIColor blackColor];

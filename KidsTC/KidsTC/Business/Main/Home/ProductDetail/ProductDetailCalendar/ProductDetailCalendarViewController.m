@@ -9,7 +9,6 @@
 #import "ProductDetailCalendarViewController.h"
 #import <EventKit/EventKit.h>
 #import "FSCalendar.h"
-#import "FSCalendarHeader.h"
 
 #import "NSDate+ZP.h"
 #import "ZPDateFormate.h"
@@ -53,7 +52,7 @@
     calendar.pagingEnabled = NO;
     calendar.allowsSelection = NO;
     calendar.allowsMultipleSelection = NO;
-    calendar.focusOnSingleSelectedDate = NO;
+    //calendar.focusOnSingleSelectedDate = NO;
     calendar.appearance.headerDateFormat = @"yyyy年MM月";
     calendar.appearance.headerTitleColor = [UIColor darkGrayColor];
     calendar.appearance.weekdayTextColor = [UIColor blackColor];
@@ -71,8 +70,8 @@
     ProductDetailTimeItem *lastItem = self.times.lastObject;
     NSDate *minimumDate = [self.dateFormatter dateFromString:firstItem.startTime];
     NSDate *maximumDate = [self.dateFormatter dateFromString:lastItem.endTime];
-    NSTimeInterval minNum = [minimumDate timeIntervalSince1970] - 2*31 * 24 * 60 * 60;
-    NSTimeInterval maxNum = [maximumDate timeIntervalSince1970] + 2*31 * 24 * 60 * 60;
+    NSTimeInterval minNum = [minimumDate timeIntervalSince1970] - 16 * 24 * 60 * 60;
+    NSTimeInterval maxNum = [maximumDate timeIntervalSince1970] + 16 * 24 * 60 * 60;
     self.minimumDate = [NSDate dateWithTimeIntervalSince1970:minNum];
     self.maximumDate = [NSDate dateWithTimeIntervalSince1970:maxNum];
     

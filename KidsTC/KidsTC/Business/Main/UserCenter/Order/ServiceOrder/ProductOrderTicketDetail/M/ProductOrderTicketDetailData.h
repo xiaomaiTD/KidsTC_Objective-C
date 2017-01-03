@@ -53,6 +53,7 @@
 @property (nonatomic, strong) NSString *userRemark;
 @property (nonatomic, strong) NSString *commentNo;
 @property (nonatomic, assign) NSInteger commentRelationType;
+@property (nonatomic, strong) NSString *noticePageUrl;
 
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *remarksStr;

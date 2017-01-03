@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *storeNo;
 @property (nonatomic, assign) NSUInteger buyMinNum;
 @property (nonatomic, assign) ProductDetailType productRedirect;
+@property (nonatomic, strong) NSString *standardName;
 //selfDefine
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) BOOL isCanBuy;

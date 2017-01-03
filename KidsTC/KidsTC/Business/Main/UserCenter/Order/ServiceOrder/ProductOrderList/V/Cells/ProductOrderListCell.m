@@ -7,13 +7,12 @@
 //
 
 #import "ProductOrderListCell.h"
-#import "ProductOrderListCellBtnsView.h"
 #import "UIImageView+WebCache.h"
 #import "NSString+Category.h"
 #import "YYKit.h"
 #import "Colours.h"
 
-@interface ProductOrderListCell ()<ProductOrderListCellBtnsViewDelegate>
+@interface ProductOrderListCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *storeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *storeNameL;
 @property (weak, nonatomic) IBOutlet UIImageView *storeArrowImg;
@@ -48,8 +47,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet UIImageView *countDownIcon;
-@property (weak, nonatomic) IBOutlet ProductOrderListCellBtnsView *btnsView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *btnsViewH;
 
 @end
 
@@ -57,52 +54,41 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    _storeBtn.tag = ProductOrderListCellActionTypeStore;
+    
+    _storeBtn.tag = ProductOrderListBaseCellActionTypeStore;
     _imageIcon.layer.cornerRadius = 4;
     _imageIcon.layer.masksToBounds = YES;
     _imageIcon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     _imageIcon.layer.borderWidth = LINE_H;
     [NotificationCenter addObserver:self selector:@selector(countDown) name:kTCCountDownNoti object:nil];
-    
-    _btnsView.delegate = self;
 }
 
 - (void)setItem:(ProductOrderListItem *)item {
-    _item = item;
-    self.storeNameL.text = _item.storeName;
-    self.statusNameL.text = _item.statusName;
-    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:_item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    [super setItem:item];
+    self.storeNameL.text = self.item.storeName;
+    self.statusNameL.text = self.item.statusName;
+    [self.imageIcon sd_setImageWithURL:[NSURL URLWithString:self.item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     [self countDown];
-    self.realPriceTipL.text = _item.payDesc;
-    self.realPriceL.text = [NSString stringWithFormat:@"¥%@",_item.payPrice];
+    self.realPriceTipL.text = self.item.payDesc;
+    self.realPriceL.text = [NSString stringWithFormat:@"¥%@",self.item.payPrice];
     
-    if (_item.btns.count>0) {
-        self.btnsView.btnsAry = _item.btns;
-        self.btnsView.hidden = NO;
-        self.btnsViewH.constant = 46;
-    }else{
-        self.btnsView.hidden = YES;
-        self.btnsViewH.constant = 0;
-    }
-    
-    switch (_item.orderKind) {
+    switch (self.item.orderKind) {
         case OrderKindTicket:
         {
             self.storeArrowImg.hidden = YES;
             self.normalBGView.hidden = YES;
             self.ticketBGView.hidden = NO;
-            self.ticketNameL.text = _item.productName;
-            self.ticketTimeL.text = _item.createTime;
-            self.ticketCountL.text = _item.payNum;
-            self.ticketPriceL.text = [NSString stringWithFormat:@"¥%@",_item.unitPrice];
-            self.theaterNameL.text = _item.venueName;
+            self.ticketNameL.text = self.item.productName;
+            self.ticketTimeL.text = self.item.createTime;
+            self.ticketCountL.text = self.item.payNum;
+            self.ticketPriceL.text = [NSString stringWithFormat:@"¥%@",self.item.unitPrice];
+            self.theaterNameL.text = self.item.venueName;
         }
             break;
             
         default:
         {
-            switch (_item.placeType) {
+            switch (self.item.placeType) {
                 case PlaceTypeStore:
                 {
                     self.storeIcon.hidden = NO;
@@ -128,16 +114,16 @@
             
             self.normalBGView.hidden = NO;
             self.ticketBGView.hidden = YES;
-            self.productNameL.text = _item.productName;
-            self.countL.text = [NSString stringWithFormat:@"x%@",_item.payNum];
-            self.priceL.text = [NSString stringWithFormat:@"¥%@",_item.unitPrice];
-            self.remarkL.text = _item.reservationRemark;
-            self.timeL.text = _item.createTime;
+            self.productNameL.text = self.item.productName;
+            self.countL.text = [NSString stringWithFormat:@"x%@",self.item.payNum];
+            self.priceL.text = [NSString stringWithFormat:@"¥%@",self.item.unitPrice];
+            self.remarkL.text = self.item.reservationRemark;
+            self.timeL.text = self.item.createTime;
         }
             break;
     }
     
-    ProductOrderListDeliver *deliver = _item.deliver;
+    ProductOrderListDeliver *deliver = self.item.deliver;
     if ([deliver.deliverStr isNotNull]) {
         self.deliverBGView.hidden = NO;
         [self settupDeliverInfo];
@@ -154,13 +140,13 @@
 
 - (void)settupDeliverInfo {
     WeakSelf(self)
-    NSMutableAttributedString *attDeliverInfo = [[NSMutableAttributedString alloc] initWithString:_item.deliver.deliverStr];
+    NSMutableAttributedString *attDeliverInfo = [[NSMutableAttributedString alloc] initWithString:self.item.deliver.deliverStr];
     attDeliverInfo.color = [UIColor colorFromHexString:@"555555"];
     attDeliverInfo.font = [UIFont systemFontOfSize:12];
     attDeliverInfo.lineSpacing = 6;
-    [_item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
+    [self.item.deliver.items enumerateObjectsUsingBlock:^(ProductOrderListDeliverItem *obj, NSUInteger idx, BOOL *stop) {
         StrongSelf(self)
-        NSRange range = [_item.deliver.deliverStr rangeOfString:obj.value];
+        NSRange range = [self.item.deliver.deliverStr rangeOfString:obj.value];
         if ((obj.isCall&&[obj.value isNotNull])||(obj.segueModel.destination != SegueDestinationNone)) {
             [attDeliverInfo setUnderlineStyle:NSUnderlineStyleSingle range:range];
         }
@@ -170,12 +156,12 @@
                                         color:color
                               backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
                                     tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
-                                        if (![self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) return;
+                                        if (![self.delegate respondsToSelector:@selector(productOrderListBaseCell:actionType:value:)]) return;
                                         if (obj.isCall) {
                                             if (![obj.value isNotNull]) return;
-                                            [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeCall value:obj.value];
+                                            [self.delegate productOrderListBaseCell:self actionType:ProductOrderListBaseCellActionTypeCall value:obj.value];
                                         }else{
-                                            [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeSegue value:obj.segueModel];
+                                            [self.delegate productOrderListBaseCell:self actionType:ProductOrderListBaseCellActionTypeSegue value:obj.segueModel];
                                         }
                                     }];
     }];
@@ -196,8 +182,8 @@
         _countDownL.hidden = YES;
         if (countDown.showCountDown && !countDown.countDownOver) {
             countDown.countDownOver = YES;
-            if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
-                [self.delegate productOrderListCell:self actionType:ProductOrderListCellActionTypeCountDownOver value:_item];
+            if ([self.delegate respondsToSelector:@selector(productOrderListBaseCell:actionType:value:)]) {
+                [self.delegate productOrderListBaseCell:self actionType:ProductOrderListBaseCellActionTypeCountDownOver value:self.item];
             }
         }
     }
@@ -208,22 +194,11 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if (_item.orderKind == OrderKindTicket) return;
-    if (_item.placeType != PlaceTypeStore) return;
-    if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
-        [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)sender.tag value:_item];
+    if (self.item.orderKind == OrderKindTicket) return;
+    if (self.item.placeType != PlaceTypeStore) return;
+    if ([self.delegate respondsToSelector:@selector(productOrderListBaseCell:actionType:value:)]) {
+        [self.delegate productOrderListBaseCell:self actionType:(ProductOrderListBaseCellActionType)sender.tag value:self.item];
     }
 }
-
-
-#pragma mark - ProductOrderListCellBtnsViewDelegate
-
-- (void)productOrderListCellBtnsView:(ProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
-    if ([self.delegate respondsToSelector:@selector(productOrderListCell:actionType:value:)]) {
-        [self.delegate productOrderListCell:self actionType:(ProductOrderListCellActionType)btn.tag value:_item];
-    }
-}
-
-
 
 @end

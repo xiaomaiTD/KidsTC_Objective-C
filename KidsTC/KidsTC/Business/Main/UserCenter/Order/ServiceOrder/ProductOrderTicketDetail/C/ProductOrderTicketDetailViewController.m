@@ -11,6 +11,7 @@
 #import "GHeader.h"
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
+#import "BuryPointManager.h"
 
 #import "ProductOrderTicketDetailModel.h"
 #import "ProductOrderTicketDetailView.h"
@@ -170,6 +171,11 @@
         case ProductOrderTicketDetailViewActionTypeContact://联系商家
         {
             [self connectSupplier:value];
+        }
+            break;
+        case ProductOrderTicketDetailViewActionTypeShowRule://查看公告
+        {
+            [self showRule:value];
         }
             break;
     }
@@ -426,6 +432,24 @@
     controller.placeType = PlaceTypePlace;
     controller.places = places;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *orderId = self.data.orderNo;
+    if ([orderId isNotNull]) {
+        [params setObject:orderId forKey:@"orderId"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_order_address" actionId:21616 params:params];
+}
+
+#pragma mark ================查看公告================
+
+- (void)showRule:(id)valure {
+    NSString *str = self.data.noticePageUrl;
+    if ([str isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc] init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 @end

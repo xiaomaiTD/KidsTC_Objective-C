@@ -121,7 +121,6 @@
     if (opBtnShow) scrollView_w -= scrollView_h;
     self.scrollView.frame = CGRectMake(0, 0, scrollView_w, scrollView_h);
     
-    
     self.openBtn.frame = CGRectMake(scrollView_w, 0, scrollView_h, scrollView_h);
     self.openBtn.hidden = !opBtnShow;
     
@@ -182,7 +181,7 @@
     self.openTipLabel.hidden = NO;
     self.openView.hidden = NO;
     
-    self.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
+    self.frame = CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), SCREEN_WIDTH, SCREEN_HEIGHT);
     
     CGFloat scrollView_y = CGRectGetMaxY(self.scrollView.frame);
     
@@ -200,8 +199,7 @@
         [self.openBtn.imageView setTransform:CGAffineTransformRotate(self.openBtn.imageView.transform, M_PI)];
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
-    } completion:^(BOOL finished) {
-    }];
+    } completion:nil];
 }
 
 - (void)hide{
@@ -216,7 +214,7 @@
         
         self.backgroundColor = [UIColor clearColor];
     } completion:^(BOOL finished) {
-        self.frame = CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight);
+        self.frame = CGRectMake(CGRectGetMinX(self.frame), CGRectGetMinY(self.frame), SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight);
         self.openTipLabel.hidden = YES;
         self.openView.hidden = YES;
     }];

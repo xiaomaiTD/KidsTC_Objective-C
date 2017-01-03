@@ -14,7 +14,7 @@
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
 
-#import "ProductOrderTicketDetailHeader.h"
+#import "ProductOrderNormalDetailHeader.h"
 
 #import "ProductOrderTicketDetailBaseCell.h"
 #import "ProductOrderTicketDetailOrderNoCell.h"
@@ -55,7 +55,7 @@ static NSString *const SeatCellID = @"ProductOrderTicketDetailSeatCell";
 static NSString *const TimeCellID = @"ProductOrderTicketDetailTimeCell";
 static NSString *const TheatherAddressCellID = @"ProductOrderTicketDetailTheatherAddressCell";
 
-@interface ProductOrderTicketDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderTicketDetailBaseCellDelegate,ProductOrderTicketDetailToolBarDelegate>
+@interface ProductOrderTicketDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderTicketDetailBaseCellDelegate,ProductOrderTicketDetailToolBarDelegate,ProductOrderNormalDetailHeaderDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<ProductOrderTicketDetailBaseCell *> *> *sections;
 @property (nonatomic, strong) ProductOrderTicketDetailToolBar *toolBar;
@@ -89,20 +89,16 @@ static NSString *const TheatherAddressCellID = @"ProductOrderTicketDetailTheathe
     self.tableView = tableView;
     [self registerCells];
     
-    ProductOrderTicketDetailHeader *header = [self viewWithNib:@"ProductOrderTicketDetailHeader"];
+    ProductOrderNormalDetailHeader *header = [self viewWithNib:@"ProductOrderNormalDetailHeader"];
     header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
     header.hidden = YES;
-    header.actionBlock = ^(){
-        tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
-    };
+    header.delegate = self;
     tableView.tableHeaderView = header;
 }
 
 - (void)setData:(ProductOrderTicketDetailData *)data {
     _data = data;
-    if (data) {
-        self.tableView.tableHeaderView.hidden = NO;
-    }
+    self.tableView.tableHeaderView.hidden = data == nil;
     self.toolBar.data = data;
     [self setupSections];
     [self.tableView reloadData];
@@ -315,6 +311,27 @@ static NSString *const TheatherAddressCellID = @"ProductOrderTicketDetailTheathe
 - (void)productOrderTicketDetailToolBar:(ProductOrderTicketDetailToolBar *)toolBar actionType:(ProductOrderTicketDetailToolBarActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(productOrderTicketDetailView:actionType:value:)]) {
         [self.delegate productOrderTicketDetailView:self actionType:(ProductOrderTicketDetailViewActionType)type value:value];
+    }
+}
+
+#pragma mark - ProductOrderNormalDetailHeaderDelegate
+
+- (void)productOrderNormalDetailHeader:(ProductOrderNormalDetailHeader *)header actionType:(ProductOrderNormalDetailHeaderActionType)type {
+    switch (type) {
+        case ProductOrderNormalDetailHeaderActionTypeClose:
+        {
+            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+        }
+            break;
+        case ProductOrderNormalDetailHeaderActionTypeShowRule:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderTicketDetailView:actionType:value:)]) {
+                [self.delegate productOrderTicketDetailView:self actionType:ProductOrderTicketDetailViewActionTypeShowRule value:self.data];
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 

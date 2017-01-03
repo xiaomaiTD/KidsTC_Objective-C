@@ -11,6 +11,7 @@
 #import "NSString+Category.h"
 #import "OnlineCustomerService.h"
 #import "SegueMaster.h"
+#import "BuryPointManager.h"
 
 #import "ProductOrderFreeDetailModel.h"
 #import "ProductOrderFreeDetailLotteryModel.h"
@@ -201,6 +202,11 @@
         case ProductOrderFreeDetailViewActionTypeMoreLottery:
         {
             [self loadLottery:value];
+        }
+            break;
+        case ProductOrderFreeDetailViewActionTypeShowRule:
+        {
+            [self showRule:value];
         }
             break;
     }
@@ -428,7 +434,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark ================门店位置信息================
+#pragma mark ================位置信息================
 
 - (void)address:(ProductOrderFreeDetailData *)data {
     NSArray<ProductDetailAddressSelStoreModel *> *places = [ProductDetailAddressSelStoreModel modelsWithProductOrderFreeDetailStore:data.storeInfo];
@@ -439,6 +445,13 @@
     controller.placeType = data.placeType;
     controller.places = places;
     [self.navigationController pushViewController:controller animated:YES];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *orderId = self.infoData.orderNo;
+    if ([orderId isNotNull]) {
+        [params setObject:orderId forKey:@"orderId"];
+    }
+    [BuryPointManager trackEvent:@"event_skip_order_address" actionId:21616 params:params];
 }
 
 #pragma mark ================活动时间================
@@ -474,6 +487,17 @@
         self.detailView.lotteryData = self.lotteryData;
         [self.detailView reloadLotteryData:model.data.count];
     } failure:nil];
+}
+
+#pragma mark ================查看公告================
+
+- (void)showRule:(id)valure {
+    NSString *str = self.infoData.noticePageUrl;
+    if ([str isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc] init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 @end

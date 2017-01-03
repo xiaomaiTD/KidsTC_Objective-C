@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSString *useValidTimeDesc;
 @property (nonatomic, strong) NSString *freeProductSaleNum;
 @property (nonatomic, strong) NSString *freeProductTotalNum;
-
+@property (nonatomic, strong) NSString *promotionDesc;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

@@ -24,7 +24,7 @@
 
 - (void)setStandard:(ProductDetailStandard *)standard {
     _standard = standard;
-    self.nameL.text = standard.productName;
+    self.nameL.text = standard.standardName;
     self.nameL.textColor = _standard.selected?COLOR_PINK:[UIColor colorFromHexString:@"222222"];
 }
 

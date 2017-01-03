@@ -77,8 +77,6 @@ singleM(User)
         [[CookieManager shareCookieManager] setCookieWithName:CookieKey_skey andValue:_skey];
         [[NotificationService shareNotificationService] bindAccount:YES];
         [self userLocalSave];
-    }else{
-        [self logoutLocal];
     }
 }
 
@@ -109,13 +107,11 @@ singleM(User)
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             if (error.code == -1000) {
                 TCLog(@"checkLoginStatusFromServer - 服务器端没有登录");
-                [self logoutLocal];
             }else{
                 TCLog(@"checkLoginStatusFromServer - 请求失败，不做处理");
             }
         }];
     }else{
-        //[self logoutLocal];
         TCLog(@"checkLoginStatusFromServer - 本地没有存储uid和skey，不用检查是否登录");
     }
 }
@@ -132,7 +128,6 @@ singleM(User)
                 if (failure) failure(error);
             }];
         }else{
-            [self logoutLocal];
             if (success) success();
         }
     }else{//自动

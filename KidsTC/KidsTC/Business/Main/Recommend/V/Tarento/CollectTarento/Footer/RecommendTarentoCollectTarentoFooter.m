@@ -35,7 +35,7 @@
 
 - (void)setTarento:(RecommendTarento *)tarento {
     _tarento = tarento;
-    self.numL.text = _tarento.newsCount;
+    self.numL.text = [NSString stringWithFormat:@"%zd",_tarento.newsCount];
 }
 
 @end

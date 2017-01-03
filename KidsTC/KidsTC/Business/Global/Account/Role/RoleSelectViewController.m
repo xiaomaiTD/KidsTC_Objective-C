@@ -44,6 +44,8 @@ typedef enum {
     [super viewDidLoad];
     
     self.navigationItem.title = @"请选择阶段";
+    self.naviTheme = NaviThemeWihte;
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.scrollView = (UIScrollView *)self.view;
     self.nextBtn.layer.cornerRadius = 25;

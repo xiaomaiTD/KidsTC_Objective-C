@@ -711,57 +711,109 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
         CGFloat subTitle_h = 21;
         CGRect subTtitleFrme = CGRectMake(subTitle_x, subTitle_y, subTitle_w, subTitle_h);
         
-        CGSize storeAddress_s = [obj.attStoreAddress size];
-        CGFloat storeAddress_w = storeAddress_s.width;
-        if (storeAddress_w>subTitle_w*0.5) {
-            storeAddress_w = subTitle_w*0.5;
+        CGRect storeAddressFrme, statusFrame, saleNumFrame, priceFrame, discountFrame, btnDescFrame;
+        if ([obj.attPrice.string isNotNull]) {
+            
+            CGSize storeAddress_s = [obj.attStoreAddress size];
+            CGSize status_size = [obj.attStatus size];
+            
+            CGFloat storeAddress_w = storeAddress_s.width;
+            CGFloat status_w = status_size.width;
+            
+            if (storeAddress_w + status_w > subTitle_w) {
+                storeAddress_w = subTitle_w - status_w;
+                if (storeAddress_w<subTitle_w*0.5) {
+                    storeAddress_w = subTitle_w*0.5;
+                }
+            }
+            status_w = subTitle_w - storeAddress_w;
+            
+            CGFloat storeAddress_x = margin;
+            CGFloat storeAddress_y = obj.attSubTitle.length>0?(CGRectGetMaxY(subTtitleFrme) + 10):CGRectGetMaxY(titleFrame) + 10;
+            CGFloat storeAddress_h = 21;
+            storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
+            
+            CGFloat status_h = storeAddress_h;
+            CGFloat status_x = CGRectGetMaxX(storeAddressFrme) + 8;
+            CGFloat status_y = storeAddress_y;
+            statusFrame = CGRectMake(status_x, status_y, status_w, status_h);
+            
+            CGSize saleNum_s = [obj.attSaleNum size];
+            CGFloat saleNum_w = saleNum_s.width;
+            CGFloat saleNum_h = saleNum_s.height;
+            CGFloat saleNum_x = margin;
+            CGFloat saleNum_y = CGRectGetMaxY(storeAddressFrme) + 12;
+            saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
+            
+            CGSize price_size = [obj.attPrice size];
+            CGFloat price_w = price_size.width;
+            CGFloat price_x = CGRectGetMaxX(saleNumFrame);
+            CGFloat price_h = price_size.height;
+            CGFloat price_y = CGRectGetMaxY(storeAddressFrme) + 10;
+            priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
+            
+            CGSize discount_size = [obj.attDiscountDesc size];
+            CGFloat discount_w = discount_size.width + 8;
+            CGFloat discount_x = CGRectGetMaxX(priceFrame) + 8;
+            CGFloat discount_h = discount_size.height;
+            CGFloat discount_y = price_y + (price_h - discount_h)*0.5;
+            discountFrame = CGRectMake(discount_x, discount_y, discount_w, discount_h);
+            
+            CGSize btnDesc_size = [obj.attBtnDesc size];
+            CGFloat btnDesc_w = btnDesc_size.width + 16;
+            CGFloat btnDesc_x = SCREEN_WIDTH - margin - btnDesc_w;
+            CGFloat btnDesc_h = 30;
+            CGFloat btnDesc_y = price_y + (price_h - btnDesc_h)*0.5;
+            btnDescFrame = CGRectMake(btnDesc_x, btnDesc_y, btnDesc_w, btnDesc_h);
+            
+        }else{
+            
+            CGSize storeAddress_s = [obj.attStoreAddress size];
+            CGSize status_size = [obj.attStatus size];
+            CGSize btnDesc_size = [obj.attBtnDesc size];
+            
+            
+            CGFloat storeAddress_w = storeAddress_s.width;
+            CGFloat status_w = status_size.width;
+            CGFloat btnDesc_w = btnDesc_size.width + 16;
+            
+            if ((storeAddress_w + status_w + btnDesc_w + 24) > subTitle_w) {
+                storeAddress_w = subTitle_w - (status_w + btnDesc_w + 24);
+                if (storeAddress_w<subTitle_w*0.3) storeAddress_w = subTitle_w*0.3;
+            }
+            status_w = subTitle_w - (storeAddress_w + btnDesc_w + 24);
+            if (status_w<0) status_w = 0;
+            
+            CGFloat storeAddress_x = margin;
+            CGFloat storeAddress_y = obj.attSubTitle.length>0?(CGRectGetMaxY(subTtitleFrme) + 10):CGRectGetMaxY(titleFrame) + 10;
+            CGFloat storeAddress_h = 21;
+            storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
+            
+            CGFloat status_h = storeAddress_h;
+            CGFloat status_x = CGRectGetMaxX(storeAddressFrme) + 8;
+            CGFloat status_y = storeAddress_y;
+            statusFrame = CGRectMake(status_x, status_y, status_w, status_h);
+            
+            CGSize saleNum_s = [obj.attSaleNum size];
+            CGFloat saleNum_w = saleNum_s.width;
+            CGFloat saleNum_h = saleNum_s.height;
+            CGFloat saleNum_x = margin;
+            CGFloat saleNum_y = CGRectGetMaxY(storeAddressFrme) + 12;
+            saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
+            
+            priceFrame = CGRectZero;
+            
+            discountFrame = CGRectZero;
+            
+            CGFloat btnDesc_x = SCREEN_WIDTH - margin - btnDesc_w;
+            CGFloat btnDesc_h = 30;
+            CGFloat btnDesc_y = status_y + (status_h - btnDesc_h)*0.5;
+            btnDescFrame = CGRectMake(btnDesc_x, btnDesc_y, btnDesc_w, btnDesc_h);
         }
-        CGFloat storeAddress_x = margin;
-        CGFloat storeAddress_y = obj.attSubTitle.length>0?(CGRectGetMaxY(subTtitleFrme) + 10):CGRectGetMaxY(titleFrame) + 10;
-        CGFloat storeAddress_h = 21;
-        CGRect storeAddressFrme = CGRectMake(storeAddress_x, storeAddress_y, storeAddress_w, storeAddress_h);
-        
-        CGSize status_size = [obj.attStatus size];
-        CGFloat status_w = status_size.width;
-        if (status_w>subTitle_w*0.5) {
-            status_w = subTitle_w*0.5;
-        }
-        CGFloat status_h = storeAddress_h;
-        CGFloat status_x = CGRectGetMaxX(storeAddressFrme) + 4;
-        CGFloat status_y = storeAddress_y;
-        CGRect statusFrame = CGRectMake(status_x, status_y, status_w, status_h);
-        
-        CGSize saleNum_s = [obj.attSaleNum size];
-        CGFloat saleNum_w = saleNum_s.width;
-        CGFloat saleNum_h = saleNum_s.height;
-        CGFloat saleNum_x = margin;
-        CGFloat saleNum_y = CGRectGetMaxY(storeAddressFrme) + 12;
-        CGRect saleNumFrame = CGRectMake(saleNum_x, saleNum_y, saleNum_w, saleNum_h);
-        
-        CGSize price_size = [obj.attPrice size];
-        CGFloat price_w = price_size.width;
-        CGFloat price_x = CGRectGetMaxX(saleNumFrame);
-        CGFloat price_h = price_size.height;
-        CGFloat price_y = CGRectGetMaxY(storeAddressFrme) + 10;
-        CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
-        
-        CGSize discount_size = [obj.attDiscountDesc size];
-        CGFloat discount_w = discount_size.width + 8;
-        CGFloat discount_x = CGRectGetMaxX(priceFrame) + 8;
-        CGFloat discount_h = discount_size.height;
-        CGFloat discount_y = price_y + (price_h - discount_h)*0.5;
-        CGRect discountFrame = CGRectMake(discount_x, discount_y, discount_w, discount_h);
-        
-        CGSize btnDesc_size = [obj.attBtnDesc size];
-        CGFloat btnDesc_w = btnDesc_size.width + 16;
-        CGFloat btnDesc_x = SCREEN_WIDTH - margin - btnDesc_w;
-        CGFloat btnDesc_h = 30;
-        CGFloat btnDesc_y = price_y + (price_h - btnDesc_h)*0.5;
-        CGRect btnDescFrame = CGRectMake(btnDesc_x, btnDesc_y, btnDesc_w, btnDesc_h);
         
         CGFloat line_x = 0;
         CGFloat line_h = LINE_H;
-        CGFloat line_y = CGRectGetMaxY(priceFrame) + 15 - line_h;
+        CGFloat line_y = CGRectGetMaxY(btnDescFrame) + 10 - line_h;
         CGFloat line_w = item_w - 2 * line_x;
         CGRect lineFrame = CGRectMake(line_x, line_y, line_w, line_h);
         

@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UIView *headBgView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgH;
 @end
 
 @implementation AccountCenterHeader
@@ -41,13 +40,6 @@
     [self.headBgView addGestureRecognizer:tapGR];
     
     UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
-    CGSize bgSize = bgImage.size;
-    CGFloat bgImageW = bgSize.width;
-    CGFloat bgImageH = bgSize.height;
-    if (bgImageW !=0 && bgImageH != 0) {
-        self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
-        [self layoutIfNeeded];
-    }
     self.bgImageView.image = bgImage;
 }
 
@@ -76,24 +68,9 @@
     
     NSString *bgImgName = model.data.config.backgroundImg.Img;
     if ([bgImgName isNotNull]) {
-        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:bgImgName] placeholderImage:PLACEHOLDERIMAGE_BIG completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            CGSize bgSize = image.size;
-            CGFloat bgImageW = bgSize.width;
-            CGFloat bgImageH = bgSize.height;
-            if (bgImageW !=0 && bgImageH != 0) {
-                self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
-                [self layoutIfNeeded];
-            }
-        }];
+        [self.bgImageView sd_setImageWithURL:[NSURL URLWithString:bgImgName] placeholderImage:[UIImage imageNamed:@"accountCenter_bg"] completed:nil];
     }else{
         UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
-        CGSize bgSize = bgImage.size;
-        CGFloat bgImageW = bgSize.width;
-        CGFloat bgImageH = bgSize.height;
-        if (bgImageW !=0 && bgImageH != 0) {
-            self.bgH.constant = SCREEN_WIDTH * (bgImageH/bgImageW);
-            [self layoutIfNeeded];
-        }
         self.bgImageView.image = bgImage;
     }
 }

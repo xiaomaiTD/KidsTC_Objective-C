@@ -58,7 +58,7 @@ static NSString *const RefundTitleCellID = @"ProductOrderNormalDetailRefundTitle
 static NSString *const RefundCellID = @"ProductOrderNormalDetailRefundCell";
 static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
 
-@interface ProductOrderNormalDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderNormalDetailBaseCellDelegate,ProductOrderNormalDetailToolBarDelegate>
+@interface ProductOrderNormalDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderNormalDetailBaseCellDelegate,ProductOrderNormalDetailToolBarDelegate,ProductOrderNormalDetailHeaderDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<ProductOrderNormalDetailBaseCell *> *> *sections;
 @property (nonatomic, strong) ProductOrderNormalDetailToolBar *toolBar;
@@ -95,17 +95,13 @@ static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
     ProductOrderNormalDetailHeader *header = [self viewWithNib:@"ProductOrderNormalDetailHeader"];
     header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
     header.hidden = YES;
-    header.actionBlock = ^(){
-        tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
-    };
+    header.delegate = self;
     tableView.tableHeaderView = header;
 }
 
 - (void)setData:(ProductOrderNormalDetailData *)data {
     _data = data;
-    if (data) {
-        self.tableView.tableHeaderView.hidden = NO;
-    }
+    self.tableView.tableHeaderView.hidden = data == nil;
     self.toolBar.data = data;
     [self setupSections];
     [self.tableView reloadData];
@@ -325,6 +321,27 @@ static NSString *const PayTipCellID = @"ProductOrderNormalDetailPayTipCell";
 - (void)productOrderNormalDetailToolBar:(ProductOrderNormalDetailToolBar *)toolBar actionType:(ProductOrderNormalDetailToolBarActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(productOrderNormalDetailView:actionType:value:)]) {
         [self.delegate productOrderNormalDetailView:self actionType:(ProductOrderNormalDetailViewActionType)type value:value];
+    }
+}
+
+#pragma mark - ProductOrderNormalDetailHeaderDelegate
+
+- (void)productOrderNormalDetailHeader:(ProductOrderNormalDetailHeader *)header actionType:(ProductOrderNormalDetailHeaderActionType)type {
+    switch (type) {
+        case ProductOrderNormalDetailHeaderActionTypeClose:
+        {
+            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+        }
+            break;
+        case ProductOrderNormalDetailHeaderActionTypeShowRule:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderNormalDetailView:actionType:value:)]) {
+                [self.delegate productOrderNormalDetailView:self actionType:ProductOrderNormalDetailViewActionTypeShowRule value:self.data];
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 

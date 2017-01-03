@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductOrderListItem.h"
 
 #define ProductOrderListPageCount 10
 
@@ -44,7 +45,7 @@ typedef enum : NSUInteger {
 @interface ProductOrderListView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, weak) id<ProductOrderListViewDelegate> delegate;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray<ProductOrderListItem *> *items;
 @property (nonatomic, assign) BOOL noMoreOrderListData;
 @property (nonatomic, assign) BOOL noMoreRecommendData;
 - (void)beginRefreshing;

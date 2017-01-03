@@ -8,6 +8,7 @@
 
 #import "ProductOrderNormalDetailBtnsView.h"
 
+
 @interface ProductOrderNormalDetailBtnsView ()
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btns;
 @end
@@ -46,6 +47,7 @@
     if ([self.delegate respondsToSelector:@selector(productOrderNormalDetailBtnsView:actionBtn:value:)]) {
         [self.delegate productOrderNormalDetailBtnsView:self actionBtn:sender value:nil];
     }
+    
 }
 
 @end

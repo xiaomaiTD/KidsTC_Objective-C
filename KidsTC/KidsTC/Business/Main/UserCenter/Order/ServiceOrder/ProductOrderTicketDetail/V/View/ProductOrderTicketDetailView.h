@@ -30,7 +30,7 @@ typedef enum : NSUInteger {
     ProductOrderTicketDetailViewActionTypeDeliberCall,//订单电话
     ProductOrderTicketDetailViewActionTypeAddress,//地址
     ProductOrderTicketDetailViewActionTypeContact,//联系商家
-    
+    ProductOrderTicketDetailViewActionTypeShowRule,//查看公告
 } ProductOrderTicketDetailViewActionType;
 
 @class ProductOrderTicketDetailView;

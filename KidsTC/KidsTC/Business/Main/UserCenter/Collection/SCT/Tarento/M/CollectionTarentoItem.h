@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *headSculpture;
 @property (nonatomic, strong) NSString *publishArticleNum;
 @property (nonatomic, strong) NSString *viewSumNum;
-@property (nonatomic, strong) NSString *newsCount;
+@property (nonatomic, assign) NSInteger newsCount;
 @property (nonatomic, strong) NSString *collectedTimeDesc;
 @property (nonatomic, strong) NSArray<ArticleHomeItem *> *articleLst;
 @end

@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
     ProductOrderFreeDetailViewActionTypeAddress,
     ProductOrderFreeDetailViewActionTypeDate,
     ProductOrderFreeDetailViewActionTypeMoreLottery,
-    
+    ProductOrderFreeDetailViewActionTypeShowRule,
 } ProductOrderFreeDetailViewActionType;
 
 @class ProductOrderFreeDetailView;

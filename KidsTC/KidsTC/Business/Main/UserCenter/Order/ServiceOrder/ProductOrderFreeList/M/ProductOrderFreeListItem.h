@@ -41,6 +41,7 @@
 @property (nonatomic, assign) NSInteger orderStatus;
 @property (nonatomic, assign) PlaceType placeType;
 @property (nonatomic, strong) NSString *supplierMobie;
+@property (nonatomic, strong) NSString *useTimeStr;
 //selfDefine
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;
 @property (nonatomic, strong) NSArray<ProductOrderFreeListBtn *> *btns;

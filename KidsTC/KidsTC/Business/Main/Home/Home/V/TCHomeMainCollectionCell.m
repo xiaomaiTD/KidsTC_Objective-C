@@ -102,6 +102,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
         StrongSelf(self)
         [self loadData:YES];
     }];
+    
     mj_header.automaticallyChangeAlpha = YES;
     self.tableView.mj_header = mj_header;
     
@@ -225,7 +226,7 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
                     }else{
                         category = categorys[0];
                         showCategory = true;
-                        tableViewFrame = CGRectMake(0, 64 + 40, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 40 - 49);
+                        tableViewFrame = CGRectMake(0, 64 + (40-4), SCREEN_WIDTH, SCREEN_HEIGHT - 64 - (40-4) - 49);
                     }
                     self.tableView.frame = tableViewFrame;
                     

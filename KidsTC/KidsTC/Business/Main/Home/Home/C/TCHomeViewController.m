@@ -15,6 +15,7 @@
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
 #import "NavigationController.h"
+#import "UIImage+Category.h"
 
 #import "TCHomeCollectionViewLayout.h"
 #import "TCHomeMainCollectionCell.h"
@@ -81,15 +82,22 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     [self addObserver];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.naviTheme = NaviThemeWihte;
     self.tf.text = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
     [self updateIv_activity];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self checkGuide];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor lightGrayColor] size:CGSizeMake(SCREEN_WIDTH, LINE_H)]];
 }
 
 - (void)setupParams {
@@ -109,7 +117,9 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 
 - (void)setupUI {
     
+    self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.naviColor = [UIColor whiteColor];
     
     [self setupTf];
     
@@ -131,18 +141,18 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 - (void)setupTf {
     
     UITextField *tf = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 400, 30)];
-    tf.backgroundColor = [UIColor colorWithWhite:0 alpha:0.08];
+    tf.backgroundColor = [UIColor colorFromHexString:@"f5f5f5"];
     tf.font = [UIFont systemFontOfSize:15];
     tf.borderStyle = UITextBorderStyleNone;
     tf.layer.cornerRadius = 4;
-    tf.textColor = [UIColor whiteColor];
+    tf.textColor = [UIColor colorFromHexString:@"9c9c9c"];
     tf.layer.masksToBounds = YES;
     tf.delegate = self;
     
     UIButton *leftBtn = [UIButton new];
     leftBtn.showsTouchWhenHighlighted = NO;
     leftBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [leftBtn setImage:[UIImage imageNamed:@"home_search_wite"] forState:UIControlStateNormal];
+    [leftBtn setImage:[UIImage imageNamed:@"home_search_v2_black"] forState:UIControlStateNormal];
     leftBtn.bounds = CGRectMake(0, 0, 30, 30);
     [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     tf.leftView = leftBtn;
@@ -151,7 +161,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     UIButton *rightBtn = [UIButton new];
     rightBtn.showsTouchWhenHighlighted = NO;
     rightBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [rightBtn setImage:[UIImage imageNamed:@"home_siri_wite"] forState:UIControlStateNormal];
+    [rightBtn setImage:[UIImage imageNamed:@"home_siri_v2_black"] forState:UIControlStateNormal];
     rightBtn.bounds = CGRectMake(0, 0, 30, 30);
     [rightBtn setImageEdgeInsets:UIEdgeInsetsMake(8, 8, 8, 8)];
     [rightBtn addTarget:self action:@selector(speek) forControlEvents:UIControlEventTouchUpInside];
@@ -184,10 +194,11 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
         btn.bounds = CGRectMake(0, 0, 27.2, 30);
         btn.showsTouchWhenHighlighted = NO;
         btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [btn setImage:[UIImage imageNamed:@"home_scan"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"home_scan_v2_black"] forState:UIControlStateNormal];
     }];
     
-    self.roleBtn = [HomeRoleButton btnWithImageName:@"arrow_d_mini" highImageName:@"arrow_d_mini" target:self action:@selector(changeRole)];
+    self.roleBtn = [HomeRoleButton btnWithImageName:@"arrow_d_mini_v2_black" highImageName:@"arrow_d_mini_v2_black" target:self action:@selector(changeRole)];
+    [self.roleBtn setTitleColor:[UIColor colorFromHexString:@"5b5b5b"] forState:UIControlStateNormal];
     [self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.roleBtn];
 }
@@ -388,7 +399,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 #pragma mark setupToolBar
 
 - (void)setupToolBar {
-    MultiItemsToolBar *toolBar = [[MultiItemsToolBar alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
+    MultiItemsToolBar *toolBar = [[MultiItemsToolBar alloc]initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH, MultiItemsToolBarScrollViewHeight)];
     toolBar.delegate = self;
     [self.view addSubview:toolBar];
     toolBar.hidden = YES;

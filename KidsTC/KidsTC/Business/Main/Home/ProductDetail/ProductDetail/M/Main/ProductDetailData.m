@@ -57,7 +57,7 @@
     switch (type) {
         case ProductDetailTypeNormal:
         {
-            
+            _standardTitle = [_standardTitle isNotNull]?_standardTitle:@"已选套餐";
         }
             break;
         case ProductDetailTypeTicket:
@@ -77,6 +77,8 @@
             
             [self setupJoinMember];
         }
+            break;
+            default:
             break;
     }
 }

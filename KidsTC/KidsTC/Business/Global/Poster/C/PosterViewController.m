@@ -37,6 +37,9 @@ static NSString *const PosterViewCellID = @"PosterViewCellID";
 }
 
 - (void)initui{
+    
+    self.naviTheme = NaviThemeWihte;
+    
     [self initCollectionView];
     
     [self initBtn];

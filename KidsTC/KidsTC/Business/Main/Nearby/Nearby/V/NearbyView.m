@@ -116,30 +116,33 @@ static NSString *CellID = @"NearbyCollectionViewCell";
         CGPoint contentOffset = self.collectionView.contentOffset;
         contentOffset.x = scrollView_w*index;
         self.collectionView.contentOffset = contentOffset;
-        
-        NearbyData *data = self.datas[index];
-        NSString *stValue = [NSString stringWithFormat:@"%@",data.stValue];
-        NSMutableDictionary *params = [NSMutableDictionary dictionary];
-        if ([stValue isNotNull]) {
-            [params setObject:stValue forKey:@"type"];
-        }
-        [BuryPointManager trackEvent:@"event_change_nearby_category" actionId:21704 params:params];
+        [self buryPoint:index];
     }
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
     CGFloat offsetX = scrollView.contentOffset.x;
-    
     CGFloat scrollView_w = SCREEN_WIDTH;
     NSUInteger smallIndex = offsetX/scrollView_w;
     NSUInteger bigIndex = smallIndex+1;
     CGFloat progress = (offsetX - smallIndex * scrollView_w)/scrollView_w;
-    
     [self.itemsBar changeTipPlaceWithSmallIndex:smallIndex bigIndex:bigIndex progress:progress animate:YES];
     self.currentIndex = smallIndex;
+    if (offsetX == smallIndex*scrollView_w) {
+        [self buryPoint:smallIndex];
+    }
+}
+
+- (void)buryPoint:(NSInteger)index {
+    NearbyData *data = self.datas[index];
+    NSString *stValue = [NSString stringWithFormat:@"%@",data.stValue];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([stValue isNotNull]) {
+        [params setObject:stValue forKey:@"type"];
+    }
+    [BuryPointManager trackEvent:@"event_change_nearby_category" actionId:21704 params:params];
 }
 
 #pragma mark - NearbyCollectionViewCellDelegate

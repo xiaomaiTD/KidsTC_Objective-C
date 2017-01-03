@@ -72,13 +72,14 @@
     attStatus.lineSpacing = 0;
     attStatus.color = [UIColor colorFromHexString:@"333333"];
     attStatus.font = [UIFont systemFontOfSize:14];
-    attStatus.alignment = NSTextAlignmentRight;
+    attStatus.alignment = NSTextAlignmentLeft;
     content.attStatus = attStatus;
     
     NSString *distance = [_storeDistance isNotNull]?[NSString stringWithFormat:@"距离 %@",_storeDistance]:@"";
     NSString *storeName = [_storeName isNotNull]?_storeName:@"";
-    NSString *stoeAddress = [NSString stringWithFormat:@" %@%@",storeName, distance];
-    if (stoeAddress.length>0) {
+    if ([storeName isNotNull] && [distance isNotNull]) {
+        
+        NSString *stoeAddress = [NSString stringWithFormat:@" %@%@",storeName, distance];
         
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         attachment.image = [UIImage imageNamed:@"home_recommend_local"];

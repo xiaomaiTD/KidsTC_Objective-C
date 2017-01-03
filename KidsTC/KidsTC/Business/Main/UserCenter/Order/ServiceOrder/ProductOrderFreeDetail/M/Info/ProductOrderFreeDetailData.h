@@ -46,6 +46,7 @@
 @property (nonatomic, assign) OrderState orderStatus;
 @property (nonatomic, strong) NSString *userRemark;
 @property (nonatomic, strong) NSString *supplierMobie;
+@property (nonatomic, strong) NSString *noticePageUrl;
 //selfDefine
 @property (nonatomic, strong) NSString *countDownValueString;
 @property (nonatomic, strong) NSAttributedString *userRemarkStr;

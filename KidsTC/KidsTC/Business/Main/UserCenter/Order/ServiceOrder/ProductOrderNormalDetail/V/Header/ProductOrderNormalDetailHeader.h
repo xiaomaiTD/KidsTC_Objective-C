@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    ProductOrderNormalDetailHeaderActionTypeClose = 1,
+    ProductOrderNormalDetailHeaderActionTypeShowRule,
+} ProductOrderNormalDetailHeaderActionType;
+
+@class ProductOrderNormalDetailHeader;
+@protocol ProductOrderNormalDetailHeaderDelegate <NSObject>
+- (void)productOrderNormalDetailHeader:(ProductOrderNormalDetailHeader *)header actionType:(ProductOrderNormalDetailHeaderActionType)type;
+@end
+
 @interface ProductOrderNormalDetailHeader : UIView
-@property (nonatomic, copy) void (^actionBlock)();
+@property (nonatomic, assign) id<ProductOrderNormalDetailHeaderDelegate> delegate;
 @end

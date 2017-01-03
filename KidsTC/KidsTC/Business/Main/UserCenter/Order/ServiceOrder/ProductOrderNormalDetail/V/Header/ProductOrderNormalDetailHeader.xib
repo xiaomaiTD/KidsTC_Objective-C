@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,6 +32,12 @@
                                 <constraint firstAttribute="width" secondItem="E7G-Zj-xJj" secondAttribute="height" multiplier="1:1" id="xch-tq-DOa"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UR0-Py-9to">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <connections>
+                                <action selector="action:" destination="ewt-Jf-dEf" eventType="touchUpInside" id="o6o-T6-M4B"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHw-fb-4JA">
                             <rect key="frame" x="341" y="8" width="28" height="28"/>
                             <constraints>
@@ -48,12 +54,16 @@
                     <color key="backgroundColor" red="0.81568627449999997" green="0.90588235289999997" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="E7G-Zj-xJj" firstAttribute="leading" secondItem="E0v-tL-vIT" secondAttribute="leading" constant="15" id="2Or-SL-T46"/>
+                        <constraint firstItem="UR0-Py-9to" firstAttribute="top" secondItem="E0v-tL-vIT" secondAttribute="top" id="3lN-9M-F3L"/>
                         <constraint firstAttribute="trailing" secondItem="OHw-fb-4JA" secondAttribute="trailing" constant="6" id="9mI-Wf-fRQ"/>
                         <constraint firstItem="OHw-fb-4JA" firstAttribute="centerY" secondItem="E0v-tL-vIT" secondAttribute="centerY" id="B8W-gZ-hir"/>
                         <constraint firstItem="0Wh-k3-czc" firstAttribute="centerY" secondItem="E0v-tL-vIT" secondAttribute="centerY" id="HGc-Ki-gQm"/>
+                        <constraint firstItem="UR0-Py-9to" firstAttribute="leading" secondItem="E0v-tL-vIT" secondAttribute="leading" id="K7b-KR-LuZ"/>
                         <constraint firstItem="0Wh-k3-czc" firstAttribute="leading" secondItem="E7G-Zj-xJj" secondAttribute="trailing" constant="4" id="aqz-31-qFr"/>
+                        <constraint firstAttribute="trailing" secondItem="UR0-Py-9to" secondAttribute="trailing" id="cE9-cl-acA"/>
                         <constraint firstItem="OHw-fb-4JA" firstAttribute="leading" secondItem="0Wh-k3-czc" secondAttribute="trailing" id="lDP-TG-tMB"/>
                         <constraint firstItem="E7G-Zj-xJj" firstAttribute="centerY" secondItem="E0v-tL-vIT" secondAttribute="centerY" id="m82-ne-IAP"/>
+                        <constraint firstAttribute="bottom" secondItem="UR0-Py-9to" secondAttribute="bottom" id="nEt-VB-Rby"/>
                         <constraint firstAttribute="height" constant="44" id="ob8-SW-koN"/>
                     </constraints>
                 </view>
@@ -66,6 +76,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="closeBtn" destination="OHw-fb-4JA" id="GJb-zC-Jee"/>
+                <outlet property="showRuleBtn" destination="UR0-Py-9to" id="joP-Fd-rLm"/>
+            </connections>
             <point key="canvasLocation" x="-150.5" y="-13"/>
         </view>
     </objects>

@@ -34,7 +34,7 @@
 @interface ProductOrderFreeListViewController ()<ProductOrderFreeListViewDelegate,CommentFoundingViewControllerDelegate,OrderRefundViewControllerDelegate>
 @property (nonatomic, strong) ProductOrderFreeListView *listView;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray<ProductOrderFreeListItem *> *items;
 @property (nonatomic, strong) ProductOrderFreeListItem *currentItem;
 @end
 

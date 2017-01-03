@@ -26,7 +26,9 @@
 - (UIImageView *)arrowView
 {
     if (!_arrowView) {
-        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[NSBundle mj_arrowImage]];
+        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_mj_refresh"]];
+        arrowView.bounds = CGRectMake(0, 0, 11, 14.5);
+        arrowView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_arrowView = arrowView];
     }
     return _arrowView;
@@ -64,12 +66,15 @@
 {
     [super prepare];
     
-    self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     
     // 设置对应状态的文字
     [self setTitle:@"下拉有惊喜" forState:MJRefreshStateIdle];
     [self setTitle:@"松开得惊喜" forState:MJRefreshStatePulling];
     [self setTitle:@"正在拉惊喜..." forState:MJRefreshStateRefreshing];
+    
+    self.stateLabel.textColor = [UIColor whiteColor];
+    self.stateLabel.font = [UIFont systemFontOfSize:14];
     
     [self setupSubViews];
     
@@ -89,14 +94,14 @@
             timeWidth = self.lastUpdatedTimeLabel.mj_textWith;
         }
         CGFloat textWidth = MAX(stateWidth, timeWidth);
-        arrowCenterX -= textWidth / 2 + self.labelLeftInset;
+        arrowCenterX -= textWidth / 2 + self.labelLeftInset - 10;
     }
-    CGFloat arrowCenterY = self.mj_h * 0.5;
+    CGFloat arrowCenterY = self.mj_h * 0.5 + 8;
     CGPoint arrowCenter = CGPointMake(arrowCenterX, arrowCenterY);
     
     // 箭头
     if (self.arrowView.constraints.count == 0) {
-        self.arrowView.mj_size = self.arrowView.image.size;
+        self.arrowView.mj_size = self.arrowView.bounds.size;
         self.arrowView.center = arrowCenter;
     }
     

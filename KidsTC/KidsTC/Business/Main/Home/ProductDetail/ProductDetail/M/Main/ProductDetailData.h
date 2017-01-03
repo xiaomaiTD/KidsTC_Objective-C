@@ -124,7 +124,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) ProductDetailSecKillInfo *secKillInfo;
 @property (nonatomic, assign) BOOL isShowRemainCount;
-
+@property (nonatomic, assign) BOOL isShowProductStandards;
+@property (nonatomic, strong) NSString *standardTitle;
+@property (nonatomic, strong) NSString *standardName;
 #pragma mark - selfDefine
 
 //type

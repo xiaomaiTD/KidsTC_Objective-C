@@ -37,7 +37,7 @@
 
 - (void)setStore:(RecommendStore *)store {
     _store = store;
-    self.numL.text = store.newsCount;
+    self.numL.text = [NSString stringWithFormat:@"%zd",store.newsCount];
     [self layoutIfNeeded];
 }
 

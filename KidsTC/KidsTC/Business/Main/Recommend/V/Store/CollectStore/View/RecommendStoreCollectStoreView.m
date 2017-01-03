@@ -12,10 +12,12 @@
 #import "RecommendStoreCollectStoreHeader.h"
 #import "RecommendStoreCollectStoreCell.h"
 #import "RecommendStoreCollectStoreFooter.h"
+#import "RecommendStoreCollectStoreEmptyFooter.h"
 
 static NSString *const HeaderID = @"RecommendStoreCollectStoreHeader";
 static NSString *const CellID = @"RecommendStoreCollectStoreCell";
 static NSString *const FooterID = @"RecommendStoreCollectStoreFooter";
+static NSString *const EmptyFooterID = @"RecommendStoreCollectStoreEmptyFooter";
 
 @interface RecommendStoreCollectStoreView ()<UITableViewDelegate,UITableViewDataSource,RecommendStoreCollectStoreHeaderDelegate,RecommendStoreCollectStoreFooterDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,20 +36,22 @@ static NSString *const FooterID = @"RecommendStoreCollectStoreFooter";
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendStoreCollectStoreHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeaderID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendStoreCollectStoreCell" bundle:nil] forCellReuseIdentifier:CellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendStoreCollectStoreFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FooterID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RecommendStoreCollectStoreEmptyFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:EmptyFooterID];
 }
 
 - (void)reloadData {
     self.stores = [[RecommendDataManager shareRecommendDataManager] recommendStore];
-    [self.tableView reloadData];
     self.hidden = _stores.count<1;
+    [self.tableView reloadData];
+    
 }
 
 - (CGFloat)contentHeight {
-    __block CGFloat height = 39.5;
-    [self.stores enumerateObjectsUsingBlock:^(RecommendStore *obj, NSUInteger idx, BOOL *stop) {
-        height += 81+61+obj.productLst.count*122;
-    }];
-    return self.stores.count>0? height:0.001;
+    
+    [self layoutIfNeeded];
+    
+    CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
+    return self.stores.count>0?height:0.001;
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -65,10 +69,6 @@ static NSString *const FooterID = @"RecommendStoreCollectStoreFooter";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 81;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 61;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -95,12 +95,17 @@ static NSString *const FooterID = @"RecommendStoreCollectStoreFooter";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    RecommendStoreCollectStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FooterID];
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:EmptyFooterID];
     if (section<self.stores.count) {
-        footer.store = self.stores[section];
-        footer.delegate = self;
+        RecommendStore *store = self.stores[section];
+        if (store.newsCount>0) {
+            RecommendStoreCollectStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FooterID];
+            footer.store = self.stores[section];
+            footer.delegate = self;
+            footerView = footer;
+        }
     }
-    return footer;
+    return footerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

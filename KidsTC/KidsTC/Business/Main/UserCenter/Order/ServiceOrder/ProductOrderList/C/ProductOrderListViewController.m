@@ -41,7 +41,7 @@
 
 @property (nonatomic, strong) ProductOrderListView *listView;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSArray<ProductOrderListItem *> *items;
 
 @property (nonatomic, strong) ProductOrderListAllTitleView *allTitleView;
 @property (nonatomic, strong) ProductOrderListAllTitleShowView *allTitleShowView;

@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *storeImgRatio;
 @property (nonatomic, strong) NSString *storeAddress;
 @property (nonatomic, strong) NSString *mapAddress;
-@property (nonatomic, strong) NSString *newsCount;
+@property (nonatomic, assign) NSInteger newsCount;
 @property (nonatomic, strong) NSString *saleNum;
 @property (nonatomic, strong) NSString *interestNum;
 @property (nonatomic, assign) BOOL isInterest;

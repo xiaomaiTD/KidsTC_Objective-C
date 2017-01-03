@@ -35,7 +35,7 @@
 
 - (void)setItem:(CollectionTarentoItem *)item {
     _item = item;
-    self.numL.text = _item.newsCount;
+    self.numL.text = [NSString stringWithFormat:@"%zd",_item.newsCount];
 }
 
 

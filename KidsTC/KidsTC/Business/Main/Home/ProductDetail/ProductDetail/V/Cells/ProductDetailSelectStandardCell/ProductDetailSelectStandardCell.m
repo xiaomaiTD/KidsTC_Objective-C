@@ -21,7 +21,7 @@
 }
 - (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    self.nameL.text = data.serveName;
+    self.nameL.text = data.standardName;
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {

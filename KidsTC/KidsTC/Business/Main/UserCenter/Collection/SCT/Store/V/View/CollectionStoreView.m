@@ -10,6 +10,7 @@
 #import "CollectionStoreHeader.h"
 #import "CollectionStoreCell.h"
 #import "CollectionStoreFooter.h"
+#import "CollectionStoreEmptyFooter.h"
 
 #import "CollectionStoreItem.h"
 
@@ -18,6 +19,7 @@
 static NSString *const CellID = @"CollectionStoreCell";
 static NSString *const HeadID = @"CollectionStoreHeader";
 static NSString *const FootID = @"CollectionStoreFooter";
+static NSString *const EmptyFootID = @"CollectionStoreEmptyFooter";
 
 @interface CollectionStoreView ()<CollectionStoreHeaderDelegate,RecommendStoreCollectStoreViewDelegate>
 @property (nonatomic, strong) RecommendStoreCollectStoreView *footerView;
@@ -40,6 +42,7 @@ static NSString *const FootID = @"CollectionStoreFooter";
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreCell" bundle:nil] forCellReuseIdentifier:CellID];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
+        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionStoreEmptyFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:EmptyFootID];
         [self resetFooterView];
     }
     return self;
@@ -47,8 +50,16 @@ static NSString *const FootID = @"CollectionStoreFooter";
 
 - (void)resetFooterView {
     [self.footerView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [self.footerView contentHeight]);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat height = [self.footerView contentHeight];
+        TCLog(@"footerView---height1111:%f",height);
+        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
+        self.tableView.tableFooterView = self.footerView;
+    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat height = [self.footerView contentHeight];
+        TCLog(@"footerView---height2222:%f",height);
+        self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
         self.tableView.tableFooterView = self.footerView;
     });
 }
@@ -97,16 +108,21 @@ static NSString *const FootID = @"CollectionStoreFooter";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    CollectionStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:EmptyFootID];
     if (section<self.items.count) {
-        footer.item = self.items[section];
-        footer.actionBlock = ^(CollectionStoreItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel completion:nil];
-            }
-        };
+        CollectionStoreItem *item = self.items[section];
+        if (item.newsCount>0) {
+            CollectionStoreFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+            footer.item = item;
+            footer.actionBlock = ^(CollectionStoreItem *item){
+                if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                    [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeSegue value:item.segueModel completion:nil];
+                }
+            };
+            footerView = footer;
+        }
     }
-    return footer;
+    return footerView;
 }
 
 

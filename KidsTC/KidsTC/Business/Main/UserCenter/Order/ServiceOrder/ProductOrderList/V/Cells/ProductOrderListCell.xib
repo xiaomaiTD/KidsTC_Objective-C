@@ -13,10 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="271" id="KGk-i7-Jjw" customClass="ProductOrderListCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJh-fS-fEz">
@@ -319,72 +319,6 @@
                             <constraint firstAttribute="trailing" secondItem="Bun-CK-bxq" secondAttribute="trailing" constant="15" id="z1d-vy-GZW"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2s2-LG-wPx" customClass="ProductOrderListCellBtnsView">
-                        <rect key="frame" x="0.0" y="228" width="320" height="46.5"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofD-Vl-NR2">
-                                <rect key="frame" x="165" y="9" width="65" height="30"/>
-                                <state key="normal" title="联系商家">
-                                    <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="action:" destination="2s2-LG-wPx" eventType="touchUpInside" id="jZi-Lu-bZH"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-4M-1o6">
-                                <rect key="frame" x="90" y="9" width="65" height="30"/>
-                                <state key="normal" title="我要投诉">
-                                    <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="action:" destination="2s2-LG-wPx" eventType="touchUpInside" id="xoN-VE-IVn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EcX-Mf-RhH">
-                                <rect key="frame" x="15" y="8" width="65" height="30.5"/>
-                                <state key="normal" title="再次购买">
-                                    <color key="titleColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="action:" destination="2s2-LG-wPx" eventType="touchUpInside" id="JWS-n1-ZHe"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-Nv-fgo">
-                                <rect key="frame" x="240" y="9" width="65" height="30"/>
-                                <state key="normal" title="评价">
-                                    <color key="titleColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="action:" destination="2s2-LG-wPx" eventType="touchUpInside" id="lnL-eJ-BG2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="KhA-4M-1o6" firstAttribute="leading" secondItem="EcX-Mf-RhH" secondAttribute="trailing" constant="10" id="0xj-3i-TzW"/>
-                            <constraint firstItem="ofD-Vl-NR2" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="6gE-5T-KCm"/>
-                            <constraint firstAttribute="height" constant="46" id="7oQ-0c-vzL"/>
-                            <constraint firstItem="Pbf-Nv-fgo" firstAttribute="leading" secondItem="ofD-Vl-NR2" secondAttribute="trailing" constant="10" id="DnN-K8-HL7"/>
-                            <constraint firstItem="KhA-4M-1o6" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="NlR-NS-M3I"/>
-                            <constraint firstItem="ofD-Vl-NR2" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="PJr-RF-4fL"/>
-                            <constraint firstItem="KhA-4M-1o6" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="QTF-eL-amG"/>
-                            <constraint firstAttribute="bottom" secondItem="EcX-Mf-RhH" secondAttribute="bottom" constant="8" id="RzZ-9n-7tn"/>
-                            <constraint firstItem="Pbf-Nv-fgo" firstAttribute="centerY" secondItem="2s2-LG-wPx" secondAttribute="centerY" id="Wf4-JK-H3N"/>
-                            <constraint firstItem="KhA-4M-1o6" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="YNO-hb-opS"/>
-                            <constraint firstItem="Pbf-Nv-fgo" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="ZcF-gk-DqY"/>
-                            <constraint firstItem="ofD-Vl-NR2" firstAttribute="width" secondItem="EcX-Mf-RhH" secondAttribute="width" id="bwN-wN-PXw"/>
-                            <constraint firstItem="EcX-Mf-RhH" firstAttribute="leading" secondItem="2s2-LG-wPx" secondAttribute="leading" constant="15" id="dIz-6V-hny"/>
-                            <constraint firstItem="Pbf-Nv-fgo" firstAttribute="height" secondItem="EcX-Mf-RhH" secondAttribute="height" id="f7o-Vc-d7y"/>
-                            <constraint firstItem="ofD-Vl-NR2" firstAttribute="leading" secondItem="KhA-4M-1o6" secondAttribute="trailing" constant="10" id="htu-t1-5LD"/>
-                            <constraint firstItem="EcX-Mf-RhH" firstAttribute="top" secondItem="2s2-LG-wPx" secondAttribute="top" constant="8" id="v0V-QK-hxB"/>
-                            <constraint firstAttribute="trailing" secondItem="Pbf-Nv-fgo" secondAttribute="trailing" constant="15" id="wzR-sc-p5V"/>
-                        </constraints>
-                        <connections>
-                            <outletCollection property="btns" destination="Pbf-Nv-fgo" id="J2F-eA-Ddv"/>
-                            <outletCollection property="btns" destination="ofD-Vl-NR2" id="pbJ-u3-S1d"/>
-                            <outletCollection property="btns" destination="KhA-4M-1o6" id="90t-91-2Wm"/>
-                            <outletCollection property="btns" destination="EcX-Mf-RhH" id="nKG-Ij-CKd"/>
-                        </connections>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dnH-4i-1DC" secondAttribute="trailing" id="2kq-VF-e53"/>
@@ -394,20 +328,15 @@
                     <constraint firstItem="ajT-hG-rKW" firstAttribute="top" secondItem="dnH-4i-1DC" secondAttribute="bottom" id="ZNx-px-cSi"/>
                     <constraint firstAttribute="trailing" secondItem="gJh-fS-fEz" secondAttribute="trailing" id="aiF-2T-ERa"/>
                     <constraint firstAttribute="trailing" secondItem="HhF-uG-bnB" secondAttribute="trailing" id="axo-IT-mFi"/>
-                    <constraint firstAttribute="trailing" secondItem="2s2-LG-wPx" secondAttribute="trailing" id="gwZ-xm-fwW"/>
                     <constraint firstItem="dnH-4i-1DC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mQV-hw-hoL"/>
                     <constraint firstAttribute="trailing" secondItem="ajT-hG-rKW" secondAttribute="trailing" id="ot4-SQ-oFG"/>
+                    <constraint firstAttribute="bottom" secondItem="HhF-uG-bnB" secondAttribute="bottom" id="qcf-tJ-w2Y"/>
                     <constraint firstItem="dnH-4i-1DC" firstAttribute="top" secondItem="gJh-fS-fEz" secondAttribute="bottom" id="rWN-d2-yjG"/>
-                    <constraint firstItem="2s2-LG-wPx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ss5-FH-CHi"/>
                     <constraint firstItem="ajT-hG-rKW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tnj-gu-x14"/>
-                    <constraint firstAttribute="bottom" secondItem="2s2-LG-wPx" secondAttribute="bottom" id="uni-aD-kLy"/>
-                    <constraint firstItem="2s2-LG-wPx" firstAttribute="top" secondItem="HhF-uG-bnB" secondAttribute="bottom" id="y5H-lE-hV4"/>
                     <constraint firstItem="HhF-uG-bnB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ytc-aZ-SVs"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnsView" destination="2s2-LG-wPx" id="dLj-YE-7fm"/>
-                <outlet property="btnsViewH" destination="7oQ-0c-vzL" id="16H-zA-Dwi"/>
                 <outlet property="countDownIcon" destination="Ysv-mL-gLy" id="EGg-9C-sAH"/>
                 <outlet property="countDownL" destination="wad-ov-k65" id="U5I-dQ-KPy"/>
                 <outlet property="countL" destination="Tl0-DT-XJA" id="peW-CI-OIa"/>

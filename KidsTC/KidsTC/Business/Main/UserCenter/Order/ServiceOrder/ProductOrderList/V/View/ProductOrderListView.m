@@ -9,17 +9,30 @@
 #import "ProductOrderListView.h"
 #import "Colours.h"
 #import "RecommendDataManager.h"
+#import "NSString+Category.h"
 
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
+
+#import "ProductOrderListBaseCell.h"
 #import "ProductOrderListCell.h"
+#import "ProductOrderListTimeCell.h"
+#import "ProductOrderListAddressCell.h"
+#import "ProductOrderListBtnsCell.h"
+
 #import "ProductOrderListHeader.h"
 #import "RecommendProductOrderListView.h"
 
-static NSString *const CellID = @"ProductOrderListCell";
-@interface ProductOrderListView ()<ProductOrderListCellDelegate,RecommendProductViewDelegate>
+static NSString *const BaseCellID = @"ProductOrderListBaseCell";
+static NSString *const ListCellID = @"ProductOrderListCell";
+static NSString *const TimeCellID = @"ProductOrderListTimeCell";
+static NSString *const AddressCellID = @"ProductOrderListAddressCell";
+static NSString *const BtnsCellID = @"ProductOrderListBtnsCell";
+
+@interface ProductOrderListView ()<ProductOrderListBaseCellDelegate,RecommendProductViewDelegate>
 @property (nonatomic, strong) RecommendProductOrderListView *footerView;
+@property (nonatomic, strong) NSArray<NSArray<ProductOrderListBaseCell *> *> *sections;
 @end
 
 @implementation ProductOrderListView
@@ -50,7 +63,11 @@ static NSString *const CellID = @"ProductOrderListCell";
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     [self addSubview:tableView];
     self.tableView = tableView;
-    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListCell" bundle:nil] forCellReuseIdentifier:CellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListBaseCell" bundle:nil] forCellReuseIdentifier:BaseCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListCell" bundle:nil] forCellReuseIdentifier:ListCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListTimeCell" bundle:nil] forCellReuseIdentifier:TimeCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
+    [tableView registerNib:[UINib nibWithNibName:@"ProductOrderListBtnsCell" bundle:nil] forCellReuseIdentifier:BtnsCellID];
     ProductOrderListHeader *header = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListHeader" owner:self options:nil].firstObject;
     header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 28);
     header.hidden = YES;
@@ -131,15 +148,55 @@ static NSString *const CellID = @"ProductOrderListCell";
     }else self.tableView.backgroundView = nil;
 }
 
+- (void)setItems:(NSArray<ProductOrderListItem *> *)items {
+    _items = items;
+    [self setupSections];
+}
+
+- (void)setupSections {
+    NSMutableArray *sections = [NSMutableArray array];
+    [self.items enumerateObjectsUsingBlock:^(ProductOrderListItem *obj, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section = [NSMutableArray array];
+        
+        ProductOrderListCell *listCell = [self cellWithID:ListCellID];
+        if (listCell) [section addObject:listCell];
+        
+        if ([obj.useTimeStr isNotNull]) {
+            ProductOrderListTimeCell *timeCell = [self cellWithID:TimeCellID];
+            if (timeCell) [section addObject:timeCell];
+        }
+        
+        if ([obj.storeName isNotNull] || [obj.storeAddress isNotNull]) {
+            ProductOrderListAddressCell *addressCell = [self cellWithID:AddressCellID];
+            if (addressCell) [section addObject:addressCell];
+        }
+        
+        if (obj.btns.count>0) {
+            ProductOrderListBtnsCell *btnsCell = [self cellWithID:BtnsCellID];
+            if (btnsCell) [section addObject:btnsCell];
+        }
+        
+        if (section.count>0) [sections addObject:section];
+    }];
+    self.sections = [NSArray arrayWithArray:sections];
+}
+
+- (__kindof UITableViewCell *)cellWithID:(NSString *)ID {
+    return [self.tableView dequeueReusableCellWithIdentifier:ID];
+}
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.items.count;
+    return self.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    if (section<self.sections.count) {
+        return self.sections[section].count;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -151,16 +208,20 @@ static NSString *const CellID = @"ProductOrderListCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ProductOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
-    if (!cell) {
-        cell = [[NSBundle mainBundle] loadNibNamed:@"ProductOrderListCell" owner:self options:nil].firstObject;
-    }
     NSInteger section = indexPath.section;
-    if (section < self.items.count) {
-        cell.item = self.items[section];
-        cell.delegate = self;
+    NSInteger row = indexPath.row;
+    if (section<self.sections.count) {
+        NSArray<ProductOrderListBaseCell *> *rows = self.sections[section];
+        if (row<rows.count) {
+            ProductOrderListBaseCell *cell = rows[row];
+            cell.delegate = self;
+            if (section<self.items.count) {
+                cell.item = self.items[section];
+            }
+            return cell;
+        }
     }
-    return cell;
+    return [self cellWithID:BaseCellID];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -176,7 +237,7 @@ static NSString *const CellID = @"ProductOrderListCell";
 
 #pragma mark - ProductOrderListCellDelegate
 
-- (void)productOrderListCell:(ProductOrderListCell *)cell actionType:(ProductOrderListCellActionType)type value:(id)value {
+- (void)productOrderListBaseCell:(ProductOrderListCell *)cell actionType:(ProductOrderListBaseCellActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(productOrderListView:actionType:value:)]) {
         [self.delegate productOrderListView:self actionType:(ProductOrderListViewActionType)type value:value];
     }

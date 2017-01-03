@@ -11,6 +11,7 @@
 
 #import "RecommendTarentoCollectTarentoHeader.h"
 #import "RecommendTarentoCollectTarentoFooter.h"
+#import "RecommendTarentoCollectTarentoEmptyFooter.h"
 
 #import "ArticleHomeBaseCell.h"
 #import "ArticleHomeIconCell.h"
@@ -26,6 +27,7 @@
 
 static NSString *const HeadID = @"RecommendTarentoCollectTarentoHeader";
 static NSString *const FootID = @"RecommendTarentoCollectTarentoFooter";
+static NSString *const EmptyFootID = @"RecommendTarentoCollectTarentoEmptyFooter";
 
 static NSString *const ArticleHomeBaseCellID        = @"ArticleHomeBaseCellID";
 static NSString *const ArticleHomeIconCellID        = @"ArticleHomeIconCellID";
@@ -55,10 +57,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
     [self registerCells];
     [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
-    
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
-    [self setNeedsLayout];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RecommendTarentoCollectTarentoEmptyFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:EmptyFootID];
     [self layoutIfNeeded];
 }
 
@@ -80,17 +79,9 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
     self.tarentos = [[RecommendDataManager shareRecommendDataManager] recommendTarento];
     self.hidden = _tarentos.count<1;
     [self.tableView reloadData];
-    
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 - (CGFloat)contentHeight {
     
-    [self.tableView setNeedsLayout];
-    [self.tableView layoutIfNeeded];
-    [self setNeedsLayout];
     [self layoutIfNeeded];
     
     CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
@@ -140,17 +131,21 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    RecommendTarentoCollectTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:EmptyFootID];
     if (section<self.tarentos.count) {
         RecommendTarento *tarento = self.tarentos[section];
-        footer.tarento = tarento;
-        footer.actionBlock = ^(RecommendTarento *tarento){
-            if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
-                [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeUserArticleCenter value:tarento];
-            }
-        };
+        if (tarento.newsCount>0) {
+            RecommendTarentoCollectTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+            footer.tarento = tarento;
+            footer.actionBlock = ^(RecommendTarento *tarento){
+                if ([self.delegate respondsToSelector:@selector(recommendTarentoCollectTarentoView:actionType:value:)]) {
+                    [self.delegate recommendTarentoCollectTarentoView:self actionType:RecommendTarentoCollectTarentoViewActionTypeUserArticleCenter value:tarento];
+                }
+            };
+            footerView = footer;
+        }
     }
-    return footer;
+    return footerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

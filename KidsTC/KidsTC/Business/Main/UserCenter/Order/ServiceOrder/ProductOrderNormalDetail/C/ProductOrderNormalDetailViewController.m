@@ -173,6 +173,11 @@
             [self connectSupplier:value];
         }
             break;
+        case ProductOrderNormalDetailViewActionTypeShowRule://查看公告
+        {
+            [self showRule:value];
+        }
+            break;
     }
 }
 
@@ -424,6 +429,17 @@
 - (void)call:(id)valure {
     if ([valure isNotNull]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@", valure]]];
+    }
+}
+
+#pragma mark ================查看公告================
+
+- (void)showRule:(id)valure {
+    NSString *str = self.data.noticePageUrl;
+    if ([str isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc] init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 

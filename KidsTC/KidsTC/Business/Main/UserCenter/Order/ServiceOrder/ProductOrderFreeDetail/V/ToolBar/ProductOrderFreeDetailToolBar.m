@@ -9,6 +9,7 @@
 #import "ProductOrderFreeDetailToolBar.h"
 #import "ProductOrderFreeDetailBtnsView.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 CGFloat const kProductOrderFreeDetailToolBarH = 87;
 
@@ -69,8 +70,17 @@ CGFloat const kProductOrderFreeDetailToolBarH = 87;
 - (void)productOrderFreeDetailBtnsView:(ProductOrderFreeDetailBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
     if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailToolBar:actionType:value:)]) {
         [self.delegate productOrderFreeDetailToolBar:self actionType:btn.tag value:_data];
+        [self buryPoint:btn.tag];
     }
 }
 
-
+- (void)buryPoint:(NSInteger)type {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *orderId = self.data.orderNo;
+    if ([orderId isNotNull]) {
+        [params setObject:orderId forKey:@"orderId"];
+    }
+    [params setObject:@(type) forKey:@"optionType"];
+    [BuryPointManager trackEvent:@"event_click_order_option" actionId:21615 params:params];
+}
 @end

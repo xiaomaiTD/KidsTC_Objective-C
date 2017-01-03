@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,11 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_bg" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Dn-YeR">
-                    <rect key="frame" x="0.0" y="-228" width="375" height="428"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="428" id="2jY-1o-39x"/>
-                    </constraints>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountCenter_bg" translatesAutoresizingMaskIntoConstraints="NO" id="n5F-Dn-YeR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYf-6J-HT2">
                     <rect key="frame" x="8" y="20" width="44" height="44"/>
@@ -78,6 +75,7 @@
                 <constraint firstItem="fsC-cc-qTj" firstAttribute="top" secondItem="Mep-B5-XOg" secondAttribute="bottom" constant="8" id="CcU-1T-R1g"/>
                 <constraint firstItem="n5F-Dn-YeR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EAn-Hp-fCi"/>
                 <constraint firstAttribute="trailing" secondItem="n5F-Dn-YeR" secondAttribute="trailing" id="GD9-5g-czb"/>
+                <constraint firstItem="n5F-Dn-YeR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HFV-n3-iqD"/>
                 <constraint firstAttribute="trailing" secondItem="ySS-ow-W8i" secondAttribute="trailing" constant="8" id="MFE-GJ-PyW"/>
                 <constraint firstItem="fsC-cc-qTj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="QL0-Kp-wLs"/>
                 <constraint firstAttribute="trailing" secondItem="fsC-cc-qTj" secondAttribute="trailing" constant="12" id="Xs1-mK-sOP"/>
@@ -91,7 +89,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bgH" destination="2jY-1o-39x" id="TxY-h4-sho"/>
                 <outlet property="bgImageView" destination="n5F-Dn-YeR" id="ipx-PO-glj"/>
                 <outlet property="headBgView" destination="Mep-B5-XOg" id="vg3-6Q-bbF"/>
                 <outlet property="headImageView" destination="WTD-bN-ac5" id="5AT-Ri-jeM"/>
@@ -103,7 +100,7 @@
         </view>
     </objects>
     <resources>
-        <image name="accountCenter_bg" width="1563" height="1769"/>
+        <image name="accountCenter_bg" width="1563" height="781"/>
         <image name="accountCenter_message" width="90" height="90"/>
         <image name="accountCenter_setting" width="97" height="94"/>
         <image name="userCenter_header_noLogin" width="94" height="94"/>

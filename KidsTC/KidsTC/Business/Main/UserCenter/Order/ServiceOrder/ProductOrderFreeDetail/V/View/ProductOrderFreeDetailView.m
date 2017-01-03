@@ -12,6 +12,8 @@
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
 
+#import "ProductOrderNormalDetailHeader.h"
+
 #import "ProductOrderFreeDetailToolBar.h"
 
 #import "ProductOrderFreeDetailInfoBaseCell.h"
@@ -36,7 +38,7 @@ static NSString *const LotteryCellID = @"ProductOrderFreeDetailLotteryCell";
 static NSString *const LotteryItemCellID = @"ProductOrderFreeDetailLotteryItemCell";
 static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCell";
 
-@interface ProductOrderFreeDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderFreeDetailToolBarDelegate,ProductOrderFreeDetailInfoBaseCellDelegate>
+@interface ProductOrderFreeDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductOrderFreeDetailToolBarDelegate,ProductOrderFreeDetailInfoBaseCellDelegate,ProductOrderNormalDetailHeaderDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<ProductOrderFreeDetailInfoBaseCell *> *> *sections;
 @property (nonatomic, strong) ProductOrderFreeDetailToolBar *toolBar;
@@ -73,9 +75,16 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
     [tableView registerNib:[UINib nibWithNibName:@"ProductOrderFreeDetailMoreLotteryCell" bundle:nil] forCellReuseIdentifier:MoreLotteryCellID];
     [self addSubview:tableView];
     self.tableView = tableView;
+    
+    ProductOrderNormalDetailHeader *header = [self viewWithNib:@"ProductOrderNormalDetailHeader"];
+    header.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
+    header.hidden = YES;
+    header.delegate = self;
+    tableView.tableHeaderView = header;
 }
 
 - (void)reloadInfoData {
+    self.tableView.tableHeaderView.hidden = self.infoData == nil;
     self.toolBar.data = self.infoData;
     [self setupSections:0];
     [self.tableView reloadData];
@@ -205,6 +214,27 @@ static NSString *const MoreLotteryCellID = @"ProductOrderFreeDetailMoreLotteryCe
 - (void)productOrderFreeDetailToolBar:(ProductOrderFreeDetailToolBar *)toolBar actionType:(ProductOrderFreeDetailToolBarActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailView:actionType:value:)]) {
         [self.delegate productOrderFreeDetailView:self actionType:(ProductOrderFreeDetailViewActionType)type value:value];
+    }
+}
+
+#pragma mark - ProductOrderNormalDetailHeaderDelegate
+
+- (void)productOrderNormalDetailHeader:(ProductOrderNormalDetailHeader *)header actionType:(ProductOrderNormalDetailHeaderActionType)type {
+    switch (type) {
+        case ProductOrderNormalDetailHeaderActionTypeClose:
+        {
+            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+        }
+            break;
+        case ProductOrderNormalDetailHeaderActionTypeShowRule:
+        {
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeDetailView:actionType:value:)]) {
+                [self.delegate productOrderFreeDetailView:self actionType:ProductOrderFreeDetailViewActionTypeShowRule value:self.infoData];
+            }
+        }
+            break;
+        default:
+            break;
     }
 }
 

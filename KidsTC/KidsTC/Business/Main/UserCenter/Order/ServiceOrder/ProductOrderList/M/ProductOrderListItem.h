@@ -37,6 +37,8 @@
 @property (nonatomic, strong) NSString *payDesc;
 @property (nonatomic, strong) NSString *storeNo;
 @property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSString *useTimeStr;
+@property (nonatomic, strong) NSString *storeAddress;
 //selfDefine
 @property (nonatomic, strong) NSArray<ProductOrderListBtn *> *btns;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;

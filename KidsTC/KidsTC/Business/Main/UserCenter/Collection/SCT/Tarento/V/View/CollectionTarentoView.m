@@ -13,9 +13,11 @@
 #import "CollectionTarentoHeader.h"
 #import "CollectionTarentoCell.h"
 #import "CollectionTarentoFooter.h"
+#import "CollectionTarentoEmptyFooter.h"
 
 static NSString *const HeadID = @"CollectionTarentoHeader";
 static NSString *const FootID = @"CollectionTarentoFooter";
+static NSString *const EmptyFootID = @"CollectionTarentoEmptyFooter";
 
 #import "CollectionTarentoItem.h"
 
@@ -64,6 +66,7 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:HeadID];
         [self registerCells];
         [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:FootID];
+        [self.tableView registerNib:[UINib nibWithNibName:@"CollectionTarentoEmptyFooter" bundle:nil] forHeaderFooterViewReuseIdentifier:EmptyFootID];
         [self resetFooterView];
     }
     return self;
@@ -85,13 +88,13 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 
 - (void)resetFooterView {
     [self.footerView reloadData];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         CGFloat height = [self.footerView contentHeight];
         TCLog(@"footerView---height1111:%f",height);
         self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
         self.tableView.tableFooterView = self.footerView;
     });
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         CGFloat height = [self.footerView contentHeight];
         TCLog(@"footerView---height2222:%f",height);
         self.footerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, height);
@@ -165,17 +168,21 @@ static NSString *const ArticleHomeAlbumEntrysCellID = @"ArticleHomeAlbumEntrysCe
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    CollectionTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:EmptyFootID];
     if (section<self.items.count) {
         CollectionTarentoItem *item = self.items[section];
-        footer.item = item;
-        footer.actionBlock = ^(CollectionTarentoItem *item){
-            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
-                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
-            }
-        };
+        if (item.newsCount>0) {
+            CollectionTarentoFooter *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:FootID];
+            footer.item = item;
+            footer.actionBlock = ^(CollectionTarentoItem *item){
+                if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                    [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeUserArticleCenter value:item.authorUid completion:nil];
+                }
+            };
+            footerView = footer;
+        }
     }
-    return footer;
+    return footerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

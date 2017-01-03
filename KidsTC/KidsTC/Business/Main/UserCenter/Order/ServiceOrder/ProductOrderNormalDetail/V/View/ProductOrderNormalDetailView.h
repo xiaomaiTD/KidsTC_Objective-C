@@ -31,7 +31,7 @@ typedef enum : NSUInteger {
     ProductOrderNormalDetailViewActionTypeBooking,//我要预约
     ProductOrderNormalDetailViewActionTypeBookingMustEdit,//我要预约，编辑
     ProductOrderNormalDetailViewActionTypeContact,//联系商家
-    
+    ProductOrderNormalDetailViewActionTypeShowRule,//查看公告
 } ProductOrderNormalDetailViewActionType;
 
 @class ProductOrderNormalDetailView;

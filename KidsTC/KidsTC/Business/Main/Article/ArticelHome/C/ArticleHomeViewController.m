@@ -129,15 +129,35 @@
     }];
     self.navigationItem.leftBarButtonItems = @[headItem,writeItem];
     
-    UIBarButtonItem *likeItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(likeItemAction) andGetButton:^(UIButton *btn) {
-        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [btn setImage:[UIImage imageNamed:@"article_like"] forState:UIControlStateNormal];
-    }];
-    UIBarButtonItem *messageItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight target:self action:@selector(messageItemAction) andGetButton:^(UIButton *btn) {
-        btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [btn setImage:[UIImage imageNamed:@"article_message"] forState:UIControlStateNormal];
-    }];
-    self.navigationItem.rightBarButtonItems = @[messageItem,likeItem];
+    CGFloat buttonWidth = 24;
+    CGFloat buttonHeight = 24;
+    CGFloat buttonGap = 15;
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, buttonWidth * 2 + buttonGap, buttonHeight)];
+    [bgView setBackgroundColor:[UIColor clearColor]];
+    
+    CGFloat xPosition = 0;
+    UIButton *historyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [historyButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
+    [historyButton setBackgroundColor:[UIColor clearColor]];
+    historyButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    historyButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [historyButton setImage:[UIImage imageNamed:@"article_like"] forState:UIControlStateNormal];
+    [historyButton addTarget:self action:@selector(likeItemAction) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:historyButton];
+    
+    xPosition += buttonWidth + buttonGap;
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareButton setFrame:CGRectMake(xPosition, 0, buttonWidth, buttonHeight)];
+    [shareButton setBackgroundColor:[UIColor clearColor]];
+    [shareButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    shareButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [shareButton setImage:[UIImage imageNamed:@"article_message"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(messageItemAction) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:shareButton];
+    
+    UIBarButtonItem *rItem = [[UIBarButtonItem alloc] initWithCustomView:bgView];
+    self.navigationItem.rightBarButtonItem = rItem;
 }
 
 - (UIImage *)headBtnPlaceHolder {

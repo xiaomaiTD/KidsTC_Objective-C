@@ -44,7 +44,7 @@
             break;
         default:
         {
-            self.freeL.text = @"限时特卖";
+            self.freeL.text = [product.promotionDesc isNotNull]?product.promotionDesc:@"限时特卖";
             self.freeNumL.text = @" ";
             self.signL.text = @" ";
             self.priceL.text = product.priceStr;

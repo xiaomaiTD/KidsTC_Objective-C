@@ -20,6 +20,8 @@ static NSString *const WelcomeViewCellID = @"WelcomeViewCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
+    
     [self initui];
 }
 

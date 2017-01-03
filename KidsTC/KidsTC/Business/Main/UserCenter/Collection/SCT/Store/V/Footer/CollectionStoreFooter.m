@@ -36,7 +36,7 @@
 
 - (void)setItem:(CollectionStoreItem *)item {
     _item = item;
-    self.numL.text = item.newsCount;
+    self.numL.text = [NSString stringWithFormat:@"%zd",item.newsCount];
 }
 
 @end
