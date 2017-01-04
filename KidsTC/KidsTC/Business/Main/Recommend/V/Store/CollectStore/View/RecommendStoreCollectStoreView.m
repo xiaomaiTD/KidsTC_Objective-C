@@ -47,9 +47,7 @@ static NSString *const EmptyFooterID = @"RecommendStoreCollectStoreEmptyFooter";
 }
 
 - (CGFloat)contentHeight {
-    
     [self layoutIfNeeded];
-    
     CGFloat height = CGRectGetMinY(self.tableView.frame) + self.tableView.contentSize.height;
     return self.stores.count>0?height:0.001;
 }
