@@ -7,6 +7,7 @@
 //
 
 #import "WholesaleProductDetailBase.h"
+#import "NSString+Category.h"
 
 @implementation WholesaleProductDetailBase
 + (NSDictionary *)modelContainerPropertyGenericClass
@@ -17,6 +18,7 @@
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     [self setupShareObj:dic];
+    _otherPackageTitle = [_otherPackageTitle isNotNull]?_otherPackageTitle:@"其他拼团";
     return YES;
 }
 - (void)setupShareObj:(NSDictionary *)data {

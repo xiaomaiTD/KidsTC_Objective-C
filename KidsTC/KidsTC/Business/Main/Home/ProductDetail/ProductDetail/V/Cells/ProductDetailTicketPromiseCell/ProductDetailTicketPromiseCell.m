@@ -10,6 +10,7 @@
 
 @interface ProductDetailTicketPromiseCell ()
 @property (weak, nonatomic) IBOutlet UILabel *promiseL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 
 @end
 
@@ -17,6 +18,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.HLineH.constant = LINE_H;
 }
 
 - (void)setData:(ProductDetailData *)data {

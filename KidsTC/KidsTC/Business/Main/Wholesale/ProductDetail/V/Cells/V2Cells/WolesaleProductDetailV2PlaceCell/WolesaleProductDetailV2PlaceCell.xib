@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="73" id="KGk-i7-Jjw" customClass="WolesaleProductDetailV2PlaceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_detail_address" translatesAutoresizingMaskIntoConstraints="NO" id="Zrf-t4-zlj">
+                        <rect key="frame" x="15" y="16" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="0Wf-AF-unF"/>
+                            <constraint firstAttribute="width" secondItem="Zrf-t4-zlj" secondAttribute="height" multiplier="1:1" id="Uy9-AM-6Bf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="倍他文化（福州路店）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NZT-99-X8y">
+                        <rect key="frame" x="46" y="15.5" width="173" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离 5.9KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8T-83-tUN">
+                        <rect key="frame" x="227" y="17" width="65" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市杨浦区大学路299号701室" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOW-XG-pQA">
+                        <rect key="frame" x="15" y="42" width="277" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sR1-XC-05C">
+                        <rect key="frame" x="0.0" y="72.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="gjf-s9-Vhg"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesale_detail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="FKU-ND-5ht">
+                        <rect key="frame" x="300" y="31" width="5" height="9"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="FKU-ND-5ht" secondAttribute="height" multiplier="5:9" id="H0t-Qo-l60"/>
+                            <constraint firstAttribute="width" constant="5" id="dFA-Uu-TTO"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgg-kK-wvg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ldL-S3-0bn"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Zrf-t4-zlj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="99L-vv-fXg"/>
+                    <constraint firstItem="Hgg-kK-wvg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ag8-3b-EkQ"/>
+                    <constraint firstItem="bOW-XG-pQA" firstAttribute="top" secondItem="Zrf-t4-zlj" secondAttribute="bottom" constant="10" id="F2m-4I-fGS"/>
+                    <constraint firstItem="FKU-ND-5ht" firstAttribute="width" secondItem="FKU-ND-5ht" secondAttribute="height" multiplier="5:9" id="KCz-3J-CkI"/>
+                    <constraint firstAttribute="trailing" secondItem="FKU-ND-5ht" secondAttribute="trailing" constant="15" id="KhG-Lg-zuI"/>
+                    <constraint firstItem="Hgg-kK-wvg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LND-fE-HLb"/>
+                    <constraint firstItem="NZT-99-X8y" firstAttribute="centerY" secondItem="Zrf-t4-zlj" secondAttribute="centerY" id="Mwt-Kr-yLf"/>
+                    <constraint firstAttribute="bottom" secondItem="sR1-XC-05C" secondAttribute="bottom" id="N2S-yy-6eq"/>
+                    <constraint firstAttribute="trailing" secondItem="Hgg-kK-wvg" secondAttribute="trailing" id="SjZ-8Q-J1Q"/>
+                    <constraint firstItem="sR1-XC-05C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UVe-XK-4F0"/>
+                    <constraint firstItem="FKU-ND-5ht" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ama-66-kfD"/>
+                    <constraint firstItem="sR1-XC-05C" firstAttribute="top" secondItem="Hgg-kK-wvg" secondAttribute="bottom" id="bw3-oM-PUR"/>
+                    <constraint firstItem="NZT-99-X8y" firstAttribute="leading" secondItem="Zrf-t4-zlj" secondAttribute="trailing" constant="15" id="cDy-eJ-kVc"/>
+                    <constraint firstItem="z8T-83-tUN" firstAttribute="leading" secondItem="NZT-99-X8y" secondAttribute="trailing" constant="8" id="fnh-iN-TTT"/>
+                    <constraint firstItem="z8T-83-tUN" firstAttribute="centerY" secondItem="NZT-99-X8y" secondAttribute="centerY" id="gbU-mX-nMz"/>
+                    <constraint firstItem="Zrf-t4-zlj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="h2X-jx-oIo"/>
+                    <constraint firstItem="FKU-ND-5ht" firstAttribute="leading" secondItem="z8T-83-tUN" secondAttribute="trailing" constant="8" id="ls0-pZ-RaA"/>
+                    <constraint firstAttribute="trailing" secondItem="sR1-XC-05C" secondAttribute="trailing" id="lv9-Im-mju"/>
+                    <constraint firstAttribute="bottom" secondItem="bOW-XG-pQA" secondAttribute="bottom" constant="16" id="nIO-p5-Nbl"/>
+                    <constraint firstItem="bOW-XG-pQA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="qUX-RF-65s"/>
+                    <constraint firstItem="FKU-ND-5ht" firstAttribute="leading" secondItem="bOW-XG-pQA" secondAttribute="trailing" constant="8" id="sd3-Rj-ZyY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="gjf-s9-Vhg" id="amY-qq-Z9h"/>
+                <outlet property="addressL" destination="bOW-XG-pQA" id="lK2-Qe-se3"/>
+                <outlet property="btn" destination="Hgg-kK-wvg" id="dr4-7d-OQ0"/>
+                <outlet property="distanceL" destination="z8T-83-tUN" id="vv8-Uq-rk0"/>
+                <outlet property="nameL" destination="NZT-99-X8y" id="DHT-oi-K75"/>
+            </connections>
+            <point key="canvasLocation" x="-169" y="56.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="wholesale_detail_address" width="56" height="70"/>
+        <image name="wholesale_detail_arrow" width="20" height="36"/>
+    </resources>
+</document>

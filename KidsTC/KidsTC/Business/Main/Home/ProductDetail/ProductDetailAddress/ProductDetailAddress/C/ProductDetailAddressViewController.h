@@ -13,4 +13,5 @@
 @property (nonatomic, assign) PlaceType placeType;
 @property (nonatomic, strong) NSArray<ProductDetailAddressSelStoreModel *> *places;
 @property (nonatomic, assign) NSUInteger currentIndex;
+@property (nonatomic, assign) BOOL showAll;
 @end

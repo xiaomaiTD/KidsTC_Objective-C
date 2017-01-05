@@ -25,6 +25,17 @@
 #import "WolesaleProductDetailWebCell.h"
 #import "WolesaleProductDetailOtherPorductCell.h"
 
+#import "WolesaleProductDetailV2BannersCell.h"
+#import "WolesaleProductDetailV2InfoCell.h"
+#import "WolesaleProductDetailV2SaveTipCell.h"
+#import "WolesaleProductDetailV2JoinTipCell.h"
+#import "WolesaleProductDetailV2JoinTeamCell.h"
+#import "WolesaleProductDetailV2JoinCountCell.h"
+#import "WolesaleProductDetailV2PlaceCell.h"
+#import "WolesaleProductDetailV2PlaceCountCell.h"
+#import "WolesaleProductDetailV2OtherProductCell.h"
+#import "WolesaleProductDetailV2WebTitleCell.h"
+
 #import "WolesaleProductDetailToolBar.h"
 
 static NSString *const BaseCellID = @"WolesaleProductDetailBaseCell";
@@ -42,6 +53,17 @@ static NSString *const TimeCellID = @"WolesaleProductDetailTimeCell";
 static NSString *const AddressCellID = @"WolesaleProductDetailAddressCell";
 static NSString *const WebCellID = @"WolesaleProductDetailWebCell";
 static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductCell";
+//V2
+static NSString *const V2BannersCellID = @"WolesaleProductDetailV2BannersCell";
+static NSString *const V2InfoCellID = @"WolesaleProductDetailV2InfoCell";
+static NSString *const V2SaveTipCellID = @"WolesaleProductDetailV2SaveTipCell";
+static NSString *const V2JoinTipCellID = @"WolesaleProductDetailV2JoinTipCell";
+static NSString *const V2JoinTeamCellID = @"WolesaleProductDetailV2JoinTeamCell";
+static NSString *const V2JoinCountCellID = @"WolesaleProductDetailV2JoinCountCell";
+static NSString *const V2PlaceCellID = @"WolesaleProductDetailV2PlaceCell";
+static NSString *const V2PlaceCountCellID = @"WolesaleProductDetailV2PlaceCountCell";
+static NSString *const V2OtherProductCellID = @"WolesaleProductDetailV2OtherProductCell";
+static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell";
 
 @interface WolesaleProductDetailView ()<UITableViewDelegate,UITableViewDataSource,WolesaleProductDetailBaseCellDelegate,WolesaleProductDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -65,7 +87,11 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
 - (void)setData:(WolesaleProductDetailData *)data {
     _data = data;
     self.toolBar.data = self.data;
-    [self setupSections];
+    if (data.fightGroupBase.detailV2) {
+        [self setupV2Sections];
+    }else{
+        [self setupSections];
+    }
     [self.tableView reloadData];
 }
 
@@ -99,6 +125,17 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailOtherPorductCell" bundle:nil] forCellReuseIdentifier:OtherPorductCellID];
+    //V2
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2BannersCell" bundle:nil] forCellReuseIdentifier:V2BannersCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2InfoCell" bundle:nil] forCellReuseIdentifier:V2InfoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2SaveTipCell" bundle:nil] forCellReuseIdentifier:V2SaveTipCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2JoinTipCell" bundle:nil] forCellReuseIdentifier:V2JoinTipCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2JoinTeamCell" bundle:nil] forCellReuseIdentifier:V2JoinTeamCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2JoinCountCell" bundle:nil] forCellReuseIdentifier:V2JoinCountCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2PlaceCell" bundle:nil] forCellReuseIdentifier:V2PlaceCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2PlaceCountCell" bundle:nil] forCellReuseIdentifier:V2PlaceCountCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2OtherProductCell" bundle:nil] forCellReuseIdentifier:V2OtherProductCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2WebTitleCell" bundle:nil] forCellReuseIdentifier:V2WebTitleCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
@@ -164,9 +201,25 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
         WolesaleProductDetailTimeCell *timeCell = [self cellWithID:TimeCellID];
         if (timeCell) [section03 addObject:timeCell];
     }
-    if (base.store) {
-        WolesaleProductDetailAddressCell *addressCell = [self cellWithID:AddressCellID];
-        if (addressCell) [section03 addObject:addressCell];
+    switch (base.placeType) {
+        case PlaceTypeStore:
+        {
+            if (base.stores.count>0) {
+                WolesaleProductDetailAddressCell *addressCell = [self cellWithID:AddressCellID];
+                if (addressCell) [section03 addObject:addressCell];
+            }
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            if (base.place.count>0) {
+                WolesaleProductDetailAddressCell *addressCell = [self cellWithID:AddressCellID];
+                if (addressCell) [section03 addObject:addressCell];
+            }
+        }
+            break;
+        default:
+            break;
     }
     if ([base.detailUrl isNotNull]) {
         WolesaleProductDetailWebCell *webCell = [self cellWithID:WebCellID];
@@ -175,9 +228,9 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
     if(section03.count>0) [sections addObject:section03];
     
     NSMutableArray *section04 = [NSMutableArray array];
-    if (base.otherProducts.count>0) {
+    if (base.otherProducts.count>0 && [base.otherPackageTitle isNotNull]) {
         WolesaleProductDetailTitleCell *titleCell_otherProduct = [self cellWithID:TitleCellID];
-        titleCell_otherProduct.title = @"其他拼团活动";
+        titleCell_otherProduct.title = base.otherPackageTitle;
         if (titleCell_otherProduct) [section04 addObject:titleCell_otherProduct];
     }
     [base.otherProducts enumerateObjectsUsingBlock:^(WholesaleProductDetailOtherProduct *otherProduct, NSUInteger idx, BOOL *stop) {
@@ -192,6 +245,146 @@ static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductC
         if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
     }
     if(section04.count>0) [sections addObject:section04];
+    
+    self.sections = [NSArray arrayWithArray:sections];
+}
+
+- (void)setupV2Sections {
+    
+    WholesaleProductDetailBase *base = self.data.fightGroupBase;
+    
+    NSMutableArray *sections  = [NSMutableArray array];
+    
+    NSMutableArray *section01 = [NSMutableArray array];
+    if (base.detailV2.banners.count>0) {
+        WolesaleProductDetailV2BannersCell *V2BannersCell = [self cellWithID:V2BannersCellID];
+        if (V2BannersCell) [section01 addObject:V2BannersCell];
+    }
+    
+    WolesaleProductDetailV2InfoCell *V2InfoCell = [self cellWithID:V2InfoCellID];
+    if (V2InfoCell) [section01 addObject:V2InfoCell];
+    
+    WolesaleProductDetailV2SaveTipCell *V2SaveTipCell = [self cellWithID:V2SaveTipCellID];
+    if (V2SaveTipCell) [section01 addObject:V2SaveTipCell];
+    WolesaleProductDetailRuleTipCell *ruleTipCell = [self cellWithID:RuleTipCellID];
+    if (ruleTipCell) [section01 addObject:ruleTipCell];
+    if (base.teams.count>0) {
+        WolesaleProductDetailV2JoinTipCell *V2JoinTipCell = [self cellWithID:V2JoinTipCellID];
+        if (V2JoinTipCell) [section01 addObject:V2JoinTipCell];
+    }
+    [base.teams enumerateObjectsUsingBlock:^(WholesaleProductDetailTeam *team, NSUInteger idx, BOOL *stop) {
+        WolesaleProductDetailV2JoinTeamCell *V2JoinTeamCell = [self cellWithID:V2JoinTeamCellID];
+        V2JoinTeamCell.team = team;
+        if (V2JoinTeamCell) [section01 addObject:V2JoinTeamCell];
+    }];
+    if (base.teamCounts.count>1) {
+        WolesaleProductDetailV2JoinCountCell *V2JoinCountCell = [self cellWithID:V2JoinCountCellID];
+        V2JoinCountCell.tag = WolesaleProductDetailBaseCellActionTypeLoadTeam;
+        V2JoinCountCell.counts = base.teamCounts;
+        if (V2JoinCountCell) [section01 addObject:V2JoinCountCell];
+    }
+    if (base.buyNotice.count>0) {
+        WholesaleProductDetailBuyNotice *buyNotice01 = base.buyNotice.firstObject;
+        WolesaleProductDetailTitleCell *titleCell_buyNotice = [self cellWithID:TitleCellID];
+        titleCell_buyNotice.title = buyNotice01.title;
+        if (titleCell_buyNotice) [section01 addObject:titleCell_buyNotice];
+        [buyNotice01.notice enumerateObjectsUsingBlock:^(WholesaleProductDetailNotice *notice, NSUInteger idx, BOOL *stop) {
+            WolesaleProductDetailBuyNoticeEmptyCell *buyNoticeEmptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell) [section01 addObject:buyNoticeEmptyCell];
+            WolesaleProductDetailBuyNoticeElementCell *buyNoticeElementCell = [self cellWithID:BuyNoticeElementCellID];
+            buyNoticeElementCell.notice = notice;
+            if (buyNoticeElementCell) [section01 addObject:buyNoticeElementCell];
+        }];
+        if (buyNotice01.notice.count>0) {
+            WolesaleProductDetailBuyNoticeEmptyCell *buyNoticeEmptyCell_last = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell_last) [section01 addObject:buyNoticeEmptyCell_last];
+        }
+    }
+    if(section01.count>0) [sections addObject:section01];
+    
+    [base.buyNotice enumerateObjectsUsingBlock:^(WholesaleProductDetailBuyNotice *buyNotice, NSUInteger idx, BOOL *stop) {
+        if (idx>0) {
+            NSMutableArray *section02 = [NSMutableArray array];
+            WolesaleProductDetailTitleCell *titleCell_buyNotice = [self cellWithID:TitleCellID];
+            titleCell_buyNotice.title = buyNotice.title;
+            if (titleCell_buyNotice) [section02 addObject:titleCell_buyNotice];
+            [buyNotice.notice enumerateObjectsUsingBlock:^(WholesaleProductDetailNotice *notice, NSUInteger idx, BOOL *stop) {
+                WolesaleProductDetailBuyNoticeEmptyCell *buyNoticeEmptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+                if (buyNoticeEmptyCell) [section02 addObject:buyNoticeEmptyCell];
+                WolesaleProductDetailBuyNoticeElementCell *buyNoticeElementCell = [self cellWithID:BuyNoticeElementCellID];
+                buyNoticeElementCell.notice = notice;
+                if (buyNoticeElementCell) [section02 addObject:buyNoticeElementCell];
+            }];
+            if (buyNotice.notice.count>0) {
+                WolesaleProductDetailBuyNoticeEmptyCell *buyNoticeEmptyCell_last = [self cellWithID:BuyNoticeEmptyCellID];
+                if (buyNoticeEmptyCell_last) [section02 addObject:buyNoticeEmptyCell_last];
+            }
+            if(section02.count>0) [sections addObject:section02];
+        }
+    }];
+    
+    NSMutableArray *section03 = [NSMutableArray array];
+    if (base.productTime) {
+        WolesaleProductDetailTimeCell *timeCell = [self cellWithID:TimeCellID];
+        if (timeCell) [section03 addObject:timeCell];
+    }
+    switch (base.placeType) {
+        case PlaceTypeStore:
+        {
+            if (base.stores.count>0) {
+                WolesaleProductDetailV2PlaceCell *V2PlaceCell = [self cellWithID:V2PlaceCellID];
+                if (V2PlaceCell) [section03 addObject:V2PlaceCell];
+            }
+            if (base.stores.count>1) {
+                WolesaleProductDetailV2PlaceCountCell *V2PlaceCountCell = [self cellWithID:V2PlaceCountCellID];
+                if (V2PlaceCountCell) [section03 addObject:V2PlaceCountCell];
+            }
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            if (base.place.count>0) {
+                WolesaleProductDetailV2PlaceCell *V2PlaceCell = [self cellWithID:V2PlaceCellID];
+                if (V2PlaceCell) [section03 addObject:V2PlaceCell];
+            }
+            if (base.place.count>1) {
+                WolesaleProductDetailV2PlaceCountCell *V2PlaceCountCell = [self cellWithID:V2PlaceCountCellID];
+                if (V2PlaceCountCell) [section03 addObject:V2PlaceCountCell];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    if(section03.count>0) [sections addObject:section03];
+    
+    NSMutableArray *section04 = [NSMutableArray array];
+    if (base.otherProducts.count>0 && [base.otherPackageTitle isNotNull]) {
+        WolesaleProductDetailTitleCell *titleCell_otherProduct = [self cellWithID:TitleCellID];
+        titleCell_otherProduct.title = base.otherPackageTitle;
+        if (titleCell_otherProduct) [section04 addObject:titleCell_otherProduct];
+    }
+    [base.otherProducts enumerateObjectsUsingBlock:^(WholesaleProductDetailOtherProduct *otherProduct, NSUInteger idx, BOOL *stop) {
+        WolesaleProductDetailV2OtherProductCell *V2OtherProductCell = [self cellWithID:V2OtherProductCellID];
+        V2OtherProductCell.otherProduct = otherProduct;
+        if (V2OtherProductCell) [section04 addObject:V2OtherProductCell];
+    }];
+    if (base.otherProductCounts.count>1) {
+        WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
+        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
+        joinCountCell_otherProducts.counts = base.otherProductCounts;
+        if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
+    }
+    if(section04.count>0) [sections addObject:section04];
+    
+    NSMutableArray *section05 = [NSMutableArray array];
+    if ([base.detailUrl isNotNull]) {
+        WolesaleProductDetailV2WebTitleCell *V2WebTitleCell = [self cellWithID:V2WebTitleCellID];
+        if (V2WebTitleCell) [section05 addObject:V2WebTitleCell];
+        WolesaleProductDetailWebCell *webCell = [self cellWithID:WebCellID];
+        if (webCell) [section05 addObject:webCell];
+    }
+    if(section05.count>0) [sections addObject:section05];
     
     self.sections = [NSArray arrayWithArray:sections];
 }

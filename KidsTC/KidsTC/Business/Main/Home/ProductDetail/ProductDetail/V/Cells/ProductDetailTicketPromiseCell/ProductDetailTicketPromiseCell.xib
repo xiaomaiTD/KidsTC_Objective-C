@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,15 +24,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P8-bb-v53">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="hPn-UI-J2o"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="UIo-ep-iSd" secondAttribute="bottom" constant="16" id="9Ck-h7-088"/>
                     <constraint firstItem="UIo-ep-iSd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="EAu-N3-uH1"/>
                     <constraint firstItem="UIo-ep-iSd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IoV-r6-L6a"/>
+                    <constraint firstItem="1P8-bb-v53" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YWy-0S-ELC"/>
+                    <constraint firstItem="1P8-bb-v53" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZVp-B5-Wmc"/>
                     <constraint firstAttribute="trailing" secondItem="UIo-ep-iSd" secondAttribute="trailing" constant="15" id="h7f-qx-Zbi"/>
+                    <constraint firstAttribute="trailing" secondItem="1P8-bb-v53" secondAttribute="trailing" id="nzq-kQ-sFP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="HLineH" destination="hPn-UI-J2o" id="bNq-o0-t6M"/>
                 <outlet property="promiseL" destination="UIo-ep-iSd" id="i8T-0B-0pO"/>
             </connections>
             <point key="canvasLocation" x="-102.5" y="14"/>

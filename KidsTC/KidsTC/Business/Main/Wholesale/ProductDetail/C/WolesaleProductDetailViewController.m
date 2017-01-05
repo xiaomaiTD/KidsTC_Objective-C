@@ -114,7 +114,7 @@
             break;
         case WolesaleProductDetailViewActionTypeAddress://显示位置
         {
-            [self address];
+            [self address:value];
         }
             break;
         case WolesaleProductDetailViewActionTypeOtherProduct://其他拼团
@@ -212,7 +212,10 @@
 
 #pragma mark 显示位置
 
-- (void)address {
+- (void)address:(id)value {
+    if (![value respondsToSelector:@selector(boolValue)]) {
+        return;
+    }
     WholesaleProductDetailBase *base = self.data.fightGroupBase;
     PlaceType placeType = base.placeType;
     NSArray<ProductDetailAddressSelStoreModel *> *places = [ProductDetailAddressSelStoreModel modelsWithWolesaleProductDetailPlaceType:placeType stores:base.stores places:base.place];
@@ -222,6 +225,7 @@
     ProductDetailAddressViewController *controller = [[ProductDetailAddressViewController alloc] init];
     controller.placeType = self.data.fightGroupBase.placeType;
     controller.places = places;
+    controller.showAll = [value boolValue];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

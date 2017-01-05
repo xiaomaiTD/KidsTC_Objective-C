@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WolesaleProductDetailV2SaveTipCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="3组家庭拼团，拼团成功每家省" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vHB-23-rTC">
+                        <rect key="frame" x="51" y="16" width="195" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拼团" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAk-9d-ttZ">
+                        <rect key="frame" x="15" y="16.5" width="28" height="15"/>
+                        <color key="backgroundColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="28" id="Toj-4z-qmT"/>
+                            <constraint firstAttribute="height" constant="15" id="a0v-S3-4Uu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥20 &gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDV-NZ-Mwf">
+                        <rect key="frame" x="250" y="15" width="48" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mDV-NZ-Mwf" firstAttribute="leading" secondItem="vHB-23-rTC" secondAttribute="trailing" constant="4" id="AMY-lG-bWj"/>
+                    <constraint firstItem="qAk-9d-ttZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NGP-u2-GVu"/>
+                    <constraint firstItem="qAk-9d-ttZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="akl-SV-Cso"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mDV-NZ-Mwf" secondAttribute="trailing" constant="15" id="cJu-FJ-vtQ"/>
+                    <constraint firstItem="mDV-NZ-Mwf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jcU-Ql-abi"/>
+                    <constraint firstItem="vHB-23-rTC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="kiV-Qc-F1q"/>
+                    <constraint firstItem="vHB-23-rTC" firstAttribute="leading" secondItem="qAk-9d-ttZ" secondAttribute="trailing" constant="8" id="lXj-R5-keh"/>
+                    <constraint firstAttribute="bottom" secondItem="vHB-23-rTC" secondAttribute="bottom" constant="16" id="z2p-43-HsB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="priceL" destination="mDV-NZ-Mwf" id="uet-8a-4Qu"/>
+                <outlet property="saveL" destination="vHB-23-rTC" id="MIt-uP-bQr"/>
+                <outlet property="tipL" destination="qAk-9d-ttZ" id="f9A-sa-IvO"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

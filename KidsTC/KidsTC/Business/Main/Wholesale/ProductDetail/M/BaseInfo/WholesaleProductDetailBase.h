@@ -18,6 +18,7 @@
 #import "WolesaleProductDetailPlace.h"
 #import "WholesaleProductDetailStoreItem.h"
 #import "CommonShareObject.h"
+#import "WolesaleProductDetailV2Data.h"
 
 @interface WholesaleProductDetailBase : NSObject
 @property (nonatomic, strong) NSString *productNo;
@@ -40,6 +41,8 @@
 @property (nonatomic, strong) WholesaleProductDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *detailUrl;
 @property (nonatomic, strong) NSString *flowUrl;
+@property (nonatomic, strong) WolesaleProductDetailV2Data *detailV2;
+@property (nonatomic, strong) NSString *otherPackageTitle;
 //selfDefine
 @property (nonatomic, assign) BOOL webViewHasLoad;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailTeam *> *teams;

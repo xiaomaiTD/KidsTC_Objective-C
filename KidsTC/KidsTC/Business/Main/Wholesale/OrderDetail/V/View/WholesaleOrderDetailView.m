@@ -27,6 +27,9 @@
 #import "WholesaleOrderDetailWebTipCell.h"
 #import "WholesaleOrderDetailWebCell.h"
 
+#import "WholesaleOrderDetailV2BannersCell.h"
+#import "WholesaleOrderDetailV2InfoCell.h"
+
 #import "WholesaleOrderDetailToolBar.h"
 
 static NSString *const BaseCellID = @"WholesaleOrderDetailBaseCell";
@@ -46,6 +49,9 @@ static NSString *const BuyNoticeElementCellID = @"WholesaleOrderDetailBuyNoticeE
 static NSString *const TitleCellID = @"WholesaleOrderDetailTitleCell";
 static NSString *const WebTipCellID = @"WholesaleOrderDetailWebTipCell";
 static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
+
+static NSString *const V2BannersCellID = @"WholesaleOrderDetailV2BannersCell";
+static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
 
 @interface WholesaleOrderDetailView ()<UITableViewDelegate,UITableViewDataSource,WholesaleOrderDetailBaseCellDelegate,WholesaleOrderDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -69,7 +75,11 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
 - (void)setData:(WholesaleOrderDetailData *)data {
     _data = data;
     self.toolBar.data = data;
-    [self setupSections];
+    if (data.fightGroupBase.detailV2) {
+        [self setupV2Sections];
+    }else{
+        [self setupSections];
+    }
     [self.tableView reloadData];
 }
 
@@ -105,10 +115,97 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailTitleCell" bundle:nil] forCellReuseIdentifier:TitleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebTipCell" bundle:nil] forCellReuseIdentifier:WebTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailV2BannersCell" bundle:nil] forCellReuseIdentifier:V2BannersCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailV2InfoCell" bundle:nil] forCellReuseIdentifier:V2InfoCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
     return [self.tableView dequeueReusableCellWithIdentifier:cellID];
+}
+
+- (void)setupV2Sections {
+    
+    WholesaleOrderDetailData *data = self.data;
+    WholesaleProductDetailBase *base = data.fightGroupBase;
+    
+    NSMutableArray *sections  = [NSMutableArray array];
+    
+    NSMutableArray *section01 = [NSMutableArray array];
+    if (base.detailV2.banners.count>0) {
+        WholesaleOrderDetailV2BannersCell *V2BannersCell = [self cellWithID:V2BannersCellID];
+        if (V2BannersCell) [section01 addObject:V2BannersCell];
+    }
+    if (base) {
+        WholesaleOrderDetailV2InfoCell *V2InfoCell = [self cellWithID:V2InfoCellID];
+        if (V2InfoCell) [section01 addObject:V2InfoCell];
+    }
+    WholesaleOrderDetailSurplusCell *surplusCell = [self cellWithID:SurplusCellID];
+    if (surplusCell) [section01 addObject:surplusCell];
+    WholesaleOrderDetailCountDownCell *countDownCell = [self cellWithID:CountDownCellID];
+    if (countDownCell) [section01 addObject:countDownCell];
+    if (data.openGroupUser) {
+        WholesaleOrderDetailLeaderCell *leaderCell = [self cellWithID:LeaderCellID];
+        if (leaderCell) [section01 addObject:leaderCell];
+    }
+    if (data.partners.count>0) {
+        WholesaleOrderDetailJoinTipCell *joinTipCell = [self cellWithID:JoinTipCellID];
+        if (joinTipCell) [section01 addObject:joinTipCell];
+    }
+    [data.partners enumerateObjectsUsingBlock:^(WholesaleOrderDetailPartner *obj, NSUInteger idx, BOOL *stop) {
+        WholesaleOrderDetailJoinMemberCell *joinMemberCell = [self cellWithID:JoinMemberCellID];
+        joinMemberCell.partner = obj;
+        if (joinMemberCell) [section01 addObject:joinMemberCell];
+    }];
+    if (data.partnerCounts.count>1) {
+        WholesaleOrderDetailJoinCountCell *joinCountCell = [self cellWithID:JoinCountCellID];
+        joinCountCell.tag = WholesaleOrderDetailBaseCellActionTypeLoadPartners;
+        joinCountCell.counts = data.partnerCounts;
+        if (joinCountCell) [section01 addObject:joinCountCell];
+    }
+    if(section01.count>0) [sections addObject:section01];
+    
+    NSMutableArray *section02 = [NSMutableArray array];
+    if ([data.fightGroupBase.flowUrl isNotNull]) {
+        WholesaleOrderDetailRuleCell *ruleCell = [self cellWithID:RuleCellID];
+        if (ruleCell) [section02 addObject:ruleCell];
+    }
+    WholesaleOrderDetailProgressCell *progressCell = [self cellWithID:ProgressCellID];
+    if (progressCell) [section02 addObject:progressCell];
+    if(section02.count>0) [sections addObject:section02];
+    
+    
+    [data.fightGroupBase.buyNotice enumerateObjectsUsingBlock:^(WholesaleProductDetailBuyNotice *buyNotice, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section03 = [NSMutableArray array];
+        WholesaleOrderDetailTitleCell *titleCell_buyNotice = [self cellWithID:TitleCellID];
+        titleCell_buyNotice.title = buyNotice.title;
+        if (titleCell_buyNotice) [section03 addObject:titleCell_buyNotice];
+        [buyNotice.notice enumerateObjectsUsingBlock:^(WholesaleProductDetailNotice *notice, NSUInteger idx, BOOL *stop) {
+            WholesaleOrderDetailBuyNoticeEmptyCell *buyNoticeEmptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell) [section03 addObject:buyNoticeEmptyCell];
+            WholesaleOrderDetailBuyNoticeElementCell *buyNoticeElementCell = [self cellWithID:BuyNoticeElementCellID];
+            buyNoticeElementCell.notice = notice;
+            if (buyNoticeElementCell) [section03 addObject:buyNoticeElementCell];
+        }];
+        if (buyNotice.notice.count>0) {
+            WholesaleOrderDetailBuyNoticeEmptyCell *buyNoticeEmptyCell_last = [self cellWithID:BuyNoticeEmptyCellID];
+            if (buyNoticeEmptyCell_last) [section03 addObject:buyNoticeEmptyCell_last];
+        }
+        if(section03.count>0) [sections addObject:section03];
+    }];
+    
+    if ([data.fightGroupBase.detailUrl isNotNull]) {
+        NSMutableArray *section04 = [NSMutableArray array];
+        WholesaleOrderDetailTitleCell *titleCell_web = [self cellWithID:TitleCellID];
+        titleCell_web.title = @"活动详情";
+        if (titleCell_web) [section04 addObject:titleCell_web];
+        WholesaleOrderDetailWebCell *webCell = [self cellWithID:WebCellID];
+        webCell.webUrl = data.fightGroupBase.detailUrl;
+        if (webCell) [section04 addObject:webCell];
+        if(section04.count>0) [sections addObject:section04];
+    }
+    
+    self.sections = [NSArray arrayWithArray:sections];
 }
 
 - (void)setupSections {
@@ -207,6 +304,8 @@ static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
     
     self.sections = [NSArray arrayWithArray:sections];
 }
+
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 

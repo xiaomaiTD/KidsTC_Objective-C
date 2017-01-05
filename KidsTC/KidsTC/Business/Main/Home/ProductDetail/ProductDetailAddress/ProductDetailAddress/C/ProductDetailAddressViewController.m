@@ -255,6 +255,12 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
     titleView.bounds = CGRectMake(0, 0, 160, 44);
     self.navigationItem.titleView = titleView;
     
+    
+    if (self.showAll) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self rightBarButtonItemAction];
+        });
+    }
 }
 
 - (void)rightBarButtonItemAction{

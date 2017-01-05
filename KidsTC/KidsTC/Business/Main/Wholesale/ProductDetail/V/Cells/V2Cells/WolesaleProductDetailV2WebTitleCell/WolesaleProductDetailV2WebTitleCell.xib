@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WolesaleProductDetailV2WebTitleCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEo-ey-V3C">
+                        <rect key="frame" x="0.0" y="48.5" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="MBJ-Ne-VJ0"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhO-Th-tsF">
+                        <rect key="frame" x="15" y="16" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="St6-DN-Scr">
+                        <rect key="frame" x="15" y="47" width="58" height="2"/>
+                        <color key="backgroundColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="qBN-Dl-blx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="St6-DN-Scr" secondAttribute="bottom" id="BpD-d7-3Hn"/>
+                    <constraint firstItem="St6-DN-Scr" firstAttribute="leading" secondItem="HhO-Th-tsF" secondAttribute="leading" id="a72-UV-foq"/>
+                    <constraint firstAttribute="bottom" secondItem="qEo-ey-V3C" secondAttribute="bottom" id="bGH-eP-dkG"/>
+                    <constraint firstItem="HhO-Th-tsF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="d5J-0u-jnw"/>
+                    <constraint firstItem="St6-DN-Scr" firstAttribute="trailing" secondItem="HhO-Th-tsF" secondAttribute="trailing" id="gJM-Kg-4SN"/>
+                    <constraint firstItem="qEo-ey-V3C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n2T-th-wYe"/>
+                    <constraint firstItem="HhO-Th-tsF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="pdP-Fj-Wo5"/>
+                    <constraint firstAttribute="trailing" secondItem="qEo-ey-V3C" secondAttribute="trailing" id="rsP-QL-DOg"/>
+                    <constraint firstAttribute="bottom" secondItem="HhO-Th-tsF" secondAttribute="bottom" constant="16" id="veN-ka-Uxb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineH" destination="MBJ-Ne-VJ0" id="RfK-gj-mgq"/>
+            </connections>
+            <point key="canvasLocation" x="-162" y="1"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -45,8 +45,8 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
     
     self.shareBtn.tag = WolesaleProductDetailToolBarActionTypeShare;
     self.joinBtn.tag = WolesaleProductDetailToolBarActionTypeJoin;
-    
 }
+
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailToolBar:actionType:value:)]) {
         [self.delegate wolesaleProductDetailToolBar:self actionType:sender.tag value:nil];

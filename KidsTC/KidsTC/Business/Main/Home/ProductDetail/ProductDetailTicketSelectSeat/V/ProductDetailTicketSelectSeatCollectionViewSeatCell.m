@@ -44,6 +44,7 @@
     self.origionalPriceL.text = showOriginal?[NSString stringWithFormat:@"¥%@",@(_seat.orignalPrice)]:nil;
     self.tipL.text = _seat.priceSortName;
     self.tipL.hidden = ![_seat.priceSortName isNotNull];
+    self.seatL.text = seat.seat;
     self.userInteractionEnabled = seat.maxBuyNum>=1;
     if (self.userInteractionEnabled) {
         if (seat.selected) {

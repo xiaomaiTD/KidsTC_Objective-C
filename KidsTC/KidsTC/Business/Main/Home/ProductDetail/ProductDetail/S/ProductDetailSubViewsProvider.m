@@ -588,9 +588,11 @@
     }];
     
     //actor
-    NSMutableArray *section03 = [NSMutableArray array];
-    [section03 addObject:self.ticketActorCell];
-    if (section03.count>0) [sections addObject:section03];
+    if (_data.actors.count>0) {
+        NSMutableArray *section03 = [NSMutableArray array];
+        [section03 addObject:self.ticketActorCell];
+        if (section03.count>0) [sections addObject:section03];
+    }
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
