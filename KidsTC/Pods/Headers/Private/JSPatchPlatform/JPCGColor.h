@@ -1,1 +1,0 @@
-../../../JSPatchPlatform/JSPatch/Extensions/JPCFunctionBinder/CoreGraphics/JPCGColor.h

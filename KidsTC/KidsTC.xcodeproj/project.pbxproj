@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D40FF20A143CED91220CB23 /* Pods_KidsTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FD7E4F8A8973C1EE806FAC0 /* Pods_KidsTC.framework */; };
+		591DD0CA3BF784EA8E3BAB7E /* Pods_KidsTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC45FDCEC66D4DD5AEB4DD20 /* Pods_KidsTC.framework */; };
 		EC0043441DE559110042B701 /* NurseryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0043401DE559110042B701 /* NurseryViewController.m */; };
 		EC0043451DE559110042B701 /* NurseryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC0043411DE559110042B701 /* NurseryViewController.xib */; };
 		EC0043481DE5592B0042B701 /* NurseryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC0043471DE5592B0042B701 /* NurseryModel.m */; };
@@ -1190,7 +1190,6 @@
 		EC7264B41D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC7264B21D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.xib */; };
 		EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC72C2371DAB3C10003DF2CB /* GameKit.framework */; };
 		EC739D8B1E161B6A0027E91E /* ProductDetailSecKillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */; };
-		EC739DA71E1A7E8B0027E91E /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC739DA61E1A7E8B0027E91E /* Bugly.framework */; };
 		EC739DAB1E1B501F0027E91E /* ProductOrderListTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DA91E1B501F0027E91E /* ProductOrderListTimeCell.m */; };
 		EC739DAC1E1B501F0027E91E /* ProductOrderListTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739DAA1E1B501F0027E91E /* ProductOrderListTimeCell.xib */; };
 		EC739DB01E1B503F0027E91E /* ProductOrderListAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DAE1E1B503F0027E91E /* ProductOrderListAddressCell.m */; };
@@ -1213,22 +1212,6 @@
 		EC739DDD1E1B63B30027E91E /* ProductOrderFreeListAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739DDB1E1B63B30027E91E /* ProductOrderFreeListAddressCell.xib */; };
 		EC739DE11E1B63C20027E91E /* ProductOrderFreeListBtnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DDF1E1B63C20027E91E /* ProductOrderFreeListBtnsCell.m */; };
 		EC739DE21E1B63C20027E91E /* ProductOrderFreeListBtnsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739DE01E1B63C20027E91E /* ProductOrderFreeListBtnsCell.xib */; };
-		EC739E031E1B77080027E91E /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DE41E1B77080027E91E /* FSCalendar+Deprecated.m */; };
-		EC739E041E1B77080027E91E /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DE61E1B77080027E91E /* FSCalendar.m */; };
-		EC739E051E1B77080027E91E /* FSCalendarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DE81E1B77080027E91E /* FSCalendarAnimator.m */; };
-		EC739E061E1B77080027E91E /* FSCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DEA1E1B77080027E91E /* FSCalendarAppearance.m */; };
-		EC739E071E1B77080027E91E /* FSCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DEC1E1B77080027E91E /* FSCalendarCalculator.m */; };
-		EC739E081E1B77080027E91E /* FSCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DEE1E1B77080027E91E /* FSCalendarCell.m */; };
-		EC739E091E1B77080027E91E /* FSCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DF01E1B77080027E91E /* FSCalendarCollectionView.m */; };
-		EC739E0A1E1B77080027E91E /* FSCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DF21E1B77080027E91E /* FSCalendarCollectionViewLayout.m */; };
-		EC739E0B1E1B77080027E91E /* FSCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DF41E1B77080027E91E /* FSCalendarConstants.m */; };
-		EC739E0C1E1B77080027E91E /* FSCalendarDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DF61E1B77080027E91E /* FSCalendarDelegateProxy.m */; };
-		EC739E0D1E1B77080027E91E /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DF91E1B77080027E91E /* FSCalendarExtensions.m */; };
-		EC739E0E1E1B77080027E91E /* FSCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DFB1E1B77080027E91E /* FSCalendarHeaderView.m */; };
-		EC739E0F1E1B77080027E91E /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DFD1E1B77080027E91E /* FSCalendarScopeHandle.m */; };
-		EC739E101E1B77080027E91E /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739DFF1E1B77080027E91E /* FSCalendarStickyHeader.m */; };
-		EC739E111E1B77080027E91E /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739E011E1B77080027E91E /* FSCalendarWeekdayView.m */; };
-		EC739E121E1B77080027E91E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC739E021E1B77080027E91E /* Info.plist */; };
 		EC739E141E1BDF530027E91E /* home_guid_01.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC739E131E1BDF530027E91E /* home_guid_01.gif */; };
 		EC739E171E1BE43B0027E91E /* CollectionTarentoEmptyFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739E161E1BE43B0027E91E /* CollectionTarentoEmptyFooter.m */; };
 		EC739E191E1BE4480027E91E /* CollectionTarentoEmptyFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739E181E1BE4480027E91E /* CollectionTarentoEmptyFooter.xib */; };
@@ -1338,6 +1321,16 @@
 		EC739FD51E1D133D0027E91E /* WholesaleOrderDetailWebCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739FA81E1D133D0027E91E /* WholesaleOrderDetailWebCell.xib */; };
 		EC739FD61E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC739FAB1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.m */; };
 		EC739FD71E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739FAC1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib */; };
+		EC73A01F1E1E25CE0027E91E /* RadishMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A01E1E1E25CE0027E91E /* RadishMallViewController.m */; };
+		EC73A0221E1E25E60027E91E /* RadishMallView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0211E1E25E60027E91E /* RadishMallView.m */; };
+		EC73A0251E1E26010027E91E /* RadishOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */; };
+		EC73A0281E1E26110027E91E /* RadishOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0271E1E26110027E91E /* RadishOrderListViewController.m */; };
+		EC73A02B1E1E26280027E91E /* RadishProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A02A1E1E26280027E91E /* RadishProductDetailViewController.m */; };
+		EC73A02E1E1E26380027E91E /* RadishSettlementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A02D1E1E26380027E91E /* RadishSettlementViewController.m */; };
+		EC73A0311E1E264D0027E91E /* RadishSettlementView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0301E1E264D0027E91E /* RadishSettlementView.m */; };
+		EC73A0341E1E265E0027E91E /* RadishProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0331E1E265E0027E91E /* RadishProductDetailView.m */; };
+		EC73A0371E1E266E0027E91E /* RadishOrderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0361E1E266E0027E91E /* RadishOrderListView.m */; };
+		EC73A03A1E1E267E0027E91E /* RadishOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */; };
 		EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */; };
 		EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */; };
 		EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A41DC65FC6006518DE /* ServiceDetailConfigModel.m */; };
@@ -1799,9 +1792,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		021CE82A0653D6DF4BCC8B21 /* Pods-KidsTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidsTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC.release.xcconfig"; sourceTree = "<group>"; };
-		6FD7E4F8A8973C1EE806FAC0 /* Pods_KidsTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KidsTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E309757E1B2FE1D71845D214 /* Pods-KidsTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidsTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC.debug.xcconfig"; sourceTree = "<group>"; };
+		17127F6CF09BCB886613C01F /* Pods-KidsTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidsTC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC.debug.xcconfig"; sourceTree = "<group>"; };
+		6CDC7FC2367E57443D10968F /* Pods-KidsTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KidsTC.release.xcconfig"; path = "Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC.release.xcconfig"; sourceTree = "<group>"; };
+		CC45FDCEC66D4DD5AEB4DD20 /* Pods_KidsTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KidsTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC00433F1DE559110042B701 /* NurseryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NurseryViewController.h; sourceTree = "<group>"; };
 		EC0043401DE559110042B701 /* NurseryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NurseryViewController.m; sourceTree = "<group>"; };
 		EC0043411DE559110042B701 /* NurseryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NurseryViewController.xib; sourceTree = "<group>"; };
@@ -3780,7 +3773,6 @@
 		EC72C2371DAB3C10003DF2CB /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		EC739D891E161B6A0027E91E /* ProductDetailSecKillInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSecKillInfo.h; sourceTree = "<group>"; };
 		EC739D8A1E161B6A0027E91E /* ProductDetailSecKillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSecKillInfo.m; sourceTree = "<group>"; };
-		EC739DA61E1A7E8B0027E91E /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		EC739DA81E1B501F0027E91E /* ProductOrderListTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListTimeCell.h; sourceTree = "<group>"; };
 		EC739DA91E1B501F0027E91E /* ProductOrderListTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderListTimeCell.m; sourceTree = "<group>"; };
 		EC739DAA1E1B501F0027E91E /* ProductOrderListTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderListTimeCell.xib; sourceTree = "<group>"; };
@@ -3815,37 +3807,6 @@
 		EC739DDE1E1B63C20027E91E /* ProductOrderFreeListBtnsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderFreeListBtnsCell.h; sourceTree = "<group>"; };
 		EC739DDF1E1B63C20027E91E /* ProductOrderFreeListBtnsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderFreeListBtnsCell.m; sourceTree = "<group>"; };
 		EC739DE01E1B63C20027E91E /* ProductOrderFreeListBtnsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderFreeListBtnsCell.xib; sourceTree = "<group>"; };
-		EC739DE41E1B77080027E91E /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
-		EC739DE51E1B77080027E91E /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
-		EC739DE61E1B77080027E91E /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendar.m; sourceTree = "<group>"; };
-		EC739DE71E1B77080027E91E /* FSCalendarAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAnimator.h; sourceTree = "<group>"; };
-		EC739DE81E1B77080027E91E /* FSCalendarAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAnimator.m; sourceTree = "<group>"; };
-		EC739DE91E1B77080027E91E /* FSCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarAppearance.h; sourceTree = "<group>"; };
-		EC739DEA1E1B77080027E91E /* FSCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarAppearance.m; sourceTree = "<group>"; };
-		EC739DEB1E1B77080027E91E /* FSCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCalculator.h; sourceTree = "<group>"; };
-		EC739DEC1E1B77080027E91E /* FSCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCalculator.m; sourceTree = "<group>"; };
-		EC739DED1E1B77080027E91E /* FSCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCell.h; sourceTree = "<group>"; };
-		EC739DEE1E1B77080027E91E /* FSCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCell.m; sourceTree = "<group>"; };
-		EC739DEF1E1B77080027E91E /* FSCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionView.h; sourceTree = "<group>"; };
-		EC739DF01E1B77080027E91E /* FSCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionView.m; sourceTree = "<group>"; };
-		EC739DF11E1B77080027E91E /* FSCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
-		EC739DF21E1B77080027E91E /* FSCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
-		EC739DF31E1B77080027E91E /* FSCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarConstants.h; sourceTree = "<group>"; };
-		EC739DF41E1B77080027E91E /* FSCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarConstants.m; sourceTree = "<group>"; };
-		EC739DF51E1B77080027E91E /* FSCalendarDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDelegateProxy.h; sourceTree = "<group>"; };
-		EC739DF61E1B77080027E91E /* FSCalendarDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarDelegateProxy.m; sourceTree = "<group>"; };
-		EC739DF71E1B77080027E91E /* FSCalendarDynamicHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarDynamicHeader.h; sourceTree = "<group>"; };
-		EC739DF81E1B77080027E91E /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
-		EC739DF91E1B77080027E91E /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
-		EC739DFA1E1B77080027E91E /* FSCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarHeaderView.h; sourceTree = "<group>"; };
-		EC739DFB1E1B77080027E91E /* FSCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarHeaderView.m; sourceTree = "<group>"; };
-		EC739DFC1E1B77080027E91E /* FSCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarScopeHandle.h; sourceTree = "<group>"; };
-		EC739DFD1E1B77080027E91E /* FSCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarScopeHandle.m; sourceTree = "<group>"; };
-		EC739DFE1E1B77080027E91E /* FSCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarStickyHeader.h; sourceTree = "<group>"; };
-		EC739DFF1E1B77080027E91E /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarStickyHeader.m; sourceTree = "<group>"; };
-		EC739E001E1B77080027E91E /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
-		EC739E011E1B77080027E91E /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
-		EC739E021E1B77080027E91E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC739E131E1BDF530027E91E /* home_guid_01.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = home_guid_01.gif; sourceTree = "<group>"; };
 		EC739E151E1BE43B0027E91E /* CollectionTarentoEmptyFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionTarentoEmptyFooter.h; sourceTree = "<group>"; };
 		EC739E161E1BE43B0027E91E /* CollectionTarentoEmptyFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionTarentoEmptyFooter.m; sourceTree = "<group>"; };
@@ -4010,6 +3971,26 @@
 		EC739FAA1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholesaleOrderDetailWebTipCell.h; sourceTree = "<group>"; };
 		EC739FAB1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholesaleOrderDetailWebTipCell.m; sourceTree = "<group>"; };
 		EC739FAC1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WholesaleOrderDetailWebTipCell.xib; sourceTree = "<group>"; };
+		EC73A01D1E1E25CE0027E91E /* RadishMallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallViewController.h; sourceTree = "<group>"; };
+		EC73A01E1E1E25CE0027E91E /* RadishMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallViewController.m; sourceTree = "<group>"; };
+		EC73A0201E1E25E60027E91E /* RadishMallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallView.h; sourceTree = "<group>"; };
+		EC73A0211E1E25E60027E91E /* RadishMallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallView.m; sourceTree = "<group>"; };
+		EC73A0231E1E26010027E91E /* RadishOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailViewController.h; sourceTree = "<group>"; };
+		EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailViewController.m; sourceTree = "<group>"; };
+		EC73A0261E1E26110027E91E /* RadishOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderListViewController.h; sourceTree = "<group>"; };
+		EC73A0271E1E26110027E91E /* RadishOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderListViewController.m; sourceTree = "<group>"; };
+		EC73A0291E1E26280027E91E /* RadishProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailViewController.h; sourceTree = "<group>"; };
+		EC73A02A1E1E26280027E91E /* RadishProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailViewController.m; sourceTree = "<group>"; };
+		EC73A02C1E1E26380027E91E /* RadishSettlementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementViewController.h; sourceTree = "<group>"; };
+		EC73A02D1E1E26380027E91E /* RadishSettlementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementViewController.m; sourceTree = "<group>"; };
+		EC73A02F1E1E264D0027E91E /* RadishSettlementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementView.h; sourceTree = "<group>"; };
+		EC73A0301E1E264D0027E91E /* RadishSettlementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementView.m; sourceTree = "<group>"; };
+		EC73A0321E1E265E0027E91E /* RadishProductDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailView.h; sourceTree = "<group>"; };
+		EC73A0331E1E265E0027E91E /* RadishProductDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailView.m; sourceTree = "<group>"; };
+		EC73A0351E1E266E0027E91E /* RadishOrderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderListView.h; sourceTree = "<group>"; };
+		EC73A0361E1E266E0027E91E /* RadishOrderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderListView.m; sourceTree = "<group>"; };
+		EC73A0381E1E267E0027E91E /* RadishOrderDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailView.h; sourceTree = "<group>"; };
+		EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailView.m; sourceTree = "<group>"; };
 		EC76B89F1DC65FC6006518DE /* ServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailViewController.h; sourceTree = "<group>"; };
 		EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailViewController.m; sourceTree = "<group>"; };
 		EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDetailViewController.xib; sourceTree = "<group>"; };
@@ -4785,9 +4766,8 @@
 				EC72C2381DAB3C10003DF2CB /* GameKit.framework in Frameworks */,
 				EC4FC5A01D77CEEF00BBD050 /* AlipaySDK.framework in Frameworks */,
 				EC4FC5A41D77CEEF00BBD050 /* libWeChatSDK.a in Frameworks */,
-				7D40FF20A143CED91220CB23 /* Pods_KidsTC.framework in Frameworks */,
-				EC739DA71E1A7E8B0027E91E /* Bugly.framework in Frameworks */,
 				ECBCCEAE1DBDE1F7001B9571 /* iflyMSC.framework in Frameworks */,
+				591DD0CA3BF784EA8E3BAB7E /* Pods_KidsTC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4799,18 +4779,18 @@
 			children = (
 				EC72C2371DAB3C10003DF2CB /* GameKit.framework */,
 				EC4FC5F81D77D0A000BBD050 /* CoreMotion.framework */,
-				6FD7E4F8A8973C1EE806FAC0 /* Pods_KidsTC.framework */,
 				EC8FD0D01DAA528900570884 /* UserNotifications.framework */,
 				EC8FD0D21DAA528900570884 /* UserNotificationsUI.framework */,
+				CC45FDCEC66D4DD5AEB4DD20 /* Pods_KidsTC.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BED5981BA5E74A1B7F513B6F /* Pods */ = {
+		C15A230AB24FF9DB57B714CE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E309757E1B2FE1D71845D214 /* Pods-KidsTC.debug.xcconfig */,
-				021CE82A0653D6DF4BCC8B21 /* Pods-KidsTC.release.xcconfig */,
+				17127F6CF09BCB886613C01F /* Pods-KidsTC.debug.xcconfig */,
+				6CDC7FC2367E57443D10968F /* Pods-KidsTC.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -7622,7 +7602,7 @@
 				EC1AB2CC1DAB953900C158C5 /* NotiService */,
 				EC4FBBD61D77CD8300BBD050 /* Products */,
 				62B89970E1DD5EA8B662C18D /* Frameworks */,
-				BED5981BA5E74A1B7F513B6F /* Pods */,
+				C15A230AB24FF9DB57B714CE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -8325,6 +8305,7 @@
 		EC4FBCFD1D77CEE300BBD050 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EC739FFE1E1E24970027E91E /* Radish */,
 				EC9775391E10F90500980C4A /* Wholesale */,
 				ECEE2B2D1E07B09B00FAB7C2 /* Recommend */,
 				EC4E27701DF0134E00622711 /* Nearby */,
@@ -10519,7 +10500,6 @@
 		EC4FC4F41D77CEEE00BBD050 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				EC739DA51E1A7E8B0027E91E /* Bugly */,
 				EC8163B91DB0D9560079865A /* iflyMSC */,
 				EC4FC4F51D77CEEE00BBD050 /* AliSDK */,
 				EC4FC4FD1D77CEEE00BBD050 /* TencentOpenAPI */,
@@ -10561,7 +10541,6 @@
 		EC4FC5061D77CEEE00BBD050 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				EC739DE31E1B77080027E91E /* FSCalendar */,
 				EC99A05A1D7B219A008E6F33 /* YYHelper */,
 				EC4FC5071D77CEEE00BBD050 /* ActionSheet */,
 				EC4FC50E1D77CEEE00BBD050 /* ATCountDown */,
@@ -11306,14 +11285,6 @@
 			path = V;
 			sourceTree = "<group>";
 		};
-		EC739DA51E1A7E8B0027E91E /* Bugly */ = {
-			isa = PBXGroup;
-			children = (
-				EC739DA61E1A7E8B0027E91E /* Bugly.framework */,
-			);
-			path = Bugly;
-			sourceTree = "<group>";
-		};
 		EC739DBC1E1B63630027E91E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -11355,44 +11326,6 @@
 				EC739DC81E1B63630027E91E /* ProductOrderFreeListView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		EC739DE31E1B77080027E91E /* FSCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				EC739DE41E1B77080027E91E /* FSCalendar+Deprecated.m */,
-				EC739DE51E1B77080027E91E /* FSCalendar.h */,
-				EC739DE61E1B77080027E91E /* FSCalendar.m */,
-				EC739DE71E1B77080027E91E /* FSCalendarAnimator.h */,
-				EC739DE81E1B77080027E91E /* FSCalendarAnimator.m */,
-				EC739DE91E1B77080027E91E /* FSCalendarAppearance.h */,
-				EC739DEA1E1B77080027E91E /* FSCalendarAppearance.m */,
-				EC739DEB1E1B77080027E91E /* FSCalendarCalculator.h */,
-				EC739DEC1E1B77080027E91E /* FSCalendarCalculator.m */,
-				EC739DED1E1B77080027E91E /* FSCalendarCell.h */,
-				EC739DEE1E1B77080027E91E /* FSCalendarCell.m */,
-				EC739DEF1E1B77080027E91E /* FSCalendarCollectionView.h */,
-				EC739DF01E1B77080027E91E /* FSCalendarCollectionView.m */,
-				EC739DF11E1B77080027E91E /* FSCalendarCollectionViewLayout.h */,
-				EC739DF21E1B77080027E91E /* FSCalendarCollectionViewLayout.m */,
-				EC739DF31E1B77080027E91E /* FSCalendarConstants.h */,
-				EC739DF41E1B77080027E91E /* FSCalendarConstants.m */,
-				EC739DF51E1B77080027E91E /* FSCalendarDelegateProxy.h */,
-				EC739DF61E1B77080027E91E /* FSCalendarDelegateProxy.m */,
-				EC739DF71E1B77080027E91E /* FSCalendarDynamicHeader.h */,
-				EC739DF81E1B77080027E91E /* FSCalendarExtensions.h */,
-				EC739DF91E1B77080027E91E /* FSCalendarExtensions.m */,
-				EC739DFA1E1B77080027E91E /* FSCalendarHeaderView.h */,
-				EC739DFB1E1B77080027E91E /* FSCalendarHeaderView.m */,
-				EC739DFC1E1B77080027E91E /* FSCalendarScopeHandle.h */,
-				EC739DFD1E1B77080027E91E /* FSCalendarScopeHandle.m */,
-				EC739DFE1E1B77080027E91E /* FSCalendarStickyHeader.h */,
-				EC739DFF1E1B77080027E91E /* FSCalendarStickyHeader.m */,
-				EC739E001E1B77080027E91E /* FSCalendarWeekdayView.h */,
-				EC739E011E1B77080027E91E /* FSCalendarWeekdayView.m */,
-				EC739E021E1B77080027E91E /* Info.plist */,
-			);
-			path = FSCalendar;
 			sourceTree = "<group>";
 		};
 		EC739E9B1E1CCF060027E91E /* Cells */ = {
@@ -11932,6 +11865,273 @@
 				EC739FAC1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib */,
 			);
 			path = WholesaleOrderDetailWebTipCell;
+			sourceTree = "<group>";
+		};
+		EC739FFE1E1E24970027E91E /* Radish */ = {
+			isa = PBXGroup;
+			children = (
+				EC739FFF1E1E257A0027E91E /* Mall */,
+				EC73A0051E1E257A0027E91E /* OrderDetail */,
+				EC73A00B1E1E257A0027E91E /* OrderList */,
+				EC73A0111E1E257A0027E91E /* ProductDetail */,
+				EC73A0171E1E257A0027E91E /* Settlement */,
+			);
+			path = Radish;
+			sourceTree = "<group>";
+		};
+		EC739FFF1E1E257A0027E91E /* Mall */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0001E1E257A0027E91E /* C */,
+				EC73A0011E1E257A0027E91E /* M */,
+				EC73A0021E1E257A0027E91E /* V */,
+			);
+			path = Mall;
+			sourceTree = "<group>";
+		};
+		EC73A0001E1E257A0027E91E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A01D1E1E25CE0027E91E /* RadishMallViewController.h */,
+				EC73A01E1E1E25CE0027E91E /* RadishMallViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC73A0011E1E257A0027E91E /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC73A0021E1E257A0027E91E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0031E1E257A0027E91E /* Cells */,
+				EC73A0041E1E257A0027E91E /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC73A0031E1E257A0027E91E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC73A0041E1E257A0027E91E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0201E1E25E60027E91E /* RadishMallView.h */,
+				EC73A0211E1E25E60027E91E /* RadishMallView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC73A0051E1E257A0027E91E /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0061E1E257A0027E91E /* C */,
+				EC73A0071E1E257A0027E91E /* M */,
+				EC73A0081E1E257A0027E91E /* V */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		EC73A0061E1E257A0027E91E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0231E1E26010027E91E /* RadishOrderDetailViewController.h */,
+				EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC73A0071E1E257A0027E91E /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC73A0081E1E257A0027E91E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0091E1E257A0027E91E /* Cells */,
+				EC73A00A1E1E257A0027E91E /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC73A0091E1E257A0027E91E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC73A00A1E1E257A0027E91E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0381E1E267E0027E91E /* RadishOrderDetailView.h */,
+				EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC73A00B1E1E257A0027E91E /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A00C1E1E257A0027E91E /* C */,
+				EC73A00D1E1E257A0027E91E /* M */,
+				EC73A00E1E1E257A0027E91E /* V */,
+			);
+			path = OrderList;
+			sourceTree = "<group>";
+		};
+		EC73A00C1E1E257A0027E91E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0261E1E26110027E91E /* RadishOrderListViewController.h */,
+				EC73A0271E1E26110027E91E /* RadishOrderListViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC73A00D1E1E257A0027E91E /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC73A00E1E1E257A0027E91E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A00F1E1E257A0027E91E /* Cells */,
+				EC73A0101E1E257A0027E91E /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC73A00F1E1E257A0027E91E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC73A0101E1E257A0027E91E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0351E1E266E0027E91E /* RadishOrderListView.h */,
+				EC73A0361E1E266E0027E91E /* RadishOrderListView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC73A0111E1E257A0027E91E /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0121E1E257A0027E91E /* C */,
+				EC73A0131E1E257A0027E91E /* M */,
+				EC73A0141E1E257A0027E91E /* V */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		EC73A0121E1E257A0027E91E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0291E1E26280027E91E /* RadishProductDetailViewController.h */,
+				EC73A02A1E1E26280027E91E /* RadishProductDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC73A0131E1E257A0027E91E /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC73A0141E1E257A0027E91E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0151E1E257A0027E91E /* Cells */,
+				EC73A0161E1E257A0027E91E /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC73A0151E1E257A0027E91E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC73A0161E1E257A0027E91E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0321E1E265E0027E91E /* RadishProductDetailView.h */,
+				EC73A0331E1E265E0027E91E /* RadishProductDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC73A0171E1E257A0027E91E /* Settlement */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A0181E1E257A0027E91E /* C */,
+				EC73A0191E1E257A0027E91E /* M */,
+				EC73A01A1E1E257A0027E91E /* V */,
+			);
+			path = Settlement;
+			sourceTree = "<group>";
+		};
+		EC73A0181E1E257A0027E91E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A02C1E1E26380027E91E /* RadishSettlementViewController.h */,
+				EC73A02D1E1E26380027E91E /* RadishSettlementViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC73A0191E1E257A0027E91E /* M */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC73A01A1E1E257A0027E91E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A01B1E1E257A0027E91E /* Cells */,
+				EC73A01C1E1E257A0027E91E /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC73A01B1E1E257A0027E91E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC73A01C1E1E257A0027E91E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC73A02F1E1E264D0027E91E /* RadishSettlementView.h */,
+				EC73A0301E1E264D0027E91E /* RadishSettlementView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EC76B89D1DC65FC6006518DE /* ServiceDetail */ = {
@@ -14231,14 +14431,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC4FBBEC1D77CD8300BBD050 /* Build configuration list for PBXNativeTarget "KidsTC" */;
 			buildPhases = (
-				D745BD3AA60DB328612C92C4 /* 📦 Check Pods Manifest.lock */,
+				CB63BC5FD1DF5DC3BC18D67D /* [CP] Check Pods Manifest.lock */,
 				EC4FBBD11D77CD8300BBD050 /* Sources */,
 				EC4FBBD21D77CD8300BBD050 /* Frameworks */,
 				EC4FBBD31D77CD8300BBD050 /* Resources */,
-				69D55CE3760E4FED832F69DE /* 📦 Embed Pods Frameworks */,
-				9DD3417F35114835DA636CCA /* 📦 Copy Pods Resources */,
-				A2F382CD7E7D1C259BDD6357 /* Embed Pods Frameworks */,
 				EC31CF7C1DAA46C500C49E29 /* Embed App Extensions */,
+				2E76A2EE8DDCED51BEFAA4CD /* [CP] Embed Pods Frameworks */,
+				D44D412F254E8128F5B9C249 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -14383,7 +14582,6 @@
 				EC739FCA1E1D133D0027E91E /* WholesaleOrderDetailProgressCell.xib in Resources */,
 				EC0044131DE6B8970042B701 /* ProductDetailContactCell.xib in Resources */,
 				ECA628691DC3F2EB006CD94E /* ServiceSettlementBuyNumTfInputView.xib in Resources */,
-				EC739E121E1B77080027E91E /* Info.plist in Resources */,
 				EC0044001DE6B8970042B701 /* ProductDetaiFreeLifeTipCell.xib in Resources */,
 				EC4FC28B1D77CEE400BBD050 /* AlbumToolBarView.xib in Resources */,
 				EC739FC81E1D133D0027E91E /* WholesaleOrderDetailProductInfoCell.xib in Resources */,
@@ -14898,14 +15096,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		69D55CE3760E4FED832F69DE /* 📦 Embed Pods Frameworks */ = {
+		2E76A2EE8DDCED51BEFAA4CD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -14913,49 +15111,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9DD3417F35114835DA636CCA /* 📦 Copy Pods Resources */ = {
+		CB63BC5FD1DF5DC3BC18D67D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D44D412F254E8128F5B9C249 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A2F382CD7E7D1C259BDD6357 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KidsTC/Pods-KidsTC-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D745BD3AA60DB328612C92C4 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -15001,7 +15184,6 @@
 				EC4FC3FC1D77CEE400BBD050 /* AddressDataManager.m in Sources */,
 				ECA95A721DDB2A2600990AAE /* CouponListUnusedCell.m in Sources */,
 				ECAA49381D79A45B00799CBE /* ArticleHomeAlbumEntrysCollectionViewCell.m in Sources */,
-				EC739E061E1B77080027E91E /* FSCalendarAppearance.m in Sources */,
 				EC4FC2511D77CEE400BBD050 /* KTCMapUtil.mm in Sources */,
 				EC84C3C11DE3392900A42515 /* ProductDetailEnrollInfo.m in Sources */,
 				EC4FC4401D77CEE400BBD050 /* KTCCommentManager.m in Sources */,
@@ -15021,6 +15203,7 @@
 				EC9774541E0A389800980C4A /* RecommendProductOrderListView.m in Sources */,
 				EC4FC4901D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.m in Sources */,
 				EC4FC3BC1D77CEE400BBD050 /* WelfareStoreViewController.m in Sources */,
+				EC73A02E1E1E26380027E91E /* RadishSettlementViewController.m in Sources */,
 				EC13B51E1DD1F6110040F760 /* AccountCenterBanner.m in Sources */,
 				EC739DC91E1B63630027E91E /* ProductOrderFreeListCell.m in Sources */,
 				EC4FC2941D77CEE400BBD050 /* ArticleCommentLayout.m in Sources */,
@@ -15065,6 +15248,7 @@
 				EC13B50F1DD1F41A0040F760 /* AccountCenterRadish.m in Sources */,
 				EC4FC2951D77CEE400BBD050 /* ArticleCommentModel.m in Sources */,
 				EC30ABBC1DFF9CD3007380B0 /* ProductOrderTicketDetailDeliverCell.m in Sources */,
+				EC73A0281E1E26110027E91E /* RadishOrderListViewController.m in Sources */,
 				ECA59BA31DEC20AD00B3B1F7 /* SearchViewController.m in Sources */,
 				ECAD71471E1536E900B45416 /* WholesaleOrderListItem.m in Sources */,
 				EC4FC4161D77CEE400BBD050 /* AppointmentOrderModel.m in Sources */,
@@ -15161,6 +15345,7 @@
 				EC486F341DF7C726005CA365 /* SearchFactorFilterCategoryItemLeft.m in Sources */,
 				EC3CE0BD1DF17A57005729E2 /* NearbyCategoryToolBar.m in Sources */,
 				EC2F25A91DD3266E00B67BBA /* CollectProductCategoryViewController.m in Sources */,
+				EC73A0341E1E265E0027E91E /* RadishProductDetailView.m in Sources */,
 				EC76B8DF1DC65FC6006518DE /* ServiceDetailViewModel.m in Sources */,
 				EC4FC42C1D77CEE400BBD050 /* StoreListViewCell.m in Sources */,
 				EC9774471E0967F600980C4A /* RecommendProductCollectProductView.m in Sources */,
@@ -15186,7 +15371,6 @@
 				EC0043541DE584870042B701 /* NurseryCollectionViewCell.m in Sources */,
 				EC4FC4D01D77CEE400BBD050 /* SoftwareSettingViewCell.m in Sources */,
 				EC30ABF51DFFFF1C007380B0 /* ProductDetaiFreeJoinCollectionCell.m in Sources */,
-				EC739E0B1E1B77080027E91E /* FSCalendarConstants.m in Sources */,
 				EC4FC47E1D77CEE400BBD050 /* FavouriteViewStrategyCell.m in Sources */,
 				EC45600E1DFEB877000BD822 /* ProductOrderNormalDetailRefund.m in Sources */,
 				EC13B5181DD1F4670040F760 /* AccountCenterUserInfo.m in Sources */,
@@ -15220,6 +15404,7 @@
 				EC4FC4761D77CEE400BBD050 /* FavourateView.m in Sources */,
 				EC2F26171DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.m in Sources */,
 				EC739FC91E1D133D0027E91E /* WholesaleOrderDetailProgressCell.m in Sources */,
+				EC73A0371E1E266E0027E91E /* RadishOrderListView.m in Sources */,
 				EC4C607B1DF5765400830126 /* ProductOrderFreeListViewController.m in Sources */,
 				EC00444B1DE6B8980042B701 /* ProductDetailNormalToolBar.m in Sources */,
 				EC739F281E1CCF060027E91E /* WolesaleProductDetailJoinCountDownCell.m in Sources */,
@@ -15233,7 +15418,6 @@
 				EC4FC3BE1D77CEE400BBD050 /* WelfareStoreHospitalAnnotationTipView.m in Sources */,
 				EC4FC2191D77CEE400BBD050 /* NSString+MD5Addition.m in Sources */,
 				EC48705D1DFC18B5005CA365 /* ProductOrderFreeDetailBtn.m in Sources */,
-				EC739E0A1E1B77080027E91E /* FSCalendarCollectionViewLayout.m in Sources */,
 				EC4FC2881D77CEE400BBD050 /* AlbumCollectionViewCell.m in Sources */,
 				EC4FC47C1D77CEE400BBD050 /* FavouriteViewStoreCell.m in Sources */,
 				EC4FC2181D77CEE400BBD050 /* NSString+Category.m in Sources */,
@@ -15245,6 +15429,7 @@
 				EC0044261DE6B8970042B701 /* ProductDetailStandardCell.m in Sources */,
 				EC4FC3F61D77CEE400BBD050 /* AccountSettingViewController.m in Sources */,
 				EC4FC5E01D77CEEF00BBD050 /* MWTapDetectingView.m in Sources */,
+				EC73A0251E1E26010027E91E /* RadishOrderDetailViewController.m in Sources */,
 				EC0044161DE6B8970042B701 /* ProductDetailContentEleEmptyCell.m in Sources */,
 				EC76B8CD1DC65FC6006518DE /* ServiceCommentListViewHeaderCell.m in Sources */,
 				EC48709D1DFC3FC1005CA365 /* ProductOrderFreeDetailInfoBaseCell.m in Sources */,
@@ -15302,6 +15487,7 @@
 				EC30AB311DFF1302007380B0 /* ProductOrderNormalDetailCountDown.m in Sources */,
 				EC4FC3971D77CEE400BBD050 /* StoreDetailTitleCell.m in Sources */,
 				EC4FC2421D77CEE400BBD050 /* AppVersionManager.m in Sources */,
+				EC73A0221E1E25E60027E91E /* RadishMallView.m in Sources */,
 				EC4FC3901D77CEE400BBD050 /* StoreDetailNearbyModel.m in Sources */,
 				EC7FBA1A1DE864DF0058E541 /* CollectProductItem.m in Sources */,
 				EC2F26631DD9803B00B67BBA /* CollectProductAllCell.m in Sources */,
@@ -15336,7 +15522,6 @@
 				EC7FBBC41DC49F8A007B326C /* ProductDetailConsultItem.m in Sources */,
 				EC4FC4851D77CEE400BBD050 /* FlashServiceOrderDetailViewController.m in Sources */,
 				EC0043481DE5592B0042B701 /* NurseryModel.m in Sources */,
-				EC739E0E1E1B77080027E91E /* FSCalendarHeaderView.m in Sources */,
 				EC2F271C1DDB27E800B67BBA /* CouponListBaseView.m in Sources */,
 				EC4FC2351D77CEE400BBD050 /* LoginModel.m in Sources */,
 				EC4FC2991D77CEE400BBD050 /* MessageCenterLayout.m in Sources */,
@@ -15425,7 +15610,6 @@
 				EC4FC2871D77CEE400BBD050 /* AlbumnModel.m in Sources */,
 				EC9775401E10F99F00980C4A /* WolesaleProductDetailViewController.m in Sources */,
 				EC3168511E01CE5B009F0945 /* ProductOrderTicketDetailUserRemarkCell.m in Sources */,
-				EC739E071E1B77080027E91E /* FSCalendarCalculator.m in Sources */,
 				EC630DBC1DCA045B0088145E /* NetWorkTipView.m in Sources */,
 				EC30AB771DFF9A51007380B0 /* ProductOrderTicketDetailDeliverItem.m in Sources */,
 				EC739DAB1E1B501F0027E91E /* ProductOrderListTimeCell.m in Sources */,
@@ -15463,7 +15647,6 @@
 				EC4FBBF11D77CE5000BBD050 /* AppDelegate.m in Sources */,
 				EC4870A91DFC3FC1005CA365 /* ProductOrderFreeDetailTimeCell.m in Sources */,
 				EC7264371D7D27BC00AA739B /* ArticleColumnModel.m in Sources */,
-				EC739E091E1B77080027E91E /* FSCalendarCollectionView.m in Sources */,
 				EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */,
 				EC4FC4071D77CEE400BBD050 /* UserAddressManageModel.m in Sources */,
 				EC455FF11DFE7C3B000BD822 /* ProductOrderNormalDetailToolBar.m in Sources */,
@@ -15480,7 +15663,6 @@
 				EC4FC2BD1D77CEE400BBD050 /* FDCommentLayout.m in Sources */,
 				EC4870641DFC1930005CA365 /* ProductOrderFreeDetailLotteryModel.m in Sources */,
 				ECBC97BD1DFEE80B00B7386C /* ProductOrderNormalDetailPayInfoTitleCell.m in Sources */,
-				EC739E101E1B77080027E91E /* FSCalendarStickyHeader.m in Sources */,
 				EC76B8DB1DC65FC6006518DE /* ServiceDetailSegmentCell.m in Sources */,
 				EC486FAC1DFAEB92005CA365 /* ProductOrderListDeliver.m in Sources */,
 				ECF5D1091DB8CE3900A1B268 /* TCHomeRecommendPromotion.m in Sources */,
@@ -15554,6 +15736,7 @@
 				EC0044281DE6B8970042B701 /* ProductDetailTicketActorCell.m in Sources */,
 				ECAD71411E15205F00B45416 /* WholesaleOrderListCellBtnsView.m in Sources */,
 				ECA4002C1E13AF0A009F27A6 /* WholesaleOrderDetailUser.m in Sources */,
+				EC73A0311E1E264D0027E91E /* RadishSettlementView.m in Sources */,
 				EC7264B31D81197D00AA739B /* ArticleHomeUserArticleCollectionViewCell.m in Sources */,
 				EC84C3BE1DE3386000A42515 /* ProductDetailOnlineBespeak.m in Sources */,
 				EC31687F1E033109009F0945 /* AppBaseManager.m in Sources */,
@@ -15574,7 +15757,6 @@
 				EC5CDD231DE538F200F95C6F /* ProductDetailFreeApplyActivityDateCell.m in Sources */,
 				EC30AB761DFF9A51007380B0 /* ProductOrderTicketDetailDeliver.m in Sources */,
 				EC4FC39F1D77CEE400BBD050 /* StoreDetailViewModel.m in Sources */,
-				EC739E0F1E1B77080027E91E /* FSCalendarScopeHandle.m in Sources */,
 				EC4FC2B81D77CEE400BBD050 /* FooterView.m in Sources */,
 				EC4C605F1DF5027600830126 /* ProductOrderListHeader.m in Sources */,
 				EC00442E1DE6B8970042B701 /* ProductDetailTicketDesCell.m in Sources */,
@@ -15621,7 +15803,6 @@
 				EC9774FC1E0B88AE00980C4A /* RecommendStoreModel.m in Sources */,
 				ECF5D1101DB8CE6300A1B268 /* TCHomeCollectionViewLayout.m in Sources */,
 				EC4870011DFBFBB5005CA365 /* ProductOrderFreeDetailView.m in Sources */,
-				EC739E081E1B77080027E91E /* FSCalendarCell.m in Sources */,
 				EC0D360E1DFEDC110028BC0E /* ProductOrderNormalDetailPayTipCell.m in Sources */,
 				EC9775191E0D42A900980C4A /* StoreDetailAnnotationTipView.m in Sources */,
 				EC4FC4821D77CEE400BBD050 /* NotificationCenterModel.m in Sources */,
@@ -15760,7 +15941,6 @@
 				EC4FC2C51D77CEE400BBD050 /* FDServeDetailCell.m in Sources */,
 				ECA95AD61DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.m in Sources */,
 				EC4FC2551D77CEE400BBD050 /* MapRouteViewController.m in Sources */,
-				EC739E0D1E1B77080027E91E /* FSCalendarExtensions.m in Sources */,
 				EC4FC36A1D77CEE400BBD050 /* ServiceSettlementPayInfoCell.m in Sources */,
 				ECF5D1181DB8CF9000A1B268 /* AUIFloorNavigationView.m in Sources */,
 				EC4FC21C1D77CEE400BBD050 /* UIColor+Category.m in Sources */,
@@ -15791,6 +15971,7 @@
 				EC30AB551DFF90BD007380B0 /* ProductOrderTicketDetailHeader.m in Sources */,
 				EC2F26A41DD9B80600B67BBA /* CollectionContentView.m in Sources */,
 				EC0044DE1DE808BD0042B701 /* ProductDetailTwoColumnConsultEmptyCell.m in Sources */,
+				EC73A02B1E1E26280027E91E /* RadishProductDetailViewController.m in Sources */,
 				EC00441E1DE6B8970042B701 /* ProductDetailJoinCell.m in Sources */,
 				EC4FC2201D77CEE400BBD050 /* UILabel+Additions.m in Sources */,
 				EC4C608E1DF585D900830126 /* TCTimer.m in Sources */,
@@ -15838,14 +16019,12 @@
 				EC13B51B1DD1F4790040F760 /* AccountCenterConfig.m in Sources */,
 				EC3168781E02862E009F0945 /* OrderModel.m in Sources */,
 				EC4FC2A51D77CEE400BBD050 /* UserArticleCommentsCell.m in Sources */,
-				EC739E0C1E1B77080027E91E /* FSCalendarDelegateProxy.m in Sources */,
 				EC9775CB1E123EE600980C4A /* WholesaleOrderDetailView.m in Sources */,
 				EC97752F1E0D54ED00980C4A /* SearchHotKeywordsModel.m in Sources */,
 				EC4FC3D31D77CEE400BBD050 /* StrategyLikeButton.m in Sources */,
 				EC4FC4781D77CEE400BBD050 /* FavouriteViewNewsCell.m in Sources */,
 				EC4FC27D1D77CEE400BBD050 /* WelcomeViewCell.m in Sources */,
 				EC4FC4891D77CEE400BBD050 /* FlashServiceOrderDetailBaseCell.m in Sources */,
-				EC739E031E1B77080027E91E /* FSCalendar+Deprecated.m in Sources */,
 				EC4C60B81DF5B0CB00830126 /* ProductOrderListAllTitleShowView.m in Sources */,
 				EC4FC3551D77CEE400BBD050 /* FlashBalanceSettlementBaseCell.m in Sources */,
 				EC31687B1E02CFF4009F0945 /* NearbyPlaceInfoData.m in Sources */,
@@ -15887,7 +16066,6 @@
 				EC0D36181DFEDD180028BC0E /* ProductOrderNormalDetailOrderInfoCell.m in Sources */,
 				EC4FC4CF1D77CEE400BBD050 /* SoftwareSettingModel.m in Sources */,
 				EC30AB671DFF971E007380B0 /* ProductOrderTicketDetailRefund.m in Sources */,
-				EC739E041E1B77080027E91E /* FSCalendar.m in Sources */,
 				EC4FC34C1D77CEE400BBD050 /* FlashAdvanceSettlementStoreInfoCell.m in Sources */,
 				ECBCCECE1DBF145C001B9571 /* QRCodeScanBarCodeModel.m in Sources */,
 				ECA628671DC3F2DF006CD94E /* ServiceSettlementBuyNumTfInputView.m in Sources */,
@@ -16058,17 +16236,18 @@
 				EC4FC4AF1D77CEE400BBD050 /* OrderRefundModel.m in Sources */,
 				EC0044241DE6B8970042B701 /* ProductDetailRecommendCell.m in Sources */,
 				EC4FC4831D77CEE400BBD050 /* NotificationCenterViewCell.m in Sources */,
-				EC739E051E1B77080027E91E /* FSCalendarAnimator.m in Sources */,
 				ECBCCEF41DBF152E001B9571 /* ComposeManager.m in Sources */,
 				EC9775461E10F9D300980C4A /* WolesaleProductDetailView.m in Sources */,
 				ECA2BC1D1DF2CA0100EAE79C /* ProductOrderListCountDown.m in Sources */,
 				EC0D35F51DFED9CB0028BC0E /* ProductOrderNormalDetailBaseCell.m in Sources */,
 				EC4FC4011D77CEE400BBD050 /* AddressPickerViewController.m in Sources */,
 				EC2F25BD1DD3384C00B67BBA /* MultiItemsToolBarOpenView.m in Sources */,
+				EC73A01F1E1E25CE0027E91E /* RadishMallViewController.m in Sources */,
 				EC4FC4941D77CEE400BBD050 /* FlashServiceOrderDetailRefundTipCell.m in Sources */,
 				ECFFC73B1DC363C1002DBFB9 /* ProductDetailAddressTitleView.m in Sources */,
 				EC2F26AE1DD9BA8700B67BBA /* CollectionTarentoCell.m in Sources */,
 				EC4FC3F81D77CEE400BBD050 /* AccountSettingLogoutView.m in Sources */,
+				EC73A03A1E1E267E0027E91E /* RadishOrderDetailView.m in Sources */,
 				EC0044431DE6B8980042B701 /* ProductDetailCountDownView.m in Sources */,
 				EC4FC43B1D77CEE400BBD050 /* CommentFoundingModel.m in Sources */,
 				EC486F3E1DF7C726005CA365 /* SearchFactorFilterView.m in Sources */,
@@ -16082,7 +16261,6 @@
 				EC2F26951DD9B77A00B67BBA /* CollectionSCTViewController.m in Sources */,
 				EC4FC29C1D77CEE400BBD050 /* ArticleWeChatModel.m in Sources */,
 				EC739DCC1E1B63630027E91E /* ProductOrderFreeListHeader.m in Sources */,
-				EC739E111E1B77080027E91E /* FSCalendarWeekdayView.m in Sources */,
 				ECA95ABE1DDC6EB200990AAE /* ProductOrderListViewController.m in Sources */,
 				EC739DD21E1B638C0027E91E /* ProductOrderFreeListBaseCell.m in Sources */,
 				ECF5D1071DB8CE3900A1B268 /* TCHomeRecommendItem.m in Sources */,
@@ -16301,8 +16479,9 @@
 		};
 		EC4FBBED1D77CD8300BBD050 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E309757E1B2FE1D71845D214 /* Pods-KidsTC.debug.xcconfig */;
+			baseConfigurationReference = 17127F6CF09BCB886613C01F /* Pods-KidsTC.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;
@@ -16338,8 +16517,9 @@
 		};
 		EC4FBBEE1D77CD8300BBD050 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 021CE82A0653D6DF4BCC8B21 /* Pods-KidsTC.release.xcconfig */;
+			baseConfigurationReference = 6CDC7FC2367E57443D10968F /* Pods-KidsTC.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = KidsTC/KidsTC.entitlements;

@@ -15,7 +15,7 @@
 #import "WeChatManager.h"
 #import "KTCMapService.h"
 #import "BuryPointManager.h"
-#import <JSPatchPlatform/JSPatch.h>
+#import "JSPatch.h"
 #import "NotificationService.h"
 #import <Bugly/Bugly.h>
 

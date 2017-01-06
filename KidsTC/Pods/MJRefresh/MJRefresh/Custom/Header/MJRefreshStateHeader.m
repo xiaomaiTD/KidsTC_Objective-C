@@ -133,13 +133,13 @@
     
     if (self.lastUpdatedTimeLabel.hidden) {
         // 状态
-        if (noConstrainsOnStatusLabel) self.stateLabel.frame = CGRectMake(CGRectGetMinX(self.bounds), CGRectGetMinY(self.bounds) + 8, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+        if (noConstrainsOnStatusLabel) self.stateLabel.frame = self.bounds;
     } else {
         CGFloat stateLabelH = self.mj_h * 0.5;
         // 状态
         if (noConstrainsOnStatusLabel) {
             self.stateLabel.mj_x = 0;
-            self.stateLabel.mj_y = 0 + 8;
+            self.stateLabel.mj_y = 0;
             self.stateLabel.mj_w = self.mj_w;
             self.stateLabel.mj_h = stateLabelH;
         }
@@ -147,7 +147,7 @@
         // 更新时间
         if (self.lastUpdatedTimeLabel.constraints.count == 0) {
             self.lastUpdatedTimeLabel.mj_x = 0;
-            self.lastUpdatedTimeLabel.mj_y = stateLabelH + 8;
+            self.lastUpdatedTimeLabel.mj_y = stateLabelH;
             self.lastUpdatedTimeLabel.mj_w = self.mj_w;
             self.lastUpdatedTimeLabel.mj_h = self.mj_h - self.lastUpdatedTimeLabel.mj_y;
         }

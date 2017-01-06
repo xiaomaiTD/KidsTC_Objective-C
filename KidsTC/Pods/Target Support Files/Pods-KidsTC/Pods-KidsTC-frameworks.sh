@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,13 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
+    local code_sign_cmd="/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements '$1'"
+
+    if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+      code_sign_cmd="$code_sign_cmd &"
+    fi
+    echo "$code_sign_cmd"
+    eval "$code_sign_cmd"
   fi
 }
 
@@ -84,32 +89,41 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-KidsTC/AFNetworking.framework"
-  install_framework "Pods-KidsTC/Colours.framework"
-  install_framework "Pods-KidsTC/JSPatchPlatform.framework"
-  install_framework "Pods-KidsTC/KMNavigationBarTransition.framework"
-  install_framework "Pods-KidsTC/MJRefresh.framework"
-  install_framework "Pods-KidsTC/Masonry.framework"
-  install_framework "Pods-KidsTC/NJKWebViewProgress.framework"
-  install_framework "Pods-KidsTC/SAMKeychain.framework"
-  install_framework "Pods-KidsTC/SDWebImage.framework"
-  install_framework "Pods-KidsTC/SSZipArchive.framework"
-  install_framework "Pods-KidsTC/SVProgressHUD.framework"
-  install_framework "Pods-KidsTC/TZImagePickerController.framework"
-  install_framework "Pods-KidsTC/YYKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Colours/Colours.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FSCalendar/FSCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HappyDNS/HappyDNS.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSPatchPlatform/JSPatchPlatform.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KMNavigationBarTransition/KMNavigationBarTransition.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NJKWebViewProgress/NJKWebViewProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SSZipArchive/SSZipArchive.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TZImagePickerController/TZImagePickerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYKit/YYKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-KidsTC/AFNetworking.framework"
-  install_framework "Pods-KidsTC/Colours.framework"
-  install_framework "Pods-KidsTC/JSPatchPlatform.framework"
-  install_framework "Pods-KidsTC/KMNavigationBarTransition.framework"
-  install_framework "Pods-KidsTC/MJRefresh.framework"
-  install_framework "Pods-KidsTC/Masonry.framework"
-  install_framework "Pods-KidsTC/NJKWebViewProgress.framework"
-  install_framework "Pods-KidsTC/SAMKeychain.framework"
-  install_framework "Pods-KidsTC/SDWebImage.framework"
-  install_framework "Pods-KidsTC/SSZipArchive.framework"
-  install_framework "Pods-KidsTC/SVProgressHUD.framework"
-  install_framework "Pods-KidsTC/TZImagePickerController.framework"
-  install_framework "Pods-KidsTC/YYKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Colours/Colours.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FSCalendar/FSCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HappyDNS/HappyDNS.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JSPatchPlatform/JSPatchPlatform.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/KMNavigationBarTransition/KMNavigationBarTransition.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NJKWebViewProgress/NJKWebViewProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SSZipArchive/SSZipArchive.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TZImagePickerController/TZImagePickerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYKit/YYKit.framework"
+fi
+if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+  wait
 fi
