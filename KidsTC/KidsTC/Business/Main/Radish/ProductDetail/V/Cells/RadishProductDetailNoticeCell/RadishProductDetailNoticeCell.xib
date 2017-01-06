@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="212" id="KGk-i7-Jjw" customClass="RadishProductDetailNoticeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="221"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-Nv-OsD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="220" id="R6G-L4-Wok"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SVb-Mk-eMj">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="scj-4f-W3c"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="tre-pY-m0o"/>
+                        </connections>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEm-yt-jdJ">
+                        <rect key="frame" x="0.0" y="219" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="cbB-oN-27R"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jEm-yt-jdJ" secondAttribute="bottom" id="1jn-yQ-Kh7"/>
+                    <constraint firstAttribute="bottom" secondItem="T2b-Nv-OsD" secondAttribute="bottom" id="7c2-q9-2OW"/>
+                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GFk-44-mNk"/>
+                    <constraint firstItem="jEm-yt-jdJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Lw4-S6-bef"/>
+                    <constraint firstAttribute="trailing" secondItem="T2b-Nv-OsD" secondAttribute="trailing" id="aLp-B1-id4"/>
+                    <constraint firstItem="T2b-Nv-OsD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nWt-2v-fhd"/>
+                    <constraint firstAttribute="trailing" secondItem="jEm-yt-jdJ" secondAttribute="trailing" id="xWs-y2-pFl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionConstraintH" destination="R6G-L4-Wok" id="E37-zf-6Md"/>
+                <outlet property="collectionView" destination="T2b-Nv-OsD" id="uUU-mc-daz"/>
+                <outlet property="lineH" destination="cbB-oN-27R" id="7AN-Mz-wGt"/>
+            </connections>
+            <point key="canvasLocation" x="-177" y="-25"/>
+        </tableViewCell>
+    </objects>
+</document>

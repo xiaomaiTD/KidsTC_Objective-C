@@ -10,30 +10,38 @@
 
 #import "RadishProductDetailView.h"
 
-@interface RadishProductDetailViewController ()
-
+@interface RadishProductDetailViewController ()<RadishProductDetailViewDelegate>
+@property (nonatomic, strong) RadishProductDetailView *detailView;
 @end
 
 @implementation RadishProductDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = @"萝卜商详";
+    self.naviTheme = NaviThemeWihte;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    RadishProductDetailView *detailView = [[RadishProductDetailView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    detailView.delegate = self;
+    [self.view addSubview:detailView];
+    self.detailView = detailView;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - RadishProductDetailViewDelegate
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)radishProductDetailView:(RadishProductDetailView *)view actionType:(RadishProductDetailViewActionType)type value:(id)value {
+    switch (type) {
+        case RadishProductDetailViewActionTypeSegue:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
-*/
 
 @end

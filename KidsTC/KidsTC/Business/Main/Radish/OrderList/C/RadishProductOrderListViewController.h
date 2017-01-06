@@ -1,5 +1,5 @@
 //
-//  RadishOrderListViewController.h
+//  RadishProductOrderListViewController.h
 //  KidsTC
 //
 //  Created by 詹平 on 2017/1/5.
@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface RadishOrderListViewController : ViewController
+@interface RadishProductOrderListViewController : ViewController
 
 @end

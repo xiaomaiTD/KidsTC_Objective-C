@@ -228,7 +228,13 @@ singleM(BuryPointManager)
         }
             break;
     }
-    NSArray *ary = [NSArray arrayWithObject:reportMsgDic];
+    NSMutableArray *ary = [NSMutableArray array];
+    for (int i = 0; i<20; i++) {
+        long long pk = arc4random()%10000000000;
+        [reportMsgDic setObject:@(pk) forKey:@"pk"];
+        [ary addObject:reportMsgDic];
+    }
+    //NSArray *ary = [NSArray arrayWithObject:reportMsgDic];
     NSString *msg = [manager jsonWithObj:ary];
     if (![msg isNotNull]) msg = @"";
     return msg;

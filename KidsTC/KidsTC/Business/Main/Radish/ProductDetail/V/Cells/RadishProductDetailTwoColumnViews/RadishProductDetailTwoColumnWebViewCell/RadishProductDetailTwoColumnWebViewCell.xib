@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="461" id="KGk-i7-Jjw" customClass="ProductDetailTwoColumnWebViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="479"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-OV-kB3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="479.5"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="jlB-1M-IKc"/>
+                        </connections>
+                    </webView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09K-Z8-OdM">
+                        <rect key="frame" x="0.0" y="435.5" width="320" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqv-sV-whc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.98108411815068497" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <connections>
+                                    <action selector="openWebView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6sI-8n-gaX"/>
+                                </connections>
+                            </button>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZU-RP-hBI">
+                                <rect key="frame" x="111" y="14" width="98" height="17"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="展开阅读详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uky-sy-s5z">
+                                        <rect key="frame" x="0.0" y="0.0" width="86" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_arrow_blue" translatesAutoresizingMaskIntoConstraints="NO" id="bsm-3P-jWG">
+                                        <rect key="frame" x="88" y="3" width="10" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="DRK-mD-KxU"/>
+                                            <constraint firstAttribute="width" secondItem="bsm-3P-jWG" secondAttribute="height" multiplier="1:1" id="Xn7-Gi-lXA"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="uky-sy-s5z" firstAttribute="leading" secondItem="tZU-RP-hBI" secondAttribute="leading" id="OnF-TB-uy9"/>
+                                    <constraint firstAttribute="bottom" secondItem="uky-sy-s5z" secondAttribute="bottom" id="Skf-Tc-m8D"/>
+                                    <constraint firstAttribute="trailing" secondItem="bsm-3P-jWG" secondAttribute="trailing" id="Un0-o6-7kM"/>
+                                    <constraint firstItem="uky-sy-s5z" firstAttribute="top" secondItem="tZU-RP-hBI" secondAttribute="top" id="YBV-yy-3n0"/>
+                                    <constraint firstItem="bsm-3P-jWG" firstAttribute="centerY" secondItem="tZU-RP-hBI" secondAttribute="centerY" id="dak-b2-Gsd"/>
+                                    <constraint firstItem="bsm-3P-jWG" firstAttribute="leading" secondItem="uky-sy-s5z" secondAttribute="trailing" constant="2" id="iGX-GV-ShH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lqv-sV-whc" firstAttribute="leading" secondItem="09K-Z8-OdM" secondAttribute="leading" id="8cl-LX-wcG"/>
+                            <constraint firstItem="lqv-sV-whc" firstAttribute="top" secondItem="09K-Z8-OdM" secondAttribute="top" id="GQ1-ex-xHZ"/>
+                            <constraint firstAttribute="trailing" secondItem="lqv-sV-whc" secondAttribute="trailing" id="Hq8-ny-dbI"/>
+                            <constraint firstAttribute="bottom" secondItem="lqv-sV-whc" secondAttribute="bottom" id="Or3-Hl-Y1o"/>
+                            <constraint firstAttribute="height" constant="44" id="SaE-4x-TA8"/>
+                            <constraint firstItem="tZU-RP-hBI" firstAttribute="centerY" secondItem="09K-Z8-OdM" secondAttribute="centerY" id="qkz-QY-Thq"/>
+                            <constraint firstItem="tZU-RP-hBI" firstAttribute="centerX" secondItem="09K-Z8-OdM" secondAttribute="centerX" id="t0l-Dw-HVO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="p4G-OV-kB3" secondAttribute="trailing" id="8dJ-hR-K50"/>
+                    <constraint firstItem="p4G-OV-kB3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IAC-SR-naA"/>
+                    <constraint firstItem="p4G-OV-kB3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MAO-Uu-m78"/>
+                    <constraint firstAttribute="trailing" secondItem="09K-Z8-OdM" secondAttribute="trailing" id="OHN-F9-LBu"/>
+                    <constraint firstAttribute="bottom" secondItem="09K-Z8-OdM" secondAttribute="bottom" id="Tnp-EW-90r"/>
+                    <constraint firstItem="09K-Z8-OdM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bVV-tO-Tov"/>
+                    <constraint firstAttribute="bottom" secondItem="p4G-OV-kB3" secondAttribute="bottom" id="kuT-Y5-Pgo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="openDetailBtn" destination="lqv-sV-whc" id="7Re-J1-ixF"/>
+                <outlet property="openDetailL" destination="uky-sy-s5z" id="4er-RZ-Fgf"/>
+                <outlet property="openDetailView" destination="09K-Z8-OdM" id="lpn-kV-di5"/>
+                <outlet property="webView" destination="p4G-OV-kB3" id="4ur-Pz-TB0"/>
+            </connections>
+            <point key="canvasLocation" x="-897" y="25"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductDetail_arrow_blue" width="38" height="21"/>
+    </resources>
+</document>
