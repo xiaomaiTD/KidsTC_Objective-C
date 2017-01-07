@@ -108,7 +108,7 @@
     
     [self JSPatchRemote:YES];
     
-    [Bugly startWithAppId:@"900055771"];
+    [Bugly startWithAppId:@"dcdb33fdf5"];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
     

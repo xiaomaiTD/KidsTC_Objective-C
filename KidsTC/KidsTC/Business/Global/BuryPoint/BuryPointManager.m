@@ -16,6 +16,7 @@
 #import "YYKit.h"
 #import "ReachabilityManager.h"
 #import "CookieManager.h"
+#import "DataBaseManager.h"
 
 //设备类型
 typedef enum : NSUInteger {
@@ -49,6 +50,14 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *guid;
 @property (nonatomic, assign) NSUInteger squence;//访问顺序
 @property (nonatomic, assign) BOOL isLanch;
+
+@property (nonatomic, strong) NSString *projectId;
+@property (nonatomic, strong) NSString *deviceId;
+@property (nonatomic, strong) NSString *appDevice;
+@property (nonatomic, strong) NSString *appv;
+@property (nonatomic, strong) NSString *build;
+@property (nonatomic, strong) NSString *channel;
+@property (nonatomic, strong) NSDictionary *deviceInfo;
 @end
 @implementation BuryPointManager
 singleM(BuryPointManager)
@@ -57,6 +66,19 @@ singleM(BuryPointManager)
     self = [super init];
     if (self) {
         _isLanch = YES;
+        
+        _projectId = @"1";
+        _deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+        _appDevice = [NSString stringWithFormat:@"%zd",AppDeviceTypeIOS];
+        _appv = APP_VERSION;
+        _build = @"1";
+        _channel = @"appStore";
+        
+        CGFloat scale = [UIScreen mainScreen].scale;
+        NSString *resolu = [NSString stringWithFormat:@"%zdx%zd",SCREEN_WIDTH*scale,SCREEN_HEIGHT*scale];
+        NSString *device = [[UIDevice currentDevice] machineModelName];
+        NSString *osv = [NSString stringWithFormat:@"%0.2f",[UIDevice systemVersion]];
+        _deviceInfo = @{@"resolu":resolu,@"device":device,@"osv":osv};
     }
     return self;
 }
@@ -68,44 +90,22 @@ singleM(BuryPointManager)
     TCLog(@"manager.guid:%@",[BuryPointManager shareBuryPointManager].guid);
 }
 
-+ (void)trackBegin:(long)pageId
-           pageUid:(NSString *)pageUid
-          pageName:(NSString *)pageName
-            params:(NSDictionary *)params
++ (void)trackBegin:(long)pageId pageUid:(NSString *)pageUid pageName:(NSString *)pageName params:(NSDictionary *)params
 {
     if([pageName isNotNull])[MobClick beginLogPageView:pageName];
-    if(pageId>0)[self reportMsgTrackType:TrackTypePV
-                                 beginPV:YES
-                                actionId:pageId
-                                 pageUid:pageUid
-                                  params:params];
-    
+    if(pageId>0)[self reportMsgTrackType:TrackTypePV beginPV:YES actionId:pageId pageUid:pageUid params:params];
 }
 
-+ (void)trackEnd:(long)pageId
-         pageUid:(NSString *)pageUid
-        pageName:(NSString *)pageName
-          params:(NSDictionary *)params
++ (void)trackEnd:(long)pageId pageUid:(NSString *)pageUid pageName:(NSString *)pageName params:(NSDictionary *)params
 {
     if([pageName isNotNull])[MobClick endLogPageView:pageName];
-    if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV
-                                                 beginPV:NO
-                                                actionId:pageId
-                                                 pageUid:pageUid
-                                                  params:params]];
+    if(pageId>0)[self trackSite:[self reportMsgTrackType:TrackTypePV beginPV:NO actionId:pageId pageUid:pageUid params:params]];
 }
 
-+ (void)trackEvent:(NSString *)eventName
-          actionId:(long)actionId
-            params:(NSDictionary *)params
++ (void)trackEvent:(NSString *)eventName actionId:(long)actionId params:(NSDictionary *)params
 {
     if([eventName isNotNull])[MobClick event:eventName attributes:params];
-    if(actionId>0)[self trackSite:[self reportMsgTrackType:TrackTypeEvent
-                                                   beginPV:NO
-                                                  actionId:actionId
-                                                   pageUid:nil
-                                                    params:params]];
-    
+    if(actionId>0)[self trackSite:[self reportMsgTrackType:TrackTypeEvent beginPV:NO actionId:actionId pageUid:nil params:params]];
 }
 
 #pragma mark - private
@@ -139,7 +139,7 @@ singleM(BuryPointManager)
 }
 
 + (void)trackCommon {
-    NSString *reportMsg = [[BuryPointManager shareBuryPointManager] reportMsgCommon];
+    NSString *reportMsg = [[self shareBuryPointManager] reportMsgCommon];
     if (![reportMsg isNotNull]) {
         return;
     }
@@ -147,51 +147,116 @@ singleM(BuryPointManager)
     [Request startAndCallBackInChildThreadWithName:@"REPORT_DEVICE_INFO" param:param success:nil failure:nil];
 }
 
-+ (void)trackSite:(NSString *)reportMsg {
-    if (![reportMsg isNotNull]) {
++ (void)trackSite:(BuryPointModel *)model {
+    if (!model) return;
+    DataBaseManager *db = [DataBaseManager shareDataBaseManager];
+    [db buryPoint_inset:model successBlock:^(BOOL success) {
+        if (success) [self track];
+    }];
+}
+
+static NSInteger errorCount = 0;
++ (void)track {
+    DataBaseManager *db = [DataBaseManager shareDataBaseManager];
+    [db buryPoint_not_upload_count:^(NSUInteger count) {
+        if (count<20) return;
+        [db buryPoint_not_upload_allModels:^(NSArray<BuryPointModel *> *models) {
+            NSUInteger pageCount = 20;
+            __block NSUInteger page = 0;
+            NSUInteger len = pageCount;
+            __block NSUInteger loc = page*pageCount;
+            __block NSUInteger needCount = loc + len;
+            __block NSRange range  = NSMakeRange(loc, len);
+            while (needCount<models.count) {
+                
+                NSArray<BuryPointModel *> *sendModels = [models subarrayWithRange:range];
+                NSMutableArray *ary = [NSMutableArray array];
+                [sendModels enumerateObjectsUsingBlock:^(BuryPointModel *obj, NSUInteger idx, BOOL *stop) {
+                    NSString *content = obj.content;
+                    if ([content isNotNull]) {
+                        NSData *data = [content dataUsingEncoding:NSUTF8StringEncoding];
+                        if (data) {
+                            NSError *error_dic = nil;
+                            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error_dic];
+                            if (!error_dic && dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
+                                [ary addObject:dic];
+                            }
+                        }
+                    };
+                }];
+                NSString *msg = [[self shareBuryPointManager] jsonWithObj:ary];
+                errorCount = 0;
+                [self uploadTrack:msg successBlock:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+                    [sendModels enumerateObjectsUsingBlock:^(BuryPointModel *obj, NSUInteger idx, BOOL *stop) {
+                        [db buryPoint_delete:obj successBlock:^(BOOL success_delete) {
+                            if (success_delete) {
+                                TCLog(@"埋点上传成功……删除成功……");
+                                obj.status = YES;
+                                [db buryPoint_inset_did_upload:obj successBlock:^(BOOL success_insert) {
+                                    if (success_insert) {
+                                        TCLog(@"埋点上传成功……删除成功……插入新表成功……");
+                                    }else{
+                                        TCLog(@"埋点上传成功……删除成功……插入新表失败……");
+                                    }
+                                }];
+                            }else{
+                                TCLog(@"埋点上传成功……删除失败……");
+                            }
+                        }];
+                    }];
+                } failureBlock:^{
+                    TCLog(@"埋点上传失败……删除失败……重试3次之后任然失败");
+                }];
+                
+                page++;
+                loc = page*pageCount;
+                needCount = loc + len;
+                range = NSMakeRange(loc, len);
+            }
+        }];
+    }];
+}
+
++ (void)uploadTrack:(NSString *)msg successBlock:(void(^)(NSURLSessionDataTask *task, NSDictionary *dic))successBlock failureBlock:(void(^)())failureBlock {
+    if (![msg isNotNull]) {
+        if(failureBlock)failureBlock();
         return;
-    }
-    NSDictionary *param = @{@"reportMsg":reportMsg};
-    [Request startAndCallBackInChildThreadWithName:@"SITE_STATISTICS_APP" param:param success:nil failure:nil];
+    };
+    NSDictionary *param = @{@"reportMsg":msg};
+    [Request startAndCallBackInChildThreadWithName:@"SITE_STATISTICS_APP" param:param success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        if(successBlock)successBlock(task,dic);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        errorCount ++;
+        if (errorCount<4) {
+            NSString *tip = [NSString stringWithFormat:@"埋点上传失败……删除失败……已重试%zd次",errorCount];
+            TCLog(@"%@",tip);
+            [self uploadTrack:msg successBlock:successBlock failureBlock:failureBlock];
+        }else{
+            if(failureBlock)failureBlock();
+        }
+    }];
 }
 
 - (NSString *)reportMsgCommon {
     NSString *guid = self.guid;
-    NSString *projectId = @"1";
-    NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-    NSString *appDevice = [NSString stringWithFormat:@"%zd",AppDeviceTypeIOS];
-    NSString *appv = APP_VERSION;
-    NSString *build = @"1";
-    NSString *channel = @"appStore";
     NSString *mapAddr = [KTCMapService shareKTCMapService].currentLocationString;
     NSString *ip = [NSString deviceIPAdress];
-    CGFloat scale = [UIScreen mainScreen].scale;
-    NSString *resolu = [NSString stringWithFormat:@"%zdx%zd",SCREEN_WIDTH*scale,SCREEN_HEIGHT*scale];
-    NSString *device = [[UIDevice currentDevice] machineModelName];
-    NSString *osv = [NSString stringWithFormat:@"%0.2f",[UIDevice systemVersion]];
-    NSDictionary *deviceInfo = @{@"resolu":resolu,
-                                 @"device":device,
-                                 @"osv":osv};
     NSDictionary *reportMsgDic = @{@"guid":guid,
-                                   @"projectId":projectId,
-                                   @"deviceId":deviceId,
-                                   @"appDevice":appDevice,
-                                   @"appv":appv,
-                                   @"build":build,
-                                   @"channel":channel,
+                                   @"projectId":_projectId,
+                                   @"deviceId":_deviceId,
+                                   @"appDevice":_appDevice,
+                                   @"appv":_appv,
+                                   @"build":_build,
+                                   @"channel":_channel,
                                    @"mapAddr":mapAddr,
                                    @"ip":ip,
-                                   @"deviceInfo":deviceInfo};
+                                   @"deviceInfo":_deviceInfo};
     NSString *msg = [NSString zp_stringWithJsonObj:reportMsgDic];
     if (![msg isNotNull]) msg = @"";
     return msg;
 }
 
-+ (NSString *)reportMsgTrackType:(TrackType)trackType
-                         beginPV:(BOOL)beginPV
-                        actionId:(long)actionId
-                         pageUid:(NSString *)pageUid
-                          params:(NSDictionary *)dic
++ (BuryPointModel *)reportMsgTrackType:(TrackType)trackType beginPV:(BOOL)beginPV   actionId:(long)actionId pageUid:(NSString *)pageUid params:(NSDictionary *)dic
 {
     BuryPointManager *manager = [BuryPointManager shareBuryPointManager];
     NSString *type = [NSString stringWithFormat:@"%zd",trackType];
@@ -199,51 +264,35 @@ singleM(BuryPointManager)
     NSString *guid = manager.guid;
     NSString *uid = [User shareUser].uid;
     NSString *squence = [NSString stringWithFormat:@"%zd",manager.squence++];
-    NSString *deviceId = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    NSString *deviceId = manager.deviceId;
     NSString *clientIp = [NSString deviceIPAdress];
     NSNumber *actionID = [NSNumber numberWithLong:actionId];
     NSMutableDictionary *reportMsgDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:type,@"type",net,@"net" ,guid,@"guid",actionID,@"actionId",uid,@"uid",squence,@"squence",deviceId,@"deviceId",clientIp,@"clientIp",nil];
     if (dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
-        NSDictionary *params = [NSDictionary dictionaryWithDictionary:dic];
-        NSString *paramsStr = [manager jsonWithObj:params];
+        NSString *paramsStr = [manager jsonWithObj:dic];
         if ([paramsStr isNotNull])[reportMsgDic setValue:paramsStr forKey:@"params"];
     }
-    switch (trackType) {
-        case TrackTypePV:
-        {
-            NSNumber *stayTime = [NSNumber numberWithLongLong:0];
-            if (beginPV) {
-                manager.lastBeginPvTimeInterval = [[NSDate date] timeIntervalSince1970];
-            }else{
-                NSTimeInterval stayTimeInterval = [[NSDate date] timeIntervalSince1970] - manager.lastBeginPvTimeInterval;
-                stayTime = [NSNumber numberWithLongLong:stayTimeInterval*1000];
-            }
-            [reportMsgDic setValue:stayTime forKey:@"stayTime"];
-            if([pageUid isNotNull])[reportMsgDic setValue:pageUid forKey:@"pageUid"];
+    if (trackType == TrackTypePV) {
+        NSNumber *stayTime = [NSNumber numberWithLongLong:0];
+        if (beginPV) {
+            manager.lastBeginPvTimeInterval = [[NSDate date] timeIntervalSince1970];
+        }else{
+            NSTimeInterval stayTimeInterval = [[NSDate date] timeIntervalSince1970] - manager.lastBeginPvTimeInterval;
+            stayTime = [NSNumber numberWithLongLong:stayTimeInterval*1000];
         }
-            break;
-        case TrackTypeEvent:
-        {
-            
-        }
-            break;
+        [reportMsgDic setValue:stayTime forKey:@"stayTime"];
+        if([pageUid isNotNull])[reportMsgDic setValue:pageUid forKey:@"pageUid"];
     }
-    NSMutableArray *ary = [NSMutableArray array];
-    for (int i = 0; i<20; i++) {
-        long long pk = arc4random()%10000000000;
-        [reportMsgDic setObject:@(pk) forKey:@"pk"];
-        [ary addObject:reportMsgDic];
-    }
-    //NSArray *ary = [NSArray arrayWithObject:reportMsgDic];
-    NSString *msg = [manager jsonWithObj:ary];
-    if (![msg isNotNull]) msg = @"";
-    return msg;
+    long long pk = arc4random()%10000000000;
+    NSString *pkMD5String = [NSString stringWithFormat:@"%@",@(pk)].md5String;
+    if ([pkMD5String isNotNull]) [reportMsgDic setObject:pkMD5String forKey:@"pk"];
+    NSString *msg = [manager jsonWithObj:reportMsgDic];
+    BuryPointModel *mdoel = [BuryPointModel modelWithPk:pkMD5String content:msg];
+    return mdoel;
 }
 
 - (NSString *)jsonWithObj:(id)obj{
-    if (obj == nil) {
-        return nil;
-    }
+    if (obj == nil) return nil;
     NSError *err;
     NSData *jsonData=[NSJSONSerialization dataWithJSONObject:obj options:0 error:&err];
     if(err) {
