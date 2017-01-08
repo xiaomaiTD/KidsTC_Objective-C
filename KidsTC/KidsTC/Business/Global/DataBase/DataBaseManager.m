@@ -22,22 +22,21 @@ singleM(DataBaseManager)
 - (instancetype)init {
     self = [super init];
     if(self){
-        @synchronized(self){
-            [self initDataBase];
-        }
+        [self initDataBase];
     };
     return self;
 }
 
 - (void)getDB:(void(^)(FMDatabase *db))dbBlock {
-    [_dbQueue inDatabase:^(FMDatabase *db) {
+    FMDatabaseQueue *dbQueue = [FMDatabaseQueue databaseQueueWithPath:FILE_CACHE_PATH(@"model.sqlite")];
+    [dbQueue inDatabase:^(FMDatabase *db) {
         if(dbBlock)dbBlock(db);
     }];
 }
 
 - (void)initDataBase{
     // 实例化FMDataBase对象
-    _dbQueue = [FMDatabaseQueue databaseQueueWithPath:FILE_CACHE_PATH(@"model.sqlite")];
+    //_dbQueue = [FMDatabaseQueue databaseQueueWithPath:FILE_CACHE_PATH(@"model.sqlite")];
     [self getDB:^(FMDatabase *db) {
         
         if ([db open]) {
