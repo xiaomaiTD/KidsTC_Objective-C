@@ -12,9 +12,10 @@
 extern CGFloat const kRadishProductDetailToolBarH;
 
 typedef enum : NSUInteger {
-    RadishProductDetailToolBarActionTypeConsult = 300,//在线咨询
-    RadishProductDetailToolBarActionTypeAttention,//(添加/取消)关注
-    RadishProductDetailToolBarActionTypeBuyNow,//立即购买
+    RadishProductDetailToolBarActionTypeToolBarCountDonwFinished = 300,//倒计时结束
+    RadishProductDetailToolBarActionTypeToolBarConsult,//在线咨询
+    RadishProductDetailToolBarActionTypeToolBarAttention,//(添加/取消)关注
+    RadishProductDetailToolBarActionTypeToolBarBuyNow,//立即购买
 } RadishProductDetailToolBarActionType;
 
 @class RadishProductDetailToolBar;

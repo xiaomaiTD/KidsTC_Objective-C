@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *priceTipL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *countL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @end
 
@@ -30,12 +31,13 @@
 
 - (void)setData:(RadishSettlementData *)data {
     [super setData:data];
-    /*
-    [self.icon sd_setImageWithURL:[NSURL URLWithString:data.productImage] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
+    
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:data.img] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = data.productName;
-    self.priceTipL.text = [NSString stringWithFormat:@"%@人拼团价：",data.openGroupUserCount];
-    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.fightGroupPrice];
-     */
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.price];
+    self.countL.text = [NSString stringWithFormat:@"x%zd",data.buyNum];
+    self.priceTipL.text = [NSString stringWithFormat:@"童成价:¥%@",data.orginalPrice];
+    
 }
 
 @end

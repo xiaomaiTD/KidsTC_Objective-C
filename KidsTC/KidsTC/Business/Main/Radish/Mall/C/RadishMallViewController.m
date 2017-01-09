@@ -10,30 +10,38 @@
 
 #import "RadishMallView.h"
 
-@interface RadishMallViewController ()
-
+@interface RadishMallViewController ()<RadishMallViewDelegate>
+@property (nonatomic, strong) RadishMallView *mallView;
 @end
 
 @implementation RadishMallViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationItem.title = @"每日种萝卜";
+    self.naviTheme = NaviThemeWihte;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    RadishMallView *mallView = [[RadishMallView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    mallView.delegate = self;
+    [self.view addSubview:mallView];
+    self.mallView = mallView;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - RadishMallViewDelegate
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)radishMallView:(RadishMallView *)view actionType:(RadishMallViewActionType)type value:(id)value {
+    switch (type) {
+        case RadishMallViewActionTypeSegue:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
-*/
 
 @end

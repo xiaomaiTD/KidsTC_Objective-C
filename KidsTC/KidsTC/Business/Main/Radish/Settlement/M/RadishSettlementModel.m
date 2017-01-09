@@ -9,5 +9,7 @@
 #import "RadishSettlementModel.h"
 
 @implementation RadishSettlementModel
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"errNo":@"errno"};
+}
 @end

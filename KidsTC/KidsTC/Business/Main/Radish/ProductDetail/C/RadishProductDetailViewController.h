@@ -9,5 +9,7 @@
 #import "ViewController.h"
 
 @interface RadishProductDetailViewController : ViewController
-
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *channelId;
+@property (nonatomic, strong) NSString *consultStr;
 @end

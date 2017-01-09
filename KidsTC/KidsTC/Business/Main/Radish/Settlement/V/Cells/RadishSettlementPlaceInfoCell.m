@@ -17,7 +17,7 @@
 
 - (void)setData:(RadishSettlementData *)data {
     [super setData:data];
-    /*
+    
     switch (data.placeType) {
         case PlaceTypePlace:
         {
@@ -35,27 +35,26 @@
         }
             break;
     }
-     */
 }
 
 - (IBAction)action:(UIButton *)sender {
-    /*
+    
     switch (self.data.placeType) {
         case PlaceTypePlace:
         {
-            if ([self.delegate respondsToSelector:@selector(RadishSettlementBaseCell:actionType:value:)]) {
-                [self.delegate RadishSettlementBaseCell:self actionType:RadishSettlementBaseCellActionTypeSelectPlace value:nil];
+            if ([self.delegate respondsToSelector:@selector(radishSettlementBaseCell:actionType:value:)]) {
+                [self.delegate radishSettlementBaseCell:self actionType:RadishSettlementBaseCellActionTypeSelectPlace value:nil];
             }
         }
             break;
         default:
         {
-            if ([self.delegate respondsToSelector:@selector(RadishSettlementBaseCell:actionType:value:)]) {
-                [self.delegate RadishSettlementBaseCell:self actionType:RadishSettlementBaseCellActionTypeSelectStore value:nil];
+            if ([self.delegate respondsToSelector:@selector(radishSettlementBaseCell:actionType:value:)]) {
+                [self.delegate radishSettlementBaseCell:self actionType:RadishSettlementBaseCellActionTypeSelectStore value:nil];
             }
         }
             break;
-    }*/
+    }
 }
 
 @end

@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RadishMallData.h"
+
+typedef enum : NSUInteger {
+    RadishMallViewActionTypeSegue = 1,
+    RadishMallViewActionTypeLoadData,
+} RadishMallViewActionType;
+
+@class RadishMallView;
+@protocol RadishMallViewDelegate <NSObject>
+- (void)radishMallView:(RadishMallView *)view actionType:(RadishMallViewActionType)type value:(id)value;
+@end
 
 @interface RadishMallView : UIView
-
+@property (nonatomic, strong) RadishMallData *data;
+@property (nonatomic, weak) id<RadishMallViewDelegate> delegate;
 @end

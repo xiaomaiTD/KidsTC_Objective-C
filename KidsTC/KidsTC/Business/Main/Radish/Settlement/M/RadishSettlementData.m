@@ -9,5 +9,24 @@
 #import "RadishSettlementData.h"
 
 @implementation RadishSettlementData
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return @{@"place":[RadishSettlementPlace class]};
+}
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    [self dataConversion:dic];
+    return YES;
+}
 
+- (void)dataConversion:(NSDictionary *)dic {
+    if (_minBuyNum<1) {
+        _minBuyNum = 1;
+    }
+    if (_maxBuyNum<_minBuyNum) {
+        _maxBuyNum = _minBuyNum;
+    }
+    _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
+    _orginalPrice = [NSString stringWithFormat:@"%@",@(_orginalPrice.floatValue)];
+    _totalPrice = [NSString stringWithFormat:@"%@",@(_totalPrice.floatValue)];
+}
 @end

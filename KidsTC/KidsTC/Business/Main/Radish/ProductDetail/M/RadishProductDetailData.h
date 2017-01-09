@@ -10,7 +10,6 @@
 #import "RadishProductDetailBuyNotice.h"
 #import "RadishProductDetailComment.h"
 #import "RadishProductDetailCommentItem.h"
-#import "RadishProductDetailCoupon.h"
 #import "RadishProductDetailInsurance.h"
 #import "RadishProductDetailNote.h"
 #import "RadishProductDetailShare.h"
@@ -20,6 +19,9 @@
 #import "RadishProductDetailCountDown.h"
 #import "RadishProductDetailPlace.h"
 #import "RecommendProduct.h"
+#import "ProductDetailConsultItem.h"
+#import "CommentListItemModel.h"
+#import "CommonShareObject.h"
 
 typedef enum : NSUInteger {
     RadishProductDetailTwoColumnShowTypeDetail=100,//详情
@@ -27,13 +29,19 @@ typedef enum : NSUInteger {
 } RadishProductDetailTwoColumnShowType;
 
 @interface RadishProductDetailData : NSObject
-@property (nonatomic, strong) NSString *serveId;
+@property (nonatomic, strong) NSString *serverId;
+@property (nonatomic, strong) NSString *commentNo;
+@property (nonatomic, assign) NSInteger commentRelationType;
+@property (nonatomic, strong) NSString *advisoryNo;
+@property (nonatomic, assign) NSInteger advisoryType;
 @property (nonatomic, strong) NSString *chId;
 @property (nonatomic, assign) PriceSort priceSort;
 @property (nonatomic, strong) NSString *priceSortName;
 @property (nonatomic, strong) NSString *simpleName;
 @property (nonatomic, strong) NSString *serveName;
+@property (nonatomic, strong) NSString *standardName;
 @property (nonatomic, strong) NSString *promote;
+@property (nonatomic, assign) NSInteger productType;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSArray<NSString *> *applyContent;
 @property (nonatomic, strong) NSArray<RadishProductDetailPromotionLink *> *promotionLink;
@@ -49,44 +57,48 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) RadishProductDetailComment *comment;
 @property (nonatomic, assign) NSUInteger commentImgCount;
 @property (nonatomic, strong) NSArray<RadishProductDetailCommentItem *> *commentList;
-@property (nonatomic, strong) NSArray<RadishProductDetailCoupon *> *coupon_provide;
-@property (nonatomic, assign) BOOL canProvideCoupon;
+@property (nonatomic, strong) RadishProductDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *detailUrl;
-@property (nonatomic, strong) NSArray<NSString *> *fullCut;
-@property (nonatomic, strong) NSArray<NSString *> *coupons;
-@property (nonatomic, strong) NSString *originalPrice;
 @property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) NSString *priceDesc;
+@property (nonatomic, strong) NSString *orginalPrice;
+@property (nonatomic, strong) NSString *radishCount;
 @property (nonatomic, strong) RadishProductDetailInsurance *insurance;
 @property (nonatomic, strong) RadishProductDetailNote *note;
 @property (nonatomic, strong) RadishProductDetailShare *share;
+@property (nonatomic, assign) BOOL isShowProductStandards;
+@property (nonatomic, strong) NSString *standardTitle;
 @property (nonatomic, strong) NSArray<RadishProductDetailStandard *> *product_standards;
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, strong) NSString *statusDesc;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<RadishProductDetailPlace *> *place;
 @property (nonatomic, strong) NSArray<RadishProductDetailStore *> *store;
 @property (nonatomic, assign) NSUInteger advisoryCount;
 @property (nonatomic, strong) RadishProductDetailTime *time;
+@property (nonatomic, assign) BOOL isShowPrice;
+
+
+@property (nonatomic, strong) NSString *priceDesc;
 @property (nonatomic, strong) NSString *synopsis;
 @property (nonatomic, assign) NSInteger seeNum;
 @property (nonatomic, assign) NSInteger wantSeeNum;
 @property (nonatomic, strong) NSString *img;
-@property (nonatomic, strong) RadishProductDetailCountDown *countDown;
-@property (nonatomic, assign) PlaceType placeType;
-@property (nonatomic, strong) NSArray<RadishProductDetailPlace *> *place;
 @property (nonatomic, assign) NSInteger currentPlaceIndex;
-@property (nonatomic, strong) NSString *commentNo;
-@property (nonatomic, assign) NSInteger commentRelationType;
 @property (nonatomic, strong) NSString *phone;
-@property (nonatomic, strong) NSString *standardTitle;
-@property (nonatomic, strong) NSString *standardName;
 
 //selfDefine
+@property (nonatomic, assign) BOOL isCanBuy;
 @property (nonatomic, strong) NSAttributedString *attServeName;
 @property (nonatomic, strong) NSAttributedString *attPromote;
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommends;
+@property (nonatomic, strong) NSArray<ProductDetailConsultItem *> *consults;
+@property (nonatomic, strong) NSArray<CommentListItemModel *> *commentItemsArray;
+@property (nonatomic, strong) CommonShareObject *shareObject;
 //showType
 @property (nonatomic, assign) RadishProductDetailTwoColumnShowType showType;
 @property (nonatomic, assign) BOOL webViewHasOpen;
 @property (nonatomic, assign) BOOL webViewHasLoad;
+//apply
+@property (nonatomic, strong) NSArray<NSAttributedString *> *attApply;
 
 @end

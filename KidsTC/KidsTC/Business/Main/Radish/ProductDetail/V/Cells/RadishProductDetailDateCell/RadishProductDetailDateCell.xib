@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEb-Eu-Nim">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="46.5" width="320" height="1"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="v5K-F5-Zxu"/>
@@ -56,7 +56,7 @@
                     <constraint firstItem="xoS-BV-qF3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="JRn-4M-NoH"/>
                     <constraint firstAttribute="trailing" secondItem="IEb-Eu-Nim" secondAttribute="trailing" id="PfI-sl-10g"/>
                     <constraint firstAttribute="bottom" secondItem="xoS-BV-qF3" secondAttribute="bottom" constant="16" id="SBT-UW-wNT"/>
-                    <constraint firstItem="IEb-Eu-Nim" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TuQ-fW-ocK"/>
+                    <constraint firstAttribute="bottom" secondItem="IEb-Eu-Nim" secondAttribute="bottom" id="itn-fW-VdS"/>
                     <constraint firstItem="xoS-BV-qF3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="sqm-aX-ocO"/>
                     <constraint firstItem="bLD-sR-uLC" firstAttribute="leading" secondItem="xoS-BV-qF3" secondAttribute="trailing" constant="16" id="swp-eF-BMg"/>
                 </constraints>

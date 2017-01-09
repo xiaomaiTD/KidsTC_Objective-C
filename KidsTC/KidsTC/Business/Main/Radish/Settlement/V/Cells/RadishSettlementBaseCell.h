@@ -10,7 +10,8 @@
 #import "RadishSettlementData.h"
 
 typedef enum : NSUInteger {
-    RadishSettlementBaseCellActionTypeAddress = 1,//切换收货地址
+    RadishSettlementBaseCellActionTypeTipAddress = 1,//添加收货地址
+    RadishSettlementBaseCellActionTypeAddress,//切换收货地址
     RadishSettlementBaseCellActionTypeSelectStore,//切换活动门店
     RadishSettlementBaseCellActionTypeSelectPlace,//切换活动地址
 } RadishSettlementBaseCellActionType;

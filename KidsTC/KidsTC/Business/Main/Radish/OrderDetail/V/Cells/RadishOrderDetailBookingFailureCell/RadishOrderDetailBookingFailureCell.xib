@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0i5-FR-hYu" customClass="RadishOrderDetailBookingFailureCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0i5-FR-hYu" id="M1J-NF-pVS">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您上一次的预约失败，点击查看详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnQ-Dr-bPx">
+                        <rect key="frame" x="46.5" y="16" width="228.5" height="17.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXT-sm-qTf">
+                        <rect key="frame" x="0.0" y="49" width="320" height="0.5"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="cqJ-tY-deg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="HnQ-Dr-bPx" secondAttribute="bottom" constant="16" id="5Vf-Q8-1iF"/>
+                    <constraint firstAttribute="bottom" secondItem="HXT-sm-qTf" secondAttribute="bottom" id="7LF-ku-dAo"/>
+                    <constraint firstItem="HnQ-Dr-bPx" firstAttribute="centerX" secondItem="M1J-NF-pVS" secondAttribute="centerX" id="LcM-8g-7Gh"/>
+                    <constraint firstAttribute="trailing" secondItem="HXT-sm-qTf" secondAttribute="trailing" id="YkE-OZ-psc"/>
+                    <constraint firstItem="HXT-sm-qTf" firstAttribute="leading" secondItem="M1J-NF-pVS" secondAttribute="leading" id="ZKd-It-Oa7"/>
+                    <constraint firstItem="HnQ-Dr-bPx" firstAttribute="top" secondItem="M1J-NF-pVS" secondAttribute="top" constant="16" id="cTb-vJ-MP2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="HLineConstraintHeight" destination="cqJ-tY-deg" id="cDI-8m-3tq"/>
+                <outlet property="titleLabel" destination="HnQ-Dr-bPx" id="YIR-Mb-1TX"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

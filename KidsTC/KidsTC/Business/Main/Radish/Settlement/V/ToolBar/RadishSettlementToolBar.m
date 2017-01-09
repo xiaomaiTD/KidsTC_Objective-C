@@ -26,20 +26,13 @@ CGFloat const kRadishSettlementToolBarH = 49;
 
 - (void)setData:(RadishSettlementData *)data {
     _data = data;
-    
-    /*
     self.hidden = data == nil;
-    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.fightGroupPrice];
-    NSString *title = data.isOpen?@"我要开团":@"我要参团";
-    [self.btn setTitle:title forState:UIControlStateNormal];
-     */
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.totalPrice];
 }
 
 - (IBAction)action:(UIButton *)sender {
-    /*
     if ([self.delegate respondsToSelector:@selector(didClickRadishSettlementToolBar:)]) {
         [self.delegate didClickRadishSettlementToolBar:self];
     }
-     */
 }
 @end

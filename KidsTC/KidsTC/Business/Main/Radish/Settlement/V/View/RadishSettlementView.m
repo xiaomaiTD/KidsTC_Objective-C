@@ -9,6 +9,7 @@
 #import "RadishSettlementView.h"
 
 #import "RadishSettlementBaseCell.h"
+#import "RadishSettlementTipAddressCell.h"
 #import "RadishSettlementAddressCell.h"
 #import "RadishSettlementProductInfoCell.h"
 #import "RadishSettlementPlaceInfoCell.h"
@@ -18,6 +19,7 @@
 #import "RadishSettlementToolBar.h"
 
 static NSString *const BaseCellID = @"RadishSettlementBaseCell";
+static NSString *const TipAddressCellID = @"RadishSettlementTipAddressCell";
 static NSString *const AddressCellID = @"RadishSettlementAddressCell";
 static NSString *const ProductInfoCellID = @"RadishSettlementProductInfoCell";
 static NSString *const PlaceInfoCellID = @"RadishSettlementPlaceInfoCell";
@@ -74,6 +76,7 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
 
 - (void)registerCells {
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementBaseCell" bundle:nil] forCellReuseIdentifier:BaseCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementTipAddressCell" bundle:nil] forCellReuseIdentifier:TipAddressCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementProductInfoCell" bundle:nil] forCellReuseIdentifier:ProductInfoCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementPlaceInfoCell" bundle:nil] forCellReuseIdentifier:PlaceInfoCellID];
@@ -89,16 +92,45 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
     
     NSMutableArray *sections  = [NSMutableArray array];
     
-    NSMutableArray *section01 = [NSMutableArray array];
-    RadishSettlementAddressCell *addressCell = [self cellWithID:AddressCellID];
-    if (addressCell) [section01 addObject:addressCell];
-    if(section01.count>0) [sections addObject:section01];
+    
+    
+    //收货地址
+    if (self.data.hasUserAddress) {
+        NSMutableArray *section01 = [NSMutableArray array];
+        if (self.data.userAddressInfo) {
+            RadishSettlementAddressCell *addressCell = [self cellWithID:AddressCellID];
+            if (addressCell) [section01 addObject:addressCell];
+        }else{
+            RadishSettlementTipAddressCell *tipAddressCell = [self cellWithID:TipAddressCellID];
+            if (tipAddressCell) [section01 addObject:tipAddressCell];
+        }
+        if(section01.count>0) [sections addObject:section01];
+    }
     
     NSMutableArray *section02 = [NSMutableArray array];
     RadishSettlementProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
     if (productInfoCell) [section02 addObject:productInfoCell];
-    RadishSettlementPlaceInfoCell *placeInfoCell = [self cellWithID:PlaceInfoCellID];
-    if (placeInfoCell) [section02 addObject:placeInfoCell];
+    switch (self.data.placeType) {
+        case PlaceTypeStore:
+        {
+            if (self.data.store) {
+                RadishSettlementPlaceInfoCell *placeInfoCell = [self cellWithID:PlaceInfoCellID];
+                if (placeInfoCell) [section02 addObject:placeInfoCell];
+            }
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            if (self.data.place.count>0) {
+                RadishSettlementPlaceInfoCell *placeInfoCell = [self cellWithID:PlaceInfoCellID];
+                if (placeInfoCell) [section02 addObject:placeInfoCell];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+
     if(section02.count>0) [sections addObject:section02];
     
      NSMutableArray *section03 = [NSMutableArray array];

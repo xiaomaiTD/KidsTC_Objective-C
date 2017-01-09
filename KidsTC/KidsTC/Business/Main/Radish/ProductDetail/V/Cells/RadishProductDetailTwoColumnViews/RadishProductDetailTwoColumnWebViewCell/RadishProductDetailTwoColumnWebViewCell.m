@@ -36,10 +36,10 @@
 
 - (IBAction)openWebView:(UIButton *)sender {
     if (self.data.webViewHasOpen) return;
+    self.data.webViewHasOpen = YES;
     if ([self.delegate respondsToSelector:@selector(radishProductDetailBaseCell:actionType:value:)]) {
         [self.delegate radishProductDetailBaseCell:self actionType:RadishProductDetailBaseCellActionTypeOpenWebView value:nil];
     }
-    self.data.webViewHasOpen = YES;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {

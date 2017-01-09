@@ -31,8 +31,8 @@
 
 - (void)setData:(RadishSettlementData *)data {
     [super setData:data];
-    /*
-    RadishSettlementPayChannel *payChannel = data.appPayChannel;
+    
+    RadishSettlementChannel *payChannel = data.payChannel;
     BOOL aliEnable = payChannel.ali;
     BOOL weChatEnable = payChannel.WeChat && ([WeChatManager sharedManager].isOnline);
     self.aliView.enable = aliEnable;
@@ -44,14 +44,14 @@
     }else{
         [self didClickRadishSettlementPayTypeItemView:nil];
     }
-    */
+    
 }
 
 #pragma mark - RadishSettlementPayTypeItemViewDelegate
 
 - (void)didClickRadishSettlementPayTypeItemView:(RadishSettlementPayTypeItemView *)view {
     [self selectView:view];
-    //self.data.payType = view.tag;
+    self.data.payType = view.tag;
 }
 
 - (void)selectView:(RadishSettlementPayTypeItemView *)view {

@@ -13,6 +13,7 @@
 #import "RadishProductDetailBaseCell.h"
 #import "RadishProductDetailBannerCell.h"
 #import "RadishProductDetailInfoCell.h"
+#import "RadishProductDetailPriceCell.h"
 #import "RadishProductDetailDateCell.h"
 #import "RadishProductDetailPlaceCell.h"
 #import "RadishProductDetailPlaceCountCell.h"
@@ -25,6 +26,13 @@
 #import "RadishProductDetailTwoColumnConsultEmptyCell.h"
 #import "RadishProductDetailTwoColumnConsultConsultCell.h"
 #import "RadishProductDetailTwoColumnConsultMoreCell.h"
+#import "RadishProductDetailStandardCell.h"
+#import "RadishProductDetailNoticeCell.h"
+#import "RadishProductDetailApplyCell.h"
+#import "RadishProductDetailContactCell.h"
+#import "RadishProductDetailCommentCell.h"
+#import "RadishProductDetailCommentMoreCell.h"
+#import "RadishProductDetailRecommendCell.h"
 
 #import "RadishProductDetailTwoColumnToolBar.h"
 #import "RadishProductDetailToolBar.h"
@@ -32,6 +40,7 @@
 static NSString *const BaseCellID = @"RadishProductDetailBaseCell";
 static NSString *const BannerCellID = @"RadishProductDetailBannerCell";
 static NSString *const InfoCellID = @"RadishProductDetailInfoCell";
+static NSString *const PriceCellID = @"RadishProductDetailPriceCell";
 static NSString *const DateCellID = @"RadishProductDetailDateCell";
 static NSString *const PlaceCellID = @"RadishProductDetailPlaceCell";
 static NSString *const PlaceCountCellID = @"RadishProductDetailPlaceCountCell";
@@ -44,11 +53,21 @@ static NSString *const TwoColumnConsultTipCellID = @"RadishProductDetailTwoColum
 static NSString *const TwoColumnConsultEmptyCellID = @"RadishProductDetailTwoColumnConsultEmptyCell";
 static NSString *const TwoColumnConsultConsultCellID = @"RadishProductDetailTwoColumnConsultConsultCell";
 static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColumnConsultMoreCell";
+static NSString *const StandardCellID = @"RadishProductDetailStandardCell";
+static NSString *const NoticeCellID = @"RadishProductDetailNoticeCell";
+static NSString *const ApplyCellID = @"RadishProductDetailApplyCell";
+static NSString *const ContactCellID = @"RadishProductDetailContactCell";
+static NSString *const CommentCellID = @"RadishProductDetailCommentCell";
+static NSString *const CommentMoreCellID = @"RadishProductDetailCommentMoreCell";
+static NSString *const RecommendCellID = @"RadishProductDetailRecommendCell";
 
-@interface RadishProductDetailView ()<UITableViewDelegate,UITableViewDataSource,RadishProductDetailBaseCellDelegate,RadishProductDetailToolBarDelegate>
+@interface RadishProductDetailView ()<UITableViewDelegate,UITableViewDataSource,RadishProductDetailBaseCellDelegate,RadishProductDetailTwoColumnToolBarDelegate,RadishProductDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSArray<RadishProductDetailBaseCell *> *> *sections;
+@property (nonatomic, strong) RadishProductDetailTwoColumnToolBar *twoColumnToolBar;
 @property (nonatomic, strong) RadishProductDetailToolBar *toolBar;
+@property (nonatomic, assign) NSUInteger twoColumnSectionUsed;
+@property (nonatomic, weak  ) RadishProductDetailBaseCell *twoColumnCell;
 @end
 
 @implementation RadishProductDetailView
@@ -58,6 +77,7 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
     if (self) {
         self.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
         [self setupTableView];
+        [self setupTwoColumnToolBar];
         [self setupToolBar];
     }
     return self;
@@ -65,9 +85,19 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
 
 - (void)setData:(RadishProductDetailData *)data {
     _data = data;
+    
+    self.twoColumnToolBar.data = self.data;
     self.toolBar.data = self.data;
+    
     [self setupSections];
+    [self reload];
+}
+
+- (void)reload {
     [self.tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollViewDidScroll:self.tableView];
+    });
 }
 
 #pragma mark - setupTableView
@@ -88,6 +118,7 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailBaseCell" bundle:nil] forCellReuseIdentifier:BaseCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailBannerCell" bundle:nil] forCellReuseIdentifier:BannerCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailInfoCell" bundle:nil] forCellReuseIdentifier:InfoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailPriceCell" bundle:nil] forCellReuseIdentifier:PriceCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailDateCell" bundle:nil] forCellReuseIdentifier:DateCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailPlaceCell" bundle:nil] forCellReuseIdentifier:PlaceCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailPlaceCountCell" bundle:nil] forCellReuseIdentifier:PlaceCountCellID];
@@ -100,6 +131,13 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailTwoColumnConsultEmptyCell" bundle:nil] forCellReuseIdentifier:TwoColumnConsultEmptyCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailTwoColumnConsultConsultCell" bundle:nil] forCellReuseIdentifier:TwoColumnConsultConsultCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailTwoColumnConsultMoreCell" bundle:nil] forCellReuseIdentifier:TwoColumnConsultMoreCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailStandardCell" bundle:nil] forCellReuseIdentifier:StandardCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailNoticeCell" bundle:nil] forCellReuseIdentifier:NoticeCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailApplyCell" bundle:nil] forCellReuseIdentifier:ApplyCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailContactCell" bundle:nil] forCellReuseIdentifier:ContactCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailCommentCell" bundle:nil] forCellReuseIdentifier:CommentCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailCommentMoreCell" bundle:nil] forCellReuseIdentifier:CommentMoreCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailRecommendCell" bundle:nil] forCellReuseIdentifier:RecommendCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
@@ -111,25 +149,199 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
     NSMutableArray *sections  = [NSMutableArray array];
     
     NSMutableArray *section01 = [NSMutableArray array];
-    
+    if (self.data.narrowImg.count>0) {
+        RadishProductDetailBannerCell *bannerCell = [self cellWithID:BannerCellID];
+        if (bannerCell) [section01 addObject:bannerCell];
+    }
+    RadishProductDetailInfoCell *infoCell = [self cellWithID:InfoCellID];
+    if (infoCell) [section01 addObject:infoCell];
+    RadishProductDetailPriceCell *priceCell = [self cellWithID:PriceCellID];
+    if (priceCell) [section01 addObject:priceCell];
+    if (self.data.time) {
+        RadishProductDetailDateCell *dateCell = [self cellWithID:DateCellID];
+        if (dateCell) [section01 addObject:dateCell];
+    }
+    switch (self.data.placeType) {
+        case PlaceTypeStore:
+        {
+            RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
+            if (placeCell) [section01 addObject:placeCell];
+            if (self.data.store.count>0) {
+                RadishProductDetailPlaceCountCell *placeCountCell = [self cellWithID:PlaceCountCellID];
+                if (placeCountCell) [section01 addObject:placeCountCell];
+            }
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
+            if (placeCell) [section01 addObject:placeCell];
+            if (self.data.place.count>0) {
+                RadishProductDetailPlaceCountCell *placeCountCell = [self cellWithID:PlaceCountCellID];
+                if (placeCountCell) [section01 addObject:placeCountCell];
+            }
+        }
+            break;
+        default:
+            break;
+    }
     if(section01.count>0) [sections addObject:section01];
     
-    NSMutableArray *section02 = [NSMutableArray array];
-    
-    if(section02.count>0) [sections addObject:section02];
+    //content
+    NSArray<RadishProductDetailBuyNotice *> *buyNotice = self.data.buyNotice;
+    [buyNotice enumerateObjectsUsingBlock:^(RadishProductDetailBuyNotice *obj1, NSUInteger idx, BOOL *stop) {
+        NSMutableArray *section02 = [NSMutableArray new];
+        if ([obj1.title isNotNull]) {
+            RadishProductDetailTitleCell *titleCell = [self cellWithID:TitleCellID];
+            titleCell.text = obj1.title;
+            [section02 addObject:titleCell];
+        }
+        [obj1.notice enumerateObjectsUsingBlock:^(RadishProductDetailNotice *obj2, NSUInteger idx, BOOL *stop) {
+            RadishProductDetailBuyNoticeEmptyCell *emptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+            if (emptyCell) [section02 addObject:emptyCell];
+            RadishProductDetailBuyNoticeElementCell *elementCell = [self cellWithID:BuyNoticeElementCellID];
+            elementCell.notice = obj2;
+            if (elementCell) [section02 addObject:elementCell];
+        }];
+        if (obj1.notice.count>0) {
+            RadishProductDetailBuyNoticeEmptyCell *emptyCell = [self cellWithID:BuyNoticeEmptyCellID];
+            if (emptyCell) [section02 addObject:emptyCell];
+        }
+        if (section02.count>0) [sections addObject:section02];
+    }];
 
-    NSMutableArray *section03 = [NSMutableArray array];
+    //他们已参加
+    if (self.data.comment.userHeadImgs.count>0) {
+        NSMutableArray *section03 = [NSMutableArray new];
+        RadishProductDetailJoinCell *joinCell = [self cellWithID:JoinCellID];
+        if (joinCell) [section03 addObject:joinCell];
+        if (section03.count>0) [sections addObject:section03];
+    }
 
-    if(section03.count>0) [sections addObject:section03];
-    
+    //活动明细、活动咨询
+    NSArray<ProductDetailConsultItem *> *consults = self.data.consults;
     NSMutableArray *section04 = [NSMutableArray array];
-
+    switch (self.data.showType) {
+        case RadishProductDetailTwoColumnShowTypeDetail:
+        {
+            RadishProductDetailTwoColumnWebViewCell *webViewCell = [self cellWithID:TwoColumnWebViewCellID];
+            if (webViewCell) {
+                [section04 addObject:webViewCell];
+                self.twoColumnCell = webViewCell;
+            }
+            
+        }
+            break;
+        case RadishProductDetailTwoColumnShowTypeConsult:
+        {
+            RadishProductDetailTwoColumnConsultTipCell *consultTipCell = [self cellWithID:TwoColumnConsultTipCellID];
+            if (consultTipCell){
+                [section04 addObject:consultTipCell];
+                self.twoColumnCell = consultTipCell;
+            }
+            if (consults.count<1) {
+                RadishProductDetailTwoColumnConsultEmptyCell *consultEmptyCell = [self cellWithID:TwoColumnConsultEmptyCellID];
+                if (consultEmptyCell) [section04 addObject:consultEmptyCell];
+            }else{
+                [consults enumerateObjectsUsingBlock:^(ProductDetailConsultItem *obj, NSUInteger idx, BOOL *stop) {
+                    RadishProductDetailTwoColumnConsultConsultCell *consultConsultCell = [self cellWithID:TwoColumnConsultConsultCellID];
+                    consultConsultCell.item = obj;
+                    if (consultConsultCell) [section04 addObject:consultConsultCell];
+                }];
+                RadishProductDetailTwoColumnConsultMoreCell *consultMoreCell = [self cellWithID:TwoColumnConsultMoreCellID];
+                if (consultMoreCell) [section04 addObject:consultMoreCell];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    self.twoColumnSectionUsed = sections.count;
     if(section04.count>0) [sections addObject:section04];
+    
+    //套餐明细
+    NSArray<RadishProductDetailStandard *> *product_standards = self.data.product_standards;
+    if (product_standards.count>0) {
+        NSMutableArray *section05 = [NSMutableArray new];
+        RadishProductDetailTitleCell *titleCell = [self cellWithID:TitleCellID];
+        titleCell.text = @"其他优惠";
+        if (titleCell) [section05 addObject:titleCell];
+        [product_standards enumerateObjectsUsingBlock:^(RadishProductDetailStandard *obj, NSUInteger idx, BOOL *stop) {
+            RadishProductDetailStandardCell *standardCell = [self cellWithID:StandardCellID];
+            standardCell.index = idx;
+            if (standardCell) [section05 addObject:standardCell];
+        }];
+        if (section05.count>0) [sections addObject:section05];
+    }
+    
+    //购买须知
+    NSArray<RadishProductDetailInsuranceItem *> *items = self.data.insurance.items;
+    NSArray<NSAttributedString *> *attApply = self.data.attApply;
+    NSMutableArray *section06 = [NSMutableArray new];
+    if (items.count>0 || attApply.count>0) {
+        RadishProductDetailTitleCell *titleCell = [self cellWithID:TitleCellID];
+        titleCell.text = @"兑换须知";
+        if (titleCell) [section06 addObject:titleCell];
+        if (items.count>0) {
+            RadishProductDetailNoticeCell *noticeCell = [self cellWithID:NoticeCellID];
+            if (noticeCell) [section06 addObject:noticeCell];
+        }
+        [attApply enumerateObjectsUsingBlock:^(NSAttributedString *obj, NSUInteger idx, BOOL *stop) {
+            RadishProductDetailApplyCell *applyCell = [self cellWithID:ApplyCellID];
+            applyCell.attStr = obj;
+            if (applyCell) [section06 addObject:applyCell];
+        }];
+    }
+    RadishProductDetailContactCell *contactCell = [self cellWithID:ContactCellID];
+    if (contactCell) [section06 addObject:contactCell];
+    if (section06.count>0) [sections addObject:section06];
+    
+    //活动评价
+    NSArray<RadishProductDetailCommentItem *> *commentList = self.data.commentList;
+    if (commentList.count>0) {
+        NSMutableArray *section07 = [NSMutableArray new];
+        RadishProductDetailTitleCell *titleCell = [self cellWithID:TitleCellID];
+        titleCell.text = @"活动评价";
+        if (titleCell) [section07 addObject:titleCell];
+        
+        [commentList enumerateObjectsUsingBlock:^(RadishProductDetailCommentItem *obj, NSUInteger idx, BOOL *stop) {
+            if (idx>=5) {
+                *stop = YES;
+            }else{
+                RadishProductDetailCommentCell *commentCell = [self cellWithID:CommentCellID];
+                commentCell.index = idx;
+                if (commentCell) [section07 addObject:commentCell];
+            }
+        }];
+        RadishProductDetailCommentMoreCell *commentMoreCell = [self cellWithID:CommentMoreCellID];
+        if (commentMoreCell) [section07 addObject:commentMoreCell];
+        if (section07.count>0) [sections addObject:section07];
+    }
+
+    //为您推荐
+    NSArray<RecommendProduct *> *recommends = self.data.recommends;
+    if (recommends.count>0) {
+        NSMutableArray *section08 = [NSMutableArray new];
+        RadishProductDetailTitleCell *titleCell = [self cellWithID:TitleCellID];
+        titleCell.text = @"为您推荐";
+        if (titleCell) [section08 addObject:titleCell];
+        [recommends enumerateObjectsUsingBlock:^(RecommendProduct *obj, NSUInteger idx, BOOL *stop) {
+            RadishProductDetailRecommendCell *recommendCell = [self cellWithID:RecommendCellID];
+            recommendCell.index = idx;
+            if (recommendCell) [section08 addObject:recommendCell];
+        }];
+        if (section08.count>0) [sections addObject:section08];
+    }
     
     self.sections = [NSArray arrayWithArray:sections];
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offsetY = scrollView.contentOffset.y;
+    [self setupTwoColumnToolBarFrame:offsetY];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
@@ -143,6 +355,9 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == self.twoColumnSectionUsed) {
+        return CGRectGetHeight(_twoColumnToolBar.bounds);
+    }
     return 0.001;
 }
 
@@ -171,9 +386,47 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
     if ([self.delegate respondsToSelector:@selector(radishProductDetailView:actionType:value:)]) {
         [self.delegate radishProductDetailView:self actionType:(RadishProductDetailViewActionType)type value:value];
     }
-    if (type == RadishProductDetailBaseCellActionTypeWebLoadFinish) {
-        [self.tableView reloadData];
+    switch (type) {
+        case RadishProductDetailBaseCellActionTypeWebLoadFinish:
+        case RadishProductDetailBaseCellActionTypeOpenWebView:
+        {
+            [self reload];
+        }
+            break;
+        default:
+            break;
     }
+}
+
+#pragma mark - setupTwoColumnToolBar
+
+- (void)setupTwoColumnToolBar {
+    RadishProductDetailTwoColumnToolBar *twoColumnToolBar = [[NSBundle mainBundle] loadNibNamed:@"RadishProductDetailTwoColumnToolBar" owner:self options:nil].firstObject;
+    twoColumnToolBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, kRadishTwoColumnToolBarH);
+    twoColumnToolBar.delegate = self;
+    [self addSubview:twoColumnToolBar];
+    self.twoColumnToolBar = twoColumnToolBar;
+}
+
+- (void)setupTwoColumnToolBarFrame:(CGFloat)offsetY {
+    CGFloat twoColumnCellY = CGRectGetMinY(self.twoColumnCell.frame);
+    if (twoColumnCellY<=0) {
+        _twoColumnToolBar.hidden = YES;
+    }else{
+        CGFloat y = twoColumnCellY - kRadishTwoColumnToolBarH - offsetY;
+        if (y<0) y = 0;
+        CGRect frame = _twoColumnToolBar.frame;
+        frame.origin.y = y;
+        _twoColumnToolBar.frame = frame;
+        _twoColumnToolBar.hidden = NO;
+    }
+}
+
+#pragma mark RadishProductDetailTwoColumnToolBarDelegate
+
+- (void)radishProductDetailTwoColumnToolBar:(RadishProductDetailTwoColumnToolBar *)toolBar ationType:(RadishProductDetailTwoColumnShowType)type value:(id)value {
+    [self setupSections];
+    [self reload];
 }
 
 #pragma mark - setupToolBar
@@ -189,7 +442,7 @@ static NSString *const TwoColumnConsultMoreCellID = @"RadishProductDetailTwoColu
 
 #pragma mark RadishProductDetailToolBarDelegate
 
-- (void)RadishProductDetailToolBar:(RadishProductDetailToolBar *)toolBar actionType:(RadishProductDetailToolBarActionType)type value:(id)value {
+- (void)radishProductDetailToolBar:(RadishProductDetailToolBar *)toolBar actionType:(RadishProductDetailToolBarActionType)type value:(id)value {
     if ([self.delegate respondsToSelector:@selector(radishProductDetailView:actionType:value:)]) {
         [self.delegate radishProductDetailView:self actionType:(RadishProductDetailViewActionType)type value:value];
     }

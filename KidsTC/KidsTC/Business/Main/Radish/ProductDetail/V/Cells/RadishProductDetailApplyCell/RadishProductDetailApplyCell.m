@@ -22,22 +22,6 @@
     self.tipView.layer.masksToBounds = YES;
 }
 
-- (void)setupBtn:(UIButton *)btn {
-    btn.layer.cornerRadius = 4;
-    btn.layer.borderColor = PRODUCT_DETAIL_BLUE.CGColor;
-    btn.layer.borderWidth = 1;
-    [btn setTitleColor:PRODUCT_DETAIL_BLUE forState:UIControlStateNormal];
-}
-
-- (void)setData:(RadishProductDetailData *)data {
-    [super setData:data];
-    
-}
-
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
-}
-
 - (void)setAttStr:(NSAttributedString *)attStr {
     _attStr = attStr;
     self.titleL.attributedText = attStr;

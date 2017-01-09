@@ -8,11 +8,9 @@
 
 #import "RadishSettlementAddressCell.h"
 
-
 @interface RadishSettlementAddressCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nameAndPhoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-
 @end
 
 @implementation RadishSettlementAddressCell
@@ -31,6 +29,11 @@
 
 - (void)setData:(RadishSettlementData *)data {
     [super setData:data];
+    UserAddressManageDataItem *userAddress = data.userAddressInfo;
+    if (userAddress) {
+        self.nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@    %@",userAddress.peopleName,userAddress.mobile];
+        self.addressLabel.text = userAddress.addressDescription;
+    }
 }
 
 @end

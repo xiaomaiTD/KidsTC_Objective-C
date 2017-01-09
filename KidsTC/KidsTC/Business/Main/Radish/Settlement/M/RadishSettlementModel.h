@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RadishSettlementData.h"
 
 @interface RadishSettlementModel : NSObject
-
+@property (nonatomic, assign) NSInteger errNo;
+@property (nonatomic, strong) RadishSettlementData *data;
 @end

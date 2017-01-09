@@ -342,6 +342,8 @@
                 _header = nil;
             }
                 break;
+                default:
+                break;
         }
     }
     return _header;
@@ -476,7 +478,6 @@
         }];
         if (section05.count>0) [sections addObject:section05];
     }
-    
     
     //领取优惠券
     if (_data.coupons.count>0 && _data.canProvideCoupon) {

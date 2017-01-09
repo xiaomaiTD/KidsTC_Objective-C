@@ -31,6 +31,8 @@
             [self loadFreeProductDataSuccessBlock:successBlock failureBlock:failureBlock];
         }
             break;
+            default:
+            break;
     }
 }
 
@@ -47,6 +49,11 @@
         case ProductDetailTypeFree:
         {
             recommendType = RecommendProductTypeFree;
+        }
+            break;
+        case ProductDetailTypeRadish:
+        {
+            recommendType = RecommendProductTypeRadish;
         }
             break;
         default:

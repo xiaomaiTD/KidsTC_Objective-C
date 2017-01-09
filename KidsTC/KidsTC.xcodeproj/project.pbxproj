@@ -359,8 +359,6 @@
 		EC35F82B1E1F41500097BAB3 /* RadishProductDetailCommentMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F7D61E1F41500097BAB3 /* RadishProductDetailCommentMoreCell.xib */; };
 		EC35F82C1E1F41500097BAB3 /* RadishProductDetailContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F7D91E1F41500097BAB3 /* RadishProductDetailContactCell.m */; };
 		EC35F82D1E1F41500097BAB3 /* RadishProductDetailContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F7DA1E1F41500097BAB3 /* RadishProductDetailContactCell.xib */; };
-		EC35F82E1E1F41500097BAB3 /* RadishProductDetailCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F7DD1E1F41500097BAB3 /* RadishProductDetailCouponCell.m */; };
-		EC35F82F1E1F41500097BAB3 /* RadishProductDetailCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F7DE1E1F41500097BAB3 /* RadishProductDetailCouponCell.xib */; };
 		EC35F8301E1F41500097BAB3 /* RadishProductDetailDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F7E11E1F41500097BAB3 /* RadishProductDetailDateCell.m */; };
 		EC35F8311E1F41500097BAB3 /* RadishProductDetailDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F7E21E1F41500097BAB3 /* RadishProductDetailDateCell.xib */; };
 		EC35F8321E1F41500097BAB3 /* RadishProductDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F7E51E1F41500097BAB3 /* RadishProductDetailInfoCell.m */; };
@@ -438,7 +436,6 @@
 		EC35F8F51E1F96BF0097BAB3 /* RadishProductDetailNotice.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F8F31E1F96BF0097BAB3 /* RadishProductDetailNotice.m */; };
 		EC35F8F81E1F972B0097BAB3 /* RadishProductDetailComment.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F8F71E1F972B0097BAB3 /* RadishProductDetailComment.m */; };
 		EC35F8FE1E1F97910097BAB3 /* RadishProductDetailCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F8FD1E1F97910097BAB3 /* RadishProductDetailCommentItem.m */; };
-		EC35F9011E1F97E00097BAB3 /* RadishProdectDetailCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9001E1F97E00097BAB3 /* RadishProdectDetailCoupon.m */; };
 		EC35F9041E1F9A0A0097BAB3 /* RadishProductDetailCommentScore.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9031E1F9A0A0097BAB3 /* RadishProductDetailCommentScore.m */; };
 		EC35F9071E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9061E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.m */; };
 		EC35F90C1E1F9BB60097BAB3 /* RadishProductDetailInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9091E1F9BB60097BAB3 /* RadishProductDetailInsurance.m */; };
@@ -471,6 +468,90 @@
 		EC35F96E1E20A1020097BAB3 /* TCTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F96D1E20A1020097BAB3 /* TCTimer.m */; };
 		EC35F9721E20A1350097BAB3 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9711E20A1350097BAB3 /* DataBaseManager.m */; };
 		EC35F9751E20BC4C0097BAB3 /* BuryPointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9741E20BC4C0097BAB3 /* BuryPointModel.m */; };
+		EC35F9A31E2362610097BAB3 /* RadishMallData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9A21E2362610097BAB3 /* RadishMallData.m */; };
+		EC35F9A61E2362800097BAB3 /* RadishMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9A51E2362800097BAB3 /* RadishMallModel.m */; };
+		EC35F9C91E2365E30097BAB3 /* RadishMallBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9A91E2365E30097BAB3 /* RadishMallBannerCell.m */; };
+		EC35F9CA1E2365E30097BAB3 /* RadishMallBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9AA1E2365E30097BAB3 /* RadishMallBannerCell.xib */; };
+		EC35F9CB1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9AC1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.m */; };
+		EC35F9CC1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9AD1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.xib */; };
+		EC35F9CD1E2365E30097BAB3 /* RadishMallBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9B01E2365E30097BAB3 /* RadishMallBaseCell.m */; };
+		EC35F9CE1E2365E30097BAB3 /* RadishMallBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9B11E2365E30097BAB3 /* RadishMallBaseCell.xib */; };
+		EC35F9CF1E2365E30097BAB3 /* RadishMallHotTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9B41E2365E30097BAB3 /* RadishMallHotTipCell.m */; };
+		EC35F9D01E2365E30097BAB3 /* RadishMallHotTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9B51E2365E30097BAB3 /* RadishMallHotTipCell.xib */; };
+		EC35F9D11E2365E30097BAB3 /* RadishMallItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9B81E2365E30097BAB3 /* RadishMallItemsCell.m */; };
+		EC35F9D21E2365E30097BAB3 /* RadishMallItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9B91E2365E30097BAB3 /* RadishMallItemsCell.xib */; };
+		EC35F9D31E2365E30097BAB3 /* RadishMallItemsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9BB1E2365E30097BAB3 /* RadishMallItemsCollectionCell.m */; };
+		EC35F9D41E2365E30097BAB3 /* RadishMallItemsCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9BC1E2365E30097BAB3 /* RadishMallItemsCollectionCell.xib */; };
+		EC35F9D51E2365E30097BAB3 /* RadishMallLargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9BF1E2365E30097BAB3 /* RadishMallLargeCell.m */; };
+		EC35F9D61E2365E30097BAB3 /* RadishMallLargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9C01E2365E30097BAB3 /* RadishMallLargeCell.xib */; };
+		EC35F9D71E2365E30097BAB3 /* RadishMallPlantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9C31E2365E30097BAB3 /* RadishMallPlantCell.m */; };
+		EC35F9D81E2365E30097BAB3 /* RadishMallPlantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9C41E2365E30097BAB3 /* RadishMallPlantCell.xib */; };
+		EC35F9D91E2365E30097BAB3 /* RadishMallSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9C71E2365E30097BAB3 /* RadishMallSmallCell.m */; };
+		EC35F9DA1E2365E30097BAB3 /* RadishMallSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9C81E2365E30097BAB3 /* RadishMallSmallCell.xib */; };
+		EC35FA531E236D700097BAB3 /* RadishOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9DE1E236D700097BAB3 /* RadishOrderDetailViewController.m */; };
+		EC35FA541E236D700097BAB3 /* RadishOrderDetailBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9E11E236D700097BAB3 /* RadishOrderDetailBtn.m */; };
+		EC35FA551E236D700097BAB3 /* RadishOrderDetailConsumeCode.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9E31E236D700097BAB3 /* RadishOrderDetailConsumeCode.m */; };
+		EC35FA561E236D700097BAB3 /* RadishOrderDetailCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9E51E236D700097BAB3 /* RadishOrderDetailCountDown.m */; };
+		EC35FA571E236D700097BAB3 /* RadishOrderDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9E71E236D700097BAB3 /* RadishOrderDetailData.m */; };
+		EC35FA581E236D700097BAB3 /* RadishOrderDetailDeliver.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9E91E236D700097BAB3 /* RadishOrderDetailDeliver.m */; };
+		EC35FA591E236D700097BAB3 /* RadishOrderDetailDeliverItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9EB1E236D700097BAB3 /* RadishOrderDetailDeliverItem.m */; };
+		EC35FA5A1E236D700097BAB3 /* RadishOrderDetailInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9ED1E236D700097BAB3 /* RadishOrderDetailInsurance.m */; };
+		EC35FA5B1E236D700097BAB3 /* RadishOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9EF1E236D700097BAB3 /* RadishOrderDetailModel.m */; };
+		EC35FA5C1E236D700097BAB3 /* RadishOrderDetailRefund.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9F11E236D700097BAB3 /* RadishOrderDetailRefund.m */; };
+		EC35FA5D1E236D700097BAB3 /* RadishOrderDetailRemark.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9F31E236D700097BAB3 /* RadishOrderDetailRemark.m */; };
+		EC35FA5E1E236D700097BAB3 /* RadishOrderDetailStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9F51E236D700097BAB3 /* RadishOrderDetailStore.m */; };
+		EC35FA5F1E236D700097BAB3 /* RadishOrderDetailUserAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9F71E236D700097BAB3 /* RadishOrderDetailUserAddress.m */; };
+		EC35FA601E236D700097BAB3 /* RadishOrderDetailAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35F9FC1E236D700097BAB3 /* RadishOrderDetailAddressCell.m */; };
+		EC35FA611E236D700097BAB3 /* RadishOrderDetailAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35F9FD1E236D700097BAB3 /* RadishOrderDetailAddressCell.xib */; };
+		EC35FA621E236D700097BAB3 /* RadishOrderDetailBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA001E236D700097BAB3 /* RadishOrderDetailBaseCell.m */; };
+		EC35FA631E236D700097BAB3 /* RadishOrderDetailBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA011E236D700097BAB3 /* RadishOrderDetailBaseCell.xib */; };
+		EC35FA641E236D700097BAB3 /* RadishOrderDetailBookingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA041E236D700097BAB3 /* RadishOrderDetailBookingCell.m */; };
+		EC35FA651E236D700097BAB3 /* RadishOrderDetailBookingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA051E236D700097BAB3 /* RadishOrderDetailBookingCell.xib */; };
+		EC35FA661E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA081E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.m */; };
+		EC35FA671E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA091E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.xib */; };
+		EC35FA681E236D700097BAB3 /* RadishOrderDetailContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA0C1E236D700097BAB3 /* RadishOrderDetailContactCell.m */; };
+		EC35FA691E236D700097BAB3 /* RadishOrderDetailContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA0D1E236D700097BAB3 /* RadishOrderDetailContactCell.xib */; };
+		EC35FA6A1E236D700097BAB3 /* RadishOrderDetailDeliverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA101E236D700097BAB3 /* RadishOrderDetailDeliverCell.m */; };
+		EC35FA6B1E236D700097BAB3 /* RadishOrderDetailDeliverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA111E236D700097BAB3 /* RadishOrderDetailDeliverCell.xib */; };
+		EC35FA6C1E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA141E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.m */; };
+		EC35FA6D1E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA151E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.xib */; };
+		EC35FA6E1E236D700097BAB3 /* RadishOrderDetailOrderNoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA181E236D700097BAB3 /* RadishOrderDetailOrderNoCell.m */; };
+		EC35FA6F1E236D700097BAB3 /* RadishOrderDetailOrderNoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA191E236D700097BAB3 /* RadishOrderDetailOrderNoCell.xib */; };
+		EC35FA701E236D700097BAB3 /* RadishOrderDetailPayInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA1C1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.m */; };
+		EC35FA711E236D700097BAB3 /* RadishOrderDetailPayInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA1D1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.xib */; };
+		EC35FA721E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA201E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.m */; };
+		EC35FA731E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA211E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.xib */; };
+		EC35FA741E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA241E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.m */; };
+		EC35FA751E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA251E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.xib */; };
+		EC35FA761E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA281E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.m */; };
+		EC35FA771E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA291E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.xib */; };
+		EC35FA781E236D700097BAB3 /* RadishOrderDetailPayTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA2C1E236D700097BAB3 /* RadishOrderDetailPayTipCell.m */; };
+		EC35FA791E236D700097BAB3 /* RadishOrderDetailPayTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA2D1E236D700097BAB3 /* RadishOrderDetailPayTipCell.xib */; };
+		EC35FA7A1E236D700097BAB3 /* RadishOrderDetailProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA301E236D700097BAB3 /* RadishOrderDetailProductCell.m */; };
+		EC35FA7B1E236D700097BAB3 /* RadishOrderDetailProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA311E236D700097BAB3 /* RadishOrderDetailProductCell.xib */; };
+		EC35FA7C1E236D700097BAB3 /* RadishOrderDetailRefundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA341E236D700097BAB3 /* RadishOrderDetailRefundCell.m */; };
+		EC35FA7D1E236D700097BAB3 /* RadishOrderDetailRefundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA351E236D700097BAB3 /* RadishOrderDetailRefundCell.xib */; };
+		EC35FA7E1E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA381E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.m */; };
+		EC35FA7F1E236D710097BAB3 /* RadishOrderDetailRefundTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA391E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.xib */; };
+		EC35FA801E236D710097BAB3 /* RadishOrderDetailRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA3C1E236D700097BAB3 /* RadishOrderDetailRemarkCell.m */; };
+		EC35FA811E236D710097BAB3 /* RadishOrderDetailRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA3D1E236D700097BAB3 /* RadishOrderDetailRemarkCell.xib */; };
+		EC35FA821E236D710097BAB3 /* RadishOrderDetailStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA401E236D700097BAB3 /* RadishOrderDetailStoreCell.m */; };
+		EC35FA831E236D710097BAB3 /* RadishOrderDetailStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA411E236D700097BAB3 /* RadishOrderDetailStoreCell.xib */; };
+		EC35FA841E236D710097BAB3 /* RadishOrderDetailUserRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA441E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.m */; };
+		EC35FA851E236D710097BAB3 /* RadishOrderDetailUserRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA451E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.xib */; };
+		EC35FA861E236D710097BAB3 /* RadishOrderDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA481E236D700097BAB3 /* RadishOrderDetailHeader.m */; };
+		EC35FA871E236D710097BAB3 /* RadishOrderDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA491E236D700097BAB3 /* RadishOrderDetailHeader.xib */; };
+		EC35FA881E236D710097BAB3 /* RadishOrderDetailBtnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA4C1E236D700097BAB3 /* RadishOrderDetailBtnsView.m */; };
+		EC35FA891E236D710097BAB3 /* RadishOrderDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA4E1E236D700097BAB3 /* RadishOrderDetailToolBar.m */; };
+		EC35FA8A1E236D710097BAB3 /* RadishOrderDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA4F1E236D700097BAB3 /* RadishOrderDetailToolBar.xib */; };
+		EC35FA8B1E236D710097BAB3 /* RadishOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA521E236D700097BAB3 /* RadishOrderDetailView.m */; };
+		EC35FA901E2393C40097BAB3 /* RadishProductDetailPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA8E1E2393C40097BAB3 /* RadishProductDetailPriceCell.m */; };
+		EC35FA911E2393C40097BAB3 /* RadishProductDetailPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA8F1E2393C40097BAB3 /* RadishProductDetailPriceCell.xib */; };
+		EC35FA941E23CA800097BAB3 /* RadishSettlementPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA931E23CA800097BAB3 /* RadishSettlementPlace.m */; };
+		EC35FA971E23CAA10097BAB3 /* RadishSettlementChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA961E23CAA10097BAB3 /* RadishSettlementChannel.m */; };
+		EC35FA9A1E23CACC0097BAB3 /* RadishSettlementStore.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA991E23CACC0097BAB3 /* RadishSettlementStore.m */; };
+		EC35FA9E1E23D4480097BAB3 /* RadishSettlementTipAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FA9C1E23D4480097BAB3 /* RadishSettlementTipAddressCell.m */; };
+		EC35FA9F1E23D4480097BAB3 /* RadishSettlementTipAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FA9D1E23D4480097BAB3 /* RadishSettlementTipAddressCell.xib */; };
 		EC3CE0A31DF15DDC005729E2 /* MapLocateAnnotationTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC3CE0A21DF15DDC005729E2 /* MapLocateAnnotationTipView.xib */; };
 		EC3CE0A61DF167DB005729E2 /* NearbyView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CE0A51DF167DB005729E2 /* NearbyView.m */; };
 		EC3CE0BD1DF17A57005729E2 /* NearbyCategoryToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3CE0B61DF17A57005729E2 /* NearbyCategoryToolBar.m */; };
@@ -1440,14 +1521,12 @@
 		EC739FD71E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC739FAC1E1D133D0027E91E /* WholesaleOrderDetailWebTipCell.xib */; };
 		EC73A01F1E1E25CE0027E91E /* RadishMallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A01E1E1E25CE0027E91E /* RadishMallViewController.m */; };
 		EC73A0221E1E25E60027E91E /* RadishMallView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0211E1E25E60027E91E /* RadishMallView.m */; };
-		EC73A0251E1E26010027E91E /* RadishOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */; };
 		EC73A0281E1E26110027E91E /* RadishProductOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0271E1E26110027E91E /* RadishProductOrderListViewController.m */; };
 		EC73A02B1E1E26280027E91E /* RadishProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A02A1E1E26280027E91E /* RadishProductDetailViewController.m */; };
 		EC73A02E1E1E26380027E91E /* RadishSettlementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A02D1E1E26380027E91E /* RadishSettlementViewController.m */; };
 		EC73A0311E1E264D0027E91E /* RadishSettlementView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0301E1E264D0027E91E /* RadishSettlementView.m */; };
 		EC73A0341E1E265E0027E91E /* RadishProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0331E1E265E0027E91E /* RadishProductDetailView.m */; };
 		EC73A0371E1E266E0027E91E /* RadishProductOrderListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0361E1E266E0027E91E /* RadishProductOrderListView.m */; };
-		EC73A03A1E1E267E0027E91E /* RadishOrderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */; };
 		EC76B8C81DC65FC6006518DE /* ServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */; };
 		EC76B8C91DC65FC6006518DE /* ServiceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */; };
 		EC76B8CA1DC65FC6006518DE /* ServiceDetailConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC76B8A41DC65FC6006518DE /* ServiceDetailConfigModel.m */; };
@@ -2488,9 +2567,6 @@
 		EC35F7D81E1F41500097BAB3 /* RadishProductDetailContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailContactCell.h; sourceTree = "<group>"; };
 		EC35F7D91E1F41500097BAB3 /* RadishProductDetailContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailContactCell.m; sourceTree = "<group>"; };
 		EC35F7DA1E1F41500097BAB3 /* RadishProductDetailContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishProductDetailContactCell.xib; sourceTree = "<group>"; };
-		EC35F7DC1E1F41500097BAB3 /* RadishProductDetailCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailCouponCell.h; sourceTree = "<group>"; };
-		EC35F7DD1E1F41500097BAB3 /* RadishProductDetailCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailCouponCell.m; sourceTree = "<group>"; };
-		EC35F7DE1E1F41500097BAB3 /* RadishProductDetailCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishProductDetailCouponCell.xib; sourceTree = "<group>"; };
 		EC35F7E01E1F41500097BAB3 /* RadishProductDetailDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailDateCell.h; sourceTree = "<group>"; };
 		EC35F7E11E1F41500097BAB3 /* RadishProductDetailDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailDateCell.m; sourceTree = "<group>"; };
 		EC35F7E21E1F41500097BAB3 /* RadishProductDetailDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishProductDetailDateCell.xib; sourceTree = "<group>"; };
@@ -2614,8 +2690,6 @@
 		EC35F8F71E1F972B0097BAB3 /* RadishProductDetailComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailComment.m; sourceTree = "<group>"; };
 		EC35F8FC1E1F97910097BAB3 /* RadishProductDetailCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailCommentItem.h; sourceTree = "<group>"; };
 		EC35F8FD1E1F97910097BAB3 /* RadishProductDetailCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailCommentItem.m; sourceTree = "<group>"; };
-		EC35F8FF1E1F97E00097BAB3 /* RadishProductDetailCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailCoupon.h; sourceTree = "<group>"; };
-		EC35F9001E1F97E00097BAB3 /* RadishProdectDetailCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProdectDetailCoupon.m; sourceTree = "<group>"; };
 		EC35F9021E1F9A0A0097BAB3 /* RadishProductDetailCommentScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailCommentScore.h; sourceTree = "<group>"; };
 		EC35F9031E1F9A0A0097BAB3 /* RadishProductDetailCommentScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailCommentScore.m; sourceTree = "<group>"; };
 		EC35F9051E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailScoreItem.h; sourceTree = "<group>"; };
@@ -2673,6 +2747,142 @@
 		EC35F9711E20A1350097BAB3 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
 		EC35F9731E20BC4C0097BAB3 /* BuryPointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuryPointModel.h; sourceTree = "<group>"; };
 		EC35F9741E20BC4C0097BAB3 /* BuryPointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuryPointModel.m; sourceTree = "<group>"; };
+		EC35F9A11E2362610097BAB3 /* RadishMallData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallData.h; sourceTree = "<group>"; };
+		EC35F9A21E2362610097BAB3 /* RadishMallData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallData.m; sourceTree = "<group>"; };
+		EC35F9A41E2362800097BAB3 /* RadishMallModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallModel.h; sourceTree = "<group>"; };
+		EC35F9A51E2362800097BAB3 /* RadishMallModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallModel.m; sourceTree = "<group>"; };
+		EC35F9A81E2365E30097BAB3 /* RadishMallBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallBannerCell.h; sourceTree = "<group>"; };
+		EC35F9A91E2365E30097BAB3 /* RadishMallBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallBannerCell.m; sourceTree = "<group>"; };
+		EC35F9AA1E2365E30097BAB3 /* RadishMallBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallBannerCell.xib; sourceTree = "<group>"; };
+		EC35F9AB1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallBannerCollectionViewCell.h; sourceTree = "<group>"; };
+		EC35F9AC1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallBannerCollectionViewCell.m; sourceTree = "<group>"; };
+		EC35F9AD1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallBannerCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC35F9AF1E2365E30097BAB3 /* RadishMallBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallBaseCell.h; sourceTree = "<group>"; };
+		EC35F9B01E2365E30097BAB3 /* RadishMallBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallBaseCell.m; sourceTree = "<group>"; };
+		EC35F9B11E2365E30097BAB3 /* RadishMallBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallBaseCell.xib; sourceTree = "<group>"; };
+		EC35F9B31E2365E30097BAB3 /* RadishMallHotTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallHotTipCell.h; sourceTree = "<group>"; };
+		EC35F9B41E2365E30097BAB3 /* RadishMallHotTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallHotTipCell.m; sourceTree = "<group>"; };
+		EC35F9B51E2365E30097BAB3 /* RadishMallHotTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallHotTipCell.xib; sourceTree = "<group>"; };
+		EC35F9B71E2365E30097BAB3 /* RadishMallItemsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallItemsCell.h; sourceTree = "<group>"; };
+		EC35F9B81E2365E30097BAB3 /* RadishMallItemsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallItemsCell.m; sourceTree = "<group>"; };
+		EC35F9B91E2365E30097BAB3 /* RadishMallItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallItemsCell.xib; sourceTree = "<group>"; };
+		EC35F9BA1E2365E30097BAB3 /* RadishMallItemsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallItemsCollectionCell.h; sourceTree = "<group>"; };
+		EC35F9BB1E2365E30097BAB3 /* RadishMallItemsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallItemsCollectionCell.m; sourceTree = "<group>"; };
+		EC35F9BC1E2365E30097BAB3 /* RadishMallItemsCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallItemsCollectionCell.xib; sourceTree = "<group>"; };
+		EC35F9BE1E2365E30097BAB3 /* RadishMallLargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallLargeCell.h; sourceTree = "<group>"; };
+		EC35F9BF1E2365E30097BAB3 /* RadishMallLargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallLargeCell.m; sourceTree = "<group>"; };
+		EC35F9C01E2365E30097BAB3 /* RadishMallLargeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallLargeCell.xib; sourceTree = "<group>"; };
+		EC35F9C21E2365E30097BAB3 /* RadishMallPlantCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallPlantCell.h; sourceTree = "<group>"; };
+		EC35F9C31E2365E30097BAB3 /* RadishMallPlantCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallPlantCell.m; sourceTree = "<group>"; };
+		EC35F9C41E2365E30097BAB3 /* RadishMallPlantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallPlantCell.xib; sourceTree = "<group>"; };
+		EC35F9C61E2365E30097BAB3 /* RadishMallSmallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallSmallCell.h; sourceTree = "<group>"; };
+		EC35F9C71E2365E30097BAB3 /* RadishMallSmallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallSmallCell.m; sourceTree = "<group>"; };
+		EC35F9C81E2365E30097BAB3 /* RadishMallSmallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishMallSmallCell.xib; sourceTree = "<group>"; };
+		EC35F9DD1E236D700097BAB3 /* RadishOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailViewController.h; sourceTree = "<group>"; };
+		EC35F9DE1E236D700097BAB3 /* RadishOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailViewController.m; sourceTree = "<group>"; };
+		EC35F9E01E236D700097BAB3 /* RadishOrderDetailBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailBtn.h; sourceTree = "<group>"; };
+		EC35F9E11E236D700097BAB3 /* RadishOrderDetailBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailBtn.m; sourceTree = "<group>"; };
+		EC35F9E21E236D700097BAB3 /* RadishOrderDetailConsumeCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailConsumeCode.h; sourceTree = "<group>"; };
+		EC35F9E31E236D700097BAB3 /* RadishOrderDetailConsumeCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailConsumeCode.m; sourceTree = "<group>"; };
+		EC35F9E41E236D700097BAB3 /* RadishOrderDetailCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailCountDown.h; sourceTree = "<group>"; };
+		EC35F9E51E236D700097BAB3 /* RadishOrderDetailCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailCountDown.m; sourceTree = "<group>"; };
+		EC35F9E61E236D700097BAB3 /* RadishOrderDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailData.h; sourceTree = "<group>"; };
+		EC35F9E71E236D700097BAB3 /* RadishOrderDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailData.m; sourceTree = "<group>"; };
+		EC35F9E81E236D700097BAB3 /* RadishOrderDetailDeliver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailDeliver.h; sourceTree = "<group>"; };
+		EC35F9E91E236D700097BAB3 /* RadishOrderDetailDeliver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailDeliver.m; sourceTree = "<group>"; };
+		EC35F9EA1E236D700097BAB3 /* RadishOrderDetailDeliverItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailDeliverItem.h; sourceTree = "<group>"; };
+		EC35F9EB1E236D700097BAB3 /* RadishOrderDetailDeliverItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailDeliverItem.m; sourceTree = "<group>"; };
+		EC35F9EC1E236D700097BAB3 /* RadishOrderDetailInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailInsurance.h; sourceTree = "<group>"; };
+		EC35F9ED1E236D700097BAB3 /* RadishOrderDetailInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailInsurance.m; sourceTree = "<group>"; };
+		EC35F9EE1E236D700097BAB3 /* RadishOrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailModel.h; sourceTree = "<group>"; };
+		EC35F9EF1E236D700097BAB3 /* RadishOrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailModel.m; sourceTree = "<group>"; };
+		EC35F9F01E236D700097BAB3 /* RadishOrderDetailRefund.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailRefund.h; sourceTree = "<group>"; };
+		EC35F9F11E236D700097BAB3 /* RadishOrderDetailRefund.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailRefund.m; sourceTree = "<group>"; };
+		EC35F9F21E236D700097BAB3 /* RadishOrderDetailRemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailRemark.h; sourceTree = "<group>"; };
+		EC35F9F31E236D700097BAB3 /* RadishOrderDetailRemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailRemark.m; sourceTree = "<group>"; };
+		EC35F9F41E236D700097BAB3 /* RadishOrderDetailStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailStore.h; sourceTree = "<group>"; };
+		EC35F9F51E236D700097BAB3 /* RadishOrderDetailStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailStore.m; sourceTree = "<group>"; };
+		EC35F9F61E236D700097BAB3 /* RadishOrderDetailUserAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailUserAddress.h; sourceTree = "<group>"; };
+		EC35F9F71E236D700097BAB3 /* RadishOrderDetailUserAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailUserAddress.m; sourceTree = "<group>"; };
+		EC35F9FB1E236D700097BAB3 /* RadishOrderDetailAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailAddressCell.h; sourceTree = "<group>"; };
+		EC35F9FC1E236D700097BAB3 /* RadishOrderDetailAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailAddressCell.m; sourceTree = "<group>"; };
+		EC35F9FD1E236D700097BAB3 /* RadishOrderDetailAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailAddressCell.xib; sourceTree = "<group>"; };
+		EC35F9FF1E236D700097BAB3 /* RadishOrderDetailBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailBaseCell.h; sourceTree = "<group>"; };
+		EC35FA001E236D700097BAB3 /* RadishOrderDetailBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailBaseCell.m; sourceTree = "<group>"; };
+		EC35FA011E236D700097BAB3 /* RadishOrderDetailBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailBaseCell.xib; sourceTree = "<group>"; };
+		EC35FA031E236D700097BAB3 /* RadishOrderDetailBookingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailBookingCell.h; sourceTree = "<group>"; };
+		EC35FA041E236D700097BAB3 /* RadishOrderDetailBookingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailBookingCell.m; sourceTree = "<group>"; };
+		EC35FA051E236D700097BAB3 /* RadishOrderDetailBookingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailBookingCell.xib; sourceTree = "<group>"; };
+		EC35FA071E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailBookingFailureCell.h; sourceTree = "<group>"; };
+		EC35FA081E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailBookingFailureCell.m; sourceTree = "<group>"; };
+		EC35FA091E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailBookingFailureCell.xib; sourceTree = "<group>"; };
+		EC35FA0B1E236D700097BAB3 /* RadishOrderDetailContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailContactCell.h; sourceTree = "<group>"; };
+		EC35FA0C1E236D700097BAB3 /* RadishOrderDetailContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailContactCell.m; sourceTree = "<group>"; };
+		EC35FA0D1E236D700097BAB3 /* RadishOrderDetailContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailContactCell.xib; sourceTree = "<group>"; };
+		EC35FA0F1E236D700097BAB3 /* RadishOrderDetailDeliverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailDeliverCell.h; sourceTree = "<group>"; };
+		EC35FA101E236D700097BAB3 /* RadishOrderDetailDeliverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailDeliverCell.m; sourceTree = "<group>"; };
+		EC35FA111E236D700097BAB3 /* RadishOrderDetailDeliverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailDeliverCell.xib; sourceTree = "<group>"; };
+		EC35FA131E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailOrderInfoCell.h; sourceTree = "<group>"; };
+		EC35FA141E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailOrderInfoCell.m; sourceTree = "<group>"; };
+		EC35FA151E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailOrderInfoCell.xib; sourceTree = "<group>"; };
+		EC35FA171E236D700097BAB3 /* RadishOrderDetailOrderNoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailOrderNoCell.h; sourceTree = "<group>"; };
+		EC35FA181E236D700097BAB3 /* RadishOrderDetailOrderNoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailOrderNoCell.m; sourceTree = "<group>"; };
+		EC35FA191E236D700097BAB3 /* RadishOrderDetailOrderNoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailOrderNoCell.xib; sourceTree = "<group>"; };
+		EC35FA1B1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailPayInfoCell.h; sourceTree = "<group>"; };
+		EC35FA1C1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailPayInfoCell.m; sourceTree = "<group>"; };
+		EC35FA1D1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailPayInfoCell.xib; sourceTree = "<group>"; };
+		EC35FA1F1E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailPayInfoEmptyCell.h; sourceTree = "<group>"; };
+		EC35FA201E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailPayInfoEmptyCell.m; sourceTree = "<group>"; };
+		EC35FA211E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailPayInfoEmptyCell.xib; sourceTree = "<group>"; };
+		EC35FA231E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailPayInfoTitleCell.h; sourceTree = "<group>"; };
+		EC35FA241E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailPayInfoTitleCell.m; sourceTree = "<group>"; };
+		EC35FA251E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailPayInfoTitleCell.xib; sourceTree = "<group>"; };
+		EC35FA271E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailPayInfoTotalCell.h; sourceTree = "<group>"; };
+		EC35FA281E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailPayInfoTotalCell.m; sourceTree = "<group>"; };
+		EC35FA291E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailPayInfoTotalCell.xib; sourceTree = "<group>"; };
+		EC35FA2B1E236D700097BAB3 /* RadishOrderDetailPayTipCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailPayTipCell.h; sourceTree = "<group>"; };
+		EC35FA2C1E236D700097BAB3 /* RadishOrderDetailPayTipCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailPayTipCell.m; sourceTree = "<group>"; };
+		EC35FA2D1E236D700097BAB3 /* RadishOrderDetailPayTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailPayTipCell.xib; sourceTree = "<group>"; };
+		EC35FA2F1E236D700097BAB3 /* RadishOrderDetailProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailProductCell.h; sourceTree = "<group>"; };
+		EC35FA301E236D700097BAB3 /* RadishOrderDetailProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailProductCell.m; sourceTree = "<group>"; };
+		EC35FA311E236D700097BAB3 /* RadishOrderDetailProductCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailProductCell.xib; sourceTree = "<group>"; };
+		EC35FA331E236D700097BAB3 /* RadishOrderDetailRefundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailRefundCell.h; sourceTree = "<group>"; };
+		EC35FA341E236D700097BAB3 /* RadishOrderDetailRefundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailRefundCell.m; sourceTree = "<group>"; };
+		EC35FA351E236D700097BAB3 /* RadishOrderDetailRefundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailRefundCell.xib; sourceTree = "<group>"; };
+		EC35FA371E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailRefundTitleCell.h; sourceTree = "<group>"; };
+		EC35FA381E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailRefundTitleCell.m; sourceTree = "<group>"; };
+		EC35FA391E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailRefundTitleCell.xib; sourceTree = "<group>"; };
+		EC35FA3B1E236D700097BAB3 /* RadishOrderDetailRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailRemarkCell.h; sourceTree = "<group>"; };
+		EC35FA3C1E236D700097BAB3 /* RadishOrderDetailRemarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailRemarkCell.m; sourceTree = "<group>"; };
+		EC35FA3D1E236D700097BAB3 /* RadishOrderDetailRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailRemarkCell.xib; sourceTree = "<group>"; };
+		EC35FA3F1E236D700097BAB3 /* RadishOrderDetailStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailStoreCell.h; sourceTree = "<group>"; };
+		EC35FA401E236D700097BAB3 /* RadishOrderDetailStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailStoreCell.m; sourceTree = "<group>"; };
+		EC35FA411E236D700097BAB3 /* RadishOrderDetailStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailStoreCell.xib; sourceTree = "<group>"; };
+		EC35FA431E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailUserRemarkCell.h; sourceTree = "<group>"; };
+		EC35FA441E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailUserRemarkCell.m; sourceTree = "<group>"; };
+		EC35FA451E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailUserRemarkCell.xib; sourceTree = "<group>"; };
+		EC35FA471E236D700097BAB3 /* RadishOrderDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailHeader.h; sourceTree = "<group>"; };
+		EC35FA481E236D700097BAB3 /* RadishOrderDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailHeader.m; sourceTree = "<group>"; };
+		EC35FA491E236D700097BAB3 /* RadishOrderDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailHeader.xib; sourceTree = "<group>"; };
+		EC35FA4B1E236D700097BAB3 /* RadishOrderDetailBtnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailBtnsView.h; sourceTree = "<group>"; };
+		EC35FA4C1E236D700097BAB3 /* RadishOrderDetailBtnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailBtnsView.m; sourceTree = "<group>"; };
+		EC35FA4D1E236D700097BAB3 /* RadishOrderDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailToolBar.h; sourceTree = "<group>"; };
+		EC35FA4E1E236D700097BAB3 /* RadishOrderDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailToolBar.m; sourceTree = "<group>"; };
+		EC35FA4F1E236D700097BAB3 /* RadishOrderDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishOrderDetailToolBar.xib; sourceTree = "<group>"; };
+		EC35FA511E236D700097BAB3 /* RadishOrderDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailView.h; sourceTree = "<group>"; };
+		EC35FA521E236D700097BAB3 /* RadishOrderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailView.m; sourceTree = "<group>"; };
+		EC35FA8D1E2393C40097BAB3 /* RadishProductDetailPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailPriceCell.h; sourceTree = "<group>"; };
+		EC35FA8E1E2393C40097BAB3 /* RadishProductDetailPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailPriceCell.m; sourceTree = "<group>"; };
+		EC35FA8F1E2393C40097BAB3 /* RadishProductDetailPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishProductDetailPriceCell.xib; sourceTree = "<group>"; };
+		EC35FA921E23CA800097BAB3 /* RadishSettlementPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementPlace.h; sourceTree = "<group>"; };
+		EC35FA931E23CA800097BAB3 /* RadishSettlementPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementPlace.m; sourceTree = "<group>"; };
+		EC35FA951E23CAA10097BAB3 /* RadishSettlementChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementChannel.h; sourceTree = "<group>"; };
+		EC35FA961E23CAA10097BAB3 /* RadishSettlementChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementChannel.m; sourceTree = "<group>"; };
+		EC35FA981E23CACC0097BAB3 /* RadishSettlementStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementStore.h; sourceTree = "<group>"; };
+		EC35FA991E23CACC0097BAB3 /* RadishSettlementStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementStore.m; sourceTree = "<group>"; };
+		EC35FA9B1E23D4480097BAB3 /* RadishSettlementTipAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishSettlementTipAddressCell.h; sourceTree = "<group>"; };
+		EC35FA9C1E23D4480097BAB3 /* RadishSettlementTipAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishSettlementTipAddressCell.m; sourceTree = "<group>"; };
+		EC35FA9D1E23D4480097BAB3 /* RadishSettlementTipAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadishSettlementTipAddressCell.xib; sourceTree = "<group>"; };
 		EC3CE0A21DF15DDC005729E2 /* MapLocateAnnotationTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapLocateAnnotationTipView.xib; sourceTree = "<group>"; };
 		EC3CE0A41DF167DB005729E2 /* NearbyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyView.h; sourceTree = "<group>"; };
 		EC3CE0A51DF167DB005729E2 /* NearbyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyView.m; sourceTree = "<group>"; };
@@ -4281,8 +4491,6 @@
 		EC73A01E1E1E25CE0027E91E /* RadishMallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallViewController.m; sourceTree = "<group>"; };
 		EC73A0201E1E25E60027E91E /* RadishMallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishMallView.h; sourceTree = "<group>"; };
 		EC73A0211E1E25E60027E91E /* RadishMallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishMallView.m; sourceTree = "<group>"; };
-		EC73A0231E1E26010027E91E /* RadishOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailViewController.h; sourceTree = "<group>"; };
-		EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailViewController.m; sourceTree = "<group>"; };
 		EC73A0261E1E26110027E91E /* RadishProductOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductOrderListViewController.h; sourceTree = "<group>"; };
 		EC73A0271E1E26110027E91E /* RadishProductOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductOrderListViewController.m; sourceTree = "<group>"; };
 		EC73A0291E1E26280027E91E /* RadishProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductDetailViewController.h; sourceTree = "<group>"; };
@@ -4295,8 +4503,6 @@
 		EC73A0331E1E265E0027E91E /* RadishProductDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductDetailView.m; sourceTree = "<group>"; };
 		EC73A0351E1E266E0027E91E /* RadishProductOrderListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishProductOrderListView.h; sourceTree = "<group>"; };
 		EC73A0361E1E266E0027E91E /* RadishProductOrderListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishProductOrderListView.m; sourceTree = "<group>"; };
-		EC73A0381E1E267E0027E91E /* RadishOrderDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadishOrderDetailView.h; sourceTree = "<group>"; };
-		EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadishOrderDetailView.m; sourceTree = "<group>"; };
 		EC76B89F1DC65FC6006518DE /* ServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailViewController.h; sourceTree = "<group>"; };
 		EC76B8A01DC65FC6006518DE /* ServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailViewController.m; sourceTree = "<group>"; };
 		EC76B8A11DC65FC6006518DE /* ServiceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDetailViewController.xib; sourceTree = "<group>"; };
@@ -6989,16 +7195,6 @@
 			path = RadishProductDetailContactCell;
 			sourceTree = "<group>";
 		};
-		EC35F7DB1E1F41500097BAB3 /* RadishProductDetailCouponCell */ = {
-			isa = PBXGroup;
-			children = (
-				EC35F7DC1E1F41500097BAB3 /* RadishProductDetailCouponCell.h */,
-				EC35F7DD1E1F41500097BAB3 /* RadishProductDetailCouponCell.m */,
-				EC35F7DE1E1F41500097BAB3 /* RadishProductDetailCouponCell.xib */,
-			);
-			path = RadishProductDetailCouponCell;
-			sourceTree = "<group>";
-		};
 		EC35F7DF1E1F41500097BAB3 /* RadishProductDetailDateCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -7360,6 +7556,9 @@
 				EC35F9661E1FDE8E0097BAB3 /* RadishSettlementAddressCell.h */,
 				EC35F9671E1FDE8E0097BAB3 /* RadishSettlementAddressCell.m */,
 				EC35F9681E1FDE8E0097BAB3 /* RadishSettlementAddressCell.xib */,
+				EC35FA9B1E23D4480097BAB3 /* RadishSettlementTipAddressCell.h */,
+				EC35FA9C1E23D4480097BAB3 /* RadishSettlementTipAddressCell.m */,
+				EC35FA9D1E23D4480097BAB3 /* RadishSettlementTipAddressCell.xib */,
 				EC35F9611E1FD00A0097BAB3 /* RadishSettlementRadishCell.h */,
 				EC35F9621E1FD00A0097BAB3 /* RadishSettlementRadishCell.m */,
 				EC35F9631E1FD00A0097BAB3 /* RadishSettlementRadishCell.xib */,
@@ -7404,6 +7603,400 @@
 				EC35F9711E20A1350097BAB3 /* DataBaseManager.m */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		EC35F9A71E2365E30097BAB3 /* RadishMallBannerCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9A81E2365E30097BAB3 /* RadishMallBannerCell.h */,
+				EC35F9A91E2365E30097BAB3 /* RadishMallBannerCell.m */,
+				EC35F9AA1E2365E30097BAB3 /* RadishMallBannerCell.xib */,
+				EC35F9AB1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.h */,
+				EC35F9AC1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.m */,
+				EC35F9AD1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.xib */,
+			);
+			path = RadishMallBannerCell;
+			sourceTree = "<group>";
+		};
+		EC35F9AE1E2365E30097BAB3 /* RadishMallBaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9AF1E2365E30097BAB3 /* RadishMallBaseCell.h */,
+				EC35F9B01E2365E30097BAB3 /* RadishMallBaseCell.m */,
+				EC35F9B11E2365E30097BAB3 /* RadishMallBaseCell.xib */,
+			);
+			path = RadishMallBaseCell;
+			sourceTree = "<group>";
+		};
+		EC35F9B21E2365E30097BAB3 /* RadishMallHotTipCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9B31E2365E30097BAB3 /* RadishMallHotTipCell.h */,
+				EC35F9B41E2365E30097BAB3 /* RadishMallHotTipCell.m */,
+				EC35F9B51E2365E30097BAB3 /* RadishMallHotTipCell.xib */,
+			);
+			path = RadishMallHotTipCell;
+			sourceTree = "<group>";
+		};
+		EC35F9B61E2365E30097BAB3 /* RadishMallItemsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9B71E2365E30097BAB3 /* RadishMallItemsCell.h */,
+				EC35F9B81E2365E30097BAB3 /* RadishMallItemsCell.m */,
+				EC35F9B91E2365E30097BAB3 /* RadishMallItemsCell.xib */,
+				EC35F9BA1E2365E30097BAB3 /* RadishMallItemsCollectionCell.h */,
+				EC35F9BB1E2365E30097BAB3 /* RadishMallItemsCollectionCell.m */,
+				EC35F9BC1E2365E30097BAB3 /* RadishMallItemsCollectionCell.xib */,
+			);
+			path = RadishMallItemsCell;
+			sourceTree = "<group>";
+		};
+		EC35F9BD1E2365E30097BAB3 /* RadishMallLargeCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9BE1E2365E30097BAB3 /* RadishMallLargeCell.h */,
+				EC35F9BF1E2365E30097BAB3 /* RadishMallLargeCell.m */,
+				EC35F9C01E2365E30097BAB3 /* RadishMallLargeCell.xib */,
+			);
+			path = RadishMallLargeCell;
+			sourceTree = "<group>";
+		};
+		EC35F9C11E2365E30097BAB3 /* RadishMallPlantCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9C21E2365E30097BAB3 /* RadishMallPlantCell.h */,
+				EC35F9C31E2365E30097BAB3 /* RadishMallPlantCell.m */,
+				EC35F9C41E2365E30097BAB3 /* RadishMallPlantCell.xib */,
+			);
+			path = RadishMallPlantCell;
+			sourceTree = "<group>";
+		};
+		EC35F9C51E2365E30097BAB3 /* RadishMallSmallCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9C61E2365E30097BAB3 /* RadishMallSmallCell.h */,
+				EC35F9C71E2365E30097BAB3 /* RadishMallSmallCell.m */,
+				EC35F9C81E2365E30097BAB3 /* RadishMallSmallCell.xib */,
+			);
+			path = RadishMallSmallCell;
+			sourceTree = "<group>";
+		};
+		EC35F9DB1E236D700097BAB3 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9DC1E236D700097BAB3 /* C */,
+				EC35F9DF1E236D700097BAB3 /* M */,
+				EC35F9F81E236D700097BAB3 /* V */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		EC35F9DC1E236D700097BAB3 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9DD1E236D700097BAB3 /* RadishOrderDetailViewController.h */,
+				EC35F9DE1E236D700097BAB3 /* RadishOrderDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC35F9DF1E236D700097BAB3 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9E01E236D700097BAB3 /* RadishOrderDetailBtn.h */,
+				EC35F9E11E236D700097BAB3 /* RadishOrderDetailBtn.m */,
+				EC35F9E21E236D700097BAB3 /* RadishOrderDetailConsumeCode.h */,
+				EC35F9E31E236D700097BAB3 /* RadishOrderDetailConsumeCode.m */,
+				EC35F9E41E236D700097BAB3 /* RadishOrderDetailCountDown.h */,
+				EC35F9E51E236D700097BAB3 /* RadishOrderDetailCountDown.m */,
+				EC35F9E61E236D700097BAB3 /* RadishOrderDetailData.h */,
+				EC35F9E71E236D700097BAB3 /* RadishOrderDetailData.m */,
+				EC35F9E81E236D700097BAB3 /* RadishOrderDetailDeliver.h */,
+				EC35F9E91E236D700097BAB3 /* RadishOrderDetailDeliver.m */,
+				EC35F9EA1E236D700097BAB3 /* RadishOrderDetailDeliverItem.h */,
+				EC35F9EB1E236D700097BAB3 /* RadishOrderDetailDeliverItem.m */,
+				EC35F9EC1E236D700097BAB3 /* RadishOrderDetailInsurance.h */,
+				EC35F9ED1E236D700097BAB3 /* RadishOrderDetailInsurance.m */,
+				EC35F9EE1E236D700097BAB3 /* RadishOrderDetailModel.h */,
+				EC35F9EF1E236D700097BAB3 /* RadishOrderDetailModel.m */,
+				EC35F9F01E236D700097BAB3 /* RadishOrderDetailRefund.h */,
+				EC35F9F11E236D700097BAB3 /* RadishOrderDetailRefund.m */,
+				EC35F9F21E236D700097BAB3 /* RadishOrderDetailRemark.h */,
+				EC35F9F31E236D700097BAB3 /* RadishOrderDetailRemark.m */,
+				EC35F9F41E236D700097BAB3 /* RadishOrderDetailStore.h */,
+				EC35F9F51E236D700097BAB3 /* RadishOrderDetailStore.m */,
+				EC35F9F61E236D700097BAB3 /* RadishOrderDetailUserAddress.h */,
+				EC35F9F71E236D700097BAB3 /* RadishOrderDetailUserAddress.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC35F9F81E236D700097BAB3 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9F91E236D700097BAB3 /* Cells */,
+				EC35FA461E236D700097BAB3 /* Header */,
+				EC35FA4A1E236D700097BAB3 /* ToolBar */,
+				EC35FA501E236D700097BAB3 /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC35F9F91E236D700097BAB3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9FA1E236D700097BAB3 /* RadishOrderDetailAddressCell */,
+				EC35F9FE1E236D700097BAB3 /* RadishOrderDetailBaseCell */,
+				EC35FA021E236D700097BAB3 /* RadishOrderDetailBookingCell */,
+				EC35FA061E236D700097BAB3 /* RadishOrderDetailBookingFailureCell */,
+				EC35FA0A1E236D700097BAB3 /* RadishOrderDetailContactCell */,
+				EC35FA0E1E236D700097BAB3 /* RadishOrderDetailDeliverCell */,
+				EC35FA121E236D700097BAB3 /* RadishOrderDetailOrderInfoCell */,
+				EC35FA161E236D700097BAB3 /* RadishOrderDetailOrderNoCell */,
+				EC35FA1A1E236D700097BAB3 /* RadishOrderDetailPayInfoCell */,
+				EC35FA1E1E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell */,
+				EC35FA221E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell */,
+				EC35FA261E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell */,
+				EC35FA2A1E236D700097BAB3 /* RadishOrderDetailPayTipCell */,
+				EC35FA2E1E236D700097BAB3 /* RadishOrderDetailProductCell */,
+				EC35FA321E236D700097BAB3 /* RadishOrderDetailRefundCell */,
+				EC35FA361E236D700097BAB3 /* RadishOrderDetailRefundTitleCell */,
+				EC35FA3A1E236D700097BAB3 /* RadishOrderDetailRemarkCell */,
+				EC35FA3E1E236D700097BAB3 /* RadishOrderDetailStoreCell */,
+				EC35FA421E236D700097BAB3 /* RadishOrderDetailUserRemarkCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC35F9FA1E236D700097BAB3 /* RadishOrderDetailAddressCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9FB1E236D700097BAB3 /* RadishOrderDetailAddressCell.h */,
+				EC35F9FC1E236D700097BAB3 /* RadishOrderDetailAddressCell.m */,
+				EC35F9FD1E236D700097BAB3 /* RadishOrderDetailAddressCell.xib */,
+			);
+			path = RadishOrderDetailAddressCell;
+			sourceTree = "<group>";
+		};
+		EC35F9FE1E236D700097BAB3 /* RadishOrderDetailBaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35F9FF1E236D700097BAB3 /* RadishOrderDetailBaseCell.h */,
+				EC35FA001E236D700097BAB3 /* RadishOrderDetailBaseCell.m */,
+				EC35FA011E236D700097BAB3 /* RadishOrderDetailBaseCell.xib */,
+			);
+			path = RadishOrderDetailBaseCell;
+			sourceTree = "<group>";
+		};
+		EC35FA021E236D700097BAB3 /* RadishOrderDetailBookingCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA031E236D700097BAB3 /* RadishOrderDetailBookingCell.h */,
+				EC35FA041E236D700097BAB3 /* RadishOrderDetailBookingCell.m */,
+				EC35FA051E236D700097BAB3 /* RadishOrderDetailBookingCell.xib */,
+			);
+			path = RadishOrderDetailBookingCell;
+			sourceTree = "<group>";
+		};
+		EC35FA061E236D700097BAB3 /* RadishOrderDetailBookingFailureCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA071E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.h */,
+				EC35FA081E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.m */,
+				EC35FA091E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.xib */,
+			);
+			path = RadishOrderDetailBookingFailureCell;
+			sourceTree = "<group>";
+		};
+		EC35FA0A1E236D700097BAB3 /* RadishOrderDetailContactCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA0B1E236D700097BAB3 /* RadishOrderDetailContactCell.h */,
+				EC35FA0C1E236D700097BAB3 /* RadishOrderDetailContactCell.m */,
+				EC35FA0D1E236D700097BAB3 /* RadishOrderDetailContactCell.xib */,
+			);
+			path = RadishOrderDetailContactCell;
+			sourceTree = "<group>";
+		};
+		EC35FA0E1E236D700097BAB3 /* RadishOrderDetailDeliverCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA0F1E236D700097BAB3 /* RadishOrderDetailDeliverCell.h */,
+				EC35FA101E236D700097BAB3 /* RadishOrderDetailDeliverCell.m */,
+				EC35FA111E236D700097BAB3 /* RadishOrderDetailDeliverCell.xib */,
+			);
+			path = RadishOrderDetailDeliverCell;
+			sourceTree = "<group>";
+		};
+		EC35FA121E236D700097BAB3 /* RadishOrderDetailOrderInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA131E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.h */,
+				EC35FA141E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.m */,
+				EC35FA151E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.xib */,
+			);
+			path = RadishOrderDetailOrderInfoCell;
+			sourceTree = "<group>";
+		};
+		EC35FA161E236D700097BAB3 /* RadishOrderDetailOrderNoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA171E236D700097BAB3 /* RadishOrderDetailOrderNoCell.h */,
+				EC35FA181E236D700097BAB3 /* RadishOrderDetailOrderNoCell.m */,
+				EC35FA191E236D700097BAB3 /* RadishOrderDetailOrderNoCell.xib */,
+			);
+			path = RadishOrderDetailOrderNoCell;
+			sourceTree = "<group>";
+		};
+		EC35FA1A1E236D700097BAB3 /* RadishOrderDetailPayInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA1B1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.h */,
+				EC35FA1C1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.m */,
+				EC35FA1D1E236D700097BAB3 /* RadishOrderDetailPayInfoCell.xib */,
+			);
+			path = RadishOrderDetailPayInfoCell;
+			sourceTree = "<group>";
+		};
+		EC35FA1E1E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA1F1E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.h */,
+				EC35FA201E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.m */,
+				EC35FA211E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.xib */,
+			);
+			path = RadishOrderDetailPayInfoEmptyCell;
+			sourceTree = "<group>";
+		};
+		EC35FA221E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA231E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.h */,
+				EC35FA241E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.m */,
+				EC35FA251E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.xib */,
+			);
+			path = RadishOrderDetailPayInfoTitleCell;
+			sourceTree = "<group>";
+		};
+		EC35FA261E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA271E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.h */,
+				EC35FA281E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.m */,
+				EC35FA291E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.xib */,
+			);
+			path = RadishOrderDetailPayInfoTotalCell;
+			sourceTree = "<group>";
+		};
+		EC35FA2A1E236D700097BAB3 /* RadishOrderDetailPayTipCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA2B1E236D700097BAB3 /* RadishOrderDetailPayTipCell.h */,
+				EC35FA2C1E236D700097BAB3 /* RadishOrderDetailPayTipCell.m */,
+				EC35FA2D1E236D700097BAB3 /* RadishOrderDetailPayTipCell.xib */,
+			);
+			path = RadishOrderDetailPayTipCell;
+			sourceTree = "<group>";
+		};
+		EC35FA2E1E236D700097BAB3 /* RadishOrderDetailProductCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA2F1E236D700097BAB3 /* RadishOrderDetailProductCell.h */,
+				EC35FA301E236D700097BAB3 /* RadishOrderDetailProductCell.m */,
+				EC35FA311E236D700097BAB3 /* RadishOrderDetailProductCell.xib */,
+			);
+			path = RadishOrderDetailProductCell;
+			sourceTree = "<group>";
+		};
+		EC35FA321E236D700097BAB3 /* RadishOrderDetailRefundCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA331E236D700097BAB3 /* RadishOrderDetailRefundCell.h */,
+				EC35FA341E236D700097BAB3 /* RadishOrderDetailRefundCell.m */,
+				EC35FA351E236D700097BAB3 /* RadishOrderDetailRefundCell.xib */,
+			);
+			path = RadishOrderDetailRefundCell;
+			sourceTree = "<group>";
+		};
+		EC35FA361E236D700097BAB3 /* RadishOrderDetailRefundTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA371E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.h */,
+				EC35FA381E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.m */,
+				EC35FA391E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.xib */,
+			);
+			path = RadishOrderDetailRefundTitleCell;
+			sourceTree = "<group>";
+		};
+		EC35FA3A1E236D700097BAB3 /* RadishOrderDetailRemarkCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA3B1E236D700097BAB3 /* RadishOrderDetailRemarkCell.h */,
+				EC35FA3C1E236D700097BAB3 /* RadishOrderDetailRemarkCell.m */,
+				EC35FA3D1E236D700097BAB3 /* RadishOrderDetailRemarkCell.xib */,
+			);
+			path = RadishOrderDetailRemarkCell;
+			sourceTree = "<group>";
+		};
+		EC35FA3E1E236D700097BAB3 /* RadishOrderDetailStoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA3F1E236D700097BAB3 /* RadishOrderDetailStoreCell.h */,
+				EC35FA401E236D700097BAB3 /* RadishOrderDetailStoreCell.m */,
+				EC35FA411E236D700097BAB3 /* RadishOrderDetailStoreCell.xib */,
+			);
+			path = RadishOrderDetailStoreCell;
+			sourceTree = "<group>";
+		};
+		EC35FA421E236D700097BAB3 /* RadishOrderDetailUserRemarkCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA431E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.h */,
+				EC35FA441E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.m */,
+				EC35FA451E236D700097BAB3 /* RadishOrderDetailUserRemarkCell.xib */,
+			);
+			path = RadishOrderDetailUserRemarkCell;
+			sourceTree = "<group>";
+		};
+		EC35FA461E236D700097BAB3 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA471E236D700097BAB3 /* RadishOrderDetailHeader.h */,
+				EC35FA481E236D700097BAB3 /* RadishOrderDetailHeader.m */,
+				EC35FA491E236D700097BAB3 /* RadishOrderDetailHeader.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		EC35FA4A1E236D700097BAB3 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA4B1E236D700097BAB3 /* RadishOrderDetailBtnsView.h */,
+				EC35FA4C1E236D700097BAB3 /* RadishOrderDetailBtnsView.m */,
+				EC35FA4D1E236D700097BAB3 /* RadishOrderDetailToolBar.h */,
+				EC35FA4E1E236D700097BAB3 /* RadishOrderDetailToolBar.m */,
+				EC35FA4F1E236D700097BAB3 /* RadishOrderDetailToolBar.xib */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		EC35FA501E236D700097BAB3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA511E236D700097BAB3 /* RadishOrderDetailView.h */,
+				EC35FA521E236D700097BAB3 /* RadishOrderDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC35FA8C1E2393AC0097BAB3 /* RadishProductDetailPriceCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC35FA8D1E2393C40097BAB3 /* RadishProductDetailPriceCell.h */,
+				EC35FA8E1E2393C40097BAB3 /* RadishProductDetailPriceCell.m */,
+				EC35FA8F1E2393C40097BAB3 /* RadishProductDetailPriceCell.xib */,
+			);
+			path = RadishProductDetailPriceCell;
 			sourceTree = "<group>";
 		};
 		EC3CE0B41DF17A57005729E2 /* NearbyCategoryToolBar */ = {
@@ -12640,7 +13233,7 @@
 			isa = PBXGroup;
 			children = (
 				EC739FFF1E1E257A0027E91E /* Mall */,
-				EC73A0051E1E257A0027E91E /* OrderDetail */,
+				EC35F9DB1E236D700097BAB3 /* OrderDetail */,
 				EC73A00B1E1E257A0027E91E /* OrderList */,
 				EC73A0111E1E257A0027E91E /* ProductDetail */,
 				EC73A0171E1E257A0027E91E /* Settlement */,
@@ -12670,6 +13263,10 @@
 		EC73A0011E1E257A0027E91E /* M */ = {
 			isa = PBXGroup;
 			children = (
+				EC35F9A41E2362800097BAB3 /* RadishMallModel.h */,
+				EC35F9A51E2362800097BAB3 /* RadishMallModel.m */,
+				EC35F9A11E2362610097BAB3 /* RadishMallData.h */,
+				EC35F9A21E2362610097BAB3 /* RadishMallData.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -12686,6 +13283,13 @@
 		EC73A0031E1E257A0027E91E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC35F9A71E2365E30097BAB3 /* RadishMallBannerCell */,
+				EC35F9AE1E2365E30097BAB3 /* RadishMallBaseCell */,
+				EC35F9B21E2365E30097BAB3 /* RadishMallHotTipCell */,
+				EC35F9B61E2365E30097BAB3 /* RadishMallItemsCell */,
+				EC35F9BD1E2365E30097BAB3 /* RadishMallLargeCell */,
+				EC35F9C11E2365E30097BAB3 /* RadishMallPlantCell */,
+				EC35F9C51E2365E30097BAB3 /* RadishMallSmallCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -12695,57 +13299,6 @@
 			children = (
 				EC73A0201E1E25E60027E91E /* RadishMallView.h */,
 				EC73A0211E1E25E60027E91E /* RadishMallView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EC73A0051E1E257A0027E91E /* OrderDetail */ = {
-			isa = PBXGroup;
-			children = (
-				EC73A0061E1E257A0027E91E /* C */,
-				EC73A0071E1E257A0027E91E /* M */,
-				EC73A0081E1E257A0027E91E /* V */,
-			);
-			path = OrderDetail;
-			sourceTree = "<group>";
-		};
-		EC73A0061E1E257A0027E91E /* C */ = {
-			isa = PBXGroup;
-			children = (
-				EC73A0231E1E26010027E91E /* RadishOrderDetailViewController.h */,
-				EC73A0241E1E26010027E91E /* RadishOrderDetailViewController.m */,
-			);
-			path = C;
-			sourceTree = "<group>";
-		};
-		EC73A0071E1E257A0027E91E /* M */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = M;
-			sourceTree = "<group>";
-		};
-		EC73A0081E1E257A0027E91E /* V */ = {
-			isa = PBXGroup;
-			children = (
-				EC73A0091E1E257A0027E91E /* Cells */,
-				EC73A00A1E1E257A0027E91E /* View */,
-			);
-			path = V;
-			sourceTree = "<group>";
-		};
-		EC73A0091E1E257A0027E91E /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		EC73A00A1E1E257A0027E91E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EC73A0381E1E267E0027E91E /* RadishOrderDetailView.h */,
-				EC73A0391E1E267E0027E91E /* RadishOrderDetailView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -12847,8 +13400,6 @@
 				EC35F9031E1F9A0A0097BAB3 /* RadishProductDetailCommentScore.m */,
 				EC35F9051E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.h */,
 				EC35F9061E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.m */,
-				EC35F8FF1E1F97E00097BAB3 /* RadishProductDetailCoupon.h */,
-				EC35F9001E1F97E00097BAB3 /* RadishProdectDetailCoupon.m */,
 				EC35F9081E1F9BB60097BAB3 /* RadishProductDetailInsurance.h */,
 				EC35F9091E1F9BB60097BAB3 /* RadishProductDetailInsurance.m */,
 				EC35F90A1E1F9BB60097BAB3 /* RadishProductDetailInsuranceItem.h */,
@@ -12886,6 +13437,7 @@
 		EC73A0151E1E257A0027E91E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				EC35FA8C1E2393AC0097BAB3 /* RadishProductDetailPriceCell */,
 				EC35F7C21E1F41500097BAB3 /* RadishProductDetailApplyCell */,
 				EC35F7C61E1F41500097BAB3 /* RadishProductDetailBannerCell */,
 				EC35F85C1E1F473C0097BAB3 /* RadishProductDetailBaseCell */,
@@ -12893,7 +13445,6 @@
 				EC35F8541E1F461C0097BAB3 /* RadishProductDetailBuyNoticeEmptyCell */,
 				EC35F7CD1E1F41500097BAB3 /* RadishProductDetailCommentCell */,
 				EC35F7D71E1F41500097BAB3 /* RadishProductDetailContactCell */,
-				EC35F7DB1E1F41500097BAB3 /* RadishProductDetailCouponCell */,
 				EC35F7DF1E1F41500097BAB3 /* RadishProductDetailDateCell */,
 				EC35F7E31E1F41500097BAB3 /* RadishProductDetailInfoCell */,
 				EC35F7E71E1F41500097BAB3 /* RadishProductDetailJoinCell */,
@@ -12943,6 +13494,12 @@
 				EC35F95F1E1FCDEF0097BAB3 /* RadishSettlementModel.m */,
 				EC35F95B1E1FCDE30097BAB3 /* RadishSettlementData.h */,
 				EC35F95C1E1FCDE30097BAB3 /* RadishSettlementData.m */,
+				EC35FA951E23CAA10097BAB3 /* RadishSettlementChannel.h */,
+				EC35FA961E23CAA10097BAB3 /* RadishSettlementChannel.m */,
+				EC35FA921E23CA800097BAB3 /* RadishSettlementPlace.h */,
+				EC35FA931E23CA800097BAB3 /* RadishSettlementPlace.m */,
+				EC35FA981E23CACC0097BAB3 /* RadishSettlementStore.h */,
+				EC35FA991E23CACC0097BAB3 /* RadishSettlementStore.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -15333,6 +15890,7 @@
 				EC4FC5A91D77CEEF00BBD050 /* SheetCell.xib in Resources */,
 				EC739DCA1E1B63630027E91E /* ProductOrderFreeListCell.xib in Resources */,
 				ECF5D0CA1DB8C4FE00A1B268 /* QRCodeScanTextViewController.xib in Resources */,
+				EC35FA811E236D710097BAB3 /* RadishOrderDetailRemarkCell.xib in Resources */,
 				EC4FC4B11D77CEE400BBD050 /* OrderRefundView.xib in Resources */,
 				EC4FC47F1D77CEE400BBD050 /* FavouriteViewStrategyCell.xib in Resources */,
 				EC35F84D1E1F41500097BAB3 /* RadishProductDetailTwoColumnToolBar.xib in Resources */,
@@ -15351,7 +15909,9 @@
 				EC76B8D81DC65FC6006518DE /* ServiceDetailConfirmViewCell.xib in Resources */,
 				EC4C60BB1DF5B0CB00830126 /* ProductOrderListAllTitleView.xib in Resources */,
 				EC5CDD371DE538F200F95C6F /* ProductDetailFreeApplyUserPhoneCell.xib in Resources */,
+				EC35FA791E236D700097BAB3 /* RadishOrderDetailPayTipCell.xib in Resources */,
 				EC739F231E1CCF060027E91E /* WolesaleProductDetailBuyNoticeEmptyCell.xib in Resources */,
+				EC35FA7D1E236D700097BAB3 /* RadishOrderDetailRefundCell.xib in Resources */,
 				EC35F82B1E1F41500097BAB3 /* RadishProductDetailCommentMoreCell.xib in Resources */,
 				EC5505DB1E01B8F900180A2C /* ServiceSettlementSelectPlaceCell.xib in Resources */,
 				EC4FC3C51D77CEE400BBD050 /* WelfareStoreLoveHouseCell.xib in Resources */,
@@ -15383,6 +15943,7 @@
 				EC30ABC31DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoCell.xib in Resources */,
 				EC3168521E01CE5B009F0945 /* ProductOrderTicketDetailUserRemarkCell.xib in Resources */,
 				EC739F071E1CCF060027E91E /* WolesaleProductDetailV2BannersCell.xib in Resources */,
+				EC35FA751E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.xib in Resources */,
 				ECA95AD71DDC9FA500990AAE /* CollectionStoreHeaderCollectionViewCell.xib in Resources */,
 				EC739E231E1BE8330027E91E /* CollectionStoreEmptyFooter.xib in Resources */,
 				EC4FC60A1D77DCFD00BBD050 /* Resources.bundle in Resources */,
@@ -15407,13 +15968,16 @@
 				EC4FC2A01D77CEE400BBD050 /* ArticleWeChatSmallCell.xib in Resources */,
 				EC739F2F1E1CCF070027E91E /* WolesaleProductDetailOtherPorductCell.xib in Resources */,
 				ECA59B8A1DEC077900B3B1F7 /* CouponListViewSegmentCell.xib in Resources */,
+				EC35F9CE1E2365E30097BAB3 /* RadishMallBaseCell.xib in Resources */,
 				ECF704ED1D89308300650C0A /* ArticleUserCenterCommentCollectionViewCell.xib in Resources */,
+				EC35F9CA1E2365E30097BAB3 /* RadishMallBannerCell.xib in Resources */,
 				EC0044331DE6B8970042B701 /* ProductDetailTicketPromiseCell.xib in Resources */,
 				EC4FC4771D77CEE400BBD050 /* FavourateView.xib in Resources */,
 				EC2F26221DD6E4A100B67BBA /* ServiceSettlementTicketPriceCell.xib in Resources */,
 				EC76B8DE1DC65FC6006518DE /* ServiceDetailView.xib in Resources */,
 				EC739FC21E1D133D0027E91E /* WholesaleOrderDetailJoinMemberCell.xib in Resources */,
 				EC4FC3E71D77CEE400BBD050 /* ParentingStrategyDetailViewController.xib in Resources */,
+				EC35FA7B1E236D700097BAB3 /* RadishOrderDetailProductCell.xib in Resources */,
 				EC4FC4561D77CEE400BBD050 /* MyCommentListViewCell.xib in Resources */,
 				EC2F26131DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.xib in Resources */,
 				EC739F2B1E1CCF060027E91E /* WolesaleProductDetailJoinTeamCell.xib in Resources */,
@@ -15437,6 +16001,7 @@
 				EC5CDD3E1DE538F200F95C6F /* ProductDetailFreeApplySelectBirthViewController.xib in Resources */,
 				EC4FC3981D77CEE400BBD050 /* StoreDetailTitleCell.xib in Resources */,
 				EC4FC6421D78092900BBD050 /* WebFailureView.xib in Resources */,
+				EC35FA651E236D700097BAB3 /* RadishOrderDetailBookingCell.xib in Resources */,
 				EC4FC38E1D77CEE400BBD050 /* StoreDetailViewController.xib in Resources */,
 				EC7FBC131DC4D074007B326C /* ProductDetailGetCouponListViewController.xib in Resources */,
 				EC4FC5D51D77CEEF00BBD050 /* UIBarButtonItemGrid@2x.png in Resources */,
@@ -15477,6 +16042,7 @@
 				EC30AB361DFF273F007380B0 /* ProductOrderNormalDetailBookingCell.xib in Resources */,
 				EC4FC49D1D77CEE400BBD050 /* FlashServiceOrderDetailToolBar.xib in Resources */,
 				EC0D360F1DFEDC110028BC0E /* ProductOrderNormalDetailPayTipCell.xib in Resources */,
+				EC35F9CC1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.xib in Resources */,
 				EC4FC37C1D77CEE400BBD050 /* CashierDeskViewController.xib in Resources */,
 				EC0044251DE6B8970042B701 /* ProductDetailRecommendCell.xib in Resources */,
 				EC35F8641E1F48060097BAB3 /* RadishProductDetailBaseCell.xib in Resources */,
@@ -15496,6 +16062,7 @@
 				EC4FC5C81D77CEEF00BBD050 /* PlayButtonOverlayLarge.png in Resources */,
 				EC4C60B71DF5B0CB00830126 /* ProductOrderListAllTitleCollectionHeader.xib in Resources */,
 				EC4FC5BF1D77CEEF00BBD050 /* ImageSelectedOn.png in Resources */,
+				EC35F9D81E2365E30097BAB3 /* RadishMallPlantCell.xib in Resources */,
 				EC00444E1DE6B8980042B701 /* ProductDetailTicketToolBar.xib in Resources */,
 				EC9775B91E1159F800980C4A /* WholesaleSettlementRuleCell.xib in Resources */,
 				EC4FC48D1D77CEE400BBD050 /* FlashServiceOrderDetailOrderInfoCell.xib in Resources */,
@@ -15503,6 +16070,7 @@
 				EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */,
 				EC4FC34F1D77CEE400BBD050 /* FlashAdvanceSettlementTipAddressCell.xib in Resources */,
 				EC0044D91DE7F4E40042B701 /* ProductDetailTwoColumnWebViewCell.xib in Resources */,
+				EC35FA6B1E236D700097BAB3 /* RadishOrderDetailDeliverCell.xib in Resources */,
 				ECA59C071DED61A600B3B1F7 /* SearchFactorAreaView.xib in Resources */,
 				EC0044271DE6B8970042B701 /* ProductDetailStandardCell.xib in Resources */,
 				EC30ABCD1DFF9CD3007380B0 /* ProductOrderTicketDetailProductCell.xib in Resources */,
@@ -15536,7 +16104,6 @@
 				EC4FC5E61D77CEEF00BBD050 /* LICENSE in Resources */,
 				EC4870B01DFC3FFB005CA365 /* ProductOrderFreeDetailMoreLotteryCell.xib in Resources */,
 				ECBC97BE1DFEE80B00B7386C /* ProductOrderNormalDetailPayInfoTitleCell.xib in Resources */,
-				EC35F82F1E1F41500097BAB3 /* RadishProductDetailCouponCell.xib in Resources */,
 				EC3168751E0285D8009F0945 /* OrderListViewCell.xib in Resources */,
 				EC486F3F1DF7C726005CA365 /* SearchFactorFilterView.xib in Resources */,
 				EC30ABE01DFFB007007380B0 /* ProductOrderTicketDetailTimeCell.xib in Resources */,
@@ -15559,6 +16126,7 @@
 				EC2F26181DD6C45900B67BBA /* ProductDetailTicketSelectSeatCollectionViewHeader.xib in Resources */,
 				EC30AB561DFF90BD007380B0 /* ProductOrderTicketDetailHeader.xib in Resources */,
 				ECA95AD51DDC9FA500990AAE /* CollectionStoreHeader.xib in Resources */,
+				EC35FA611E236D700097BAB3 /* RadishOrderDetailAddressCell.xib in Resources */,
 				EC739DE21E1B63C20027E91E /* ProductOrderFreeListBtnsCell.xib in Resources */,
 				EC4FC3C31D77CEE400BBD050 /* WelfareStoreHospitalCell.xib in Resources */,
 				EC739F1F1E1CCF060027E91E /* WolesaleProductDetailBaseCell.xib in Resources */,
@@ -15576,6 +16144,7 @@
 				EC35F8391E1F41500097BAB3 /* RadishProductDetailNoticeCollectionViewCell.xib in Resources */,
 				EC4FC35F1D77CEE400BBD050 /* FlashBalanceSettlementStoreInfoCell.xib in Resources */,
 				EC35F9561E1FCCFD0097BAB3 /* RadishSettlementPlaceInfoCell.xib in Resources */,
+				EC35F9D21E2365E30097BAB3 /* RadishMallItemsCell.xib in Resources */,
 				EC4FC5B91D77CEEF00BBD050 /* ImageError.png in Resources */,
 				ECA59BEB1DED612600B3B1F7 /* SearchFactorSortCell.xib in Resources */,
 				EC630DEF1DCC72100088145E /* FailureViewLoadData.xib in Resources */,
@@ -15598,11 +16167,13 @@
 				EC35F9581E1FCCFD0097BAB3 /* RadishSettlementProductInfoCell.xib in Resources */,
 				EC35F8861E1F4F9B0097BAB3 /* RadishProductDetailTwoColumnConsultMoreCell.xib in Resources */,
 				EC4FC3F91D77CEE400BBD050 /* AccountSettingLogoutView.xib in Resources */,
+				EC35FA9F1E23D4480097BAB3 /* RadishSettlementTipAddressCell.xib in Resources */,
 				EC9774CF1E0B85CD00980C4A /* RecommendStoreCollectStoreView.xib in Resources */,
 				EC35F8CB1E1F896D0097BAB3 /* RadishProductOrderListAddressCell.xib in Resources */,
 				EC4E278F1DF0134E00622711 /* NearbyCollectionViewCell.xib in Resources */,
 				EC97745B1E0A392C00980C4A /* RecommendProductOrderListCell.xib in Resources */,
 				EC35F95A1E1FCCFD0097BAB3 /* RadishSettlementToolBar.xib in Resources */,
+				EC35FA911E2393C40097BAB3 /* RadishProductDetailPriceCell.xib in Resources */,
 				EC35F8A91E1F88BB0097BAB3 /* ProductOrderListAddressCell.xib in Resources */,
 				EC4FC3E01D77CEE400BBD050 /* ParentingStrategyFilterView.xib in Resources */,
 				EC9775A51E1158AE00980C4A /* WholesaleSettlementProductInfoCell.xib in Resources */,
@@ -15612,6 +16183,7 @@
 				EC35F8311E1F41500097BAB3 /* RadishProductDetailDateCell.xib in Resources */,
 				EC0044D51DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.xib in Resources */,
 				EC1E2FAE1D8286EC002381E7 /* ArticleWriteCoverCell.xib in Resources */,
+				EC35FA8A1E236D710097BAB3 /* RadishOrderDetailToolBar.xib in Resources */,
 				EC4FC42F1D77CEE400BBD050 /* CommentDetailViewController.xib in Resources */,
 				ECBC97C31DFEE9C700B7386C /* ProductOrderNormalDetailPayInfoEmptyCell.xib in Resources */,
 				EC1E2FB31D8286F9002381E7 /* ArticleWriteImageCell.xib in Resources */,
@@ -15627,6 +16199,7 @@
 				EC739FD51E1D133D0027E91E /* WholesaleOrderDetailWebCell.xib in Resources */,
 				EC1E2FA41D8286A0002381E7 /* ArticleWriteTitleCell.xib in Resources */,
 				EC4FC3841D77CEE400BBD050 /* SettlementPickStoreViewCell.xib in Resources */,
+				EC35FA711E236D700097BAB3 /* RadishOrderDetailPayInfoCell.xib in Resources */,
 				EC4FC36F1D77CEE400BBD050 /* ServiceSettlementServiceInfoCell.xib in Resources */,
 				EC4FC5C61D77CEEF00BBD050 /* ImageSelectedSmallOn@2x.png in Resources */,
 				ECFFC73A1DC363C1002DBFB9 /* ProductDetailAddressAnnoView.xib in Resources */,
@@ -15640,6 +16213,7 @@
 				EC35F84F1E1F41500097BAB3 /* RadishProductDetailTwoColumnWebViewCell.xib in Resources */,
 				EC4FC3A21D77CEE400BBD050 /* StoreDetailAppointmentContactCell.xib in Resources */,
 				EC4FC5BB1D77CEEF00BBD050 /* ImageError@3x.png in Resources */,
+				EC35FA771E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.xib in Resources */,
 				EC0043551DE584870042B701 /* NurseryCollectionViewCell.xib in Resources */,
 				EC4FC4001D77CEE400BBD050 /* AddressPickerViewCell.xib in Resources */,
 				ECA59BAB1DEC2CBD00B3B1F7 /* SearchResultToolBar.xib in Resources */,
@@ -15689,10 +16263,12 @@
 				EC4FC4521D77CEE400BBD050 /* CommentListViewSegmentCell.xib in Resources */,
 				EC4FC37A1D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.xib in Resources */,
 				EC739FC61E1D133D0027E91E /* WholesaleOrderDetailLeaderCell.xib in Resources */,
+				EC35FA6D1E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.xib in Resources */,
 				EC0B6DBB1D8EC87C00EC20EA /* FlashServiceOrderDetailBookingCell.xib in Resources */,
 				EC486FA31DFA908D005CA365 /* SearchResultStoreHeader.xib in Resources */,
 				EC2F26641DD9803B00B67BBA /* CollectProductAllCell.xib in Resources */,
 				EC5CDD2C1DE538F200F95C6F /* ProductDetailFreeApplyBabyNameCell.xib in Resources */,
+				EC35FA691E236D700097BAB3 /* RadishOrderDetailContactCell.xib in Resources */,
 				EC4FC4911D77CEE400BBD050 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
 				EC739FAE1E1D133D0027E91E /* WholesaleOrderDetailV2BannersCell.xib in Resources */,
 				EC30ABB51DFF9CD3007380B0 /* ProductOrderTicketDetailBaseCell.xib in Resources */,
@@ -15702,7 +16278,9 @@
 				EC9775071E0BE89100980C4A /* RecommendTarentoCollectTarentoView.xib in Resources */,
 				EC889D071DDFF8A90054355C /* ProductDetailTicketSelectSeatCollectionViewSeatCell.xib in Resources */,
 				EC13B4F81DD1F3430040F760 /* AccountCenterNumsCell.xib in Resources */,
+				EC35F9D01E2365E30097BAB3 /* RadishMallHotTipCell.xib in Resources */,
 				EC4FC3571D77CEE400BBD050 /* FlashBalanceSettlementPayInfoCell.xib in Resources */,
+				EC35FA851E236D710097BAB3 /* RadishOrderDetailUserRemarkCell.xib in Resources */,
 				EC4FC34B1D77CEE400BBD050 /* FlashAdvanceSettlementServiceInfoCell.xib in Resources */,
 				EC486F9B1DFA908D005CA365 /* SearchResultProductFooter.xib in Resources */,
 				ECAA494E1D79A45B00799CBE /* ArticleHomeTagImgCell.xib in Resources */,
@@ -15716,6 +16294,7 @@
 				EC5CDD4D1DE53A0E00F95C6F /* ProductDetailFreeApplySelectStoreViewController.xib in Resources */,
 				EC1E2F9A1D828460002381E7 /* ArticleWriteBottomView.xib in Resources */,
 				EC0043FE1DE6B8970042B701 /* ProductDetaiFreeInfoCell.xib in Resources */,
+				EC35F9DA1E2365E30097BAB3 /* RadishMallSmallCell.xib in Resources */,
 				EC739FC41E1D133D0027E91E /* WholesaleOrderDetailJoinTipCell.xib in Resources */,
 				EC97751B1E0D42B200980C4A /* StoreDetailAnnotationTipView.xib in Resources */,
 				EC0044291DE6B8970042B701 /* ProductDetailTicketActorCell.xib in Resources */,
@@ -15731,6 +16310,7 @@
 				ECA95AE11DDD59DF00990AAE /* CollectionTarentoFooter.xib in Resources */,
 				EC35F8231E1F41500097BAB3 /* RadishProductDetailBannerCell.xib in Resources */,
 				ECB3E77F1D92C82E0059267D /* OrderBookingMakeSureCell.xib in Resources */,
+				EC35FA831E236D710097BAB3 /* RadishOrderDetailStoreCell.xib in Resources */,
 				EC0044151DE6B8970042B701 /* ProductDetailContentEleCell.xib in Resources */,
 				EC13B4F61DD1F3430040F760 /* AccountCenterItemsCell.xib in Resources */,
 				EC4FC5CF1D77CEEF00BBD050 /* UIBarButtonItemArrowLeft@2x.png in Resources */,
@@ -15818,6 +16398,8 @@
 				EC3168651E01D8E0009F0945 /* ProductDetailFreeApplySelectPlaceCell.xib in Resources */,
 				EC9774951E0A8F6300980C4A /* SettlementResultNewNormalCell.xib in Resources */,
 				EC4FC23D1D77CEE400BBD050 /* ResetPasswordViewController.xib in Resources */,
+				EC35FA871E236D710097BAB3 /* RadishOrderDetailHeader.xib in Resources */,
+				EC35FA671E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.xib in Resources */,
 				ECB3E7871D92C82E0059267D /* OrderBookingStoreInfoCell.xib in Resources */,
 				EC4FC4091D77CEE400BBD050 /* UserAddressManageViewCell.xib in Resources */,
 				EC4FC42D1D77CEE400BBD050 /* StoreListViewCell.xib in Resources */,
@@ -15829,6 +16411,7 @@
 				EC0044041DE6B8970042B701 /* ProductDetailAddressCell.xib in Resources */,
 				ECFFC73F1DC363C1002DBFB9 /* ProductDetailAddressSelStoreCell.xib in Resources */,
 				EC7FBC111DC4D074007B326C /* ProductDetailGetCouponCell.xib in Resources */,
+				EC35FA731E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.xib in Resources */,
 				EC4FC3691D77CEE400BBD050 /* ServiceSettlementCouponCell.xib in Resources */,
 				EC35F8431E1F41500097BAB3 /* RadishProductDetailTitleCell.xib in Resources */,
 				EC84C3B51DE2C79900A42515 /* ServiceSettlementToolBar.xib in Resources */,
@@ -15847,6 +16430,7 @@
 				EC486F3D1DF7C726005CA365 /* SearchFactorFilterToolBar.xib in Resources */,
 				EC4FC41A1D77CEE400BBD050 /* AppointmentOrderDetailViewController.xib in Resources */,
 				EC2F261D1DD6CDFF00B67BBA /* ProductDetailTicketSelectSeatCollectionViewFooter.xib in Resources */,
+				EC35F9D61E2365E30097BAB3 /* RadishMallLargeCell.xib in Resources */,
 				EC35F9511E1FCCFD0097BAB3 /* RadishSettlementBaseCell.xib in Resources */,
 				EC5505C61E01739600180A2C /* ProductDetailAddressSelPlaceCell.xib in Resources */,
 				EC1E2FA91D8286C1002381E7 /* ArticleWriteContentCell.xib in Resources */,
@@ -15856,6 +16440,7 @@
 				EC4FC4481D77CEE400BBD050 /* CommentDetailViewStrategyHeaderCell.xib in Resources */,
 				ECA59B591DEBFCB900B3B1F7 /* CouponListTipCell.xib in Resources */,
 				EC4FC5D21D77CEEF00BBD050 /* UIBarButtonItemArrowRight@2x.png in Resources */,
+				EC35F9D41E2365E30097BAB3 /* RadishMallItemsCollectionCell.xib in Resources */,
 				EC4FC3441D77CEE400BBD050 /* FlashAdvanceSettlementAddressCell.xib in Resources */,
 				EC486F331DF7C726005CA365 /* SearchFactorFilterAgeView.xib in Resources */,
 				EC5CDD391DE538F200F95C6F /* ProductDetailFreeApplyFooterView.xib in Resources */,
@@ -15885,6 +16470,7 @@
 				EC35F83D1E1F41500097BAB3 /* RadishProductDetailPlaceCountCell.xib in Resources */,
 				EC4E27931DF0134E00622711 /* NearbyTableViewHeader.xib in Resources */,
 				EC4FC5C41D77CEEF00BBD050 /* ImageSelectedSmallOff@3x.png in Resources */,
+				EC35FA6F1E236D700097BAB3 /* RadishOrderDetailOrderNoCell.xib in Resources */,
 				EC4FC5BE1D77CEEF00BBD050 /* ImageSelectedOff@3x.png in Resources */,
 				EC30ABC11DFF9CD3007380B0 /* ProductOrderTicketDetailOrderNoCell.xib in Resources */,
 				ECA95A901DDC4DFD00990AAE /* MyTracksFooter.xib in Resources */,
@@ -15921,6 +16507,7 @@
 				EC0044D71DE7F4E40042B701 /* ProductDetailTwoColumnToolBar.xib in Resources */,
 				EC739F461E1CD6660027E91E /* WolesaleProductDetailV2WebTitleCell.xib in Resources */,
 				EC739FD11E1D133D0027E91E /* WholesaleOrderDetailSurplusCell.xib in Resources */,
+				EC35FA631E236D700097BAB3 /* RadishOrderDetailBaseCell.xib in Resources */,
 				EC5CDD281DE538F200F95C6F /* ProductDetailFreeApplyBabyAgeCell.xib in Resources */,
 				EC739FB81E1D133D0027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.xib in Resources */,
 				EC30ABD31DFF9CD3007380B0 /* ProductOrderTicketDetailRemarkCell.xib in Resources */,
@@ -15933,6 +16520,7 @@
 				EC739DDD1E1B63B30027E91E /* ProductOrderFreeListAddressCell.xib in Resources */,
 				EC4C60D01DF6697400830126 /* SearchHotKeyCollectionCell.xib in Resources */,
 				ECB3E78B1D92C82E0059267D /* OrderBookingSelectTimeViewController.xib in Resources */,
+				EC35FA7F1E236D710097BAB3 /* RadishOrderDetailRefundTitleCell.xib in Resources */,
 				EC30ABF61DFFFF1C007380B0 /* ProductDetaiFreeJoinCollectionCell.xib in Resources */,
 				EC4FC3CA1D77CEE400BBD050 /* StrategyCollectionViewCell.xib in Resources */,
 				ECA59B801DEC077900B3B1F7 /* CouponUsableListViewController.xib in Resources */,
@@ -16014,6 +16602,7 @@
 				EC4FC2CB1D77CEE400BBD050 /* FDChooseStoreView.m in Sources */,
 				EC739FB71E1D133D0027E91E /* WholesaleOrderDetailBuyNoticeEmptyCell.m in Sources */,
 				EC4FC26F1D77CEE400BBD050 /* CommonShareObject.m in Sources */,
+				EC35FA7E1E236D700097BAB3 /* RadishOrderDetailRefundTitleCell.m in Sources */,
 				EC4E278B1DF0134E00622711 /* NearbyViewController.m in Sources */,
 				EC4FC3B41D77CEE400BBD050 /* StoreDetailServiceListViewController.m in Sources */,
 				EC4FC5F11D77CEEF00BBD050 /* ZPPopoverItem.m in Sources */,
@@ -16025,6 +16614,7 @@
 				EC4FC3B91D77CEE400BBD050 /* StoreDetialMapPoiAnnotationView.m in Sources */,
 				EC2F25CD1DD35BD000B67BBA /* CollectProductBaseView.m in Sources */,
 				EC4FC3601D77CEE400BBD050 /* FlashBalanceSettlementToolBar.m in Sources */,
+				EC35F9A61E2362800097BAB3 /* RadishMallModel.m in Sources */,
 				EC35F9641E1FD00A0097BAB3 /* RadishSettlementRadishCell.m in Sources */,
 				EC4FC5AE1D77CEEF00BBD050 /* AUIPickerView.m in Sources */,
 				EC739F121E1CCF060027E91E /* WolesaleProductDetailV2JoinTipCell.m in Sources */,
@@ -16075,15 +16665,18 @@
 				EC30ABB41DFF9CD3007380B0 /* ProductOrderTicketDetailBaseCell.m in Sources */,
 				EC2289491DE8811200EC324A /* CollectProductCategoryItem.m in Sources */,
 				EC4FC34A1D77CEE400BBD050 /* FlashAdvanceSettlementServiceInfoCell.m in Sources */,
+				EC35FA621E236D700097BAB3 /* RadishOrderDetailBaseCell.m in Sources */,
 				ECA59BEC1DED612600B3B1F7 /* SearchFactorSortView.m in Sources */,
 				EC4FC4041D77CEE400BBD050 /* UserAddressEditViewCell.m in Sources */,
 				EC4FC2A71D77CEE400BBD050 /* ActivityViewController.m in Sources */,
 				EC9775B31E11596B00980C4A /* WholesaleSettlementPhoneCell.m in Sources */,
 				EC4FC33E1D77CEE400BBD050 /* ServiceDetailRelatedServiceListViewController.m in Sources */,
+				EC35FA661E236D700097BAB3 /* RadishOrderDetailBookingFailureCell.m in Sources */,
 				EC739F321E1CCF070027E91E /* WolesaleProductDetailProgressCell.m in Sources */,
 				EC30AB621DFF964D007380B0 /* ProductOrderTicketDetailSeat.m in Sources */,
 				EC35F8341E1F41500097BAB3 /* RadishProductDetailJoinCell.m in Sources */,
 				EC00440E1DE6B8970042B701 /* ProductDetailCommentCellCollectionViewCell.m in Sources */,
+				EC35FA641E236D700097BAB3 /* RadishOrderDetailBookingCell.m in Sources */,
 				EC739F381E1CCF070027E91E /* WolesaleProductDetailTitleCell.m in Sources */,
 				ECBCCEF91DBF2A40001B9571 /* ComposeMd5Data.m in Sources */,
 				EC35F8421E1F41500097BAB3 /* RadishProductDetailTitleCell.m in Sources */,
@@ -16092,6 +16685,7 @@
 				EC4FC6401D78092900BBD050 /* FailureViewManager.m in Sources */,
 				EC4FC29F1D77CEE400BBD050 /* ArticleWeChatSmallCell.m in Sources */,
 				EC30AB5F1DFF95AC007380B0 /* ProductOrderTicketDetailUserAddress.m in Sources */,
+				EC35F9D91E2365E30097BAB3 /* RadishMallSmallCell.m in Sources */,
 				EC2F269E1DD9B7C900B67BBA /* CollectionTarentoViewController.m in Sources */,
 				EC4FC24A1D77CEE400BBD050 /* GuideModel.m in Sources */,
 				EC4FC3C01D77CEE400BBD050 /* WelfareStoreLoveHouseAnnotationTipView.m in Sources */,
@@ -16173,6 +16767,7 @@
 				EC4FC2B21D77CEE400BBD050 /* CategoryViewController.m in Sources */,
 				ECAD713C1E151F7200B45416 /* WholesaleOrderListHeader.m in Sources */,
 				EC4FC3FD1D77CEE400BBD050 /* AddressModel.m in Sources */,
+				EC35FA781E236D700097BAB3 /* RadishOrderDetailPayTipCell.m in Sources */,
 				EC13B4F71DD1F3430040F760 /* AccountCenterNumsCell.m in Sources */,
 				ECF5D0FF1DB8CE3900A1B268 /* TCHomeFloor.m in Sources */,
 				EC97746A1E0A6D8100980C4A /* RecommendProductSettlementResultCell.m in Sources */,
@@ -16210,8 +16805,8 @@
 				EC2F25A91DD3266E00B67BBA /* CollectProductCategoryViewController.m in Sources */,
 				EC73A0341E1E265E0027E91E /* RadishProductDetailView.m in Sources */,
 				EC76B8DF1DC65FC6006518DE /* ServiceDetailViewModel.m in Sources */,
+				EC35F9CF1E2365E30097BAB3 /* RadishMallHotTipCell.m in Sources */,
 				EC4FC42C1D77CEE400BBD050 /* StoreListViewCell.m in Sources */,
-				EC35F9011E1F97E00097BAB3 /* RadishProdectDetailCoupon.m in Sources */,
 				EC9774471E0967F600980C4A /* RecommendProductCollectProductView.m in Sources */,
 				EC4FC3F41D77CEE400BBD050 /* StrategyDetailRelatedServiceCell.m in Sources */,
 				EC84C3B01DE2A25D00A42515 /* ServiceSettlementShowTime.m in Sources */,
@@ -16225,6 +16820,7 @@
 				EC4FC3C71D77CEE400BBD050 /* StrategyCollectionViewFlowLayout.m in Sources */,
 				ECA59B891DEC077900B3B1F7 /* CouponListViewSegmentCell.m in Sources */,
 				EC4FC2A91D77CEE400BBD050 /* ActivityFilterModel.m in Sources */,
+				EC35F9A31E2362610097BAB3 /* RadishMallData.m in Sources */,
 				EC154D4D1D87D40A007137E8 /* ArticleWriteAlertSuccessResultViewController.m in Sources */,
 				EC8486151DDF293D0039E9D3 /* ProductDetailTicketSelectSeatModel.m in Sources */,
 				EC4FC3DA1D77CEE400BBD050 /* StrategyTagColumnTableViewController.m in Sources */,
@@ -16283,6 +16879,7 @@
 				ECB3E78A1D92C82E0059267D /* OrderBookingSelectTimeViewController.m in Sources */,
 				EC13B4F21DD1F3430040F760 /* AccountCenterBaseCell.m in Sources */,
 				EC5505BA1E00FE7B00180A2C /* ProductDetailPriceCell.m in Sources */,
+				EC35FA5E1E236D700097BAB3 /* RadishOrderDetailStore.m in Sources */,
 				EC4FC2AF1D77CEE400BBD050 /* ActivityViewCell.m in Sources */,
 				EC4FC3BE1D77CEE400BBD050 /* WelfareStoreHospitalAnnotationTipView.m in Sources */,
 				EC4FC2191D77CEE400BBD050 /* NSString+MD5Addition.m in Sources */,
@@ -16298,7 +16895,6 @@
 				EC0044261DE6B8970042B701 /* ProductDetailStandardCell.m in Sources */,
 				EC4FC3F61D77CEE400BBD050 /* AccountSettingViewController.m in Sources */,
 				EC4FC5E01D77CEEF00BBD050 /* MWTapDetectingView.m in Sources */,
-				EC73A0251E1E26010027E91E /* RadishOrderDetailViewController.m in Sources */,
 				EC0044161DE6B8970042B701 /* ProductDetailContentEleEmptyCell.m in Sources */,
 				EC76B8CD1DC65FC6006518DE /* ServiceCommentListViewHeaderCell.m in Sources */,
 				EC48709D1DFC3FC1005CA365 /* ProductOrderFreeDetailInfoBaseCell.m in Sources */,
@@ -16310,6 +16906,7 @@
 				EC30ABC41DFF9CD3007380B0 /* ProductOrderTicketDetailEmptyCell.m in Sources */,
 				EC0044201DE6B8970042B701 /* ProductDetailNoticeCell.m in Sources */,
 				EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */,
+				EC35FA971E23CAA10097BAB3 /* RadishSettlementChannel.m in Sources */,
 				EC2F26F41DDB0AE500B67BBA /* MyTracksHeader.m in Sources */,
 				EC739FC11E1D133D0027E91E /* WholesaleOrderDetailJoinMemberCell.m in Sources */,
 				EC2289521DE95D4F00EC324A /* CollectionStoreCoupon.m in Sources */,
@@ -16334,6 +16931,7 @@
 				EC4FC4201D77CEE400BBD050 /* KTCBrowseHistoryManager.m in Sources */,
 				EC4FC2291D77CEE400BBD050 /* AUIBannerScrollView.m in Sources */,
 				EC35F82A1E1F41500097BAB3 /* RadishProductDetailCommentMoreCell.m in Sources */,
+				EC35FA891E236D710097BAB3 /* RadishOrderDetailToolBar.m in Sources */,
 				EC35F8D11E1F896D0097BAB3 /* RadishProductOrderListInfoCell.m in Sources */,
 				EC4FC2791D77CEE400BBD050 /* ThemeModel.m in Sources */,
 				EC9775121E0C15EB00980C4A /* RecommendTarento.m in Sources */,
@@ -16415,8 +17013,10 @@
 				EC1E2F941D827EA4002381E7 /* ArticleWriteModel.m in Sources */,
 				EC4FC5ED1D77CEEF00BBD050 /* iToast.m in Sources */,
 				EC5505C51E01739600180A2C /* ProductDetailAddressSelPlaceCell.m in Sources */,
+				EC35F9D31E2365E30097BAB3 /* RadishMallItemsCollectionCell.m in Sources */,
 				EC00442C1DE6B8970042B701 /* ProductDetailTicketDesBtnCell.m in Sources */,
 				EC739FB31E1D133D0027E91E /* WholesaleOrderDetailBaseCell.m in Sources */,
+				EC35FA571E236D700097BAB3 /* RadishOrderDetailData.m in Sources */,
 				EC4FC27B1D77CEE400BBD050 /* WelcomeViewController.m in Sources */,
 				EC2F26121DD6C1F800B67BBA /* ProductDetailTicketSelectSeatCollectionViewTimeCell.m in Sources */,
 				EC2F25B51DD3383C00B67BBA /* MultiItemsToolBar.m in Sources */,
@@ -16456,6 +17056,7 @@
 				EC35F86E1E1F4CE60097BAB3 /* RadishProductDetailToolBar.m in Sources */,
 				EC4FC4171D77CEE400BBD050 /* AppointmentOrderDetailView.m in Sources */,
 				EC4560171DFEC86B000BD822 /* ProductOrderNormalDetailDeliver.m in Sources */,
+				EC35FA5D1E236D700097BAB3 /* RadishOrderDetailRemark.m in Sources */,
 				EC31CF651DA9DBA300C49E29 /* NotificationService.m in Sources */,
 				EC4FC2771D77CEE400BBD050 /* AddTabManager.m in Sources */,
 				EC30AB5C1DFF927C007380B0 /* ProductOrderTicketDetailModel.m in Sources */,
@@ -16489,6 +17090,7 @@
 				EC35F8F81E1F972B0097BAB3 /* RadishProductDetailComment.m in Sources */,
 				EC4FC44B1D77CEE400BBD050 /* CommentFoundingView.m in Sources */,
 				EC4FC42B1D77CEE400BBD050 /* StoreListItemModel.m in Sources */,
+				EC35FA601E236D700097BAB3 /* RadishOrderDetailAddressCell.m in Sources */,
 				EC0D361D1DFEDEF90028BC0E /* ProductOrderNormalDetailRemarkCell.m in Sources */,
 				EC739F1C1E1CCF060027E91E /* WolesaleProductDetailAddressCell.m in Sources */,
 				EC2F25AC1DD3267F00B67BBA /* CollectProductReduceViewController.m in Sources */,
@@ -16519,6 +17121,7 @@
 				EC4FC22D1D77CEE400BBD050 /* KTCEmptyDataView.m in Sources */,
 				ECAA49451D79A45B00799CBE /* ArticleHomeColumnTitleCell.m in Sources */,
 				EC4FC4571D77CEE400BBD050 /* CommentDetailViewModel.m in Sources */,
+				EC35FA9A1E23CACC0097BAB3 /* RadishSettlementStore.m in Sources */,
 				ECFFC6F11DC363C1002DBFB9 /* ProductDetailComment.m in Sources */,
 				EC739F0E1E1CCF060027E91E /* WolesaleProductDetailV2JoinCountCollectionCell.m in Sources */,
 				ECAA49511D79A45B00799CBE /* ArticleHomeVideoCell.m in Sources */,
@@ -16573,9 +17176,12 @@
 				EC9774641E0A6BF600980C4A /* RecommendProductSettlementResultView.m in Sources */,
 				EC4FC5AD1D77CEEF00BBD050 /* PlaceHolderTextView.m in Sources */,
 				EC0043FF1DE6B8970042B701 /* ProductDetaiFreeLifeTipCell.m in Sources */,
+				EC35F9D51E2365E30097BAB3 /* RadishMallLargeCell.m in Sources */,
 				EC4FC2251D77CEE400BBD050 /* ViewController.m in Sources */,
 				EC2F260D1DD6C13500B67BBA /* ProductDetailTicketSelectSeatViewController.m in Sources */,
+				EC35FA5F1E236D700097BAB3 /* RadishOrderDetailUserAddress.m in Sources */,
 				ECA95A8E1DDC4DF200990AAE /* MyTracksFooter.m in Sources */,
+				EC35FA801E236D710097BAB3 /* RadishOrderDetailRemarkCell.m in Sources */,
 				EC0044D61DE7F4E40042B701 /* ProductDetailTwoColumnToolBar.m in Sources */,
 				EC35F9501E1FCCFD0097BAB3 /* RadishSettlementBaseCell.m in Sources */,
 				ECAD71251E151C3800B45416 /* ProductDetailSegueParser.m in Sources */,
@@ -16663,6 +17269,7 @@
 				EC35F8851E1F4F9B0097BAB3 /* RadishProductDetailTwoColumnConsultMoreCell.m in Sources */,
 				EC4FC3C81D77CEE400BBD050 /* StrategyModel.m in Sources */,
 				EC486F961DFA908D005CA365 /* SearchResultProductLargeCell.m in Sources */,
+				EC35FA5B1E236D700097BAB3 /* RadishOrderDetailModel.m in Sources */,
 				EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */,
 				EC9775C81E123ECB00980C4A /* WholesaleOrderDetailViewController.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
@@ -16677,6 +17284,7 @@
 				EC4FC3A51D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.m in Sources */,
 				ECAD714D1E15387100B45416 /* WholesaleOrderListBtn.m in Sources */,
 				EC4FC3F31D77CEE400BBD050 /* StrategyDetailServiceItemModel.m in Sources */,
+				EC35FA6A1E236D700097BAB3 /* RadishOrderDetailDeliverCell.m in Sources */,
 				ECAD71191E14CDEC00B45416 /* WholesaleSettlementShare.m in Sources */,
 				EC739FAF1E1D133D0027E91E /* WholesaleOrderDetailV2BannersCollectionCell.m in Sources */,
 				EC35F90C1E1F9BB60097BAB3 /* RadishProductDetailInsurance.m in Sources */,
@@ -16713,6 +17321,7 @@
 				ECBCCEF31DBF152E001B9571 /* ComposeModel.m in Sources */,
 				EC486F9A1DFA908D005CA365 /* SearchResultProductFooter.m in Sources */,
 				EC739F0C1E1CCF060027E91E /* WolesaleProductDetailV2JoinCountCell.m in Sources */,
+				EC35FA7A1E236D700097BAB3 /* RadishOrderDetailProductCell.m in Sources */,
 				EC68C3B61D9BBC5700D4401A /* HomeRefreshModel.m in Sources */,
 				EC4FC2561D77CEE400BBD050 /* RouteAnnotation.m in Sources */,
 				ECF5D0FD1DB8CE3900A1B268 /* TCHomeCollectionViewBaseLayout.m in Sources */,
@@ -16720,6 +17329,7 @@
 				EC0B6D941D8E693A00EC20EA /* ArticleAutoRollCell.m in Sources */,
 				EC68C3B51D9BBC5700D4401A /* HomeRefreshViewController.m in Sources */,
 				EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */,
+				EC35FA6C1E236D700097BAB3 /* RadishOrderDetailOrderInfoCell.m in Sources */,
 				EC97765D1E1296B000980C4A /* WholesaleProductDetailTeamModel.m in Sources */,
 				EC72642A1D7D279A00AA739B /* ArticleLikeViewController.m in Sources */,
 				ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */,
@@ -16729,6 +17339,7 @@
 				ECFFC6ED1DC363C1002DBFB9 /* ProductDetailViewController.m in Sources */,
 				EC9776541E128CF500980C4A /* WolesaleProductDetailModel.m in Sources */,
 				EC45601A1DFECA0C000BD822 /* ProductOrderNormalDetailConsumeCode.m in Sources */,
+				EC35FA531E236D700097BAB3 /* RadishOrderDetailViewController.m in Sources */,
 				EC35F8FE1E1F97910097BAB3 /* RadishProductDetailCommentItem.m in Sources */,
 				EC3CE0A61DF167DB005729E2 /* NearbyView.m in Sources */,
 				EC739D8B1E161B6A0027E91E /* ProductDetailSecKillInfo.m in Sources */,
@@ -16763,6 +17374,7 @@
 				ECF5D1001DB8CE3900A1B268 /* TCHomeFloorContent.m in Sources */,
 				EC4FC3BD1D77CEE400BBD050 /* WelfareStoreModel.m in Sources */,
 				EC3168661E01D8E0009F0945 /* ProductDetailFreeApplySelectPlaceViewController.m in Sources */,
+				EC35FA681E236D700097BAB3 /* RadishOrderDetailContactCell.m in Sources */,
 				EC486F981DFA908D005CA365 /* SearchResultProductSmallCell.m in Sources */,
 				ECA400351E13B35B009F27A6 /* WholesaleOrderDetailPartner.m in Sources */,
 				EC739FCE1E1D133D0027E91E /* WholesaleOrderDetailSuccessCell.m in Sources */,
@@ -16778,6 +17390,7 @@
 				EC4FC4281D77CEE400BBD050 /* ServiceListItemModel.m in Sources */,
 				ECAA49421D79A45B00799CBE /* ArticleHomeBigImgCell.m in Sources */,
 				EC13B50C1DD1F4040040F760 /* AccountCenterInvite.m in Sources */,
+				EC35FA881E236D710097BAB3 /* RadishOrderDetailBtnsView.m in Sources */,
 				ECAA49491D79A45B00799CBE /* ArticleHomeIconCell.m in Sources */,
 				ECF5D1051DB8CE3900A1B268 /* TCHomeModel.m in Sources */,
 				ECAD71101E14CD0900B45416 /* WholesaleSettlementModel.m in Sources */,
@@ -16807,6 +17420,7 @@
 				EC4FC2521D77CEE400BBD050 /* MapLocateAnnotationTipView.m in Sources */,
 				EC4FC2CE1D77CEE400BBD050 /* FDSegmentView.m in Sources */,
 				EC00444A1DE6B8980042B701 /* ProductDetailBaseToolBar.m in Sources */,
+				EC35FA761E236D700097BAB3 /* RadishOrderDetailPayInfoTotalCell.m in Sources */,
 				ECA95A831DDB39E400990AAE /* CouponListUnusedViewController.m in Sources */,
 				EC4FC2611D77CEE400BBD050 /* PromotionBaseModel.m in Sources */,
 				EC0D35FA1DFED9E90028BC0E /* ProductOrderNormalDetailDeliverCell.m in Sources */,
@@ -16829,7 +17443,9 @@
 				EC486F2F1DF7C726005CA365 /* SearchFactorFilterAgeItem.m in Sources */,
 				EC5CDD301DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.m in Sources */,
 				EC4FC2161D77CEE400BBD050 /* CALayer+Category.m in Sources */,
+				EC35FA741E236D700097BAB3 /* RadishOrderDetailPayInfoTitleCell.m in Sources */,
 				ECFFC6F71DC363C1002DBFB9 /* ProductDetailNote.m in Sources */,
+				EC35F9CD1E2365E30097BAB3 /* RadishMallBaseCell.m in Sources */,
 				EC48705F1DFC18B5005CA365 /* ProductOrderFreeDetailModel.m in Sources */,
 				EC4FC3581D77CEE400BBD050 /* FlashBalanceSettlementPayTypeCell.m in Sources */,
 				EC4FC21F1D77CEE400BBD050 /* UIImageView+Category.m in Sources */,
@@ -16869,6 +17485,7 @@
 				EC5CDD271DE538F200F95C6F /* ProductDetailFreeApplyBabyAgeCell.m in Sources */,
 				EC3168821E033280009F0945 /* AppBaseModel.m in Sources */,
 				EC30AB551DFF90BD007380B0 /* ProductOrderTicketDetailHeader.m in Sources */,
+				EC35FA8B1E236D710097BAB3 /* RadishOrderDetailView.m in Sources */,
 				EC35F85A1E1F461C0097BAB3 /* RadishProductDetailBuyNoticeEmptyCell.m in Sources */,
 				EC35F8AE1E1F88BB0097BAB3 /* ProductOrderListCellBtnsView.m in Sources */,
 				EC2F26A41DD9B80600B67BBA /* CollectionContentView.m in Sources */,
@@ -16885,6 +17502,7 @@
 				EC7FBC0D1DC4D074007B326C /* ProductDetailAddNewConsultViewController.m in Sources */,
 				EC455FF61DFE7C8A000BD822 /* ProductOrderNormalDetailBtnsView.m in Sources */,
 				ECAA493F1D79A45B00799CBE /* ArticleHomeBannerCollectionViewTwoCell.m in Sources */,
+				EC35FA541E236D700097BAB3 /* RadishOrderDetailBtn.m in Sources */,
 				EC486F361DF7C726005CA365 /* SearchFactorFilterCategoryCellLeft.m in Sources */,
 				EC4FC48A1D77CEE400BBD050 /* FlashServiceOrderDetailCountDownCell.m in Sources */,
 				EC4870AF1DFC3FFB005CA365 /* ProductOrderFreeDetailMoreLotteryCell.m in Sources */,
@@ -16905,6 +17523,7 @@
 				EC35F84C1E1F41500097BAB3 /* RadishProductDetailTwoColumnToolBar.m in Sources */,
 				ECEE2B551E07DF3700FAB7C2 /* ProductStandardDetailData.m in Sources */,
 				EC00434F1DE56E010042B701 /* NurseryCell.m in Sources */,
+				EC35FA591E236D700097BAB3 /* RadishOrderDetailDeliverItem.m in Sources */,
 				EC13B5211DD1F6250040F760 /* AccountCenterHotProduct.m in Sources */,
 				EC2F26F21DDB0AE500B67BBA /* MyTracksCell.m in Sources */,
 				EC4FC4711D77CEE400BBD050 /* FavouriteStoreItemModel.m in Sources */,
@@ -16913,6 +17532,7 @@
 				EC13B4F01DD1F3430040F760 /* AccountCenterBannersCell.m in Sources */,
 				EC5CDD381DE538F200F95C6F /* ProductDetailFreeApplyFooterView.m in Sources */,
 				ECF5D0FC1DB8CE3900A1B268 /* TCHomeCategory.m in Sources */,
+				EC35F9C91E2365E30097BAB3 /* RadishMallBannerCell.m in Sources */,
 				EC0B6D901D8E693A00EC20EA /* ArticleLayout.m in Sources */,
 				EC4FC3CE1D77CEE400BBD050 /* StrategyAutoRollView.m in Sources */,
 				ECA59BAE1DEC311E00B3B1F7 /* SearchResultToolBarButton.m in Sources */,
@@ -16927,6 +17547,7 @@
 				EC4FC27D1D77CEE400BBD050 /* WelcomeViewCell.m in Sources */,
 				EC4FC4891D77CEE400BBD050 /* FlashServiceOrderDetailBaseCell.m in Sources */,
 				EC4C60B81DF5B0CB00830126 /* ProductOrderListAllTitleShowView.m in Sources */,
+				EC35FA821E236D710097BAB3 /* RadishOrderDetailStoreCell.m in Sources */,
 				EC4FC3551D77CEE400BBD050 /* FlashBalanceSettlementBaseCell.m in Sources */,
 				EC31687B1E02CFF4009F0945 /* NearbyPlaceInfoData.m in Sources */,
 				EC739FBF1E1D133D0027E91E /* WholesaleOrderDetailJoinCountCollectionCell.m in Sources */,
@@ -16956,6 +17577,7 @@
 				EC35F9251E1FA1A40097BAB3 /* RadishProductDetailTimeItem.m in Sources */,
 				EC76B8D71DC65FC6006518DE /* ServiceDetailConfirmViewCell.m in Sources */,
 				EC31685B1E01D0B4009F0945 /* ProductOrderFreeDetailUserRemarkCell.m in Sources */,
+				EC35F9D71E2365E30097BAB3 /* RadishMallPlantCell.m in Sources */,
 				EC4E27FA1DF152F700622711 /* NearbyCalendarToolBarDateView.m in Sources */,
 				EC4FC3811D77CEE400BBD050 /* SettlementPickStoreViewController.m in Sources */,
 				EC4FC3761D77CEE400BBD050 /* ServiceSettlementPickCouponViewCell.m in Sources */,
@@ -17009,6 +17631,7 @@
 				EC9775851E10FBBE00980C4A /* WolesaleProductDetailToolBar.m in Sources */,
 				EC30ABB21DFF9CD3007380B0 /* ProductOrderTicketDetailAddressCell.m in Sources */,
 				EC48709B1DFC3FC1005CA365 /* ProductOrderFreeDetailAddressCell.m in Sources */,
+				EC35FA5C1E236D700097BAB3 /* RadishOrderDetailRefund.m in Sources */,
 				EC4FC2AA1D77CEE400BBD050 /* ActivityListItemModel.m in Sources */,
 				ECA95AD41DDC9FA500990AAE /* CollectionStoreHeader.m in Sources */,
 				EC0B6D921D8E693A00EC20EA /* ArticleCell.m in Sources */,
@@ -17046,19 +17669,24 @@
 				EC0B6D911D8E693A00EC20EA /* ArticleModel.m in Sources */,
 				ECA4000D1E137609009F27A6 /* WolesaleProductDetailPlace.m in Sources */,
 				EC9774F21E0B874700980C4A /* RecommendTarentoCollectTarentoFooter.m in Sources */,
+				EC35FA9E1E23D4480097BAB3 /* RadishSettlementTipAddressCell.m in Sources */,
 				EC739F1A1E1CCF060027E91E /* WolesaleProductDetailV2SaveTipCell.m in Sources */,
 				EC00434B1DE56A9C0042B701 /* NurseryItem.m in Sources */,
 				ECA4001E1E13969A009F27A6 /* WholesaleProductDetailCount.m in Sources */,
+				EC35FA941E23CA800097BAB3 /* RadishSettlementPlace.m in Sources */,
 				EC1E2F981D827EA4002381E7 /* ArticleWriteViewController.m in Sources */,
+				EC35FA721E236D700097BAB3 /* RadishOrderDetailPayInfoEmptyCell.m in Sources */,
 				ECF704D51D88E74600650C0A /* ArticleUserCenterTableHeaderView.m in Sources */,
 				EC35F8AA1E1F88BB0097BAB3 /* ProductOrderListBaseCell.m in Sources */,
 				EC0044141DE6B8970042B701 /* ProductDetailContentEleCell.m in Sources */,
 				ECAA49361D79A45B00799CBE /* ArticleHomeAlbumEntrysCell.m in Sources */,
 				ECFFC6F81DC363C1002DBFB9 /* ProductDetailNotice.m in Sources */,
+				EC35FA6E1E236D700097BAB3 /* RadishOrderDetailOrderNoCell.m in Sources */,
 				EC4FC4511D77CEE400BBD050 /* CommentListViewSegmentCell.m in Sources */,
 				EC4FC3791D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.m in Sources */,
 				ECF5D1141DB8CF7100A1B268 /* HomeRoleButton.m in Sources */,
 				EC455FF91DFE7FB9000BD822 /* NearbyData.m in Sources */,
+				EC35FA581E236D700097BAB3 /* RadishOrderDetailDeliver.m in Sources */,
 				EC4FC4721D77CEE400BBD050 /* FavouriteStrategyItemModel.m in Sources */,
 				EC35F8381E1F41500097BAB3 /* RadishProductDetailNoticeCollectionViewCell.m in Sources */,
 				EC2289431DE87DCA00EC324A /* CollectProductReduceModel.m in Sources */,
@@ -17085,6 +17713,7 @@
 				EC0D35F01DFED9B40028BC0E /* ProductOrderNormalDetailOrderNoCell.m in Sources */,
 				EC0044CE1DE7F4E40042B701 /* ProductDetailTwoColumnConsultConsultCell.m in Sources */,
 				EC4FC5DD1D77CEEF00BBD050 /* MWPhoto.m in Sources */,
+				EC35FA841E236D710097BAB3 /* RadishOrderDetailUserRemarkCell.m in Sources */,
 				EC4FC38F1D77CEE400BBD050 /* StoreDetailModel.m in Sources */,
 				EC4FC29D1D77CEE400BBD050 /* ArticleWeChatLargeCell.m in Sources */,
 				EC35F8261E1F41500097BAB3 /* RadishProductDetailCommentCell.m in Sources */,
@@ -17112,13 +17741,17 @@
 				ECEE2B421E07C91600FAB7C2 /* ProductStandardCell.m in Sources */,
 				EC2F26A11DD9B7E000B67BBA /* CollectionSCTBaseView.m in Sources */,
 				EC810A611D8FE0C700B4B87A /* ZPDateFormate.m in Sources */,
+				EC35FA5A1E236D700097BAB3 /* RadishOrderDetailInsurance.m in Sources */,
 				ECFFC6FE1DC363C1002DBFB9 /* ProductDetailTime.m in Sources */,
 				EC455FEE1DFE7C18000BD822 /* ProductOrderNormalDetailView.m in Sources */,
+				EC35FA901E2393C40097BAB3 /* RadishProductDetailPriceCell.m in Sources */,
 				EC4FC2581D77CEE400BBD050 /* AlipayManager.m in Sources */,
 				ECBCCEF11DBF152E001B9571 /* ComposeBtn.m in Sources */,
 				ECF5D0FB1DB8CE3900A1B268 /* TCHomeViewController.m in Sources */,
+				EC35FA561E236D700097BAB3 /* RadishOrderDetailCountDown.m in Sources */,
+				EC35FA7C1E236D700097BAB3 /* RadishOrderDetailRefundCell.m in Sources */,
 				EC35F8DD1E1F8AD10097BAB3 /* RadishProductOrderListDeliver.m in Sources */,
-				EC35F82E1E1F41500097BAB3 /* RadishProductDetailCouponCell.m in Sources */,
+				EC35FA701E236D700097BAB3 /* RadishOrderDetailPayInfoCell.m in Sources */,
 				ECAA494B1D79A45B00799CBE /* ArticleHomeNoIconCell.m in Sources */,
 				EC739FAD1E1D133D0027E91E /* WholesaleOrderDetailV2BannersCell.m in Sources */,
 				EC4FC3C61D77CEE400BBD050 /* StrategyViewController.m in Sources */,
@@ -17127,6 +17760,7 @@
 				EC0044D41DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.m in Sources */,
 				EC2F25C51DD3584800B67BBA /* CollectProductCategoryView.m in Sources */,
 				EC4E278E1DF0134E00622711 /* NearbyCollectionViewCell.m in Sources */,
+				EC35F9D11E2365E30097BAB3 /* RadishMallItemsCell.m in Sources */,
 				EC5CDD321DE538F200F95C6F /* ProductDetailFreeApplyUserAddressCell.m in Sources */,
 				EC4FC4131D77CEE400BBD050 /* AppointmentOrderListViewController.m in Sources */,
 				ECBCCEFC1DBF2CC8001B9571 /* ComposeClass.m in Sources */,
@@ -17152,6 +17786,7 @@
 				ECBCCEF41DBF152E001B9571 /* ComposeManager.m in Sources */,
 				EC9775461E10F9D300980C4A /* WolesaleProductDetailView.m in Sources */,
 				ECA2BC1D1DF2CA0100EAE79C /* ProductOrderListCountDown.m in Sources */,
+				EC35FA861E236D710097BAB3 /* RadishOrderDetailHeader.m in Sources */,
 				EC0D35F51DFED9CB0028BC0E /* ProductOrderNormalDetailBaseCell.m in Sources */,
 				EC4FC4011D77CEE400BBD050 /* AddressPickerViewController.m in Sources */,
 				EC35F8CA1E1F896D0097BAB3 /* RadishProductOrderListAddressCell.m in Sources */,
@@ -17161,7 +17796,6 @@
 				ECFFC73B1DC363C1002DBFB9 /* ProductDetailAddressTitleView.m in Sources */,
 				EC2F26AE1DD9BA8700B67BBA /* CollectionTarentoCell.m in Sources */,
 				EC4FC3F81D77CEE400BBD050 /* AccountSettingLogoutView.m in Sources */,
-				EC73A03A1E1E267E0027E91E /* RadishOrderDetailView.m in Sources */,
 				EC0044431DE6B8980042B701 /* ProductDetailCountDownView.m in Sources */,
 				EC4FC43B1D77CEE400BBD050 /* CommentFoundingModel.m in Sources */,
 				EC486F3E1DF7C726005CA365 /* SearchFactorFilterView.m in Sources */,
@@ -17235,6 +17869,7 @@
 				EC4FC43A1D77CEE400BBD050 /* CommentEditingModel.m in Sources */,
 				EC7FBBB01DC450DB007B326C /* GetUserPopulationModel.m in Sources */,
 				EC4FC41C1D77CEE400BBD050 /* ActivityLogoItem.m in Sources */,
+				EC35FA551E236D700097BAB3 /* RadishOrderDetailConsumeCode.m in Sources */,
 				EC22896D1DE9B3EF00EC324A /* AccountCenterActivity.m in Sources */,
 				ECB3E77E1D92C82E0059267D /* OrderBookingMakeSureCell.m in Sources */,
 				EC9775B81E1159F800980C4A /* WholesaleSettlementRuleCell.m in Sources */,
@@ -17247,6 +17882,7 @@
 				EC35F8E61E1F8B040097BAB3 /* RadishProductOrderListBtn.m in Sources */,
 				EC4FC5B71D77CEEF00BBD050 /* Insurance.m in Sources */,
 				EC35F9071E1F9A5B0097BAB3 /* RadishProductDetailScoreItem.m in Sources */,
+				EC35F9CB1E2365E30097BAB3 /* RadishMallBannerCollectionViewCell.m in Sources */,
 				EC486FFE1DFBFBB5005CA365 /* ProductOrderFreeDetailBtnsView.m in Sources */,
 				EC4FC2391D77CEE400BBD050 /* RegisterModel.m in Sources */,
 				EC739F161E1CCF060027E91E /* WolesaleProductDetailV2PlaceCell.m in Sources */,

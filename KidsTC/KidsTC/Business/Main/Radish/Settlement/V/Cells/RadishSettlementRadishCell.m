@@ -22,7 +22,8 @@
 
 - (void)setData:(RadishSettlementData *)data {
     [super setData:data];
-    
+    self.countL.text = [NSString stringWithFormat:@"%@根",data.radishCount];
+    self.totalCountL.text = [NSString stringWithFormat:@"共计%@个萝卜",data.totalRadishCount];
 }
 
 @end

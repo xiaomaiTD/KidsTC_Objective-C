@@ -34,7 +34,7 @@
                         <rect key="frame" x="244.5" y="12" width="60.5" height="25"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" image="Radish_bg_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="Rqf-Ty-9r3">
-                                <rect key="frame" x="8" y="4" width="52.5" height="17"/>
+                                <rect key="frame" x="8" y="5" width="52.5" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="l64-ja-NdW"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAT-PV-Rlp">
-                                <rect key="frame" x="23" y="6" width="35.5" height="14"/>
+                                <rect key="frame" x="23" y="6.5" width="35.5" height="14"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" image="Radish_bg_pink" translatesAutoresizingMaskIntoConstraints="NO" id="iJB-IB-UTz">
                                         <rect key="frame" x="0.0" y="0.0" width="35.5" height="14"/>
@@ -78,10 +78,10 @@
                             <constraint firstAttribute="trailing" secondItem="lAT-PV-Rlp" secondAttribute="trailing" constant="2" id="BG3-Ou-tR2"/>
                             <constraint firstItem="lAT-PV-Rlp" firstAttribute="leading" secondItem="p3Q-Gg-krm" secondAttribute="trailing" constant="5" id="LNQ-kS-Op2"/>
                             <constraint firstItem="p3Q-Gg-krm" firstAttribute="leading" secondItem="eBb-8c-4Cz" secondAttribute="leading" id="URL-HY-nkF"/>
-                            <constraint firstItem="lAT-PV-Rlp" firstAttribute="centerY" secondItem="eBb-8c-4Cz" secondAttribute="centerY" id="cxF-Bq-JMb"/>
+                            <constraint firstItem="lAT-PV-Rlp" firstAttribute="centerY" secondItem="eBb-8c-4Cz" secondAttribute="centerY" constant="1" id="cxF-Bq-JMb"/>
                             <constraint firstItem="Rqf-Ty-9r3" firstAttribute="leading" secondItem="eBb-8c-4Cz" secondAttribute="leading" constant="8" id="eus-oZ-IYL"/>
                             <constraint firstAttribute="bottom" secondItem="p3Q-Gg-krm" secondAttribute="bottom" id="flV-oX-ocB"/>
-                            <constraint firstItem="Rqf-Ty-9r3" firstAttribute="centerY" secondItem="eBb-8c-4Cz" secondAttribute="centerY" id="pdt-Ka-SKX"/>
+                            <constraint firstItem="Rqf-Ty-9r3" firstAttribute="centerY" secondItem="eBb-8c-4Cz" secondAttribute="centerY" constant="1" id="pdt-Ka-SKX"/>
                             <constraint firstItem="p3Q-Gg-krm" firstAttribute="top" secondItem="eBb-8c-4Cz" secondAttribute="top" id="vhD-qf-hE2"/>
                         </constraints>
                     </view>

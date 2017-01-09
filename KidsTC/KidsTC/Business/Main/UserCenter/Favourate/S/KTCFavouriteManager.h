@@ -16,6 +16,7 @@ typedef enum {
     KTCFavouriteTypeNews,
     KTCFavouriteTypeTicketService,
     KTCFavouriteTypeFreeService,
+    KTCFavouriteTypeRadish
 }KTCFavouriteType;
 
 @interface KTCFavouriteManager : NSObject

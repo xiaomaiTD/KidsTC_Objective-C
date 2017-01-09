@@ -7,7 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RadishSettlementChannel.h"
+#import "RadishSettlementPlace.h"
+#import "RadishSettlementStore.h"
+#import "UserAddressEditModel.h"
+#import "PayModel.h"
 
 @interface RadishSettlementData : NSObject
+@property (nonatomic, assign) NSInteger buyNum;
+@property (nonatomic, assign) NSInteger minBuyNum;
+@property (nonatomic, assign) NSInteger maxBuyNum;
+@property (nonatomic, strong) NSString *img;
+@property (nonatomic, strong) NSString *radishSysNo;
+@property (nonatomic, strong) NSString *chid;
+@property (nonatomic, strong) NSString *productName;
+@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *orginalPrice;
+@property (nonatomic, strong) NSString *totalPrice;
+@property (nonatomic, strong) RadishSettlementChannel *payChannel;
+@property (nonatomic, strong) UserAddressManageDataItem *userAddressInfo;
+@property (nonatomic, assign) BOOL hasUserAddress;
+@property (nonatomic, strong) RadishSettlementStore *store;
+@property (nonatomic, strong) NSString *totalRadishCount;
+@property (nonatomic, strong) NSString *radishCount;
+@property (nonatomic, assign) CGFloat transportationExpenses;
+@property (nonatomic, assign) PlaceType placeType;
+@property (nonatomic, strong) NSArray<RadishSettlementPlace *> *place;
 
+//selfDefine
+@property (nonatomic, assign) PayType payType;
+@property (nonatomic, assign) NSInteger currentPlaceIndex;
 @end

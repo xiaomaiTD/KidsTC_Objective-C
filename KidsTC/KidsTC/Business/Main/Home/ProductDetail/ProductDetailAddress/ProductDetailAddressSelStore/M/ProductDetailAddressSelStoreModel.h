@@ -15,6 +15,8 @@
 #import "ProductDetailData.h"
 #import "WolesaleProductDetailPlace.h"
 #import "WholesaleProductDetailStoreItem.h"
+#import "RadishProductDetailStore.h"
+#import "RadishProductDetailPlace.h"
 
 @interface ProductDetailAddressSelStoreModel : NSObject
 @property (nonatomic, strong) NSString *name;
@@ -39,4 +41,7 @@
                                                                                    stores:(NSArray<WholesaleProductDetailStoreItem *> *)stores
                                                                                    places:(NSArray<WolesaleProductDetailPlace *> *)places;
 
++(NSArray<ProductDetailAddressSelStoreModel *> *)modelsWithRadishProductDetailPlaceType:(PlaceType)placeType
+                                                                                 stores:(NSArray<RadishProductDetailStore *> *)stores
+                                                                                 places:(NSArray<RadishProductDetailPlace *> *)places;
 @end

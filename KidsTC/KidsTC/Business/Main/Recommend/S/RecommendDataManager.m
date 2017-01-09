@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductTicketProductData;
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductNormalProductData;
 @property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductFreeProductData;
+@property (nonatomic, strong) NSArray<RecommendProduct *> *recommendProductRadishProductData;
 
 @property (nonatomic, assign) NSInteger accountCenterPage;
 @property (nonatomic, assign) NSInteger collectProductPage;
@@ -26,6 +27,7 @@
 @property (nonatomic, assign) NSInteger ticketProductPage;
 @property (nonatomic, assign) NSInteger normalProductPage;
 @property (nonatomic, assign) NSInteger freeProductPage;
+@property (nonatomic, assign) NSInteger radishProductPage;
 
 #pragma mark - store
 
@@ -112,6 +114,11 @@ singleM(RecommendDataManager)
             return self.freeProductPage;
         }
             break;
+        case RecommendProductTypeRadish:
+        {
+            self.radishProductPage = refresh?1:++self.radishProductPage;
+            return self.radishProductPage;
+        }
         default:
         {
             return 1;
@@ -188,6 +195,17 @@ singleM(RecommendDataManager)
             }
         }
             break;
+        case RecommendProductTypeRadish:
+        {
+            if (refresh) {
+                self.recommendProductRadishProductData = [NSArray arrayWithArray:data];
+            }else{
+                NSMutableArray *ary = [NSMutableArray arrayWithArray:self.recommendProductRadishProductData];
+                [ary addObjectsFromArray:data];
+                self.recommendProductRadishProductData = [NSArray arrayWithArray:ary];
+            }
+        }
+            break;
         default:
         {
             
@@ -231,6 +249,11 @@ singleM(RecommendDataManager)
         case RecommendProductTypeFree:
         {
             return self.recommendProductFreeProductData;
+        }
+            break;
+        case RecommendProductTypeRadish:
+        {
+            return self.recommendProductRadishProductData;
         }
             break;
         default:
@@ -277,6 +300,12 @@ singleM(RecommendDataManager)
         {
             self.recommendProductFreeProductData = nil;
             self.freeProductPage = 0;
+        }
+            break;
+        case RecommendProductTypeRadish:
+        {
+            self.recommendProductRadishProductData = nil;
+            self.radishProductPage = 0;
         }
             break;
         default:
