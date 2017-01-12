@@ -153,4 +153,16 @@
     return commentModel;
 }
 
++ (instancetype)modelFromRadishProductOrderListItem:(RadishProductOrderListItem *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.orderId = data.orderNo;
+    commentModel.relationSysNo = data.commentNo;
+    commentModel.sourceType = (CommentFoundingSourceType)data.commentType;
+    commentModel.objectId = data.commentNo;
+    commentModel.relationType = (CommentRelationType)data.commentType;
+    commentModel.objectName = data.productName;
+    commentModel.imageUrl = [NSURL URLWithString:data.imgUrl];
+    return commentModel;
+}
+
 @end

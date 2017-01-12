@@ -11,7 +11,7 @@
 
 @class RadishProductOrderListCellBtnsView;
 @protocol RadishProductOrderListCellBtnsViewDelegate <NSObject>
-- (void)RadishProductOrderListCellBtnsView:(RadishProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value;
+- (void)radishProductOrderListCellBtnsView:(RadishProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value;
 @end
 
 @interface RadishProductOrderListCellBtnsView : UIView

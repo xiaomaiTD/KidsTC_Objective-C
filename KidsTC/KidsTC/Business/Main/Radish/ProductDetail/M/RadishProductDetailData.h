@@ -60,7 +60,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) RadishProductDetailCountDown *countDown;
 @property (nonatomic, strong) NSString *detailUrl;
 @property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) NSString *orginalPrice;
+@property (nonatomic, strong) NSString *originalPrice;
 @property (nonatomic, strong) NSString *radishCount;
 @property (nonatomic, strong) RadishProductDetailInsurance *insurance;
 @property (nonatomic, strong) RadishProductDetailNote *note;

@@ -36,18 +36,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *remarkL;
 
-
-@property (weak, nonatomic) IBOutlet UIView *ticketBGView;
-@property (weak, nonatomic) IBOutlet UILabel *ticketNameL;
-@property (weak, nonatomic) IBOutlet UILabel *theaterNameL;
-@property (weak, nonatomic) IBOutlet UILabel *ticketCountL;
-@property (weak, nonatomic) IBOutlet UILabel *ticketPriceL;
-@property (weak, nonatomic) IBOutlet UILabel *ticketTimeL;
-
-
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet UIImageView *countDownIcon;
 
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
 @end
 
 @implementation RadishProductOrderListInfoCell
@@ -71,57 +63,37 @@
     [self countDown];
     self.realPriceTipL.text = self.item.payDesc;
     self.realPriceL.text = [NSString stringWithFormat:@"¥%@",self.item.payPrice];
-    
-    switch (self.item.orderKind) {
-        case OrderKindTicket:
+    self.radishCountL.text = [NSString stringWithFormat:@"%@根",item.radishCount];
+    switch (self.item.placeType) {
+        case PlaceTypeStore:
         {
-            self.storeArrowImg.hidden = YES;
-            self.normalBGView.hidden = YES;
-            self.ticketBGView.hidden = NO;
-            self.ticketNameL.text = self.item.productName;
-            self.ticketTimeL.text = self.item.createTime;
-            self.ticketCountL.text = self.item.payNum;
-            self.ticketPriceL.text = [NSString stringWithFormat:@"¥%@",self.item.unitPrice];
-            self.theaterNameL.text = self.item.venueName;
+            self.storeIcon.hidden = NO;
+            self.storeArrowImg.hidden = NO;
+            self.storeNameL.hidden = NO;
         }
             break;
-            
+        case PlaceTypeNone:
+        {
+            self.storeIcon.hidden = YES;
+            self.storeArrowImg.hidden = YES;
+            self.storeNameL.hidden = YES;
+        }
+            break;
         default:
         {
-            switch (self.item.placeType) {
-                case PlaceTypeStore:
-                {
-                    self.storeIcon.hidden = NO;
-                    self.storeArrowImg.hidden = NO;
-                    self.storeNameL.hidden = NO;
-                }
-                    break;
-                case PlaceTypeNone:
-                {
-                    self.storeIcon.hidden = YES;
-                    self.storeArrowImg.hidden = YES;
-                    self.storeNameL.hidden = YES;
-                }
-                    break;
-                default:
-                {
-                    self.storeIcon.hidden = NO;
-                    self.storeArrowImg.hidden = YES;
-                    self.storeNameL.hidden = NO;
-                }
-                    break;
-            }
-            
-            self.normalBGView.hidden = NO;
-            self.ticketBGView.hidden = YES;
-            self.productNameL.text = self.item.productName;
-            self.countL.text = [NSString stringWithFormat:@"x%@",self.item.payNum];
-            self.priceL.text = [NSString stringWithFormat:@"¥%@",self.item.unitPrice];
-            self.remarkL.text = self.item.reservationRemark;
-            self.timeL.text = self.item.createTime;
+            self.storeIcon.hidden = NO;
+            self.storeArrowImg.hidden = YES;
+            self.storeNameL.hidden = NO;
         }
             break;
     }
+    
+    self.normalBGView.hidden = NO;
+    self.productNameL.text = self.item.productName;
+    self.countL.text = [NSString stringWithFormat:@"x%@",self.item.payNum];
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",self.item.unitPrice];
+    self.remarkL.text = self.item.reservationRemark;
+    self.timeL.text = self.item.createTime;
     
     RadishProductOrderListDeliver *deliver = self.item.deliver;
     if ([deliver.deliverStr isNotNull]) {
@@ -194,7 +166,6 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if (self.item.orderKind == OrderKindTicket) return;
     if (self.item.placeType != PlaceTypeStore) return;
     if ([self.delegate respondsToSelector:@selector(radishProductOrderListBaseCell:actionType:value:)]) {
         [self.delegate radishProductOrderListBaseCell:self actionType:(RadishProductOrderListBaseCellActionType)sender.tag value:self.item];

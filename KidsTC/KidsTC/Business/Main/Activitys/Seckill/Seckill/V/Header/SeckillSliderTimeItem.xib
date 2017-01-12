@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SeckillSliderTimeItem">
+            <rect key="frame" x="0.0" y="0.0" width="77" height="53"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-gf-5ZU">
+                    <rect key="frame" x="0.0" y="0.0" width="77" height="47"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seckill_item_sel" translatesAutoresizingMaskIntoConstraints="NO" id="Mdi-i0-4ex">
+                            <rect key="frame" x="0.0" y="0.0" width="77" height="47"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mti-Ob-2Bm">
+                            <rect key="frame" x="15" y="6" width="48" height="35"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-eu-EPe">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="即将开场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe5-Op-yHK">
+                                    <rect key="frame" x="0.0" y="21" width="48" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="4AM-eu-EPe" firstAttribute="top" secondItem="mti-Ob-2Bm" secondAttribute="top" id="Bbj-GX-b0h"/>
+                                <constraint firstItem="Xe5-Op-yHK" firstAttribute="top" secondItem="4AM-eu-EPe" secondAttribute="bottom" id="MCh-Jo-6CU"/>
+                                <constraint firstItem="Xe5-Op-yHK" firstAttribute="leading" secondItem="mti-Ob-2Bm" secondAttribute="leading" id="SJC-ue-vWz"/>
+                                <constraint firstAttribute="bottom" secondItem="Xe5-Op-yHK" secondAttribute="bottom" id="Vmd-2S-3VC"/>
+                                <constraint firstAttribute="trailing" secondItem="4AM-eu-EPe" secondAttribute="trailing" id="YsK-uy-hxo"/>
+                                <constraint firstAttribute="trailing" secondItem="Xe5-Op-yHK" secondAttribute="trailing" id="jLz-2A-ytR"/>
+                                <constraint firstItem="4AM-eu-EPe" firstAttribute="leading" secondItem="mti-Ob-2Bm" secondAttribute="leading" id="sNj-WJ-RzH"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Mdi-i0-4ex" secondAttribute="bottom" id="5x8-5B-4It"/>
+                        <constraint firstItem="mti-Ob-2Bm" firstAttribute="centerY" secondItem="vkb-gf-5ZU" secondAttribute="centerY" id="8Wq-mc-qMe"/>
+                        <constraint firstItem="Mdi-i0-4ex" firstAttribute="top" secondItem="vkb-gf-5ZU" secondAttribute="top" id="Lrx-Ik-tTl"/>
+                        <constraint firstAttribute="trailing" secondItem="Mdi-i0-4ex" secondAttribute="trailing" id="YD1-XY-L8w"/>
+                        <constraint firstItem="Mdi-i0-4ex" firstAttribute="leading" secondItem="vkb-gf-5ZU" secondAttribute="leading" id="i6e-pA-xPX"/>
+                        <constraint firstItem="mti-Ob-2Bm" firstAttribute="centerX" secondItem="vkb-gf-5ZU" secondAttribute="centerX" id="umw-fN-Tci"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsO-nh-KGu">
+                    <rect key="frame" x="0.0" y="47" width="78" height="6"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seckill_arrow_d" translatesAutoresizingMaskIntoConstraints="NO" id="4be-Cv-Ums">
+                    <rect key="frame" x="32" y="46" width="13" height="7"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="12.5" id="J0r-e9-U6w"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="P85-8x-mvb"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="6" id="mdt-Fx-fMG"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vkb-gf-5ZU" secondAttribute="trailing" id="0Ex-dm-y6p"/>
+                <constraint firstItem="4be-Cv-Ums" firstAttribute="top" secondItem="vkb-gf-5ZU" secondAttribute="bottom" constant="-1" id="Emf-Qm-yNw"/>
+                <constraint firstItem="vkb-gf-5ZU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LA9-JL-uq4"/>
+                <constraint firstItem="IsO-nh-KGu" firstAttribute="top" secondItem="vkb-gf-5ZU" secondAttribute="bottom" id="Q2c-DM-41O"/>
+                <constraint firstItem="4be-Cv-Ums" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kxW-sk-PVb"/>
+                <constraint firstAttribute="bottom" secondItem="4be-Cv-Ums" secondAttribute="bottom" id="mrE-7E-dY4"/>
+                <constraint firstAttribute="bottom" secondItem="vkb-gf-5ZU" secondAttribute="bottom" constant="6" id="oBe-DW-NAX"/>
+                <constraint firstItem="IsO-nh-KGu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sWo-fa-fds"/>
+                <constraint firstAttribute="bottom" secondItem="IsO-nh-KGu" secondAttribute="bottom" id="xx1-ok-6NW"/>
+                <constraint firstItem="vkb-gf-5ZU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yIb-61-fH9"/>
+                <constraint firstAttribute="trailing" secondItem="IsO-nh-KGu" secondAttribute="trailing" constant="-1" id="yKG-pC-18e"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrow_d_img" destination="4be-Cv-Ums" id="XXY-S4-Bpp"/>
+                <outlet property="selImg" destination="Mdi-i0-4ex" id="lfp-QI-bXH"/>
+                <outlet property="timeL" destination="4AM-eu-EPe" id="dgZ-Sv-mNs"/>
+                <outlet property="tipL" destination="Xe5-Op-yHK" id="CWH-hh-nIq"/>
+            </connections>
+            <point key="canvasLocation" x="-109.5" y="49.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Seckill_arrow_d" width="53" height="24"/>
+        <image name="Seckill_item_sel" width="319" height="196"/>
+    </resources>
+</document>

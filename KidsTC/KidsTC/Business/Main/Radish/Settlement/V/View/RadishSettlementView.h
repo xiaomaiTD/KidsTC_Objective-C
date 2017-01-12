@@ -11,9 +11,10 @@
 #import "RadishSettlementData.h"
 
 typedef enum : NSUInteger {
-    RadishSettlementViewActionTypeSelectStore = 1,//切换门店
-    RadishSettlementViewActionTypeSelectPlace,//切换地址
-    RadishSettlementViewActionTypeRule,//查看活动规则
+    RadishSettlementViewActionTypeTipAddress = 1,//添加收货地址
+    RadishSettlementViewActionTypeAddress,//切换收货地址
+    RadishSettlementViewActionTypeSelectStore,//切换活动门店
+    RadishSettlementViewActionTypeSelectPlace,//切换活动地址
     RadishSettlementViewActionTypePlaceOrder = 50,//下单
 } RadishSettlementViewActionType;
 
@@ -26,4 +27,5 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) RadishSettlementData *data;
 @property (nonatomic, weak) id<RadishSettlementViewDelegate> delegate;
 - (void)reloadData;
+- (void)scrollToUserRemark;
 @end

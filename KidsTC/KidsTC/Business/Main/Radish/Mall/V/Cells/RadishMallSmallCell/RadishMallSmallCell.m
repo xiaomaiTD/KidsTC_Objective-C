@@ -7,18 +7,49 @@
 //
 
 #import "RadishMallSmallCell.h"
+#import "UIImageView+WebCache.h"
+
+@interface RadishMallSmallCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
+@property (weak, nonatomic) IBOutlet UIButton *buyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *originalPriceL;
+@end
 
 @implementation RadishMallSmallCell
 
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self layoutIfNeeded];
+    
+    self.bgView.layer.cornerRadius = 4;
+    self.bgView.layer.masksToBounds = YES;
+    self.bgView.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+    self.bgView.layer.borderWidth = LINE_H;
+    
+    self.icon.layer.cornerRadius = 4;
+    self.icon.layer.masksToBounds = YES;
+    
+    self.buyBtn.layer.cornerRadius = 2;
+    self.buyBtn.layer.masksToBounds = YES;
+    
 }
+- (void)setProduct:(RadishMallProduct *)product {
+    
+    [super setProduct:product];
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:product.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    
+    self.nameL.text = product.productName;
+    self.radishCountL.text = [NSString stringWithFormat:@"%@根",product.radishCount];
+    self.originalPriceL.text = [NSString stringWithFormat:@"%@元",product.originalPrice];
+    
+    [self.buyBtn setTitle:product.btnName forState:UIControlStateNormal];
+    NSString *btnColor = product.canBuy?@"FF8888":@"cccccc";
+    self.buyBtn.backgroundColor = [UIColor colorFromHexString:btnColor];
 }
 
 @end

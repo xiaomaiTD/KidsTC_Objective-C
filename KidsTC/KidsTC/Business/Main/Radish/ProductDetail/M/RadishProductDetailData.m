@@ -35,7 +35,7 @@
     
     _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
     
-    _orginalPrice = [NSString stringWithFormat:@"%@",@(_orginalPrice.floatValue)];
+    _originalPrice = [NSString stringWithFormat:@"%@",@(_originalPrice.floatValue)];
     
     [self setupInfo];
     

@@ -43,6 +43,8 @@
 #import "RadishProductOrderListViewController.h"
 #import "RadishOrderDetailViewController.h"
 
+#import "SeckillViewController.h"
+
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
 @property (nonatomic, strong) AccountCenterModel *model;
@@ -341,12 +343,15 @@
             break;
         case AccountCenterViewActionTypeCustomerServices:
         {
+            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
+            */
+            toController = [[SeckillViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeOpinion:

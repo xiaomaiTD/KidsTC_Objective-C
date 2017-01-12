@@ -9,6 +9,7 @@
 #import "RadishMallView.h"
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
+#import "KTCEmptyDataView.h"
 
 #import "RadishMallBaseCell.h"
 #import "RadishMallPlantCell.h"
@@ -28,7 +29,6 @@ static NSString *const SmallCellID = @"RadishMallSmallCell";
 
 @interface RadishMallView ()<UITableViewDelegate,UITableViewDataSource,RadishMallBaseCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSArray<NSArray<RadishMallBaseCell *> *> *sections;
 @end
 
 @implementation RadishMallView
@@ -42,32 +42,43 @@ static NSString *const SmallCellID = @"RadishMallSmallCell";
     return self;
 }
 
-- (void)setData:(RadishMallData *)data {
-    _data = data;
-    [self setupSections];
+- (void)reloadData {
     [self.tableView reloadData];
 }
 
-- (void)reloadData {
+- (void)dealWithUI:(NSUInteger)loadCount{
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+    
     [self.tableView reloadData];
+    
+    if (loadCount<TCPAGECOUNT) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    }
+    if (self.data.showProducts.count<1) {
+        self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:self.tableView.bounds
+                                                                          image:nil description:@"啥都没有啊…"
+                                                                     needGoHome:NO];
+    }else self.tableView.backgroundView = nil;
 }
 
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.estimatedRowHeight = 66;
+    tableView.estimatedRowHeight = 100;
     tableView.delegate = self;
     tableView.dataSource = self;
     [self addSubview:tableView];
+    tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    
     self.tableView = tableView;
     [self registerCells];
     
-    [self setupSections];
-    
-    [self.tableView reloadData];
+    [self setupMJ];
 }
 
 - (void)setupMJ {
@@ -105,72 +116,82 @@ static NSString *const SmallCellID = @"RadishMallSmallCell";
     return [self.tableView dequeueReusableCellWithIdentifier:cellID];
 }
 
-- (void)setupSections {
-    
-    NSMutableArray *sections  = [NSMutableArray array];
-    
-    NSMutableArray *section01 = [NSMutableArray array];
-    RadishMallPlantCell *plantCell = [self cellWithID:PlantCellID];
-    if (plantCell) [section01 addObject:plantCell];
-    RadishMallItemsCell *itemsCell = [self cellWithID:ItemsCellID];
-    if (itemsCell) [section01 addObject:itemsCell];
-    if(section01.count>0) [sections addObject:section01];
-    
-    NSMutableArray *section02 = [NSMutableArray array];
-    
-    if(section02.count>0) [sections addObject:section02];
-    
-    NSMutableArray *section03 = [NSMutableArray array];
-    
-    if(section03.count>0) [sections addObject:section03];
-    
-    NSMutableArray *section04 = [NSMutableArray array];
-    
-    if(section04.count>0) [sections addObject:section04];
-    
-    self.sections = [NSArray arrayWithArray:sections];
+- (NSString *)cellIdWithType:(RadishMallProductType)type {
+    switch (type) {
+        case RadishMallProductTypePlant:
+        {
+            return PlantCellID;
+        }
+            break;
+        case RadishMallProductTypeItems:
+        {
+            return ItemsCellID;
+        }
+            break;
+        case RadishMallProductTypeLarge:
+        {
+            return LargeCellID;
+        }
+            break;
+        case RadishMallProductTypeSmall:
+        {
+            return SmallCellID;
+        }
+            break;
+        case RadishMallProductTypeBanner:
+        {
+            return BannerCellID;
+        }
+            break;
+        case RadishMallProductTypeHot:
+        {
+            return HotTipCellID;
+        }
+            break;
+    }
+    return BaseCellID;
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.sections.count;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section<self.sections.count) {
-        return self.sections[section].count;
-    }
-    return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.001;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return self.data.showProducts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
-    if (section<self.sections.count) {
-        NSArray<RadishMallBaseCell *> *rows = self.sections[section];
-        if (row<rows.count) {
-            RadishMallBaseCell *cell = rows[row];
-            cell.delegate = self;
-            
-            return cell;
-        }
+    NSArray<RadishMallProduct *> *showProducts = self.data.showProducts;
+    if (row<showProducts.count) {
+        RadishMallProduct *product = showProducts[row];
+        NSString *cellId = [self cellIdWithType:product.showType];
+        RadishMallBaseCell *cell = [self cellWithID:cellId];
+        cell.data = self.data;
+        cell.product = product;
+        cell.delegate = self;
+        return cell;
     }
     return [tableView dequeueReusableCellWithIdentifier:BaseCellID];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSInteger row = indexPath.row;
+    NSArray<RadishMallProduct *> *showProducts = self.data.showProducts;
+    if (row<showProducts.count) {
+        RadishMallProduct *product = showProducts[row];
+        if (!product.segueModel) return;
+        if ([self.delegate respondsToSelector:@selector(radishMallView:actionType:value:)]) {
+            [self.delegate radishMallView:self actionType:RadishMallViewActionTypeSegue value:product.segueModel];
+        }
+    }
 }
 
 #pragma mark RadishMallBaseCellDelegate
 
 - (void)radishMallBaseCell:(RadishMallBaseCell *)cell actionType:(RadishMallBaseCellActionType)type value:(id)value {
-    
+    if ([self.delegate respondsToSelector:@selector(radishMallView:actionType:value:)]) {
+        [self.delegate radishMallView:self actionType:(RadishMallViewActionType)type value:value];
+    }
 }
 
 @end

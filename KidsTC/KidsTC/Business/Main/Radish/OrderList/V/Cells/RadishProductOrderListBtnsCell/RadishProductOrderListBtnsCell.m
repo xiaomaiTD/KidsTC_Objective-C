@@ -29,7 +29,7 @@
 
 #pragma mark - RadishProductOrderListCellBtnsViewDelegate
 
-- (void)RadishProductOrderListCellBtnsView:(RadishProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
+- (void)radishProductOrderListCellBtnsView:(RadishProductOrderListCellBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
     if ([self.delegate respondsToSelector:@selector(radishProductOrderListBaseCell:actionType:value:)]) {
         [self.delegate radishProductOrderListBaseCell:self actionType:(RadishProductOrderListBaseCellActionType)btn.tag value:self.item];
         [self buryPoint:btn.tag];

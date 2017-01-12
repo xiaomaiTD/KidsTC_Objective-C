@@ -94,6 +94,8 @@
             [self placeOrderFreeWithParam:param successBlock:successBlock failureBlock:failureBlock];
         }
             break;
+            default:
+            break;
     }
 }
 

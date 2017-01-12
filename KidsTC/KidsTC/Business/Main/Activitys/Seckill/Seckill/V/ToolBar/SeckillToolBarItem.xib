@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SeckillToolBarItem">
+            <rect key="frame" x="0.0" y="0.0" width="124" height="49"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-jo-2W5">
+                    <rect key="frame" x="49.5" y="4.5" width="25" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seckill_home" translatesAutoresizingMaskIntoConstraints="NO" id="pma-jR-Faa">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="ayz-w9-R5t"/>
+                                <constraint firstAttribute="width" secondItem="pma-jR-Faa" secondAttribute="height" multiplier="1:1" id="dUy-C8-I53"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="首页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0G-eJ-V4r">
+                            <rect key="frame" x="2.5" y="28" width="20.5" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.89803921568627454" green="0.13725490196078433" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="pma-jR-Faa" secondAttribute="trailing" id="AE4-Fs-Nfh"/>
+                        <constraint firstItem="C0G-eJ-V4r" firstAttribute="top" secondItem="pma-jR-Faa" secondAttribute="bottom" constant="3" id="CSm-3x-4ln"/>
+                        <constraint firstAttribute="bottom" secondItem="C0G-eJ-V4r" secondAttribute="bottom" id="FRS-bA-or1"/>
+                        <constraint firstItem="pma-jR-Faa" firstAttribute="top" secondItem="MeW-jo-2W5" secondAttribute="top" id="Qgj-JG-kfr"/>
+                        <constraint firstItem="pma-jR-Faa" firstAttribute="leading" secondItem="MeW-jo-2W5" secondAttribute="leading" id="Vfy-kE-Mce"/>
+                        <constraint firstItem="C0G-eJ-V4r" firstAttribute="centerX" secondItem="MeW-jo-2W5" secondAttribute="centerX" id="vrH-ya-hDG"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+            <constraints>
+                <constraint firstItem="MeW-jo-2W5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pyJ-uS-cg6"/>
+                <constraint firstItem="MeW-jo-2W5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zpv-mg-vmv"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="icon" destination="pma-jR-Faa" id="c9R-gS-gTw"/>
+                <outlet property="titleL" destination="C0G-eJ-V4r" id="idn-jK-8Q6"/>
+            </connections>
+            <point key="canvasLocation" x="-116" y="44.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Seckill_home" width="104" height="104"/>
+    </resources>
+</document>

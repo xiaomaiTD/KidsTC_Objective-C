@@ -16,30 +16,10 @@
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
     [self setupBtns];
-    
     [self setupMoblies];
-    
     if ([_orderNo isNotNull]) {
         NSDictionary *param = @{@"sid":_orderNo};
-        switch (_orderKind) {
-            case OrderKindNormal:
-            {
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderDetail paramRawData:param];
-            }
-                break;
-            case OrderKindTicket:
-            {
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderTicketDetail paramRawData:param];
-            }
-                break;
-            case OrderKindFree:
-            {
-                _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderFreeDetail paramRawData:param];
-            }
-                break;
-            default:
-                break;
-        }
+        _segueModel = [SegueModel modelWithDestination:SegueDestinationOrderRadishDetail paramRawData:param];
     }
     return YES;
 }

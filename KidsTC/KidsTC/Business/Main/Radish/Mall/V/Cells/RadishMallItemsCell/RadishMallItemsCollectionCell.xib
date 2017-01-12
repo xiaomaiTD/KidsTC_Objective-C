@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="height" constant="12" id="lHv-I2-cOS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.65098039220000004" green="0.23921568630000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                <color key="textColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -55,6 +55,10 @@
                 <constraint firstAttribute="trailing" secondItem="ePG-K2-cUe" secondAttribute="trailing" id="RYz-PL-Cdd"/>
                 <constraint firstItem="ePG-K2-cUe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WzW-GV-KnQ"/>
             </constraints>
+            <connections>
+                <outlet property="img" destination="1LD-pE-dLr" id="ky7-6m-xf3"/>
+                <outlet property="titleL" destination="e03-rd-jzR" id="cNP-uW-cDh"/>
+            </connections>
             <point key="canvasLocation" x="-55" y="40"/>
         </collectionViewCell>
     </objects>

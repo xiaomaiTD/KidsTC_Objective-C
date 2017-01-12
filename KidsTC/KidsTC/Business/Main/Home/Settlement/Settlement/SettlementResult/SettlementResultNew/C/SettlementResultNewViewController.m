@@ -19,6 +19,7 @@
 #import "ProductOrderTicketDetailViewController.h"
 #import "ProductOrderFreeDetailViewController.h"
 #import "FlashServiceOrderDetailViewController.h"
+#import "RadishOrderDetailViewController.h"
 
 @interface SettlementResultNewViewController ()<SettlementResultNewViewDelegate>
 @property (strong, nonatomic) IBOutlet SettlementResultNewView *resultView;
@@ -132,6 +133,11 @@
             recommendType = RecommendProductTypeFree;
         }
             break;
+        case ProductDetailTypeRadish:
+        {
+            recommendType = RecommendProductTypeRadish;
+        }
+            break;
         default:
         {
             recommendType = RecommendProductTypeNormal;
@@ -158,6 +164,13 @@
                     case ProductDetailTypeFree:
                     {
                         ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                        controller.orderId = self.orderId;
+                        [target pushViewController:controller animated:YES];
+                    }
+                        break;
+                    case ProductDetailTypeRadish:
+                    {
+                        RadishOrderDetailViewController *controller = [[RadishOrderDetailViewController alloc] init];
                         controller.orderId = self.orderId;
                         [target pushViewController:controller animated:YES];
                     }

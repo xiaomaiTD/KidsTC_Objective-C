@@ -36,6 +36,7 @@
 #import "NotificationCenterViewController.h"
 #import "OrderRefundViewController.h"
 #import "ProductDetailTicketSelectSeatViewController.h"
+#import "RadishProductOrderListViewController.h"
 
 @interface ProductOrderListViewController ()<ProductOrderListViewDelegate,CommentFoundingViewControllerDelegate,ProductOrderListAllTitleShowViewDelegate,OrderRefundViewControllerDelegate>
 
@@ -732,6 +733,7 @@
 #pragma mark ================萝卜兑换================
 
 - (void)jumpToRadishOrderList:(ProductOrderListAllTitleRowItem *)item {
+    /*
     NSString *str = [AppBaseManager shareAppBaseManager].data.radishOrderUrl;
     if ([str isNotNull]) {
         WebViewController *controller = [[WebViewController alloc] init];
@@ -739,7 +741,9 @@
         [self.navigationController pushViewController:controller animated:YES];
     }else{
         [[iToast makeText:@"该功能暂不支持"] show];
-    }
+    }*/
+    RadishProductOrderListViewController *controller = [[RadishProductOrderListViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark ================我的抽奖================

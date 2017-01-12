@@ -85,7 +85,7 @@ ProductDetailAddNewConsultViewControllerDelegate
     NSDictionary *param = @{@"pId":_productId,
                             @"chId":_channelId};
     [TCProgressHUD showSVP];
-    [Request startWithName:@"Get_RADISH_PRODUCT_DETAIL_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startWithName:@"GET_RADISH_PRODUCT_DETAIL_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         RadishProductDetailData *data = [RadishProductDetailModel modelWithDictionary:dic].data;
         if (data) {
@@ -603,7 +603,7 @@ ProductDetailAddNewConsultViewControllerDelegate
 }
 
 - (void)share {
-    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObject sourceType:KTCShareServiceTypeService];
+    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObject sourceType:KTCShareServiceTypeRadish];
     [self presentViewController:controller animated:YES completion:nil];
 }
 

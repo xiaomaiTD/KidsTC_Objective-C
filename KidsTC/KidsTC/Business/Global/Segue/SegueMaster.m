@@ -32,6 +32,8 @@
 #import "ProductOrderFreeDetailViewController.h"
 #import "WholesaleOrderDetailViewController.h"
 #import "WolesaleProductDetailViewController.h"
+#import "RadishOrderDetailViewController.h"
+#import "RadishProductDetailViewController.h"
 
 @implementation SegueMaster
 
@@ -69,6 +71,7 @@
         case SegueDestinationProductTicketDetail:
         case SegueDestinationProductFreeDetail:
         case SegueDestinationOrderWholesaleDetail:
+        case SegueDestinationProductRadishDetail:
         {
             if (resultBlock) resultBlock();
         }
@@ -79,6 +82,7 @@
         case SegueDestinationOrderList:
         case SegueDestinationOrderTicketDetail:
         case SegueDestinationOrderFreeDetail:
+        case SegueDestinationOrderRadishDetail:
         {
             [[User shareUser] checkLoginWithTarget:fromVC resultBlock:^(NSString *uid, NSError *error) {
                 if (resultBlock) resultBlock();
@@ -300,6 +304,24 @@
                 toController = controller;
             }
             
+        }
+            break;
+        case SegueDestinationProductRadishDetail:
+        {
+            NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
+            NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
+            channelId = [channelId isNotNull]?channelId:@"0";
+            RadishProductDetailViewController *controller = [[RadishProductDetailViewController alloc] init];
+            controller.productId = serviceId;
+            controller.channelId = channelId;
+            toController = controller;
+        }
+            break;
+        case SegueDestinationOrderRadishDetail:
+        {
+            RadishOrderDetailViewController *controller = [[RadishOrderDetailViewController alloc] init];
+            controller.orderId = [NSString stringWithFormat:@"%@",model.segueParam[@"sid"]];
+            toController = controller;
         }
             break;
     }

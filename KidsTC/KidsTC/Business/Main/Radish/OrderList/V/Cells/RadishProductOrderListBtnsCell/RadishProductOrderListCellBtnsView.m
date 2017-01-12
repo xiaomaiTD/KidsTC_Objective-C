@@ -43,8 +43,8 @@
 }
 
 - (IBAction)action:(UIButton *)sender {
-    if ([self.delegate respondsToSelector:@selector(RadishProductOrderListCellBtnsView:actionBtn:value:)]) {
-        [self.delegate RadishProductOrderListCellBtnsView:self actionBtn:sender value:nil];
+    if ([self.delegate respondsToSelector:@selector(radishProductOrderListCellBtnsView:actionBtn:value:)]) {
+        [self.delegate radishProductOrderListCellBtnsView:self actionBtn:sender value:nil];
     }
 }
 

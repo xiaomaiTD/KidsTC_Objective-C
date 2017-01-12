@@ -55,9 +55,9 @@
         [self back];
         return;
     }
-    NSDictionary *param = @{@"orderId":_orderId};
+    NSDictionary *param = @{@"orderNo":_orderId};
     [TCProgressHUD showSVP];
-    [Request startWithName:@"Get_RADISH_PRODUCT_DETAIL_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startWithName:@"GET_RADISH_ORDER_DETAIL" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         self.data = [RadishOrderDetailModel modelWithDictionary:dic].data;
         self.detailView.data = self.data;

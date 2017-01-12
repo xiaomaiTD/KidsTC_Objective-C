@@ -80,6 +80,9 @@ NSString *const kSegueParameterKeyLinkUrl = @"kSegueParameterKeyLinkUrl";
         case SegueDestinationOrderTicketDetail:
         case SegueDestinationOrderFreeDetail:
         case SegueDestinationOrderWholesaleDetail:
+        case SegueDestinationProductRadishDetail:
+        case SegueDestinationOrderRadishDetail:
+            
         {
             if ([data isKindOfClass:[NSDictionary class]]) {
                 _segueParam = [NSDictionary dictionaryWithDictionary:data];

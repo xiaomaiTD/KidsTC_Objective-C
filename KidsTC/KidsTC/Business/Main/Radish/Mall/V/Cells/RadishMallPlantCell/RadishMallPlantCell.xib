@@ -23,7 +23,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elu-7o-FK0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="178"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Radish_mallBG" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-B1-ZvX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Radish_mallBG_sun" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-B1-ZvX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jUt-B1-ZvX" secondAttribute="height" multiplier="521:289" id="N5N-t3-jr1"/>
@@ -90,6 +90,9 @@
                                     <constraint firstAttribute="width" secondItem="1VD-6r-xxg" secondAttribute="height" multiplier="1:1" id="7DL-r3-f6V"/>
                                 </constraints>
                                 <state key="normal" image="Radish_startPlant"/>
+                                <connections>
+                                    <action selector="plant:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="crp-Oa-0d3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuY-6O-uUJ">
                                 <rect key="frame" x="227" y="16" width="78" height="16"/>
@@ -98,6 +101,9 @@
                                     <constraint firstAttribute="height" constant="16" id="f8j-NW-kNX"/>
                                 </constraints>
                                 <state key="normal" image="Radish_rule"/>
+                                <connections>
+                                    <action selector="rule:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ovd-VW-dtn"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-W8-68c">
                                 <rect key="frame" x="255" y="103" width="50" height="24"/>
@@ -129,36 +135,36 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMN-2o-ozj">
-                                <rect key="frame" x="87.5" y="100" width="145" height="30"/>
+                                <rect key="frame" x="85.5" y="98" width="149" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您连续种萝卜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pd-qc-4sk">
-                                        <rect key="frame" x="0.0" y="8" width="74" height="15"/>
+                                        <rect key="frame" x="0.0" y="10" width="74" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.65098039215686276" green="0.23921568627450979" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <color key="textColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-zD-T33">
-                                        <rect key="frame" x="120" y="8" width="25" height="15"/>
+                                        <rect key="frame" x="124" y="10" width="25" height="15"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" red="0.65098039220000004" green="0.23921568630000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <color key="textColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-Yj-BN1">
-                                        <rect key="frame" x="82" y="0.0" width="30" height="30"/>
+                                        <rect key="frame" x="82" y="0.0" width="34" height="34"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" image="Radish_count" translatesAutoresizingMaskIntoConstraints="NO" id="fmF-uZ-G7e">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Bei-4p-pPx"/>
+                                                    <constraint firstAttribute="height" constant="34" id="Bei-4p-pPx"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKd-5w-QMu">
-                                                <rect key="frame" x="8" y="7" width="14" height="16"/>
+                                                <rect key="frame" x="8" y="7.5" width="18" height="19.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="14" id="vM3-U9-40k"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="vM3-U9-40k"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.65098039215686276" green="0.23921568627450979" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <color key="textColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.22352941176470587" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -214,6 +220,14 @@
                     <constraint firstAttribute="trailing" secondItem="elu-7o-FK0" secondAttribute="trailing" id="gSn-Uj-PK0"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="bgImgView" destination="jUt-B1-ZvX" id="Ro4-td-55u"/>
+                <outlet property="peopleL" destination="dU3-gd-bb5" id="jMJ-VE-gEA"/>
+                <outlet property="plantBtn" destination="1VD-6r-xxg" id="ZgB-cK-3ga"/>
+                <outlet property="plantCountL" destination="AKd-5w-QMu" id="THi-JB-9Kh"/>
+                <outlet property="radishCountL" destination="6k0-xE-TCo" id="6t6-qf-Cqe"/>
+                <outlet property="ruleBtn" destination="NuY-6O-uUJ" id="btB-9P-q3w"/>
+            </connections>
             <point key="canvasLocation" x="-157" y="0.5"/>
         </tableViewCell>
     </objects>
@@ -222,8 +236,8 @@
         <image name="Radish_bg_pink" width="131" height="57"/>
         <image name="Radish_bg_yellow" width="216" height="70"/>
         <image name="Radish_count" width="126" height="126"/>
-        <image name="Radish_mallBG" width="1563" height="867"/>
-        <image name="Radish_rule" width="329" height="67"/>
+        <image name="Radish_mallBG_sun" width="1563" height="867"/>
+        <image name="Radish_rule" width="335" height="67"/>
         <image name="Radish_score" width="207" height="100"/>
         <image name="Radish_startPlant" width="381" height="381"/>
     </resources>

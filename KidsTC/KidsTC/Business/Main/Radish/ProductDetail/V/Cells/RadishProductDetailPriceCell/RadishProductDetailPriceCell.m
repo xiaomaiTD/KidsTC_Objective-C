@@ -28,7 +28,7 @@
     self.countL.text = [NSString stringWithFormat:@"%@根",data.radishCount];
     self.priceL.text = [NSString stringWithFormat:@"+%@元",data.price];
     self.priceL.hidden = !data.isShowPrice;
-    self.originalPriceL.text = [NSString stringWithFormat:@"童成价：¥%@",data.orginalPrice];
+    self.originalPriceL.text = [NSString stringWithFormat:@"童成价：¥%@",data.originalPrice];
 }
 
 @end

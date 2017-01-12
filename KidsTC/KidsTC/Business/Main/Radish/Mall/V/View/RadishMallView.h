@@ -11,7 +11,9 @@
 
 typedef enum : NSUInteger {
     RadishMallViewActionTypeSegue = 1,
-    RadishMallViewActionTypeLoadData,
+    RadishMallViewActionTypePlant,
+    RadishMallViewActionTypeRule,
+    RadishMallViewActionTypeLoadData = 100,
 } RadishMallViewActionType;
 
 @class RadishMallView;
@@ -22,4 +24,6 @@ typedef enum : NSUInteger {
 @interface RadishMallView : UIView
 @property (nonatomic, strong) RadishMallData *data;
 @property (nonatomic, weak) id<RadishMallViewDelegate> delegate;
+- (void)reloadData;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

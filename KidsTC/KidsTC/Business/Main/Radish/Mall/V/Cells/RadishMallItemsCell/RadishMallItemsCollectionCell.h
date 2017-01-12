@@ -7,7 +7,7 @@
 //
 
 #import "RadishMallBaseCell.h"
-
+#import "RadishMallIcon.h"
 @interface RadishMallItemsCollectionCell : UICollectionViewCell
-
+@property (nonatomic, strong) RadishMallIcon *icon;
 @end

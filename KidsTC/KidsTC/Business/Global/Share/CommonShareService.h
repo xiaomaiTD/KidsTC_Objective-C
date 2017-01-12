@@ -10,11 +10,11 @@
 
 
 typedef enum {
-    CommonShareTypeWechatSession,
-    CommonShareTypeWechatTimeLine,
-    CommonShareTypeWeibo,
-    CommonShareTypeQQ,
-    CommonShareTypeQZone
+    CommonShareTypeWechatSession = 0,//微信好友
+    CommonShareTypeWechatTimeLine = 1,//微信盆友圈
+    CommonShareTypeWeibo = 2,//微博
+    CommonShareTypeQQ = 3,//QQ
+    CommonShareTypeQZone = 4//QQ空间
 }CommonShareType;
 
 extern NSString *const kCommonShareTypeWechatSessionKey;

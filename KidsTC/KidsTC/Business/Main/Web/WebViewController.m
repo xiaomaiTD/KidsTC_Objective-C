@@ -44,6 +44,12 @@
 #import "WholesaleOrderDetailViewController.h"
 #import "WolesaleProductDetailViewController.h"
 
+#import "RadishMallViewController.h"
+#import "RadishProductOrderListViewController.h"
+#import "RadishOrderDetailViewController.h"
+#import "RadishProductDetailViewController.h"
+#import "SeckillViewController.h"
+
 static NSString *const Prefix         = @"hook::";            //前缀
 typedef enum : NSUInteger {
     WebViewOptNavBarTypeShow=1,//显示
@@ -70,6 +76,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) CommonShareObject       *shareObject;
 @property (nonatomic, assign) WebViewShareCallBackType webViewShareCallBackType;
 @property (nonatomic, strong) NSString *shareCallBack;
+@property (nonatomic, assign) CommonShareType shareType;
 
 @property (nonatomic, assign) WebViewUploadImgType    uploadImgType;
 @property (nonatomic, strong) NSString                *callBackJS;
@@ -547,9 +554,57 @@ typedef enum : NSUInteger {
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
         ProductOrderFreeListViewController *controller = [[ProductOrderFreeListViewController alloc] init];
         controller.type = type;
-        [self.navigationController pushViewController:controller animated:YES];
+        [self makeSegue:controller];
     }];
 }
+#pragma mark 萝卜商城
+- (void)radishMall:(NSString *)param {
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        RadishMallViewController *controller = [[RadishMallViewController alloc] init];
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 萝卜订单列表
+- (void)radishOrderList:(NSString *)param {
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        RadishProductOrderListViewController *controller = [[RadishProductOrderListViewController alloc] init];
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 萝卜订单详情
+- (void)radishOrderDetail:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    NSString *orderId = [NSString stringWithFormat:@"%@",dic[@"orderId"]];
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"关联id为空"] show];
+        return;
+    }
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        RadishOrderDetailViewController *controller = [[RadishOrderDetailViewController alloc] init];
+        controller.orderId = orderId;
+        [self makeSegue:controller];
+    }];
+}
+#pragma mark 萝卜商品详情
+- (void)radishProductDetail:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    NSString *serviceId = [dic objectForKey:@"pid"];
+    NSString *channelId = [dic objectForKey:@"cid"];
+    if (![serviceId isNotNull]) {
+        [[iToast makeText:@"关联服务为空"] show];
+        return;
+    }
+    RadishProductDetailViewController *controller = [[RadishProductDetailViewController alloc] init];
+    controller.productId = serviceId;
+    controller.channelId = channelId;
+    [self makeSegue:controller];
+}
+#pragma mark 秒杀活动
+- (void)seckillActivity:(NSString *)param {
+    SeckillViewController *controller = [[SeckillViewController alloc] init];
+    [self makeSegue:controller];
+}
+
 #pragma mark 回到首页
 - (void)home:(NSString *)param {
     [[TabBarController shareTabBarController] selectIndex:0];
@@ -609,6 +664,33 @@ typedef enum : NSUInteger {
 - (void)saveShare:(NSString *)param {
     self.shareObject = [self shareObjWithParam:param];
 }
+
+#pragma mark 快速分享
+- (void)directShare:(NSString *)param {
+    CommonShareObject *shareObject = [self shareObjWithParam:param];
+    if (shareObject) {
+        CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:shareObject sourceType:KTCShareServiceTypeNews];
+        controller.webViewShareCallBackType = self.webViewShareCallBackType;
+        controller.webViewCallBack = ^(KTCShareServiceChannel channel, BOOL success){
+            if (!success)return;
+            if([self.shareCallBack isNotNull]) {
+                NSString *channelStr = [NSString stringWithFormat:@"\"%zd\"",channel];
+                NSMutableString *callBackJS = [[NSMutableString alloc]initWithString:self.shareCallBack];
+                if ([self.shareCallBack containsString:@"()"]) {
+                    NSRange range = [self.shareCallBack rangeOfString:@"("];
+                    [callBackJS insertString:channelStr atIndex:range.location+1];
+                }
+                [self executeJS:callBackJS];
+            }
+        };
+        [controller shareWithType:self.shareType object:shareObject sourceType:KTCShareServiceTypeNews];
+        NSDictionary *params = @{@"url":self.urlString};
+        [BuryPointManager trackEvent:@"event_click_share" actionId:30011 params:params];
+    }else{
+        [[iToast makeText:@"无效的分享数据"] show];
+    }
+}
+
 #pragma mark 上传图片
 - (void)upload_img:(NSString *)param {
     NSDictionary *params = [NSDictionary parsetUrl:param];
@@ -772,6 +854,7 @@ typedef enum : NSUInteger {
         NSRange urlRange   = [string rangeOfString:@"url="];
         NSRange callBackRange = [string rangeOfString:@"callBack="];
         NSRange callBackTypeRange = [string rangeOfString:@"callBackType="];
+        NSRange shareTypeRange = [string rangeOfString:@"shareType"];
         if (titleRange.location != NSNotFound) {
             NSString *title = [string substringFromIndex:titleRange.length];
             [tempDic setObject:title forKey:@"title"];
@@ -803,6 +886,10 @@ typedef enum : NSUInteger {
         }
         if (callBackTypeRange.location != NSNotFound) {
             self.webViewShareCallBackType = [[string substringFromIndex:callBackTypeRange.length] integerValue];
+            continue;
+        }
+        if (shareTypeRange.location != NSNotFound) {
+            self.shareType = (CommonShareType)([[string substringFromIndex:shareTypeRange.length] integerValue] - 1);
             continue;
         }
     }

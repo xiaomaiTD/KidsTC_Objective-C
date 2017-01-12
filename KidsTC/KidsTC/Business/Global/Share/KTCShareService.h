@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    KTCShareServiceChannelWechatSession = 1,
-    KTCShareServiceChannelWechatTimeLine,
-    KTCShareServiceChannelWeibo,
-    KTCShareServiceChannelQQ,
-    KTCShareServiceChannelQZone
+    KTCShareServiceChannelWechatSession = 1,//微信好友
+    KTCShareServiceChannelWechatTimeLine = 2,//微信朋友圈
+    KTCShareServiceChannelWeibo = 3,//微博
+    KTCShareServiceChannelQQ = 4,//QQ
+    KTCShareServiceChannelQZone = 5//QQ空间
 }KTCShareServiceChannel;
 
 typedef enum {
@@ -26,6 +26,8 @@ typedef enum {
     KTCShareServiceTypeTicketService = 6,
     KTCShareServiceTypeFree = 7,
     KTCShareServiceTypeWholesale = 8,
+    KTCShareServiceTypeSeckill = 9,
+    KTCShareServiceTypeRadish = 10,
 }KTCShareServiceType;
 
 @interface KTCShareService : NSObject

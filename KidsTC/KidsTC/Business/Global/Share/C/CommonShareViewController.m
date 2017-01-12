@@ -7,8 +7,7 @@
 //
 
 #import "CommonShareViewController.h"
-#import "CommonShareService.h"
-#import "KTCShareService.h"
+
 #import "iToast.h"
 
 @interface CommonShareViewController ()
@@ -136,9 +135,13 @@
 }
 
 - (IBAction)didClickedShareButton:(UIButton *)sender {
-    CommonShareObject *object = [self.shareObject copyObject];
     CommonShareType type = (CommonShareType)sender.tag;
-    
+    CommonShareObject *object = [self.shareObject copyObject];
+    [self shareWithType:type object:object sourceType:self.sourceType];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)shareWithType:(CommonShareType)type object:(CommonShareObject *)object sourceType:(KTCShareServiceType)sourceType{
     switch (object.sourceType) {
         case CommonShareSourceTypeLink:
         {
@@ -155,7 +158,6 @@
         KTCShareServiceChannel channel = type + 1;
         if (self.webViewCallBack) self.webViewCallBack(channel,YES);
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)shareLink:(CommonShareType)type obj:(CommonShareObject *)object {

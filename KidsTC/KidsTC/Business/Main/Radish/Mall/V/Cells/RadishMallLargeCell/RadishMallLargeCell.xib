@@ -12,15 +12,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="307" id="KGk-i7-Jjw" customClass="RadishMallLargeCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="307"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="404" id="KGk-i7-Jjw" customClass="RadishMallLargeCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="304"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="307"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="304"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fK6-Zd-qHs">
-                        <rect key="frame" x="10" y="10" width="300" height="286"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fK6-Zd-qHs">
+                        <rect key="frame" x="10" y="10" width="300" height="294"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x9e-qi-2PP">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
@@ -29,28 +29,28 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M18-Se-rSe">
-                                <rect key="frame" x="0.0" y="150" width="300" height="136"/>
+                                <rect key="frame" x="0.0" y="150" width="300" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0元享受1对1的儿童摄影，360度全实景拍摄0元享受1对1！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-LV-OH2">
-                                        <rect key="frame" x="15" y="15" width="270" height="41"/>
+                                        <rect key="frame" x="15" y="15" width="270" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="已有100人参与" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyW-B7-F3l">
-                                        <rect key="frame" x="15" y="67" width="96" height="17"/>
+                                        <rect key="frame" x="15" y="74" width="96" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12月15日-12月31日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b80-sW-BvU">
-                                        <rect key="frame" x="142" y="67" width="143" height="17"/>
+                                        <rect key="frame" x="142" y="74" width="143" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a43-36-e9n">
-                                        <rect key="frame" x="15" y="96" width="61" height="25"/>
+                                        <rect key="frame" x="15" y="103" width="61" height="25"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" image="Radish_bg_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="AJG-Ro-anC">
                                                 <rect key="frame" x="8" y="5" width="53" height="17"/>
@@ -105,14 +105,14 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Radish_time" translatesAutoresizingMaskIntoConstraints="NO" id="2l3-sK-Tx3">
-                                        <rect key="frame" x="123" y="68" width="14" height="14"/>
+                                        <rect key="frame" x="123" y="75" width="14" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2l3-sK-Tx3" secondAttribute="height" multiplier="1:1" id="GgC-pA-yZX"/>
                                             <constraint firstAttribute="width" constant="14" id="gDG-T8-2ib"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRe-aD-rJM">
-                                        <rect key="frame" x="210" y="94" width="75" height="30"/>
+                                        <rect key="frame" x="210" y="101" width="75" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="a5F-Ey-P7R"/>
@@ -122,19 +122,19 @@
                                         <state key="normal" title="去购买"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+10元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHi-57-dUA">
-                                        <rect key="frame" x="82" y="98.5" width="44" height="20"/>
+                                        <rect key="frame" x="82" y="106" width="44" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnH-H5-o9O">
-                                        <rect key="frame" x="130" y="102" width="25" height="14"/>
+                                        <rect key="frame" x="130" y="109" width="25" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axd-Kb-wcS">
-                                        <rect key="frame" x="130" y="109" width="25" height="0.5"/>
+                                        <rect key="frame" x="130" y="116" width="25" height="1"/>
                                         <color key="backgroundColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="0.5" id="6Hm-CF-auu"/>
@@ -144,6 +144,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hRe-aD-rJM" secondAttribute="trailing" constant="15" id="06K-RT-ilg"/>
+                                    <constraint firstAttribute="bottom" secondItem="a43-36-e9n" secondAttribute="bottom" constant="15" id="CXc-jt-DUJ"/>
                                     <constraint firstItem="2l3-sK-Tx3" firstAttribute="leading" secondItem="jyW-B7-F3l" secondAttribute="trailing" constant="12" id="G6L-Me-gA7"/>
                                     <constraint firstItem="Axd-Kb-wcS" firstAttribute="trailing" secondItem="NnH-H5-o9O" secondAttribute="trailing" id="HQk-IH-KJl"/>
                                     <constraint firstItem="NnH-H5-o9O" firstAttribute="leading" secondItem="NHi-57-dUA" secondAttribute="trailing" constant="4" id="MAj-8V-s50"/>
@@ -182,12 +183,24 @@
                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="fK6-Zd-qHs" secondAttribute="trailing" constant="10" id="1hg-Ev-NlV"/>
-                    <constraint firstAttribute="bottom" secondItem="fK6-Zd-qHs" secondAttribute="bottom" constant="10" id="66S-dy-m5p"/>
+                    <constraint firstAttribute="bottom" secondItem="fK6-Zd-qHs" secondAttribute="bottom" id="66S-dy-m5p"/>
                     <constraint firstItem="fK6-Zd-qHs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="KKV-FD-5Ku"/>
                     <constraint firstItem="fK6-Zd-qHs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OD1-bj-SD2"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="25" y="42.5"/>
+            <connections>
+                <outlet property="bgView" destination="fK6-Zd-qHs" id="KB1-M5-tsF"/>
+                <outlet property="buyBtn" destination="hRe-aD-rJM" id="YyF-mr-vhO"/>
+                <outlet property="icon" destination="x9e-qi-2PP" id="wf3-De-87G"/>
+                <outlet property="iconH" destination="3pU-eC-1LB" id="OBo-a7-w0w"/>
+                <outlet property="joinL" destination="jyW-B7-F3l" id="I7F-4A-IyK"/>
+                <outlet property="nameL" destination="bcR-LV-OH2" id="lNa-o0-tmx"/>
+                <outlet property="originalPriceL" destination="NnH-H5-o9O" id="De9-x4-5ph"/>
+                <outlet property="priceL" destination="NHi-57-dUA" id="klj-gk-oRF"/>
+                <outlet property="radishCountL" destination="l0u-wh-eJ1" id="C0T-uU-huP"/>
+                <outlet property="timeL" destination="b80-sW-BvU" id="4CI-Gm-DWx"/>
+            </connections>
+            <point key="canvasLocation" x="-383" y="69"/>
         </tableViewCell>
     </objects>
     <resources>

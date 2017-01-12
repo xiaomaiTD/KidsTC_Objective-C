@@ -17,7 +17,8 @@ static int const kRadishMallBannerCellMaxSections = 11;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *CollectionViewConstraintH;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) YYTimer *timer;
-@property (nonatomic, weak) NSArray<NSString *> *narrowImg;
+@property (nonatomic, weak) NSArray<RadishMallBanner *> *banners;
+@property (nonatomic, assign) CGFloat item_h;
 @end
 
 @implementation RadishMallBannerCell
@@ -28,31 +29,28 @@ static int const kRadishMallBannerCellMaxSections = 11;
     [self.collectionView registerNib:[UINib nibWithNibName:@"RadishMallBannerCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
     
     self.pageControl.currentPageIndicatorTintColor = COLOR_PINK;
-    
 }
 
-- (void)setData:(RadishMallData *)data {
-    [super setData:data];
-    
-    self.CollectionViewConstraintH.constant = data.picRate * SCREEN_WIDTH;
-    
-    self.narrowImg = data.narrowImg;
+- (void)setProduct:(RadishMallProduct *)product {
+    [super setProduct:product];
+    NSArray<RadishMallBanner *> *banners = product.banners;
+    if (banners.count>0) {
+        RadishMallBanner *banner = banners.firstObject;
+        self.item_h = banner.ratio * SCREEN_WIDTH;
+        self.CollectionViewConstraintH.constant = self.item_h;
+    }
+    self.banners = product.banners;
     [self.collectionView reloadData];
-    
-    self.pageControl.numberOfPages = _narrowImg.count;
+    self.pageControl.numberOfPages = self.banners.count;
     [self addYYTimer];
     
     [self layoutIfNeeded];
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
-}
-
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH * self.data.picRate);
+    return CGSizeMake(SCREEN_WIDTH, self.item_h);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -65,23 +63,37 @@ static int const kRadishMallBannerCellMaxSections = 11;
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return _narrowImg.count>1?kRadishMallBannerCellMaxSections:1;
+    return _banners.count>1?kRadishMallBannerCellMaxSections:1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _narrowImg.count;
+    return _banners.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     RadishMallBannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.imageUrl = _narrowImg[indexPath.row];
+    NSInteger row = indexPath.row;
+    if (row<_banners.count) {
+        RadishMallBanner *banner = _banners[indexPath.row];
+        cell.imageUrl = banner.imgUrl;
+    }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+    if (row<_banners.count) {
+        RadishMallBanner *banner = _banners[indexPath.row];
+        if ([self.delegate respondsToSelector:@selector(radishMallBaseCell:actionType:value:)]) {
+            [self.delegate radishMallBaseCell:self actionType:RadishMallBaseCellActionTypeSegue value:banner.segueModel];
+        }
+    }
 }
 
 #pragma mark - timer
 
 - (void)addYYTimer{
-    if (_narrowImg.count>1) {
+    if (_banners.count>1) {
         if (self.timer) [self removeYYTimer];
         self.timer = [YYTimer timerWithTimeInterval:5 target:self selector:@selector(nextPage) repeats:YES];
     }else{
@@ -99,7 +111,7 @@ static int const kRadishMallBannerCellMaxSections = 11;
 //下一页
 - (void)nextPage
 {
-    int count = (int)_narrowImg.count;
+    int count = (int)_banners.count;
     
     // 1.马上显示回最中间那组的数据
     NSIndexPath *currentIndexPathReset = [self resetIndexPath];
@@ -138,11 +150,11 @@ static int const kRadishMallBannerCellMaxSections = 11;
 //当用户停止拖拽的时候就调用
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (_narrowImg.count>1)[self addYYTimer];
+    if (_banners.count>1)[self addYYTimer];
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    int count = (int)_narrowImg.count;
+    int count = (int)_banners.count;
     if (count>0) {
         int page = (int)(scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5) % count;
         self.pageControl.currentPage = page;

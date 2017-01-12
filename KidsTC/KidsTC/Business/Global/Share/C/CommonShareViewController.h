@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CommonShareObject.h"
 #import "KTCShareService.h"
+#import "CommonShareService.h"
 
 typedef enum : NSUInteger {
     WebViewShareCallBackTypeClickBtn = 1,//WebView点击分享按钮就回调
@@ -26,7 +27,6 @@ typedef enum : NSUInteger {
 
 + (instancetype)instanceWithShareObject:(CommonShareObject *)object sourceType:(KTCShareServiceType)type;
 
-
-
+- (void)shareWithType:(CommonShareType)type object:(CommonShareObject *)object sourceType:(KTCShareServiceType)sourceType;
 
 @end

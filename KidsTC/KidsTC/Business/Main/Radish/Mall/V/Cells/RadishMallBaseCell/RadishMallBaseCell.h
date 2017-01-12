@@ -11,7 +11,8 @@
 
 typedef enum : NSUInteger {
     RadishMallBaseCellActionTypeSegue = 1,
-    RadishMallBaseCellActionType1,
+    RadishMallBaseCellActionTypePlant,
+    RadishMallBaseCellActionTypeRule,
 } RadishMallBaseCellActionType;
 
 @class RadishMallBaseCell;
@@ -22,4 +23,5 @@ typedef enum : NSUInteger {
 @interface RadishMallBaseCell : UITableViewCell
 @property (nonatomic, weak) id<RadishMallBaseCellDelegate> delegate;
 @property (nonatomic, strong) RadishMallData *data;
+@property (nonatomic, strong) RadishMallProduct *product;
 @end

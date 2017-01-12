@@ -8,10 +8,12 @@
 
 #import "RadishSettlementData.h"
 
+NSString *const KRadishSettlementUserRemark = @"RadishSettlementUserRemark";
+
 @implementation RadishSettlementData
 + (NSDictionary *)modelContainerPropertyGenericClass
 {
-    return @{@"place":[RadishSettlementPlace class]};
+    return @{@"place":[ServiceSettlementPlace class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     [self dataConversion:dic];

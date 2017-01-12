@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "RadishSettlementChannel.h"
-#import "RadishSettlementPlace.h"
-#import "RadishSettlementStore.h"
 #import "UserAddressEditModel.h"
 #import "PayModel.h"
+#import "SettlementPickStoreModel.h"
+#import "ServiceSettlementPlace.h"
+
+extern NSString *const KRadishSettlementUserRemark;
 
 @interface RadishSettlementData : NSObject
 @property (nonatomic, assign) NSInteger buyNum;
@@ -27,12 +29,13 @@
 @property (nonatomic, strong) RadishSettlementChannel *payChannel;
 @property (nonatomic, strong) UserAddressManageDataItem *userAddressInfo;
 @property (nonatomic, assign) BOOL hasUserAddress;
-@property (nonatomic, strong) RadishSettlementStore *store;
+@property (nonatomic, strong) SettlementPickStoreDataItem *store;
 @property (nonatomic, strong) NSString *totalRadishCount;
 @property (nonatomic, strong) NSString *radishCount;
 @property (nonatomic, assign) CGFloat transportationExpenses;
 @property (nonatomic, assign) PlaceType placeType;
-@property (nonatomic, strong) NSArray<RadishSettlementPlace *> *place;
+@property (nonatomic, strong) NSArray<ServiceSettlementPlace *> *place;
+@property (nonatomic, strong) NSString *soleId;
 
 //selfDefine
 @property (nonatomic, assign) PayType payType;

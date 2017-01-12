@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *numL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *originalPriceL;
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
+@property (weak, nonatomic) IBOutlet UIView *originalPriceLine;
 @end
 
 @implementation RadishOrderDetailProductCell
@@ -26,6 +29,9 @@
     self.icon.layer.borderWidth = LINE_H;
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.contentView addGestureRecognizer:tapGR];
+    
+    //self.originalPriceL.hidden = YES;
+    //self.originalPriceLine.hidden = YES;
 }
 
 - (void)setData:(RadishOrderDetailData *)data {
@@ -33,7 +39,9 @@
     [self.icon sd_setImageWithURL:[NSURL URLWithString:data.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = data.name;
     self.numL.text = [NSString stringWithFormat:@"数量：%zd",data.count];
-    self.priceL.text = [NSString stringWithFormat:@"¥%@",data.price];
+    self.priceL.text = [NSString stringWithFormat:@"+%@元",data.price];
+    self.radishCountL.text = [NSString stringWithFormat:@"%@根",data.radishNum];
+    //self.originalPriceL.text = [NSString stringWithFormat:@"%@",data.];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {

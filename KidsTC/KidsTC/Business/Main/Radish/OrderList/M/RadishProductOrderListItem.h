@@ -12,7 +12,6 @@
 
 @interface RadishProductOrderListItem : NSObject
 @property (nonatomic, strong) NSString *orderNo;
-@property (nonatomic, assign) OrderKind orderKind;
 @property (nonatomic, strong) NSString *statusName;
 @property (nonatomic, strong) NSString *imgUrl;
 @property (nonatomic, strong) NSString *productName;
@@ -38,6 +37,8 @@
 @property (nonatomic, assign) PlaceType placeType;
 @property (nonatomic, strong) NSString *useTimeStr;
 @property (nonatomic, strong) NSString *storeAddress;
+@property (nonatomic, strong) NSString *radishNo;
+@property (nonatomic, strong) NSString *radishCount;
 //selfDefine
 @property (nonatomic, strong) NSArray<RadishProductOrderListBtn *> *btns;
 @property (nonatomic, strong) NSArray<NSString *> *supplierPhones;

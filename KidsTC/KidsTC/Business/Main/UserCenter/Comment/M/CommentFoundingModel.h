@@ -21,6 +21,7 @@
 #import "ProductOrderTicketDetailData.h"
 #import "ProductDetailData.h"
 #import "RadishOrderDetailData.h"
+#import "RadishProductOrderListItem.h"
 
 @interface CommentFoundingModel : NSObject
 
@@ -69,5 +70,7 @@
 + (instancetype)modelFromProductDetailData:(ProductDetailData *)data;
 
 + (instancetype)modelFromRadishOrderDetailData:(RadishOrderDetailData *)data;
+
++ (instancetype)modelFromRadishProductOrderListItem:(RadishProductOrderListItem *)data;
 
 @end

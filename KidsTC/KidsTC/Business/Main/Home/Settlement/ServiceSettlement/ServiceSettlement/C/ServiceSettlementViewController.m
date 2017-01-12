@@ -624,10 +624,7 @@
             return [NSDictionary dictionaryWithDictionary:param];
         }
             break;
-        case ProductDetailTypeFree:
-        {
-            
-        }
+        default:
             break;
     }
     return nil;

@@ -15,6 +15,7 @@
 #import "RadishSettlementPlaceInfoCell.h"
 #import "RadishSettlementRadishCell.h"
 #import "RadishSettlementPayTypeCell.h"
+#import "RadishSettlementUserRemarkCell.h"
 
 #import "RadishSettlementToolBar.h"
 
@@ -25,6 +26,7 @@ static NSString *const ProductInfoCellID = @"RadishSettlementProductInfoCell";
 static NSString *const PlaceInfoCellID = @"RadishSettlementPlaceInfoCell";
 static NSString *const RadishCellID = @"RadishSettlementRadishCell";
 static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
+static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
 
 @interface RadishSettlementView ()<UITableViewDelegate,UITableViewDataSource,RadishSettlementBaseCellDelegate,RadishSettlementToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -45,6 +47,11 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.bounds));
+}
+
 - (void)setData:(RadishSettlementData *)data {
     _data = data;
     self.toolBar.data = data;
@@ -56,12 +63,21 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
     [self.tableView reloadData];
 }
 
+- (void)scrollToUserRemark {
+    NSUInteger row = self.sections.lastObject.count-1;
+    NSUInteger section = self.sections.count - 1;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
 #pragma mark - setupTableView
 
 - (void)setupTableView {
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-kRadishSettlementToolBarH) style:UITableViewStyleGrouped];
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.contentInset = UIEdgeInsetsMake(0, 0, kRadishSettlementToolBarH, 0);
+    //tableView.scrollIndicatorInsets = tableView.contentInset;
     tableView.estimatedRowHeight = 66;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -82,6 +98,7 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementPlaceInfoCell" bundle:nil] forCellReuseIdentifier:PlaceInfoCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementRadishCell" bundle:nil] forCellReuseIdentifier:RadishCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementPayTypeCell" bundle:nil] forCellReuseIdentifier:PayTypeCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishSettlementUserRemarkCell" bundle:nil] forCellReuseIdentifier:UserRemarkCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
@@ -91,8 +108,6 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
 - (void)setupSections {
     
     NSMutableArray *sections  = [NSMutableArray array];
-    
-    
     
     //收货地址
     if (self.data.hasUserAddress) {
@@ -142,6 +157,11 @@ static NSString *const PayTypeCellID = @"RadishSettlementPayTypeCell";
     RadishSettlementPayTypeCell *payTypeCell = [self cellWithID:PayTypeCellID];
     if (payTypeCell) [section04 addObject:payTypeCell];
     if(section04.count>0) [sections addObject:section04];
+    
+    NSMutableArray *section05 = [NSMutableArray array];
+    RadishSettlementUserRemarkCell *userRemarkCell = [self cellWithID:UserRemarkCellID];
+    if (userRemarkCell) [section05 addObject:userRemarkCell];
+    if(section05.count>0) [sections addObject:section05];
     
     self.sections = [NSArray arrayWithArray:sections];
 }
