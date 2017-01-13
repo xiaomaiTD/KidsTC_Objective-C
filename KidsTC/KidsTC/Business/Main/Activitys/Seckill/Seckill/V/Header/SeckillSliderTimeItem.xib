@@ -71,16 +71,26 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="6" id="mdt-Fx-fMG"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdI-Kl-6CE">
+                    <rect key="frame" x="0.0" y="0.0" width="77" height="53"/>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="4ou-WO-PIb"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.17254901960784313" green="0.2196078431372549" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vkb-gf-5ZU" secondAttribute="trailing" id="0Ex-dm-y6p"/>
                 <constraint firstItem="4be-Cv-Ums" firstAttribute="top" secondItem="vkb-gf-5ZU" secondAttribute="bottom" constant="-1" id="Emf-Qm-yNw"/>
+                <constraint firstItem="jdI-Kl-6CE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J5J-AR-kW8"/>
                 <constraint firstItem="vkb-gf-5ZU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LA9-JL-uq4"/>
                 <constraint firstItem="IsO-nh-KGu" firstAttribute="top" secondItem="vkb-gf-5ZU" secondAttribute="bottom" id="Q2c-DM-41O"/>
+                <constraint firstAttribute="bottom" secondItem="jdI-Kl-6CE" secondAttribute="bottom" id="hwf-jU-6CM"/>
+                <constraint firstItem="jdI-Kl-6CE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kWf-JV-hii"/>
                 <constraint firstItem="4be-Cv-Ums" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kxW-sk-PVb"/>
                 <constraint firstAttribute="bottom" secondItem="4be-Cv-Ums" secondAttribute="bottom" id="mrE-7E-dY4"/>
                 <constraint firstAttribute="bottom" secondItem="vkb-gf-5ZU" secondAttribute="bottom" constant="6" id="oBe-DW-NAX"/>
+                <constraint firstAttribute="trailing" secondItem="jdI-Kl-6CE" secondAttribute="trailing" id="odX-zG-Xdk"/>
                 <constraint firstItem="IsO-nh-KGu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="sWo-fa-fds"/>
                 <constraint firstAttribute="bottom" secondItem="IsO-nh-KGu" secondAttribute="bottom" id="xx1-ok-6NW"/>
                 <constraint firstItem="vkb-gf-5ZU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yIb-61-fH9"/>
@@ -90,6 +100,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="arrow_d_img" destination="4be-Cv-Ums" id="XXY-S4-Bpp"/>
+                <outlet property="btn" destination="jdI-Kl-6CE" id="Ecf-Pj-K4W"/>
                 <outlet property="selImg" destination="Mdi-i0-4ex" id="lfp-QI-bXH"/>
                 <outlet property="timeL" destination="4AM-eu-EPe" id="dgZ-Sv-mNs"/>
                 <outlet property="tipL" destination="Xe5-Op-yHK" id="CWH-hh-nIq"/>

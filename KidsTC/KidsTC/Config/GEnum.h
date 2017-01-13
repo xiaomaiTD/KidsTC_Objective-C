@@ -12,6 +12,7 @@ typedef enum : NSUInteger {
     ProductDetailTypeFree = 3,//免费商详
     ProductDetailTypeWholesale = 4,//拼团商详
     ProductDetailTypeRadish = 5,//萝卜商详
+    ProductDetailTypeFalsh = 6,//闪购商品详情
 } ProductDetailType;//商详类型
 
 typedef enum : NSUInteger {

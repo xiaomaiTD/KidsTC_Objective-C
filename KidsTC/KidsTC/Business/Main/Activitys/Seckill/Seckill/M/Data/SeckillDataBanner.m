@@ -11,7 +11,7 @@
 @implementation SeckillDataBanner
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     if (_ratio<=0) _ratio = 0.6;
-    _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_params];
+    _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_param];
     return YES;
 }
 @end

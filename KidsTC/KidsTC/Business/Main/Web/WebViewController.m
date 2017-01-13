@@ -854,7 +854,7 @@ typedef enum : NSUInteger {
         NSRange urlRange   = [string rangeOfString:@"url="];
         NSRange callBackRange = [string rangeOfString:@"callBack="];
         NSRange callBackTypeRange = [string rangeOfString:@"callBackType="];
-        NSRange shareTypeRange = [string rangeOfString:@"shareType"];
+        NSRange shareTypeRange = [string rangeOfString:@"shareType="];
         if (titleRange.location != NSNotFound) {
             NSString *title = [string substringFromIndex:titleRange.length];
             [tempDic setObject:title forKey:@"title"];

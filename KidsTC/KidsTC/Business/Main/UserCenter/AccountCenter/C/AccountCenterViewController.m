@@ -44,6 +44,7 @@
 #import "RadishOrderDetailViewController.h"
 
 #import "SeckillViewController.h"
+#import "ActivityProductViewController.h"
 
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
@@ -356,12 +357,14 @@
             break;
         case AccountCenterViewActionTypeOpinion:
         {
+            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
-            }
+            }*/
+            toController = [[ActivityProductViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeSegue:

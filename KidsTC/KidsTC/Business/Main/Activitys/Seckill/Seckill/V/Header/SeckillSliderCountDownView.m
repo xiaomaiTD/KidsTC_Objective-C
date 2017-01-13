@@ -59,7 +59,6 @@
         self.secondL.text = data.secondLeft;
     }else{
         self.countDownView.hidden = YES;
-        [NotificationCenter removeObserver:self name:kTCCountDownNoti object:nil];
         if (data.isShowCountDown && !data.countDownOver) {
             data.countDownOver = YES;
 

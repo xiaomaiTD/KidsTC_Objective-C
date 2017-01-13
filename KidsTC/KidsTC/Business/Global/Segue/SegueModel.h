@@ -37,7 +37,11 @@ typedef enum {
     SegueDestinationOrderFreeDetail         = 27,    //免费订单详情
     SegueDestinationOrderWholesaleDetail    = 28,    //拼团详情、拼团订单详情
     SegueDestinationProductRadishDetail     = 29,    //萝卜商品详情
-    SegueDestinationOrderRadishDetail       = 90,    //萝卜订单详情
+    SegueDestinationOrderRadishDetail       = 30,    //萝卜订单详情
+    SegueDestinationActivityProduct         = 31,    //服务活动
+    SegueDestinationActivitySeckill         = 32,    //秒杀活动
+    
+    SegueDestinationHome                    = 999,   //APP首页
 }SegueDestination;
 
 //H5

@@ -1,0 +1,33 @@
+//
+//  ActivityProductToolBarItem.m
+//  KidsTC
+//
+//  Created by 詹平 on 2017/1/10.
+//  Copyright © 2017年 zhanping. All rights reserved.
+//
+
+#import "ActivityProductToolBarItem.h"
+#import "UIImageView+WebCache.h"
+
+@interface ActivityProductToolBarItem ()
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *titleL;
+@end
+
+@implementation ActivityProductToolBarItem
+
+- (void)setItem:(ActivityProductTabItem *)item {
+    _item = item;
+    [self.icon sd_setImageWithURL:[NSURL URLWithString:item.tabPicUrl] placeholderImage:PLACEHOLDERIMAGE_BIG];
+    
+    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:tapGR];
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+    if ([self.delegate respondsToSelector:@selector(didClickActivityProductToolBarItem:)]) {
+        [self.delegate didClickActivityProductToolBarItem:self];
+    }
+}
+
+@end

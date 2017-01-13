@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *arrow_d_img;
 @property (weak, nonatomic) IBOutlet UILabel *timeL;
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @end
 
 @implementation SeckillSliderTimeItem
@@ -22,9 +23,6 @@
     self.timeL.text = time.title;
     self.tipL.text = time.subTitle;
     self.selected = time.isChecked;
-    
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tapGR];
 }
 
 - (void)setSelected:(BOOL)selected {
@@ -47,7 +45,7 @@
     }
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+- (IBAction)action:(id)sender {
     if ([self.delegate respondsToSelector:@selector(didClickSeckillSliderTimeItem:)]) {
         [self.delegate didClickSeckillSliderTimeItem:self];
     }

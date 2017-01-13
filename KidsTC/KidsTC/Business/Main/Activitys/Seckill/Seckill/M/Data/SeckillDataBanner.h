@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *sortNo;
 @property (nonatomic, assign) CGFloat ratio;
 @property (nonatomic, assign) SegueDestination linkType;
-@property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic, strong) NSDictionary *param;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

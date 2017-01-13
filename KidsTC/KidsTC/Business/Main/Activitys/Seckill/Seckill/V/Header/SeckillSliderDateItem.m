@@ -10,6 +10,7 @@
 
 @interface SeckillSliderDateItem ()
 @property (weak, nonatomic) IBOutlet UILabel *dateL;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @end
 
 @implementation SeckillSliderDateItem
@@ -18,9 +19,6 @@
     _date = date;
     self.dateL.text = date.title;
     self.selected = date.isChecked;
-    
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tapGR];
 }
 
 - (void)setSelected:(BOOL)selected {
@@ -37,7 +35,7 @@
     }
 }
 
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+- (IBAction)action:(id)sender {
     if ([self.delegate respondsToSelector:@selector(didClickSeckillSliderDateItem:)]) {
         [self.delegate didClickSeckillSliderDateItem:self];
     }

@@ -34,6 +34,9 @@
 #import "WolesaleProductDetailViewController.h"
 #import "RadishOrderDetailViewController.h"
 #import "RadishProductDetailViewController.h"
+#import "ActivityProductViewController.h"
+#import "SeckillViewController.h"
+#import "TabBarController.h"
 
 @implementation SegueMaster
 
@@ -72,6 +75,9 @@
         case SegueDestinationProductFreeDetail:
         case SegueDestinationOrderWholesaleDetail:
         case SegueDestinationProductRadishDetail:
+        case SegueDestinationActivityProduct:
+        case SegueDestinationActivitySeckill:
+        case SegueDestinationHome:
         {
             if (resultBlock) resultBlock();
         }
@@ -324,6 +330,25 @@
             toController = controller;
         }
             break;
+        case SegueDestinationActivityProduct:
+        {
+            NSString *ID = [NSString stringWithFormat:@"%@", model.segueParam[@"sid"]];
+            ActivityProductViewController *controller = [[ActivityProductViewController alloc] init];
+            controller.ID = ID;
+            toController = controller;
+        }
+            break;
+        case SegueDestinationActivitySeckill:
+        {
+            toController = [[SeckillViewController alloc] init];
+        }
+            break;
+        case SegueDestinationHome:
+        {
+            [[TabBarController shareTabBarController] selectIndex:0];
+        }
+            break;
+            
     }
     if (toController && fromVC.navigationController) [fromVC.navigationController pushViewController:toController animated:YES];
     

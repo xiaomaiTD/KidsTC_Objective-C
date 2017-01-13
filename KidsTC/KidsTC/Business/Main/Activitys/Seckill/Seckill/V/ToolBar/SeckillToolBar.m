@@ -36,6 +36,12 @@ CGFloat const kSeckillToolBarH = 49;
 - (void)setTimeData:(SeckillTimeData *)timeData {
     _timeData = timeData;
     self.hidden = timeData==nil;
+    
+    if (self.toolBarItems.count>0) {
+        [self.toolBarItems makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        self.toolBarItems = nil;
+    }
+    
     NSMutableArray *ary = [NSMutableArray array];
     [timeData.toolBarItems enumerateObjectsUsingBlock:^(SeckillTimeToolBarItem *obj, NSUInteger idx, BOOL *stop) {
         SeckillToolBarItem *toolBarItem =  [self itemWithItem:obj];

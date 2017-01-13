@@ -18,6 +18,7 @@ static int const kSeckillBannerCellMaxSections = 11;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) YYTimer *timer;
 @property (nonatomic, strong) NSArray<SeckillDataBanner *> *advertisement;
+@property (nonatomic, assign) CGSize item_size;
 @end
 
 @implementation SeckillBannerCell
@@ -39,7 +40,9 @@ static int const kSeckillBannerCellMaxSections = 11;
     
     if (advertisement.count>0) {
         SeckillDataBanner *banner = advertisement.firstObject;
-        self.CollectionViewConstraintH.constant = banner.ratio * SCREEN_WIDTH;
+        CGFloat item_h = SCREEN_WIDTH * banner.ratio;
+        self.item_size = CGSizeMake(SCREEN_WIDTH, item_h);
+        self.CollectionViewConstraintH.constant = item_h;
     }
     [self.collectionView reloadData];
     self.pageControl.numberOfPages = advertisement.count;
@@ -50,7 +53,7 @@ static int const kSeckillBannerCellMaxSections = 11;
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(SCREEN_WIDTH, collectionView.bounds.size.height);
+    return self.item_size;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
