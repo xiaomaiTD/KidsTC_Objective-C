@@ -125,7 +125,7 @@
 }
 
 - (void)loadOtherFailure:(NSError *)error {
-    [[iToast makeText:@"获取其他优惠活动失败,请稍后再试"] show];
+    //[[iToast makeText:@"获取其他优惠活动失败,请稍后再试"] show];
 }
 
 #pragma mark - SeckillViewDelegate
@@ -246,6 +246,7 @@
 
 #pragma mark other
 - (void)other {
+    if (self.otherData.count<1) return;
     SeckillOtherViewController *controller = [[SeckillOtherViewController alloc] initWithNibName:@"SeckillOtherViewController" bundle:nil];
     controller.data = self.otherData;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

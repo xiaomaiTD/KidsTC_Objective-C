@@ -7,6 +7,7 @@
 //
 
 #import "ActivityProductData.h"
+#import "NSString+Category.h"
 
 @implementation ActivityProductData
 + (NSDictionary *)modelContainerPropertyGenericClass{
@@ -69,7 +70,7 @@
                 break;
             case ActivityProductContentTypeToolBar:
             {
-                if (count>0) {
+                if (count>0 && !self.toolBarContent) {
                     ActivityProductContent *content = obj.contents.firstObject;
                     if (content.tabItems.count>0) {
                         self.toolBarContent = content;
@@ -79,7 +80,7 @@
                 break;
             case ActivityProductContentTypeSlider:
             {
-                if (count>0) {
+                if (count>0 && !self.sliderContent) {
                     ActivityProductContent *content = obj.contents.firstObject;
                     if (content.tabItems.count>0) {
                         self.sliderContent = content;
@@ -93,6 +94,34 @@
         
     }];
     self.showFloorItems = [NSArray arrayWithArray:showFloorItems];
+    
+    [self setupTabItemsIndex];
+}
+
+- (void)setupTabItemsIndex {
+    NSArray<ActivityProductTabItem *> *tabItems = self.sliderContent.tabItems;
+    NSUInteger tabItemsCount = tabItems.count;
+    for (int tabItemIdx = 0; tabItemIdx<tabItemsCount; tabItemIdx++) {
+        ActivityProductTabItem *tabItem = tabItems[tabItemIdx];
+        NSString *fid = [NSString stringWithFormat:@"%@",tabItem.params[@"fid"]];
+        NSUInteger floorItemsCount = self.showFloorItems.count;
+        for (int floorItemIdx=0; floorItemIdx<floorItemsCount; floorItemIdx++) {
+            ActivityProductFloorItem *floorItem = self.showFloorItems[floorItemIdx];
+            if (floorItem.hasSliderTabItem) {
+                continue;
+            }
+            NSString *floorSysNo = [NSString stringWithFormat:@"%@",floorItem.floorSysNo];
+            if ([fid isEqualToString:floorSysNo]) {
+                tabItem.sectioinIndex = floorItemIdx;
+                floorItem.sliderTabItemIndex = tabItemIdx;
+                floorItem.hasSliderTabItem = YES;
+            }
+        }
+    }
+    [self.showFloorItems enumerateObjectsUsingBlock:^(ActivityProductFloorItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *str = [NSString stringWithFormat:@"ActivityProductFloorItem:%@----%@",obj.floorSysNo,obj.hasSliderTabItem?@"有":@"没有"];
+        TCLog(@"%@",str);
+    }];
 }
 
 - (void)setupShareObj {

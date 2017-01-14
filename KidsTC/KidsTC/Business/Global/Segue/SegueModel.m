@@ -62,6 +62,7 @@ NSString *const kSegueParameterKeyLinkUrl = @"kSegueParameterKeyLinkUrl";
         case SegueDestinationStrategyList:
         case SegueDestinationColumnList:
         case SegueDestinationActivitySeckill:
+        case SegueDestinationOtherActivity:
         case SegueDestinationHome:
             break;
         case SegueDestinationNewsList:

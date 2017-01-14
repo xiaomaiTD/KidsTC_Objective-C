@@ -38,11 +38,9 @@ static int const kActivityProductBannerCellMaxSections = 11;
     [super setFloorItem:floorItem];
     NSArray<ActivityProductContent *> *contents = floorItem.contents;
     self.contents = contents;
-    if (contents.count>0) {
-        CGFloat item_h = SCREEN_WIDTH * contents.firstObject.ratio;
-        self.item_size = CGSizeMake(SCREEN_WIDTH, item_h);
-        self.CollectionViewConstraintH.constant = item_h;
-    }
+    CGFloat item_h = SCREEN_WIDTH * floorItem.ratio;
+    self.item_size = CGSizeMake(SCREEN_WIDTH, item_h);
+    self.CollectionViewConstraintH.constant = item_h;
     [self.collectionView reloadData];
     self.pageControl.numberOfPages = contents.count;
     [self addYYTimer];

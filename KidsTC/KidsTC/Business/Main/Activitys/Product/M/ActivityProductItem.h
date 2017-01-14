@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString *productName;
 @property (nonatomic, strong) NSString *channelId;
 @property (nonatomic, assign) ProductDetailType productRedirect;
+@property (nonatomic, assign) CGFloat ratio;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

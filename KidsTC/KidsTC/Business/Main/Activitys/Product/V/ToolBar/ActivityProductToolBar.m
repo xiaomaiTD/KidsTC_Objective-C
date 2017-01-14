@@ -21,18 +21,6 @@ CGFloat const kActivityProductToolBarH = 49;
     [super awakeFromNib];
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    CGFloat self_w = CGRectGetWidth(self.bounds);
-    CGFloat self_h = CGRectGetHeight(self.bounds);
-    if (self.toolBarItems.count>0) {
-        CGFloat item_w = self_w/self.toolBarItems.count;
-        [self.toolBarItems enumerateObjectsUsingBlock:^(ActivityProductToolBarItem *obj, NSUInteger idx, BOOL *stop) {
-            obj.frame = CGRectMake(item_w * idx, 0, item_w, self_h);
-        }];
-    }
-}
-
 - (void)setContent:(ActivityProductContent *)content {
     _content = content;
     
@@ -46,11 +34,16 @@ CGFloat const kActivityProductToolBarH = 49;
     }
     
     NSMutableArray *ary = [NSMutableArray array];
+    __block ActivityProductToolBarItem *lastToolBarItem = nil;
+    CGFloat item_h = CGRectGetHeight(self.bounds);
     [tabItems enumerateObjectsUsingBlock:^(ActivityProductTabItem *obj, NSUInteger idx, BOOL *stop) {
         ActivityProductToolBarItem *toolBarItem =  [self itemWithItem:obj];
         toolBarItem.index = idx;
+        CGFloat item_w = SCREEN_WIDTH * obj.tabWidthRate;
+        toolBarItem.frame = CGRectMake(CGRectGetMaxX(lastToolBarItem.frame), 0, item_w, item_h);
         [self addSubview:toolBarItem];
         if (toolBarItem) [ary addObject:toolBarItem];
+        lastToolBarItem = toolBarItem;
     }];
     self.toolBarItems = [NSArray arrayWithArray:ary];
 }
@@ -65,8 +58,9 @@ CGFloat const kActivityProductToolBarH = 49;
 #pragma mark - ActivityProductToolBarItemDelegate
 
 - (void)didClickActivityProductToolBarItem:(ActivityProductToolBarItem *)item {
-    if ([self.delegate respondsToSelector:@selector(activityProductToolBar:didSelectItem:index:)]) {
-        [self.delegate activityProductToolBar:self didSelectItem:item.item index:item.index];
+    ActivityProductTabItem *itemData = item.item;
+    if ([self.delegate respondsToSelector:@selector(activityProductToolBar:actionType:value:)]) {
+        [self.delegate activityProductToolBar:self actionType:ActivityProductToolBarActionTypeSegue value:itemData.segueModel];
     }
 }
 

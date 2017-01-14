@@ -10,13 +10,19 @@
 #import "GHeader.h"
 #import "UIBarButtonItem+Category.h"
 #import "NSString+Category.h"
+#import "SegueMaster.h"
 
 #import "ActivityProductModel.h"
+#import "SeckillOtherModel.h"
 #import "ActivityProductView.h"
+
+#import "CommonShareViewController.h"
+#import "SeckillOtherViewController.h"
 
 @interface ActivityProductViewController ()<ActivityProductViewDelegate>
 @property (nonatomic, strong) ActivityProductView *productView;
 @property (nonatomic, strong) ActivityProductData *data;
+@property (nonatomic, strong) NSArray<SeckillOtherItem *> *otherData;
 @end
 
 @implementation ActivityProductViewController
@@ -50,7 +56,8 @@
 }
 
 - (void)share {
-    
+    CommonShareViewController *controller = [CommonShareViewController instanceWithShareObject:self.data.shareObj sourceType:KTCShareServiceTypeEvent];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)loadData {
@@ -73,6 +80,7 @@
 - (void)loadDataSuccess:(ActivityProductData *)data {
     self.data = data;
     self.productView.data = data;
+    [self loadOther];
 }
 
 - (void)loadDataFailure:(NSError *)error {
@@ -80,10 +88,127 @@
     [self back];
 }
 
+- (void)loadOther {
+    
+    NSArray<ActivityProductTabItem *> *tabItems = self.data.toolBarContent.tabItems;
+    if (tabItems.count<1) return;
+    
+    __block NSString *fid = nil;
+    [tabItems enumerateObjectsUsingBlock:^(ActivityProductTabItem *tabItem, NSUInteger idx, BOOL *stop) {
+        switch (tabItem.segueModel.destination) {
+            case SegueDestinationOtherActivity:
+            {
+                NSString *tabItemFid = [NSString stringWithFormat:@"%@",tabItem.params[@"fid"]];
+                if (![fid isNotNull] && [tabItemFid isNotNull]) {
+                    fid = tabItemFid;
+                }
+            }
+                break;
+            default:
+                break;
+        }
+    }];
+    if (![fid isNotNull]) return;
+    
+    NSString *menu_id = fid;
+    if (![menu_id isNotNull]) {
+        return;
+    }
+    NSDictionary *param = @{@"menu_id":menu_id};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"GET_EVENT_TAB_MENU_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        NSArray<SeckillOtherItem *> *data = [SeckillOtherModel modelWithDictionary:dic].data;
+        if (data.count>0) {
+            [self loadOtherSuccess:data];
+        }else{
+            [self loadOtherFailure:nil];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        [self loadOtherFailure:error];
+    }];
+}
+
+- (void)loadOtherSuccess:(NSArray<SeckillOtherItem *> *)data {
+    self.otherData = data;
+}
+
+- (void)loadOtherFailure:(NSError *)error {
+    //[[iToast makeText:@"获取其他优惠活动失败,请稍后再试"] show];
+}
+
 #pragma mark - ActivityProductViewDelegate
 
 - (void)activityProductView:(ActivityProductView *)view actionType:(ActivityProductViewActionType)type value:(id)value {
+    switch (type) {
+        case ActivityProductViewActionTypeSegue:
+        {
+            [self segue:value];
+        }
+            break;
+        case ActivityProductViewActionTypeCoupon:
+        {
+            [self getCoupon:value];
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)segue:(id)value {
     
+    if (![value isKindOfClass:[SegueModel class]]) return;
+    
+    SegueModel *segueModel = value;
+    switch (segueModel.destination) {
+        case SegueDestinationOtherActivity:
+        {
+            [self other];
+        }
+            break;
+            
+        default:
+        {
+            [SegueMaster makeSegueWithModel:value fromController:self];
+        }
+            break;
+    }
+}
+
+- (void)other {
+    if (self.otherData.count<1) return;
+    SeckillOtherViewController *controller = [[SeckillOtherViewController alloc] initWithNibName:@"SeckillOtherViewController" bundle:nil];
+    controller.data = self.otherData;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)getCoupon:(id)value {
+    if (![value isKindOfClass:[ActivityProductCoupon class]]) return;
+    ActivityProductCoupon *coupon = value;
+    NSString *batchNo = coupon.batchNo;
+    if (![batchNo isNotNull]) {
+        [[iToast makeText:@"该优惠券暂不支持领取"] show];
+        return;
+    }
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        NSDictionary *param = @{@"batchid":batchNo};
+        [TCProgressHUD showSVP];
+        [Request startWithName:@"COUPON_FETCH" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [TCProgressHUD dismissSVP];
+            NSString *errMsg = @"恭喜您，优惠券领取成功！";
+            [[iToast makeText:errMsg] show];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [TCProgressHUD dismissSVP];
+            NSString *errMsg = @"领取优惠券失败，请稍后再试~";
+            NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+            if ([text isNotNull]) errMsg = text;
+            [[iToast makeText:errMsg] show];
+        }];
+    }];
 }
 
 @end

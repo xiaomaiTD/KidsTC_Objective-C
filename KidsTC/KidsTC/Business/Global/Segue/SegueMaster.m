@@ -77,6 +77,7 @@
         case SegueDestinationProductRadishDetail:
         case SegueDestinationActivityProduct:
         case SegueDestinationActivitySeckill:
+        case SegueDestinationOtherActivity:
         case SegueDestinationHome:
         {
             if (resultBlock) resultBlock();
@@ -341,6 +342,11 @@
         case SegueDestinationActivitySeckill:
         {
             toController = [[SeckillViewController alloc] init];
+        }
+            break;
+        case SegueDestinationOtherActivity:
+        {
+            
         }
             break;
         case SegueDestinationHome:

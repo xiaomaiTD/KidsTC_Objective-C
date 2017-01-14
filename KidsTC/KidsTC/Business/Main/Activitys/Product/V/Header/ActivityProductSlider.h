@@ -19,4 +19,5 @@ extern CGFloat const kActivityProductSliderH;
 @interface ActivityProductSlider : UIView
 @property (nonatomic, strong) ActivityProductContent *content;
 @property (nonatomic, weak) id<ActivityProductSliderDelegate> delegate;
+- (void)selectIndex:(NSUInteger)index toSelect:(BOOL)toSelect;
 @end

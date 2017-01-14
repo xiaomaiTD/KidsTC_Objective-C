@@ -41,6 +41,7 @@ typedef enum {
     SegueDestinationActivityProduct         = 31,    //服务活动
     SegueDestinationActivitySeckill         = 32,    //秒杀活动
     
+    SegueDestinationOtherActivity           = 105,   //其他优惠活动
     SegueDestinationHome                    = 999,   //APP首页
 }SegueDestination;
 

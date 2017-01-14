@@ -17,10 +17,11 @@
 @property (nonatomic, assign) CGFloat tabWidthRate;
 @property (nonatomic, assign) CGFloat tabHeight;
 @property (nonatomic, assign) SegueDestination linkType;
-@property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic, strong) NSDictionary *params;//fid
 @property (nonatomic, strong) NSString *tabId;
 
 //selfDefine
+@property (nonatomic, assign) BOOL select;
 @property (nonatomic, strong) SegueModel *segueModel;
-
+@property (nonatomic, assign) NSUInteger sectioinIndex;
 @end

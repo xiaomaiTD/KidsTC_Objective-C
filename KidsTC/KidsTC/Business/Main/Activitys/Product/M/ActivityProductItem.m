@@ -11,6 +11,7 @@
 
 @implementation ActivityProductItem
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    if (_ratio<=0) _ratio = 0.6;
     _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productRedirect productId:_productNo channelId:_channelId openGroupId:nil];
     return YES;
 }

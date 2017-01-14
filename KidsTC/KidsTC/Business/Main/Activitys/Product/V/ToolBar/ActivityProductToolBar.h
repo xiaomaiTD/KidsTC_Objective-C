@@ -11,9 +11,13 @@
 
 extern CGFloat const kActivityProductToolBarH;
 
+typedef enum : NSUInteger {
+    ActivityProductToolBarActionTypeSegue = 1,
+} ActivityProductToolBarActionType;
+
 @class ActivityProductToolBar;
 @protocol ActivityProductToolBarDelegate <NSObject>
-- (void)activityProductToolBar:(ActivityProductToolBar *)toolBar didSelectItem:(ActivityProductTabItem *)item index:(NSInteger)index;
+- (void)activityProductToolBar:(ActivityProductToolBar *)toolBar actionType:(ActivityProductToolBarActionType)type value:(id)value;
 @end
 
 @interface ActivityProductToolBar : UIView

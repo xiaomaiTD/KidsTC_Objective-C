@@ -28,6 +28,7 @@ typedef enum {
     KTCShareServiceTypeWholesale = 8,
     KTCShareServiceTypeSeckill = 9,
     KTCShareServiceTypeRadish = 10,
+    KTCShareServiceTypeEvent = 11,
 }KTCShareServiceType;
 
 @interface KTCShareService : NSObject

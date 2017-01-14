@@ -11,7 +11,7 @@
 
 typedef enum : NSUInteger {
     ActivityProductBaseCellActionTypeSegue = 1,
-    ActivityProductBaseCellActionTypeO1,
+    ActivityProductBaseCellActionTypeCoupon,
 } ActivityProductBaseCellActionType;
 
 @class ActivityProductBaseCell;

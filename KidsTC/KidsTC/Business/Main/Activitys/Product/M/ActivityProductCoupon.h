@@ -21,4 +21,5 @@
 @property (nonatomic, strong) NSString *isCanReceive;
 @property (nonatomic, strong) NSString *hadReceivedNum;
 @property (nonatomic, strong) NSString *couponPic;
+@property (nonatomic, strong) NSString *batchNo;
 @end

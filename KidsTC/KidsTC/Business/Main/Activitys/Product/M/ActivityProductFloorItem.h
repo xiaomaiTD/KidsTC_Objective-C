@@ -23,5 +23,10 @@ typedef enum : NSUInteger {
 @interface ActivityProductFloorItem : NSObject
 @property (nonatomic, strong) NSString *floorSysNo;
 @property (nonatomic, assign) ActivityProductContentType contentType;
+@property (nonatomic, assign) CGFloat marginTop;
+@property (nonatomic, assign) CGFloat ratio;
 @property (nonatomic, strong) NSArray<ActivityProductContent *> *contents;
+//selfDefine
+@property (nonatomic, assign) BOOL hasSliderTabItem;
+@property (nonatomic, assign) NSUInteger sliderTabItemIndex;
 @end

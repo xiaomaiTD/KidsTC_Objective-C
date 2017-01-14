@@ -42,6 +42,18 @@
             }
         }
             break;
+        case ProductDetailTypeRadish:
+        {
+            dest = SegueDestinationProductRadishDetail;
+            if (![channelId isNotNull]) channelId = @"0";
+            [params setObject:channelId forKey:@"cid"];
+        }
+            break;
+        case ProductDetailTypeFalsh:
+        {
+            dest = SegueDestinationFlashDetail;
+        }
+            break;
         default:
         {
             dest = SegueDestinationServiceDetail;

@@ -11,8 +11,7 @@
 
 typedef enum : NSUInteger {
     ActivityProductViewActionTypeSegue = 1,
-    ActivityProductViewActionType2,
-    
+    ActivityProductViewActionTypeCoupon,
 } ActivityProductViewActionType;
 
 @class ActivityProductView;
