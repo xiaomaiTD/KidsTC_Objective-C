@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *flashTipL;
 @property (weak, nonatomic) IBOutlet UILabel *wholesaleTipL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconH;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *priceLeadingMargin;
 @end
 
@@ -48,13 +49,14 @@
     self.ageTipL.text = item.ageGroup;
     self.ageTipView.hidden = ![item.ageGroup isNotNull];
     self.tipL.text = item.promotionText;
-    self.addressL.text = item.mapAddress;
-    self.addressIcon.hidden = ![item.mapAddress isNotNull];
+    self.addressL.text = item.storeName;
+    self.addressIcon.hidden = ![item.storeName isNotNull];
     self.timeL.text = item.useTimeStr;
     self.timeIcon.hidden = ![item.useTimeStr isNotNull];
     [self.buyBtn setTitle:item.btnName forState:UIControlStateNormal];
     self.priceL.text = item.priceDesc;
     self.wholesaleTipL.text = [NSString stringWithFormat:@"%@",item.joinDesc];
+    self.iconH.constant = (SCREEN_WIDTH - 2*10) * item.ratio;
     switch (item.productRedirect) {
         case ProductDetailTypeFalsh:
         {

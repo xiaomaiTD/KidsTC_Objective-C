@@ -69,7 +69,7 @@
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHB-w7-YNK">
+                                    <button opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHB-w7-YNK">
                                         <rect key="frame" x="211" y="122" width="75" height="30"/>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.37254901959999998" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
@@ -212,6 +212,7 @@
                 <outlet property="buyBtn" destination="yHB-w7-YNK" id="ak3-ft-4MZ"/>
                 <outlet property="flashTipL" destination="Dnk-I9-alR" id="yjA-UH-Rg4"/>
                 <outlet property="icon" destination="vz0-g9-XNb" id="nKw-S4-Mei"/>
+                <outlet property="iconH" destination="mo6-z9-KMl" id="UWt-GZ-bwz"/>
                 <outlet property="nameL" destination="0FK-Gg-z8V" id="4fm-nk-YLd"/>
                 <outlet property="priceL" destination="mjz-Uw-paU" id="IfD-Pq-mJh"/>
                 <outlet property="priceLeadingMargin" destination="crF-pk-9Hg" id="f6x-g5-bh6"/>

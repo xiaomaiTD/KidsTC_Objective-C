@@ -70,7 +70,12 @@ static CGFloat const item_margin = 10;
         case ActivityProductContentTypeLarge:
         {
             CGFloat item_w = (SCREEN_WIDTH - 2*item_margin);
-            self.item_size = CGSizeMake(item_w, 327);
+            CGFloat item_h = 327;
+            if (self.productItems.count>0) {
+                ActivityProductItem *item = self.productItems.firstObject;
+                item_h = item.ratio * item_w + 167;
+            }
+            self.item_size = CGSizeMake(item_w, item_h);
             self.head_size = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH*content.floorTopPicRate);
         }
             break;
