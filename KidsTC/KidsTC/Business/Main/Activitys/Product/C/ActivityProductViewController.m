@@ -38,6 +38,9 @@
         return;
     }
     
+    self.pageId = 11401;
+    self.trackParams = @{@"id":_ID};
+    
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"服务活动";

@@ -248,8 +248,8 @@ singleM(ThemeManager)
     
     NSArray<TabBarItemElement *> *elements = @[element1,element2,element3,element4];
     
-    UIColor *homeNavColor = COLOR_PINK;
-    UIColor *tabColor = RGBA(252, 248, 245, 1);
+    UIColor *homeNavColor = RGBA(255, 255, 255, 1);
+    UIColor *tabColor = RGBA(255, 255, 255, 1);
     
     Theme *theme = [Theme themeWithHomeNavColor:homeNavColor tabColor:tabColor elements:elements];
     

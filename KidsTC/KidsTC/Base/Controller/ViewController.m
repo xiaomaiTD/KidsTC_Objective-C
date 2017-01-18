@@ -92,6 +92,17 @@
     }
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+// 支持竖屏显示
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)setupNaviTheme:(NaviTheme)theme
 {
     UIStatusBarStyle style;
@@ -230,7 +241,7 @@
 }
 
 - (BOOL)prefersStatusBarHidden{
-    return self.navigationController==nil;
+    return NO;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

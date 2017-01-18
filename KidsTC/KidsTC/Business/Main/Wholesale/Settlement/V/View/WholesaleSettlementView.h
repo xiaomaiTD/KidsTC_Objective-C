@@ -11,9 +11,9 @@
 #import "WholesaleSettlementData.h"
 
 typedef enum : NSUInteger {
-    WholesaleSettlementViewActionTypeSelectStore = 1,//切换门店
-    WholesaleSettlementViewActionTypeSelectPlace,//切换地址
+    WholesaleSettlementViewActionTypeSelectPlace = 1,//切换地址
     WholesaleSettlementViewActionTypeRule,//查看活动规则
+    WholesaleSettlementViewActionTypeSelectDate,//选择时间
     WholesaleSettlementViewActionTypePlaceOrder = 50,//下单
 } WholesaleSettlementViewActionType;
 

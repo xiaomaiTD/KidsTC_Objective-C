@@ -20,24 +20,6 @@
 
 @property (nonatomic, assign) BOOL needHide;
 
-- (void)buildSubviews;
-
-- (void)buildExtensionViewWithType:(AUIKeyboardAdhesiveViewExtensionFunctionType)type;
-
-- (void)hideTextLimit:(BOOL)hidden;
-
-- (void)keyboardWillShow:(NSNotification *)notify;
-
-- (void)keyboardWillHide:(NSNotification *)notify;
-
-- (void)keyboardWillChangedFrame:(NSNotification *)notify;
-
-- (void)didClickedTextButton;
-
-- (void)didClickedFuntionButton:(UIButton *)button;
-
-- (void)didClickedSendButton;
-
 @end
 
 @implementation AUIKeyboardAdhesiveView
@@ -95,11 +77,7 @@
 #pragma mark UITextViewDelegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-//    if (self.textView.isPlaceHolderState)
-//    {
-//        [self.textView setText:@""];
-//        [self.textView setIsPlaceHolderState:NO];
-//    }
+
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
@@ -113,8 +91,6 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSInteger number = [text length];
     if (number > self.textLimitLength) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"字数不能大于500" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alert show];
         textView.text = [textView.text substringToIndex:self.textLimitLength];
     }
     NSUInteger textNumber = [textView.text length];
@@ -138,8 +114,6 @@
     }
     NSInteger number = [textView.text length];
     if (number > self.textLimitLength) {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"字数不能大于500" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alert show];
         textView.text = [textView.text substringToIndex:self.textLimitLength];
     } else {
         self.leftTextInputCount = self.textLimitLength - number;
@@ -182,7 +156,6 @@
     [textButton setFrame:CGRectMake(xPosition, 10, width, 20)];
     [textButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [textButton setTitle:@"文字" forState:UIControlStateNormal];
-//    [textButton setImage:[UIImage imageNamed:@"keyboard_text_n"] forState:UIControlStateNormal];
     [textButton addTarget:self action:@selector(didClickedTextButton) forControlEvents:UIControlEventTouchUpInside];
     [self.headerView addSubview:textButton];
     textButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -404,12 +377,6 @@
     [self.textView setIsPlaceHolderState:YES];
     
     [self show];
-    
-//    [self setFrame:CGRectMake(0, SCREEN_HEIGHT - self.frame.size.height, self.frame.size.width, self.frame.size.height)];
-//    [[UIApplication sharedApplication].keyWindow addSubview:self];
-//    [self.textView becomeFirstResponder];
-//    [self setHidden:NO];
-//    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
 }
 
 - (void)shrink {

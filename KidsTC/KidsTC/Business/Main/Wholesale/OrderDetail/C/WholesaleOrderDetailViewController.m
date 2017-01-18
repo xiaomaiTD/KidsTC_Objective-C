@@ -21,8 +21,9 @@
 #import "WolesaleProductDetailViewController.h"
 #import "CommonShareViewController.h"
 #import "TabBarController.h"
+#import "WholesalePickDateViewController.h"
 
-@interface WholesaleOrderDetailViewController ()<WholesaleOrderDetailViewDelegate>
+@interface WholesaleOrderDetailViewController ()<WholesaleOrderDetailViewDelegate,WholesalePickDateViewControllerDelegate>
 @property (nonatomic, strong) WholesaleOrderDetailView *orderDetailView;
 @property (nonatomic, strong) WholesaleOrderDetailData *data;
 @end
@@ -43,7 +44,7 @@
         return;
     }
     
-    self.pageId = 10407;
+    
     self.trackParams = @{@"pid":_productId,
                          @"gid":_openGroupId};
     
@@ -89,6 +90,12 @@
     self.data = data;
     self.orderDetailView.data = data;
     [self loadPartners:@(1) showProgress:NO];
+    
+    if (data.fightGroupBase.detailV2) {
+        self.pageId = 10409;
+    }else{
+        self.pageId = 10407;
+    }
 }
 
 - (void)loadDataFailure:(NSError *)error{
@@ -179,11 +186,122 @@
 
 - (void)buy {
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
-        controller.productId = self.productId;
-        controller.openGroupId = self.openGroupId;
-        [self.navigationController pushViewController:controller animated:YES];
+        if (self.data.sku.isShowTime) {
+            WholesalePickDateViewController *controller = [[WholesalePickDateViewController alloc] initWithNibName:@"WholesalePickDateViewController" bundle:nil];
+            controller.delegate = self;
+            controller.sku = self.data.sku;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:YES completion:nil];
+        }else{
+            [self addShoppingCart];
+        }
     }];
+}
+
+// WholesalePickDateViewControllerDelegate
+- (void)wholesalePickDateViewController:(WholesalePickDateViewController *)controller actionType:(WholesalePickDateViewControllerActionType)type value:(id)value {
+    switch (type) {
+        case WholesalePickDateViewControllerActionTypeBuy:
+        {
+            [self addShoppingCart];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)addShoppingCart {
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    if (![self.productId isNotNull]) {
+        [[iToast makeText:@"商品编号为空"] show];
+        return;
+    }
+    [param setObject:self.productId forKey:@"fightGroupId"];
+    //time
+    NSArray<WholesalePickDateTime *> *times = self.data.sku.times;
+    __block WholesalePickDateTime *time = nil;
+    if (times.count>0) {
+        [times enumerateObjectsUsingBlock:^(WholesalePickDateTime *obj, NSUInteger idx, BOOL *stop) {
+            if (obj.select) {
+                time = obj;
+                *stop = YES;
+            }
+        }];
+        if(!time) time = times.firstObject;
+    }
+    if (time) {
+        NSString *skuId = time.skuId;
+        if ([skuId isNotNull]) {
+            [param setObject:skuId forKey:@"skuId"];
+        }
+        NSString *timeId = time.timeNo;
+        if ([timeId isNotNull]) {
+            [param setObject:timeId forKey:@"timeId"];
+        }
+    }
+    //place
+    NSArray<WholesalePickDatePlace *> *places = self.data.sku.places;
+    __block WholesalePickDatePlace *place = nil;
+    if (places.count>0) {
+        [places enumerateObjectsUsingBlock:^(WholesalePickDatePlace *obj, NSUInteger idx, BOOL *stop) {
+            if (obj.select) {
+                place = obj;
+                *stop = YES;
+            }
+        }];
+        if(!place) place = places.firstObject;
+    }
+    if (place) {
+        NSString * placeID = place.ID;
+        if ([placeID isNotNull]) {
+            switch (self.data.fightGroupBase.placeType) {
+                case PlaceTypeStore:
+                {
+                    [param setObject:placeID forKey:@"storeNo"];
+                }
+                    break;
+                case PlaceTypePlace:
+                {
+                    [param setObject:placeID forKey:@"placeNo"];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"ADD_FIGHT_GROUP_SHOPPING_CART" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        [self addShoppingCartSuccess];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        [self addShoppingCartFailure:error];
+    }];
+}
+
+- (void)addShoppingCartSuccess {
+    if (!self.presentedViewController) return;
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        [self gotoSettlement];
+    }];
+}
+
+- (void)addShoppingCartFailure:(NSError *)error {
+    NSString *errMsg = @"加入购物车失败，请稍后再试！";
+    NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+    if ([text isNotNull]) errMsg = text;
+    [[iToast makeText:errMsg] show];
+}
+
+- (void)gotoSettlement {
+    WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark 用户自己的拼团信息

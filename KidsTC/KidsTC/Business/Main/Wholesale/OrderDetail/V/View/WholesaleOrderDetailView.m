@@ -26,6 +26,9 @@
 #import "WholesaleOrderDetailTitleCell.h"
 #import "WholesaleOrderDetailWebTipCell.h"
 #import "WholesaleOrderDetailWebCell.h"
+#import "WholesaleOrderDetailVideoCell.h"
+#import "WholesaleOrderDetailVideoTipCell.h"
+#import "WholesaleOrderDetailDateCell.h"
 
 #import "WholesaleOrderDetailV2BannersCell.h"
 #import "WholesaleOrderDetailV2InfoCell.h"
@@ -49,6 +52,9 @@ static NSString *const BuyNoticeElementCellID = @"WholesaleOrderDetailBuyNoticeE
 static NSString *const TitleCellID = @"WholesaleOrderDetailTitleCell";
 static NSString *const WebTipCellID = @"WholesaleOrderDetailWebTipCell";
 static NSString *const WebCellID = @"WholesaleOrderDetailWebCell";
+static NSString *const VideoCellID = @"WholesaleOrderDetailVideoCell";
+static NSString *const VideoTipCellID = @"WholesaleOrderDetailVideoTipCell";
+static NSString *const DateCellID = @"WholesaleOrderDetailDateCell";
 
 static NSString *const V2BannersCellID = @"WholesaleOrderDetailV2BannersCell";
 static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
@@ -115,6 +121,9 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailTitleCell" bundle:nil] forCellReuseIdentifier:TitleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebTipCell" bundle:nil] forCellReuseIdentifier:WebTipCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailVideoCell" bundle:nil] forCellReuseIdentifier:VideoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailVideoTipCell" bundle:nil] forCellReuseIdentifier:VideoTipCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailDateCell" bundle:nil] forCellReuseIdentifier:DateCellID];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailV2BannersCell" bundle:nil] forCellReuseIdentifier:V2BannersCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleOrderDetailV2InfoCell" bundle:nil] forCellReuseIdentifier:V2InfoCellID];
@@ -165,6 +174,14 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
     }
     if(section01.count>0) [sections addObject:section01];
     
+    WholesalePickDateSKU *sku = self.data.sku;
+    if (sku.isShowTime && sku.times.count>0) {
+        NSMutableArray *dateSection = [NSMutableArray array];
+        WholesaleOrderDetailDateCell *dateCell = [self cellWithID:DateCellID];
+        if (dateCell) [dateSection addObject:dateCell];
+        if (dateSection.count>0) [sections addObject:dateSection];
+    }
+    
     NSMutableArray *section02 = [NSMutableArray array];
     if ([data.fightGroupBase.flowUrl isNotNull]) {
         WholesaleOrderDetailRuleCell *ruleCell = [self cellWithID:RuleCellID];
@@ -193,6 +210,23 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
         }
         if(section03.count>0) [sections addObject:section03];
     }];
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = base.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            WholesaleOrderDetailVideoTipCell *videoTipCell = [self cellWithID:VideoTipCellID];
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            WholesaleOrderDetailVideoCell *videoCell = [self cellWithID:VideoCellID];
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     if ([data.fightGroupBase.detailUrl isNotNull]) {
         NSMutableArray *section04 = [NSMutableArray array];
@@ -290,6 +324,23 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
         }
         if(section03.count>0) [sections addObject:section03];
     }];
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = data.fightGroupBase.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            WholesaleOrderDetailVideoTipCell *videoTipCell = [self cellWithID:VideoTipCellID];
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            WholesaleOrderDetailVideoCell *videoCell = [self cellWithID:VideoCellID];
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     if ([data.fightGroupBase.detailUrl isNotNull]) {
         NSMutableArray *section04 = [NSMutableArray array];

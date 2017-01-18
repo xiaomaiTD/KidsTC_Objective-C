@@ -37,6 +37,7 @@
 #import "MultiItemsToolBar.h"
 #import "AUIFloorNavigationView.h"
 #import "WebViewController.h"
+#import "NotificationCenterViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -197,10 +198,19 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
         [btn setImage:[UIImage imageNamed:@"home_scan_v2_black"] forState:UIControlStateNormal];
     }];
     
-    self.roleBtn = [HomeRoleButton btnWithImageName:@"arrow_d_mini_v2_black" highImageName:@"arrow_d_mini_v2_black" target:self action:@selector(changeRole)];
-    [self.roleBtn setTitleColor:[UIColor colorFromHexString:@"5b5b5b"] forState:UIControlStateNormal];
-    [self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.roleBtn];
+    //self.roleBtn = [HomeRoleButton btnWithImageName:@"arrow_d_mini_v2_black" highImageName:@"arrow_d_mini_v2_black" target:self action:@selector(changeRole)];
+    //[self.roleBtn setTitleColor:[UIColor colorFromHexString:@"5b5b5b"] forState:UIControlStateNormal];
+    //[self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight
+                                                                            target:self
+                                                                            action:@selector(gotoMessageCenter)
+                                                                      andGetButton:^(UIButton *btn)
+                                              {
+                                                  btn.bounds = CGRectMake(0, 0, 30*(88/135.0), 30);
+                                                  btn.showsTouchWhenHighlighted = NO;
+                                                  btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+                                                  [btn setImage:[UIImage imageNamed:@"home_message"] forState:UIControlStateNormal];
+                                              }];;
 }
 
 - (void)showScan{
@@ -271,6 +281,11 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     RoleSelectViewController *controller = [[RoleSelectViewController alloc]initWithNibName:@"RoleSelectViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
     [BuryPointManager trackEvent:@"event_skip_home_stage_opt" actionId:20104 params:nil];
+}
+
+- (void)gotoMessageCenter {
+    NotificationCenterViewController *controller = [[NotificationCenterViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark setupCollectionView

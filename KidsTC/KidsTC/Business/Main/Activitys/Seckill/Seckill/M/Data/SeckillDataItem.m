@@ -14,6 +14,7 @@
     return @{@"advertisement":[SeckillDataBanner class]};
 }
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    if (_productImgRatio<=0) _productImgRatio = 0.6;
     _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productType productId:_productNo channelId:_channelId openGroupId:nil];
     return YES;
 }

@@ -12,6 +12,7 @@
 #import "UIBarButtonItem+Category.h"
 #import "SegueMaster.h"
 #import "TabBarController.h"
+#import "BuryPointManager.h"
 
 #import "SeckillTitleView.h"
 
@@ -39,6 +40,8 @@
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
+    
+    self.pageId = 11400;
     
     SeckillTitleView *titleView = [[NSBundle mainBundle] loadNibNamed:@"SeckillTitleView" owner:self options:nil].firstObject;
     titleView.frame = CGRectMake(0, 0, 80, 19);
@@ -227,6 +230,9 @@
         [TCProgressHUD dismissSVP];
         [self loadSeckillDataFailure:error];
     }];
+    
+    NSDictionary *params = @{@"id":poolTermNo};
+    [BuryPointManager trackEvent:@"event_click_seckill_change_time" actionId:22001 params:params];
 }
 
 #pragma mark goHome

@@ -11,6 +11,7 @@
 #import "WholesaleOrderDetailUser.h"
 #import "WholesaleOrderDetailCountDown.h"
 #import "WholesaleOrderDetailPartner.h"
+#import "WholesalePickDateSKU.h"
 
 typedef enum : NSUInteger {
     FightGroupOpenGroupStepSelect = 1,//选择自己喜欢的团
@@ -49,6 +50,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSTimeInterval remainTime;
 @property (nonatomic, strong) NSString *currentUserOpenGroup;
 @property (nonatomic, strong) WholesaleOrderDetailCountDown *countDown;
+@property (nonatomic, strong) WholesalePickDateSKU *sku;
 //selfDefine
 @property (nonatomic, strong) NSArray<WholesaleOrderDetailPartner *> *partners;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *partnerCounts;

@@ -8,6 +8,7 @@
 
 #import "TCHomeFloorTitleContentLayout.h"
 #import "TCHomeFloorTitleContent.h"
+#import "NSString+Category.h"
 
 @interface TCHomeFloorTitleContentLayout ()
 @property (nonatomic, weak) TCHomeFloorTitleContent *titleContent;
@@ -26,9 +27,9 @@
 }
 
 - (void)setupAttributes {
+    
     CGFloat w = kTCHomeFloorTitleContentW;
     CGFloat h = kTCHomeFloorTitleContentH;
-    
     
     switch (_titleContent.type) {
         case TCHomeFloorTitleContentTypeNormalTitle:
@@ -36,11 +37,20 @@
         {
             CGFloat margin = 8;
             
-            CGFloat tipImageView_x = 0;
-            CGFloat tipImageView_y = h * 0.25;
-            CGFloat tipImageView_w = 2;
-            CGFloat tipImageView_h = h * 0.5;
-            _tipImageViewFrame = CGRectMake(tipImageView_x, tipImageView_y, tipImageView_w, tipImageView_h);
+            if ([_titleContent.titleIconUrl isNotNull]) {
+                if (_titleContent.titleIconRatio<=0) _titleContent.titleIconRatio = 1;
+                CGFloat tipImageView_h = (h - 2 * margin) - 7;
+                CGFloat tipImageView_x = margin;
+                CGFloat tipImageView_y = (h - tipImageView_h) *0.5;
+                CGFloat tipImageView_w = tipImageView_h/_titleContent.titleIconRatio;
+                _tipImageViewFrame = CGRectMake(tipImageView_x, tipImageView_y, tipImageView_w, tipImageView_h);
+            }else{
+                CGFloat tipImageView_x = 0;
+                CGFloat tipImageView_y = h * 0.25;
+                CGFloat tipImageView_w = 2;
+                CGFloat tipImageView_h = h * 0.5;
+                _tipImageViewFrame = CGRectMake(tipImageView_x, tipImageView_y, tipImageView_w, tipImageView_h);
+            }
             
             CGFloat titleLabel_x = CGRectGetMaxX(_tipImageViewFrame) + margin;
             CGFloat titleLabel_y = 0;
@@ -59,7 +69,7 @@
             
             CGFloat subTitleLabel_x = CGRectGetMaxX(_titleLabelFrame) + margin;
             CGFloat subTitleLabel_y = 0;
-            CGFloat subTitleLabel_w = w - subTitleLabel_x - arrowImageView_s - margin;
+            CGFloat subTitleLabel_w = w - subTitleLabel_x - arrowImageView_s - margin - 4;
             CGFloat subTitleLabel_h = h;
             _subTitleLabelFrame = CGRectMake(subTitleLabel_x, subTitleLabel_y, subTitleLabel_w, subTitleLabel_h);
         }
@@ -68,11 +78,11 @@
         case TCHomeFloorTitleContentTypeCountDownMoreTitle:
         {
             CGFloat margin = 8;
-            
-            CGFloat tipImageView_x = 0;
-            CGFloat tipImageView_y = h * 0.25;
-            CGFloat tipImageView_w = 2;
-            CGFloat tipImageView_h = h * 0.5;
+            if (_titleContent.titleIconRatio<=0) _titleContent.titleIconRatio = 58/245.0;
+            CGFloat tipImageView_h = 14;
+            CGFloat tipImageView_x = margin;
+            CGFloat tipImageView_y = (h - tipImageView_h) *0.5;
+            CGFloat tipImageView_w = tipImageView_h/_titleContent.titleIconRatio;
             _tipImageViewFrame = CGRectMake(tipImageView_x, tipImageView_y, tipImageView_w, tipImageView_h);
             
             CGFloat titleLabel_x = CGRectGetMaxX(_tipImageViewFrame) + margin;
@@ -84,7 +94,7 @@
             _remainLabelHidden = NO;
             CGFloat remainLabel_x = CGRectGetMaxX(_titleLabelFrame) + margin;
             CGFloat remainLabel_w = 0;
-            CGFloat remainLabel_h = 21;
+            CGFloat remainLabel_h = 15;
             CGFloat remainLabel_y = (h - remainLabel_h) * 0.5;
             _remainLabelFrame = CGRectMake(remainLabel_x, remainLabel_y, remainLabel_w, remainLabel_h);
             
@@ -94,9 +104,9 @@
             _arrowImageViewFrame = CGRectMake(arrowImageView_x, arrowImageView_y, arrowImageView_s, arrowImageView_s);
             _arrowImageViewHidden = _titleContent.segueModel.destination == SegueDestinationNone;
             
-            CGFloat subTitleLabel_x = CGRectGetMaxX(_titleLabelFrame) + margin;
+            CGFloat subTitleLabel_x = CGRectGetMaxX(_remainLabelFrame) + margin;
             CGFloat subTitleLabel_y = 0;
-            CGFloat subTitleLabel_w = w - subTitleLabel_x - arrowImageView_s - margin;
+            CGFloat subTitleLabel_w = w - subTitleLabel_x - arrowImageView_s - margin - 4;
             CGFloat subTitleLabel_h = h;
             _subTitleLabelFrame = CGRectMake(subTitleLabel_x, subTitleLabel_y, subTitleLabel_w, subTitleLabel_h);
         }

@@ -39,7 +39,7 @@ singleM(SearchModel)
         }
         
         if (section00.count>0) {
-            SearchSectionItem *sectionOO_item = [SearchSectionItem sectionItemWithTitle:@"" rows:section00];
+            SearchSectionItem *sectionOO_item = [SearchSectionItem sectionItemWithTitle:@"热门搜索" rows:section00];
             if(sectionOO_item)[sections addObject:sectionOO_item];
         }
     }

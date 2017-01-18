@@ -10,13 +10,17 @@
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
 #import "User.h"
+#import "NSString+Category.h"
 
 @interface NearbyTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *bannerIcon;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
+@property (weak, nonatomic) IBOutlet UILabel *categoryL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *categoryW;
 @property (weak, nonatomic) IBOutlet UILabel *areaL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *areaW;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
 @property (weak, nonatomic) IBOutlet UILabel *statusL;
@@ -34,6 +38,16 @@
     self.bgView.layer.cornerRadius = 4;
     self.bgView.layer.masksToBounds = YES;
     self.likeBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    self.categoryL.layer.borderWidth = 1;
+    self.categoryL.layer.borderColor = [UIColor colorFromHexString:@"83CEF8"].CGColor;
+    self.categoryL.layer.cornerRadius = 2;
+    self.categoryL.layer.masksToBounds = YES;
+    
+    self.areaL.layer.borderWidth = 1;
+    self.areaL.layer.borderColor = [UIColor colorFromHexString:@"FE80A5"].CGColor;
+    self.areaL.layer.cornerRadius = 2;
+    self.areaL.layer.masksToBounds = YES;
 }
 
 - (void)setItem:(NearbyItem *)item {
@@ -42,7 +56,22 @@
     self.bannerIconH.constant = _item.bigImgRatio * (SCREEN_WIDTH - 20);
     self.nameL.text = _item.name;
     self.tipL.text =  [NSString stringWithFormat:@"%@人消费",_item.num];
-    self.areaL.text = [NSString stringWithFormat:@"%@ | %@",_item.categoryName,_item.districtName];
+    self.categoryL.text = _item.categoryName;
+    if ([_item.categoryName isNotNull]) {
+        self.categoryL.hidden = NO;
+        self.categoryW.constant = [_item.categoryName sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}].width + 8;
+    }else{
+        self.categoryL.hidden = YES;
+        self.categoryW.constant = 0;
+    }
+    self.areaL.text = _item.districtName;
+    if ([_item.districtName isNotNull]) {
+        self.areaL.hidden = NO;
+        self.areaW.constant = [_item.districtName sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}].width + 8;
+    }else{
+        self.areaL.hidden = YES;
+        self.areaW.constant = 0;
+    }
     self.priceL.text = _item.price;
     self.addressL.text = [NSString stringWithFormat:@"%@ %@",_item.storeName,_item.address];
     self.statusL.text = _item.endTimeDesc;

@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *originalPriceL;
 @property (weak, nonatomic) IBOutlet SeckillProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *attentionCountL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconH;
+
 @end
 
 @implementation SeckillLargeCell
@@ -64,6 +66,7 @@
     self.ageTipView.hidden = ![item.agegroup isNotNull];
     self.ageTipL.text = item.agegroup;
     self.progressView.progress = item.buyPercent/100;
+    self.iconH.constant = (SCREEN_WIDTH - 2*10)*item.productImgRatio;
     
     BOOL btnHide = NO;
     BOOL enable = NO;
@@ -161,6 +164,8 @@
         }
             break;
     }
+    
+    [self layoutIfNeeded];
 }
 
 - (IBAction)action:(UIButton *)sender {

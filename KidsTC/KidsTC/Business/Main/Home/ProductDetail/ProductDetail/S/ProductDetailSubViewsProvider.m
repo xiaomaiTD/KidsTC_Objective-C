@@ -44,6 +44,8 @@
 #import "ProductDetaiFreeInfoCell.h"
 #import "ProductDetaiFreeStoreInfoCell.h"
 #import "ProductDetaiFreeLifeTipCell.h"
+#import "ProductDetailVideoTipCell.h"
+#import "ProductDetailVideoCell.h"
 
 #import "ProductDetailNormalToolBar.h"
 #import "ProductDetailTicketToolBar.h"
@@ -69,6 +71,7 @@
 @property (nonatomic, strong) ProductDetailNoticeCell *noticeCell;
 @property (nonatomic, strong) ProductDetailContactCell *contactCell;
 @property (nonatomic, strong) ProductDetailCommentMoreCell *commentMoreCell;
+@property (nonatomic, strong) ProductDetailVideoTipCell *videoTipCell;
 
 @property (nonatomic, strong) ProductDetailTicketInfoCell *ticketInfoCell;
 @property (nonatomic, strong) ProductDetailTicketDesCell *ticketDesCell;
@@ -246,8 +249,20 @@
     return _commentMoreCell;
 }
 
+- (ProductDetailVideoTipCell *)videoTipCell {
+    if (!_videoTipCell)
+    {
+        _videoTipCell = [self viewWithNib:@"ProductDetailVideoTipCell"];
+    }
+    return _videoTipCell;
+}
+
 - (ProductDetailRecommendCell *)recommendCell {
     return [self viewWithNib:@"ProductDetailRecommendCell"];
+}
+
+- (ProductDetailVideoCell *)videoCell {
+    return [self viewWithNib:@"ProductDetailVideoCell"];
 }
 
 - (ProductDetailTicketInfoCell *)ticketInfoCell {
@@ -433,6 +448,22 @@
         if (section03.count>0) [sections addObject:section03];
     }
     
+    //video
+    VideoPlayVideoRes *productVideoRes = _data.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            ProductDetailVideoTipCell *videoTipCell = self.videoTipCell;
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailVideoCell *videoCell = self.videoCell;
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
@@ -595,6 +626,23 @@
         if (section03.count>0) [sections addObject:section03];
     }
     
+    //video
+    VideoPlayVideoRes *productVideoRes = _data.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            ProductDetailVideoTipCell *videoTipCell = self.videoTipCell;
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailVideoCell *videoCell = self.videoCell;
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
+    
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
     switch (_data.showType) {
@@ -748,6 +796,23 @@
     }
     if (section02.count>0) [sections addObject:section02];
     
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = _data.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            ProductDetailVideoTipCell *videoTipCell = self.videoTipCell;
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            ProductDetailVideoCell *videoCell = self.videoCell;
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     //detail
     NSMutableArray *section04 = [NSMutableArray new];
@@ -943,6 +1008,7 @@
     _noticeCell = nil;
     _contactCell = nil;
     _commentMoreCell = nil;
+    _videoTipCell = nil;
     
     _ticketInfoCell = nil;
     _ticketDesCell = nil;

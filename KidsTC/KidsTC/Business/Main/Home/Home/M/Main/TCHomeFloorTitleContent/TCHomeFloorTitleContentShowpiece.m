@@ -9,6 +9,7 @@
 #import "TCHomeFloorTitleContentShowpiece.h"
 #import "TCHomeFloorTitleContent.h"
 #import "NSAttributedString+YYText.h"
+#import "NSString+Category.h"
 
 @interface TCHomeFloorTitleContentShowpiece ()
 @property (nonatomic, strong) TCHomeFloorTitleContent *titleContent;
@@ -35,18 +36,23 @@
         case TCHomeFloorTitleContentTypeNormalTitle:
         case TCHomeFloorTitleContentTypeMoreTitle:
         {
-            _tipImageViewBGColor = COLOR_PINK;
-            _tipImageViewImg = nil;
+            if ([_titleContent.titleIconUrl isNotNull]) {
+                _tipImageViewBGColor = [UIColor clearColor];
+                _tipImageViewImg = nil;
+            }else{
+                _tipImageViewBGColor = [UIColor colorFromHexString:@"fc7572"];
+                _tipImageViewImg = nil;
+            }
             
             NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:name];
-            attName.color = COLOR_PINK;
+            attName.color = [UIColor colorFromHexString:@"fc7572"];
             attName.font = [UIFont systemFontOfSize:17];
             attName.alignment = NSTextAlignmentLeft;
             _attName = attName;
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
-            attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:16];
+            attSubName.color = [UIColor colorFromHexString:@"ff4a47"];
+            attSubName.font = [UIFont systemFontOfSize:13];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -54,18 +60,26 @@
         case TCHomeFloorTitleContentTypeCountDownTitle:
         case TCHomeFloorTitleContentTypeCountDownMoreTitle:
         {
-            _tipImageViewBGColor = COLOR_PINK;
-            _tipImageViewImg = nil;
+            _tipImageViewBGColor = [UIColor clearColor];
+            _tipImageViewImg = [UIImage imageNamed:@"titleContent_countDown"];
             
-            NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:name];
-            attName.color = COLOR_PINK;
-            attName.font = [UIFont systemFontOfSize:17];
-            attName.alignment = NSTextAlignmentLeft;
-            _attName = attName;
+            //NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:name];
+            //attName.color = [UIColor colorFromHexString:@"fc7572"];
+            //attName.font = [UIFont systemFontOfSize:17];
+            //attName.alignment = NSTextAlignmentLeft;
+            
+            if ([_titleContent.stageName isNotNull]) {
+                NSMutableAttributedString *attStage = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",_titleContent.stageName]];
+                attStage.color = [UIColor colorFromHexString:@"303030"];
+                attStage.font = [UIFont systemFontOfSize:16];
+                attStage.alignment = NSTextAlignmentLeft;
+                //[attName appendAttributedString:attStage];
+                _attName = attStage;
+            }
             
             NSMutableAttributedString *attSubName = [[NSMutableAttributedString alloc] initWithString:subName];
-            attSubName.color = [UIColor lightGrayColor];
-            attSubName.font = [UIFont systemFontOfSize:16];
+            attSubName.color = [UIColor colorFromHexString:@"ff4a47"];
+            attSubName.font = [UIFont systemFontOfSize:13];
             attSubName.alignment = NSTextAlignmentRight;
             _attSubName = attSubName;
         }
@@ -76,7 +90,7 @@
             _tipImageViewImg = [UIImage imageNamed:@"homeRecommendTip"];
             
             NSMutableAttributedString *attName = [[NSMutableAttributedString alloc] initWithString:name];
-            attName.color = COLOR_PINK;
+            attName.color = [UIColor colorFromHexString:@"fc7572"];
             attName.font = [UIFont systemFontOfSize:17];
             attName.alignment = NSTextAlignmentLeft;
             _attName = attName;
@@ -95,7 +109,7 @@
     
     if (_titleContent.remainTime<=0) return nil;
     
-    UIFont *font = [UIFont systemFontOfSize:15];
+    UIFont *font = [UIFont systemFontOfSize:12];
     
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:_titleContent.remainTime];
     NSDate *now = [NSDate date];
@@ -144,7 +158,7 @@
     [totalStr appendAttributedString:oneStr];
     
     NSDictionary *timeAtt = @{NSFontAttributeName:font,
-                              NSForegroundColorAttributeName:COLOR_PINK};
+                              NSForegroundColorAttributeName:[UIColor colorFromHexString:@"ff4a47"]};
     NSAttributedString *timerAttString = [[NSAttributedString alloc]initWithString:timeStr attributes:timeAtt];
     [totalStr appendAttributedString:timerAttString];
     

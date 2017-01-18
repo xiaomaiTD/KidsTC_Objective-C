@@ -26,6 +26,9 @@ typedef enum {
 @property (nonatomic, strong) NSString *remainName;
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
+@property (nonatomic, strong) NSString *titleIconUrl;
+@property (nonatomic, strong) NSString *stageName;
+@property (nonatomic, assign) CGFloat titleIconRatio;
 //selfDefine
 @property (nonatomic, assign) TCHomeFloorTitleContentType type;
 @property (nonatomic, strong) TCHomeFloorTitleContentLayout *layout;

@@ -13,6 +13,7 @@
 #import "CommonShareObject.h"
 #import "PayModel.h"
 #import "ServiceSettlementPlace.h"
+#import "WholesalePickDateSKU.h"
 
 @interface WholesaleSettlementData : NSObject
 @property (nonatomic, strong) NSString *productName;
@@ -32,6 +33,10 @@
 @property (nonatomic, strong) NSString *productNo;
 @property (nonatomic, strong) NSString *chId;
 @property (nonatomic, assign) BOOL isOpen;
+@property (nonatomic, strong) WholesalePickDateSKU *sku;
+@property (nonatomic, strong) NSString *fightGroupSysNo;
+@property (nonatomic, strong) NSString *openGroupSysNo;
+
 //shareObj
 @property (nonatomic, assign) PayType payType;
 @property (nonatomic, assign) NSInteger currentPlaceIndex;

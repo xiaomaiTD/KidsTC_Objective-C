@@ -8,6 +8,8 @@
 
 #import "TCHomeTitleContainer.h"
 #import "YYKit.h"
+#import "UIImageView+WebCache.h"
+#import "NSString+Category.h"
 
 @interface TCHomeTitleContainer ()
 @property (nonatomic, strong) UIImageView *tipImageView;
@@ -51,7 +53,7 @@
         self.subTitleLabel = subTitleLabel;
         
         UIImageView *arrowImageView = [UIImageView new];
-        arrowImageView.image = [UIImage imageNamed:@"arrow_r"];
+        arrowImageView.image = [UIImage imageNamed:@"titleContent_arrow"];
         //arrowImageView.backgroundColor = [UIColor redColor];
         [self addSubview:arrowImageView];
         self.arrowImageView = arrowImageView;
@@ -81,7 +83,11 @@
 - (void)setupShowpiece {
     TCHomeFloorTitleContentShowpiece *showpiece = _titleContent.showPiece;
     self.tipImageView.backgroundColor = showpiece.tipImageViewBGColor;
-    self.tipImageView.image = showpiece.tipImageViewImg;
+    if ([_titleContent.titleIconUrl isNotNull]) {
+        [self.tipImageView sd_setImageWithURL:[NSURL URLWithString:_titleContent.titleIconUrl] placeholderImage:showpiece.tipImageViewImg];
+    }else{
+        self.tipImageView.image = showpiece.tipImageViewImg;
+    }
     self.titleLabel.attributedText = showpiece.attName;
     self.subTitleLabel.attributedText = showpiece.attSubName;
 }

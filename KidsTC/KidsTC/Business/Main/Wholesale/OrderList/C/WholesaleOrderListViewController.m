@@ -16,7 +16,7 @@
 #import "WholesaleOrderListView.h"
 #import "CommonShareViewController.h"
 #import "WebViewController.h"
-#import "WholesaleSettlementViewController.h"
+#import "CashierDeskViewController.h"
 
 @interface WholesaleOrderListViewController ()<WholesaleOrderListViewDelegate>
 @property (nonatomic, strong) WholesaleOrderListView *listView;
@@ -105,9 +105,12 @@
     if (![value isKindOfClass:[WholesaleOrderListItem class]]) return;
     WholesaleOrderListItem *item = value;
     [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        WholesaleSettlementViewController *controller = [[WholesaleSettlementViewController alloc] init];
+        CashierDeskViewController *controller = [[CashierDeskViewController alloc] initWithNibName:@"CashierDeskViewController" bundle:nil];
+        controller.orderId = item.orderNo;
         controller.productId = item.fightGroupSysNo;
         controller.openGroupId = item.fightGroupOpenGroupSysNo;
+        controller.productType = ProductDetailTypeWholesale;
+        controller.orderKind = CashierDeskOrderKindService;
         [self.navigationController pushViewController:controller animated:YES];
     }];
 }

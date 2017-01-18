@@ -10,6 +10,7 @@
 
 @implementation TCHomeFloorTitleContent
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
     _segueModel = [SegueModel modelWithDestination:_linkType paramRawData:_params];
     return YES;
 }

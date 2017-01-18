@@ -12,6 +12,7 @@
 #import "Colours.h"
 
 @implementation ProductDetailData
+
 + (NSDictionary *)modelContainerPropertyGenericClass{
     return @{@"applyContent":[NSString class],
              @"promotionLink":[ProductDetailPromotionLink class],
@@ -27,6 +28,7 @@
              @"joinMember":[NSString class],
              @"place":[ProductDetailPlace class]};
 }
+
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
     _picRate = _picRate>0?_picRate:0.6;
@@ -145,6 +147,8 @@
         self.shareObject.followingContent = @"【童成】";
     }
 }
+
+
 
 #pragma mark - Ticket
 

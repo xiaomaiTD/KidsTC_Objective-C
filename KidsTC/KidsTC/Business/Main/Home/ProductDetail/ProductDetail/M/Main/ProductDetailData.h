@@ -29,6 +29,7 @@
 #import "ProductDetailCountDown.h"
 #import "ProductDetailPlace.h"
 #import "ProductDetailSecKillInfo.h"
+#import "VideoPlayVideoRes.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -127,6 +128,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL isShowProductStandards;
 @property (nonatomic, strong) NSString *standardTitle;
 @property (nonatomic, strong) NSString *standardName;
+@property (nonatomic, strong) VideoPlayVideoRes *productVideoRes;
+
 #pragma mark - selfDefine
 
 //type

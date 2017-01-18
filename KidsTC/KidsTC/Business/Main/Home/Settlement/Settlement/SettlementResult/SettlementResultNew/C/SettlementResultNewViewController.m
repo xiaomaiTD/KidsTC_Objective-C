@@ -20,6 +20,7 @@
 #import "ProductOrderFreeDetailViewController.h"
 #import "FlashServiceOrderDetailViewController.h"
 #import "RadishOrderDetailViewController.h"
+#import "WholesaleOrderDetailViewController.h"
 
 @interface SettlementResultNewViewController ()<SettlementResultNewViewDelegate>
 @property (strong, nonatomic) IBOutlet SettlementResultNewView *resultView;
@@ -165,6 +166,14 @@
                     {
                         ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
                         controller.orderId = self.orderId;
+                        [target pushViewController:controller animated:YES];
+                    }
+                        break;
+                    case ProductDetailTypeWholesale:
+                    {
+                        WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+                        controller.productId = self.productId;
+                        controller.openGroupId = self.openGroupId;
                         [target pushViewController:controller animated:YES];
                     }
                         break;

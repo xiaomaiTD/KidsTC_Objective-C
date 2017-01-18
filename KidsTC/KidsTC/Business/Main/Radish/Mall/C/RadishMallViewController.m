@@ -10,6 +10,7 @@
 #import "GHeader.h"
 #import "SegueMaster.h"
 #import "NSString+Category.h"
+#import "BuryPointManager.h"
 
 #import "RadishMallModel.h"
 #import "RadishUserModel.h"
@@ -32,6 +33,8 @@
     self.navigationItem.title = @"每日种萝卜";
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.pageId = 11300;
     
     RadishMallView *mallView = [[RadishMallView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     mallView.delegate = self;
@@ -99,6 +102,7 @@
         if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
         [[iToast makeText:errMsg] show];
     }];
+    [BuryPointManager trackEvent:@"event_click_radish_sign" actionId:21900 params:nil];
 }
 
 - (void)rule:(id)value {

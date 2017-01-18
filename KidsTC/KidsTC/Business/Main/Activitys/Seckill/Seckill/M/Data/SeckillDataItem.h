@@ -45,6 +45,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *timeDesc;
 @property (nonatomic, assign) ProductDetailType productType;
+@property (nonatomic, assign) CGFloat productImgRatio;
 
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;

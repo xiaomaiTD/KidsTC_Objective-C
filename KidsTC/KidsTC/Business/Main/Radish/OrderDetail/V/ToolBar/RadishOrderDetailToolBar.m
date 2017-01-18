@@ -68,7 +68,7 @@ CGFloat const kRadishOrderDetailToolBarH = 87;
 }
 
 #pragma mark - RadishOrderDetailBtnsViewDelegate
-- (void)RadishOrderDetailBtnsView:(RadishOrderDetailBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
+- (void)radishOrderDetailBtnsView:(RadishOrderDetailBtnsView *)view actionBtn:(UIButton *)btn value:(id)value {
     if ([self.delegate respondsToSelector:@selector(radishOrderDetailToolBar:actionType:value:)]) {
         [self.delegate radishOrderDetailToolBar:self actionType:btn.tag value:_data];
         [self buryPoint:btn.tag];

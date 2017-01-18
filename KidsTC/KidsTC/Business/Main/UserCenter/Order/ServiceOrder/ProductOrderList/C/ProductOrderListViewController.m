@@ -14,6 +14,7 @@
 #import "SegueMaster.h"
 #import "AppBaseManager.h"
 #import "RecommendDataManager.h"
+#import "BuryPointManager.h"
 
 #import "ProductOrderListReplaceModel.h"
 #import "ProductOrderListAllTitleRowItem.h"
@@ -744,6 +745,7 @@
     }*/
     RadishProductOrderListViewController *controller = [[RadishProductOrderListViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
+    [BuryPointManager trackEvent:@"event_skip_radish_order_list" actionId:21517 params:nil];
 }
 
 #pragma mark ================我的抽奖================

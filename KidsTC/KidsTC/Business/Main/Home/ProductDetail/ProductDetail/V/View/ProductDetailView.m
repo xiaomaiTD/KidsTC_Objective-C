@@ -93,6 +93,11 @@ static NSString *const ID = @"UITableViewCell";
             tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
         }
             break;
+            default:
+        {
+            tableViewFrame = CGRectZero;
+        }
+            break;
     }
     UITableView *tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStyleGrouped];
     tableView.delegate = self;
@@ -219,6 +224,8 @@ static NSString *const ID = @"UITableViewCell";
                 _twoColumnToolBar.hidden = NO;
             }
         }
+            break;
+        default:
             break;
     }
 }

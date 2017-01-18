@@ -15,6 +15,7 @@
 #import "WholesaleSettlementPhoneCell.h"
 #import "WholesaleSettlementRuleCell.h"
 #import "WholesaleSettlementProgressCell.h"
+#import "WholesaleSettlementDateCell.h"
 
 #import "WholesaleSettlementToolBar.h"
 
@@ -25,6 +26,7 @@ static NSString *const PayTypeCellID = @"WholesaleSettlementPayTypeCell";
 static NSString *const PhoneCellID = @"WholesaleSettlementPhoneCell";
 static NSString *const RuleCellID = @"WholesaleSettlementRuleCell";
 static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
+static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 
 @interface WholesaleSettlementView ()<UITableViewDelegate,UITableViewDataSource,WholesaleSettlementBaseCellDelegate,WholesaleSettlementToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -78,6 +80,7 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementPhoneCell" bundle:nil] forCellReuseIdentifier:PhoneCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementRuleCell" bundle:nil] forCellReuseIdentifier:RuleCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementProgressCell" bundle:nil] forCellReuseIdentifier:ProgressCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementDateCell" bundle:nil] forCellReuseIdentifier:DateCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
@@ -91,11 +94,19 @@ static NSString *const ProgressCellID = @"WholesaleSettlementProgressCell";
     NSMutableArray *section01 = [NSMutableArray array];
     WholesaleSettlementProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
     if (productInfoCell) [section01 addObject:productInfoCell];
-    if (self.data.placeType != PlaceTypeNone && (self.data.store || self.data.place.count>0)) {
-        WholesaleSettlementStoreInfoCell *storeInfoCell = [self cellWithID:StoreInfoCellID];
-        if (storeInfoCell) [section01 addObject:storeInfoCell];
-    }
     if(section01.count>0) [sections addObject:section01];
+    
+    NSMutableArray *dateSection = [NSMutableArray array];
+    WholesalePickDateSKU *sku = self.data.sku;
+    if (sku.times.count>0) {
+        WholesaleSettlementDateCell *dateCell = [self cellWithID:DateCellID];
+        if (dateCell) [dateSection addObject:dateCell];
+    }
+    if (sku.places.count>0) {
+        WholesaleSettlementStoreInfoCell *storeInfoCell = [self cellWithID:StoreInfoCellID];
+        if (storeInfoCell) [dateSection addObject:storeInfoCell];
+    }
+    if(dateSection.count>0) [sections addObject:dateSection];
     
     NSMutableArray *section02 = [NSMutableArray array];
     WholesaleSettlementPayTypeCell *payTypeCell = [self cellWithID:PayTypeCellID];

@@ -49,6 +49,8 @@
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.pageId = 11303;
+    
     RadishProductOrderListView *listView = [[RadishProductOrderListView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     listView.delegate = self;
     [self.view addSubview:listView];

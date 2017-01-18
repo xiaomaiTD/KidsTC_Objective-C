@@ -25,6 +25,8 @@ typedef enum {
     TCHomeFloorContentTypeOneToFour = 14,//1~4张图片
     TCHomeFloorContentTypeRecommend = 15,//为你推荐
     TCHomeFloorContentTypeFive = 16,//5张图片
+    TCHomeFloorContentTypeTwoColumns = 17,//两个一排
+    TCHomeFloorContentTypeThreeScroll = 18,//三个半图滚动
 }TCHomeFloorContentType;
 
 
@@ -169,6 +171,7 @@ typedef enum : NSUInteger {
 //以下两个属性只有当TCHomeFloor的contentType为16的时候才会有
 @property (nonatomic, assign) CGFloat widthScale;
 @property (nonatomic, assign) CGFloat heightScale;
+@property (nonatomic, strong) NSString *storePrice;
 
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *attTitle;
@@ -179,6 +182,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSAttributedString *attStatus;
 @property (nonatomic, strong) NSAttributedString *attDiscountDesc;
 @property (nonatomic, strong) NSAttributedString *attBtnDesc;
+@property (nonatomic, strong) NSAttributedString *attStorePrice;
 @property (nonatomic, strong) NSString *subImgName;
 @property (nonatomic, assign) TCHomeFloorContentSubImgType subImgType;
 @property (nonatomic, strong) NSString *tipImgName;

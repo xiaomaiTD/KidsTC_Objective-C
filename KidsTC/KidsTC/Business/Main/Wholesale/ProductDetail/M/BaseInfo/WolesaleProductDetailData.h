@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "WholesaleProductDetailBase.h"
-
+#import "WholesalePickDateSKU.h"
 @interface WolesaleProductDetailData : NSObject
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, assign) long long openGroupSysNo;
 @property (nonatomic, strong) WholesaleProductDetailBase *fightGroupBase;
+@property (nonatomic, strong) WholesalePickDateSKU *sku;
 @end

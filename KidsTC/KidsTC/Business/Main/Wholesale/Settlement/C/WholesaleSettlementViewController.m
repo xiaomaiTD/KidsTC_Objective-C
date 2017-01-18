@@ -23,8 +23,9 @@
 #import "SettlementResultNewViewController.h"
 #import "NavigationController.h"
 #import "WholesaleOrderDetailViewController.h"
+#import "WholesalePickDateViewController.h"
 
-@interface WholesaleSettlementViewController ()<WholesaleSettlementViewDelegate>
+@interface WholesaleSettlementViewController ()<WholesaleSettlementViewDelegate,WholesalePickDateViewControllerDelegate>
 @property (nonatomic, strong) WholesaleSettlementView *settlementView;
 @property (nonatomic, strong) WholesaleSettlementData *data;
 @end
@@ -33,12 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (![self.productId isNotNull]) {
-        [[iToast makeText:@"商品编号为空"] show];
-        [self back];
-        return;
-    }
     
     self.navigationItem.title = @"拼团";
     self.naviTheme = NaviThemeWihte;
@@ -64,10 +59,9 @@
 }
 
 - (void)loadData {
-    NSDictionary *param = @{@"fightGroupId":_productId,
-                            @"openGroupId":_openGroupId};
+    
     [TCProgressHUD showSVP];
-    [Request startWithName:@"GET_PRODUCT_TUAN_ORDER_CONFIRM" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    [Request startWithName:@"GET_FIGHT_GROUP_ORDER_CONFIRM_V2" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         WholesaleSettlementData *data = [WholesaleSettlementModel modelWithDictionary:dic].data;
         if (data) {
@@ -96,11 +90,6 @@
 - (void)wholesaleSettlementView:(WholesaleSettlementView *)view actionType:(WholesaleSettlementViewActionType)type value:(id)value {
     
     switch (type) {
-        case WholesaleSettlementViewActionTypeSelectStore://切换门店
-        {
-            [self selectStore];
-        }
-            break;
         case WholesaleSettlementViewActionTypeSelectPlace://切换地址
         {
             [self selectPlace];
@@ -111,6 +100,11 @@
             [self rule];
         }
             break;
+        case WholesaleSettlementViewActionTypeSelectDate://选择时间
+        {
+            [self selectDate];
+        }
+            break;
         case WholesaleSettlementViewActionTypePlaceOrder://下单
         {
             [self placeOrder];
@@ -119,29 +113,28 @@
     }
 }
 
-#pragma makr 切换门店
-
-- (void)selectStore {
-    SettlementPickStoreViewController *controller = [[SettlementPickStoreViewController alloc]init];
-    controller.stores = self.data.storeItems;
-    controller.pickStoreBlock = ^void (SettlementPickStoreDataItem *store){
-        self.data.store = [WholesaleSettlementStore storeWithObj:store];
-        [self.settlementView reloadData];
-    };
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
 #pragma mark 切换地址
 
 - (void)selectPlace {
-    ServiceSettlementSelectPlaceViewController *controller = [[ServiceSettlementSelectPlaceViewController alloc] initWithNibName:@"ServiceSettlementSelectPlaceViewController" bundle:nil];
-    controller.currentIndex = self.data.currentPlaceIndex;
-    controller.places = self.data.places;
-    controller.actionBlock = ^(NSInteger selectIndex){
-        self.data.currentPlaceIndex = selectIndex;
-        [self.settlementView reloadData];
-    };
-    [self.navigationController pushViewController:controller animated:YES];
+    WholesalePickDateViewController *controller = [[WholesalePickDateViewController alloc] initWithNibName:@"WholesalePickDateViewController" bundle:nil];
+    controller.delegate = self;
+    controller.sku = self.data.sku;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    controller.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)wholesalePickDateViewController:(WholesalePickDateViewController *)controller actionType:(WholesalePickDateViewControllerActionType)type value:(id)value {
+    switch (type) {
+        case WholesalePickDateViewControllerActionTypeMakeSure:
+        {
+            [self.settlementView reloadData];
+            [controller dismissViewControllerAnimated:YES completion:nil];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark 查看活动规则
@@ -155,31 +148,81 @@
     }
 }
 
+#pragma mark 选择时间
+
+- (void)selectDate {
+    [self selectPlace];
+}
+
 #pragma mark 下单
 
 - (void)placeOrder {
     WholesaleSettlementData *data = self.data;
     
-    if (![self.productId isNotNull]) {
+    if (![data.fightGroupSysNo isNotNull]) {
         [[iToast makeText:@"商品编号为空"] show];
         return;
     }
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setObject:self.productId forKey:@"fightGroupId"];
-    if ([self.openGroupId isNotNull]) {
-        [param setObject:self.openGroupId forKey:@"openGroupId"];
+    [param setObject:data.fightGroupSysNo forKey:@"fightGroupId"];
+    if ([data.openGroupSysNo isNotNull]) {
+        [param setObject:data.openGroupSysNo forKey:@"openGroupId"];
     }
-    NSString *storeNo = data.store.storeId;
-    if ([storeNo isNotNull]) {
-        [param setObject:storeNo forKey:@"storeNo"];
+    
+    //time
+    NSArray<WholesalePickDateTime *> *times = self.data.sku.times;
+    __block WholesalePickDateTime *time = nil;
+    if (times.count>0) {
+        [times enumerateObjectsUsingBlock:^(WholesalePickDateTime *obj, NSUInteger idx, BOOL *stop) {
+            if (obj.select) {
+                time = obj;
+                *stop = YES;
+            }
+        }];
+        if(!time) time = times.firstObject;
     }
-    if (data.currentPlaceIndex<data.place.count) {
-        WholesaleSettlementPlace *place = data.place[data.currentPlaceIndex];
-        NSString *placeNo = place.sysNo;
-        if ([placeNo isNotNull]) {
-            [param setObject:placeNo forKey:@"placeNo"];
+    if (time) {
+        NSString *skuId = time.skuId;
+        if ([skuId isNotNull]) {
+            [param setObject:skuId forKey:@"skuId"];
+        }
+        NSString *timeId = time.timeNo;
+        if ([timeId isNotNull]) {
+            [param setObject:timeId forKey:@"timeNo"];
         }
     }
+    //place
+    NSArray<WholesalePickDatePlace *> *places = self.data.sku.places;
+    __block WholesalePickDatePlace *place = nil;
+    if (places.count>0) {
+        [places enumerateObjectsUsingBlock:^(WholesalePickDatePlace *obj, NSUInteger idx, BOOL *stop) {
+            if (obj.select) {
+                place = obj;
+                *stop = YES;
+            }
+        }];
+        if(!place) place = places.firstObject;
+    }
+    if (place) {
+        NSString * placeID = place.ID;
+        if ([placeID isNotNull]) {
+            switch (self.data.placeType) {
+                case PlaceTypeStore:
+                {
+                    [param setObject:placeID forKey:@"storeNo"];
+                }
+                    break;
+                case PlaceTypePlace:
+                {
+                    [param setObject:placeID forKey:@"placeNo"];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
     [param setObject:@(self.data.payType) forKey:@"paytype"];
     [TCProgressHUD showSVP];
     [Request startWithName:@"PRODUCT_TUAN_PLACE_ORDER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
@@ -196,11 +239,11 @@
     }];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    if ([self.productId isNotNull]) {
-        [params setObject:self.productId forKey:@"pid"];
+    if ([data.fightGroupSysNo isNotNull]) {
+        [params setObject:data.fightGroupSysNo forKey:@"pid"];
     }
-    if ([self.openGroupId isNotNull]) {
-        [params setObject:self.openGroupId forKey:@"gid"];
+    if ([data.openGroupSysNo isNotNull]) {
+        [params setObject:data.openGroupSysNo forKey:@"gid"];
     }
     [BuryPointManager trackEvent:@"event_click_group_pay" actionId:21802 params:params];
 }
@@ -214,8 +257,8 @@
         [[iToast makeText:@"结算成功"] show];
     } failure:^(NSError *error) {
         NSString *errMsg = @"结算失败";
-        NSString *text = error.userInfo[@"kErrMsgKey"];
-        if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
+        NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+        if ([text isNotNull]) errMsg = text;
         [[iToast makeText:errMsg] show];
     }];
 }
@@ -231,7 +274,7 @@
 #pragma mark - 结算结果
 - (void)settlementPaid:(BOOL)paid model:(PayModel *)model{
     WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc]init];
-    controller.productId = self.productId;
+    controller.productId = self.data.fightGroupSysNo;
     controller.openGroupId = model.data.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{

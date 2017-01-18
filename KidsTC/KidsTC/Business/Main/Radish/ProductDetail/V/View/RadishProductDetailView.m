@@ -33,6 +33,8 @@
 #import "RadishProductDetailCommentCell.h"
 #import "RadishProductDetailCommentMoreCell.h"
 #import "RadishProductDetailRecommendCell.h"
+#import "RadishProductDetailVideoCell.h"
+#import "RadishProductDetailVideoTipCell.h"
 
 #import "RadishProductDetailTwoColumnToolBar.h"
 #import "RadishProductDetailToolBar.h"
@@ -60,6 +62,8 @@ static NSString *const ContactCellID = @"RadishProductDetailContactCell";
 static NSString *const CommentCellID = @"RadishProductDetailCommentCell";
 static NSString *const CommentMoreCellID = @"RadishProductDetailCommentMoreCell";
 static NSString *const RecommendCellID = @"RadishProductDetailRecommendCell";
+static NSString *const VideoCellID = @"RadishProductDetailVideoCell";
+static NSString *const VideoTipCellID = @"RadishProductDetailVideoTipCell";
 
 @interface RadishProductDetailView ()<UITableViewDelegate,UITableViewDataSource,RadishProductDetailBaseCellDelegate,RadishProductDetailTwoColumnToolBarDelegate,RadishProductDetailToolBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -138,6 +142,8 @@ static NSString *const RecommendCellID = @"RadishProductDetailRecommendCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailCommentCell" bundle:nil] forCellReuseIdentifier:CommentCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailCommentMoreCell" bundle:nil] forCellReuseIdentifier:CommentMoreCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailRecommendCell" bundle:nil] forCellReuseIdentifier:RecommendCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailVideoCell" bundle:nil] forCellReuseIdentifier:VideoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"RadishProductDetailVideoTipCell" bundle:nil] forCellReuseIdentifier:VideoTipCellID];
 }
 
 - (__kindof UITableViewCell *)cellWithID:(NSString *)cellID {
@@ -216,6 +222,23 @@ static NSString *const RecommendCellID = @"RadishProductDetailRecommendCell";
         RadishProductDetailJoinCell *joinCell = [self cellWithID:JoinCellID];
         if (joinCell) [section03 addObject:joinCell];
         if (section03.count>0) [sections addObject:section03];
+    }
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = self.data.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            RadishProductDetailVideoTipCell *videoTipCell = [self cellWithID:VideoTipCellID];
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            RadishProductDetailVideoCell *videoCell = [self cellWithID:VideoCellID];
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
     }
 
     //活动明细、活动咨询

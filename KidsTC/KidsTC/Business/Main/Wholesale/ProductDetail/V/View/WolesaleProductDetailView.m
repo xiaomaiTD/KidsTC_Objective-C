@@ -24,6 +24,8 @@
 #import "WolesaleProductDetailAddressCell.h"
 #import "WolesaleProductDetailWebCell.h"
 #import "WolesaleProductDetailOtherPorductCell.h"
+#import "WolesaleProductDetailVideoCell.h"
+#import "WolesaleProductDetailVideoTipCell.h"
 
 #import "WolesaleProductDetailV2BannersCell.h"
 #import "WolesaleProductDetailV2InfoCell.h"
@@ -53,6 +55,8 @@ static NSString *const TimeCellID = @"WolesaleProductDetailTimeCell";
 static NSString *const AddressCellID = @"WolesaleProductDetailAddressCell";
 static NSString *const WebCellID = @"WolesaleProductDetailWebCell";
 static NSString *const OtherPorductCellID = @"WolesaleProductDetailOtherPorductCell";
+static NSString *const VideoCellID = @"WolesaleProductDetailVideoCell";
+static NSString *const VideoTipCellID = @"WolesaleProductDetailVideoTipCell";
 //V2
 static NSString *const V2BannersCellID = @"WolesaleProductDetailV2BannersCell";
 static NSString *const V2InfoCellID = @"WolesaleProductDetailV2InfoCell";
@@ -125,6 +129,8 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailWebCell" bundle:nil] forCellReuseIdentifier:WebCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailOtherPorductCell" bundle:nil] forCellReuseIdentifier:OtherPorductCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailVideoCell" bundle:nil] forCellReuseIdentifier:VideoCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailVideoTipCell" bundle:nil] forCellReuseIdentifier:VideoTipCellID];
     //V2
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2BannersCell" bundle:nil] forCellReuseIdentifier:V2BannersCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WolesaleProductDetailV2InfoCell" bundle:nil] forCellReuseIdentifier:V2InfoCellID];
@@ -190,6 +196,23 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
         }
         if(section02.count>0) [sections addObject:section02];
     }];
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = base.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            WolesaleProductDetailVideoTipCell *videoTipCell = [self cellWithID:VideoTipCellID];
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            WolesaleProductDetailVideoCell *videoCell = [self cellWithID:VideoCellID];
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     NSMutableArray *section03 = [NSMutableArray array];
     if (base.productTime || base.store || [base.detailUrl isNotNull]) {
@@ -376,6 +399,23 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
         if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
     }
     if(section04.count>0) [sections addObject:section04];
+    
+    //video
+    VideoPlayVideoRes *productVideoRes = base.productVideoRes;
+    if (productVideoRes.productVideos.count>0) {
+        NSMutableArray *videoSection = [NSMutableArray new];
+        if ([productVideoRes.productVideoTitle isNotNull]) {
+            WolesaleProductDetailVideoTipCell *videoTipCell = [self cellWithID:VideoTipCellID];
+            videoTipCell.title = productVideoRes.productVideoTitle;
+            if (videoTipCell) [videoSection addObject:videoTipCell];
+        }
+        [productVideoRes.productVideos enumerateObjectsUsingBlock:^(VideoPlayVideo *obj, NSUInteger idx, BOOL *stop) {
+            WolesaleProductDetailVideoCell *videoCell = [self cellWithID:VideoCellID];
+            videoCell.tag = idx;
+            if (videoCell) [videoSection addObject:videoCell];
+        }];
+        if (videoSection.count>0) [sections addObject:videoSection];
+    }
     
     NSMutableArray *section05 = [NSMutableArray array];
     if ([base.detailUrl isNotNull]) {

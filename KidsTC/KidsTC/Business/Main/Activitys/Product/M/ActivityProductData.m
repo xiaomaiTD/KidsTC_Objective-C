@@ -127,6 +127,7 @@
 - (void)setupShareObj {
     ActivityProductShare *shareInfo = self.shareInfo;
     self.shareObj = [CommonShareObject shareObjectWithTitle:shareInfo.title description:shareInfo.desc thumbImageUrl:[NSURL URLWithString:shareInfo.imgIcon] urlString:shareInfo.linkUrl];
+    self.shareObj.identifier = self.eventBaseInfo.eventSysNoEn;
 }
 
 @end

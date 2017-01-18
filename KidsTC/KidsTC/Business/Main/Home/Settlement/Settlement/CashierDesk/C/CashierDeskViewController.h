@@ -19,4 +19,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CashierDeskOrderKind orderKind;
 @property (nonatomic, assign) ProductDetailType productType;
 @property (nonatomic, copy) void (^resultBlock)(BOOL needRefresh);
+
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *openGroupId;
 @end

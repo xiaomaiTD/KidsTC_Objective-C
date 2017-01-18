@@ -17,6 +17,7 @@
 #import "ReachabilityManager.h"
 #import "CookieManager.h"
 #import "DataBaseManager.h"
+#import "BuryPointTrackModel.h"
 
 //设备类型
 typedef enum : NSUInteger {
@@ -187,8 +188,18 @@ static NSInteger errorCount = 0;
                 NSString *msg = [[self shareBuryPointManager] jsonWithObj:ary];
                 errorCount = 0;
                 [self uploadTrack:msg successBlock:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-                    [sendModels enumerateObjectsUsingBlock:^(BuryPointModel *obj, NSUInteger idx, BOOL *stop) {
+                    BuryPointTrackModel *model = [BuryPointTrackModel modelWithDictionary:dic];
+                    NSArray<NSString *> *Lst = model.data.Lst;
+                    if (Lst.count<1) return;
+                    for (BuryPointModel *obj in sendModels) {
+                        __block BOOL has = NO;
+                        for (NSString *errorPKStr in Lst) {
+                            if (has) continue;
+                            if ([errorPKStr isEqualToString:obj.pk]) has = YES;
+                        }
+                        if (has) continue;
                         [db buryPoint_delete:obj successBlock:^(BOOL success_delete) {
+                            TCLog(@"埋点上传成功……开始删除……pk:%@",obj.pk);
                             if (success_delete) {
                                 TCLog(@"埋点上传成功……删除成功……");
                                 obj.status = YES;
@@ -203,11 +214,10 @@ static NSInteger errorCount = 0;
                                 TCLog(@"埋点上传成功……删除失败……");
                             }
                         }];
-                    }];
+                    }
                 } failureBlock:^{
                     TCLog(@"埋点上传失败……删除失败……重试3次之后任然失败");
                 }];
-                
                 page++;
                 loc = page*pageCount;
                 needCount = loc + len;
@@ -256,7 +266,7 @@ static NSInteger errorCount = 0;
     return msg;
 }
 
-+ (BuryPointModel *)reportMsgTrackType:(TrackType)trackType beginPV:(BOOL)beginPV   actionId:(long)actionId pageUid:(NSString *)pageUid params:(NSDictionary *)dic
++ (BuryPointModel *)reportMsgTrackType:(TrackType)trackType beginPV:(BOOL)beginPV actionId:(long)actionId pageUid:(NSString *)pageUid params:(NSDictionary *)dic
 {
     BuryPointManager *manager = [BuryPointManager shareBuryPointManager];
     NSString *type = [NSString stringWithFormat:@"%zd",trackType];
@@ -296,7 +306,7 @@ static NSInteger errorCount = 0;
     NSError *err;
     NSData *jsonData=[NSJSONSerialization dataWithJSONObject:obj options:0 error:&err];
     if(err) {
-        NSLog(@"字典转JSON失败：%@",err);
+        TCLog(@"字典转JSON失败：%@",err);
         return nil;
     }
     NSString *jsonString_utf8=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];

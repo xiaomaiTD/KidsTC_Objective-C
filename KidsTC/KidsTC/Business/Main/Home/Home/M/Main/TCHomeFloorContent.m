@@ -9,6 +9,7 @@
 #import "TCHomeFloorContent.h"
 #import "NSAttributedString+YYText.h"
 #import "Colours.h"
+#import "NSString+Category.h"
 
 @implementation TCHomeFloorContent
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -30,24 +31,39 @@
                 break;
             case TCHomeFloorContentTypeTwinklingElf:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 0;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:14];
-                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentCenter;
-                _attTitle = attTitle;
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 0;
+                    attTitle.color = [UIColor darkGrayColor];
+                    attTitle.font = [UIFont systemFontOfSize:14];
+                    attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attTitle.alignment = NSTextAlignmentCenter;
+                    _attTitle = attTitle;
+                }
             }
                 break;
             case TCHomeFloorContentTypeHorizontalList:
             {
-                NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
-                attPrice.lineSpacing = 0;
-                attPrice.color = COLOR_PINK;
-                attPrice.font = [UIFont systemFontOfSize:15];
-                attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
-                attPrice.alignment = NSTextAlignmentCenter;
-                _attPrice = attPrice;
+                if ([price isNotNull]) {
+                    NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
+                    attPrice.lineSpacing = 0;
+                    attPrice.color = COLOR_PINK;
+                    attPrice.font = [UIFont systemFontOfSize:15];
+                    attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attPrice.alignment = NSTextAlignmentCenter;
+                    _attPrice = attPrice;
+                }
+                if ([_storePrice isNotNull]) {
+                    NSMutableAttributedString *attStorePrice = [[NSMutableAttributedString alloc] initWithString:_storePrice];
+                    attStorePrice.lineSpacing = 0;
+                    attStorePrice.color = [UIColor colorFromHexString:@"a9a9a9"];
+                    attStorePrice.font = [UIFont systemFontOfSize:11];
+                    attStorePrice.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attStorePrice.alignment = NSTextAlignmentCenter;
+                    [attStorePrice setStrikethroughStyle:NSUnderlineStyleSingle];
+
+                    _attTitle = attStorePrice;
+                }
             }
                 break;
             case TCHomeFloorContentTypeThree:
@@ -63,70 +79,80 @@
             case TCHomeFloorContentTypeNews:
             case TCHomeFloorContentTypeImageNews:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 4;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 4;
+                    attTitle.color = [UIColor darkGrayColor];
+                    attTitle.font = [UIFont systemFontOfSize:17];
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    _attTitle = attTitle;
+                }
                 
                 _attSubTitle = _articleParam.articleStr;
             }
                 break;
             case TCHomeFloorContentTypeThreeImageNews:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 4;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 4;
+                    attTitle.color = [UIColor darkGrayColor];
+                    attTitle.font = [UIFont systemFontOfSize:17];
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    _attTitle = attTitle;
+                }
                 
                 _attSubTitle = _articleParam.articleStr;
             }
                 break;
             case TCHomeFloorContentTypeWholeImageNews:
             {
-                title = [NSString stringWithFormat:@"  %@",title];
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 4;
-                attTitle.color = [UIColor whiteColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
+                if ([title isNotNull]) {
+                    title = [NSString stringWithFormat:@"  %@",title];
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 4;
+                    attTitle.color = [UIColor whiteColor];
+                    attTitle.font = [UIFont systemFontOfSize:17];
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    _attTitle = attTitle;
+                }
             }
                 break;
             case TCHomeFloorContentTypeNotice:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 0;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 0;
+                    attTitle.color = [UIColor darkGrayColor];
+                    attTitle.font = [UIFont systemFontOfSize:17];
+                    attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    _attTitle = attTitle;
+                }
             }
                 break;
             case TCHomeFloorContentTypeBigImageTwoDesc:
             {
-                NSRange range = [title rangeOfString:_linkKey];
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 0;
-                attTitle.color = [UIColor darkGrayColor];
-                attTitle.font = [UIFont systemFontOfSize:15];
-                attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attTitle.alignment = NSTextAlignmentLeft;
-                [attTitle setColor:COLOR_PINK range:range];
-                _attTitle = attTitle;
-                
-                NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
-                attSubTitle.lineSpacing = 0;
-                attSubTitle.color = [UIColor lightGrayColor];
-                attSubTitle.font = [UIFont systemFontOfSize:15];
-                attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attSubTitle.alignment = NSTextAlignmentLeft;
-                _attSubTitle = attSubTitle;
-                
+                if ([title isNotNull]) {
+                    NSRange range = [title rangeOfString:_linkKey];
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 0;
+                    attTitle.color = [UIColor darkGrayColor];
+                    attTitle.font = [UIFont systemFontOfSize:15];
+                    attTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    [attTitle setColor:COLOR_PINK range:range];
+                    _attTitle = attTitle;
+                }
+                if ([subTitle isNotNull]) {
+                    NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
+                    attSubTitle.lineSpacing = 0;
+                    attSubTitle.color = [UIColor lightGrayColor];
+                    attSubTitle.font = [UIFont systemFontOfSize:15];
+                    attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attSubTitle.alignment = NSTextAlignmentLeft;
+                    _attSubTitle = attSubTitle;
+                }
             }
                 break;
             case TCHomeFloorContentTypeOneToFour:
@@ -136,34 +162,77 @@
                 break;
                 case TCHomeFloorContentTypeRecommend:
             {
-                NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
-                attTitle.lineSpacing = 4;
-                attTitle.color = [UIColor colorFromHexString:@"222222"];
-                attTitle.font = [UIFont systemFontOfSize:17];
-                attTitle.alignment = NSTextAlignmentLeft;
-                _attTitle = attTitle;
-                
-                NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
-                attPrice.lineSpacing = 0;
-                attPrice.color = [UIColor colorFromHexString:@"F36863"];
-                attPrice.font = [UIFont systemFontOfSize:17];
-                attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
-                attPrice.alignment = NSTextAlignmentRight;
-                _attPrice = attPrice;
-                
-                NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
-                attSubTitle.lineSpacing = 0;
-                attSubTitle.color = [UIColor colorFromHexString:@"9C9C9C"];
-                attSubTitle.font = [UIFont systemFontOfSize:14];
-                attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
-                attSubTitle.alignment = NSTextAlignmentLeft;
-                _attSubTitle = attSubTitle;
-                
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.lineSpacing = 4;
+                    attTitle.color = [UIColor colorFromHexString:@"222222"];
+                    attTitle.font = [UIFont systemFontOfSize:17];
+                    attTitle.alignment = NSTextAlignmentLeft;
+                    _attTitle = attTitle;
+                }
+                if ([price isNotNull]) {
+                    NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
+                    attPrice.lineSpacing = 0;
+                    attPrice.color = [UIColor colorFromHexString:@"F36863"];
+                    attPrice.font = [UIFont systemFontOfSize:17];
+                    attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attPrice.alignment = NSTextAlignmentRight;
+                    _attPrice = attPrice;
+                }
+                if ([subTitle isNotNull]) {
+                    NSMutableAttributedString *attSubTitle = [[NSMutableAttributedString alloc] initWithString:subTitle];
+                    attSubTitle.lineSpacing = 0;
+                    attSubTitle.color = [UIColor colorFromHexString:@"9C9C9C"];
+                    attSubTitle.font = [UIFont systemFontOfSize:14];
+                    attSubTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attSubTitle.alignment = NSTextAlignmentLeft;
+                    _attSubTitle = attSubTitle;
+                }
             }
                 break;
             case TCHomeFloorContentTypeFive:
             {
                 _attTitle = [NSAttributedString new];
+            }
+                break;
+            case TCHomeFloorContentTypeTwoColumns:
+            {
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.color = [UIColor colorFromHexString:@"333333"];
+                    attTitle.font = [UIFont systemFontOfSize:14];
+                    _attTitle = attTitle;
+                }
+                if ([price isNotNull]) {
+                    NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
+                    attPrice.lineSpacing = 0;
+                    attPrice.color = [UIColor colorFromHexString:@"ff4a47"];
+                    attPrice.font = [UIFont systemFontOfSize:15];
+                    attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attPrice.alignment = NSTextAlignmentLeft;
+                    
+                    
+                    NSMutableAttributedString *attPriceTip = [[NSMutableAttributedString alloc] initWithString:@"起"];
+                    attPriceTip.lineSpacing = 0;
+                    attPriceTip.color = [UIColor colorFromHexString:@"555555"];
+                    attPriceTip.font = [UIFont systemFontOfSize:12];
+                    attPriceTip.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attPriceTip.alignment = NSTextAlignmentLeft;
+                    [attPrice appendAttributedString:attPriceTip];
+                    
+                    _attPrice = attPrice;
+                }
+            }
+                break;
+            case TCHomeFloorContentTypeThreeScroll:
+            {
+                if ([title isNotNull]) {
+                    NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
+                    attTitle.color = [UIColor colorFromHexString:@"333333"];
+                    attTitle.font = [UIFont systemFontOfSize:14];
+                    attTitle.alignment = NSTextAlignmentCenter;
+                    _attTitle = attTitle;
+                }
             }
                 break;
         }

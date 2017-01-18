@@ -299,7 +299,7 @@
                 toController = controller;
             }*/
             toController = [[RadishMallViewController alloc]init];
-            [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            [BuryPointManager trackEvent:@"event_skip_usr_radish" actionId:21516 params:nil];
         }
             break;
         case AccountCenterViewActionTypeMyFlash:

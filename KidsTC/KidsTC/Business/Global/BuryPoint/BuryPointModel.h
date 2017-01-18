@@ -14,5 +14,6 @@
 @property (nonatomic, assign) BOOL status;
 @property (nonatomic, assign) NSTimeInterval time;
 @property (nonatomic, strong) NSString *content;
+@property (nonatomic, assign) BOOL hasDealWith;
 + (instancetype)modelWithPk:(NSString *)pk content:(NSString *)content;
 @end

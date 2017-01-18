@@ -22,6 +22,7 @@
 #import "ProductDetailConsultItem.h"
 #import "CommentListItemModel.h"
 #import "CommonShareObject.h"
+#import "VideoPlayVideoRes.h"
 
 typedef enum : NSUInteger {
     RadishProductDetailTwoColumnShowTypeDetail=100,//详情
@@ -76,7 +77,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSUInteger advisoryCount;
 @property (nonatomic, strong) RadishProductDetailTime *time;
 @property (nonatomic, assign) BOOL isShowPrice;
-
+@property (nonatomic, strong) VideoPlayVideoRes *productVideoRes;
 
 @property (nonatomic, strong) NSString *priceDesc;
 @property (nonatomic, strong) NSString *synopsis;

@@ -37,6 +37,9 @@
         return;
     }
     
+    self.pageId = 11304;
+    self.trackParams = @{@"orderId":_orderId};
+    
     self.navigationItem.title = @"订单详情";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;

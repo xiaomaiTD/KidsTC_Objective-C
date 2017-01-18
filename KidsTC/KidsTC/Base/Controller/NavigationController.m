@@ -37,6 +37,19 @@
     }
     [super pushViewController:viewController animated:YES];
 }
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+- (BOOL)shouldAutorotate
+{
+    return self.topViewController.shouldAutorotate;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return self.topViewController.supportedInterfaceOrientations;
+}
 
 #pragma mark - helpers
 

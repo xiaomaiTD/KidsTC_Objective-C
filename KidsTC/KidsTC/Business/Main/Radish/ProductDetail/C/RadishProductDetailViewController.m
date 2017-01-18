@@ -17,6 +17,7 @@
 #import "SegueMaster.h"
 #import "KTCFavouriteManager.h"
 #import "OnlineCustomerService.h"
+#import "BuryPointManager.h"
 
 #import "RadishProductDetailModel.h"
 #import "RadishProductDetailView.h"
@@ -51,8 +52,6 @@ ProductDetailAddNewConsultViewControllerDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _productId = @"16";
-    
     if (![_productId isNotNull]) {
         [[iToast makeText:@"商品编号为空"] show];
         [self back];
@@ -61,6 +60,10 @@ ProductDetailAddNewConsultViewControllerDelegate
     if (![_channelId isNotNull]) {
         _channelId = @"0";
     }
+    
+    self.pageId = 11301;
+    self.trackParams = @{@"pid":_productId,
+                         @"cid":_channelId};
     
     _dataManager = [ProductDetailDataManager new];
     _dataManager.type = ProductDetailTypeRadish;
@@ -356,6 +359,15 @@ ProductDetailAddNewConsultViewControllerDelegate
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
     }];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([productid isNotNull]) {
+        [params setObject:productid forKey:@"pid"];
+    }
+    if ([chid isNotNull]) {
+        [params setObject:chid forKey:@"cid"];
+    }
+    [BuryPointManager trackEvent:@"event_click_radish_buy" actionId:21901 params:params];
 }
 
 
@@ -510,6 +522,15 @@ ProductDetailAddNewConsultViewControllerDelegate
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
     }];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if ([productid isNotNull]) {
+        [params setObject:productid forKey:@"pid"];
+    }
+    if ([chid isNotNull]) {
+        [params setObject:chid forKey:@"cid"];
+    }
+    [BuryPointManager trackEvent:@"event_click_radish_buy" actionId:21901 params:params];
 }
 
 - (void)goSettlement {

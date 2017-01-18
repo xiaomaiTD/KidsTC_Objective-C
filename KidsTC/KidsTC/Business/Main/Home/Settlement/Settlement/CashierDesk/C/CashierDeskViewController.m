@@ -178,6 +178,8 @@
     }else {
         controller.type = SettlementResultTypeFlash;
     }
+    controller.productId = self.productId;
+    controller.openGroupId = self.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popViewControllerAnimated:NO];

@@ -78,6 +78,10 @@
     return [SchemeManager openUrl:url];
 }
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return self.window.rootViewController.supportedInterfaceOrientations;
+}
+
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     TCLog(@"AppDelegate---收到内存警告---！！！");
     [[SDImageCache sharedImageCache] clearMemory];
@@ -218,6 +222,7 @@
     
     return topVC;
 }
+
 
 
 

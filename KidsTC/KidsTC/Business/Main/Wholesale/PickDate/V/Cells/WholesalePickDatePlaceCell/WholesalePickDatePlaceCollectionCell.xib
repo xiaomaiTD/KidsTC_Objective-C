@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WholesalePickDatePlaceCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lel-pM-ud4">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesalePickDate_Sel" translatesAutoresizingMaskIntoConstraints="NO" id="aFz-0S-315">
+                                <rect key="frame" x="319" y="34" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="VDc-Ie-gaA"/>
+                                    <constraint firstAttribute="width" secondItem="aFz-0S-315" secondAttribute="height" multiplier="1:1" id="rcp-TD-643"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6X1-J5-Rwy">
+                                <rect key="frame" x="16" y="11" width="311" height="36"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesalePickDate_Store_Nor" translatesAutoresizingMaskIntoConstraints="NO" id="K6U-mr-roh">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="K6U-mr-roh" secondAttribute="height" multiplier="1:1" id="dLc-0J-hFn"/>
+                                            <constraint firstAttribute="width" constant="14" id="hhc-7f-f11"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝创意谷江宁店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPV-EM-1bK">
+                                        <rect key="frame" x="22" y="-1" width="289" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wholesalePickDate_Address_Nor" translatesAutoresizingMaskIntoConstraints="NO" id="H6P-3g-yv4">
+                                        <rect key="frame" x="0.0" y="22" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="ApQ-uB-ZlU"/>
+                                            <constraint firstAttribute="width" secondItem="H6P-3g-yv4" secondAttribute="height" multiplier="1:1" id="xFg-z7-2Dh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海市浦东新区广兰路2286弄1354号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSv-Nj-U3l">
+                                        <rect key="frame" x="22" y="20.5" width="289" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wPV-EM-1bK" secondAttribute="trailing" id="3fl-hw-8vf"/>
+                                    <constraint firstItem="wPV-EM-1bK" firstAttribute="centerY" secondItem="K6U-mr-roh" secondAttribute="centerY" id="8mm-gz-Icg"/>
+                                    <constraint firstAttribute="trailing" secondItem="uSv-Nj-U3l" secondAttribute="trailing" id="DgE-0j-8JF"/>
+                                    <constraint firstItem="wPV-EM-1bK" firstAttribute="leading" secondItem="K6U-mr-roh" secondAttribute="trailing" constant="8" id="OlU-LK-NuD"/>
+                                    <constraint firstItem="K6U-mr-roh" firstAttribute="top" secondItem="6X1-J5-Rwy" secondAttribute="top" id="X8C-LT-T3S"/>
+                                    <constraint firstItem="H6P-3g-yv4" firstAttribute="top" secondItem="K6U-mr-roh" secondAttribute="bottom" constant="8" id="bvl-VQ-CfC"/>
+                                    <constraint firstItem="uSv-Nj-U3l" firstAttribute="centerY" secondItem="H6P-3g-yv4" secondAttribute="centerY" id="dig-RM-Yfb"/>
+                                    <constraint firstItem="K6U-mr-roh" firstAttribute="leading" secondItem="6X1-J5-Rwy" secondAttribute="leading" id="iIJ-1e-PxI"/>
+                                    <constraint firstItem="uSv-Nj-U3l" firstAttribute="leading" secondItem="H6P-3g-yv4" secondAttribute="trailing" constant="8" id="kBp-ye-UMZ"/>
+                                    <constraint firstItem="H6P-3g-yv4" firstAttribute="leading" secondItem="6X1-J5-Rwy" secondAttribute="leading" id="oSN-qj-sRB"/>
+                                    <constraint firstAttribute="bottom" secondItem="H6P-3g-yv4" secondAttribute="bottom" id="ryo-do-zVG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6X1-J5-Rwy" firstAttribute="leading" secondItem="Lel-pM-ud4" secondAttribute="leading" constant="16" id="56W-xb-v0L"/>
+                            <constraint firstItem="6X1-J5-Rwy" firstAttribute="centerY" secondItem="Lel-pM-ud4" secondAttribute="centerY" id="ITc-5T-cEO"/>
+                            <constraint firstAttribute="trailing" secondItem="aFz-0S-315" secondAttribute="trailing" id="JQ6-EG-iM6"/>
+                            <constraint firstAttribute="trailing" secondItem="6X1-J5-Rwy" secondAttribute="trailing" constant="16" id="bSS-UA-isj"/>
+                            <constraint firstAttribute="bottom" secondItem="aFz-0S-315" secondAttribute="bottom" id="rx9-E1-zND"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Lel-pM-ud4" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="29T-xe-2yD"/>
+                <constraint firstItem="Lel-pM-ud4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cD5-bB-0GS"/>
+                <constraint firstAttribute="bottom" secondItem="Lel-pM-ud4" secondAttribute="bottom" id="eTR-hk-g9f"/>
+                <constraint firstAttribute="trailing" secondItem="Lel-pM-ud4" secondAttribute="trailing" id="uAq-xg-1pi"/>
+            </constraints>
+            <connections>
+                <outlet property="addressIcon" destination="H6P-3g-yv4" id="eso-cI-59a"/>
+                <outlet property="addressL" destination="uSv-Nj-U3l" id="2dT-Sv-O1f"/>
+                <outlet property="bgView" destination="Lel-pM-ud4" id="cWX-IL-E6L"/>
+                <outlet property="storeIcon" destination="K6U-mr-roh" id="V6b-08-syR"/>
+                <outlet property="storeNameL" destination="wPV-EM-1bK" id="YjL-GR-yFN"/>
+                <outlet property="tipImg" destination="aFz-0S-315" id="LQY-dv-ttz"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="wholesalePickDate_Address_Nor" width="46" height="58"/>
+        <image name="wholesalePickDate_Sel" width="98" height="98"/>
+        <image name="wholesalePickDate_Store_Nor" width="60" height="54"/>
+    </resources>
+</document>

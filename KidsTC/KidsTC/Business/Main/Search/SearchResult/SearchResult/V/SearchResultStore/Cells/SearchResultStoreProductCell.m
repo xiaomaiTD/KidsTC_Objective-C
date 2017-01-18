@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *infoBGView;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet UILabel *tipL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @end
 

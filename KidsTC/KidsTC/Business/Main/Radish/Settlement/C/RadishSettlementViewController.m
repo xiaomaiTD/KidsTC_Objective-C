@@ -35,6 +35,8 @@
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.pageId = 11302;
+    
     RadishSettlementView *settlementView = [[RadishSettlementView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     settlementView.delegate = self;
     [self.view addSubview:settlementView];

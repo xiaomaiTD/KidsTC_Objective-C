@@ -7,7 +7,7 @@
 //
 
 #import "TabBarController.h"
-
+#import "AppDelegate.h"
 #import "NavigationController.h"
 
 #import "TCHomeViewController.h"
@@ -63,6 +63,30 @@ singleM(TabBarController)
     _fpsLabel.alpha = 1;
     //[self.view addSubview:_fpsLabel];
 #endif
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
+}
+
+-(BOOL)shouldAutorotate
+{
+    return self.getPresentedViewController.shouldAutorotate;
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return self.getPresentedViewController.supportedInterfaceOrientations;
+}
+
+- (UIViewController *)getPresentedViewController
+{
+    UIViewController *topVC = self.selectedViewController;
+    if (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
 }
 
 #pragma mark - public

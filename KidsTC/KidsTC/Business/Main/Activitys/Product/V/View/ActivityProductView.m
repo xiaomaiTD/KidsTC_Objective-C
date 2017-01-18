@@ -8,6 +8,7 @@
 
 #import "ActivityProductView.h"
 
+#import "BuryPointManager.h"
 
 #import "ActivityProductSlider.h"
 #import "ActivityProductToolBar.h"
@@ -253,6 +254,17 @@ static NSString *const CouponsCellID = @"ActivityProductCouponsCell";
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.didClickToolBar = NO;
     });
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSString *fid = [NSString stringWithFormat:@"%@",item.params[@"fid"]];
+    if ([fid isNotNull]) {
+        [params setObject:fid forKey:@"fid"];
+    }
+    NSString *ID = self.data.eventBaseInfo.eventSysNoEn;
+    if ([ID isNotNull]) {
+        [params setObject:ID forKey:@"id"];
+    }
+    [BuryPointManager trackEvent:@"event_click_activity_change_loc" actionId:22002 params:params];
 }
 
 #pragma mark - setupToolBar

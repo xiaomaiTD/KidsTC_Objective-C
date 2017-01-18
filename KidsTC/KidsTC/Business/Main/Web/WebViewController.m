@@ -31,7 +31,6 @@
 #import "FlashDetailViewController.h"
 #import "CommonShareViewController.h"
 #import "TZImagePickerController.h"
-#import "AUIKeyboardAdhesiveView.h"
 #import "ArticleColumnViewController.h"
 #import "ProductOrderNormalDetailViewController.h"
 #import "ProductOrderTicketDetailViewController.h"
@@ -43,6 +42,7 @@
 #import "ProductOrderFreeListViewController.h"
 #import "WholesaleOrderDetailViewController.h"
 #import "WolesaleProductDetailViewController.h"
+#import "CommentUtilsViewController.h"
 
 #import "RadishMallViewController.h"
 #import "RadishProductOrderListViewController.h"
@@ -62,30 +62,16 @@ typedef enum : NSUInteger {
     WebViewOptTabBarTypeHide//隐藏
 } WebViewOptTabBarType;
 
-typedef enum : NSUInteger {
-    WebViewUploadImgTypeNormal,//普通上传图片
-    WebViewUploadImgTypeComment//评论发送照片
-} WebViewUploadImgType;
-
-@interface WebViewController ()<UIWebViewDelegate,ZPPopoverDelegate,TZImagePickerControllerDelegate,AUIKeyboardAdhesiveViewDelegate,MWPhotoBrowserDelegate>{
-    NSMutableArray *_selectedPhotos;
-    NSMutableArray *_selectedAssets;
-}
+@interface WebViewController ()<UIWebViewDelegate,ZPPopoverDelegate,TZImagePickerControllerDelegate,MWPhotoBrowserDelegate,CommentUtilsViewControllerDelegate>
 @property (nonatomic, weak  ) UIButton                *backWebBtn;
 @property (nonatomic, weak  ) UIButton                *closeBtn;
 @property (nonatomic, strong) CommonShareObject       *shareObject;
 @property (nonatomic, assign) WebViewShareCallBackType webViewShareCallBackType;
 @property (nonatomic, strong) NSString *shareCallBack;
 @property (nonatomic, assign) CommonShareType shareType;
-
-@property (nonatomic, assign) WebViewUploadImgType    uploadImgType;
 @property (nonatomic, strong) NSString                *callBackJS;
-@property (nonatomic, assign) NSUInteger              maxCount;
-
 @property (nonatomic, strong) KTCCommentManager       *commentManager;
-@property (nonatomic, strong) AUIKeyboardAdhesiveView *keyboardAdhesiveView;
 @property (nonatomic, strong) NSDictionary            *commentParam;
-
 @end
 
 @implementation WebViewController
@@ -282,8 +268,6 @@ typedef enum : NSUInteger {
     }
     //self.shareObject     = nil;
     //self.callBackJS      = nil;
-    //_selectedPhotos      = nil;
-    //_selectedAssets      = nil;
     self.urlString       = absoluteString;
     TCLog(@"WebView-request-absoluteString-YES-:\n%@\n",absoluteString);
     return YES;
@@ -632,15 +616,11 @@ typedef enum : NSUInteger {
     if (params.count>0) {
         self.commentParam = params;
         [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-            if (!self.keyboardAdhesiveView) {
-                AUIKeyboardAdhesiveViewExtensionFunction *photoFunc = [AUIKeyboardAdhesiveViewExtensionFunction funtionWithType:AUIKeyboardAdhesiveViewExtensionFunctionTypeImageUpload];
-                self.keyboardAdhesiveView = [[AUIKeyboardAdhesiveView alloc] initWithAvailableFuntions:[NSArray arrayWithObject:photoFunc]];
-                [self.keyboardAdhesiveView.headerView setBackgroundColor:COLOR_PINK];
-                [self.keyboardAdhesiveView setTextLimitLength:100];
-                [self.keyboardAdhesiveView setUploadImageLimitCount:4];
-                self.keyboardAdhesiveView.delegate = self;
-            }
-            [self.keyboardAdhesiveView expand];
+            CommentUtilsViewController *controller = [[CommentUtilsViewController alloc] initWithNibName:@"CommentUtilsViewController" bundle:nil];
+            controller.delegate = self;
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
             self.callBackJS = [params objectForKey:@"callback"];
         }];
         NSDictionary *params = @{@"url":self.urlString};
@@ -649,6 +629,82 @@ typedef enum : NSUInteger {
         [[iToast makeText:@"参数为空"] show];
     }
 }
+// CommentUtilsViewControllerDelegate
+- (void)commentUtilsViewController:(CommentUtilsViewController *)controller didClickSendWithPhotos:(NSArray *)photos text:(NSString *)text {
+    if (text.length<1) {
+        [[iToast makeText:@"请至少输入1个字"] show];
+        return;
+    }
+    if (photos.count>0) {//评论-有照片-先上传照片
+        [TCProgressHUD showSVP];
+        [[KTCImageUploader sharedInstance] startUploadWithImagesArray:photos splitCount:2 withSucceed:^(NSArray *locateUrlStrings) {
+            [self uploadImgCommentSuccess:locateUrlStrings content:text];
+        } failure:^(NSError *error) {
+            [self uploadImgCommentFailure:error];
+        }];
+    } else {//评论-无照片
+        [TCProgressHUD showSVP];
+        [self submitCommentsWithUploadLocations:nil content:text];
+    }
+}
+//上传图片 成功
+- (void)uploadImgCommentSuccess:(NSArray *)urlStrings content:(NSString *)content {
+    [self submitCommentsWithUploadLocations:urlStrings content:content];
+}
+//上传图片 失败
+- (void)uploadImgCommentFailure:(NSError *)error {
+    NSString *errStr = error.userInfo[@"data"];
+    NSString *errMsg = [errStr isNotNull]?errStr:@"照片上传失败，请重新提交";
+    [[iToast makeText:errMsg] show];
+    [TCProgressHUD dismissSVP];
+}
+//提交评论
+- (void)submitCommentsWithUploadLocations:(NSArray *)locationUrls content:(NSString *)content {
+    KTCCommentObject *object = [[KTCCommentObject alloc] init];
+    if ([self.commentParam objectForKey:@"relationSysNo"]) {
+        object.identifier = [NSString stringWithFormat:@"%@", [self.commentParam objectForKey:@"relationSysNo"]];
+    }
+    object.relationType = (CommentRelationType)[[self.commentParam objectForKey:@"relationType"] integerValue];
+    object.isAnonymous = NO;
+    object.isComment = [[self.commentParam objectForKey:@"isComment"] boolValue];
+    if ([self.commentParam objectForKey:@"replyId"]) {
+        object.commentIdentifier = [NSString stringWithFormat:@"%@", [self.commentParam objectForKey:@"replyId"]];
+    }
+    object.content = content;
+    object.uploadImageStrings = locationUrls;
+    if (!self.commentManager) self.commentManager = [[KTCCommentManager alloc] init];
+    
+    WeakSelf(self)
+    [self.commentManager addCommentWithObject:object succeed:^(NSDictionary *data) {
+        StrongSelf(self)
+        [self submitCommentSucceed:data];
+    } failure:^(NSError *error) {
+        StrongSelf(self)
+        [self submitCommentFailed:error];
+    }];
+}
+//提交评论 请求成功
+- (void)submitCommentSucceed:(NSDictionary *)data {
+    if ([self.callBackJS length] > 0) {
+        [self.webView stringByEvaluatingJavaScriptFromString:self.callBackJS];
+    }
+    self.callBackJS = nil;
+    [TCProgressHUD dismissSVP];
+    
+    UIViewController *controller = self.presentedViewController;
+    if (controller) [controller dismissViewControllerAnimated:YES completion:nil];
+}
+//提交评论 请求失败
+- (void)submitCommentFailed:(NSError *)error {
+    NSString *errMsg = @"提交评论失败，请重新提交。";
+    NSString *remoteErrMsg = [error.userInfo objectForKey:@"data"];
+    if ([remoteErrMsg isKindOfClass:[NSString class]] && [remoteErrMsg length] > 0) {
+        errMsg = remoteErrMsg;
+    }
+    [[iToast makeText:errMsg] show];
+    [TCProgressHUD dismissSVP];
+}
+
 #pragma mark 立即分享
 - (void)share:(NSString *)param {
     CommonShareObject *shareObject = [self shareObjWithParam:param];
@@ -695,11 +751,52 @@ typedef enum : NSUInteger {
 - (void)upload_img:(NSString *)param {
     NSDictionary *params = [NSDictionary parsetUrl:param];
     self.callBackJS = [params objectForKey:@"callback"];
-    self.maxCount = [[params objectForKey:@"maxCount"] integerValue];
-    [self pickImg:WebViewUploadImgTypeNormal];
-    
+    NSUInteger maxCount = [[params objectForKey:@"maxCount"] integerValue];
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:maxCount columnNumber:4 delegate:self];
+    imagePickerVc.allowPickingVideo = NO;
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
     NSDictionary *paramsDic = @{@"url":self.urlString};
     [BuryPointManager trackEvent:@"event_skip_take_picture" actionId:30012 params:paramsDic];
+}
+//TZImagePickerControllerDelegate
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    if (photos.count<=0) return;
+    TCLog(@"普通上传图片--开始上传");
+    [TCProgressHUD showSVP];
+    [[KTCImageUploader sharedInstance] startUploadWithImagesArray:photos splitCount:1 withSucceed:^(NSArray *locateUrlStrings) {
+        TCLog(@"普通上传图片--上传成功");
+        [self uploadImgNormalSuccess:locateUrlStrings];
+    } failure:^(NSError *error) {
+        TCLog(@"普通上传图片--上传失败");
+        [self uploadImgNormalFailure:error];
+    }];
+}
+//图片上传 成功
+- (void)uploadImgNormalSuccess:(NSArray *)urlStrings {
+    if ([self.callBackJS isNotNull]) {
+        NSString *allImgUrlString = @"";
+        NSUInteger count = urlStrings.count;
+        for (int i = 0; i<count; i++) {
+            if (i == 0) allImgUrlString = [allImgUrlString stringByAppendingString:@"\""];
+            allImgUrlString = [allImgUrlString stringByAppendingString:urlStrings[i]];
+            if (i != count-1) allImgUrlString = [allImgUrlString stringByAppendingString:@","];
+            if (i == count-1) allImgUrlString = [allImgUrlString stringByAppendingString:@"\""];
+        }
+        NSMutableString *callBackJS = [[NSMutableString alloc]initWithString:self.callBackJS];
+        if ([self.callBackJS containsString:@"()"]) {
+            NSRange range = [self.callBackJS rangeOfString:@"("];
+            [callBackJS insertString:allImgUrlString atIndex:range.location+1];
+        }
+        [self executeJS:callBackJS];
+    }
+    [TCProgressHUD dismissSVP];
+}
+//图片上传 失败
+- (void)uploadImgNormalFailure:(NSError *)error {
+    NSString *errStr = error.userInfo[@"data"];
+    NSString *errMsg = [errStr isNotNull]?errStr:@"照片上传失败，请重新提交";
+    [[iToast makeText:errMsg] show];
+    [TCProgressHUD dismissSVP];
 }
 #pragma mark 资讯图集
 - (void)showColumnAlbum:(NSString *)param {
@@ -721,7 +818,6 @@ typedef enum : NSUInteger {
         ArticleCommentViewController *controller = [[ArticleCommentViewController alloc] init];
         controller.relationId = sysNo;
         [self makeSegue:controller];
-        
         NSDictionary *paramsDic = @{@"url":self.urlString,
                                     @"id":sysNo};
         [BuryPointManager trackEvent:@"event_skip_news_evaluate" actionId:30013 params:paramsDic];
@@ -747,6 +843,22 @@ typedef enum : NSUInteger {
         [self showPhotoBrowser:dic];
     }else{
         [[iToast makeText:@"大图列表参数为空"] show];
+    }
+}
+- (void)showPhotoBrowser:(NSDictionary *)dic {
+    NSString *currentStr = [NSString stringWithFormat:@"%@",dic[@"current"]];
+    NSArray *urls = dic[@"urls"];
+    if (urls.count>0) {
+        __block NSUInteger currentIndex = 0;
+        __block NSMutableArray *photos = [NSMutableArray array];
+        [urls enumerateObjectsUsingBlock:^(NSString  *urlStr, NSUInteger idx, BOOL *stop) {
+            MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:urlStr]];
+            if (photo) [photos addObject:photo];
+            if ([currentStr isNotNull] && [currentStr isEqualToString:urlStr])currentIndex = idx;
+        }];
+        MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithPhotos:photos];
+        [photoBrowser setCurrentPhotoIndex:currentIndex];
+        [self presentViewController:photoBrowser animated:YES completion:nil];
     }
 }
 #pragma mark 关闭加载
@@ -921,254 +1033,4 @@ typedef enum : NSUInteger {
     };
     [self presentViewController:controller animated:YES completion:nil];
 }
-
-- (void)showPhotoBrowser:(NSDictionary *)dic {
-    NSString *currentStr = [NSString stringWithFormat:@"%@",dic[@"current"]];
-    NSArray *urls = dic[@"urls"];
-    if (urls.count>0) {
-        __block NSUInteger currentIndex = 0;
-        __block NSMutableArray *photos = [NSMutableArray array];
-        [urls enumerateObjectsUsingBlock:^(NSString  *urlStr, NSUInteger idx, BOOL *stop) {
-            MWPhoto *photo = [[MWPhoto alloc] initWithURL:[NSURL URLWithString:urlStr]];
-            if (photo) [photos addObject:photo];
-            if ([currentStr isNotNull] && [currentStr isEqualToString:urlStr])currentIndex = idx;
-        }];
-        MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithPhotos:photos];
-        [photoBrowser setCurrentPhotoIndex:currentIndex];
-        [self presentViewController:photoBrowser animated:YES completion:nil];
-    }
-}
-
-#pragma mark - 选取图片
-
-- (void)pickImg:(WebViewUploadImgType)type {
-    NSUInteger count = (type==WebViewUploadImgTypeNormal)?self.maxCount:4;
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:count columnNumber:4 delegate:self];
-    imagePickerVc.allowPickingVideo = NO;
-    imagePickerVc.selectedAssets = _selectedAssets; // 目前已经选中的图片数组
-    [self presentViewController:imagePickerVc animated:YES completion:nil];
-    [self.keyboardAdhesiveView hide];
-    self.uploadImgType = type;
-}
-
-//选择照片完成
-#pragma mark - TZImagePickerControllerDelegate
-
-- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
-    _selectedPhotos = [NSMutableArray arrayWithArray:photos];
-    _selectedAssets = [NSMutableArray arrayWithArray:assets];
-    [self finishPickImg:_selectedPhotos];
-}
-
-- (void)imagePickerControllerDidCancel:(TZImagePickerController *)picker {
-    if (self.uploadImgType == WebViewUploadImgTypeComment) [self.keyboardAdhesiveView show];
-}
-
-#pragma mark TZImagePickerControllerDelegate helpers
-
-- (void)finishPickImg:(NSArray *)array {
-    switch (self.uploadImgType) {
-        case WebViewUploadImgTypeNormal:
-        {
-            [self finishPickImgNormal:array];
-        }
-            break;
-        case WebViewUploadImgTypeComment:
-        {
-            [self finishPickImgComment:array];
-        }
-            break;
-    }
-}
-
-#pragma mark - 选取图片完毕：for上传
-
-- (void)finishPickImgNormal:(NSArray *)array {
-    if (array.count<=0) return;
-    TCLog(@"普通上传图片--开始上传");
-    [TCProgressHUD showSVP];
-    [[KTCImageUploader sharedInstance] startUploadWithImagesArray:array splitCount:1 withSucceed:^(NSArray *locateUrlStrings) {
-        TCLog(@"普通上传图片--上传成功");
-        [self uploadImgNormalSuccess:locateUrlStrings];
-    } failure:^(NSError *error) {
-        TCLog(@"普通上传图片--上传失败");
-        [self uploadImgNormalFailure:error];
-    }];
-}
-
-- (void)uploadImgNormalSuccess:(NSArray *)urlStrings {
-    if ([self.callBackJS isNotNull]) {
-        NSString *allImgUrlString = @"";
-        NSUInteger count = urlStrings.count;
-        for (int i = 0; i<count; i++) {
-            if (i == 0) allImgUrlString = [allImgUrlString stringByAppendingString:@"\""];
-            allImgUrlString = [allImgUrlString stringByAppendingString:urlStrings[i]];
-            if (i != count-1) allImgUrlString = [allImgUrlString stringByAppendingString:@","];
-            if (i == count-1) allImgUrlString = [allImgUrlString stringByAppendingString:@"\""];
-        }
-        NSMutableString *callBackJS = [[NSMutableString alloc]initWithString:self.callBackJS];
-        if ([self.callBackJS containsString:@"()"]) {
-            NSRange range = [self.callBackJS rangeOfString:@"("];
-            [callBackJS insertString:allImgUrlString atIndex:range.location+1];
-        }
-        [self executeJS:callBackJS];
-    }
-    [TCProgressHUD dismissSVP];
-}
-
-- (void)uploadImgNormalFailure:(NSError *)error {
-    NSString *errStr = error.userInfo[@"data"];
-    NSString *errMsg = [errStr isNotNull]?errStr:@"照片上传失败，请重新提交";
-    [[iToast makeText:errMsg] show];
-    [TCProgressHUD dismissSVP];
-}
-
-#pragma mark - 选取图片完毕：for评论
-
-- (void)finishPickImgComment:(NSArray *)array {
-    
-    [self.keyboardAdhesiveView setUploadImages:array];
-}
-
-- (NSArray *)makeMWPhotoFromImageArray:(NSArray<UIImage *> *)array {
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    [array enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        MWPhoto *photo = [[MWPhoto alloc] initWithImage:obj];
-        if (photo) {
-            [temp addObject:photo];
-        }
-    }];
-    return [NSArray arrayWithArray:temp];
-}
-
-#pragma mark - AUIKeyboardAdhesiveViewDelegate
-
-//点击评论相机按钮
-- (void)keyboardAdhesiveView:(AUIKeyboardAdhesiveView *)view didClickedExtensionFunctionButtonWithType:(AUIKeyboardAdhesiveViewExtensionFunctionType)type{
-    if (type == AUIKeyboardAdhesiveViewExtensionFunctionTypeImageUpload) {
-        [self.keyboardAdhesiveView hide];
-        [self pickImg:WebViewUploadImgTypeComment];
-    }
-}
-//点击发送评论按钮
-- (void)didClickedSendButtonOnKeyboardAdhesiveView:(AUIKeyboardAdhesiveView *)view{
-    if (self.commentParam.count<=0) {
-        [[iToast makeText:@"参数为空"] show];
-        return;
-    }
-    if (![self isValidateComment]) return;
-    if (_selectedPhotos.count>0) {//评论-有照片-先上传照片
-        [TCProgressHUD showSVP];
-        [[KTCImageUploader sharedInstance] startUploadWithImagesArray:_selectedPhotos splitCount:2 withSucceed:^(NSArray *locateUrlStrings) {
-            [self uploadImgCommentSuccess:locateUrlStrings];
-        } failure:^(NSError *error) {
-            [self uploadImgCommentFailure:error];
-        }];
-    } else {//评论-无照片
-        [TCProgressHUD showSVP];
-        [self submitCommentsWithUploadLocations:nil];
-    }
-}
-//预览照片
-- (void)keyboardAdhesiveView:(AUIKeyboardAdhesiveView *)view didClickedUploadImageAtIndex:(NSUInteger)index{
-    NSArray *array = [self makeMWPhotoFromImageArray:_selectedPhotos];
-    MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc] initWithPhotos:array];
-    [photoBrowser setCurrentPhotoIndex:index];
-    [photoBrowser setShowDeleteButton:YES];
-    photoBrowser.delegate = self;
-    [self.keyboardAdhesiveView hide];
-    [self presentViewController:photoBrowser animated:YES completion:nil];
-}
-
-#pragma mark AUIKeyboardAdhesiveViewDelegate helpers
-
-- (void)uploadImgCommentSuccess:(NSArray *)urlStrings {
-    [self submitCommentsWithUploadLocations:urlStrings];
-}
-
-- (void)uploadImgCommentFailure:(NSError *)error {
-    NSString *errStr = error.userInfo[@"data"];
-    NSString *errMsg = [errStr isNotNull]?errStr:@"照片上传失败，请重新提交";
-    [[iToast makeText:errMsg] show];
-    [TCProgressHUD dismissSVP];
-}
-
-#pragma mark - 提交评论
-- (void)submitCommentsWithUploadLocations:(NSArray *)locationUrls {
-    KTCCommentObject *object = [[KTCCommentObject alloc] init];
-    if ([self.commentParam objectForKey:@"relationSysNo"]) {
-        object.identifier = [NSString stringWithFormat:@"%@", [self.commentParam objectForKey:@"relationSysNo"]];
-    }
-    object.relationType = (CommentRelationType)[[self.commentParam objectForKey:@"relationType"] integerValue];
-    object.isAnonymous = NO;
-    object.isComment = [[self.commentParam objectForKey:@"isComment"] boolValue];
-    if ([self.commentParam objectForKey:@"replyId"]) {
-        object.commentIdentifier = [NSString stringWithFormat:@"%@", [self.commentParam objectForKey:@"replyId"]];
-    }
-    object.content = self.keyboardAdhesiveView.text;
-    object.uploadImageStrings = locationUrls;
-    if (!self.commentManager) self.commentManager = [[KTCCommentManager alloc] init];
-    
-    WeakSelf(self)
-    [self.commentManager addCommentWithObject:object succeed:^(NSDictionary *data) {
-        StrongSelf(self)
-        [self submitCommentSucceed:data];
-    } failure:^(NSError *error) {
-        StrongSelf(self)
-        [self submitCommentFailed:error];
-    }];
-}
-//提交评论 请求成功
-- (void)submitCommentSucceed:(NSDictionary *)data {
-    [self.keyboardAdhesiveView shrink];
-    if ([self.callBackJS length] > 0) {
-        [self.webView stringByEvaluatingJavaScriptFromString:self.callBackJS];
-    }
-    self.callBackJS = nil;
-    [TCProgressHUD dismissSVP];
-}
-//提交评论 请求失败
-- (void)submitCommentFailed:(NSError *)error {
-    NSString *errMsg = @"提交评论失败，请重新提交。";
-    NSString *remoteErrMsg = [error.userInfo objectForKey:@"data"];
-    if ([remoteErrMsg isKindOfClass:[NSString class]] && [remoteErrMsg length] > 0) {
-        errMsg = remoteErrMsg;
-    }
-    [[iToast makeText:errMsg] show];
-    [TCProgressHUD dismissSVP];
-}
-//检验评论内容合法性
-- (BOOL)isValidateComment {
-    NSString *commentText = self.keyboardAdhesiveView.text;
-    commentText = [commentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if ([commentText length] < 1) {
-        [[iToast makeText:@"请至少输入1个字"] show];
-        return NO;
-    }
-    return YES;
-}
-
-#pragma mark - MWPhotoBrowserDelegate
-
-- (void)photoBrowserDidDismissed:(MWPhotoBrowser *)photoBrowser {
-    [self.keyboardAdhesiveView show];
-}
-
-- (void)photoBrowser:(MWPhotoBrowser *)photoBrowser didClickedDeleteButtonAtIndex:(NSUInteger)index {
-    [self deletePhotoAtIndex:index];
-    [self.keyboardAdhesiveView setUploadImages:_selectedPhotos];
-}
-
-#pragma mark MWPhotoBrowserDelegate helpers
-
-- (void)deletePhotoAtIndex :(NSInteger)index
-{
-    if (_selectedPhotos.count>index) {
-        [_selectedPhotos removeObjectAtIndex:index];
-    }
-    if (_selectedAssets.count>index) {
-        [_selectedAssets removeObjectAtIndex:index];
-    }
-}
-
 @end

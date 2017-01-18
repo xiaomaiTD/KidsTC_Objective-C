@@ -15,4 +15,7 @@
 @property (nonatomic, assign) ProductDetailType productType;
 @property (nonatomic, assign) SettlementResultType type;
 @property (nonatomic, strong) ProductDetailData *data;
+
+@property (nonatomic, strong) NSString *productId;
+@property (nonatomic, strong) NSString *openGroupId;
 @end

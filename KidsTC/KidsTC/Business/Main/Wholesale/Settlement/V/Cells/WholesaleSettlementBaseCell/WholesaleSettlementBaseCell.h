@@ -10,9 +10,9 @@
 #import "WholesaleSettlementData.h"
 
 typedef enum : NSUInteger {
-    WholesaleSettlementBaseCellActionTypeSelectStore = 1,//切换门店
-    WholesaleSettlementBaseCellActionTypeSelectPlace,//切换地址
+    WholesaleSettlementBaseCellActionTypeSelectPlace = 1,//切换地址
     WholesaleSettlementBaseCellActionTypeRule,//查看活动规则
+    WholesaleSettlementBaseCellActionTypeSelectDate,//选择时间
 } WholesaleSettlementBaseCellActionType;
 
 @class WholesaleSettlementBaseCell;
