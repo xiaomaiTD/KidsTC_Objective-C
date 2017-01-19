@@ -87,7 +87,7 @@
         [self startPlant];
     }else{
         [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-            [self startPlant];
+            //[self startPlant];
             [self loadRadishUserData];
         }];
     }

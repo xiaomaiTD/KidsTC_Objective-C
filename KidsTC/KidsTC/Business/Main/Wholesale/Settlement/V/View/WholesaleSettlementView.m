@@ -59,6 +59,8 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 }
 
 - (void)reloadData {
+    self.toolBar.data = self.data;
+    //[self setupSections];
     [self.tableView reloadData];
 }
 

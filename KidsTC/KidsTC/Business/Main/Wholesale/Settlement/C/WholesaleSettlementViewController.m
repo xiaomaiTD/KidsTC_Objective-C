@@ -318,7 +318,7 @@
     controller.paid = paid;
     controller.productType = ProductDetailTypeWholesale;
     controller.productId = self.data.fightGroupSysNo;
-    controller.openGroupId = model.data.openGroupId;
+    controller.openGroupId = paid?model.data.openGroupId:nil;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:NO];

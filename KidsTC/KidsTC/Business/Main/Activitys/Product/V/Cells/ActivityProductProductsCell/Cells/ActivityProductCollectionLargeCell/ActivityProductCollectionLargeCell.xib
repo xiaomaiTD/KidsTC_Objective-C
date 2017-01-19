@@ -40,7 +40,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="700" text="专业摄影师拍摄，带给你全新的体验带给你带给你…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lku-6F-7F3">
                                         <rect key="frame" x="15" y="66" width="271" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <color key="textColor" red="0.95294117647058818" green="0.40784313725490196" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seckill_address" translatesAutoresizingMaskIntoConstraints="NO" id="hXh-8F-onZ">
@@ -89,12 +89,6 @@
                                                 <color key="textColor" red="0.96862745100000003" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6o-XR-iUE">
-                                                <rect key="frame" x="97" y="9" width="12" height="14"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="闪购" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnk-I9-alR">
                                                 <rect key="frame" x="0.0" y="9" width="33" height="14"/>
                                                 <color key="backgroundColor" red="0.99607843137254903" green="0.50196078431372548" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
@@ -119,12 +113,10 @@
                                             <constraint firstItem="mjz-Uw-paU" firstAttribute="leading" secondItem="WWt-Ws-xcW" secondAttribute="leading" constant="40" id="crF-pk-9Hg"/>
                                             <constraint firstItem="Dnk-I9-alR" firstAttribute="leading" secondItem="WWt-Ws-xcW" secondAttribute="leading" id="e85-oh-KPw"/>
                                             <constraint firstItem="KU1-IO-czX" firstAttribute="centerY" secondItem="WWt-Ws-xcW" secondAttribute="centerY" constant="2" id="f3g-hz-Kkl"/>
-                                            <constraint firstItem="n6o-XR-iUE" firstAttribute="leading" secondItem="mjz-Uw-paU" secondAttribute="trailing" constant="6" id="i0w-qQ-K7x"/>
                                             <constraint firstItem="KU1-IO-czX" firstAttribute="leading" secondItem="WWt-Ws-xcW" secondAttribute="leading" id="jkh-Yv-z2n"/>
                                             <constraint firstAttribute="bottom" secondItem="mjz-Uw-paU" secondAttribute="bottom" constant="3" id="kIN-Mb-Fix"/>
                                             <constraint firstItem="mjz-Uw-paU" firstAttribute="centerY" secondItem="WWt-Ws-xcW" secondAttribute="centerY" id="pX4-G7-mWX"/>
                                             <constraint firstItem="Dnk-I9-alR" firstAttribute="centerY" secondItem="WWt-Ws-xcW" secondAttribute="centerY" constant="1" id="r9I-vR-b0J"/>
-                                            <constraint firstAttribute="bottom" secondItem="n6o-XR-iUE" secondAttribute="bottom" constant="6" id="ruJ-ee-0N8"/>
                                         </constraints>
                                     </view>
                                 </subviews>

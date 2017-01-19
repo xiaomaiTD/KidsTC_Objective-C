@@ -283,9 +283,8 @@ static NSString *status[] = {
 - (void)player:(nonnull PLPlayer *)player stoppedWithError:(nullable NSError *)error {
     TCLog(@"%s",__func__);
     [self stop];
-    [self tryReconnect:error];
+    //[self tryReconnect:error];
 }
-
 
 #pragma mark PLPlayerDelegate helper
 

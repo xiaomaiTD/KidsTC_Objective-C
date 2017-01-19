@@ -137,7 +137,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLZ-ie-ZND">
-                            <rect key="frame" x="98.5" y="8.5" width="179.5" height="12"/>
+                            <rect key="frame" x="98" y="8" width="180" height="12"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductOrderFreeDetail_time" translatesAutoresizingMaskIntoConstraints="NO" id="rkA-Hp-hHJ">
                                     <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -146,26 +146,34 @@
                                         <constraint firstAttribute="width" secondItem="rkA-Hp-hHJ" secondAttribute="height" multiplier="1:1" id="as8-Hv-GLy"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离开始：4天29小时30分12秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-tk-C3Z">
-                                    <rect key="frame" x="20" y="0.0" width="159.5" height="12"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4天29小时30分12秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-tk-C3Z">
+                                    <rect key="frame" x="77" y="0.0" width="103" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <color key="textColor" red="0.61568627450000002" green="0.61568627450000002" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="距离开始：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHX-Ud-KlC">
+                                    <rect key="frame" x="20" y="-1" width="57" height="14"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="y6d-tk-C3Z" firstAttribute="leading" secondItem="rkA-Hp-hHJ" secondAttribute="trailing" constant="8" id="GZp-P4-Oxf"/>
+                                <constraint firstItem="qHX-Ud-KlC" firstAttribute="centerY" secondItem="hLZ-ie-ZND" secondAttribute="centerY" id="0RT-Z8-3vg"/>
+                                <constraint firstItem="y6d-tk-C3Z" firstAttribute="leading" secondItem="qHX-Ud-KlC" secondAttribute="trailing" id="67f-yV-tlb"/>
                                 <constraint firstAttribute="trailing" secondItem="y6d-tk-C3Z" secondAttribute="trailing" id="YT6-6F-Nrg"/>
                                 <constraint firstItem="y6d-tk-C3Z" firstAttribute="top" secondItem="hLZ-ie-ZND" secondAttribute="top" id="d29-KY-eMM"/>
                                 <constraint firstAttribute="bottom" secondItem="y6d-tk-C3Z" secondAttribute="bottom" id="e7D-gQ-ddR"/>
                                 <constraint firstItem="rkA-Hp-hHJ" firstAttribute="leading" secondItem="hLZ-ie-ZND" secondAttribute="leading" id="eUx-Ej-3Kd"/>
                                 <constraint firstItem="rkA-Hp-hHJ" firstAttribute="top" secondItem="hLZ-ie-ZND" secondAttribute="top" id="etM-C6-cnQ"/>
                                 <constraint firstAttribute="bottom" secondItem="rkA-Hp-hHJ" secondAttribute="bottom" id="k62-jO-d5R"/>
+                                <constraint firstItem="qHX-Ud-KlC" firstAttribute="leading" secondItem="rkA-Hp-hHJ" secondAttribute="trailing" constant="8" id="yVu-2A-FdO"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dti-rX-TlB">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="Xjz-Ph-fUn"/>
@@ -198,6 +206,7 @@
             <connections>
                 <outlet property="countDownL" destination="y6d-tk-C3Z" id="sNk-wT-sUg"/>
                 <outlet property="countDownLineH" destination="Xjz-Ph-fUn" id="ycO-R8-pxr"/>
+                <outlet property="countDownTipL" destination="qHX-Ud-KlC" id="k8A-Rr-yhC"/>
                 <outlet property="countDownView" destination="T8t-kz-keH" id="GHc-s2-if6"/>
                 <outlet property="joinBtn" destination="SGL-AK-DFP" id="pD8-Lg-Tf9"/>
                 <outlet property="saleBtn" destination="tbD-Fr-R5N" id="mfK-OL-CrM"/>

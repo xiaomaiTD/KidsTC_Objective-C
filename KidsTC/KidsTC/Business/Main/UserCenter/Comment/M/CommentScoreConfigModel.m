@@ -16,7 +16,13 @@
     }
     self = [super init];
     if (self) {
-        _needShowScore = [[data objectForKey:@"isNeedScore"] boolValue];
+        id needShowScoreID = data[@"isNeedScore"];
+        if ([needShowScoreID respondsToSelector:@selector(boolValue)]) {
+            _needShowScore = [needShowScoreID boolValue];
+        }else{
+            _needShowScore = NO;
+        }
+        
         if (self.needShowScore) {
             _totalScoreItem = [CommentScoreItem scoreItemWithTitle:@"总体评价" andKey:@"total"];
         }

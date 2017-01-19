@@ -190,7 +190,6 @@ static NSInteger errorCount = 0;
                 [self uploadTrack:msg successBlock:^(NSURLSessionDataTask *task, NSDictionary *dic) {
                     BuryPointTrackModel *model = [BuryPointTrackModel modelWithDictionary:dic];
                     NSArray<NSString *> *Lst = model.data.Lst;
-                    if (Lst.count<1) return;
                     for (BuryPointModel *obj in sendModels) {
                         __block BOOL has = NO;
                         for (NSString *errorPKStr in Lst) {

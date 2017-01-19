@@ -319,67 +319,51 @@
             break;
         case AccountCenterViewActionTypeMyFlash:
         {
-            /*
             toController = [[WholesaleOrderListViewController alloc]init];
             [BuryPointManager trackEvent:@"event_skip_usr_fightgroup" actionId:21515 params:nil];
-            */
-            toController = [[RadishProductDetailViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeMyAppoinment:
         {
-            /*
             toController = [[AppointmentOrderListViewController alloc] initWithNibName:@"AppointmentOrderListViewController" bundle:nil];
             [BuryPointManager trackEvent:@"event_skip_usr_storelist" actionId:21510 params:nil];
-            */
-            toController = [[RadishSettlementViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeShareMakeMoney:
         {
-            /*
             NSString *urlString = self.model.data.invite.linkUrl;
             if ([urlString isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = urlString;
                 toController = controller;
                 [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
-            }*/
-            toController = [[RadishProductOrderListViewController alloc] init];
+            }
         }
             break;
         case AccountCenterViewActionTypeBringUpHeadline:
         {
-            /*
             toController = [[ArticleWeChatTableViewController alloc] init];
             [BuryPointManager trackEvent:@"event_skip_usr_newstop" actionId:21512 params:nil];
-            */
-            toController = [[RadishOrderDetailViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeCustomerServices:
         {
-            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
             }
-            */
-            toController = [[SeckillViewController alloc] init];
         }
             break;
         case AccountCenterViewActionTypeOpinion:
         {
-            /*
             NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
             if ([str isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = str;
                 [self.navigationController pushViewController:controller animated:YES];
-            }*/
-            toController = [[ActivityProductViewController alloc] init];
+            }
         }
             break;
         case AccountCenterViewActionTypeSegue:

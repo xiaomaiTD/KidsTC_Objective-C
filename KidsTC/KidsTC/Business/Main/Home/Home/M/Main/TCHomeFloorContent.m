@@ -47,7 +47,7 @@
                 if ([price isNotNull]) {
                     NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
                     attPrice.lineSpacing = 0;
-                    attPrice.color = COLOR_PINK;
+                    attPrice.color = [UIColor colorFromHexString:@"f36863"];
                     attPrice.font = [UIFont systemFontOfSize:15];
                     attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
                     attPrice.alignment = NSTextAlignmentCenter;
@@ -225,7 +225,7 @@
                         NSMutableAttributedString *attPriceTip = [[NSMutableAttributedString alloc] initWithString:_priceSuffix];
                         attPriceTip.lineSpacing = 0;
                         attPriceTip.color = [UIColor colorFromHexString:@"555555"];
-                        attPriceTip.font = [UIFont systemFontOfSize:12];
+                        attPriceTip.font = [UIFont systemFontOfSize:11];
                         attPriceTip.lineBreakMode = NSLineBreakByTruncatingTail;
                         attPriceTip.alignment = NSTextAlignmentLeft;
                         [attPrice appendAttributedString:attPriceTip];

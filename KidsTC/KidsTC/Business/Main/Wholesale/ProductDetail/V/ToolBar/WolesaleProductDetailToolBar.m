@@ -22,6 +22,7 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
 @property (weak, nonatomic) IBOutlet UIButton *saleBtn;
 
 @property (weak, nonatomic) IBOutlet UIView *countDownView;
+@property (weak, nonatomic) IBOutlet UILabel *countDownTipL;
 @property (weak, nonatomic) IBOutlet UILabel *countDownL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *countDownLineH;
 
@@ -67,6 +68,7 @@ CGFloat const kWolesaleProductDetailToolBarH = 77;
         self.saleBtn.tag = WolesaleProductDetailToolBarActionTypeSale;
     }
     [self.saleBtn setTitle:saleTitle forState:UIControlStateNormal];
+    self.countDownTipL.text = [NSString stringWithFormat:@"%@:",base.countDown.countDownDesc];
     [self countDown];
 }
 

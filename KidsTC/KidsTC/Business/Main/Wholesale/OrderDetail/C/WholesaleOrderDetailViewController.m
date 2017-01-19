@@ -222,6 +222,9 @@
         return;
     }
     [param setObject:self.productId forKey:@"fightGroupId"];
+    if ([self.openGroupId isNotNull]) {
+        [param setObject:self.openGroupId forKey:@"openGroupId"];
+    }
     //time
     NSArray<WholesalePickDateTime *> *times = self.data.sku.times;
     __block WholesalePickDateTime *time = nil;

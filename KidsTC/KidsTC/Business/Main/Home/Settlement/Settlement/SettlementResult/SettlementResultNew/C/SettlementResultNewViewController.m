@@ -13,6 +13,7 @@
 #import "RecommendDataManager.h"
 #import "SettlementResultNewView.h"
 #import "SegueMaster.h"
+#import "NSString+Category.h"
 
 #import "SettlementResultShareViewController.h"
 #import "ProductOrderNormalDetailViewController.h"
@@ -21,6 +22,7 @@
 #import "FlashServiceOrderDetailViewController.h"
 #import "RadishOrderDetailViewController.h"
 #import "WholesaleOrderDetailViewController.h"
+#import "WholesaleOrderListViewController.h"
 
 @interface SettlementResultNewViewController ()<SettlementResultNewViewDelegate>
 @property (strong, nonatomic) IBOutlet SettlementResultNewView *resultView;
@@ -168,10 +170,15 @@
                 break;
             case ProductDetailTypeWholesale:
             {
-                WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
-                controller.productId = self.productId;
-                controller.openGroupId = self.openGroupId;
-                [target pushViewController:controller animated:YES];
+                if ([self.openGroupId isNotNull]) {
+                    WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+                    controller.productId = self.productId;
+                    controller.openGroupId = self.openGroupId;
+                    [target pushViewController:controller animated:YES];
+                }else{
+                    WholesaleOrderListViewController *controller = [[WholesaleOrderListViewController alloc] init];
+                    [target pushViewController:controller animated:YES];
+                }
             }
                 break;
             case ProductDetailTypeRadish:

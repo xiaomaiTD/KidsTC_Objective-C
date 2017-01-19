@@ -47,7 +47,7 @@
     }else if (components.second>=0){
         time = [NSString stringWithFormat:@"%.2zd秒",components.second];
     }
-    _countDownValueString = [NSString stringWithFormat:@"%@：%@",_countDownDesc,time];
+    _countDownValueString = [NSString stringWithFormat:@"%@",time];
     _countDownTime--;
 }
 
