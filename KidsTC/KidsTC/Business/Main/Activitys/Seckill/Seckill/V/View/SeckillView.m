@@ -59,6 +59,10 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
     }else self.tableView.backgroundView = nil;
 }
 
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
 #pragma mark - setupTableView
 
 - (void)setupTableView {

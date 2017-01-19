@@ -197,7 +197,8 @@
     [Request startWithName:@"REMIND_SEC_KILL_POOL_ITEM" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"设置提醒成功！"] show];
-        
+        item.status = SeckillDataItemBtnStatusHasRemind;
+        [self.seckillView reloadData];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"设置提醒失败，请稍后再试！"] show];

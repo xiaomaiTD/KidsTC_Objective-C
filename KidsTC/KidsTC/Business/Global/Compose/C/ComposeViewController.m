@@ -15,6 +15,7 @@
 #import "NavigationController.h"
 #import "BuryPointManager.h"
 #import "NSString+Category.h"
+#import "RadishMallViewController.h"
 
 static CGFloat const kAnimationDuration = 0.4;
 static CGFloat const kSleepDuration = 0.2;
@@ -195,7 +196,6 @@ static CGFloat const kBtn_h = 80;
             }];
         }];
     });
-    
 }
 
 
@@ -223,9 +223,17 @@ static CGFloat const kBtn_h = 80;
                 break;
             case ComposeButtonTypeSign:
             {
-                WebViewController *controller = [[WebViewController alloc]init];
-                controller.urlString = data.signInPageUrl;
-                [navi pushViewController:controller animated:YES];
+                if (data.isSignInPageApp) {
+                    RadishMallViewController *controller = [[RadishMallViewController alloc] init];
+                    [navi pushViewController:controller animated:YES];
+                }else{
+                    NSString *url = data.signInPageUrl;
+                    if ([url isNotNull]) {
+                        WebViewController *controller = [[WebViewController alloc]init];
+                        controller.urlString = data.signInPageUrl;
+                        [navi pushViewController:controller animated:YES];
+                    }
+                }
                 [BuryPointManager trackEvent:@"event_skip_home_sign" actionId:20108 params:nil];
             }
                 break;

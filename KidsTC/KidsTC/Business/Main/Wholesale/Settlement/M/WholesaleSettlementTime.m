@@ -7,11 +7,12 @@
 //
 
 #import "WholesaleSettlementTime.h"
+#import "NSString+Category.h"
 
 @implementation WholesaleSettlementTime
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
-    
+    if (![_timeDesc isNotNull]) _timeDesc = @"";
     
     return YES;
 }

@@ -20,7 +20,7 @@
         str.lineSpacing = 6;
         str.alignment = NSTextAlignmentCenter;
         self.attTimeStr = [[NSAttributedString alloc] initWithAttributedString:str];
-    }
+    }else _time = @"";
     
     return YES;
 }

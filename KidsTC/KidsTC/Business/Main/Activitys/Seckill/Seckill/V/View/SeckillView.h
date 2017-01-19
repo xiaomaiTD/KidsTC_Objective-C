@@ -31,4 +31,5 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) SeckillTimeData *timeData;
 @property (nonatomic, strong) SeckillDataData *dataData;
 @property (nonatomic, weak) id<SeckillViewDelegate> delegate;
+- (void)reloadData;
 @end
