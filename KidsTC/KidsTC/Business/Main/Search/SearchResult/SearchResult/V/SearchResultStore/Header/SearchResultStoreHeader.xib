@@ -30,7 +30,7 @@
                             <rect key="frame" x="82" y="16" width="278" height="55"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝创意谷静安店" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7B0-vG-erk">
-                                    <rect key="frame" x="0.0" y="3" width="278" height="17"/>
+                                    <rect key="frame" x="0.0" y="3" width="240" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                             <constraints>
                                 <constraint firstItem="D5m-Xh-rHR" firstAttribute="leading" secondItem="mCS-Jq-2nr" secondAttribute="trailing" constant="8" id="0E1-hR-QZb"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="D5m-Xh-rHR" secondAttribute="trailing" id="6V1-A8-YiM"/>
-                                <constraint firstAttribute="trailing" secondItem="7B0-vG-erk" secondAttribute="trailing" id="Bll-tk-YNN"/>
+                                <constraint firstItem="rjG-x3-H91" firstAttribute="leading" secondItem="7B0-vG-erk" secondAttribute="trailing" constant="8" id="Hip-3y-UJa"/>
                                 <constraint firstItem="D5m-Xh-rHR" firstAttribute="centerY" secondItem="mCS-Jq-2nr" secondAttribute="centerY" id="NVp-1k-OuM"/>
                                 <constraint firstItem="7B0-vG-erk" firstAttribute="top" secondItem="XOQ-Rv-q3e" secondAttribute="top" constant="3" id="Nc7-Z8-3ws"/>
                                 <constraint firstItem="Mw6-mv-HHA" firstAttribute="leading" secondItem="y1k-vz-4Bs" secondAttribute="trailing" constant="8" id="OX4-KU-VPx"/>
@@ -130,7 +130,7 @@
                 <outlet property="nameL" destination="7B0-vG-erk" id="utS-sv-RiO"/>
                 <outlet property="starsView" destination="rjG-x3-H91" id="ExZ-gp-hai"/>
             </connections>
-            <point key="canvasLocation" x="-102" y="-93"/>
+            <point key="canvasLocation" x="-102.5" y="-93.5"/>
         </view>
     </objects>
     <resources>

@@ -24,6 +24,7 @@ static CGFloat const item_margin = 10;
 @property (nonatomic, assign) CGSize item_size;
 @property (nonatomic, assign) CGSize head_size;
 @property (nonatomic, assign) CGSize foot_size;
+@property (nonatomic, assign) CGFloat bottom_margin;
 @end
 
 @implementation ActivityProductCouponsCell
@@ -59,19 +60,27 @@ static CGFloat const item_margin = 10;
 - (void)setupSize:(ActivityProductContent *)content {
     CGFloat item_w = 0;
     NSUInteger count = self.couponModels.count;
-    if (count<5) {
-        
-    }
     if (count>0) {
         item_w = (SCREEN_WIDTH - (count+1)*item_margin)/count;
     }
-    
-    self.item_size = CGSizeMake(item_w, 76);
+    CGFloat ratio = 0;
+    if (count == 1) {
+        ratio = 0.21;
+    }else if (count == 2) {
+        ratio = 0.44;
+    }else if (count == 3) {
+        ratio = 0.69;
+    }else if (count == 4) {
+        ratio = 0.75;
+    }
+    self.item_size = CGSizeMake(item_w, item_w*ratio);
     self.head_size = CGSizeZero;
     if ([content.couponTips isNotNull]) {
         self.foot_size = CGSizeMake(SCREEN_WIDTH, 12);
+        self.bottom_margin = item_margin;
     }else{
         self.foot_size = CGSizeZero;
+        self.bottom_margin = 0;
     }
 }
 
@@ -81,7 +90,7 @@ static CGFloat const item_margin = 10;
     return self.item_size;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, item_margin, 0, item_margin);
+    return UIEdgeInsetsMake(0, item_margin, self.bottom_margin, item_margin);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return item_margin;

@@ -342,7 +342,7 @@
     SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc]initWithNibName:@"SettlementResultNewViewController" bundle:nil];
     controller.paid = paid;
     controller.orderId = orderId;
-    controller.type = SettlementResultTypeFlash;
+    controller.productType = ProductDetailTypeFalsh;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popViewControllerAnimated:NO];

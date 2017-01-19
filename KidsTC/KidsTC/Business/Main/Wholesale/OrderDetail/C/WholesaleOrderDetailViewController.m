@@ -11,6 +11,7 @@
 #import "NSString+Category.h"
 #import "GHeader.h"
 #import "BuryPointManager.h"
+#import "OnlineCustomerService.h"
 
 #import "WholesaleOrderDetailModel.h"
 #import "WholesaleOrderDetailPartnerModel.h"
@@ -140,9 +141,9 @@
             [self share];
         }
             break;
-        case WholesaleOrderDetailViewActionTypeHome://首页
+        case WholesaleOrderDetailViewActionTypeConsult://在线咨询
         {
-            [self home];
+            [self consult];
         }
             break;
     }
@@ -192,7 +193,7 @@
             controller.sku = self.data.sku;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             controller.modalPresentationStyle = UIModalPresentationCustom;
-            [self presentViewController:controller animated:YES completion:nil];
+            [self presentViewController:controller animated:NO completion:nil];
         }else{
             [self addShoppingCart];
         }
@@ -238,10 +239,6 @@
         if ([skuId isNotNull]) {
             [param setObject:skuId forKey:@"skuId"];
         }
-        NSString *timeId = time.timeNo;
-        if ([timeId isNotNull]) {
-            [param setObject:timeId forKey:@"timeId"];
-        }
     }
     //place
     NSArray<WholesalePickDatePlace *> *places = self.data.sku.places;
@@ -286,10 +283,13 @@
 }
 
 - (void)addShoppingCartSuccess {
-    if (!self.presentedViewController) return;
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+    if (self.presentedViewController) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+            [self gotoSettlement];
+        }];
+    }else{
         [self gotoSettlement];
-    }];
+    }
 }
 
 - (void)addShoppingCartFailure:(NSError *)error {
@@ -336,10 +336,16 @@
     [BuryPointManager trackEvent:@"event_click_group_share" actionId:21801 params:params];
 }
 
-#pragma mark 首页
+#pragma mark 在线咨询
 
-- (void)home {
-    [[TabBarController shareTabBarController] selectIndex:0];
+- (void)consult {
+    NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
+    if ([str isNotNull]) {
+        WebViewController *controller = [[WebViewController alloc]init];
+        controller.urlString = str;
+        [self.navigationController pushViewController:controller animated:YES];
+        [BuryPointManager trackEvent:@"event_click_server_ask" actionId:20407 params:nil];
+    }
 }
 
 @end

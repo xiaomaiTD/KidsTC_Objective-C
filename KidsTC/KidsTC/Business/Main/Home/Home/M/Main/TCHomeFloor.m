@@ -928,22 +928,35 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
-    CGFloat title_h = 20, title_w = item_w, title_x = 0, title_y = img_h + img_y + 4;
-    CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
+    CGFloat title_h = 20, title_y = img_h + img_y + 4;
+    __block CGFloat title_x = 0;
+    __block CGFloat title_w = 0;
     
     CGFloat price_h = 20, price_w = item_w, price_x = 0, price_y = title_h + title_y + 4;
     CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
     
-    TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, YES, YES, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, priceFrame, titleFrame,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
-    
-    CGFloat item_h = price_y + price_h + 4;
-    _floorHeight = margins.top + margins.bottom + (item_h + margins.vertical) * rowCount - margins.vertical;
-    
     __block CGFloat item_x, item_y;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        CGFloat discount_h = 14, discount_w = [obj.attDiscountDesc size].width + 8, discount_x = 0, discount_y = img_h + img_y + 7;
+        CGRect discountFrame = CGRectMake(discount_x, discount_y, discount_w, discount_h);
+        BOOL discountShow = [obj.discount isNotNull];
+
+        title_x = discountShow?(discount_x+discount_w+4):0;
+        title_w = item_w-title_x;
+        CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
+        
+        TCHomeContentLayoutAttributes contentAtt =
+        TCHomeContentLayoutAttributesMake(YES, NO, YES, YES, NO, NO, NO, NO, NO, NO,
+                                          imgFrame, CGRectZero, priceFrame, titleFrame,CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+        
+        contentAtt.showDiscount = discountShow;
+        contentAtt.discountFrame = discountFrame;
+        
+        CGFloat item_h = price_y + price_h + 4;
+        _floorHeight = margins.top + margins.bottom + (item_h + margins.vertical) * rowCount - margins.vertical;
+        
         obj.layoutAttributes = contentAtt;
         item_x = margins.left + (item_w + margins.horizontal) * (idx % columnCount);
         item_y = margins.top + (item_h + margins.vertical) * (idx / columnCount);

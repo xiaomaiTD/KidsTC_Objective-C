@@ -14,6 +14,8 @@
 #import "PayModel.h"
 #import "ServiceSettlementPlace.h"
 #import "WholesalePickDateSKU.h"
+#import "UserAddressEditModel.h"
+#import "WholesaleSettlementTime.h"
 
 @interface WholesaleSettlementData : NSObject
 @property (nonatomic, strong) NSString *productName;
@@ -34,9 +36,11 @@
 @property (nonatomic, strong) NSString *chId;
 @property (nonatomic, assign) BOOL isOpen;
 @property (nonatomic, strong) WholesalePickDateSKU *sku;
+@property (nonatomic, strong) WholesaleSettlementTime *time;
 @property (nonatomic, strong) NSString *fightGroupSysNo;
 @property (nonatomic, strong) NSString *openGroupSysNo;
-
+@property (nonatomic, assign) BOOL hasUserAddress;
+@property (nonatomic, strong) UserAddressManageDataItem *userAddressInfo;
 //shareObj
 @property (nonatomic, assign) PayType payType;
 @property (nonatomic, assign) NSInteger currentPlaceIndex;

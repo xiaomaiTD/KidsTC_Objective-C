@@ -27,7 +27,9 @@
 @property (weak, nonatomic) IBOutlet PlaceHolderTextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *radishTipL;
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipTopMargin;
 @property (nonatomic, strong) OrderRefundModel *refundModel;
 
 - (IBAction)didClickedReasonButton:(id)sender;
@@ -80,6 +82,8 @@
     
     [self.submitButton setBackgroundColor:COLOR_PINK forState:UIControlStateNormal];
     [self.submitButton setBackgroundColor:COLOR_PINK forState:UIControlStateSelected];
+    
+    self.radishCountL.textColor = COLOR_PINK;
 }
 
 #pragma mark StepperViewDelegate
@@ -160,6 +164,19 @@
     }
 }
 
+- (void)setRefundRadishNum:(NSUInteger)num {
+    if (num<1) {
+        self.tipTopMargin.constant = 10;
+        self.radishTipL.hidden = YES;
+        self.radishCountL.hidden = YES;
+    }else{
+        self.tipTopMargin.constant = 38;
+        self.radishTipL.hidden = NO;
+        self.radishCountL.hidden = NO;
+        self.radishCountL.text = [NSString stringWithFormat:@"%zd根",num];
+    }
+}
+
 - (void)reloadData {
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(refundModelForOrderRefundView:)]) {
         self.refundModel = [self.dataSource refundModelForOrderRefundView:self];
@@ -182,11 +199,4 @@
     }
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 @end

@@ -47,7 +47,7 @@
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_store.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = _store.storeName;
     self.starsView.starNumber = _store.level;
-    self.areaL.text = _store.districtName;
+    self.areaL.text = [NSString stringWithFormat:@"%@-%@",_store.cityName,_store.districtName];
     self.addressL.text = _store.address;
     self.distanceL.text = _store.distance;
 }

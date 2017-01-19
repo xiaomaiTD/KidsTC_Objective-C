@@ -14,6 +14,8 @@ typedef enum : NSUInteger {
     WholesaleSettlementViewActionTypeSelectPlace = 1,//切换地址
     WholesaleSettlementViewActionTypeRule,//查看活动规则
     WholesaleSettlementViewActionTypeSelectDate,//选择时间
+    WholesaleSettlementViewActionTypeAddress,//选择用户收货地址
+    WholesaleSettlementViewActionTypeAddressTip,//直接添加用户收货地址
     WholesaleSettlementViewActionTypePlaceOrder = 50,//下单
 } WholesaleSettlementViewActionType;
 

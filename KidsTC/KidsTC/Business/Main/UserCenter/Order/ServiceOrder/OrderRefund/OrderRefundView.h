@@ -35,6 +35,8 @@
 
 - (void)setMinCount:(NSInteger)min andMaxCount:(NSInteger)max;
 
+- (void)setRefundRadishNum:(NSUInteger)num;
+
 - (void)reloadData;
 
 @end

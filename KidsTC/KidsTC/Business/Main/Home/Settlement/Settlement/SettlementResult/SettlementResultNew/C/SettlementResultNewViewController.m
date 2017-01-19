@@ -151,52 +151,46 @@
 - (void)detail:(id)value {
     [self dismissViewControllerAnimated:YES completion:^{
         __kindof UIViewController *target = [TabBarController shareTabBarController].selectedViewController;
-        switch (self.type) {
-            case SettlementResultTypeService:
+        switch (self.productType) {
+            case ProductDetailTypeTicket:
             {
-                switch (self.productType) {
-                    case ProductDetailTypeTicket:
-                    {
-                        ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
-                        controller.orderId = self.orderId;
-                        [target pushViewController:controller animated:YES];
-                    }
-                        break;
-                    case ProductDetailTypeFree:
-                    {
-                        ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
-                        controller.orderId = self.orderId;
-                        [target pushViewController:controller animated:YES];
-                    }
-                        break;
-                    case ProductDetailTypeWholesale:
-                    {
-                        WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
-                        controller.productId = self.productId;
-                        controller.openGroupId = self.openGroupId;
-                        [target pushViewController:controller animated:YES];
-                    }
-                        break;
-                    case ProductDetailTypeRadish:
-                    {
-                        RadishOrderDetailViewController *controller = [[RadishOrderDetailViewController alloc] init];
-                        controller.orderId = self.orderId;
-                        [target pushViewController:controller animated:YES];
-                    }
-                        break;
-                    default:
-                    {
-                        ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
-                        controller.orderId = self.orderId;
-                        [target pushViewController:controller animated:YES];
-                    }
-                        break;
-                }
+                ProductOrderTicketDetailViewController *controller = [[ProductOrderTicketDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [target pushViewController:controller animated:YES];
             }
                 break;
-            case SettlementResultTypeFlash:
+            case ProductDetailTypeFree:
+            {
+                ProductOrderFreeDetailViewController *controller = [[ProductOrderFreeDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [target pushViewController:controller animated:YES];
+            }
+                break;
+            case ProductDetailTypeWholesale:
+            {
+                WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc] init];
+                controller.productId = self.productId;
+                controller.openGroupId = self.openGroupId;
+                [target pushViewController:controller animated:YES];
+            }
+                break;
+            case ProductDetailTypeRadish:
+            {
+                RadishOrderDetailViewController *controller = [[RadishOrderDetailViewController alloc] init];
+                controller.orderId = self.orderId;
+                [target pushViewController:controller animated:YES];
+            }
+                break;
+            case ProductDetailTypeFalsh:
             {
                 FlashServiceOrderDetailViewController *controller = [[FlashServiceOrderDetailViewController alloc]init];
+                controller.orderId = self.orderId;
+                [target pushViewController:controller animated:YES];
+            }
+                break;
+            default:
+            {
+                ProductOrderNormalDetailViewController *controller = [[ProductOrderNormalDetailViewController alloc] init];
                 controller.orderId = self.orderId;
                 [target pushViewController:controller animated:YES];
             }

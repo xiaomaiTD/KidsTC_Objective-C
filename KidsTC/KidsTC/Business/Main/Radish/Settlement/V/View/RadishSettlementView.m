@@ -85,8 +85,6 @@ static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
     self.tableView = tableView;
     [self registerCells];
     
-    [self setupSections];
-    
     [self.tableView reloadData];
 }
 

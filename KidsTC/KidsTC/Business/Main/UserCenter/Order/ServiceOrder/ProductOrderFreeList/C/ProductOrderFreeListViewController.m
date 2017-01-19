@@ -212,7 +212,6 @@
 - (void)payNow:(ProductOrderFreeListItem *)item {
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderNo;
-    controller.orderKind = CashierDeskOrderKindService;
     controller.productType = ProductDetailTypeFree;
     controller.resultBlock = ^void (BOOL needRefresh){
         if(needRefresh)[self loadReplaceItem:self.currentItem];

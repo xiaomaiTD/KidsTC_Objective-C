@@ -11,6 +11,7 @@
 #import "TipButton.h"
 #import "NSString+Category.h"
 #import "UIImage+Category.h"
+#import "User.h"
 
 @interface AccountCenterHeader ()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UIView *headBgView;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UIView *roleBGView;
+@property (weak, nonatomic) IBOutlet UILabel *roleL;
 @end
 
 @implementation AccountCenterHeader
@@ -33,6 +36,9 @@
     [self setupLayer:self.headBgView.layer];
     [self setupLayer:self.headImageView.layer];
     
+    self.roleBGView.layer.cornerRadius = 6;
+    self.roleBGView.layer.masksToBounds = YES;
+    
     self.settingBtn.tag = AccountCenterHeaderActionTypeSoftwareSetting;
     self.messageBtn.tag = AccountCenterHeaderActionTypeMessageCenter;
     
@@ -41,6 +47,11 @@
     
     UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
     self.bgImageView.image = bgImage;
+    
+    self.roleBGView.tag = AccountCenterHeaderActionTypeRole;
+    UITapGestureRecognizer *tapRoleGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.roleBGView addGestureRecognizer:tapRoleGR];
+    
 }
 
 - (void)setupLayer:(CALayer *)layer {
@@ -73,6 +84,9 @@
         UIImage *bgImage = [UIImage imageNamed:@"accountCenter_bg"];
         self.bgImageView.image = bgImage;
     }
+    
+    self.roleL.text = [User shareUser].role.statusName;
+    self.roleBGView.hidden = ![self.roleL.text isNotNull];
 }
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(accountCenterHeader:actionType:value:)]) {

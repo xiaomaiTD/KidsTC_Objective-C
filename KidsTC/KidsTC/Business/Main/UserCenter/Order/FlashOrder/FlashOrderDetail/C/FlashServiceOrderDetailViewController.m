@@ -530,7 +530,7 @@
 - (void)gotoCashierDesk{
     CashierDeskViewController *controller = [[CashierDeskViewController alloc] initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = self.data.orderId;
-    controller.orderKind = CashierDeskOrderKindFlash;
+    controller.productType = ProductDetailTypeFalsh;
     controller.resultBlock = ^void (BOOL needRefresh){
         [self loadOrderDetail];
     };

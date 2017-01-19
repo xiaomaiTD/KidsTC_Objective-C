@@ -197,12 +197,22 @@
                 break;
             case TCHomeFloorContentTypeTwoColumns:
             {
+                
                 if ([title isNotNull]) {
                     NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
                     attTitle.color = [UIColor colorFromHexString:@"333333"];
                     attTitle.font = [UIFont systemFontOfSize:14];
                     _attTitle = attTitle;
                 }
+                
+                if ([_discount isNotNull]) {
+                    NSMutableAttributedString *attDiscountDesc = [[NSMutableAttributedString alloc] initWithString:_discount];
+                    attDiscountDesc.color = [UIColor whiteColor];
+                    attDiscountDesc.font = [UIFont systemFontOfSize:10];
+                    attDiscountDesc.alignment = NSTextAlignmentCenter;
+                    _attDiscountDesc = attDiscountDesc;
+                }
+                
                 if ([price isNotNull]) {
                     NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
                     attPrice.lineSpacing = 0;
@@ -211,15 +221,15 @@
                     attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
                     attPrice.alignment = NSTextAlignmentLeft;
                     
-                    
-                    NSMutableAttributedString *attPriceTip = [[NSMutableAttributedString alloc] initWithString:@"起"];
-                    attPriceTip.lineSpacing = 0;
-                    attPriceTip.color = [UIColor colorFromHexString:@"555555"];
-                    attPriceTip.font = [UIFont systemFontOfSize:12];
-                    attPriceTip.lineBreakMode = NSLineBreakByTruncatingTail;
-                    attPriceTip.alignment = NSTextAlignmentLeft;
-                    [attPrice appendAttributedString:attPriceTip];
-                    
+                    if ([_priceSuffix isNotNull]) {
+                        NSMutableAttributedString *attPriceTip = [[NSMutableAttributedString alloc] initWithString:_priceSuffix];
+                        attPriceTip.lineSpacing = 0;
+                        attPriceTip.color = [UIColor colorFromHexString:@"555555"];
+                        attPriceTip.font = [UIFont systemFontOfSize:12];
+                        attPriceTip.lineBreakMode = NSLineBreakByTruncatingTail;
+                        attPriceTip.alignment = NSTextAlignmentLeft;
+                        [attPrice appendAttributedString:attPriceTip];
+                    }
                     _attPrice = attPrice;
                 }
             }

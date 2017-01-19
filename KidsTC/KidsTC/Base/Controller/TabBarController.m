@@ -72,12 +72,22 @@ singleM(TabBarController)
 
 -(BOOL)shouldAutorotate
 {
-    return self.getPresentedViewController.shouldAutorotate;
+    UIViewController *controller = self.getPresentedViewController;
+    if (controller && [controller isKindOfClass:[ViewController class]]) {
+        return controller.shouldAutorotate;
+    }else{
+        return NO;
+    }
 }
 
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return self.getPresentedViewController.supportedInterfaceOrientations;
+    UIViewController *controller = self.getPresentedViewController;
+    if (controller && [controller isKindOfClass:[ViewController class]]) {
+        return controller.supportedInterfaceOrientations;
+    }else{
+        return UIInterfaceOrientationMaskPortrait;
+    }
 }
 
 - (UIViewController *)getPresentedViewController

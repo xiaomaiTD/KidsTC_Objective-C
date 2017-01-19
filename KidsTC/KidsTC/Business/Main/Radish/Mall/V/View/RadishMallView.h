@@ -13,6 +13,7 @@ typedef enum : NSUInteger {
     RadishMallViewActionTypeSegue = 1,
     RadishMallViewActionTypePlant,
     RadishMallViewActionTypeRule,
+    RadishMallViewActionTypeGrade,
     RadishMallViewActionTypeLoadData = 100,
 } RadishMallViewActionType;
 

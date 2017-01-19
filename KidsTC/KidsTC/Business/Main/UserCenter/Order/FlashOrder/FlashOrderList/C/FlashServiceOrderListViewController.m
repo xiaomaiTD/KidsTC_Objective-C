@@ -200,7 +200,7 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
 - (void)gotoCashierDesk:(FlashServiceOrderListItem *)item{
     CashierDeskViewController *controller = [[CashierDeskViewController alloc] initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderId;
-    controller.orderKind = CashierDeskOrderKindFlash;
+    controller.productType = ProductDetailTypeFalsh;
     controller.resultBlock = ^void (BOOL needRefresh){
         [self loadOrderListRefresh:YES];
     };

@@ -174,8 +174,7 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
     }
     if(section01.count>0) [sections addObject:section01];
     
-    WholesalePickDateSKU *sku = self.data.sku;
-    if (sku.isShowTime && sku.times.count>0) {
+    if ([self.data.time.time isNotNull]) {
         NSMutableArray *dateSection = [NSMutableArray array];
         WholesaleOrderDetailDateCell *dateCell = [self cellWithID:DateCellID];
         if (dateCell) [dateSection addObject:dateCell];
@@ -295,6 +294,13 @@ static NSString *const V2InfoCellID = @"WholesaleOrderDetailV2InfoCell";
         if (joinCountCell) [section01 addObject:joinCountCell];
     }
     if(section01.count>0) [sections addObject:section01];
+    
+    if ([self.data.time.time isNotNull]) {
+        NSMutableArray *dateSection = [NSMutableArray array];
+        WholesaleOrderDetailDateCell *dateCell = [self cellWithID:DateCellID];
+        if (dateCell) [dateSection addObject:dateCell];
+        if (dateSection.count>0) [sections addObject:dateSection];
+    }
     
     NSMutableArray *section02 = [NSMutableArray array];
     if ([data.fightGroupBase.flowUrl isNotNull]) {

@@ -116,7 +116,7 @@
 }
 
 - (void)setupSegueModel {
-    _productSegueModel = [ProductDetailSegueParser segueModelWithProductType:ProductDetailTypeNormal productId:_serveId channelId:_channelId openGroupId:nil];
+    _productSegueModel = [ProductDetailSegueParser segueModelWithProductType:ProductDetailTypeRadish productId:_radishNo channelId:_channelId openGroupId:nil];
 }
 
 - (void)setupCanShowBtn {

@@ -94,7 +94,7 @@
             _remainLabelHidden = NO;
             CGFloat remainLabel_x = CGRectGetMaxX(_titleLabelFrame) + margin;
             CGFloat remainLabel_w = 0;
-            CGFloat remainLabel_h = 15;
+            CGFloat remainLabel_h = 18;
             CGFloat remainLabel_y = (h - remainLabel_h) * 0.5;
             _remainLabelFrame = CGRectMake(remainLabel_x, remainLabel_y, remainLabel_w, remainLabel_h);
             
@@ -104,9 +104,9 @@
             _arrowImageViewFrame = CGRectMake(arrowImageView_x, arrowImageView_y, arrowImageView_s, arrowImageView_s);
             _arrowImageViewHidden = _titleContent.segueModel.destination == SegueDestinationNone;
             
-            CGFloat subTitleLabel_x = CGRectGetMaxX(_remainLabelFrame) + margin;
+            CGFloat subTitleLabel_x = CGRectGetMaxX(_remainLabelFrame) + margin + 120;
             CGFloat subTitleLabel_y = 0;
-            CGFloat subTitleLabel_w = w - subTitleLabel_x - arrowImageView_s - margin - 4;
+            CGFloat subTitleLabel_w = arrowImageView_x - subTitleLabel_x - margin;
             CGFloat subTitleLabel_h = h;
             _subTitleLabelFrame = CGRectMake(subTitleLabel_x, subTitleLabel_y, subTitleLabel_w, subTitleLabel_h);
         }

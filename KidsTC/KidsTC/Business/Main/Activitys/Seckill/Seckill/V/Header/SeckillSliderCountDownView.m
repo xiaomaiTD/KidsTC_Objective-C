@@ -11,6 +11,7 @@
 
 @interface SeckillSliderCountDownView ()
 @property (weak, nonatomic) IBOutlet UIView *countDownView;
+@property (weak, nonatomic) IBOutlet UILabel *descL;
 @property (weak, nonatomic) IBOutlet UIView *dayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *dayViewW;
 @property (weak, nonatomic) IBOutlet UILabel *dayL;
@@ -38,6 +39,7 @@
 
 - (void)setData:(SeckillDataData *)data {
     _data = data;
+    self.descL.text = data.countDownDesc;
     [self countDown];
 }
 

@@ -13,24 +13,38 @@
 CGFloat const kWholesaleOrderDetailToolBarH = 49;
 
 @interface WholesaleOrderDetailToolBar ()
+@property (weak, nonatomic) IBOutlet UIView *consultBGView;
+@property (weak, nonatomic) IBOutlet UIButton *consultBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *consultIcon;
+@property (weak, nonatomic) IBOutlet UILabel *consultTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *consultLineH;
+
 @property (weak, nonatomic) IBOutlet UIView *leftBGView;
 @property (weak, nonatomic) IBOutlet UIButton *leftBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *leftIcon;
 @property (weak, nonatomic) IBOutlet UILabel *leftTitle;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftLineH;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLeftLineH;
 
 @property (weak, nonatomic) IBOutlet UIView *rightBGView;
 @property (weak, nonatomic) IBOutlet UIButton *rightBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightBGViewLeading;
+
 @end
 
 @implementation WholesaleOrderDetailToolBar
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.consultLineH.constant = LINE_H;
     self.leftLineH.constant = LINE_H;
+    self.VLeftLineH.constant = LINE_H;
     [self.rightBtn setBackgroundColor:[UIColor colorFromHexString:@"F36863"] forState:UIControlStateNormal];
     [self.rightBtn setBackgroundColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    
+    self.consultBtn.tag = WholesaleOrderDetailToolBarActionTypeConsult;
+    self.leftBtn.tag = WholesaleOrderDetailToolBarActionTypeShare;
+    [self layoutIfNeeded];
     
 }
 
@@ -38,25 +52,6 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
     _data = data;
     
     self.hidden = data.fightGroupBase == nil;
-    
-    NSString *leftIconName = @"wholesale_home";
-    NSString *leftTitle = @"首页";
-    WholesaleOrderDetailToolBarActionType leftTag = WholesaleOrderDetailToolBarActionTypeHome;
-    switch (data.openGroupStatus) {
-        case FightGroupOpenGroupStatusOpenGroupSuccess:
-        case FightGroupOpenGroupStatusJoinGroupSuccess:
-        {
-            leftIconName = @"wholesale_share";
-            leftTitle = @"分享";
-            leftTag = WholesaleOrderDetailToolBarActionTypeShare;
-        }
-            break;
-        default:
-            break;
-    }
-    self.leftIcon.image = [UIImage imageNamed:leftIconName];
-    self.leftTitle.text = leftTitle;
-    self.leftBtn.tag = leftTag;
     
     /*
      FightGroupBtnStatusShare = 1,//邀请好友参团
@@ -68,6 +63,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
     NSString *rightBtnTitle = nil;
     BOOL btnEnable = NO;
     WholesaleOrderDetailToolBarActionType rightTag;
+    CGFloat rightBGViewLeading = SCREEN_WIDTH*0.33;
     if (!data.countDown || !data.countDown.showCountDown || data.countDown.countDownOver)
     {
         rightBtnTitle = @"更多组团";//跳到第一个商品详情页面
@@ -80,6 +76,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
                 rightBtnTitle = @"邀请好友参团";//分享
                 btnEnable = YES;
                 rightTag = WholesaleOrderDetailToolBarActionTypeShare;
+                rightBGViewLeading = 0;
             }
                 break;
             case FightGroupBtnStatusBuy:
@@ -116,6 +113,8 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
     [self.rightBtn setTitle:rightBtnTitle forState:UIControlStateNormal];
     self.rightBtn.enabled = btnEnable;
     self.rightBtn.tag = rightTag;
+    self.rightBGViewLeading.constant = rightBGViewLeading;
+    [self layoutIfNeeded];
 }
 
 - (IBAction)action:(UIButton *)sender {

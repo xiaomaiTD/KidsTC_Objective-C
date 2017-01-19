@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G23-SG-iEa">
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" text="5折优惠热热闹闹抢天！！！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NY7-nc-H0g">
-                                <rect key="frame" x="0.0" y="31" width="155" height="15"/>
+                                <rect key="frame" x="0.0" y="31" width="202" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -53,6 +53,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NY7-nc-H0g" secondAttribute="trailing" id="0jU-X8-ePX"/>
                             <constraint firstItem="NY7-nc-H0g" firstAttribute="leading" secondItem="ZVS-a2-8Ft" secondAttribute="leading" id="2jW-3Y-RfG"/>
                             <constraint firstItem="MeI-qM-LIe" firstAttribute="leading" secondItem="ZVS-a2-8Ft" secondAttribute="leading" id="3wt-I3-7up"/>
                             <constraint firstAttribute="bottom" secondItem="MeI-qM-LIe" secondAttribute="bottom" id="8Nt-sr-cr1"/>
@@ -92,7 +93,7 @@
                 <outlet property="priceL" destination="MeI-qM-LIe" id="5Uf-yS-gQu"/>
                 <outlet property="tipL" destination="NY7-nc-H0g" id="kzM-QI-k91"/>
             </connections>
-            <point key="canvasLocation" x="-363" y="11"/>
+            <point key="canvasLocation" x="-363" y="10.5"/>
         </tableViewCell>
     </objects>
 </document>

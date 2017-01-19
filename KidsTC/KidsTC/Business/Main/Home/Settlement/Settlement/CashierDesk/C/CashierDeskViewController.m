@@ -57,8 +57,7 @@
 #pragma mark - loadPayInfo
 
 - (void)loadPayInfo{
-    NSDictionary *param = @{@"orderId":self.orderId,
-                            @"orderKind":@(self.orderKind)};
+    NSDictionary *param = @{@"orderId":self.orderId};
     [TCProgressHUD showSVP];
     [Request startWithName:@"ORDER_GET_PAY_CHANNEL" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -116,8 +115,7 @@
 
 - (void)changePayType:(PayType)payType{
     NSDictionary *param = @{@"orderId":self.orderId,
-                            @"payType":@(payType),
-                            @"orderKind":@(self.orderKind)};
+                            @"payType":@(payType)};
     [TCProgressHUD showSVP];
     [Request startWithName:@"ORDER_CHANGE_PAY_CHANNEL" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -173,11 +171,6 @@
     controller.paid = paid;
     controller.orderId = orderId;
     controller.productType = self.productType;
-    if (self.orderKind == CashierDeskOrderKindService) {
-        controller.type = SettlementResultTypeService;
-    }else {
-        controller.type = SettlementResultTypeFlash;
-    }
     controller.productId = self.productId;
     controller.openGroupId = self.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];

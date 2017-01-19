@@ -7,31 +7,11 @@
 //
 
 #import "RecommendProduct.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation RecommendProduct
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    NSString *pid = [NSString stringWithFormat:@"%@",_productSysNo];
-    NSString *cid = [NSString stringWithFormat:@"%@",_channelId];
-    SegueDestination destination = SegueDestinationServiceDetail;
-    NSDictionary *param = @{@"pid":pid,@"cid":cid};
-    switch (_productType) {
-        case ProductDetailTypeTicket:
-        {
-            destination = SegueDestinationProductTicketDetail;
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            destination = SegueDestinationProductFreeDetail;
-        }
-            break;
-        default:
-        {
-            destination = SegueDestinationServiceDetail;
-        }
-            break;
-    }
-    _segueModel = [SegueModel modelWithDestination:destination paramRawData:param];
+    _segueModel = [ProductDetailSegueParser segueModelWithProductType:_productType productId:_productSysNo channelId:_channelId openGroupId:nil];
     return YES;
 }
 @end

@@ -142,6 +142,7 @@
             break;
             
         case AccountCenterViewActionTypeSoftwareSetting:
+        case AccountCenterViewActionTypeRole:
         case AccountCenterViewActionTypeRadishMall:
         case AccountCenterViewActionTypeShareMakeMoney:
         case AccountCenterViewActionTypeBringUpHeadline:
@@ -181,6 +182,11 @@
             AccountSettingViewController *controller = [[AccountSettingViewController alloc]init];
             controller.model = model;
             toController = controller;
+        }
+            break;
+        case AccountCenterViewActionTypeRole:
+        {
+            toController = [[RoleSelectViewController alloc]initWithNibName:@"RoleSelectViewController" bundle:nil];
         }
             break;
         case AccountCenterViewActionTypeCollectionProduct:
@@ -259,7 +265,12 @@
             break;
         case AccountCenterViewActionTypeScore:
         {
-            
+            NSString *urlString = self.model.data.config.scoreNumLink;
+            if ([urlString isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = urlString;
+                toController = controller;
+            }
         }
             break;
         case AccountCenterViewActionTypeRadish:
@@ -291,15 +302,19 @@
             break;
         case AccountCenterViewActionTypeRadishMall:
         {
-            /*
-            NSString *urlString = self.model.data.radish.linkUrl;
-            if ([urlString isNotNull]) {
-                WebViewController *controller = [[WebViewController alloc]init];
-                controller.urlString = urlString;
-                toController = controller;
-            }*/
-            toController = [[RadishMallViewController alloc]init];
-            [BuryPointManager trackEvent:@"event_skip_usr_radish" actionId:21516 params:nil];
+            AccountCenterRadish *radish = self.model.data.radish;
+            if (radish.isApp) {
+                toController = [[RadishMallViewController alloc]init];
+                [BuryPointManager trackEvent:@"event_skip_usr_radish" actionId:21516 params:nil];
+            }else{
+                NSString *urlString = radish.linkUrl;
+                if ([urlString isNotNull]) {
+                    WebViewController *controller = [[WebViewController alloc]init];
+                    controller.urlString = urlString;
+                    toController = controller;
+                    [BuryPointManager trackEvent:@"event_skip_usr_radish" actionId:21516 params:nil];
+                }
+            }
         }
             break;
         case AccountCenterViewActionTypeMyFlash:

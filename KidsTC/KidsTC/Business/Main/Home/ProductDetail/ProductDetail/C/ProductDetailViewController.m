@@ -620,7 +620,7 @@
 
 - (void)consult:(id)value {
     NSString *str = [OnlineCustomerService onlineCustomerServiceLinkUrlString];
-    if (str.length>0) {
+    if ([str isNotNull]) {
         WebViewController *controller = [[WebViewController alloc]init];
         controller.urlString = str;
         [self.navigationController pushViewController:controller animated:YES];

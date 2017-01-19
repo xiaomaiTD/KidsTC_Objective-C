@@ -29,6 +29,7 @@
 @property (nonatomic, strong) AccountCenterBackgroundImg *backgroundImg;
 @property (nonatomic, strong) AccountCenterTCECordLink *tcECordLink;
 @property (nonatomic, strong) AccountCenterResidualLink *residualLink;
+@property (nonatomic, strong) NSString *scoreNumLink;
 
 //selfDefine
 @property (nonatomic, assign) CGFloat bannerHeight;

@@ -49,6 +49,7 @@
 #import "RadishOrderDetailViewController.h"
 #import "RadishProductDetailViewController.h"
 #import "SeckillViewController.h"
+#import "ActivityProductViewController.h"
 
 static NSString *const Prefix         = @"hook::";            //前缀
 typedef enum : NSUInteger {
@@ -586,6 +587,18 @@ typedef enum : NSUInteger {
 #pragma mark 秒杀活动
 - (void)seckillActivity:(NSString *)param {
     SeckillViewController *controller = [[SeckillViewController alloc] init];
+    [self makeSegue:controller];
+}
+#pragma mark 服务活动
+- (void)productActivity:(NSString *)param {
+    NSDictionary *dic = [NSDictionary parsetUrl:param];
+    NSString *aid = [dic objectForKey:@"aid"];
+    if (![aid isNotNull]) {
+        [[iToast makeText:@"关联编号为空"] show];
+        return;
+    }
+    ActivityProductViewController *controller = [[ActivityProductViewController alloc] init];
+    controller.ID = aid;
     [self makeSegue:controller];
 }
 

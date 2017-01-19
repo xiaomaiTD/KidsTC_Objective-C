@@ -300,8 +300,17 @@
     
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderNo;
-    controller.orderKind = CashierDeskOrderKindService;
     switch (item.orderKind) {
+        case OrderKindFlash:
+        {
+            controller.productType = ProductDetailTypeFalsh;
+        }
+            break;
+        case OrderKindRadish:
+        {
+            controller.productType = ProductDetailTypeRadish;
+        }
+            break;
         case OrderKindTicket:
         {
             controller.productType = ProductDetailTypeTicket;
@@ -310,6 +319,11 @@
         case OrderKindFree:
         {
             controller.productType = ProductDetailTypeFree;
+        }
+            break;
+        case OrderKindFight:
+        {
+            controller.productType = ProductDetailTypeWholesale;
         }
             break;
         default:

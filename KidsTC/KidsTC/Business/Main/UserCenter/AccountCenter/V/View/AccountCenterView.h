@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     AccountCenterViewActionTypeMessageCenter,
     AccountCenterViewActionTypeLogin,
     AccountCenterViewActionTypeAccountSetting,
+    AccountCenterViewActionTypeRole,
     
     AccountCenterViewActionTypeCollectionProduct = 100,
     AccountCenterViewActionTypeCollectionStore,

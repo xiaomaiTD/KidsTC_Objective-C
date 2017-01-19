@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *districtId;
 @property (nonatomic, strong) NSString *districtName;
 @property (nonatomic, assign) NSInteger level;
+@property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSArray<SearchResultStoreProduct *> *products;
 @property (nonatomic, strong) NSString *tradingAreaName;
 //selfDefine

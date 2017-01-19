@@ -23,15 +23,10 @@
 
 - (void)setData:(WholesaleSettlementData *)data {
     [super setData:data];
-    WholesalePickDateSKU *sku = self.data.sku;
-    [sku.times enumerateObjectsUsingBlock:^(WholesalePickDateTime *obj, NSUInteger idx, BOOL *stop) {
-        if (obj.select) {
-            self.timeL.text = obj.time;
-            *stop = YES;
-        }
-    }];
-    self.arrowImg.hidden = !sku.isShowTime;
-    self.userInteractionEnabled = sku.isShowTime;
+    WholesaleSettlementTime *time = self.data.time;
+    self.timeL.text = time.timeDesc;
+    self.arrowImg.hidden = !time.isClick;
+    self.userInteractionEnabled = time.isClick;
 }
 
 - (IBAction)action:(UIButton *)sender {

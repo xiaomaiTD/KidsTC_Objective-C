@@ -21,6 +21,8 @@ typedef enum {
 
 @property (nonatomic, assign) NSUInteger maxRefundCount;
 
+@property (nonatomic, assign) NSUInteger minRefundCount;
+
 @property (nonatomic, assign) NSUInteger refundCount;
 
 @property (nonatomic, assign) CGFloat unitRefundAmount;
@@ -30,6 +32,8 @@ typedef enum {
 @property (nonatomic, assign) NSUInteger unitPointNumber;
 
 @property (nonatomic, assign) NSUInteger totalPointNumber;
+
+@property (nonatomic, assign) NSUInteger refundRadishNum;
 
 @property (nonatomic, strong) NSArray<OrderRefundReasonItem *> *refundReasons;
 

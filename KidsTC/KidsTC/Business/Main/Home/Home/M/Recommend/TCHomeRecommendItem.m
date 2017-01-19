@@ -75,18 +75,14 @@
     attStatus.alignment = NSTextAlignmentLeft;
     content.attStatus = attStatus;
     
-    NSString *distance = [_storeDistance isNotNull]?[NSString stringWithFormat:@"距离 %@",_storeDistance]:@"";
     NSString *storeName = [_storeName isNotNull]?_storeName:@"";
-    if ([storeName isNotNull] && [distance isNotNull]) {
-        
-        NSString *stoeAddress = [NSString stringWithFormat:@" %@%@",storeName, distance];
-        
+    if ([storeName isNotNull]) {
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         attachment.image = [UIImage imageNamed:@"home_recommend_local"];
         attachment.bounds = CGRectMake(0, -2, 11, 14);
         NSAttributedString *attachmentStr = [NSAttributedString attributedStringWithAttachment:attachment];
         
-        NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:stoeAddress];
+        NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:storeName];
         [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
         attStoreAddress.color = [UIColor colorFromHexString:@"333333"];

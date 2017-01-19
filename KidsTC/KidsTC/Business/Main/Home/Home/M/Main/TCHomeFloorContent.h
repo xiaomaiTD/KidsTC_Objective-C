@@ -161,6 +161,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *discount;
 @property (nonatomic, strong) TCHomeFloorContentArticleParam *articleParam;
 @property (nonatomic, assign) SegueDestination linkType;
 @property (nonatomic, strong) NSDictionary *params;
@@ -172,6 +173,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat widthScale;
 @property (nonatomic, assign) CGFloat heightScale;
 @property (nonatomic, strong) NSString *storePrice;
+@property (nonatomic, strong) NSString *priceSuffix;
 
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *attTitle;

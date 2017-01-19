@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 @interface WholesalePickDateTime : NSObject
 @property (nonatomic, strong) NSString *time;
-@property (nonatomic, strong) NSString *timeNo;
 @property (nonatomic, strong) NSString *skuId;
 @property (nonatomic, assign) BOOL canBuy;
 @property (nonatomic, strong) NSString *price;

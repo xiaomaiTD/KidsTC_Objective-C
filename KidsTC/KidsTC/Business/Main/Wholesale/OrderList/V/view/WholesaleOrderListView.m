@@ -142,6 +142,14 @@ static NSString *const CellID = @"WholesaleOrderListCell";
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 10;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WholesaleOrderListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellID];
     NSInteger section = indexPath.section;

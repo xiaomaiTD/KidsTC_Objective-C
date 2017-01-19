@@ -80,13 +80,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="童成价：22元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcu-H6-9ti">
-                        <rect key="frame" x="133" y="6" width="70" height="14"/>
+                        <rect key="frame" x="131" y="6" width="70" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QdH-aL-Xhj">
-                        <rect key="frame" x="133" y="13" width="70" height="0.5"/>
+                        <rect key="frame" x="131" y="13" width="70" height="0.5"/>
                         <color key="backgroundColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="2io-Ga-HK2"/>
@@ -103,7 +103,7 @@
                 <constraints>
                     <constraint firstItem="Pcu-H6-9ti" firstAttribute="centerY" secondItem="nKM-d9-blG" secondAttribute="centerY" id="0Zz-zR-Qka"/>
                     <constraint firstItem="nKM-d9-blG" firstAttribute="centerY" secondItem="bd8-xF-S9u" secondAttribute="centerY" id="16s-b7-Xa5"/>
-                    <constraint firstItem="Pcu-H6-9ti" firstAttribute="leading" secondItem="nKM-d9-blG" secondAttribute="trailing" constant="4" id="HAh-2i-H69"/>
+                    <constraint firstItem="Pcu-H6-9ti" firstAttribute="leading" secondItem="nKM-d9-blG" secondAttribute="trailing" constant="2" id="HAh-2i-H69"/>
                     <constraint firstItem="QdH-aL-Xhj" firstAttribute="centerY" secondItem="Pcu-H6-9ti" secondAttribute="centerY" id="Xjr-MM-7fJ"/>
                     <constraint firstItem="QdH-aL-Xhj" firstAttribute="trailing" secondItem="Pcu-H6-9ti" secondAttribute="trailing" id="YES-8u-kro"/>
                     <constraint firstItem="9cW-uy-ySa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aU0-Qh-2Lv"/>

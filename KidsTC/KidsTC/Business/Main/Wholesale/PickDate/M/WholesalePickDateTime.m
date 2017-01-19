@@ -18,6 +18,7 @@
         str.color = [UIColor colorFromHexString:@"555555"];
         str.font = [UIFont systemFontOfSize:14];
         str.lineSpacing = 6;
+        str.alignment = NSTextAlignmentCenter;
         self.attTimeStr = [[NSAttributedString alloc] initWithAttributedString:str];
     }
     

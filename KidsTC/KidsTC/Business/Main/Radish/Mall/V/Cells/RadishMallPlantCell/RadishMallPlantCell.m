@@ -8,13 +8,16 @@
 
 #import "RadishMallPlantCell.h"
 #import "UIImageView+WebCache.h"
+#import "NSString+Category.h"
 
 @interface RadishMallPlantCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 @property (weak, nonatomic) IBOutlet UILabel *radishCountL;
 @property (weak, nonatomic) IBOutlet UIButton *plantBtn;
 @property (weak, nonatomic) IBOutlet UIButton *ruleBtn;
-@property (weak, nonatomic) IBOutlet UILabel *peopleL;
+@property (weak, nonatomic) IBOutlet UIView *gradeBGView;
+@property (weak, nonatomic) IBOutlet UIImageView *gradeIcon;
+@property (weak, nonatomic) IBOutlet UIButton *gradeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *plantCountL;
 @end
 
@@ -24,6 +27,7 @@
     [super awakeFromNib];
     self.plantBtn.tag = RadishMallBaseCellActionTypePlant;
     self.ruleBtn.tag = RadishMallBaseCellActionTypeRule;
+    self.gradeBtn.tag = RadishMallBaseCellActionTypeGrade;
 }
 - (void)setData:(RadishMallData *)data {
     [super setData:data];
@@ -32,7 +36,8 @@
     [self.plantBtn setImage:[UIImage imageNamed:plantBtnTitle] forState:UIControlStateNormal];
     self.radishCountL.text = [NSString stringWithFormat:@"%zd",userData.radishCount];
     self.plantCountL.text = [NSString stringWithFormat:@"%zd",userData.checkInDays];
-    self.peopleL.text = userData.radishGrade;
+    [self.gradeIcon sd_setImageWithURL:[NSURL URLWithString:userData.radishGrade] placeholderImage:[UIImage imageNamed:@"Radish_score"]];
+    self.gradeBGView.hidden = ![userData.radishGrade isNotNull];
     [self.bgImgView sd_setImageWithURL:[NSURL URLWithString:data.backUrl] placeholderImage:[UIImage imageNamed:@"Radish_mallBG_sun"]];
 }
 
@@ -50,4 +55,9 @@
     }
 }
 
+- (IBAction)grade:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(radishMallBaseCell:actionType:value:)]) {
+        [self.delegate radishMallBaseCell:self actionType:RadishMallBaseCellActionTypeGrade value:self.data];
+    }
+}
 @end

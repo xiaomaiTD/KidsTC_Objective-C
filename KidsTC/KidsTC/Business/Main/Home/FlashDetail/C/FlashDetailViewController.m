@@ -357,7 +357,7 @@ static NSString *moreCellReuseIdentifier = @"moreCellReuseIdentifier";
 - (void)choosePayChannel{
     CashierDeskViewController *controller = [[CashierDeskViewController alloc] initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = self.data.orderNo;
-    controller.orderKind = CashierDeskOrderKindFlash;
+    controller.productType = ProductDetailTypeFalsh;
     controller.resultBlock = ^void(BOOL needRefresh){
         [self getFlashDetailData];
     };

@@ -51,6 +51,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *currentUserOpenGroup;
 @property (nonatomic, strong) WholesaleOrderDetailCountDown *countDown;
 @property (nonatomic, strong) WholesalePickDateSKU *sku;
+@property (nonatomic, strong) WholesalePickDateTime *time;
 //selfDefine
 @property (nonatomic, strong) NSArray<WholesaleOrderDetailPartner *> *partners;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *partnerCounts;

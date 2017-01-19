@@ -100,7 +100,7 @@ static NSString *status[] = {
         [self.bgView insertSubview:self.player.playerView atIndex:0];
         
         self.player.launchView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.player.launchView sd_setImageWithURL:[NSURL URLWithString:self.video.videoImg] placeholderImage:PLACEHOLDERIMAGE_BIG];
+        [self.player.launchView sd_setImageWithURL:[NSURL URLWithString:self.video.videoImg]];
         
         self.player.rotationMode =
         PLPlayerRotateLeft// 向左旋

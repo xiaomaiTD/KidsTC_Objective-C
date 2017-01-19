@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 @interface RadishUserData : NSObject
 @property (nonatomic, strong) NSString *radishGrade;
+@property (nonatomic, strong) NSString *radishGradeUrl;
 @property (nonatomic, assign) NSUInteger radishCount;
 @property (nonatomic, assign) BOOL isCheckIn;
 @property (nonatomic, assign) NSUInteger checkInDays;
+
 @end

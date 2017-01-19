@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"拼团";
+    self.navigationItem.title = @"拼团订单";
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -110,7 +110,6 @@
         controller.productId = item.fightGroupSysNo;
         controller.openGroupId = item.fightGroupOpenGroupSysNo;
         controller.productType = ProductDetailTypeWholesale;
-        controller.orderKind = CashierDeskOrderKindService;
         [self.navigationController pushViewController:controller animated:YES];
     }];
 }

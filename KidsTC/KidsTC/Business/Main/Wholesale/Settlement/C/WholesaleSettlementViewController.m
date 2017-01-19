@@ -24,6 +24,8 @@
 #import "NavigationController.h"
 #import "WholesaleOrderDetailViewController.h"
 #import "WholesalePickDateViewController.h"
+#import "UserAddressManageViewController.h"
+#import "UserAddressEditViewController.h"
 
 @interface WholesaleSettlementViewController ()<WholesaleSettlementViewDelegate,WholesalePickDateViewControllerDelegate>
 @property (nonatomic, strong) WholesaleSettlementView *settlementView;
@@ -110,6 +112,16 @@
             [self placeOrder];
         }
             break;
+        case WholesaleSettlementViewActionTypeAddress://选择用户收货地址
+        {
+            [self address];
+        }
+            break;
+        case WholesaleSettlementViewActionTypeAddressTip://直接添加用户收货地址
+        {
+            [self addressTip];
+        }
+            break;
     }
 }
 
@@ -121,13 +133,20 @@
     controller.sku = self.data.sku;
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     controller.modalPresentationStyle = UIModalPresentationCustom;
-    [self presentViewController:controller animated:YES completion:nil];
+    [self presentViewController:controller animated:NO completion:nil];
 }
 
 - (void)wholesalePickDateViewController:(WholesalePickDateViewController *)controller actionType:(WholesalePickDateViewControllerActionType)type value:(id)value {
     switch (type) {
         case WholesalePickDateViewControllerActionTypeMakeSure:
         {
+            if ([value isKindOfClass:[WholesalePickDateTime class]]) {
+                WholesalePickDateTime *time = value;
+                self.data.fightGroupPrice = time.price;
+                if (self.data.time) {
+                    self.data.time.skuId = time.skuId;
+                }
+            }
             [self.settlementView reloadData];
             [controller dismissViewControllerAnimated:YES completion:nil];
         }
@@ -154,6 +173,29 @@
     [self selectPlace];
 }
 
+#pragma mark 选择用户收货地址
+
+- (void)address {
+    UserAddressManageViewController *controller = [[UserAddressManageViewController alloc]init];
+    controller.fromeType = UserAddressManageFromTypeSettlement;
+    controller.pickeAddressBlock = ^void (UserAddressManageDataItem *item){
+        self.data.userAddressInfo = item;
+        [self.settlementView reloadData];
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark 直接添加用户收货地址
+
+- (void)addressTip {
+    UserAddressEditViewController *controller = [[UserAddressEditViewController alloc]init];
+    controller.editType = UserAddressEditTypeAdd;
+    controller.resultBlock = ^void(UserAddressManageDataItem *item){
+        [self loadData];
+    };
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 #pragma mark 下单
 
 - (void)placeOrder {
@@ -170,27 +212,11 @@
     }
     
     //time
-    NSArray<WholesalePickDateTime *> *times = self.data.sku.times;
-    __block WholesalePickDateTime *time = nil;
-    if (times.count>0) {
-        [times enumerateObjectsUsingBlock:^(WholesalePickDateTime *obj, NSUInteger idx, BOOL *stop) {
-            if (obj.select) {
-                time = obj;
-                *stop = YES;
-            }
-        }];
-        if(!time) time = times.firstObject;
+    NSString *skuId = self.data.time.skuId;
+    if ([skuId isNotNull]) {
+        [param setObject:skuId forKey:@"skuId"];
     }
-    if (time) {
-        NSString *skuId = time.skuId;
-        if ([skuId isNotNull]) {
-            [param setObject:skuId forKey:@"skuId"];
-        }
-        NSString *timeId = time.timeNo;
-        if ([timeId isNotNull]) {
-            [param setObject:timeId forKey:@"timeNo"];
-        }
-    }
+    
     //place
     NSArray<WholesalePickDatePlace *> *places = self.data.sku.places;
     __block WholesalePickDatePlace *place = nil;
@@ -222,8 +248,22 @@
             }
         }
     }
-    
     [param setObject:@(self.data.payType) forKey:@"paytype"];
+    
+    //用户收货地址
+    if (self.data.hasUserAddress) {
+        if (!self.data.userAddressInfo) {
+            [[iToast makeText:@"请填写收货地址"] show];
+            return;
+        }
+        NSString *userAddress = self.data.userAddressInfo.ID;
+        if (![userAddress isNotNull]) {
+            [[iToast makeText:@"收货地址编号为空,请选择其他收货地址"] show];
+            return;
+        }
+        [param setObject:userAddress forKey:@"userAddress"];
+    }
+    
     [TCProgressHUD showSVP];
     [Request startWithName:@"PRODUCT_TUAN_PLACE_ORDER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
@@ -256,6 +296,7 @@
         [self settlementPaid:YES model:model];
         [[iToast makeText:@"结算成功"] show];
     } failure:^(NSError *error) {
+        [self settlementPaid:NO model:model];
         NSString *errMsg = @"结算失败";
         NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
         if ([text isNotNull]) errMsg = text;
@@ -273,7 +314,9 @@
 
 #pragma mark - 结算结果
 - (void)settlementPaid:(BOOL)paid model:(PayModel *)model{
-    WholesaleOrderDetailViewController *controller = [[WholesaleOrderDetailViewController alloc]init];
+    SettlementResultNewViewController *controller = [[SettlementResultNewViewController alloc]initWithNibName:@"SettlementResultNewViewController" bundle:nil];
+    controller.paid = paid;
+    controller.productType = ProductDetailTypeWholesale;
     controller.productId = self.data.fightGroupSysNo;
     controller.openGroupId = model.data.openGroupId;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];

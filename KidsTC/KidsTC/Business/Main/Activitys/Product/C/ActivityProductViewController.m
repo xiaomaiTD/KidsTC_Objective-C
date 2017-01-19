@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _ID = @"E7-92-F0-91-75-A7-E1-ED_50";
+    if(!_ID)_ID = @"E7-92-F0-91-75-A7-E1-ED_50";
     
     if (![_ID isNotNull]) {
         [[iToast makeText:@"活动编号为空"] show];
@@ -82,6 +82,7 @@
 
 - (void)loadDataSuccess:(ActivityProductData *)data {
     self.data = data;
+    self.navigationItem.title = data.eventBaseInfo.title;
     self.productView.data = data;
     [self loadOther];
 }

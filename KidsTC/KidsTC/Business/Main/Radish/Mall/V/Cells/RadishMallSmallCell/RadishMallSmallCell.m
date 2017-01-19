@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *radishCountL;
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *originalPriceL;
 @end
 
@@ -45,7 +46,13 @@
     
     self.nameL.text = product.productName;
     self.radishCountL.text = [NSString stringWithFormat:@"%@根",product.radishCount];
-    self.originalPriceL.text = [NSString stringWithFormat:@"%@元",product.originalPrice];
+    if (product.price>0) {
+        self.priceL.text = [NSString stringWithFormat:@"+%@元",@(product.price)];
+    }else self.priceL.text = nil;
+    
+    if (product.originalPrice>0) {
+        self.originalPriceL.text = [NSString stringWithFormat:@"%@元",@(product.originalPrice)];
+    }else self.originalPriceL.text = nil;
     
     [self.buyBtn setTitle:product.btnName forState:UIControlStateNormal];
     NSString *btnColor = product.canBuy?@"FF8888":@"cccccc";

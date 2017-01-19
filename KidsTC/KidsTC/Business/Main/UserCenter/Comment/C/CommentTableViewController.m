@@ -422,7 +422,6 @@ static NSUInteger pageSize = 10;
     
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = model.orderId;
-    controller.orderKind = CashierDeskOrderKindService;
     switch (model.orderKind) {
         case OrderKindTicket:
         {

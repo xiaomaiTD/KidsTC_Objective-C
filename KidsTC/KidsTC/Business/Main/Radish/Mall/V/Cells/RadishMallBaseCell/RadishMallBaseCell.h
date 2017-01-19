@@ -13,6 +13,7 @@ typedef enum : NSUInteger {
     RadishMallBaseCellActionTypeSegue = 1,
     RadishMallBaseCellActionTypePlant,
     RadishMallBaseCellActionTypeRule,
+    RadishMallBaseCellActionTypeGrade,
 } RadishMallBaseCellActionType;
 
 @class RadishMallBaseCell;

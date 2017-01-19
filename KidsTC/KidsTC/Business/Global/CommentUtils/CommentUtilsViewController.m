@@ -59,8 +59,8 @@ static NSUInteger maxCount = 4;
     self.utilsView.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self.utilsView show:0];
 }
 

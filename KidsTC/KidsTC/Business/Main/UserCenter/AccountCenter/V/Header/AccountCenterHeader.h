@@ -14,6 +14,7 @@ typedef enum : NSUInteger {
     AccountCenterHeaderActionTypeMessageCenter,
     AccountCenterHeaderActionTypeLogin,
     AccountCenterHeaderActionTypeAccountSetting,
+    AccountCenterHeaderActionTypeRole,
 } AccountCenterHeaderActionType;
 
 @class AccountCenterHeader;

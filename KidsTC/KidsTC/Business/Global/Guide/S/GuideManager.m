@@ -64,7 +64,11 @@ singleM(GuideManager)
                                                   btnCanShow:NO
                                                 btnImageName:nil
                                                     btnFrame:CGRectZero];
-    return [GuideModel modelWithDatas:@[item_0,item_1]];
+    GuideDataItem *item_2 = [GuideDataItem itemWithImageName:@"home_guid_03"
+                                                  btnCanShow:NO
+                                                btnImageName:nil
+                                                    btnFrame:CGRectZero];
+    return [GuideModel modelWithDatas:@[item_0,item_1,item_2]];
 }
 
 - (GuideModel *)articleGuideModel {

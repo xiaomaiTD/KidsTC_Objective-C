@@ -25,17 +25,13 @@
 
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
     
-    _picRate = _picRate>0?_picRate:0.6;
+    if (_picRate<=0) _picRate = 0.6;
     
     _isCanBuy = _status == 1;
     
     _showType = RadishProductDetailTwoColumnShowTypeDetail;
     
     _simpleName = [_simpleName isNotNull]?_simpleName:@"服务详情";
-    
-    _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
-    
-    _originalPrice = [NSString stringWithFormat:@"%@",@(_originalPrice.floatValue)];
     
     [self setupInfo];
     

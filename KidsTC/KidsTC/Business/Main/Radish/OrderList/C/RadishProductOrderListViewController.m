@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"萝卜";
+    self.navigationItem.title = @"萝卜订单";
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -205,7 +205,6 @@
     
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = item.orderNo;
-    controller.orderKind = CashierDeskOrderKindService;
     controller.productType = ProductDetailTypeRadish;
     controller.resultBlock = ^void (BOOL needRefresh){
         if (needRefresh) [self loadReplaceItem:item];
@@ -347,9 +346,7 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSString *msg = @"催单失败";
         NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
-        if ([errMsg isNotNull]) {
-            msg = errMsg;
-        }
+        if ([errMsg isNotNull]) msg = errMsg;
         [[iToast makeText:msg] show];
     }];
 }

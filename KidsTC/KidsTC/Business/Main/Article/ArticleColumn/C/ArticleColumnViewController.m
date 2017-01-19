@@ -52,6 +52,12 @@
     [super viewWillAppear:animated];
     [self articleHomeTableView:_tableView actionType:ArticleHomeTableViewActionTypeDidScroll value:@(_tableView.contentOffset.y)];
     [NotificationCenter postNotificationName:kZPTagViewWillAppearNotification object:nil];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor lightGrayColor] size:CGSizeMake(SCREEN_WIDTH, LINE_H)]];
 }
 
 - (void)setupTableView {

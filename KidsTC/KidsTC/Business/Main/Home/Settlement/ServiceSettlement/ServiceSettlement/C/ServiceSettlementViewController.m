@@ -683,7 +683,6 @@
     controller.paid = paid;
     controller.orderId = orderId;
     controller.productType = self.type;
-    controller.type = SettlementResultTypeService;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:NO];

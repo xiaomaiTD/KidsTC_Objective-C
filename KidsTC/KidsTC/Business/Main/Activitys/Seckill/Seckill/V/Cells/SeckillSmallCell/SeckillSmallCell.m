@@ -45,7 +45,11 @@
     self.nameL.text = item.productName;
     self.tipL.text = item.promotionText;
     self.priceL.text = [NSString stringWithFormat:@"¥ %@",item.price];
-    self.originalPriceL.text = [NSString stringWithFormat:@"¥ %@",item.orignalPrice];
+    if ([item.orignalPrice isNotNull]) {
+        self.originalPriceL.text = [NSString stringWithFormat:@"¥ %@",item.orignalPrice];
+    }else{
+        self.originalPriceL.text = nil;
+    }
     self.attentionCountL.text = [NSString stringWithFormat:@"已有%@人关注",item.remindCount];
     self.discountL.text = item.productPlatformTagTypeDesc;
     self.discountBGView.hidden = ![item.productPlatformTagTypeDesc isNotNull];

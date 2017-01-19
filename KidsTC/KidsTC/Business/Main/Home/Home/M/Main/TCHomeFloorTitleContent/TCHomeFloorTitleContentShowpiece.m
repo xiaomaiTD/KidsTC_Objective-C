@@ -109,7 +109,7 @@
     
     if (_titleContent.remainTime<=0) return nil;
     
-    UIFont *font = [UIFont systemFontOfSize:12];
+    UIFont *font = [UIFont systemFontOfSize:13];
     
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:_titleContent.remainTime];
     NSDate *now = [NSDate date];

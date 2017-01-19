@@ -61,6 +61,7 @@ singleM(ScreenshotManager)
     CommonShareObject *shareObj = [CommonShareObject shareObjectWithTitle:@"童成" description:@"童成与您分享" thumbImage:image urlString:urlString];
     shareObj.followingContent = @"【童成网】";
     shareObj.sourceType = CommonShareSourceTypePhoto;
+    shareObj.identifier = @"0";
     return shareObj;
 }
 

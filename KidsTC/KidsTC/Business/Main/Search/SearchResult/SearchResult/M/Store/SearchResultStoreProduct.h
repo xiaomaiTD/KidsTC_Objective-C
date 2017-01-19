@@ -27,6 +27,7 @@
 @property (nonatomic, assign) ProductDetailType productSearchType;
 @property (nonatomic, strong) NSString *imgurl;
 @property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *promotionText;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

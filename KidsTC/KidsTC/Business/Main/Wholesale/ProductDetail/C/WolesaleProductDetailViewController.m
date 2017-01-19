@@ -11,6 +11,7 @@
 #import "GHeader.h"
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
+#import "GuideManager.h"
 
 #import "WolesaleProductDetailModel.h"
 #import "WolesaleProductDetailView.h"
@@ -91,6 +92,7 @@
     }else{
         self.pageId = 10406;
     }
+    [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
 }
 
 - (void)loadDataFailure:(NSError *)error{
@@ -317,7 +319,7 @@
             controller.sku = self.data.sku;
             controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             controller.modalPresentationStyle = UIModalPresentationCustom;
-            [self presentViewController:controller animated:YES completion:nil];
+            [self presentViewController:controller animated:NO completion:nil];
         }else{
             [self addShoppingCart];
         }
@@ -363,10 +365,6 @@
         if ([skuId isNotNull]) {
             [param setObject:skuId forKey:@"skuId"];
         }
-        NSString *timeId = time.timeNo;
-        if ([timeId isNotNull]) {
-            [param setObject:timeId forKey:@"timeId"];
-        }
     }
     //place
     NSArray<WholesalePickDatePlace *> *places = self.data.sku.places;
@@ -411,10 +409,13 @@
 }
 
 - (void)addShoppingCartSuccess {
-    if (!self.presentedViewController) return;
-    [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+    if (self.presentedViewController) {
+        [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
+            [self gotoSettlement];
+        }];
+    }else{
         [self gotoSettlement];
-    }];
+    }
 }
 
 - (void)addShoppingCartFailure:(NSError *)error {

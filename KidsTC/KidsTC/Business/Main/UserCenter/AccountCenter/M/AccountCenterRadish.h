@@ -10,4 +10,5 @@
 
 @interface AccountCenterRadish : NSObject
 @property (nonatomic, strong) NSString *linkUrl;
+@property (nonatomic, assign) BOOL isApp;
 @end

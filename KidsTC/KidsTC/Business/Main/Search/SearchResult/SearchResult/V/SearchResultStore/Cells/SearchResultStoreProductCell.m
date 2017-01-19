@@ -35,6 +35,7 @@
     
     [self.icon sd_setImageWithURL:[NSURL URLWithString:_storeProduct.imgurl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.nameL.text = _storeProduct.name;
+    self.tipL.text = _storeProduct.promotionText;
     self.priceL.text = _storeProduct.price;
 }
 

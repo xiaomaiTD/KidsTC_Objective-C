@@ -11,6 +11,7 @@
 #import "Colours.h"
 #import "NSString+Category.h"
 #import "NSString+ZP.h"
+#import "UIButton+Category.h"
 
 #import "ProductDetailTicketSelectSeatModel.h"
 
@@ -19,6 +20,7 @@
 #import "ProductDetailTicketSelectSeatCollectionViewHeader.h"
 #import "ProductDetailTicketSelectSeatCollectionViewFooter.h"
 #import "ProductDetailTicketSelectSeatCollectionViewNumFooter.h"
+#import "ProductDetailTicketSelectSeatNumView.h"
 
 #import "SettlementResultNewViewController.h"
 #import "ServiceSettlementViewController.h"
@@ -31,19 +33,23 @@ static NSString *const NumFooterId  = @"NumFooter";
 
 static CGFloat kSelectSeatMargin = 15;
 
-@interface ProductDetailTicketSelectSeatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate>
+@interface ProductDetailTicketSelectSeatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,ProductDetailTicketSelectSeatCollectionViewNumFooterDelegate,ProductDetailTicketSelectSeatNumViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *selectDoneBtn;
 @property (weak, nonatomic) IBOutlet UILabel *priceTipL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
 @property (nonatomic, assign) NSInteger buyCount;
 @property (weak, nonatomic) IBOutlet UIView *priceBGView;
+@property (weak, nonatomic) IBOutlet ProductDetailTicketSelectSeatNumView *numView;
+
+
 @property (nonatomic, strong) ProductDetailTicketSelectSeatData *data;
 
 @property (nonatomic, strong) ProductDetailTicketSelectSeatTime *selectSeatTime;
 @property (nonatomic, strong) ProductDetailTicketSelectSeatSeat *selectSeatSeat;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomMargin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarH;
 @end
 
 @implementation ProductDetailTicketSelectSeatViewController
@@ -61,9 +67,13 @@ static CGFloat kSelectSeatMargin = 15;
     self.navigationItem.title = @"选择场次";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.HLineH.constant = LINE_H;
+    
     self.naviTheme = NaviThemeWihte;
     
     self.buyCount = 0;
+    
+    self.numView.delegate = self;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewTimeCell" bundle:nil] forCellWithReuseIdentifier:TimeCellID];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductDetailTicketSelectSeatCollectionViewSeatCell" bundle:nil] forCellWithReuseIdentifier:SeatCellID];
@@ -74,6 +84,8 @@ static CGFloat kSelectSeatMargin = 15;
     self.priceTipL.textColor = [UIColor colorFromHexString:@"323333"];
     self.priceL.textColor = COLOR_PINK;
     self.selectDoneBtn.backgroundColor = COLOR_PINK;
+    
+    self.selectSeatSeat = nil;
     
     [self loadData];
 }
@@ -200,7 +212,7 @@ static CGFloat kSelectSeatMargin = 15;
     if (section == 0) {
         return CGSizeMake(SCREEN_WIDTH, 25);
     }else{
-        return CGSizeMake(SCREEN_WIDTH, 84);
+        return CGSizeMake(SCREEN_WIDTH, 25);
     }
 }
 
@@ -253,9 +265,13 @@ static CGFloat kSelectSeatMargin = 15;
             ProductDetailTicketSelectSeatCollectionViewFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:FooterId forIndexPath:indexPath];
             return  footerView;
         }else{
+            /*
             ProductDetailTicketSelectSeatCollectionViewNumFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:NumFooterId forIndexPath:indexPath];
             footerView.delegate = self;
             footerView.seat = self.selectSeatSeat;
+            return  footerView;
+             */
+            ProductDetailTicketSelectSeatCollectionViewFooter *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:FooterId forIndexPath:indexPath];
             return  footerView;
         }
     }
@@ -309,12 +325,17 @@ static CGFloat kSelectSeatMargin = 15;
 
 - (void)setSelectSeatSeat:(ProductDetailTicketSelectSeatSeat *)selectSeatSeat {
     _selectSeatSeat = selectSeatSeat;
+    self.numView.seat = selectSeatSeat;
     self.buyCount = selectSeatSeat.count;
 }
 
 - (void)setBuyCount:(NSInteger)buyCount {
     _buyCount = buyCount;
-    self.priceBGView.hidden = buyCount<1;
+    
+    self.selectDoneBtn.enabled = buyCount>0;
+    self.selectDoneBtn.backgroundColor = buyCount>0?COLOR_PINK:[UIColor lightGrayColor];
+    self.priceL.hidden = buyCount<1;
+    self.priceTipL.hidden = buyCount<1;
     [self resetPrice];
 }
 
@@ -324,16 +345,31 @@ static CGFloat kSelectSeatMargin = 15;
     self.priceL.text = [NSString stringWithFormat:@"¥%0.2f",totalPrice];
 }
 
+#pragma mark - ProductDetailTicketSelectSeatNumViewDelegate
+
+- (void)productDetailTicketSelectSeatNumView:(ProductDetailTicketSelectSeatNumView *)view actionType:(ProductDetailTicketSeatNumActionType)type value:(id)value {
+    switch (type) {
+        case ProductDetailTicketSeatNumActionTypeBuyCountDidChange:
+        {
+            self.buyCount = [value integerValue];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - noti
 
 - (void)keyboardWillShow:(NSNotification *)noti {
     [super keyboardWillShow:noti];
-    self.bottomMargin.constant = self.keyboardHeight;
+    self.toolBarH.constant = self.keyboardHeight + 49;
     [self.view layoutIfNeeded];
 }
 
 - (void)keyboardWillDisappear:(NSNotification *)noti {
-    self.bottomMargin.constant = 49;
+    self.toolBarH.constant = 98;
     [self.view layoutIfNeeded];
 }
 

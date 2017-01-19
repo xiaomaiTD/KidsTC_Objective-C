@@ -16,10 +16,12 @@
         return NO;
     }
     self.maxRefundCount = [[data objectForKey:@"refundMaxNum"] integerValue];
+    self.minRefundCount = [[data objectForKey:@"refundMinNum"] integerValue];
     self.unitRefundAmount = [[data objectForKey:@"singleRefundAmt"] floatValue];
     self.totalRefundAmount = [[data objectForKey:@"totalRefundAmt"] floatValue];
     self.unitPointNumber = [[data objectForKey:@"singleRefundScore"] integerValue];
     self.totalPointNumber = [[data objectForKey:@"totalRefundScore"] integerValue];
+    self.refundRadishNum = [[data objectForKey:@"refundRadishNum"] integerValue];
     NSArray *reasons = [data objectForKey:@"reasons"];
     if ([reasons isKindOfClass:[NSArray class]]) {
         NSMutableArray *tempArray = [[NSMutableArray alloc] init];

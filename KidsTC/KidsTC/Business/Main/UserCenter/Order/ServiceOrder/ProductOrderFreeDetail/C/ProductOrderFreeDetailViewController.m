@@ -218,7 +218,6 @@
     CashierDeskViewController *controller = [[CashierDeskViewController alloc]initWithNibName:@"CashierDeskViewController" bundle:nil];
     controller.orderId = data.orderNo;
     controller.productType = ProductDetailTypeFree;
-    controller.orderKind = CashierDeskOrderKindService;
     controller.resultBlock = ^void (BOOL needRefresh){
         if (needRefresh) [self loadData];
     };

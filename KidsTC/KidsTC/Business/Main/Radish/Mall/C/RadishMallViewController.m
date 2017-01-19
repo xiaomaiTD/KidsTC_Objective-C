@@ -62,6 +62,11 @@
             [self rule:value];
         }
             break;
+        case RadishMallViewActionTypeGrade:
+        {
+            [self grade:value];
+        }
+            break;
         case RadishMallViewActionTypeLoadData:
         {
             [self loadData:value];
@@ -107,6 +112,16 @@
 
 - (void)rule:(id)value {
     NSString *url = self.data.ruleUrl;
+    if (![url isNotNull]) {
+        return;
+    }
+    WebViewController *controller = [[WebViewController alloc] init];
+    controller.urlString = url;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)grade:(id)value {
+    NSString *url = self.data.userData.radishGradeUrl;
     if (![url isNotNull]) {
         return;
     }

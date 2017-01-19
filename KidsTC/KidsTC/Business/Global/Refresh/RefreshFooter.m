@@ -96,11 +96,6 @@
 
 #pragma mark - 实现父类的方法
 
-- (CGFloat)appearencePercentTriggerAutoRefresh
-{
-    return self.triggerAutomaticallyRefreshPercent;
-}
-
 - (void)prepare
 {
     [super prepare];
@@ -135,50 +130,13 @@
     [self setTitle:@"正在加载更多..." forState:MJRefreshStateRefreshing];
     
     // 默认底部控件100%出现时才会自动刷新
-    self.triggerAutomaticallyRefreshPercent = 1.0;
+    self.triggerAutomaticallyRefreshPercent = - 4.0;
     
-    // 设置为默认状态
-    self.automaticallyRefresh = NO;
+    //自动加载
+    self.automaticallyRefresh = YES;
+    
+    self.stateLabel.hidden = YES;
 }
-
-- (void)scrollViewContentOffsetDidChange:(NSDictionary *)change
-{
-    [super scrollViewContentOffsetDidChange:change];
-    
-    if (self.state != MJRefreshStateIdle || !self.automaticallyRefresh || self.mj_y == 0) return;
-    
-    if (_scrollView.mj_insetT + _scrollView.mj_contentH > _scrollView.mj_h) { // 内容超过一个屏幕
-        // 这里的_scrollView.mj_contentH替换掉self.mj_y更为合理
-        if (_scrollView.mj_offsetY >= _scrollView.mj_contentH - _scrollView.mj_h + self.mj_h * self.triggerAutomaticallyRefreshPercent + _scrollView.mj_insetB - self.mj_h) {
-            // 防止手松开时连续调用
-            CGPoint old = [change[@"old"] CGPointValue];
-            CGPoint new = [change[@"new"] CGPointValue];
-            if (new.y <= old.y) return;
-            
-            // 当底部刷新控件完全出现时，才刷新
-            [self beginRefreshing];
-        }
-    }
-}
-
-//- (void)scrollViewPanStateDidChange:(NSDictionary *)change
-//{
-//    [super scrollViewPanStateDidChange:change];
-//    
-//    if (self.state != MJRefreshStateIdle) return;
-//    
-//    if (_scrollView.panGestureRecognizer.state == UIGestureRecognizerStateEnded) {// 手松开
-//        if (_scrollView.mj_insetT + _scrollView.mj_contentH <= _scrollView.mj_h) {  // 不够一个屏幕
-//            if (_scrollView.mj_offsetY >= - _scrollView.mj_insetT) { // 向上拽
-//                [self beginRefreshing];
-//            }
-//        } else { // 超出一个屏幕
-//            if (_scrollView.mj_offsetY >= _scrollView.mj_contentH + _scrollView.mj_insetB - _scrollView.mj_h) {
-//                [self beginRefreshing];
-//            }
-//        }
-//    }
-//}
 
 - (void)setPullingPercent:(CGFloat)pullingPercent
 {
@@ -261,6 +219,16 @@
     } else if (state == MJRefreshStateNoMoreData) {
         self.gifView.hidden = YES;
     }
+}
+
+- (void)beginRefreshing {
+    [super beginRefreshing];
+    self.stateLabel.hidden = NO;
+}
+
+- (void)endRefreshing {
+    [super endRefreshing];
+    self.stateLabel.hidden = NO;
 }
 
 @end

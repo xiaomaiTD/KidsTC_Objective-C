@@ -142,7 +142,9 @@
             break;
         case SeckillViewActionTypeRemind:
         {
-            [self remind:value];
+            [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+                [self remind:value];
+            }];
         }
             break;
         case SeckillViewActionTypeSeckillTime:
@@ -202,15 +204,6 @@
     }];
 }
 
-- (void)loadSeckillDataSuccess:(SeckillDataData *)data {
-    self.dataData = data;
-    self.seckillView.dataData = data;
-}
-
-- (void)loadSeckillDataFailure:(NSError *)error {
-    
-}
-
 #pragma mark seckillTime
 
 - (void)seckillTime:(id)value {
@@ -233,6 +226,15 @@
     
     NSDictionary *params = @{@"id":poolTermNo};
     [BuryPointManager trackEvent:@"event_click_seckill_change_time" actionId:22001 params:params];
+}
+
+- (void)loadSeckillDataSuccess:(SeckillDataData *)data {
+    self.dataData = data;
+    self.seckillView.dataData = data;
+}
+
+- (void)loadSeckillDataFailure:(NSError *)error {
+    
 }
 
 #pragma mark goHome

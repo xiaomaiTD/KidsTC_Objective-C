@@ -82,7 +82,7 @@
 
 - (NSString *)identifier {
     if (!_identifier) {
-        _identifier = @"noneId";
+        _identifier = @"9999";
     }
     return _identifier;
 }

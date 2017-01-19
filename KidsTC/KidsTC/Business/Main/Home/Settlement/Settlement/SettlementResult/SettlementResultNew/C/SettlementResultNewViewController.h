@@ -13,7 +13,6 @@
 @property (nonatomic, assign) BOOL paid;
 @property (nonatomic, strong) NSString *orderId;
 @property (nonatomic, assign) ProductDetailType productType;
-@property (nonatomic, assign) SettlementResultType type;
 @property (nonatomic, strong) ProductDetailData *data;
 
 @property (nonatomic, strong) NSString *productId;

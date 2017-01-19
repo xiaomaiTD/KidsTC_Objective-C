@@ -9,6 +9,8 @@
 #import "WholesaleSettlementView.h"
 
 #import "WholesaleSettlementBaseCell.h"
+#import "WholesaleSettlementAddressTipCell.h"
+#import "WholesaleSettlementAddressCell.h"
 #import "WholesaleSettlementProductInfoCell.h"
 #import "WholesaleSettlementStoreInfoCell.h"
 #import "WholesaleSettlementPayTypeCell.h"
@@ -20,6 +22,8 @@
 #import "WholesaleSettlementToolBar.h"
 
 static NSString *const BaseCellID = @"WholesaleSettlementBaseCell";
+static NSString *const AddressTipCellID = @"WholesaleSettlementAddressTipCell";
+static NSString *const AddressCellID = @"WholesaleSettlementAddressCell";
 static NSString *const ProductInfoCellID = @"WholesaleSettlementProductInfoCell";
 static NSString *const StoreInfoCellID = @"WholesaleSettlementStoreInfoCell";
 static NSString *const PayTypeCellID = @"WholesaleSettlementPayTypeCell";
@@ -74,6 +78,8 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 
 - (void)registerCells {
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementBaseCell" bundle:nil] forCellReuseIdentifier:BaseCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementAddressTipCell" bundle:nil] forCellReuseIdentifier:AddressTipCellID];
+    [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementAddressCell" bundle:nil] forCellReuseIdentifier:AddressCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementProductInfoCell" bundle:nil] forCellReuseIdentifier:ProductInfoCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementStoreInfoCell" bundle:nil] forCellReuseIdentifier:StoreInfoCellID];
     [self.tableView registerNib:[UINib nibWithNibName:@"WholesaleSettlementPayTypeCell" bundle:nil] forCellReuseIdentifier:PayTypeCellID];
@@ -91,18 +97,30 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
     
     NSMutableArray *sections  = [NSMutableArray array];
     
+    if (self.data.hasUserAddress) {
+        NSMutableArray *section00 = [NSMutableArray array];
+        if (self.data.userAddressInfo) {
+            WholesaleSettlementAddressCell *addressCell = [self cellWithID:AddressCellID];
+            if (addressCell) [section00 addObject:addressCell];
+        }else{
+            WholesaleSettlementAddressTipCell *addressTipCell = [self cellWithID:AddressTipCellID];
+            if (addressTipCell) [section00 addObject:addressTipCell];
+        }
+        if(section00.count>0) [sections addObject:section00];
+    }
+    
     NSMutableArray *section01 = [NSMutableArray array];
     WholesaleSettlementProductInfoCell *productInfoCell = [self cellWithID:ProductInfoCellID];
     if (productInfoCell) [section01 addObject:productInfoCell];
     if(section01.count>0) [sections addObject:section01];
     
     NSMutableArray *dateSection = [NSMutableArray array];
-    WholesalePickDateSKU *sku = self.data.sku;
-    if (sku.times.count>0) {
+    WholesaleSettlementTime *time = self.data.time;
+    if (time && time.isShow) {
         WholesaleSettlementDateCell *dateCell = [self cellWithID:DateCellID];
         if (dateCell) [dateSection addObject:dateCell];
     }
-    if (sku.places.count>0) {
+    if (self.data.sku.places.count>0) {
         WholesaleSettlementStoreInfoCell *storeInfoCell = [self cellWithID:StoreInfoCellID];
         if (storeInfoCell) [dateSection addObject:storeInfoCell];
     }

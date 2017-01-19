@@ -16,6 +16,7 @@
 #import "NSString+Category.h"
 #import "NavigationController.h"
 #import "UIImage+Category.h"
+#import "TipButton.h"
 
 #import "TCHomeCollectionViewLayout.h"
 #import "TCHomeMainCollectionCell.h"
@@ -47,7 +48,7 @@ static CGFloat const kActivityImageViewAnimateDuration = 0.5;
 static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell";
 
 @interface TCHomeViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,MultiItemsToolBarDelegate,TCHomeMainCollectionCellDelegate,AUIFloorNavigationViewDelegate,AUIFloorNavigationViewDataSource>
-@property (nonatomic, strong) HomeRoleButton *roleBtn;
+@property (nonatomic, strong) TipButton *tipButton;
 @property (nonatomic, weak) UITextField *tf;
 
 @property (nonatomic, strong) MultiItemsToolBar *toolBar;
@@ -89,6 +90,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     self.tf.text = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
     [self updateIv_activity];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self loadUnReadMessageCount];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,6 +114,15 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     }
     self.trackParams = @{@"stageType":[User shareUser].role.roleIdentifierString,
                          @"type":type};
+}
+
+- (void)loadUnReadMessageCount {
+    [Request startWithName:@"PUSH_IS_UN_READ_MESSAGE" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        id value = dic[@"data"][@"count"];
+        if ([value respondsToSelector:@selector(integerValue)]) {
+            self.tipButton.badgeValue = [value integerValue];
+        }
+    } failure:nil];
 }
 
 #pragma mark - setupUI
@@ -198,19 +209,12 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
         [btn setImage:[UIImage imageNamed:@"home_scan_v2_black"] forState:UIControlStateNormal];
     }];
     
-    //self.roleBtn = [HomeRoleButton btnWithImageName:@"arrow_d_mini_v2_black" highImageName:@"arrow_d_mini_v2_black" target:self action:@selector(changeRole)];
-    //[self.roleBtn setTitleColor:[UIColor colorFromHexString:@"5b5b5b"] forState:UIControlStateNormal];
-    //[self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImagePostion:UIBarButtonPositionRight
-                                                                            target:self
-                                                                            action:@selector(gotoMessageCenter)
-                                                                      andGetButton:^(UIButton *btn)
-                                              {
-                                                  btn.bounds = CGRectMake(0, 0, 30*(88/135.0), 30);
-                                                  btn.showsTouchWhenHighlighted = NO;
-                                                  btn.imageView.contentMode = UIViewContentModeScaleAspectFit;
-                                                  [btn setImage:[UIImage imageNamed:@"home_message"] forState:UIControlStateNormal];
-                                              }];;
+    self.tipButton = [[TipButton alloc]initWithFrame:CGRectMake(0, 0, 30*(88/135.0), 30)];
+    [self.tipButton setImageEdgeInsets:UIEdgeInsetsMake(0, 6, 0, -6)];
+    [self.tipButton setImage:[UIImage imageNamed:@"home_message"] forState:UIControlStateNormal];
+    [self.tipButton addTarget:self action:@selector(gotoMessageCenter) forControlEvents:UIControlEventTouchUpInside];
+    self.tipButton.badgeType = TipButtonBadgeTypeIcon;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.tipButton];
 }
 
 - (void)showScan{
@@ -623,7 +627,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 }
 
 - (void)roleHasChanged{
-    [self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
+    //[self.roleBtn setTitle:[User shareUser].role.statusName forState:UIControlStateNormal];
     self.categorys = nil;
     [self.collectionView reloadData];
 }

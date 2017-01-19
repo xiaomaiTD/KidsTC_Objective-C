@@ -52,11 +52,13 @@
     
     self.refundView.delegate = self;
     [self.refundView setMinCount:1 andMaxCount:1];
+    [self.refundView setRefundRadishNum:0];
     
     self.viewModel = [[OrderRefundViewModel alloc] initWithView:self.refundView];
     [self.viewModel.refundModel setOrderId:self.orderId];
     [self.viewModel startUpdateDataWithSucceed:^(NSDictionary *data) {
-        [self.refundView setMinCount:1 andMaxCount:self.viewModel.refundModel.maxRefundCount];
+        [self.refundView setMinCount:self.viewModel.refundModel.minRefundCount andMaxCount:self.viewModel.refundModel.maxRefundCount];
+        [self.refundView setRefundRadishNum:self.viewModel.refundModel.refundRadishNum];
     } failure:^(NSError *error) {
         NSString *msg = nil;
         if (error.userInfo) {

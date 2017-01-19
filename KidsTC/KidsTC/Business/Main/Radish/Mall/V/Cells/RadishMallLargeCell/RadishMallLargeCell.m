@@ -53,8 +53,13 @@
     self.joinL.text = [NSString stringWithFormat:@"已有%@人参与",product.buyCount];
     self.timeL.text = product.timeDesc;
     self.radishCountL.text = [NSString stringWithFormat:@"%@根",product.radishCount];
-    self.priceL.text = [NSString stringWithFormat:@"+%@元",product.price];
-    self.originalPriceL.text = [NSString stringWithFormat:@"%@元",product.originalPrice];
+    if (product.price>0) {
+        self.priceL.text = [NSString stringWithFormat:@"+%@元",@(product.price)];
+    }else self.priceL.text = nil;
+    
+    if (product.originalPrice>0) {
+        self.originalPriceL.text = [NSString stringWithFormat:@"%@元",@(product.originalPrice)];
+    }else self.originalPriceL.text = nil;
     
     [self.buyBtn setTitle:product.btnName forState:UIControlStateNormal];
     NSString *btnColor = product.canBuy?@"FF8888":@"cccccc";

@@ -18,6 +18,7 @@
 #import "KTCFavouriteManager.h"
 #import "OnlineCustomerService.h"
 #import "BuryPointManager.h"
+#import "GuideManager.h"
 
 #import "RadishProductDetailModel.h"
 #import "RadishProductDetailView.h"
@@ -108,6 +109,7 @@ ProductDetailAddNewConsultViewControllerDelegate
     self.navigationItem.title = data.simpleName;
     [self loadRecommend];
     [self loadConsult];
+    [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
 }
 
 - (void)loadDataFailure:(NSError *)error {
@@ -357,7 +359,10 @@ ProductDetailAddNewConsultViewControllerDelegate
         [self goSettlement];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
+        NSString *errMsg = @"加入购物车失败，请稍后再试！";
+        NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+        if ([text isNotNull]) errMsg = text;
+        [[iToast makeText:errMsg] show];
     }];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -520,7 +525,10 @@ ProductDetailAddNewConsultViewControllerDelegate
         [self goSettlement];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];
-        [[iToast makeText:@"加入购物车失败，请稍后再试！"] show];
+        NSString *errMsg = @"加入购物车失败，请稍后再试！";
+        NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+        if ([text isNotNull]) errMsg = text;
+        [[iToast makeText:errMsg] show];
     }];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

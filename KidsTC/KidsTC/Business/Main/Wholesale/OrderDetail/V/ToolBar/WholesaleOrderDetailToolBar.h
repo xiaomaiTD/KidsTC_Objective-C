@@ -16,7 +16,7 @@ typedef enum : NSUInteger {
     WholesaleOrderDetailToolBarActionTypeMySale,//用户自己的拼团信息
     WholesaleOrderDetailToolBarActionTypeProductHome,//更多拼团
     WholesaleOrderDetailToolBarActionTypeShare,//分享
-    WholesaleOrderDetailToolBarActionTypeHome,//首页
+    WholesaleOrderDetailToolBarActionTypeConsult,//在线咨询
 } WholesaleOrderDetailToolBarActionType;
 
 @class WholesaleOrderDetailToolBar;

@@ -114,12 +114,15 @@
     SearchResultView *resultView = [[SearchResultView alloc] initWithFrame:CGRectMake(0, 64 + kSearchResultToolBarH, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kSearchResultToolBarH)];
     resultView.delegate = self;
     [self.view addSubview:resultView];
+    resultView.searchType = self.searchType;
     self.resultView = resultView;
     
     [self setupToolBar];
     
     [NotificationCenter addObserver:self selector:@selector(userLocationDidChange) name:kUserLocationHasChangedNotification object:nil];
     [self userLocationDidChange];
+    
+    //self.searchType = self.searchType;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

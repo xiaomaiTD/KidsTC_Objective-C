@@ -93,7 +93,10 @@
 }
 
 - (void)loadDataFailure:(NSError *)error {
-    [[iToast makeText:@"商品信息查询失败"] show];
+    NSString *errMsg = @"结算信息查询失败";
+    NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+    if ([text isNotNull]) errMsg = text;
+    [[iToast makeText:errMsg] show];
     [self back];
 }
 
@@ -247,8 +250,8 @@
     } failure:^(NSError *error) {
         [self settlementPaid:NO orderId:orderId];
         NSString *errMsg = @"结算失败";
-        NSString *text = error.userInfo[@"kErrMsgKey"];
-        if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
+        NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"kErrMsgKey"]];
+        if ([text isNotNull]) errMsg = text;
         [[iToast makeText:errMsg] show];
     }];
 }
@@ -256,8 +259,8 @@
 /** 下单失败 -> 提示 */
 - (void)placeOrderFailure:(NSError *)error {
     NSString *errMsg = @"下单失败";
-    NSString *text = [[error userInfo] objectForKey:@"data"];
-    if ([text isKindOfClass:[NSString class]] && [text length] > 0) errMsg = text;
+    NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+    if ([text isNotNull]) errMsg = text;
     [[iToast makeText:errMsg] show];
 }
 
@@ -267,7 +270,6 @@
     controller.paid = paid;
     controller.orderId = orderId;
     controller.productType = ProductDetailTypeRadish;
-    controller.type = SettlementResultTypeService;
     NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
     [self presentViewController:navi animated:YES completion:^{
         [self.navigationController popToRootViewControllerAnimated:NO];

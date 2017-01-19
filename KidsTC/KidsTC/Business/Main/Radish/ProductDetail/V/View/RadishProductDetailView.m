@@ -170,9 +170,11 @@ static NSString *const VideoTipCellID = @"RadishProductDetailVideoTipCell";
     switch (self.data.placeType) {
         case PlaceTypeStore:
         {
-            RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
-            if (placeCell) [section01 addObject:placeCell];
             if (self.data.store.count>0) {
+                RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
+                if (placeCell) [section01 addObject:placeCell];
+            }
+            if (self.data.store.count>1) {
                 RadishProductDetailPlaceCountCell *placeCountCell = [self cellWithID:PlaceCountCellID];
                 if (placeCountCell) [section01 addObject:placeCountCell];
             }
@@ -180,9 +182,11 @@ static NSString *const VideoTipCellID = @"RadishProductDetailVideoTipCell";
             break;
         case PlaceTypePlace:
         {
-            RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
-            if (placeCell) [section01 addObject:placeCell];
             if (self.data.place.count>0) {
+                RadishProductDetailPlaceCell *placeCell = [self cellWithID:PlaceCellID];
+                if (placeCell) [section01 addObject:placeCell];
+            }
+            if (self.data.place.count>1) {
                 RadishProductDetailPlaceCountCell *placeCountCell = [self cellWithID:PlaceCountCellID];
                 if (placeCountCell) [section01 addObject:placeCountCell];
             }

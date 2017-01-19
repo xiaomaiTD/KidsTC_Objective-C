@@ -156,11 +156,6 @@ typedef enum : NSUInteger {
     OrderRemindTypeCancle = 2,//取消
 } OrderRemindType;
 
-typedef enum : NSUInteger {
-    SettlementResultTypeService=1,//非闪购
-    SettlementResultTypeFlash,//闪购
-} SettlementResultType;//支付结果页类型
-
 
 
 
