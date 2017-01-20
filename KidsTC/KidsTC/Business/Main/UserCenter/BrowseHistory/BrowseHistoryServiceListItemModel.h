@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SegueModel.h"
 
 @interface BrowseHistoryServiceListItemModel : NSObject
 
@@ -24,6 +25,10 @@
 
 @property (nonatomic, assign) ProductDetailType productRedirect;
 
+@property (nonatomic, strong) SegueModel *segueModel;
+
 - (instancetype)initWithRawData:(NSDictionary *)data;
+
+
 
 @end

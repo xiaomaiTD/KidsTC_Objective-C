@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-K5-fts" customClass="RadishOrderDetailBtnsView">
-                    <rect key="frame" x="0.0" y="28" width="375" height="59"/>
+                    <rect key="frame" x="0.0" y="41" width="375" height="46"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-TX-c0O">
-                            <rect key="frame" x="192.5" y="10.5" width="79" height="39"/>
+                            <rect key="frame" x="192.5" y="8.5" width="79" height="30"/>
                             <state key="normal" title="联系商家">
                                 <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -29,7 +29,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T4E-yn-ntH">
-                            <rect key="frame" x="104" y="10.5" width="78.5" height="39"/>
+                            <rect key="frame" x="104" y="8.5" width="78.5" height="30"/>
                             <state key="normal" title="我要投诉">
                                 <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -38,7 +38,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-kP-ASM">
-                            <rect key="frame" x="15" y="10" width="79" height="39"/>
+                            <rect key="frame" x="15" y="8" width="79" height="30"/>
                             <state key="normal" title="再次购买">
                                 <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -47,7 +47,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-5r-UMN">
-                            <rect key="frame" x="281.5" y="10.5" width="78.5" height="39"/>
+                            <rect key="frame" x="281.5" y="8.5" width="78.5" height="30"/>
                             <state key="normal" title="评价">
                                 <color key="titleColor" red="0.95294117649999999" green="0.40784313729999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -67,7 +67,7 @@
                     <constraints>
                         <constraint firstItem="Gjd-5r-UMN" firstAttribute="height" secondItem="y5z-kP-ASM" secondAttribute="height" id="5Z3-Fj-2Ql"/>
                         <constraint firstItem="Gjd-5r-UMN" firstAttribute="leading" secondItem="GLC-TX-c0O" secondAttribute="trailing" constant="10" id="65p-t7-YRz"/>
-                        <constraint firstItem="y5z-kP-ASM" firstAttribute="top" secondItem="rjW-K5-fts" secondAttribute="top" constant="10" id="AkP-jF-21c"/>
+                        <constraint firstItem="y5z-kP-ASM" firstAttribute="top" secondItem="rjW-K5-fts" secondAttribute="top" constant="8" id="AkP-jF-21c"/>
                         <constraint firstItem="Gjd-5r-UMN" firstAttribute="width" secondItem="y5z-kP-ASM" secondAttribute="width" id="HCg-aE-mgr"/>
                         <constraint firstItem="GLC-TX-c0O" firstAttribute="width" secondItem="y5z-kP-ASM" secondAttribute="width" id="HlA-bN-mXd"/>
                         <constraint firstItem="5tK-pr-YxX" firstAttribute="top" secondItem="rjW-K5-fts" secondAttribute="top" id="Ho0-Gb-1SY"/>
@@ -81,9 +81,9 @@
                         <constraint firstAttribute="trailing" secondItem="5tK-pr-YxX" secondAttribute="trailing" id="ewi-Bx-8KJ"/>
                         <constraint firstItem="T4E-yn-ntH" firstAttribute="centerY" secondItem="rjW-K5-fts" secondAttribute="centerY" id="fFE-iY-2pz"/>
                         <constraint firstItem="GLC-TX-c0O" firstAttribute="leading" secondItem="T4E-yn-ntH" secondAttribute="trailing" constant="10" id="mlI-e6-HVa"/>
-                        <constraint firstAttribute="height" constant="59" id="rJb-GH-ucr"/>
+                        <constraint firstAttribute="height" constant="46" id="rJb-GH-ucr"/>
                         <constraint firstItem="T4E-yn-ntH" firstAttribute="width" secondItem="y5z-kP-ASM" secondAttribute="width" id="sqc-De-Vjc"/>
-                        <constraint firstAttribute="bottom" secondItem="y5z-kP-ASM" secondAttribute="bottom" constant="10" id="uYL-uP-Gbc"/>
+                        <constraint firstAttribute="bottom" secondItem="y5z-kP-ASM" secondAttribute="bottom" constant="8" id="uYL-uP-Gbc"/>
                         <constraint firstAttribute="trailing" secondItem="Gjd-5r-UMN" secondAttribute="trailing" constant="15" id="wMN-Q6-GNK"/>
                     </constraints>
                     <connections>
@@ -94,7 +94,7 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g62-YT-Dgs">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
+                    <rect key="frame" x="0.0" y="13" width="375" height="28"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQR-T8-JXX">
                             <rect key="frame" x="98.5" y="8.5" width="179.5" height="12"/>

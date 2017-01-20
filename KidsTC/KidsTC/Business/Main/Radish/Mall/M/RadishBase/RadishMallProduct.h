@@ -27,10 +27,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat ratio;
 @property (nonatomic, strong) NSString *buyCount;
 @property (nonatomic, strong) NSString *radishCount;
-@property (nonatomic, assign) CGFloat price;
+@property (nonatomic, strong) NSString *price;
 @property (nonatomic, assign) BOOL isShowPrice;
 @property (nonatomic, strong) NSString *timeDesc;
-@property (nonatomic, assign) CGFloat originalPrice;
+@property (nonatomic, strong) NSString *originalPrice;
 @property (nonatomic, strong) NSString *btnName;
 @property (nonatomic, assign) BOOL canBuy;
 //selfDefine

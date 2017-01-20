@@ -140,11 +140,12 @@
     switch (type) {
         case WholesalePickDateViewControllerActionTypeMakeSure:
         {
-            if ([value isKindOfClass:[WholesalePickDateTime class]]) {
+            if ([value isKindOfClass:[WholesalePickDateTime class]] && self.data.sku.isShowTime) {
                 WholesalePickDateTime *time = value;
                 self.data.fightGroupPrice = time.price;
                 if (self.data.time) {
                     self.data.time.skuId = time.skuId;
+                    self.data.time.timeDesc = time.time;
                 }
             }
             [self.settlementView reloadData];

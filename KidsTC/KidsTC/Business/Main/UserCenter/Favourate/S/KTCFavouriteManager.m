@@ -51,6 +51,7 @@ static KTCFavouriteManager *_sharedInstance = nil;
         case KTCFavouriteTypeStrategy:
         case KTCFavouriteTypeTicketService:
         case KTCFavouriteTypeFreeService:
+        case KTCFavouriteTypeRadish:
         {
             NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:
                                    identifier, @"number",

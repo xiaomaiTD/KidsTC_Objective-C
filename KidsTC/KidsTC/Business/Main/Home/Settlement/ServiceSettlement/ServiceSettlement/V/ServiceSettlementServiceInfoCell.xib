@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,7 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_100_100" translatesAutoresizingMaskIntoConstraints="NO" id="RKB-LW-heF">
                         <rect key="frame" x="15" y="16" width="95" height="95"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="RKB-LW-heF" secondAttribute="height" multiplier="1:1" id="GDw-lD-NCg"/>
                             <constraint firstAttribute="width" constant="95" id="MUr-ya-6C6"/>
@@ -68,7 +68,7 @@
                 <outlet property="iconImageView" destination="RKB-LW-heF" id="j4n-yU-wVo"/>
                 <outlet property="serveDescLabel" destination="nRb-bO-umM" id="g7E-fe-Xcz"/>
             </connections>
-            <point key="canvasLocation" x="290" y="462"/>
+            <point key="canvasLocation" x="-337" y="154"/>
         </tableViewCell>
     </objects>
     <resources>

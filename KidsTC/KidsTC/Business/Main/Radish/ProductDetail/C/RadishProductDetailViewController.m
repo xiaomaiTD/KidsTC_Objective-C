@@ -662,11 +662,7 @@ ProductDetailAddNewConsultViewControllerDelegate
         case KTCBrowseHistoryTypeService:
         {
             BrowseHistoryServiceListItemModel *model = [array objectAtIndex:index];
-            /*
-             ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:model.identifier channelId:model.channelId];
-             controller.type = model.productRedirect;
-             [self.navigationController pushViewController:controller animated:YES];
-             */
+            [SegueMaster makeSegueWithModel:model.segueModel fromController:self];
         }
             break;
         case KTCBrowseHistoryTypeStore:

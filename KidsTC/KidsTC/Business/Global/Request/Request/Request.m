@@ -10,6 +10,7 @@
 #import "Macro.h"
 #import "InterfaceManager.h"
 #import "AFNetworking.h"
+#import "CookieManager.h"
 
 static Request *_requestManager;
 
@@ -46,7 +47,7 @@ static Request *_requestManager;
         if (failure) failure(nil,nil);
         return;
     };
-    
+    [[CookieManager shareCookieManager] checkUid];
     AFHTTPSessionManager *manager = [self shareRequestManager].sessionManager;
     //[manager.requestSerializer setValue:@"UTF"forHTTPHeaderField:@"Charset"];
     switch (interfaceItem.method) {
@@ -72,6 +73,12 @@ static Request *_requestManager;
             }];
         }
             break;
+            default:
+        {
+            if (failure) failure(nil,nil);
+            return;
+        }
+            break;
     }
 }
 
@@ -85,7 +92,7 @@ static Request *_requestManager;
         if (failure) failure(nil,nil);
         return;
     };
-    
+    [[CookieManager shareCookieManager] checkUid];
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *urlStr = nil;
     NSString *HTTPMethod = nil;
@@ -102,6 +109,12 @@ static Request *_requestManager;
             urlStr = interfaceItem.url;
             HTTPMethod = @"POST";
             HTTPBody = [[self paramString:param] dataUsingEncoding:NSUTF8StringEncoding];
+        }
+            break;
+        default:
+        {
+            if (failure) failure(nil,nil);
+            return;
         }
             break;
     }
@@ -133,7 +146,7 @@ static Request *_requestManager;
         if (failure) failure(nil,nil);
         return;
     };
-    
+    [[CookieManager shareCookieManager] checkUid];
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *urlStr = nil;
     NSString *HTTPMethod = nil;
@@ -150,6 +163,12 @@ static Request *_requestManager;
             urlStr = interfaceItem.url;
             HTTPMethod = @"POST";
             HTTPBody = [[self paramString:param] dataUsingEncoding:NSUTF8StringEncoding];
+        }
+            break;
+        default:
+        {
+            if (failure) failure(nil,nil);
+            return;
         }
             break;
     }
@@ -245,7 +264,7 @@ static Request *_requestManager;
         if (failure) failure(nil,nil);
         return;
     };
-    
+    [[CookieManager shareCookieManager] checkUid];
     AFHTTPSessionManager *manager = [self shareRequestManager].sessionManager;
     switch (interfaceItem.method) {
         case RequestTypeGet:
@@ -268,6 +287,12 @@ static Request *_requestManager;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 [self checkVersionFailureWithInterfaceItem:interfaceItem task:task error:error failure:failure];
             }];
+        }
+            break;
+        default:
+        {
+            if (failure) failure(nil,nil);
+            return;
         }
             break;
     }

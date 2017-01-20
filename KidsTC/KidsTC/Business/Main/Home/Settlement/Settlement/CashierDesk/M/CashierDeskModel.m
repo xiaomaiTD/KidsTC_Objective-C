@@ -29,6 +29,10 @@
 + (NSDictionary *)modelCustomPropertyMapper {
     return @{@"payType":@"payChannel"};
 }
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    _payMoney = [NSString stringWithFormat:@"%@",@(_payMoney.floatValue)];
+    return YES;
+}
 @end
 
 @implementation CashierDeskData

@@ -27,12 +27,12 @@
     [super setData:data];
     self.countL.text = [NSString stringWithFormat:@"%@根",data.radishCount];
     
-    if (data.price>0) {
-        self.priceL.text = [NSString stringWithFormat:@"+%@元",@(data.price)];
+    if (data.isShowPrice>0) {
+        self.priceL.text = [NSString stringWithFormat:@"+%@元",data.price];
     } else self.priceL.text = nil;
     
-    if (data.originalPrice>data.price) {
-        self.originalPriceL.text = [NSString stringWithFormat:@"童成价：¥%@",@(data.originalPrice)];
+    if (data.originalPrice.floatValue>data.price.floatValue) {
+        self.originalPriceL.text = [NSString stringWithFormat:@"童成价：¥%@",data.originalPrice];
     }else self.originalPriceL.text = nil;
     
     self.priceL.hidden = !data.isShowPrice;

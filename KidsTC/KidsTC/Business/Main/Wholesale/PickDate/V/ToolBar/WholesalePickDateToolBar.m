@@ -9,6 +9,7 @@
 #import "WholesalePickDateToolBar.h"
 
 @interface WholesalePickDateToolBar ()
+@property (weak, nonatomic) IBOutlet UIView *priceBGVeiw;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
@@ -16,8 +17,14 @@
 
 @implementation WholesalePickDateToolBar
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.priceBGVeiw.hidden = YES;
+}
+
 - (void)setTime:(WholesalePickDateTime *)time {
     _time = time;
+    self.priceBGVeiw.hidden = time==nil;
     self.priceL.text = [NSString stringWithFormat:@"¥%@",time.price];
     self.btn.enabled = time.canBuy;
     self.btn.backgroundColor = time.canBuy?[UIColor colorFromHexString:@"FF8888"]:[UIColor lightGrayColor];

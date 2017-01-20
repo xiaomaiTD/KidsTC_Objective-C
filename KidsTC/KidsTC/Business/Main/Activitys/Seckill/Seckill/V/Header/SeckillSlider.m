@@ -13,7 +13,7 @@
 
 CGFloat const kSeckillSliderH = 122;
 
-@interface SeckillSlider ()<SeckillSliderDateItemDelegate,SeckillSliderTimeItemDelegate>
+@interface SeckillSlider ()<SeckillSliderDateItemDelegate,SeckillSliderTimeItemDelegate,SeckillSliderCountDownViewDelegate>
 @property (weak, nonatomic  ) IBOutlet UIView *dateBGView;
 @property (weak, nonatomic  ) IBOutlet UIScrollView *dateScrollView;
 
@@ -36,6 +36,7 @@ CGFloat const kSeckillSliderH = 122;
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self layoutIfNeeded];
+    self.countDownView.delegate = self;
 }
 
 - (void)layoutSubviews {
@@ -201,6 +202,14 @@ CGFloat const kSeckillSliderH = 122;
 
 - (void)didClickSeckillSliderTimeItem:(SeckillSliderTimeItem *)item {
     [self didSelectTimeItem:item];
+}
+
+#pragma mark - SeckillSliderCountDownViewDelegate
+
+- (void)seckillSliderCountDownViewCountDownOver:(SeckillSliderCountDownView *)view {
+    if ([self.delegate respondsToSelector:@selector(seckillSliderCountDownOver:)]) {
+        [self.delegate seckillSliderCountDownOver:self];
+    }
 }
 
 @end

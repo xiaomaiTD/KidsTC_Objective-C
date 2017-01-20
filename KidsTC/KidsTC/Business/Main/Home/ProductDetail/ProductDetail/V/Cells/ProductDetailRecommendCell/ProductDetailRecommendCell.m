@@ -9,13 +9,17 @@
 #import "ProductDetailRecommendCell.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Category.h"
+#import "NSString+Category.h"
 
 @interface ProductDetailRecommendCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *productImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
 @property (weak, nonatomic) IBOutlet UILabel *priceL;
 @property (weak, nonatomic) IBOutlet UILabel *addressL;
+@property (weak, nonatomic) IBOutlet UIImageView *addressIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *statusL;
+@property (weak, nonatomic) IBOutlet UIImageView *statusIcon;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
 @end
 
@@ -48,6 +52,8 @@
         self.priceL.text = item.priceStr;
         self.addressL.text = [NSString stringWithFormat:@"%@ %@",item.address,item.distanceDesc];
         self.statusL.text = item.useValidTimeDesc;
+        self.addressIcon.hidden = !([item.address isNotNull] && [item.distanceDesc isNotNull]);
+        self.statusIcon.hidden = ![item.useValidTimeDesc isNotNull];
     }
 }
 

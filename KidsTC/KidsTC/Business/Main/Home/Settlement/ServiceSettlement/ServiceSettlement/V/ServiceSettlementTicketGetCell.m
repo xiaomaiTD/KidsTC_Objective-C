@@ -59,6 +59,10 @@ static CGFloat const title_b = 4;
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
     [super setItem:item];
+    
+    self.carBtn.enabled = item.isSupportExpress;
+    self.selfBtn.enabled = item.isSupportSiteTickets;
+    
     switch (item.takeTicketWay) {
         case ServiceSettlementTakeTicketWayCar:
         {

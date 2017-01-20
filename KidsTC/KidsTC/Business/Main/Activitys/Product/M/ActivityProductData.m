@@ -118,10 +118,6 @@
             }
         }
     }
-    [self.showFloorItems enumerateObjectsUsingBlock:^(ActivityProductFloorItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *str = [NSString stringWithFormat:@"ActivityProductFloorItem:%@----%@",obj.floorSysNo,obj.hasSliderTabItem?@"有":@"没有"];
-        TCLog(@"%@",str);
-    }];
 }
 
 - (void)setupShareObj {

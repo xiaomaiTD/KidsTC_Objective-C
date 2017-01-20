@@ -63,7 +63,9 @@
         self.countDownView.hidden = YES;
         if (data.isShowCountDown && !data.countDownOver) {
             data.countDownOver = YES;
-
+            if ([self.delegate respondsToSelector:@selector(seckillSliderCountDownViewCountDownOver:)]) {
+                [self.delegate seckillSliderCountDownViewCountDownOver:self];
+            }
         }
     }
 }

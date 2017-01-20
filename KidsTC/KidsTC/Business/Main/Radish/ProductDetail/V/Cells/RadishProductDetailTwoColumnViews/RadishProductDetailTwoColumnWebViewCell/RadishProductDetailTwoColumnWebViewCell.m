@@ -49,19 +49,19 @@
         return CGSizeMake(size.width, web_h);
     }else{
         if (self.data.webViewHasLoad) {
-            if (web_h<=SCREEN_HEIGHT) {
+            if (web_h<=SCREEN_HEIGHT*1.5) {
                 if (web_h<44) web_h = 44;
                 return CGSizeMake(size.width, web_h);
             }else{
                 CGFloat h = web_h*0.5;
-                if (h<=SCREEN_HEIGHT) {
-                    return CGSizeMake(size.width, SCREEN_HEIGHT);
+                if (h<=SCREEN_HEIGHT*1.5) {
+                    return CGSizeMake(size.width, SCREEN_HEIGHT*1.5);
                 }else{
                     return CGSizeMake(size.width, h);
                 }
             }
         }else{
-            return CGSizeMake(size.width, SCREEN_HEIGHT);
+            return CGSizeMake(size.width, SCREEN_HEIGHT*1.5);
         }
     }
 }

@@ -11,6 +11,7 @@
 @interface SeckillToolBarItem ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *titleL;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 @end
 
 @implementation SeckillToolBarItem
@@ -19,12 +20,8 @@
     _item = item;
     self.icon.image = [UIImage imageNamed:item.img];
     self.titleL.text = item.title;
-    
-    UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tapGR];
 }
-
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
+- (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(didClickSeckillToolBarItem:)]) {
         [self.delegate didClickSeckillToolBarItem:self];
     }

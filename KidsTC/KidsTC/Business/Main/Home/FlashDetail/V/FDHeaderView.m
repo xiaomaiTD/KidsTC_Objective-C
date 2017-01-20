@@ -92,9 +92,14 @@
 }
 - (void)setNote:(FDNote *)note{
     _note = note;
+    
     [self.authorHeaderImageView sd_setImageWithURL:[NSURL URLWithString:note.imgUrl] placeholderImage:PLACEHOLDERIMAGE_SMALL];
     self.authorNameLabel.text = note.name;
     self.noteLabel.text = note.note;
+    
+    [self.authorNameLabel sizeToFit];// 可以得到label的正确高度
+    [self.noteLabel sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
 }
 @end
 
@@ -204,6 +209,9 @@
     NSMutableAttributedString *attNotesString = [[NSMutableAttributedString alloc]initWithString:notesString attributes:att];
     
     self.notesL.attributedText = attNotesString;
+    
+    [self.notesL sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
 }
 @end
 
@@ -247,6 +255,9 @@
                           NSParagraphStyleAttributeName:para};
     NSMutableAttributedString *attContentString = [[NSMutableAttributedString alloc]initWithString:contentString attributes:att];
     self.contentL.attributedText = attContentString;
+    
+    [self.contentL sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
 }
 @end
 
@@ -465,6 +476,10 @@
     }
     self.priceL.textColor = priceLTextColor;
     self.image = [UIImage imageNamed:imageName];
+    
+    [self.priceL sizeToFit];// 可以得到label的正确高度
+    [self.peopleNumL sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
 }
 @end
 @interface FIScrollView : UIScrollView
@@ -513,8 +528,6 @@
                 make.right.equalTo(itemView).offset(itemMargin);
                 make.right.equalTo(0);
             }];
-            
-            
             
             //self.contentSize = CGSizeMake(leftMargin+(PriceConfigitemViewSize+leftMargin)*count, PriceConfigitemViewSize);
 
@@ -669,6 +682,13 @@
     
     self.stateL.attributedText = stateAttributedString;
     
+    // 自动适配并重新布局
+    [self.serveNameL sizeToFit];// 可以得到label的正确高度
+    [self.promoteL sizeToFit];// 可以得到label的正确高度
+    [self.priceL sizeToFit];// 可以得到label的正确高度
+    [self.stateL sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
+    
 }
 #pragma mark TTTAttributedLabelDelegate
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithAddress:(NSDictionary *)addressComponents {
@@ -764,6 +784,10 @@
         title = storeItemDic[@"storeName"];
     }
     self.titleL.text = title;
+    
+    // 自动适配并重新布局
+    [self.titleL sizeToFit];// 可以得到label的正确高度
+    [self layoutIfNeeded];//会重新调用一次LayoutSubViews
 }
 
 - (void)tapGRAction:(UITapGestureRecognizer *)tapGR {

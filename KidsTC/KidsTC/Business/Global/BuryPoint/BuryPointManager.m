@@ -133,7 +133,7 @@ singleM(BuryPointManager)
     [MobClick setAppVersion:APP_VERSION];
     [MobClick startWithConfigure:UMConfigInstance];
 #ifdef DEBUG
-    [MobClick setLogEnabled:YES];
+    [MobClick setLogEnabled:NO];
 #else
     [MobClick setLogEnabled:NO];
 #endif
@@ -237,8 +237,8 @@ static NSInteger errorCount = 0;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         errorCount ++;
         if (errorCount<4) {
-            NSString *tip = [NSString stringWithFormat:@"埋点上传失败……删除失败……已重试%zd次",errorCount];
-            TCLog(@"%@",tip);
+            //NSString *tip = [NSString stringWithFormat:@"埋点上传失败……删除失败……已重试%zd次",errorCount];
+            //TCLog(@"%@",tip);
             [self uploadTrack:msg successBlock:successBlock failureBlock:failureBlock];
         }else{
             if(failureBlock)failureBlock();

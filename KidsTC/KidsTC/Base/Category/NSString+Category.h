@@ -25,4 +25,6 @@
 + (NSString *)priceStr:(CGFloat)price;
 #pragma mark 获取手机的IP地址
 + (NSString *)deviceIPAdress;
+#pragma mark 获得设备型号
++ (NSString *)getCurrentDeviceModel;
 @end

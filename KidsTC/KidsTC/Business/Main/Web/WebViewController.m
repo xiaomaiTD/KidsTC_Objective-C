@@ -698,6 +698,7 @@ typedef enum : NSUInteger {
 }
 //提交评论 请求成功
 - (void)submitCommentSucceed:(NSDictionary *)data {
+    [[iToast makeText:@"评论成功！"] show];
     if ([self.callBackJS length] > 0) {
         [self.webView stringByEvaluatingJavaScriptFromString:self.callBackJS];
     }
@@ -710,10 +711,8 @@ typedef enum : NSUInteger {
 //提交评论 请求失败
 - (void)submitCommentFailed:(NSError *)error {
     NSString *errMsg = @"提交评论失败，请重新提交。";
-    NSString *remoteErrMsg = [error.userInfo objectForKey:@"data"];
-    if ([remoteErrMsg isKindOfClass:[NSString class]] && [remoteErrMsg length] > 0) {
-        errMsg = remoteErrMsg;
-    }
+    NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+    if ([text isNotNull]) errMsg = text;
     [[iToast makeText:errMsg] show];
     [TCProgressHUD dismissSVP];
 }

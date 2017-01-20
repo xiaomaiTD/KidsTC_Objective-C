@@ -55,7 +55,7 @@
     [self.bannerIcon sd_setImageWithURL:[NSURL URLWithString:_item.bigImgurl] placeholderImage:PLACEHOLDERIMAGE_BIG];
     self.bannerIconH.constant = _item.bigImgRatio * (SCREEN_WIDTH - 20);
     self.nameL.text = _item.name;
-    self.tipL.text =  [NSString stringWithFormat:@"%@人消费",_item.num];
+    self.tipL.text =  [NSString stringWithFormat:@"%@%@",_item.num,_item.joinText];
     self.categoryL.text = _item.categoryName;
     if ([_item.categoryName isNotNull]) {
         self.categoryL.hidden = NO;

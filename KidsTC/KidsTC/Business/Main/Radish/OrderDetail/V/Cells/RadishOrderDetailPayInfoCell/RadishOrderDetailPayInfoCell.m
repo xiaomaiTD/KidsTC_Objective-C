@@ -22,6 +22,7 @@
     self.priceL.textColor = COLOR_PINK;
 }
 
+
 - (void)setData:(RadishOrderDetailData *)data {
     [super setData:data];
     NSString *tip, *sub, *price;
@@ -30,7 +31,7 @@
         {
             tip = @"商品金额";
             sub = nil;
-            price = [NSString stringWithFormat:@"¥%.1f",[data.price floatValue] * data.count];
+            price = [NSString stringWithFormat:@"¥%@",data.totalPrice];
         }
             break;
         case RadishOrderDetailPayInfoCellTypeTypePromotion:

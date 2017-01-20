@@ -381,25 +381,6 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
     }
     if(section03.count>0) [sections addObject:section03];
     
-    NSMutableArray *section04 = [NSMutableArray array];
-    if (base.otherProducts.count>0 && [base.otherPackageTitle isNotNull]) {
-        WolesaleProductDetailTitleCell *titleCell_otherProduct = [self cellWithID:TitleCellID];
-        titleCell_otherProduct.title = base.otherPackageTitle;
-        if (titleCell_otherProduct) [section04 addObject:titleCell_otherProduct];
-    }
-    [base.otherProducts enumerateObjectsUsingBlock:^(WholesaleProductDetailOtherProduct *otherProduct, NSUInteger idx, BOOL *stop) {
-        WolesaleProductDetailV2OtherProductCell *V2OtherProductCell = [self cellWithID:V2OtherProductCellID];
-        V2OtherProductCell.otherProduct = otherProduct;
-        if (V2OtherProductCell) [section04 addObject:V2OtherProductCell];
-    }];
-    if (base.otherProductCounts.count>1) {
-        WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
-        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
-        joinCountCell_otherProducts.counts = base.otherProductCounts;
-        if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
-    }
-    if(section04.count>0) [sections addObject:section04];
-    
     //video
     VideoPlayVideoRes *productVideoRes = base.productVideoRes;
     if (productVideoRes.productVideos.count>0) {
@@ -425,6 +406,26 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
         if (webCell) [section05 addObject:webCell];
     }
     if(section05.count>0) [sections addObject:section05];
+    
+    
+    NSMutableArray *section04 = [NSMutableArray array];
+    if (base.otherProducts.count>0 && [base.otherPackageTitle isNotNull]) {
+        WolesaleProductDetailTitleCell *titleCell_otherProduct = [self cellWithID:TitleCellID];
+        titleCell_otherProduct.title = base.otherPackageTitle;
+        if (titleCell_otherProduct) [section04 addObject:titleCell_otherProduct];
+    }
+    [base.otherProducts enumerateObjectsUsingBlock:^(WholesaleProductDetailOtherProduct *otherProduct, NSUInteger idx, BOOL *stop) {
+        WolesaleProductDetailOtherPorductCell *otherPorductCell = [self cellWithID:OtherPorductCellID];
+        otherPorductCell.otherProduct = otherProduct;
+        if (otherPorductCell) [section04 addObject:otherPorductCell];
+    }];
+    if (base.otherProductCounts.count>1) {
+        WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
+        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
+        joinCountCell_otherProducts.counts = base.otherProductCounts;
+        if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
+    }
+    if(section04.count>0) [sections addObject:section04];
     
     self.sections = [NSArray arrayWithArray:sections];
 }

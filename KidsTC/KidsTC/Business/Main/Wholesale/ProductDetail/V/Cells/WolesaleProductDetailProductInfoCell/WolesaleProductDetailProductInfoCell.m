@@ -40,8 +40,6 @@
     self.teamPriceView.layer.masksToBounds = YES;
     self.teamPriceView.layer.borderColor = [UIColor colorFromHexString:@"F36863"].CGColor;
     self.teamPriceView.layer.borderWidth = 1;
-    
-    
 }
 
 - (void)setData:(WolesaleProductDetailData *)data {

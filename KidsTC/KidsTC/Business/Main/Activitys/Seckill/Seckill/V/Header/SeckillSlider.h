@@ -14,6 +14,7 @@ extern CGFloat const kSeckillSliderH;
 @class SeckillSlider;
 @protocol SeckillSliderDelegate <NSObject>
 - (void)seckillSlider:(SeckillSlider *)slider didSelectTimeItem:(SeckillTimeTime *)time;
+- (void)seckillSliderCountDownOver:(SeckillSlider *)slider;
 @end
 
 @interface SeckillSlider : UIView

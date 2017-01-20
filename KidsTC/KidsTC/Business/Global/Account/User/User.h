@@ -21,6 +21,9 @@ singleH(User)
 @property (nonatomic, strong, readonly) NSString *skey;
 @property (nonatomic, assign, readonly) BOOL hasLogin;
 @property (nonatomic, strong) NSString *phone;
+
+- (void)getUserLocalSave;
+
 /**
  *  app每次从杀死状态下到前台 都需要从服务器检查登录状态
  */

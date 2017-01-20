@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     SeckillViewActionTypeRemind,//设置提醒
     
     SeckillViewActionTypeSeckillTime = 200,//选择场次时间
+    SeckillViewActionTypeCountDownOver,//倒计时结束
     
     SeckillViewActionTypeHome = 300,//首页
     SeckillViewActionTypePocket,//我的购物袋

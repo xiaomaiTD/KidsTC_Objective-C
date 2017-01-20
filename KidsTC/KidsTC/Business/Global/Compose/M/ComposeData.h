@@ -15,5 +15,5 @@
 @property (nonatomic, strong) NSArray<ComposeClass *> *articleClasses;
 @property (nonatomic, strong) ComposeBtn *middleBtn;
 @property (nonatomic, strong) NSString *signInPageUrl;
-@property (nonatomic, strong) NSString *isSignInPageApp;
+@property (nonatomic, assign) BOOL isSignInPageApp;
 @end

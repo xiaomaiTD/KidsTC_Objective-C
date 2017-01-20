@@ -46,12 +46,11 @@
     
     self.nameL.text = product.productName;
     self.radishCountL.text = [NSString stringWithFormat:@"%@根",product.radishCount];
-    if (product.price>0) {
-        self.priceL.text = [NSString stringWithFormat:@"+%@元",@(product.price)];
+    if (product.isShowPrice>0) {
+        self.priceL.text = [NSString stringWithFormat:@"+%@元",product.price];
     }else self.priceL.text = nil;
-    
-    if (product.originalPrice>0) {
-        self.originalPriceL.text = [NSString stringWithFormat:@"%@元",@(product.originalPrice)];
+    if (product.originalPrice.floatValue>0) {
+        self.originalPriceL.text = [NSString stringWithFormat:@"%@元",product.originalPrice];
     }else self.originalPriceL.text = nil;
     
     [self.buyBtn setTitle:product.btnName forState:UIControlStateNormal];

@@ -7,6 +7,7 @@
 //
 
 #import "BrowseHistoryServiceListItemModel.h"
+#import "ProductDetailSegueParser.h"
 
 @implementation BrowseHistoryServiceListItemModel
 
@@ -27,6 +28,8 @@
         self.price = [[data objectForKey:@"desc"] floatValue];
         
         self.productRedirect = [data[@"productRedirect"] integerValue];
+        
+        self.segueModel = [ProductDetailSegueParser segueModelWithProductType:_productRedirect productId:self.identifier channelId:self.channelId openGroupId:nil];
     }
     return self;
 }

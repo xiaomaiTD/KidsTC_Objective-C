@@ -19,6 +19,7 @@ extern NSString *const KRadishSettlementUserRemark;
 @property (nonatomic, assign) NSInteger buyNum;
 @property (nonatomic, assign) NSInteger minBuyNum;
 @property (nonatomic, assign) NSInteger maxBuyNum;
+@property (nonatomic, strong) NSString *productNo;
 @property (nonatomic, strong) NSString *img;
 @property (nonatomic, strong) NSString *radishSysNo;
 @property (nonatomic, strong) NSString *chid;

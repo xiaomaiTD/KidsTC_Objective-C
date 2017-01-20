@@ -136,6 +136,8 @@
     self.automaticallyRefresh = YES;
     
     self.stateLabel.hidden = YES;
+    
+    self.automaticallyHidden = YES;
 }
 
 - (void)setPullingPercent:(CGFloat)pullingPercent

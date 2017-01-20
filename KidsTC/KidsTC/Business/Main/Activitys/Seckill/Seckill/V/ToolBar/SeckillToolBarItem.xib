@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="124" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-jo-2W5">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeW-jo-2W5">
                     <rect key="frame" x="49.5" y="4.5" width="25" height="40"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seckill_home" translatesAutoresizingMaskIntoConstraints="NO" id="pma-jR-Faa">
@@ -43,19 +43,30 @@
                         <constraint firstItem="C0G-eJ-V4r" firstAttribute="centerX" secondItem="MeW-jo-2W5" secondAttribute="centerX" id="vrH-ya-hDG"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNm-xc-boa">
+                    <rect key="frame" x="0.0" y="0.0" width="124" height="49"/>
+                    <connections>
+                        <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="8Jw-Zy-1L5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="dNm-xc-boa" secondAttribute="trailing" id="0sX-Sd-Zb9"/>
+                <constraint firstAttribute="bottom" secondItem="dNm-xc-boa" secondAttribute="bottom" id="OLD-t6-Tn1"/>
+                <constraint firstItem="dNm-xc-boa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ltZ-Kh-6L1"/>
                 <constraint firstItem="MeW-jo-2W5" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="pyJ-uS-cg6"/>
+                <constraint firstItem="dNm-xc-boa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rc1-DI-akf"/>
                 <constraint firstItem="MeW-jo-2W5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zpv-mg-vmv"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="btn" destination="dNm-xc-boa" id="mqR-rb-Q3k"/>
                 <outlet property="icon" destination="pma-jR-Faa" id="c9R-gS-gTw"/>
                 <outlet property="titleL" destination="C0G-eJ-V4r" id="idn-jK-8Q6"/>
             </connections>
-            <point key="canvasLocation" x="-116" y="44.5"/>
+            <point key="canvasLocation" x="-170" y="43.5"/>
         </view>
     </objects>
     <resources>

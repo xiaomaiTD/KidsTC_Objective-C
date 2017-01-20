@@ -9,6 +9,7 @@
 #import "CookieManager.h"
 #import "User.h"
 #import "KTCMapService.h"
+#import "NSString+Category.h"
 
 NSString *const CookieDomain         = @".kidstc.com";
 NSString *const CookieKey_uid        = @"uid";
@@ -33,7 +34,6 @@ singleM(CookieManager)
 }
 
 -(void)setCookies{
-    
     [self setCookieWithName:CookieKey_uid andValue:[User shareUser].uid];
     [self setCookieWithName:CookieKey_skey andValue:[User shareUser].skey];
     [self setCookieWithName:CookieKey_appversion andValue:APP_VERSION];
@@ -53,6 +53,7 @@ singleM(CookieManager)
                                       CookieDomain, NSHTTPCookieDomain, nil];
     NSHTTPCookie *kisTCCookie = [NSHTTPCookie cookieWithProperties:propertiesKidsTC];
     //set cookie
+    
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:kisTCCookie];
 }
 
@@ -70,6 +71,37 @@ singleM(CookieManager)
     }
 }
 
+- (void)checkUid {
+    /*
+    __block BOOL hasUidCookie = NO;
+    NSArray<NSHTTPCookie *> *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    [cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"checkUid:\nobj:%@\n",obj);
+        if ([obj.name isEqualToString:CookieKey_uid]) {
+            NSString *uid = obj.value;
+            if ([uid isNotNull]) {
+                hasUidCookie = YES;
+                *stop = YES;
+            }
+        }
+    }];
+     */
+    NSString *uid = [User shareUser].uid;
+    NSString *skey = [User shareUser].skey;
+    if ([uid isNotNull] && [skey isNotNull]) {
+        [self setCookieWithName:CookieKey_uid andValue:uid];
+        [self setCookieWithName:CookieKey_skey andValue:skey];
+    }else{
+        [[User shareUser] getUserLocalSave];
+        NSString *uid_now = [User shareUser].uid;
+        NSString *skey_now = [User shareUser].skey;
+        if ([uid_now isNotNull] && [skey_now isNotNull]) {
+            [self setCookieWithName:CookieKey_uid andValue:[User shareUser].uid];
+            [self setCookieWithName:CookieKey_skey andValue:[User shareUser].skey];
+        }
+    }
+}
+
 - (void)mapaddrDidChange{
     [self setCookieWithName:CookieKey_mapaddr andValue:[KTCMapService shareKTCMapService].currentLocationString];
 }
@@ -77,4 +109,5 @@ singleM(CookieManager)
 - (void)dealloc {
     [NotificationCenter removeObserver:self name:kUserLocationHasChangedNotification object:nil];
 }
+
 @end

@@ -51,6 +51,8 @@
     
     [self setupShareObj:dic];
     
+    [self setupProductStandard];
+    
     return YES;
 }
 
@@ -148,7 +150,22 @@
     }
 }
 
-
+- (void)setupProductStandard {
+    if (_product_standards.count<1) {
+        return;
+    }
+    __block BOOL has = NO;
+    [_product_standards enumerateObjectsUsingBlock:^(ProductDetailStandard * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.productId isEqualToString:self.serveId]) {
+            obj.selected = YES;
+            has = YES;
+            *stop = YES;
+        }
+    }];
+    if (!has) {
+        _product_standards.firstObject.selected = YES;
+    }
+}
 
 #pragma mark - Ticket
 

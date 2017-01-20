@@ -153,9 +153,7 @@ static CGFloat const animationDuration = 0.2;
     switch (type) {
         case WholesalePickDateBaseCellActionTypeSelectTiem:
         {
-            if ([value isKindOfClass:[WholesalePickDateTime class]]) {
-                self.toolBar.time = value;
-            }
+            self.toolBar.time = value;
         }
             break;
             

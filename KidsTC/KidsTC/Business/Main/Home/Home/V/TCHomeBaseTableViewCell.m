@@ -59,7 +59,7 @@ static NSString *const kTCHomeCollectionViewCellID = @"TCHomeCollectionViewCell"
 
 @interface TCHomeBaseTableViewCell ()<UICollectionViewDelegate,UICollectionViewDataSource,TCHomeTitleContainerDelegate>
 @property (nonatomic, strong) TCHomeTitleContainer *titleContainer;
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, weak ) UICollectionView *collectionView;
 @property (nonatomic, strong) UIImageView *bgImageView;
 @property (nonatomic, strong) TCHomeNotiTipBGView *notiBGView;
 

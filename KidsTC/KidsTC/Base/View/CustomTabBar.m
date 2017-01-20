@@ -12,6 +12,7 @@
 #import "ComposeManager.h"
 #import "NSString+Category.h"
 
+
 #define BTN_TITLE_HEIGHT 10
 #define BTN_TITLE_BOTTOM_MARGIN 4
 #define BTN_IMAGE_SIZE 24
@@ -189,9 +190,32 @@ CGFloat const titleHight = 18;
         }
     }
 }
+/*
+- (NSString *)composeImgName {
+    NSString *deviceName = [NSString getCurrentDeviceModel];
+    if ([deviceName isEqualToString:@"iPhone4"]||
+        [deviceName isEqualToString:@"iPhone4S"]||
+        [deviceName isEqualToString:@"iPhone5"]||
+        [deviceName isEqualToString:@"iPhone5c"]||
+        [deviceName isEqualToString:@"iPhone5s"]||
+        [deviceName isEqualToString:@"iPhoneSE"]) {
+        return @"compose_5";
+    }else if ([deviceName isEqualToString:@"iPhone6"]||
+              [deviceName isEqualToString:@"iPhone6s"]||
+              [deviceName isEqualToString:@"iPhone7"]) {
+        return @"compose_6";
+    }else if ([deviceName isEqualToString:@"iPhone6Plus"]||
+              [deviceName isEqualToString:@"iPhone6sPlus"]||
+              [deviceName isEqualToString:@"iPhone7Plus"]) {
+        return @"compose_6p";
+    }
+    return @"compose_6";
+}
+*/
 
 - (TabBarItemElement *)codedEle{
     if (!_codedEle) {
+    
         _codedEle = [TabBarItemElement addEleWithFImgName:@"tabBar_compose" sImgName:@"tabBar_compose_cancle"];
         ComposeBtn *middleBtn = [ComposeManager shareComposeManager].model.data.data.middleBtn;
         NSString *imgUrl = middleBtn.iconUrl;
@@ -212,6 +236,8 @@ CGFloat const titleHight = 18;
     }
     return _codedEle;
 }
+
+
 
 - (void)makeBadgeIndex:(NSUInteger)index type:(TipButtonBadgeType)type value:(NSUInteger)value{
     if (index>self.btns.count-1) return;

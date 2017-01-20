@@ -24,7 +24,7 @@ static CGFloat const item_margin = 10;
 @property (nonatomic, assign) CGSize item_size;
 @property (nonatomic, assign) CGSize head_size;
 @property (nonatomic, assign) CGSize foot_size;
-@property (nonatomic, assign) CGFloat bottom_margin;
+@property (nonatomic, assign) CGFloat cell_margin;
 @end
 
 @implementation ActivityProductCouponsCell
@@ -60,27 +60,30 @@ static CGFloat const item_margin = 10;
 - (void)setupSize:(ActivityProductContent *)content {
     CGFloat item_w = 0;
     NSUInteger count = self.couponModels.count;
-    if (count>0) {
-        item_w = (SCREEN_WIDTH - (count+1)*item_margin)/count;
-    }
     CGFloat ratio = 0;
+    self.cell_margin = 0;
     if (count == 1) {
         ratio = 0.21;
+        self.cell_margin = 0;
     }else if (count == 2) {
         ratio = 0.44;
+        self.cell_margin = 7;
     }else if (count == 3) {
         ratio = 0.69;
+        self.cell_margin = 7;
     }else if (count == 4) {
         ratio = 0.75;
+        self.cell_margin = 3;
+    }
+    if (count>0) {
+        item_w = (SCREEN_WIDTH - 2*item_margin - (count-1)*self.cell_margin)/count;
     }
     self.item_size = CGSizeMake(item_w, item_w*ratio);
     self.head_size = CGSizeZero;
     if ([content.couponTips isNotNull]) {
-        self.foot_size = CGSizeMake(SCREEN_WIDTH, 12);
-        self.bottom_margin = item_margin;
+        self.foot_size = CGSizeMake(SCREEN_WIDTH, 32);
     }else{
         self.foot_size = CGSizeZero;
-        self.bottom_margin = 0;
     }
 }
 
@@ -90,13 +93,13 @@ static CGFloat const item_margin = 10;
     return self.item_size;
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(0, item_margin, self.bottom_margin, item_margin);
+    return UIEdgeInsetsMake(0, item_margin, 0, item_margin);
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return item_margin;
+    return self.cell_margin;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return item_margin;
+    return self.cell_margin;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     return self.head_size;

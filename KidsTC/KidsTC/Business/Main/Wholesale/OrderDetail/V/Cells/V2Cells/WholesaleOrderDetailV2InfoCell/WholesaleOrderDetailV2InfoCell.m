@@ -29,7 +29,7 @@
     WolesaleProductDetailV2Data *detailV2 = base.detailV2;
     self.nameL.text = base.productName;
     self.subL.attributedText = detailV2.attPpromotionText;
-    self.priceL.text = base.platFormPrice;
+    self.priceL.text = base.fightGroupPrice;
     self.timeL.text = detailV2.timeDesc;
     
     switch (data.openGroupStatus) {

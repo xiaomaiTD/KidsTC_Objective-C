@@ -10,6 +10,7 @@
 #import "RefreshHeader.h"
 #import "RefreshFooter.h"
 #import "KTCEmptyDataView.h"
+#import "RecommendDataManager.h"
 
 #import "WholesaleOrderListHeader.h"
 #import "WholesaleOrderListCell.h"
@@ -125,7 +126,8 @@ static NSString *const CellID = @"WholesaleOrderListCell";
     if (self.noMoreRecommendData) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
-    if (self.items.count<1) {
+    NSArray<RecommendProduct *> *recommends = [[RecommendDataManager shareRecommendDataManager] recommendProductsWithType:RecommendProductTypeOrderList];
+    if (self.items.count<1 && recommends.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                                           image:nil description:@"啥都没有啊…"
                                                                      needGoHome:NO];

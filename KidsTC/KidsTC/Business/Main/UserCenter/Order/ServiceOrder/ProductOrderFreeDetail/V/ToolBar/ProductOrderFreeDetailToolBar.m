@@ -11,7 +11,7 @@
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
 
-CGFloat const kProductOrderFreeDetailToolBarH = 87;
+CGFloat const kProductOrderFreeDetailToolBarH = 74;
 
 @interface ProductOrderFreeDetailToolBar ()<ProductOrderFreeDetailBtnsViewDelegate>
 @property (weak, nonatomic) IBOutlet ProductOrderFreeDetailBtnsView *btnsView;

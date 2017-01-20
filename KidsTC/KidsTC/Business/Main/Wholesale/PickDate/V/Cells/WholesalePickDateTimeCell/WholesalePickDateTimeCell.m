@@ -33,19 +33,23 @@ static NSString *CellID = @"WholesalePickDateTimeCollectionCell";
 - (void)setSku:(WholesalePickDateSKU *)sku {
     [super setSku:sku];
     self.times = sku.times;
-    [self.times enumerateObjectsUsingBlock:^(WholesalePickDateTime * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.select) {
-            self.selectTime = obj;
-            *stop = YES;
-        }
-    }];
     [self.collectionView reloadData];
+    if (sku.isShowTime) {
+        [self.times enumerateObjectsUsingBlock:^(WholesalePickDateTime * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (obj.select) {
+                self.selectTime = obj;
+                *stop = YES;
+            }
+        }];
+    }else{
+        self.selectTime = nil;
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((SCREEN_WIDTH-60)/3.0, 60);
+    return CGSizeMake((SCREEN_WIDTH-30), 45);
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(0, 15, 16, 15);

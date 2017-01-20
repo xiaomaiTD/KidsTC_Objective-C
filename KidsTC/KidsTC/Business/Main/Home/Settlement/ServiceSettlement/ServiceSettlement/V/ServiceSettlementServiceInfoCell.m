@@ -26,6 +26,7 @@
     [super setItem:item];
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:item.imgUrl] placeholderImage:PLACEHOLDERIMAGE_BIG_LOG];
     self.serveDescLabel.attributedText = item.attServiceInfo;
+    [self layoutIfNeeded];
 }
 
 @end

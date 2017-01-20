@@ -172,6 +172,12 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
     }
 }
 
+- (void)seckillSliderCountDownOver:(SeckillSlider *)slider {
+    if ([self.delegate respondsToSelector:@selector(seckillView:actionType:value:)]) {
+        [self.delegate seckillView:self actionType:SeckillViewActionTypeCountDownOver value:nil];
+    }
+}
+
 #pragma mark - setupToolBar
 
 - (void)setupToolBar {

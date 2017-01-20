@@ -17,7 +17,7 @@
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:_time];
         str.color = [UIColor colorFromHexString:@"555555"];
         str.font = [UIFont systemFontOfSize:14];
-        str.lineSpacing = 6;
+        str.lineSpacing = 0;
         str.alignment = NSTextAlignmentCenter;
         self.attTimeStr = [[NSAttributedString alloc] initWithAttributedString:str];
     }else _time = @"";

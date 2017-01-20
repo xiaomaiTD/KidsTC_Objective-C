@@ -11,7 +11,7 @@
 #import "NSString+Category.h"
 #import "BuryPointManager.h"
 
-CGFloat const kRadishOrderDetailToolBarH = 87;
+CGFloat const kRadishOrderDetailToolBarH = 74;
 
 @interface RadishOrderDetailToolBar ()<RadishOrderDetailBtnsViewDelegate>
 @property (weak, nonatomic) IBOutlet RadishOrderDetailBtnsView *btnsView;

@@ -25,4 +25,5 @@ singleH(CookieManager)
 - (void)setCookies;
 - (void)setCookieWithName:(NSString *)name andValue:(NSString *)value;
 - (void)deleteCookieWithName:(NSString *)name;
+- (void)checkUid;
 @end

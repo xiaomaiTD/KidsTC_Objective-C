@@ -502,6 +502,9 @@
             if (![value isNotNull]) {
                 return;
             }
+            if ([value isEqualToString:self.productId]) {
+                return;
+            }
             self.productId = value;
             _dataManager.productId = _productId;
             [self loadData];

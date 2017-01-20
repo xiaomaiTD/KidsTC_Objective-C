@@ -152,6 +152,11 @@
             [self seckillTime:value];
         }
             break;
+        case SeckillViewActionTypeCountDownOver:
+        {
+            [self loadSeckill];
+        }
+            break;
         case SeckillViewActionTypeHome:
         {
             [self goHome];

@@ -129,7 +129,7 @@
         case RadishSettlementViewActionTypeSelectStore://切换活动门店
         {
             SettlementPickStoreViewController *controller = [[SettlementPickStoreViewController alloc]init];
-            controller.serveId = self.data.radishSysNo;
+            controller.serveId = self.data.productNo;
             controller.channelId = self.data.chid;
             controller.storeId = self.data.store.storeId;
             controller.pickStoreBlock = ^void (SettlementPickStoreDataItem *store){
@@ -286,6 +286,11 @@
 
 - (void)keyboardWillDisappear:(NSNotification *)noti {
     self.settlementView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+}
+
+- (void)dealloc {
+    [USERDEFAULTS setObject:@"" forKey:KRadishSettlementUserRemark];
+    [USERDEFAULTS synchronize];
 }
 
 @end

@@ -29,16 +29,6 @@
     [btn setTitleColor:PRODUCT_DETAIL_BLUE forState:UIControlStateNormal];
 }
 
-- (void)setData:(ProductDetailData *)data {
-    [super setData:data];
-    
-    
-}
-
-- (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    
-}
-
 - (void)setAttStr:(NSAttributedString *)attStr {
     _attStr = attStr;
     self.titleL.attributedText = attStr;

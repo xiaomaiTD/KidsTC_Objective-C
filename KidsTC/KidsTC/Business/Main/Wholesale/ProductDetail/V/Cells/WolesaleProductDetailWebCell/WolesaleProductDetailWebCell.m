@@ -47,7 +47,7 @@
     if (base.webViewHasLoad) {
         size.height = self.webView.scrollView.contentSize.height;
     }else{
-        size.height = SCREEN_HEIGHT;
+        size.height = SCREEN_HEIGHT*1.5;
     }
     return size;
 }
