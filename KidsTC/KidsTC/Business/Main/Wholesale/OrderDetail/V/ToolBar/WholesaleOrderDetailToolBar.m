@@ -36,6 +36,7 @@ CGFloat const kWholesaleOrderDetailToolBarH = 49;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     self.consultLineH.constant = LINE_H;
     self.leftLineH.constant = LINE_H;
     self.VLeftLineH.constant = LINE_H;

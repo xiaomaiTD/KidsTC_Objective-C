@@ -39,10 +39,6 @@
     
     _simpleName = [_simpleName isNotNull]?_simpleName:@"服务详情";
     
-    _price = [NSString stringWithFormat:@"%@",@(_price.floatValue)];
-    
-    _originalPrice = [NSString stringWithFormat:@"%@",@(_originalPrice.floatValue)];
-    
     [self setupInfo];
     
     [self setupAttApply];

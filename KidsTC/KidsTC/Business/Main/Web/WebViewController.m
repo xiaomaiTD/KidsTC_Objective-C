@@ -28,7 +28,7 @@
 #import "StoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
-#import "FlashDetailViewController.h"
+#import "FlashBuyProductDetailViewController.h"
 #import "CommonShareViewController.h"
 #import "TZImagePickerController.h"
 #import "ArticleColumnViewController.h"
@@ -396,7 +396,7 @@ typedef enum : NSUInteger {
     NSString *pid = [param substringFromIndex:(range.location+range.length)];
     if ([pid isNotNull]) {
         [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-            FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
+            FlashBuyProductDetailViewController *controller = [[FlashBuyProductDetailViewController alloc] init];
             controller.pid = pid;
             [self makeSegue:controller];
             

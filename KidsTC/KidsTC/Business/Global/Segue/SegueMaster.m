@@ -21,7 +21,7 @@
 #import "ArticleColumnViewController.h"
 #import "ZPPhotoBrowserViewController.h"
 #import "ColumnViewController.h"
-#import "FlashDetailViewController.h"
+#import "FlashBuyProductDetailViewController.h"
 #import "StrategyTagColumnTableViewController.h"
 #import "SearchResultViewController.h"
 #import "ArticleWeChatTableViewController.h"
@@ -219,7 +219,7 @@
             break;
         case SegueDestinationFlashDetail:
         {
-            FlashDetailViewController *controller = [[FlashDetailViewController alloc] init];
+            FlashBuyProductDetailViewController *controller = [[FlashBuyProductDetailViewController alloc] init];
             controller.pid = [NSString stringWithFormat:@"%@",model.segueParam[@"pid"]];
             toController = controller;
         }

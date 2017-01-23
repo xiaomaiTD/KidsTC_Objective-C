@@ -22,7 +22,7 @@
 
 - (void)setNotice:(RadishProductDetailNotice *)notice {
     _notice = notice;
-    self.titleL.text = [NSString stringWithFormat:@"%@：",notice.clause];
+    self.titleL.text = notice.clause;
     self.contentL.text = notice.notice;
 }
 
