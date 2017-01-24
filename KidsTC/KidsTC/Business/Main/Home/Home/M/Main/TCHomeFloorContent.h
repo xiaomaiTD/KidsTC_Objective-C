@@ -29,8 +29,6 @@ typedef enum {
     TCHomeFloorContentTypeThreeScroll = 18,//三个半图滚动
 }TCHomeFloorContentType;
 
-
-
 struct TCHomeContentLayoutAttributes {
     
     BOOL showBGView;

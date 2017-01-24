@@ -14,6 +14,8 @@
 
 
 @interface ServiceSettlementUserRemarkCell ()<UITextViewDelegate,ServiceSettlementBuyNumTfInputViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *inputBGView;
+
 @property (weak, nonatomic) IBOutlet UITextView *tv;
 @property (weak, nonatomic) IBOutlet UILabel *tvTipL;
 
@@ -28,11 +30,11 @@
     inputView.tipL.text = @"请输入备注信息";
     inputView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);
     self.tv.inputAccessoryView = inputView;
-    self.tv.layer.borderWidth = LINE_H;
-    self.tv.layer.borderColor = [UIColor colorFromHexString:@"cccccc"].CGColor;
     self.tv.font = [UIFont systemFontOfSize:14];
     self.tv.textColor = [UIColor colorFromHexString:@"222222"];
-    self.tv.contentInset = UIEdgeInsetsMake(8, 8, 8, 8);
+    
+    self.inputBGView.layer.borderWidth = LINE_H;
+    self.inputBGView.layer.borderColor = [UIColor colorFromHexString:@"cccccc"].CGColor;
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
