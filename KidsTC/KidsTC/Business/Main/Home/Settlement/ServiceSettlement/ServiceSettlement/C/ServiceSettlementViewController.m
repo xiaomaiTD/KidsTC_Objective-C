@@ -585,20 +585,20 @@
                 case ServiceSettlementTakeTicketWaySelf:
                 {
                     //上门自取用户信息，json字符串
-                    
+                    /*
                     NSString *UserName = item.ticketUserName;
                     if (![UserName isNotNull]) {
                         [[iToast makeText:@"请填写取票人姓名"] show];
                         return nil;
-                    }
-                    NSString *UserMobile = item.ticketUserMobile;
+                    }*/
+                    
+                    NSString *UserMobile = item.defaultSiteTicket.mobile;
                     if (![UserMobile isNotNull]) {
                         [[iToast makeText:@"请填写取票人电话"] show];
                         return nil;
                     }
                     
-                    NSDictionary *ticketUserDic = @{@"UserName":UserName,
-                                                    @"UserMobile":UserMobile};
+                    NSDictionary *ticketUserDic = @{@"UserMobile":UserMobile};
                     NSString *ticketUser = [NSString zp_stringWithJsonObj:ticketUserDic];
                     if (![ticketUser isNotNull]) {
                         [[iToast makeText:@"App内部出错，请重试"] show];

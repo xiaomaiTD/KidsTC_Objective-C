@@ -36,6 +36,7 @@
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
 #import "NurseryViewController.h"
+#import "ScoreCenterViewController.h"
 
 #import "RadishMallViewController.h"
 #import "RadishProductDetailViewController.h"
@@ -265,12 +266,15 @@
             break;
         case AccountCenterViewActionTypeScore:
         {
+            /*
             NSString *urlString = self.model.data.config.scoreNumLink;
             if ([urlString isNotNull]) {
                 WebViewController *controller = [[WebViewController alloc]init];
                 controller.urlString = urlString;
                 toController = controller;
             }
+             */
+            toController = [[ScoreCenterViewController alloc] initWithNibName:@"ScoreCenterViewController" bundle:nil];
         }
             break;
         case AccountCenterViewActionTypeRadish:

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,35 +24,51 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtJ-8c-HTj" customClass="YYTextView">
-                        <rect key="frame" x="15" y="49" width="290" height="137.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwr-yN-ZYf">
+                        <rect key="frame" x="15" y="48" width="290" height="139.5"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7eM-Fz-HFk">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="139.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="lVB-UY-qEJ"/>
+                                </connections>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我也来说一句…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yk-15-KrK">
+                                <rect key="frame" x="8" y="8" width="97" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.66274509800000003" green="0.66274509800000003" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="137.5" id="dox-lb-1iz"/>
+                            <constraint firstItem="7eM-Fz-HFk" firstAttribute="leading" secondItem="Zwr-yN-ZYf" secondAttribute="leading" id="MSK-NT-cCm"/>
+                            <constraint firstAttribute="trailing" secondItem="7eM-Fz-HFk" secondAttribute="trailing" id="SSj-0L-7nE"/>
+                            <constraint firstAttribute="height" constant="140" id="aCk-9L-23x"/>
+                            <constraint firstItem="7eM-Fz-HFk" firstAttribute="top" secondItem="Zwr-yN-ZYf" secondAttribute="top" id="cvk-Vb-B7b"/>
+                            <constraint firstAttribute="bottom" secondItem="7eM-Fz-HFk" secondAttribute="bottom" id="hkk-lO-CrE"/>
+                            <constraint firstItem="5yk-15-KrK" firstAttribute="top" secondItem="Zwr-yN-ZYf" secondAttribute="top" constant="8" id="oCH-pg-bQs"/>
+                            <constraint firstItem="5yk-15-KrK" firstAttribute="leading" secondItem="Zwr-yN-ZYf" secondAttribute="leading" constant="8" id="xWf-kB-aYu"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="placeholderFontName_" value="对本次交易的说明"/>
-                            <userDefinedRuntimeAttribute type="color" keyPath="placeholderTextColor">
-                                <color key="value" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                        <connections>
-                            <outlet property="delegate" destination="KGk-i7-Jjw" id="MDA-Hf-d3j"/>
-                        </connections>
-                    </scrollView>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Zwr-yN-ZYf" secondAttribute="trailing" constant="15" id="1wq-Kr-4Ln"/>
                     <constraint firstItem="ihe-x0-Ian" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="AVr-DB-a1H"/>
-                    <constraint firstAttribute="trailing" secondItem="GtJ-8c-HTj" secondAttribute="trailing" constant="15" id="DQ9-pX-hor"/>
-                    <constraint firstItem="GtJ-8c-HTj" firstAttribute="top" secondItem="ihe-x0-Ian" secondAttribute="bottom" constant="16" id="ew8-Eq-tZx"/>
-                    <constraint firstAttribute="bottom" secondItem="GtJ-8c-HTj" secondAttribute="bottom" constant="16" id="fRj-6H-2IQ"/>
-                    <constraint firstItem="GtJ-8c-HTj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oIf-CL-jbb"/>
+                    <constraint firstItem="Zwr-yN-ZYf" firstAttribute="top" secondItem="ihe-x0-Ian" secondAttribute="bottom" constant="15" id="dMK-Up-Xbi"/>
+                    <constraint firstItem="Zwr-yN-ZYf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="fIx-bq-kvC"/>
+                    <constraint firstAttribute="bottom" secondItem="Zwr-yN-ZYf" secondAttribute="bottom" constant="15" id="sjR-JH-RxV"/>
                     <constraint firstItem="ihe-x0-Ian" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vaf-91-2wQ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="tv" destination="GtJ-8c-HTj" id="eIO-ra-4rx"/>
+                <outlet property="tv" destination="7eM-Fz-HFk" id="s8C-kg-JgX"/>
+                <outlet property="tvTipL" destination="5yk-15-KrK" id="4Ia-Vt-Ehd"/>
             </connections>
-            <point key="canvasLocation" x="25" y="64.5"/>
+            <point key="canvasLocation" x="-78" y="5"/>
         </tableViewCell>
     </objects>
 </document>

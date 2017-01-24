@@ -6,42 +6,20 @@
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-static CGFloat const img_h = 20;
-static CGFloat const title_h = 13;
-static CGFloat const title_b = 4;
 
-@interface ServiceSettlementTicketGetButton : UIButton
-
-@end
-
-@implementation ServiceSettlementTicketGetButton
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-}
-
-- (CGRect)imageRectForContentRect:(CGRect)contentRect {
-    return CGRectMake(0, 0, CGRectGetWidth(contentRect), img_h);
-}
-
-- (CGRect)titleRectForContentRect:(CGRect)contentRect {
-    return CGRectMake((CGRectGetWidth(contentRect)-80)*0.5, CGRectGetHeight(contentRect) - title_b - title_h, 80, title_h);
-}
-
-@end
 
 #import "ServiceSettlementTicketGetCell.h"
 
+#import "ServiceSettlementTicketGetItem.h"
+
 @interface ServiceSettlementTicketGetCell ()
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
-@property (weak, nonatomic) IBOutlet ServiceSettlementTicketGetButton *carBtn;
-@property (weak, nonatomic) IBOutlet ServiceSettlementTicketGetButton *selfBtn;
-@property (nonatomic, strong) UIButton *selectBtn;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *upImgCenterX;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
 @property (weak, nonatomic) IBOutlet UIView *line;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderWidth;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeading;
+
+@property (nonatomic, strong) NSArray<ServiceSettlementTicketGetItem *> *itemsAry;
 @end
 
 @implementation ServiceSettlementTicketGetCell
@@ -49,59 +27,88 @@ static CGFloat const title_b = 4;
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.tipL.textColor = [UIColor colorFromHexString:@"222222"];
-    [self.carBtn setTitleColor:[UIColor colorFromHexString:@"D5D5D5"] forState:UIControlStateNormal];
-    [self.carBtn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
-    [self.selfBtn setTitleColor:[UIColor colorFromHexString:@"D5D5D5"] forState:UIControlStateNormal];
-    [self.selfBtn setTitleColor:COLOR_PINK forState:UIControlStateSelected];
     _lineH.constant = LINE_H;
-    [self selectedBtn:_selfBtn];
+    [self layoutIfNeeded];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGFloat item_s = 63;
+    CGFloat margin = 15;
+    [self.itemsAry enumerateObjectsUsingBlock:^(ServiceSettlementTicketGetItem *obj, NSUInteger idx, BOOL *stop) {
+        obj.frame = CGRectMake(15+(item_s+margin)*idx, 47, item_s, item_s);
+    }];
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
     [super setItem:item];
     
-    self.carBtn.enabled = item.isSupportExpress;
-    self.selfBtn.enabled = item.isSupportSiteTickets;
+    [self.itemsAry makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    self.itemsAry = nil;
     
-    switch (item.takeTicketWay) {
-        case ServiceSettlementTakeTicketWayCar:
-        {
-            [self selectedBtn:_carBtn];
+    NSMutableArray *ary = [NSMutableArray array];
+    if (item.isSupportSiteTickets) {
+        ServiceSettlementTicketGetItem *itemBtn =
+        [ServiceSettlementTicketGetItem itemWithTitle:@"现场取票"
+                                             norImage:@"ticket_get_self_n"
+                                             selImage:@"ticket_get_self_s"
+                                            norCorlor:@"D5D5D5"
+                                            selCorlor:@"ff8888"
+                                        takeTicketWay:ServiceSettlementTakeTicketWaySelf
+                                          actionBlock:^(ServiceSettlementTicketGetItem *obj){
+                                              [self itemAction:obj];
+                                          }];
+        if (itemBtn) {
+            [self.contentView addSubview:itemBtn];
+            [ary addObject:itemBtn];
         }
-            break;
-        case ServiceSettlementTakeTicketWaySelf:
-        {
-            [self selectedBtn:_selfBtn];
-        }
-            break;
     }
+    if (item.isSupportExpress) {
+        ServiceSettlementTicketGetItem *itemBtn =
+        [ServiceSettlementTicketGetItem itemWithTitle:@"快递"
+                                             norImage:@"ticket_get_car_n"
+                                             selImage:@"ticket_get_car_s"
+                                            norCorlor:@"D5D5D5"
+                                            selCorlor:@"ff8888"
+                                        takeTicketWay:ServiceSettlementTakeTicketWayCar
+                                          actionBlock:^(ServiceSettlementTicketGetItem *obj){
+                                              [self itemAction:obj];
+                                          }];
+        if (itemBtn) {
+            [self.contentView addSubview:itemBtn];
+            [ary addObject:itemBtn];
+        }
+    }
+    self.itemsAry = [NSArray arrayWithArray:ary];
+    
+    [self layoutIfNeeded];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self selectItem:item.takeTicketWay];
+    });
 }
 
-- (IBAction)action:(ServiceSettlementTicketGetButton *)sender {
-    if (_selectBtn == sender) {
-        return;
-    }
-    [self selectedBtn:sender];
-    if (sender == _selfBtn) {
-        self.item.takeTicketWay = ServiceSettlementTakeTicketWaySelf;
-    }else if (sender == _carBtn) {
-        self.item.takeTicketWay = ServiceSettlementTakeTicketWayCar;
-    }
+
+- (void)itemAction:(ServiceSettlementTicketGetItem *)item {
+    if (item.select) return;
+    self.item.takeTicketWay = item.takeTicketWay;
+    //[self selectItem:item.takeTicketWay];
     if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
         [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeTicketGetTypeDidChange value:nil];
     }
 }
 
-- (void)selectedBtn:(ServiceSettlementTicketGetButton *)sender {
-    if (sender == _selfBtn) {
-        _upImgCenterX.constant = 0;
-    }else if (sender == _carBtn) {
-        _upImgCenterX.constant = 78;
-    }
-    [self layoutIfNeeded];
-    _selectBtn.selected = NO;
-    sender.selected = YES;
-    _selectBtn = sender;
+- (void)selectItem:(ServiceSettlementTakeTicketWay)way {
+    [self.itemsAry enumerateObjectsUsingBlock:^(ServiceSettlementTicketGetItem *obj, NSUInteger idx, BOOL *stop) {
+        if (obj.takeTicketWay == way) {
+            obj.select = YES;
+            CGFloat leading = obj.center.x - self.sliderWidth.constant*0.5;
+            self.sliderLeading.constant = leading;
+            [self layoutIfNeeded];
+        }else{
+            obj.select = NO;
+        }
+    }];
 }
 
 
