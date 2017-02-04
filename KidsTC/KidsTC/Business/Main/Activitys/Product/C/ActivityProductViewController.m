@@ -30,8 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if(!_ID)_ID = @"E7-92-F0-91-75-A7-E1-ED_50";
-    
     if (![_ID isNotNull]) {
         [[iToast makeText:@"活动编号为空"] show];
         [self back];

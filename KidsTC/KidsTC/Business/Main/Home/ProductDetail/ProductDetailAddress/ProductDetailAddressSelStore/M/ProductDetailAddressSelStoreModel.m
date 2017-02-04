@@ -11,6 +11,65 @@
 
 @implementation ProductDetailAddressSelStoreModel
 
++(NSArray<ProductDetailAddressSelStoreModel *> *)modelsWithNormalProductDetailPlaceType:(PlaceType)placeType
+                                                                                 stores:(NSArray<NormalProductDetailStore *> *)stores
+                                                                                 places:(NSArray<NormalProductDetailPlace *> *)places
+{
+    switch (placeType) {
+        case PlaceTypeStore:
+        {
+            NSMutableArray *models = [NSMutableArray array];
+            [stores enumerateObjectsUsingBlock:^(NormalProductDetailStore * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ProductDetailAddressSelStoreModel *model = [ProductDetailAddressSelStoreModel new];
+                model.name = obj.storeName;
+                model.imageUrl = obj.imageUrl;
+                model.level = obj.level;
+                model.address = obj.address;
+                model.mapAddress = obj.mapAddress;
+                model.distance = obj.distance;
+                //location
+                CLLocationCoordinate2D coord = [ToolBox coordinateFromString:model.mapAddress];
+                CLLocation *loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
+                model.location = [[KTCLocation alloc] initWithLocation:loc locationDescription:model.name];
+                NSString *storeAddress = model.address;
+                if ([storeAddress isKindOfClass:[NSString class]]) {
+                    [model.location setMoreDescription:storeAddress];
+                }
+                if(model) [models addObject:model];
+            }];
+            return models;
+        }
+            break;
+        case PlaceTypePlace:
+        {
+            NSMutableArray *models = [NSMutableArray array];
+            [places enumerateObjectsUsingBlock:^(NormalProductDetailPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                ProductDetailAddressSelStoreModel *model = [ProductDetailAddressSelStoreModel new];
+                model.name = obj.name;
+                model.address = obj.address;
+                model.mapAddress = obj.mapAddress;
+                model.distance = obj.distance;
+                //location
+                CLLocationCoordinate2D coord = [ToolBox coordinateFromString:model.mapAddress];
+                CLLocation *loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
+                model.location = [[KTCLocation alloc] initWithLocation:loc locationDescription:model.name];
+                NSString *storeAddress = model.address;
+                if ([storeAddress isKindOfClass:[NSString class]]) {
+                    [model.location setMoreDescription:storeAddress];
+                }
+                if(model) [models addObject:model];
+            }];
+            return models;
+        }
+            break;
+        default:
+        {
+            return nil;
+        }
+            break;
+    }
+}
+
 +(NSArray<ProductDetailAddressSelStoreModel *> *)modelsWithProductDetailPlaceType:(PlaceType)placeType
                                                                            stores:(NSArray<ProductDetailStore *> *)stores
                                                                            places:(NSArray<ProductDetailPlace *> *)places

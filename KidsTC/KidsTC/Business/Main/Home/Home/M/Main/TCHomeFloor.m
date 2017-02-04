@@ -54,7 +54,7 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
                       _contentType == TCHomeFloorContentTypeNotice) && (_contents.count>1);
     _showNotiImageView = _contentType == TCHomeFloorContentTypeNotice;
     
-    TCHomeCollectionViewBaseLayout *layout = [TCHomeCollectionViewBaseLayout new];
+    TCHomeCollectionViewBaseLayout *layout = [[TCHomeCollectionViewBaseLayout alloc] init];
     layout.autoScroll = _canAddYYTimer;
     
     switch (_contentType) {

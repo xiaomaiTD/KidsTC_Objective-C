@@ -359,7 +359,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
                 self.toolBar.tags = [self.categorys valueForKeyPath:@"_name"];
                 [self.toolBar changeTipPlaceWithSmallIndex:0 bigIndex:0 progress:0 animate:NO];
             }
-            CGFloat top = self.toolBar.hidden?64:64+MultiItemsToolBarScrollViewHeight;
+            CGFloat top = self.toolBar.hidden?64:64+MultiItemsToolBarScrollViewHeight-4;
             [[HomeRefreshManager shareHomeRefreshManager] checkHomeRefreshGuideWithTarget:self top:top resultBlock:nil];
             [self.collectionView reloadData];
             [self scrollViewDidScroll:self.collectionView];

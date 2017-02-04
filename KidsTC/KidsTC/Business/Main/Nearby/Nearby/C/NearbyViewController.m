@@ -82,6 +82,17 @@
             MapLocateViewController *controller = [[MapLocateViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
             [BuryPointManager trackEvent:@"event_skip_nearby_location" actionId:21700 params:nil];
+            /*
+            NSMutableArray *ary  = [NSMutableArray array];
+            NSString *str = nil;
+            [ary addObject:str];
+             */
+            /*
+            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+            NSString *str = nil;
+            [dic setObject:str forKey:@"oo"];
+             */
+            
         }
             break;
             

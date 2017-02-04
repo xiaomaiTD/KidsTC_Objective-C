@@ -18,6 +18,8 @@
 #import "RadishProductDetailStore.h"
 #import "RadishProductDetailPlace.h"
 
+#import "NormalProductDetailData.h"
+
 @interface ProductDetailAddressSelStoreModel : NSObject
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
@@ -26,6 +28,10 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *distance;
 @property (nonatomic, strong) KTCLocation *location;
+
++(NSArray<ProductDetailAddressSelStoreModel *> *)modelsWithNormalProductDetailPlaceType:(PlaceType)placeType
+                                                                                 stores:(NSArray<NormalProductDetailStore *> *)stores
+                                                                                 places:(NSArray<NormalProductDetailPlace *> *)places;
 
 +(NSArray<ProductDetailAddressSelStoreModel *> *)modelsWithProductDetailPlaceType:(PlaceType)placeType
                                                                            stores:(NSArray<ProductDetailStore *> *)stores

@@ -68,6 +68,9 @@
 }
 
 - (void)loadShareInfo{
+    if (![self.orderId isNotNull]) {
+        return;
+    }
     NSDictionary *param = @{@"orderId":self.orderId};
     [Request startWithName:@"GET_PAID_SHARE_INFO" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [self loadShareInfoSuccess:[SettlementResultShareModel modelWithDictionary:dic]];

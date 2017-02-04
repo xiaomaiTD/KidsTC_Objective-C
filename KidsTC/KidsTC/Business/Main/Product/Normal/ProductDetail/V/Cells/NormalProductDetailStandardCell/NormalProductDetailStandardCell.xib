@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="89" id="dR8-Og-2Xh" customClass="NormalProductDetailStandardCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dR8-Og-2Xh" id="bmc-9z-Azj">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="芭比公主摄影套系" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfG-dC-voo">
+                        <rect key="frame" x="15" y="16" width="208" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ET-BG-hEx">
+                        <rect key="frame" x="235" y="16" width="70" height="57"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVG-Io-kII">
+                                <rect key="frame" x="0.0" y="29" width="70" height="28"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="5bk-Pd-8AF"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="RRA-pn-C8c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="立即购买">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnAction:" destination="dR8-Og-2Xh" eventType="touchUpInside" id="Jrj-KP-LM8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="￥888.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrp-fr-995">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lrp-fr-995" firstAttribute="top" secondItem="6ET-BG-hEx" secondAttribute="top" id="24J-4J-xEA"/>
+                            <constraint firstItem="lrp-fr-995" firstAttribute="leading" secondItem="6ET-BG-hEx" secondAttribute="leading" id="2Ip-4p-eXF"/>
+                            <constraint firstAttribute="trailing" secondItem="DVG-Io-kII" secondAttribute="trailing" id="5xV-Ab-mNe"/>
+                            <constraint firstAttribute="trailing" secondItem="lrp-fr-995" secondAttribute="trailing" id="7hT-0A-GGT"/>
+                            <constraint firstAttribute="bottom" secondItem="DVG-Io-kII" secondAttribute="bottom" id="Joa-YL-vg9"/>
+                            <constraint firstItem="DVG-Io-kII" firstAttribute="top" secondItem="lrp-fr-995" secondAttribute="bottom" constant="8" id="cXC-Mg-ML8"/>
+                            <constraint firstItem="DVG-Io-kII" firstAttribute="leading" secondItem="6ET-BG-hEx" secondAttribute="leading" id="yUr-Y5-fD1"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sr8-HY-67G">
+                        <rect key="frame" x="0.0" y="88" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="QmX-eL-A9y"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="包含2组公主造型，公主服装2套16张修改照片" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy9-u4-ijF">
+                        <rect key="frame" x="15" y="41" width="208" height="31.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kfG-dC-voo" firstAttribute="leading" secondItem="bmc-9z-Azj" secondAttribute="leading" constant="15" id="6p4-UT-mtO"/>
+                    <constraint firstItem="dy9-u4-ijF" firstAttribute="leading" secondItem="bmc-9z-Azj" secondAttribute="leading" constant="15" id="Bs8-tU-217"/>
+                    <constraint firstAttribute="trailing" secondItem="Sr8-HY-67G" secondAttribute="trailing" id="Gym-fG-yrz"/>
+                    <constraint firstAttribute="trailing" secondItem="6ET-BG-hEx" secondAttribute="trailing" constant="15" id="M1c-eO-0jy"/>
+                    <constraint firstAttribute="bottom" secondItem="6ET-BG-hEx" secondAttribute="bottom" constant="16" id="T9V-Pj-2Uv"/>
+                    <constraint firstItem="6ET-BG-hEx" firstAttribute="leading" secondItem="kfG-dC-voo" secondAttribute="trailing" constant="12" id="UWN-4e-cvF"/>
+                    <constraint firstItem="Sr8-HY-67G" firstAttribute="leading" secondItem="bmc-9z-Azj" secondAttribute="leading" id="Ztb-Bi-32g"/>
+                    <constraint firstAttribute="bottom" secondItem="Sr8-HY-67G" secondAttribute="bottom" id="edb-dl-TwK"/>
+                    <constraint firstItem="dy9-u4-ijF" firstAttribute="top" secondItem="kfG-dC-voo" secondAttribute="bottom" constant="8" id="iGe-Ht-oMa"/>
+                    <constraint firstItem="6ET-BG-hEx" firstAttribute="top" secondItem="bmc-9z-Azj" secondAttribute="top" constant="16" id="l2v-2S-cFT"/>
+                    <constraint firstItem="6ET-BG-hEx" firstAttribute="top" secondItem="kfG-dC-voo" secondAttribute="top" id="uJS-3q-yaF"/>
+                    <constraint firstItem="6ET-BG-hEx" firstAttribute="leading" secondItem="dy9-u4-ijF" secondAttribute="trailing" constant="12" id="zO9-Jp-sGT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buyBtn" destination="DVG-Io-kII" id="KnB-uA-NPz"/>
+                <outlet property="contentL" destination="dy9-u4-ijF" id="Pak-Vf-8iP"/>
+                <outlet property="nameL" destination="kfG-dC-voo" id="GxU-Qo-n2K"/>
+                <outlet property="priceL" destination="lrp-fr-995" id="3o6-eT-58T"/>
+            </connections>
+            <point key="canvasLocation" x="-342" y="76.5"/>
+        </tableViewCell>
+    </objects>
+</document>

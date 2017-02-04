@@ -75,7 +75,7 @@
     attStatus.alignment = NSTextAlignmentLeft;
     content.attStatus = attStatus;
     
-    NSString *storeName = [_storeName isNotNull]?_storeName:@"";
+    NSString *storeName = [_storeName isNotNull]?[NSString stringWithFormat:@" %@",_storeName]:@"";
     if ([storeName isNotNull]) {
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
         attachment.image = [UIImage imageNamed:@"home_recommend_local"];

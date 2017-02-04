@@ -8,6 +8,8 @@
 
 #import "InterfaceModel.h"
 #import "Macro.h"
+#import "NSString+Category.h"
+
 @implementation InterfaceItem
 + (instancetype)itemWithDic:(NSDictionary *)dic name:(NSString *)name{
     return [[self alloc]initWithDic:dic name:name];
@@ -16,12 +18,12 @@
     self = [super init];
     if (self) {
         
-        if (!dic || ![dic isKindOfClass:[NSDictionary class]]) {
+        if (!dic || ![dic isKindOfClass:[NSDictionary class]] || dic.count<1) {
             TCLog(@"无效的接口列表");
             return nil;
         }
         
-        if (name.length<=0) {
+        if (![name isNotNull]) {
             TCLog(@"请求名称为空");
             return nil;
         }else{
@@ -30,7 +32,7 @@
         
         NSDictionary *itemDic = dic[name];
         
-        if (!itemDic || ![itemDic isKindOfClass:[NSDictionary class]]) {
+        if (!itemDic || ![itemDic isKindOfClass:[NSDictionary class]] || itemDic.count<1) {
             TCLog(@"无效的接口字典-请求名称:%@",name);
             return nil;
         }
@@ -46,7 +48,7 @@
         }
         
         NSString *url = itemDic[@"url"];
-        if (url.length<=0) {
+        if (![url isNotNull]) {
             TCLog(@"无效的请求路径-请求名称:%@",name);
             return nil;
         }else{
