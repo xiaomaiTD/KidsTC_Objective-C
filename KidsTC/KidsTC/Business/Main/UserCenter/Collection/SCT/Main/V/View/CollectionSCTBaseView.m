@@ -81,11 +81,14 @@ static NSString *const ID = @"UITableViewCell";
     [self.tableView.mj_footer endRefreshing];
     
     if (!isRecommend) {
-        if (loadCount<CollectionSCTPageCount) {
+        if (loadCount<1) {
             self.noMoreListData = YES;
+            if ([self.delegate respondsToSelector:@selector(collectionSCTBaseView:actionType:value:completion:)]) {
+                [self.delegate collectionSCTBaseView:self actionType:CollectionSCTBaseViewActionTypeLoadData value:@(YES) completion:nil];
+            }
         }
     }else{
-        if (loadCount<CollectionSCTPageCount) {
+        if (loadCount<1) {
             self.noMoreRecommendData = YES;
         }
     }

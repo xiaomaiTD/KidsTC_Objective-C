@@ -178,9 +178,17 @@
             break;
         case SegueDestinationServiceDetail:
         {
+            /*
             NSString *productId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
             NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
             toController = [[NormalProductDetailViewController alloc] initWithProductId:productId channelId:channelId];
+            */
+            NSString *serviceId = [NSString stringWithFormat:@"%@", model.segueParam[@"pid"]];
+            NSString *channelId = [NSString stringWithFormat:@"%@", model.segueParam[@"cid"]];
+            channelId = [channelId isNotNull]?channelId:@"0";
+            ProductDetailViewController *controller = [[ProductDetailViewController alloc] initWithServiceId:serviceId channelId:channelId];
+            controller.type = ProductDetailTypeNormal;
+            toController = controller;
         }
             break;
         case SegueDestinationStoreDetail:

@@ -1972,6 +1972,12 @@
 		EC98B3611E45B132002D66BF /* NormalProductDetailSectionEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B35F1E45B132002D66BF /* NormalProductDetailSectionEmptyCell.xib */; };
 		EC98B3661E45B35C002D66BF /* NormalProductDetailContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3641E45B35C002D66BF /* NormalProductDetailContactCell.m */; };
 		EC98B3671E45B35C002D66BF /* NormalProductDetailContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3651E45B35C002D66BF /* NormalProductDetailContactCell.xib */; };
+		EC98B3901E485ECD002D66BF /* NormalProductDetailNaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B38F1E485ECD002D66BF /* NormalProductDetailNaviView.m */; };
+		EC98B3921E485EDB002D66BF /* NormalProductDetailNaviView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3911E485EDB002D66BF /* NormalProductDetailNaviView.xib */; };
+		EC98B39C1E486DA5002D66BF /* ProductDetailNaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B39A1E486DA5002D66BF /* ProductDetailNaviView.m */; };
+		EC98B39D1E486DA5002D66BF /* ProductDetailNaviView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B39B1E486DA5002D66BF /* ProductDetailNaviView.xib */; };
+		EC98B3A21E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3A01E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m */; };
+		EC98B3A31E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3A11E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2BC0E1DF2A11700EAE79C /* ProductOrderListModel.m */; };
 		ECA2BC121DF2A12600EAE79C /* ProductOrderListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2BC111DF2A12600EAE79C /* ProductOrderListItem.m */; };
@@ -5641,6 +5647,15 @@
 		EC98B3631E45B35C002D66BF /* NormalProductDetailContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalProductDetailContactCell.h; sourceTree = "<group>"; };
 		EC98B3641E45B35C002D66BF /* NormalProductDetailContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalProductDetailContactCell.m; sourceTree = "<group>"; };
 		EC98B3651E45B35C002D66BF /* NormalProductDetailContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalProductDetailContactCell.xib; sourceTree = "<group>"; };
+		EC98B38E1E485ECD002D66BF /* NormalProductDetailNaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalProductDetailNaviView.h; sourceTree = "<group>"; };
+		EC98B38F1E485ECD002D66BF /* NormalProductDetailNaviView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalProductDetailNaviView.m; sourceTree = "<group>"; };
+		EC98B3911E485EDB002D66BF /* NormalProductDetailNaviView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalProductDetailNaviView.xib; sourceTree = "<group>"; };
+		EC98B3991E486DA5002D66BF /* ProductDetailNaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailNaviView.h; sourceTree = "<group>"; };
+		EC98B39A1E486DA5002D66BF /* ProductDetailNaviView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailNaviView.m; sourceTree = "<group>"; };
+		EC98B39B1E486DA5002D66BF /* ProductDetailNaviView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailNaviView.xib; sourceTree = "<group>"; };
+		EC98B39F1E4889AC002D66BF /* ProductDetailSelectStandardNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSelectStandardNewCell.h; sourceTree = "<group>"; };
+		EC98B3A01E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSelectStandardNewCell.m; sourceTree = "<group>"; };
+		EC98B3A11E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailSelectStandardNewCell.xib; sourceTree = "<group>"; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		ECA2BC0D1DF2A11700EAE79C /* ProductOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListModel.h; sourceTree = "<group>"; };
@@ -6367,6 +6382,7 @@
 		EC00435B1DE6B8970042B701 /* V */ = {
 			isa = PBXGroup;
 			children = (
+				EC98B3931E486D65002D66BF /* Navi */,
 				EC00435C1DE6B8970042B701 /* Cells */,
 				EC0043E21DE6B8970042B701 /* CountDownView */,
 				EC0043E61DE6B8970042B701 /* header */,
@@ -6401,6 +6417,7 @@
 				EC0043A81DE6B8970042B701 /* ProductDetailRecommendCell */,
 				EC0043AC1DE6B8970042B701 /* ProductDetailStandardCell */,
 				ECEE2B4A1E07CC6400FAB7C2 /* ProductDetailSelectStandardCell */,
+				EC98B39E1E4889AC002D66BF /* ProductDetailSelectStandardNewCell */,
 				EC0043B01DE6B8970042B701 /* ProductDetailTicketActorCell */,
 				EC0043B41DE6B8970042B701 /* ProductDetailTicketActorCollectionViewCell */,
 				EC0043B81DE6B8970042B701 /* ProductDetailTicketDesBtnCell */,
@@ -10310,6 +10327,9 @@
 				EC299C931E448D790006B701 /* NormalProductDetailNaviRightView.h */,
 				EC299C941E448D790006B701 /* NormalProductDetailNaviRightView.m */,
 				EC299C951E448D790006B701 /* NormalProductDetailNaviRightView.xib */,
+				EC98B38E1E485ECD002D66BF /* NormalProductDetailNaviView.h */,
+				EC98B38F1E485ECD002D66BF /* NormalProductDetailNaviView.m */,
+				EC98B3911E485EDB002D66BF /* NormalProductDetailNaviView.xib */,
 			);
 			path = Navi;
 			sourceTree = "<group>";
@@ -17000,6 +17020,26 @@
 			path = NormalProductDetailContactCell;
 			sourceTree = "<group>";
 		};
+		EC98B3931E486D65002D66BF /* Navi */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3991E486DA5002D66BF /* ProductDetailNaviView.h */,
+				EC98B39A1E486DA5002D66BF /* ProductDetailNaviView.m */,
+				EC98B39B1E486DA5002D66BF /* ProductDetailNaviView.xib */,
+			);
+			path = Navi;
+			sourceTree = "<group>";
+		};
+		EC98B39E1E4889AC002D66BF /* ProductDetailSelectStandardNewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B39F1E4889AC002D66BF /* ProductDetailSelectStandardNewCell.h */,
+				EC98B3A01E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m */,
+				EC98B3A11E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib */,
+			);
+			path = ProductDetailSelectStandardNewCell;
+			sourceTree = "<group>";
+		};
 		EC99A05A1D7B219A008E6F33 /* YYHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -19388,6 +19428,7 @@
 				EC299BA81E4484300006B701 /* WholesaleOrderDetailJoinMemberCell.xib in Resources */,
 				EC299A361E44842C0006B701 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
 				EC4FC5C81D77CEEF00BBD050 /* PlayButtonOverlayLarge.png in Resources */,
+				EC98B3A31E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib in Resources */,
 				EC4C60B71DF5B0CB00830126 /* ProductOrderListAllTitleCollectionHeader.xib in Resources */,
 				EC299BCE1E4484300006B701 /* WholesaleOrderListHeader.xib in Resources */,
 				EC4FC5BF1D77CEEF00BBD050 /* ImageSelectedOn.png in Resources */,
@@ -19702,6 +19743,7 @@
 				EC0044D31DE7F4E40042B701 /* ProductDetailTwoColumnConsultMoreCell.xib in Resources */,
 				EC98B34C1E458F11002D66BF /* NormalProductDetailStandardCell.xib in Resources */,
 				EC4FC2AC1D77CEE400BBD050 /* ActivityFilterView.xib in Resources */,
+				EC98B39D1E486DA5002D66BF /* ProductDetailNaviView.xib in Resources */,
 				ECCF48321E287B2F00C4DDB3 /* ActivityProductToolBar.xib in Resources */,
 				EC4870A61DFC3FC1005CA365 /* ProductOrderFreeDetailProductCell.xib in Resources */,
 				ECBC97C81DFEEA9E00B7386C /* ProductOrderNormalDetailPayInfoTotalCell.xib in Resources */,
@@ -19726,6 +19768,7 @@
 				EC4E27191DEED77F00622711 /* MapRouteSearchTypeViewController.xib in Resources */,
 				EC4C60611DF5028100830126 /* ProductOrderListHeader.xib in Resources */,
 				EC0044231DE6B8970042B701 /* ProductDetailNoticeCollectionViewCell.xib in Resources */,
+				EC98B3921E485EDB002D66BF /* NormalProductDetailNaviView.xib in Resources */,
 				EC4FC4501D77CEE400BBD050 /* CommentListViewCell.xib in Resources */,
 				EC299C1B1E4484310006B701 /* WolesaleProductDetailJoinTeamCell.xib in Resources */,
 				EC30ABDB1DFFAEF5007380B0 /* ProductOrderTicketDetailSeatCell.xib in Resources */,
@@ -20132,6 +20175,7 @@
 				EC4FC2951D77CEE400BBD050 /* ArticleCommentModel.m in Sources */,
 				EC30ABBC1DFF9CD3007380B0 /* ProductOrderTicketDetailDeliverCell.m in Sources */,
 				ECA59BA31DEC20AD00B3B1F7 /* SearchViewController.m in Sources */,
+				EC98B3A21E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m in Sources */,
 				EC4FC4161D77CEE400BBD050 /* AppointmentOrderModel.m in Sources */,
 				EC13B4FB1DD1F3430040F760 /* AccountCenterRecommendsCell.m in Sources */,
 				EC4FC2331D77CEE400BBD050 /* BindPhoneViewController.m in Sources */,
@@ -20812,6 +20856,7 @@
 				EC299BCD1E4484300006B701 /* WholesaleOrderListHeader.m in Sources */,
 				EC299ACB1E44842E0006B701 /* RadishMallPlantCell.m in Sources */,
 				EC299BDB1E4484300006B701 /* WholesalePickDateTimeCell.m in Sources */,
+				EC98B3901E485ECD002D66BF /* NormalProductDetailNaviView.m in Sources */,
 				ECCF48261E28782200C4DDB3 /* ActivityProductViewController.m in Sources */,
 				EC2F25801DD2C9D000B67BBA /* AccountCenterBannersCollectionViewCell.m in Sources */,
 				EC4FC3C41D77CEE400BBD050 /* WelfareStoreLoveHouseCell.m in Sources */,
@@ -21359,6 +21404,7 @@
 				ECFFC6FF1DC363C1002DBFB9 /* ProductDetailTimeItem.m in Sources */,
 				EC299BA91E4484300006B701 /* WholesaleOrderDetailJoinTipCell.m in Sources */,
 				EC5971991DD0165C0047CDEC /* SoftwareSettingHeader.m in Sources */,
+				EC98B39C1E486DA5002D66BF /* ProductDetailNaviView.m in Sources */,
 				EC4FC43E1D77CEE400BBD050 /* CommentScoreConfigModel.m in Sources */,
 				EC4FC5E71D77CEEF00BBD050 /* MBProgressHUD.m in Sources */,
 				EC0044181DE6B8970042B701 /* ProductDetailCouponCell.m in Sources */,

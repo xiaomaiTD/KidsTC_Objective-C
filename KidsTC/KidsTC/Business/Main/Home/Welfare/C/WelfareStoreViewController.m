@@ -186,7 +186,7 @@ static NSString *const WelfareStoreLoveHouseCellID = @"WelfareStoreLoveHouseCell
     }
     [self.tableView reloadData];
     
-    if (model.data.count<pageCount) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    if (model.data.count<1) [self.tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
 - (void)loadDataFailure{

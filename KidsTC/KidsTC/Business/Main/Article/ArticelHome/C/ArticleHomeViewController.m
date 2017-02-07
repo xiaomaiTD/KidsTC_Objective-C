@@ -275,7 +275,7 @@
                 self.classView.clazz = model.data.clazz;
             }
             [self dealWithLoadResult];
-            if (sections.count<PAGE_COUNT) [self.tableView noMoreData];
+            if (sections.count<1) [self.tableView noMoreData];
         });
     });
 }

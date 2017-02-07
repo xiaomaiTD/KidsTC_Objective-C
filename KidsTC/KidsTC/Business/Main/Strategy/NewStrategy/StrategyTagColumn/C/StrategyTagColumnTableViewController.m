@@ -102,7 +102,7 @@ static NSString *ID = @"StrategyTableViewCellID";
         [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
-        if (model.data.list.count<pageCount) {
+        if (model.data.list.count<1) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.tableView.mj_footer endRefreshing];

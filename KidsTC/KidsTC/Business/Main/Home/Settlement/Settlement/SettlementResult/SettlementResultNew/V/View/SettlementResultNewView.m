@@ -73,7 +73,7 @@ static NSString *const FreeCellID = @"SettlementResultNewFreeCell";
     
     [self resetFooterView];
     
-    if (count<TCPAGECOUNT) {
+    if (count<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
 }

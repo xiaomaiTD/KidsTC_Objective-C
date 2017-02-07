@@ -189,5 +189,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, assign) TCHomeContentLayoutAttributes layoutAttributes;
 @property (nonatomic, assign) TCHomeFloorContentType type;
+@property (nonatomic, strong) NSString *serveId;
+@property (nonatomic, assign) ProductDetailType productRedirect;
 - (void)setupAttTitle;
 @end

@@ -210,7 +210,7 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
     }
     
     [self dealWithMJ];
-    if (ary.count<kPageCount) [_tableView.mj_footer endRefreshingWithNoMoreData];
+    if (ary.count<1) [_tableView.mj_footer endRefreshingWithNoMoreData];
     [_tableView reloadData];
 }
 
@@ -250,7 +250,7 @@ static NSString *const ArticleUserCenterCommentCellID = @"ArticleUserCenterComme
     }
     
     [self dealWithMJ];
-    if (ary.count<kPageCount) [_tableView.mj_footer endRefreshingWithNoMoreData];
+    if (ary.count<1) [_tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
 - (void)loadCommentDataRefresh:(BOOL)refresh failure:(NSError *)error {

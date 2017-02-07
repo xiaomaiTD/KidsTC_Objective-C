@@ -93,31 +93,11 @@
     }
     if (![_channelId isNotNull])_channelId=@"0";
     
-    self.navigationItem.title = @"服务详情";
+    //self.navigationItem.title = @"服务详情";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.naviTheme = NaviThemeWihte;
     
-    switch (_type) {
-        case ProductDetailTypeNormal:
-        {
-            self.pageId = 10401;
-            
-        }
-            break;
-        case ProductDetailTypeTicket:
-        {
-            self.naviColor = [UIColor clearColor];
-            self.pageId = 10404;
-        }
-            break;
-        case ProductDetailTypeFree:
-        {
-            self.pageId = 10405;
-        }
-            break;
-            default:
-            break;
-    }
+    
     
     self.trackParams = @{@"pid":_productId,
                          @"cid":_channelId};
@@ -132,7 +112,33 @@
     
     [self loadData];
     
-    [self buildRightBarButtons];
+    switch (_type) {
+        case ProductDetailTypeNormal:
+        {
+            self.pageId = 10401;
+            [self.navigationController.navigationBar setHidden:YES];
+            self.backBtn.hidden = YES;
+        }
+            break;
+        case ProductDetailTypeTicket:
+        {
+            self.naviColor = [UIColor clearColor];
+            self.pageId = 10404;
+            [self.navigationController.navigationBar setHidden:NO];
+            self.backBtn.hidden = NO;
+            [self buildRightBarButtons];
+        }
+            break;
+        case ProductDetailTypeFree:
+        {
+            self.pageId = 10405;
+            [self.navigationController.navigationBar setHidden:YES];
+            self.backBtn.hidden = YES;
+        }
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -141,7 +147,15 @@
     [self.detailView scroll];
     if (_type == ProductDetailTypeTicket) {
         [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+        [self.navigationController.navigationBar setHidden:NO];
+    }else{
+        [self.navigationController.navigationBar setHidden:YES];
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.navigationController.navigationBar setHidden:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -176,7 +190,9 @@
     _data = data;
     _data.type = _type;
     self.detailView.data = data;
-    self.navigationItem.title = data.simpleName;
+    if (_type == ProductDetailTypeTicket) {
+        self.navigationItem.title = data.simpleName;
+    }
     [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeProductDetail resultBlock:nil];
     [self loadRecommend];
     [self loadConsult];
@@ -395,6 +411,22 @@
             [self didScroll:value];
         }
             break;
+        case ProductDetailViewActionTypeBack:
+        {
+            [self back];
+        }
+            break;
+        case ProductDetailViewActionTypeTime:
+        {
+            [self showHistoryView];
+        }
+            break;
+        case ProductDetailViewActionTypeMore:
+        {
+            [self showActionView];
+        }
+            break;
+            
     }
 }
 
@@ -511,8 +543,9 @@
         }
             break;
         case ProductStandardViewControllerActionTypBuyStandard:
-        {
-            [self buyStandard:value];
+        {   [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+                [self buyStandard:value];
+            }];
         }
             break;
         default:
@@ -1082,7 +1115,7 @@
 - (void)rightBarButtonItemAction{
     CGFloat rightMargin = 28;
     if ([UIScreen mainScreen].bounds.size.width>400) rightMargin = 32;
-    CGFloat barBtnX = CGRectGetWidth([[UIScreen mainScreen] bounds]) - rightMargin;
+    CGFloat barBtnX = CGRectGetWidth([[UIScreen mainScreen] bounds]) - rightMargin + 2;
     CGFloat barBtnY = 48;
     
     ZPPopoverItem *popoverItem1 = [ZPPopoverItem makeZpMenuItemWithImageName:@"productDetail_popover_home"  title:@"首页"];

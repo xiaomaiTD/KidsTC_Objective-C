@@ -98,11 +98,14 @@ static NSString *const ID = @"UITableViewCell";
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     if (!isRecommend) {
-        if (loadCount<CollectProductPageCount) {
+        if (loadCount<1) {
             self.noMoreCollectData = YES;
+            if ([self.delegate respondsToSelector:@selector(collectProductBaseView:actionType:value:completion:)]) {
+                [self.delegate collectProductBaseView:self actionType:CollectProductBaseViewActionTypeLoadData value:@(YES) completion:nil];
+            }
         }
     }else{
-        if (loadCount<CollectProductPageCount) {
+        if (loadCount<1) {
             self.noMoreRecommendData = YES;
         }
     }

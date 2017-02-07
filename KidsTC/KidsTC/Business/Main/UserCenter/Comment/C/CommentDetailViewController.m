@@ -55,6 +55,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.navigationItem.title = @"用户评价";
     switch (self.viewSource) {
         case CommentDetailViewSourceServiceOrStore:

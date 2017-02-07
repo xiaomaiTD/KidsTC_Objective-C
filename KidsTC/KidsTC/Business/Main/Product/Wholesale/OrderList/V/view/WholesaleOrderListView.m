@@ -110,11 +110,14 @@ static NSString *const CellID = @"WholesaleOrderListCell";
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     if (!isRecommend) {
-        if (loadCount<TCPAGECOUNT) {
+        if (loadCount<1) {
             self.noMoreOrderListData = YES;
+            if ([self.delegate respondsToSelector:@selector(wholesaleOrderListView:actionType:value:)]) {
+                [self.delegate wholesaleOrderListView:self actionType:WholesaleOrderListViewActionTypeLoadData value:@(YES)];
+            }
         }
     }else{
-        if (loadCount<TCPAGECOUNT) {
+        if (loadCount<1) {
             self.noMoreRecommendData = YES;
         }
     }

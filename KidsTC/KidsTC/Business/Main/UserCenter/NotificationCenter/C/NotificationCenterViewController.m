@@ -111,7 +111,7 @@ static NSString *const NotificationCenterViewCellID = @"NotificationCenterViewCe
         [self.ary addObjectsFromArray:model.data];
     }
     [self dealWithLoadResult];
-    if (model.data.count<pageCount) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    if (model.data.count<1) [self.tableView.mj_footer endRefreshingWithNoMoreData];
     
 }
 

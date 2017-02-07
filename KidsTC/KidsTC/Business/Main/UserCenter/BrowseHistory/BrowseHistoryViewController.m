@@ -162,7 +162,7 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
                             [self.serviceAry addObject:model];
                         }
                     }
-                    if (dataArray.count < [pagecount integerValue]) {
+                    if (dataArray.count < 1) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     }else{
                         [self.tableView.mj_footer endRefreshing];
@@ -211,7 +211,7 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
                             [self.storeAry addObject:model];
                         }
                     }
-                    if (dataArray.count < [pagecount integerValue]) {
+                    if (dataArray.count < 1) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     }else{
                         [self.tableView.mj_footer endRefreshing];

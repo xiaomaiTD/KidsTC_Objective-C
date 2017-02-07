@@ -53,6 +53,7 @@ static Request *_requestManager;
     switch (interfaceItem.method) {
         case RequestTypeGet:
         {
+            interfaceItem.start = [[NSDate date] timeIntervalSince1970];
             [manager GET:interfaceItem.url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
                 if (progress) progress(downloadProgress);
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -64,6 +65,7 @@ static Request *_requestManager;
             break;
         case RequestTypePost:
         {
+            interfaceItem.start = [[NSDate date] timeIntervalSince1970];
             [manager POST:interfaceItem.url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
                 if (progress) progress(uploadProgress);
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -124,7 +126,7 @@ static Request *_requestManager;
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
     [request setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
-    
+    interfaceItem.start = [[NSDate date] timeIntervalSince1970];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             [self responseSuccessWithInterfaceItem:interfaceItem task:task responseObject:data success:success failure:failure];
@@ -178,7 +180,7 @@ static Request *_requestManager;
     request.HTTPMethod = HTTPMethod;
     request.HTTPBody = HTTPBody;
     [request setValue:[NSString stringWithFormat:@"KidsTC/Iphone/%@", APP_VERSION] forHTTPHeaderField:@"User-Agent"];
-    
+    interfaceItem.start = [[NSDate date] timeIntervalSince1970];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             [self responseSuccessWithInterfaceItem:interfaceItem task:task responseObject:data success:success failure:failure];
@@ -235,6 +237,8 @@ static Request *_requestManager;
         if (failure) failure(task,error);
         if (failure) failure = nil;
     }
+    interfaceItem.end = [[NSDate date] timeIntervalSince1970];
+    [Request getStatusCodeItem:interfaceItem task:task];
 }
 
 /**
@@ -248,6 +252,8 @@ static Request *_requestManager;
     TCLog(@"响应失败-failure-:%@\n错误报文:%@\n",interfaceItem,error);
     if (failure) failure(task,error);
     if (failure) failure = nil;
+    interfaceItem.end = [[NSDate date] timeIntervalSince1970];
+    [Request getStatusCodeItem:interfaceItem task:task];
 }
 
 
@@ -269,6 +275,7 @@ static Request *_requestManager;
     switch (interfaceItem.method) {
         case RequestTypeGet:
         {
+            interfaceItem.start = [[NSDate date] timeIntervalSince1970];
             [manager GET:interfaceItem.url parameters:param progress:^(NSProgress * _Nonnull downloadProgress) {
                 if (progress) progress(downloadProgress);
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -280,6 +287,7 @@ static Request *_requestManager;
             break;
         case RequestTypePost:
         {
+            interfaceItem.start = [[NSDate date] timeIntervalSince1970];
             [manager POST:interfaceItem.url parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
                 if (progress) progress(uploadProgress);
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -330,6 +338,8 @@ static Request *_requestManager;
         if (failure) failure(task,error);
         if (failure) failure = nil;
     }
+    interfaceItem.end = [[NSDate date] timeIntervalSince1970];
+    [Request getStatusCodeItem:interfaceItem task:task];
 }
 
 /**
@@ -343,6 +353,8 @@ static Request *_requestManager;
     TCLog(@"响应失败-failure-:%@\n错误报文:%@\n",interfaceItem,error);
     if (failure) failure(task,error);
     if (failure) failure = nil;
+    interfaceItem.end = [[NSDate date] timeIntervalSince1970];
+    [Request getStatusCodeItem:interfaceItem task:task];
 }
 
 #pragma mark - helpers
@@ -359,6 +371,35 @@ static Request *_requestManager;
         [str appendString:item];
     }
     return str;
+}
+
++ (void)getStatusCodeItem:(InterfaceItem *)interfaceItem
+                     task:(NSURLSessionDataTask *)task
+{
+    if ([task isKindOfClass:[NSHTTPURLResponse class]]) {
+        
+    }
+    NSHTTPURLResponse *responses = (NSHTTPURLResponse *)task.response;
+    
+    NSInteger netCode = responses.statusCode;
+    
+    long long time = (interfaceItem.end - interfaceItem.start)*1000;
+    
+    NSString *urlTag = interfaceItem.name;
+    
+    NSDictionary *allHeaderFields = responses.allHeaderFields;
+    
+    
+    
+    id date = allHeaderFields[@"Date"];
+    id last_Modified = allHeaderFields[@"Last-Modified"];
+    if (date && last_Modified && [date isKindOfClass:[NSDate class]] && [last_Modified isKindOfClass:[NSDate class]]) {
+        NSTimeInterval date_time = [date timeIntervalSince1970];
+        NSTimeInterval last_Modified_time = [last_Modified timeIntervalSince1970];
+        time = (last_Modified_time - date_time)*1000;
+    }
+    
+    NSLog(@"netCode:%@ time:%@ urlTag:%@",@(netCode),@(time),urlTag);
 }
 
 @end

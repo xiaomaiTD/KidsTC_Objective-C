@@ -25,6 +25,8 @@
     content.subTitle = self.promotionText;
     content.price = self.price;
     content.segueModel = self.segueModel;
+    content.productRedirect = self.productRedirect;
+    content.serveId = self.serveId;
     NSString *tipImgName = nil;
     switch (_reProductType) {
         case TCHomeRecommendProductTypeNew:
@@ -49,6 +51,7 @@
             break;
     }
     content.tipImgName = tipImgName;
+
     
     if ([_joinDesc isNotNull]) {
         NSMutableAttributedString *attSaleNum= [[NSMutableAttributedString alloc] initWithString:_joinDesc];
@@ -70,7 +73,7 @@
     NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
     [attStatus insertAttributedString:imgAttStr atIndex:0];
     attStatus.lineSpacing = 0;
-    attStatus.color = [UIColor colorFromHexString:@"333333"];
+    attStatus.color = [UIColor colorFromHexString:@"888888"];
     attStatus.font = [UIFont systemFontOfSize:14];
     attStatus.alignment = NSTextAlignmentLeft;
     content.attStatus = attStatus;
@@ -85,7 +88,7 @@
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:storeName];
         [attStoreAddress insertAttributedString:attachmentStr atIndex:0];
         attStoreAddress.lineSpacing = 0;
-        attStoreAddress.color = [UIColor colorFromHexString:@"333333"];
+        attStoreAddress.color = [UIColor colorFromHexString:@"888888"];
         attStoreAddress.font = [UIFont systemFontOfSize:14];
         attStoreAddress.lineBreakMode = NSLineBreakByTruncatingTail;
         attStoreAddress.alignment = NSTextAlignmentLeft;

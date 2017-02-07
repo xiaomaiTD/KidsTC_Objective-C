@@ -28,6 +28,7 @@
 #import "ProductDetailTwoColumnConsultConsultCell.h"
 #import "ProductDetailTwoColumnConsultMoreCell.h"
 #import "ProductDetailSelectStandardCell.h"
+#import "ProductDetailSelectStandardNewCell.h"
 #import "ProductDetailStandardCell.h"
 #import "ProductDetailCouponCell.h"
 #import "ProductDetailNoticeCell.h"
@@ -67,6 +68,7 @@
 @property (nonatomic, strong) ProductDetailTwoColumnConsultEmptyCell *twoColumnConsultEmptyCell;
 @property (nonatomic, strong) ProductDetailTwoColumnConsultMoreCell *twoColumnConsultMoreCell;
 @property (nonatomic, strong) ProductDetailSelectStandardCell *selectStandardCell;
+@property (nonatomic, strong) ProductDetailSelectStandardNewCell *selectStandardNewCell;
 @property (nonatomic, strong) ProductDetailCouponCell *couponCell;
 @property (nonatomic, strong) ProductDetailNoticeCell *noticeCell;
 @property (nonatomic, strong) ProductDetailContactCell *contactCell;
@@ -203,6 +205,13 @@
         _selectStandardCell = [self viewWithNib:@"ProductDetailSelectStandardCell"];
     }
     return _selectStandardCell;
+}
+
+- (ProductDetailSelectStandardNewCell *)selectStandardNewCell {
+    if (!_selectStandardNewCell) {
+        _selectStandardNewCell = [self viewWithNib:@"ProductDetailSelectStandardNewCell"];
+    }
+    return _selectStandardNewCell;
 }
 
 - (ProductDetailStandardCell *)standardCell {
@@ -415,10 +424,10 @@
     //已选套餐
     if (_data.product_standards.count>1 && _data.isShowProductStandards) {
         NSMutableArray *sectionForSelectStandard = [NSMutableArray array];
-        ProductDetailTitleCell *selectStandardtitleCell = self.titleCell;
-        selectStandardtitleCell.text = _data.standardTitle;
-        [sectionForSelectStandard addObject:selectStandardtitleCell];
-        [sectionForSelectStandard addObject:self.selectStandardCell];
+        //ProductDetailTitleCell *selectStandardtitleCell = self.titleCell;
+        //selectStandardtitleCell.text = _data.standardTitle;
+        //[sectionForSelectStandard addObject:selectStandardtitleCell];
+        [sectionForSelectStandard addObject:self.selectStandardNewCell];
         if (sectionForSelectStandard.count>0) [sections addObject:sectionForSelectStandard];
     }
     
@@ -1004,6 +1013,8 @@
     _twoColumnConsultTipCell = nil;
     _twoColumnConsultEmptyCell = nil;
     _twoColumnConsultMoreCell = nil;
+    _selectStandardCell = nil;
+    _selectStandardNewCell = nil;
     _couponCell = nil;
     _noticeCell = nil;
     _contactCell = nil;

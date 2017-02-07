@@ -89,7 +89,7 @@ static NSString *const ID = @"FlashServiceOrderListCellID";
         [self.ary addObjectsFromArray:model.data];
     }
     [self deailWithInterface];
-    if (model.data.count<PAGECOUNT) [_tableView.mj_footer endRefreshingWithNoMoreData];
+    if (model.data.count<1) [_tableView.mj_footer endRefreshingWithNoMoreData];
 }
 
 - (void)loadOrderListFailure:(NSError *)error {

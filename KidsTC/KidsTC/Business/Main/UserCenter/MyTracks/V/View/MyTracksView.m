@@ -83,7 +83,7 @@ static NSString *const FootID = @"MyTracksFooter";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<MyTracksPageCount) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {

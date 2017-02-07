@@ -133,11 +133,14 @@ static NSString *const BtnsCellID = @"ProductOrderFreeListBtnsCell";
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     if (!isRecommend) {
-        if (loadCount<ProductOrderFreeListPageCount) {
+        if (loadCount<1) {
             self.noMoreOrderListData = YES;
+            if ([self.delegate respondsToSelector:@selector(productOrderFreeListView:actionType:value:)]) {
+                [self.delegate productOrderFreeListView:self actionType:ProductOrderFreeListViewActionTypeLoadData value:@(YES)];
+            }
         }
     }else{
-        if (loadCount<ProductOrderFreeListPageCount) {
+        if (loadCount<1) {
             self.noMoreRecommendData = YES;
         }
     }

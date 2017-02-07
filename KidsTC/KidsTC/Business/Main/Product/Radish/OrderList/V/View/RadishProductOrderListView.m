@@ -125,11 +125,14 @@ static NSString *const BtnsCellID = @"RadishProductOrderListBtnsCell";
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     if (!isRecommend) {
-        if (loadCount<RadishProductOrderListPageCount) {
+        if (loadCount<1) {
             self.noMoreOrderListData = YES;
+            if ([self.delegate respondsToSelector:@selector(radishProductOrderListView:actionType:value:)]) {
+                [self.delegate radishProductOrderListView:self actionType:RadishProductOrderListViewActionTypeLoadData value:@(YES)];
+            }
         }
     }else{
-        if (loadCount<RadishProductOrderListPageCount) {
+        if (loadCount<1) {
             self.noMoreRecommendData = YES;
         }
     }

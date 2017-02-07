@@ -175,11 +175,11 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
 #pragma mark - TZImagePickerControllerDelegate
 
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (photos.count>0) {
-            [self trimImage:photos[0]];
-        }
-    }];
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    
+    if (photos.count>0) {
+        [self trimImage:photos[0]];
+    }
 }
 
 - (void)trimImage:(UIImage *)img {

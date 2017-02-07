@@ -17,6 +17,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) RequestType method;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) NSString *name;//请求名称
+@property (nonatomic, assign) NSTimeInterval start;
+@property (nonatomic, assign) NSTimeInterval end;
 @end
 
 @interface InterfaceModel : Model

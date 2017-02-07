@@ -53,7 +53,7 @@ static NSString *const SmallCellID = @"RadishMallSmallCell";
     
     [self.tableView reloadData];
     
-    if (loadCount<TCPAGECOUNT) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.data.showProducts.count<1) {

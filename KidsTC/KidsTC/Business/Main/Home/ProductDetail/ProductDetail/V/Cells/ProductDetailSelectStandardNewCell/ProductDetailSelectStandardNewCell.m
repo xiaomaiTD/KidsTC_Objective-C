@@ -1,18 +1,21 @@
 //
-//  NormalProductDetailDateCell.m
+//  ProductDetailSelectStandardNewCell.m
 //  KidsTC
 //
 //  Created by 詹平 on 2016/10/26.
 //  Copyright © 2016年 zhanping. All rights reserved.
 //
 
-#import "NormalProductDetailDateCell.h"
-@interface NormalProductDetailDateCell ()
+#import "ProductDetailSelectStandardNewCell.h"
+
+
+@interface ProductDetailSelectStandardNewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *dateL;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *lineH;
+
 @end
 
-@implementation NormalProductDetailDateCell
+@implementation ProductDetailSelectStandardNewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -23,13 +26,13 @@
     [self layoutIfNeeded];
 }
 
-- (void)setData:(NormalProductDetailData *)data {
+- (void)setData:(ProductDetailData *)data {
     [super setData:data];
-    self.dateL.text = data.time.desc;
+    self.dateL.text = data.standardName;
 }
 - (void)tapAction:(UITapGestureRecognizer *)tapGR {
-    if ([self.delegate respondsToSelector:@selector(normalProductDetailBaseCell:actionType:value:)]) {
-        [self.delegate normalProductDetailBaseCell:self actionType:NormalProductDetailBaseCellActionTypeShowDate value:nil];
+    if ([self.delegate respondsToSelector:@selector(productDetailBaseCell:actionType:value:)]) {
+        [self.delegate productDetailBaseCell:self actionType:ProductDetailBaseCellActionTypeSelectStandard value:nil];
     }
 }
 

@@ -90,7 +90,8 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     self.tf.text = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
     [self updateIv_activity];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self loadUnReadMessageCount];
+    [self.navigationController.navigationBar setHidden:NO];
+    //[self loadUnReadMessageCount];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -214,6 +215,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
     [self.tipButton setImage:[UIImage imageNamed:@"home_message"] forState:UIControlStateNormal];
     [self.tipButton addTarget:self action:@selector(gotoMessageCenter) forControlEvents:UIControlEventTouchUpInside];
     self.tipButton.badgeType = TipButtonBadgeTypeIcon;
+    self.tipButton.badgeValue = 1;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.tipButton];
 }
 
@@ -288,6 +290,7 @@ static NSString *const kTCHomeMainCollectionCellID = @"TCHomeMainCollectionCell"
 }
 
 - (void)gotoMessageCenter {
+    self.tipButton.badgeValue = 0;
     NotificationCenterViewController *controller = [[NotificationCenterViewController alloc] init];
     [self.navigationController pushViewController:controller animated:YES];
 }

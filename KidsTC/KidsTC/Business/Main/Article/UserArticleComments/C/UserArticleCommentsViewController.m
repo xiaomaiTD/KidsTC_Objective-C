@@ -124,7 +124,7 @@
         });
         
         [self.tableView.mj_header endRefreshing];
-        if (pageCount>model.data.comments.count) {
+        if (1>model.data.comments.count) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.tableView.mj_footer endRefreshing];

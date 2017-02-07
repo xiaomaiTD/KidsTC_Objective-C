@@ -88,7 +88,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self dealWithLoadResult];
-            if (sections.count<PAGE_COUNT) [self.tableView noMoreData];
+            if (sections.count<1) [self.tableView noMoreData];
         });
     });
 }

@@ -24,7 +24,7 @@ static int const kNormalProductDetailBannerCellMaxSections = 11;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"NormalProductDetailBannerCollectionCell" bundle:nil] forCellWithReuseIdentifier:ID];
     
     self.pageControl.currentPageIndicatorTintColor = COLOR_PINK;
@@ -53,7 +53,7 @@ static int const kNormalProductDetailBannerCellMaxSections = 11;
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(SCREEN_WIDTH, CGRectGetHeight(collectionView.frame));
+    return CGSizeMake(SCREEN_WIDTH, self.data.picRate * SCREEN_WIDTH);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

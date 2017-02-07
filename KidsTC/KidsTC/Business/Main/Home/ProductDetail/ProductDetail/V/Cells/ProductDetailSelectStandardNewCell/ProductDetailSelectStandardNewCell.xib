@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ProductDetailSelectStandardNewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProductDetail_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="r7d-Td-a0d">
+                        <rect key="frame" x="297" y="20" width="8" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="r7d-Td-a0d" secondAttribute="height" multiplier="1:1" id="2Uc-sA-mr9"/>
+                            <constraint firstAttribute="width" constant="8" id="kAX-It-hH0"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16年09月28日-17年09月28日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLD-sR-uLC">
+                        <rect key="frame" x="59" y="15" width="230" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEb-Eu-Nim">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="v5K-F5-Zxu"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" text="已选" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV9-hB-7uq">
+                        <rect key="frame" x="15" y="16" width="29" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.80313570205479456" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="r7d-Td-a0d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5MH-O5-lhn"/>
+                    <constraint firstItem="IEb-Eu-Nim" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8bt-zz-TkR"/>
+                    <constraint firstAttribute="trailing" secondItem="r7d-Td-a0d" secondAttribute="trailing" constant="15" id="A0c-Jh-thA"/>
+                    <constraint firstItem="bLD-sR-uLC" firstAttribute="leading" secondItem="VV9-hB-7uq" secondAttribute="trailing" constant="15" id="AoF-ZR-MPF"/>
+                    <constraint firstItem="bLD-sR-uLC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Aqk-SN-9ng"/>
+                    <constraint firstItem="r7d-Td-a0d" firstAttribute="leading" secondItem="bLD-sR-uLC" secondAttribute="trailing" constant="8" id="B6J-wv-f8Q"/>
+                    <constraint firstAttribute="trailing" secondItem="IEb-Eu-Nim" secondAttribute="trailing" id="PfI-sl-10g"/>
+                    <constraint firstItem="IEb-Eu-Nim" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TuQ-fW-ocK"/>
+                    <constraint firstAttribute="bottom" secondItem="VV9-hB-7uq" secondAttribute="bottom" constant="15" id="edw-6v-0DY"/>
+                    <constraint firstItem="VV9-hB-7uq" firstAttribute="top" secondItem="IEb-Eu-Nim" secondAttribute="bottom" constant="15" id="pM5-jt-N6x"/>
+                    <constraint firstItem="VV9-hB-7uq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pWq-h7-fPH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateL" destination="bLD-sR-uLC" id="Fi6-kS-BJX"/>
+                <outlet property="lineH" destination="v5K-F5-Zxu" id="BIF-VU-hv3"/>
+            </connections>
+            <point key="canvasLocation" x="15" y="47.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ProductDetail_arrow" width="20" height="36"/>
+    </resources>
+</document>

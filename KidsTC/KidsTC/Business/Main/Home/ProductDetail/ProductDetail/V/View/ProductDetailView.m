@@ -12,6 +12,7 @@
 #import "NSString+Category.h"
 #import "NSArray+Category.h"
 
+#import "ProductDetailNaviView.h"
 
 #import "ProductDetailTwoColumnToolBar.h"
 #import "ProductDetailBaseToolBar.h"
@@ -19,8 +20,17 @@
 
 static NSString *const ID = @"UITableViewCell";
 
-@interface ProductDetailView ()<UITableViewDelegate,UITableViewDataSource,ProductDetailBaseCellDelegate,ProductDetailCountDownViewDelegte,ProductDetailBaseToolBarDelegate,ProductDetailTwoColumnToolBarDelegate>
-
+@interface ProductDetailView ()
+<
+UITableViewDelegate,
+UITableViewDataSource,
+ProductDetailBaseCellDelegate,
+ProductDetailCountDownViewDelegte,
+ProductDetailBaseToolBarDelegate,
+ProductDetailTwoColumnToolBarDelegate,
+ProductDetailNaviViewDelegate
+>
+@property (nonatomic, strong) ProductDetailNaviView *naviView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) ProductDetailViewBaseHeader *header;
 @property (nonatomic, strong) NSArray<NSArray<ProductDetailBaseCell *> *> *sections;
@@ -45,6 +55,9 @@ static NSString *const ID = @"UITableViewCell";
     [self setupTwoColumnToolBar];
     [self setupCountDownView];
     [self setupToolBar];
+    if (_subViewProvider.type != ProductDetailTypeTicket) {
+        [self setupNaviView];
+    }
 }
 
 - (void)setData:(ProductDetailData *)data {
@@ -56,6 +69,7 @@ static NSString *const ID = @"UITableViewCell";
     _twoColumnToolBar.data = data;
     _countDownView.data = data;
     _toolBar.data = data;
+    _naviView.nameL.text = data.simpleName;
     
     [self reload];
 }
@@ -80,7 +94,7 @@ static NSString *const ID = @"UITableViewCell";
     switch (_subViewProvider.type) {
         case ProductDetailTypeNormal:
         {
-            tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
+            tableViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kProductDetailBaseToolBarHeight);
         }
             break;
         case ProductDetailTypeTicket:
@@ -90,7 +104,7 @@ static NSString *const ID = @"UITableViewCell";
             break;
         case ProductDetailTypeFree:
         {
-            tableViewFrame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kProductDetailBaseToolBarHeight);
+            tableViewFrame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kProductDetailBaseToolBarHeight);
         }
             break;
             default:
@@ -118,6 +132,7 @@ static NSString *const ID = @"UITableViewCell";
     TCLog(@"offsetY:%f",offsetY);
     [self setupTwoColumnToolBarFrame:offsetY];
     [self action:ProductDetailViewDidScroll value:@(offsetY)];
+    [self.naviView didScroll:offsetY];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -193,6 +208,7 @@ static NSString *const ID = @"UITableViewCell";
 }
 
 - (void)setupTwoColumnToolBarFrame:(CGFloat)offsetY {
+    /*
     switch (_subViewProvider.type) {
         case ProductDetailTypeNormal:
         case ProductDetailTypeFree:
@@ -212,21 +228,23 @@ static NSString *const ID = @"UITableViewCell";
             break;
         case ProductDetailTypeTicket:
         {
-            CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame);
-            if (twoColumnCellY<=0) {
-                _twoColumnToolBar.hidden = YES;
-            }else{
-                CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
-                if (y<64) y = 64;
-                CGRect frame = _twoColumnToolBar.frame;
-                frame.origin.y = y;
-                _twoColumnToolBar.frame = frame;
-                _twoColumnToolBar.hidden = NO;
-            }
+            
         }
             break;
         default:
             break;
+    }*/
+    
+    CGFloat twoColumnCellY = CGRectGetMinY(_subViewProvider.twoColumnCell.frame);
+    if (twoColumnCellY<=0) {
+        _twoColumnToolBar.hidden = YES;
+    }else{
+        CGFloat y = twoColumnCellY - kTwoColumnToolBarH - offsetY;
+        if (y<64) y = 64;
+        CGRect frame = _twoColumnToolBar.frame;
+        frame.origin.y = y;
+        _twoColumnToolBar.frame = frame;
+        _twoColumnToolBar.hidden = NO;
     }
 }
 
@@ -264,6 +282,22 @@ static NSString *const ID = @"UITableViewCell";
 
 #pragma mark ProductDetailToolBarDelegate
 - (void)productDetailBaseToolBar:(ProductDetailBaseToolBar *)toolBar actionType:(ProductDetailBaseToolBarActionType)type value:(id)value {
+    [self action:(ProductDetailViewActionType)type value:value];
+}
+
+#pragma mark - setupNaviView
+
+- (void)setupNaviView {
+    ProductDetailNaviView *naviView = [[NSBundle mainBundle] loadNibNamed:@"ProductDetailNaviView" owner:self options:nil].firstObject;
+    naviView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kProductDetailNaviViewH);
+    naviView.delegate = self;
+    [self addSubview:naviView];
+    self.naviView = naviView;
+}
+
+#pragma mark ProductDetailNaviViewDelegate
+
+- (void)productDetailNaviView:(ProductDetailNaviView *)view actionType:(ProductDetailNaviViewActionType)type value:(id)value {
     [self action:(ProductDetailViewActionType)type value:value];
 }
 

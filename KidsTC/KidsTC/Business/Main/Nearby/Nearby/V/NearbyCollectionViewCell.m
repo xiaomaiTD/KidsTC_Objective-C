@@ -96,12 +96,12 @@ static NSString *const CellID = @"NearbyTableViewCell";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<TCPAGECOUNT) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.data.data.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
-                                                                          image:nil description:@"超出服务范围啦~"
+                                                                          image:nil description:@"附近没有正在举行的活动"
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
 }

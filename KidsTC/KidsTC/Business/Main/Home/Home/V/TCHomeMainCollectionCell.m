@@ -257,11 +257,30 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     }
     NSMutableArray<TCHomeFloor *> *allFloors = [NSMutableArray arrayWithArray:self.category.floors];
     __block NSUInteger recommendCount = 0;
-    NSDictionary *param = @{@"populationType":type,
-                            @"page":@(++self.category.page),
-                            @"pageCount":@(pageCount),
-                            @"homeCategory":category};
-    [Request startWithName:@"GET_PAGE_RECOMMEND_NEW_V2" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@(++self.category.page) forKey:@"page"];
+    [params setObject:@(pageCount) forKey:@"pageCount"];
+    if ([type isNotNull]) {
+        [params setObject:type forKey:@"populationType"];
+    }
+    if ([category isNotNull]) {
+        [params setObject:category forKey:@"homeCategory"];
+    }
+    if (allFloors.count>0) {
+        TCHomeFloor *floor = allFloors.lastObject;
+        if (floor.contents.count>0) {
+            TCHomeFloorContent *content = floor.contents.lastObject;
+            NSString *productNo = content.serveId;
+            if ([productNo isNotNull]) {
+                [params setObject:productNo forKey:@"productNo"];
+            }
+            ProductDetailType redirectType = content.productRedirect;
+            [params setObject:@(redirectType) forKey:@"redirectType"];
+        }
+    }
+    
+    [Request startWithName:@"GET_PAGE_RECOMMEND_NEW_V2" param:params progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         TCHomeRecommendModel *model = [TCHomeRecommendModel modelWithDictionary:dic];
         [allFloors addObjectsFromArray:model.floors];
         recommendCount = model.floors.count;
@@ -273,14 +292,13 @@ static NSString *const kTCHomeBaseTableViewCellID = @"TCHomeBaseTableViewCell";
     }];
 }
 
-
 - (void)dealWitMJ:(NSUInteger)recommendCount
        totalCount:(NSUInteger)totalCount
 {
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
     
-    if (recommendCount < pageCount) {
+    if (recommendCount < 1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     [self dealWithBG];

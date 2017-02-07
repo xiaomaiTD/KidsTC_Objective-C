@@ -102,7 +102,7 @@ static int const pageSize = 10;
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<pageSize) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {

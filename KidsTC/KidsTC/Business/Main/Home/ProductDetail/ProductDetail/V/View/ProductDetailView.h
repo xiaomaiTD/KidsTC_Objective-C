@@ -61,6 +61,10 @@ typedef enum : NSUInteger {
     //self
     ProductDetailViewDidScroll = 500,//滚动
     
+    ProductDetailViewActionTypeBack = 600,
+    ProductDetailViewActionTypeTime,
+    ProductDetailViewActionTypeMore,
+    
 } ProductDetailViewActionType;
 
 @class ProductDetailView;

@@ -124,7 +124,7 @@ static NSString *const ID = @"NurseryCell";
     }
     [self.tableView reloadData];
     
-    if (model.data.count<pageCount) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+    if (model.data.count<1) [self.tableView.mj_footer endRefreshingWithNoMoreData];
     [self dealiWithBG];
 }
 

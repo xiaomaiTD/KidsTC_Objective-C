@@ -87,10 +87,10 @@
 
 - (void)buy:(id)value {
     [self.standardView hide:^{
+        [self back];
         if ([self.delegate respondsToSelector:@selector(productStandardViewController:actionType:value:)]) {
             [self.delegate productStandardViewController:self actionType:ProductStandardViewControllerActionTypBuyStandard value:value];
         }
-        [self back];
     }];
 }
 

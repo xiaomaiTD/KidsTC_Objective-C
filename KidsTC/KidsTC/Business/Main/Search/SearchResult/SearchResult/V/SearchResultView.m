@@ -104,7 +104,7 @@ static NSString *const StoreProductCellID = @"SearchResultStoreProductCell";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount==0) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {

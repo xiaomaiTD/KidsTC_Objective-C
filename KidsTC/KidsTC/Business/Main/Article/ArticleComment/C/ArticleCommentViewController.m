@@ -172,7 +172,7 @@ static NSString *const reuseIdentifier = @"reuseIdentifier";
         [self.tableView.mj_header endRefreshing];
         
         NSArray *comments = self.model.data.comments;
-        if (!comments || comments.count<pageCount) {
+        if (!comments || comments.count<1) {
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.tableView.mj_footer endRefreshing];

@@ -140,7 +140,7 @@ static NSUInteger pageSize = 10;
                             [self.waitToCommentListAry addObject:model];
                         }
                     }
-                    if ([dataArray count] < pageSize) {
+                    if ([dataArray count] < 1) {
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     } else{
                         [self.tableView.mj_footer endRefreshing];
@@ -190,7 +190,7 @@ static NSUInteger pageSize = 10;
                             [self.myCommentListAry addObject:model];
                         }
                     }
-                    if ([dataArray count] < pageSize) {
+                    if ([dataArray count] < 1) {
                         
                         [self.tableView.mj_footer endRefreshingWithNoMoreData];
                     } else{

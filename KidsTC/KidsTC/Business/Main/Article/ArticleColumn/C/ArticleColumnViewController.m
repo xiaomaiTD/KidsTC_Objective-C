@@ -120,7 +120,7 @@
                 if (info) self.info = info;
             }
             [self dealWithLoadResult];
-            if (sections.count<PAGE_COUNT) [self.tableView noMoreData];
+            if (sections.count<1) [self.tableView noMoreData];
         });
     });
 }

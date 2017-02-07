@@ -77,7 +77,7 @@ static NSString *const ID = @"UITableViewCell";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<CouponListPageCount) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.items.count<1) {

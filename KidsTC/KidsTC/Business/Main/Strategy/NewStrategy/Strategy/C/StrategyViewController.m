@@ -116,7 +116,7 @@ static NSString * const reuseIdentifier = @"Cell";
         if (strategyCell) {
             [strategyCell headerEndRefreshing];
             [strategyCell footerEndRefreshing];
-            if (list.count<pageCount) {
+            if (list.count<1) {
                 [strategyCell footerEndRefreshingWithNoMoreData];
             }
             [strategyCell reloadData];

@@ -95,7 +95,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     [self.tableView.mj_footer endRefreshing];
-    if (loadCount<TCPAGECOUNT) {
+    if (loadCount<1) {
         [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
     if (self.data.data.count<1) {
