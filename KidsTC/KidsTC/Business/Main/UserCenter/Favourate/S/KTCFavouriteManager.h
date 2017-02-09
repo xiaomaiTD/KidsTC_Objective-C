@@ -10,13 +10,13 @@
 
 
 typedef enum {
-    KTCFavouriteTypeService,
-    KTCFavouriteTypeStore,
-    KTCFavouriteTypeStrategy,
-    KTCFavouriteTypeNews,
-    KTCFavouriteTypeTicketService,
-    KTCFavouriteTypeFreeService,
-    KTCFavouriteTypeRadish
+    KTCFavouriteTypeService,//普通服务
+    KTCFavouriteTypeStore,//门店
+    KTCFavouriteTypeStrategy,//攻略
+    KTCFavouriteTypeNews,//资讯
+    KTCFavouriteTypeTicketService,//票务
+    KTCFavouriteTypeFreeService,//免费
+    KTCFavouriteTypeRadish//萝卜
 }KTCFavouriteType;
 
 @interface KTCFavouriteManager : NSObject

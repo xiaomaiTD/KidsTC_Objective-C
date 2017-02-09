@@ -11,7 +11,7 @@
 @interface AccountCenterHotProductItem : NSObject
 @property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *productName;
-@property (nonatomic, assign) NSInteger saleNum;
+@property (nonatomic, strong) NSString *saleNum;
 @property (nonatomic, strong) NSString *productImg;
 @property (nonatomic, strong) NSString *narrowImg;
 @property (nonatomic, strong) NSString *channelId;

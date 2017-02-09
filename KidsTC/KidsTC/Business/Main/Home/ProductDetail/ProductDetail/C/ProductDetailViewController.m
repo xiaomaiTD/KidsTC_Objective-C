@@ -160,6 +160,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setHidden:NO];
     if (_type == ProductDetailTypeTicket) {
         [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor lightGrayColor] size:CGSizeMake(SCREEN_WIDTH, LINE_H)]];
     }

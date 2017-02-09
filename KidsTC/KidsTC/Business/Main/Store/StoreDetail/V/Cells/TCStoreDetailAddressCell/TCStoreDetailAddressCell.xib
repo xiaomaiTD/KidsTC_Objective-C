@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="TCStoreDetailAddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_address" translatesAutoresizingMaskIntoConstraints="NO" id="60p-mV-xCv">
+                        <rect key="frame" x="14" y="20.5" width="12" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="60p-mV-xCv" secondAttribute="height" multiplier="4:5" id="OkG-8e-4Lb"/>
+                            <constraint firstAttribute="width" constant="12" id="nJo-Eu-Gha"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNg-dk-oci">
+                        <rect key="frame" x="268" y="6.5" width="44" height="44"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_phone" translatesAutoresizingMaskIntoConstraints="NO" id="QFP-9T-0su">
+                                <rect key="frame" x="11.5" y="11.5" width="21" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="QFP-9T-0su" secondAttribute="height" multiplier="1:1" id="E0b-GC-Djs"/>
+                                    <constraint firstAttribute="width" constant="21" id="VUF-Vb-Urs"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-dm-WzB">
+                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                <connections>
+                                    <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HP2-fg-Fr9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0Pg-dm-WzB" secondAttribute="trailing" id="0aP-Kq-NJ8"/>
+                            <constraint firstAttribute="width" secondItem="tNg-dk-oci" secondAttribute="height" multiplier="1:1" id="Qfd-By-dcB"/>
+                            <constraint firstItem="QFP-9T-0su" firstAttribute="centerY" secondItem="tNg-dk-oci" secondAttribute="centerY" id="Xgj-NT-LGO"/>
+                            <constraint firstAttribute="width" constant="44" id="e45-db-aK2"/>
+                            <constraint firstItem="0Pg-dm-WzB" firstAttribute="leading" secondItem="tNg-dk-oci" secondAttribute="leading" id="hoQ-Sz-2U9"/>
+                            <constraint firstItem="0Pg-dm-WzB" firstAttribute="top" secondItem="tNg-dk-oci" secondAttribute="top" id="jPL-Uq-sAd"/>
+                            <constraint firstAttribute="bottom" secondItem="0Pg-dm-WzB" secondAttribute="bottom" id="rv2-gJ-EQf"/>
+                            <constraint firstItem="QFP-9T-0su" firstAttribute="centerX" secondItem="tNg-dk-oci" secondAttribute="centerX" id="z3w-EL-QiY"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqd-Wk-4c3">
+                        <rect key="frame" x="259" y="5" width="1" height="46"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="pTJ-hb-NP4"/>
+                            <constraint firstAttribute="width" constant="1" id="uo3-MS-skL"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="黄浦区西藏南路1510弄6号709楼上海市杨浦区大学路299号701室" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRu-Db-dx9">
+                        <rect key="frame" x="34" y="11" width="217" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tNg-dk-oci" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0wB-WM-DDL"/>
+                    <constraint firstAttribute="bottom" secondItem="Nqd-Wk-4c3" secondAttribute="bottom" constant="5" id="4ng-Fa-R88"/>
+                    <constraint firstItem="HRu-Db-dx9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HEi-85-XdQ"/>
+                    <constraint firstItem="60p-mV-xCv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="K43-Q7-iw6"/>
+                    <constraint firstAttribute="trailing" secondItem="tNg-dk-oci" secondAttribute="trailing" constant="8" id="NTc-2O-OhM"/>
+                    <constraint firstItem="HRu-Db-dx9" firstAttribute="leading" secondItem="60p-mV-xCv" secondAttribute="trailing" constant="8" id="O83-ag-qcT"/>
+                    <constraint firstItem="60p-mV-xCv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Rvg-A7-9ce"/>
+                    <constraint firstItem="tNg-dk-oci" firstAttribute="leading" secondItem="Nqd-Wk-4c3" secondAttribute="trailing" constant="8" id="TBI-ct-jK5"/>
+                    <constraint firstAttribute="trailing" secondItem="HRu-Db-dx9" secondAttribute="trailing" constant="69" id="U04-pB-wnJ"/>
+                    <constraint firstItem="Nqd-Wk-4c3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="dyq-Cw-oWw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="VLine" destination="Nqd-Wk-4c3" id="NXJ-0o-RhI"/>
+                <outlet property="addressL" destination="HRu-Db-dx9" id="U0E-NQ-AAT"/>
+                <outlet property="addressLRightMargin" destination="U04-pB-wnJ" id="wKj-ba-bD1"/>
+                <outlet property="phoneBGView" destination="tNg-dk-oci" id="lEg-uH-CuM"/>
+            </connections>
+            <point key="canvasLocation" x="26" y="52.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="StoreDetail_address" width="56" height="70"/>
+        <image name="StoreDetail_phone" width="83" height="88"/>
+    </resources>
+</document>

@@ -1978,6 +1978,56 @@
 		EC98B39D1E486DA5002D66BF /* ProductDetailNaviView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B39B1E486DA5002D66BF /* ProductDetailNaviView.xib */; };
 		EC98B3A21E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3A01E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m */; };
 		EC98B3A31E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3A11E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib */; };
+		EC98B3D21E4AC2DD002D66BF /* TCStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3D11E4AC2DD002D66BF /* TCStoreDetailViewController.m */; };
+		EC98B3D51E4AC2F2002D66BF /* TCStoreDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3D41E4AC2F2002D66BF /* TCStoreDetailView.m */; };
+		EC98B3DB1E4AC326002D66BF /* TCStoreDetailColumnHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3DA1E4AC326002D66BF /* TCStoreDetailColumnHeader.m */; };
+		EC98B3DD1E4AC332002D66BF /* TCStoreDetailColumnHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3DC1E4AC332002D66BF /* TCStoreDetailColumnHeader.xib */; };
+		EC98B3E01E4AC381002D66BF /* TCStoreDetailToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B3DF1E4AC381002D66BF /* TCStoreDetailToolBar.m */; };
+		EC98B3E21E4AC38C002D66BF /* TCStoreDetailToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B3E11E4AC38C002D66BF /* TCStoreDetailToolBar.xib */; };
+		EC98B4301E4AC7A3002D66BF /* TCStoreDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B42F1E4AC7A3002D66BF /* TCStoreDetailModel.m */; };
+		EC98B4331E4AC7B0002D66BF /* TCStoreDetailData.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4321E4AC7B0002D66BF /* TCStoreDetailData.m */; };
+		EC98B4A61E4B0276002D66BF /* TCStoreDetailActivityPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4541E4B0276002D66BF /* TCStoreDetailActivityPackageCell.m */; };
+		EC98B4A71E4B0276002D66BF /* TCStoreDetailActivityPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4551E4B0276002D66BF /* TCStoreDetailActivityPackageCell.xib */; };
+		EC98B4A81E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4581E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.m */; };
+		EC98B4A91E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4591E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.xib */; };
+		EC98B4AA1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B45C1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.m */; };
+		EC98B4AB1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B45D1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.xib */; };
+		EC98B4AC1E4B0276002D66BF /* TCStoreDetailAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4601E4B0276002D66BF /* TCStoreDetailAddressCell.m */; };
+		EC98B4AD1E4B0276002D66BF /* TCStoreDetailAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4611E4B0276002D66BF /* TCStoreDetailAddressCell.xib */; };
+		EC98B4AE1E4B0276002D66BF /* TCStoreDetailBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4641E4B0276002D66BF /* TCStoreDetailBaseCell.m */; };
+		EC98B4AF1E4B0276002D66BF /* TCStoreDetailBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4651E4B0276002D66BF /* TCStoreDetailBaseCell.xib */; };
+		EC98B4B01E4B0276002D66BF /* TCStoreDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4681E4B0276002D66BF /* TCStoreDetailCommentCell.m */; };
+		EC98B4B11E4B0276002D66BF /* TCStoreDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4691E4B0276002D66BF /* TCStoreDetailCommentCell.xib */; };
+		EC98B4B21E4B0276002D66BF /* TCStoreDetailCommentTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B46C1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.m */; };
+		EC98B4B31E4B0276002D66BF /* TCStoreDetailCommentTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B46D1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.xib */; };
+		EC98B4B41E4B0276002D66BF /* TCStoreDetailCouponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4701E4B0276002D66BF /* TCStoreDetailCouponCell.m */; };
+		EC98B4B51E4B0277002D66BF /* TCStoreDetailCouponCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4711E4B0276002D66BF /* TCStoreDetailCouponCell.xib */; };
+		EC98B4B61E4B0277002D66BF /* TCStoreDetailCouponMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4741E4B0276002D66BF /* TCStoreDetailCouponMoreCell.m */; };
+		EC98B4B71E4B0277002D66BF /* TCStoreDetailCouponMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4751E4B0276002D66BF /* TCStoreDetailCouponMoreCell.xib */; };
+		EC98B4B81E4B0277002D66BF /* TCStoreDetailCouponTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4781E4B0276002D66BF /* TCStoreDetailCouponTitleCell.m */; };
+		EC98B4B91E4B0277002D66BF /* TCStoreDetailCouponTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4791E4B0276002D66BF /* TCStoreDetailCouponTitleCell.xib */; };
+		EC98B4BA1E4B0277002D66BF /* TCStoreDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B47C1E4B0276002D66BF /* TCStoreDetailHeaderCell.m */; };
+		EC98B4BB1E4B0277002D66BF /* TCStoreDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B47D1E4B0276002D66BF /* TCStoreDetailHeaderCell.xib */; };
+		EC98B4BC1E4B0277002D66BF /* TCStoreDetailMoreStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4801E4B0276002D66BF /* TCStoreDetailMoreStoreCell.m */; };
+		EC98B4BD1E4B0277002D66BF /* TCStoreDetailMoreStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4811E4B0276002D66BF /* TCStoreDetailMoreStoreCell.xib */; };
+		EC98B4BE1E4B0277002D66BF /* TCStoreDetailMoreStoreTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4841E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.m */; };
+		EC98B4BF1E4B0277002D66BF /* TCStoreDetailMoreStoreTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4851E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.xib */; };
+		EC98B4C01E4B0277002D66BF /* TCStoreDetailNearbyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4881E4B0276002D66BF /* TCStoreDetailNearbyCell.m */; };
+		EC98B4C11E4B0277002D66BF /* TCStoreDetailNearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4891E4B0276002D66BF /* TCStoreDetailNearbyCell.xib */; };
+		EC98B4C21E4B0277002D66BF /* TCStoreDetailNearbyPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B48C1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.m */; };
+		EC98B4C31E4B0277002D66BF /* TCStoreDetailNearbyPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B48D1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.xib */; };
+		EC98B4C41E4B0277002D66BF /* TCStoreDetailNearbyPackageTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4901E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.m */; };
+		EC98B4C51E4B0277002D66BF /* TCStoreDetailNearbyPackageTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4911E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.xib */; };
+		EC98B4C61E4B0277002D66BF /* TCStoreDetailNearbyTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4941E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.m */; };
+		EC98B4C71E4B0277002D66BF /* TCStoreDetailNearbyTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4951E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.xib */; };
+		EC98B4C81E4B0277002D66BF /* TCStoreDetailPreferentialPackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4981E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.m */; };
+		EC98B4C91E4B0277002D66BF /* TCStoreDetailPreferentialPackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4991E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.xib */; };
+		EC98B4CA1E4B0277002D66BF /* TCStoreDetailPreferentialPackageMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B49C1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.m */; };
+		EC98B4CB1E4B0277002D66BF /* TCStoreDetailPreferentialPackageMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B49D1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.xib */; };
+		EC98B4CC1E4B0277002D66BF /* TCStoreDetailPreferentialPackageTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4A01E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.m */; };
+		EC98B4CD1E4B0277002D66BF /* TCStoreDetailPreferentialPackageTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4A11E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.xib */; };
+		EC98B4CE1E4B0277002D66BF /* TCStoreDetailWebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC98B4A41E4B0276002D66BF /* TCStoreDetailWebCell.m */; };
+		EC98B4CF1E4B0277002D66BF /* TCStoreDetailWebCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC98B4A51E4B0276002D66BF /* TCStoreDetailWebCell.xib */; };
 		EC99A05D1D7B219A008E6F33 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */; };
 		ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2BC0E1DF2A11700EAE79C /* ProductOrderListModel.m */; };
 		ECA2BC121DF2A12600EAE79C /* ProductOrderListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECA2BC111DF2A12600EAE79C /* ProductOrderListItem.m */; };
@@ -2258,6 +2308,21 @@
 		ECCF49831E2DD20300C4DDB3 /* ProductDetailVideoTipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCF49811E2DD20300C4DDB3 /* ProductDetailVideoTipCell.m */; };
 		ECCF49841E2DD20300C4DDB3 /* ProductDetailVideoTipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCF49821E2DD20300C4DDB3 /* ProductDetailVideoTipCell.xib */; };
 		ECCF49871E2DD2DE00C4DDB3 /* VideoPlayVideoRes.m in Sources */ = {isa = PBXBuildFile; fileRef = ECCF49861E2DD2DE00C4DDB3 /* VideoPlayVideoRes.m */; };
+		ECDFC0C91E4B117900ECAF58 /* TCStoreDetailNaviRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0C71E4B117900ECAF58 /* TCStoreDetailNaviRightView.m */; };
+		ECDFC0CA1E4B117900ECAF58 /* TCStoreDetailNaviRightView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDFC0C81E4B117900ECAF58 /* TCStoreDetailNaviRightView.xib */; };
+		ECDFC0CD1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0CC1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.m */; };
+		ECDFC0D01E4B178300ECAF58 /* TCStoreDetailShare.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0CF1E4B178300ECAF58 /* TCStoreDetailShare.m */; };
+		ECDFC0D31E4B17A400ECAF58 /* TCStoreDetailProductPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0D21E4B17A400ECAF58 /* TCStoreDetailProductPackage.m */; };
+		ECDFC0D61E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0D51E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.m */; };
+		ECDFC0D91E4B17D900ECAF58 /* TCStoreDetailComment.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0D81E4B17D900ECAF58 /* TCStoreDetailComment.m */; };
+		ECDFC0DF1E4B182A00ECAF58 /* TCStoreDetailCommentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0DE1E4B182A00ECAF58 /* TCStoreDetailCommentItem.m */; };
+		ECDFC0E21E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0E11E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.m */; };
+		ECDFC0E71E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0E51E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.m */; };
+		ECDFC0E81E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECDFC0E61E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.xib */; };
+		ECDFC0EB1E4B284100ECAF58 /* TCStoreDetailCommentItemScore.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0EA1E4B284100ECAF58 /* TCStoreDetailCommentItemScore.m */; };
+		ECDFC0EE1E4B289300ECAF58 /* TCStoreDetailScoreItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0ED1E4B289300ECAF58 /* TCStoreDetailScoreItem.m */; };
+		ECDFC0F11E4B2F0900ECAF58 /* TCStoreDetailFacility.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0F01E4B2F0900ECAF58 /* TCStoreDetailFacility.m */; };
+		ECDFC0F41E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDFC0F31E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.m */; };
 		ECE18A561DFED294002813B4 /* ProductOrderNormalDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE18A551DFED294002813B4 /* ProductOrderNormalDetailHeader.m */; };
 		ECE18A581DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */; };
 		ECEE2B3D1E07C7B600FAB7C2 /* ProductStandardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECEE2B391E07C7B600FAB7C2 /* ProductStandardViewController.m */; };
@@ -5656,6 +5721,83 @@
 		EC98B39F1E4889AC002D66BF /* ProductDetailSelectStandardNewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailSelectStandardNewCell.h; sourceTree = "<group>"; };
 		EC98B3A01E4889AC002D66BF /* ProductDetailSelectStandardNewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailSelectStandardNewCell.m; sourceTree = "<group>"; };
 		EC98B3A11E4889AC002D66BF /* ProductDetailSelectStandardNewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailSelectStandardNewCell.xib; sourceTree = "<group>"; };
+		EC98B3D01E4AC2DD002D66BF /* TCStoreDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailViewController.h; sourceTree = "<group>"; };
+		EC98B3D11E4AC2DD002D66BF /* TCStoreDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailViewController.m; sourceTree = "<group>"; };
+		EC98B3D31E4AC2F2002D66BF /* TCStoreDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailView.h; sourceTree = "<group>"; };
+		EC98B3D41E4AC2F2002D66BF /* TCStoreDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailView.m; sourceTree = "<group>"; };
+		EC98B3D91E4AC326002D66BF /* TCStoreDetailColumnHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailColumnHeader.h; sourceTree = "<group>"; };
+		EC98B3DA1E4AC326002D66BF /* TCStoreDetailColumnHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailColumnHeader.m; sourceTree = "<group>"; };
+		EC98B3DC1E4AC332002D66BF /* TCStoreDetailColumnHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailColumnHeader.xib; sourceTree = "<group>"; };
+		EC98B3DE1E4AC381002D66BF /* TCStoreDetailToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailToolBar.h; sourceTree = "<group>"; };
+		EC98B3DF1E4AC381002D66BF /* TCStoreDetailToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailToolBar.m; sourceTree = "<group>"; };
+		EC98B3E11E4AC38C002D66BF /* TCStoreDetailToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailToolBar.xib; sourceTree = "<group>"; };
+		EC98B42E1E4AC7A3002D66BF /* TCStoreDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailModel.h; sourceTree = "<group>"; };
+		EC98B42F1E4AC7A3002D66BF /* TCStoreDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailModel.m; sourceTree = "<group>"; };
+		EC98B4311E4AC7B0002D66BF /* TCStoreDetailData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailData.h; sourceTree = "<group>"; };
+		EC98B4321E4AC7B0002D66BF /* TCStoreDetailData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailData.m; sourceTree = "<group>"; };
+		EC98B4531E4B0276002D66BF /* TCStoreDetailActivityPackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailActivityPackageCell.h; sourceTree = "<group>"; };
+		EC98B4541E4B0276002D66BF /* TCStoreDetailActivityPackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailActivityPackageCell.m; sourceTree = "<group>"; };
+		EC98B4551E4B0276002D66BF /* TCStoreDetailActivityPackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailActivityPackageCell.xib; sourceTree = "<group>"; };
+		EC98B4571E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailActivityPackageMoreCell.h; sourceTree = "<group>"; };
+		EC98B4581E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailActivityPackageMoreCell.m; sourceTree = "<group>"; };
+		EC98B4591E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailActivityPackageMoreCell.xib; sourceTree = "<group>"; };
+		EC98B45B1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailActivityPackageTitleCell.h; sourceTree = "<group>"; };
+		EC98B45C1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailActivityPackageTitleCell.m; sourceTree = "<group>"; };
+		EC98B45D1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailActivityPackageTitleCell.xib; sourceTree = "<group>"; };
+		EC98B45F1E4B0276002D66BF /* TCStoreDetailAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailAddressCell.h; sourceTree = "<group>"; };
+		EC98B4601E4B0276002D66BF /* TCStoreDetailAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailAddressCell.m; sourceTree = "<group>"; };
+		EC98B4611E4B0276002D66BF /* TCStoreDetailAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailAddressCell.xib; sourceTree = "<group>"; };
+		EC98B4631E4B0276002D66BF /* TCStoreDetailBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailBaseCell.h; sourceTree = "<group>"; };
+		EC98B4641E4B0276002D66BF /* TCStoreDetailBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailBaseCell.m; sourceTree = "<group>"; };
+		EC98B4651E4B0276002D66BF /* TCStoreDetailBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailBaseCell.xib; sourceTree = "<group>"; };
+		EC98B4671E4B0276002D66BF /* TCStoreDetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCommentCell.h; sourceTree = "<group>"; };
+		EC98B4681E4B0276002D66BF /* TCStoreDetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCommentCell.m; sourceTree = "<group>"; };
+		EC98B4691E4B0276002D66BF /* TCStoreDetailCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailCommentCell.xib; sourceTree = "<group>"; };
+		EC98B46B1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCommentTitleCell.h; sourceTree = "<group>"; };
+		EC98B46C1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCommentTitleCell.m; sourceTree = "<group>"; };
+		EC98B46D1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailCommentTitleCell.xib; sourceTree = "<group>"; };
+		EC98B46F1E4B0276002D66BF /* TCStoreDetailCouponCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCouponCell.h; sourceTree = "<group>"; };
+		EC98B4701E4B0276002D66BF /* TCStoreDetailCouponCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCouponCell.m; sourceTree = "<group>"; };
+		EC98B4711E4B0276002D66BF /* TCStoreDetailCouponCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailCouponCell.xib; sourceTree = "<group>"; };
+		EC98B4731E4B0276002D66BF /* TCStoreDetailCouponMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCouponMoreCell.h; sourceTree = "<group>"; };
+		EC98B4741E4B0276002D66BF /* TCStoreDetailCouponMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCouponMoreCell.m; sourceTree = "<group>"; };
+		EC98B4751E4B0276002D66BF /* TCStoreDetailCouponMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailCouponMoreCell.xib; sourceTree = "<group>"; };
+		EC98B4771E4B0276002D66BF /* TCStoreDetailCouponTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCouponTitleCell.h; sourceTree = "<group>"; };
+		EC98B4781E4B0276002D66BF /* TCStoreDetailCouponTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCouponTitleCell.m; sourceTree = "<group>"; };
+		EC98B4791E4B0276002D66BF /* TCStoreDetailCouponTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailCouponTitleCell.xib; sourceTree = "<group>"; };
+		EC98B47B1E4B0276002D66BF /* TCStoreDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailHeaderCell.h; sourceTree = "<group>"; };
+		EC98B47C1E4B0276002D66BF /* TCStoreDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailHeaderCell.m; sourceTree = "<group>"; };
+		EC98B47D1E4B0276002D66BF /* TCStoreDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailHeaderCell.xib; sourceTree = "<group>"; };
+		EC98B47F1E4B0276002D66BF /* TCStoreDetailMoreStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailMoreStoreCell.h; sourceTree = "<group>"; };
+		EC98B4801E4B0276002D66BF /* TCStoreDetailMoreStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailMoreStoreCell.m; sourceTree = "<group>"; };
+		EC98B4811E4B0276002D66BF /* TCStoreDetailMoreStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailMoreStoreCell.xib; sourceTree = "<group>"; };
+		EC98B4831E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailMoreStoreTitleCell.h; sourceTree = "<group>"; };
+		EC98B4841E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailMoreStoreTitleCell.m; sourceTree = "<group>"; };
+		EC98B4851E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailMoreStoreTitleCell.xib; sourceTree = "<group>"; };
+		EC98B4871E4B0276002D66BF /* TCStoreDetailNearbyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailNearbyCell.h; sourceTree = "<group>"; };
+		EC98B4881E4B0276002D66BF /* TCStoreDetailNearbyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailNearbyCell.m; sourceTree = "<group>"; };
+		EC98B4891E4B0276002D66BF /* TCStoreDetailNearbyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailNearbyCell.xib; sourceTree = "<group>"; };
+		EC98B48B1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailNearbyPackageCell.h; sourceTree = "<group>"; };
+		EC98B48C1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailNearbyPackageCell.m; sourceTree = "<group>"; };
+		EC98B48D1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailNearbyPackageCell.xib; sourceTree = "<group>"; };
+		EC98B48F1E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailNearbyPackageTitleCell.h; sourceTree = "<group>"; };
+		EC98B4901E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailNearbyPackageTitleCell.m; sourceTree = "<group>"; };
+		EC98B4911E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailNearbyPackageTitleCell.xib; sourceTree = "<group>"; };
+		EC98B4931E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailNearbyTitleCell.h; sourceTree = "<group>"; };
+		EC98B4941E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailNearbyTitleCell.m; sourceTree = "<group>"; };
+		EC98B4951E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailNearbyTitleCell.xib; sourceTree = "<group>"; };
+		EC98B4971E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailPreferentialPackageCell.h; sourceTree = "<group>"; };
+		EC98B4981E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailPreferentialPackageCell.m; sourceTree = "<group>"; };
+		EC98B4991E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailPreferentialPackageCell.xib; sourceTree = "<group>"; };
+		EC98B49B1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailPreferentialPackageMoreCell.h; sourceTree = "<group>"; };
+		EC98B49C1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailPreferentialPackageMoreCell.m; sourceTree = "<group>"; };
+		EC98B49D1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailPreferentialPackageMoreCell.xib; sourceTree = "<group>"; };
+		EC98B49F1E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailPreferentialPackageTitleCell.h; sourceTree = "<group>"; };
+		EC98B4A01E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailPreferentialPackageTitleCell.m; sourceTree = "<group>"; };
+		EC98B4A11E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailPreferentialPackageTitleCell.xib; sourceTree = "<group>"; };
+		EC98B4A31E4B0276002D66BF /* TCStoreDetailWebCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailWebCell.h; sourceTree = "<group>"; };
+		EC98B4A41E4B0276002D66BF /* TCStoreDetailWebCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailWebCell.m; sourceTree = "<group>"; };
+		EC98B4A51E4B0276002D66BF /* TCStoreDetailWebCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailWebCell.xib; sourceTree = "<group>"; };
 		EC99A05B1D7B219A008E6F33 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
 		EC99A05C1D7B219A008E6F33 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		ECA2BC0D1DF2A11700EAE79C /* ProductOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderListModel.h; sourceTree = "<group>"; };
@@ -6111,6 +6253,34 @@
 		ECCF49821E2DD20300C4DDB3 /* ProductDetailVideoTipCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailVideoTipCell.xib; sourceTree = "<group>"; };
 		ECCF49851E2DD2DE00C4DDB3 /* VideoPlayVideoRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayVideoRes.h; sourceTree = "<group>"; };
 		ECCF49861E2DD2DE00C4DDB3 /* VideoPlayVideoRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayVideoRes.m; sourceTree = "<group>"; };
+		ECDFC0C61E4B117900ECAF58 /* TCStoreDetailNaviRightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailNaviRightView.h; sourceTree = "<group>"; };
+		ECDFC0C71E4B117900ECAF58 /* TCStoreDetailNaviRightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailNaviRightView.m; sourceTree = "<group>"; };
+		ECDFC0C81E4B117900ECAF58 /* TCStoreDetailNaviRightView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailNaviRightView.xib; sourceTree = "<group>"; };
+		ECDFC0CB1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailStoreBase.h; sourceTree = "<group>"; };
+		ECDFC0CC1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailStoreBase.m; sourceTree = "<group>"; };
+		ECDFC0CE1E4B178300ECAF58 /* TCStoreDetailShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailShare.h; sourceTree = "<group>"; };
+		ECDFC0CF1E4B178300ECAF58 /* TCStoreDetailShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailShare.m; sourceTree = "<group>"; };
+		ECDFC0D11E4B17A400ECAF58 /* TCStoreDetailProductPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailProductPackage.h; sourceTree = "<group>"; };
+		ECDFC0D21E4B17A400ECAF58 /* TCStoreDetailProductPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailProductPackage.m; sourceTree = "<group>"; };
+		ECDFC0D41E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailMoreProductPackage.h; sourceTree = "<group>"; };
+		ECDFC0D51E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailMoreProductPackage.m; sourceTree = "<group>"; };
+		ECDFC0D71E4B17D900ECAF58 /* TCStoreDetailComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailComment.h; sourceTree = "<group>"; };
+		ECDFC0D81E4B17D900ECAF58 /* TCStoreDetailComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailComment.m; sourceTree = "<group>"; };
+		ECDFC0DD1E4B182A00ECAF58 /* TCStoreDetailCommentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCommentItem.h; sourceTree = "<group>"; };
+		ECDFC0DE1E4B182A00ECAF58 /* TCStoreDetailCommentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCommentItem.m; sourceTree = "<group>"; };
+		ECDFC0E01E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailProductPackageItem.h; sourceTree = "<group>"; };
+		ECDFC0E11E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailProductPackageItem.m; sourceTree = "<group>"; };
+		ECDFC0E41E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailSectionEmptyCell.h; sourceTree = "<group>"; };
+		ECDFC0E51E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailSectionEmptyCell.m; sourceTree = "<group>"; };
+		ECDFC0E61E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCStoreDetailSectionEmptyCell.xib; sourceTree = "<group>"; };
+		ECDFC0E91E4B284100ECAF58 /* TCStoreDetailCommentItemScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCommentItemScore.h; sourceTree = "<group>"; };
+		ECDFC0EA1E4B284100ECAF58 /* TCStoreDetailCommentItemScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCommentItemScore.m; sourceTree = "<group>"; };
+		ECDFC0EC1E4B289300ECAF58 /* TCStoreDetailScoreItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailScoreItem.h; sourceTree = "<group>"; };
+		ECDFC0ED1E4B289300ECAF58 /* TCStoreDetailScoreItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailScoreItem.m; sourceTree = "<group>"; };
+		ECDFC0EF1E4B2F0900ECAF58 /* TCStoreDetailFacility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailFacility.h; sourceTree = "<group>"; };
+		ECDFC0F01E4B2F0900ECAF58 /* TCStoreDetailFacility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailFacility.m; sourceTree = "<group>"; };
+		ECDFC0F21E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailFacilityItem.h; sourceTree = "<group>"; };
+		ECDFC0F31E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailFacilityItem.m; sourceTree = "<group>"; };
 		ECE18A541DFED294002813B4 /* ProductOrderNormalDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductOrderNormalDetailHeader.h; sourceTree = "<group>"; };
 		ECE18A551DFED294002813B4 /* ProductOrderNormalDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductOrderNormalDetailHeader.m; sourceTree = "<group>"; };
 		ECE18A571DFED29E002813B4 /* ProductOrderNormalDetailHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductOrderNormalDetailHeader.xib; sourceTree = "<group>"; };
@@ -13432,6 +13602,7 @@
 		EC4FBCFD1D77CEE300BBD050 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				EC98B3C71E4AC2A5002D66BF /* Store */,
 				EC2995841E44842B0006B701 /* Product */,
 				ECB4AC761E3751160036057A /* TCHome */,
 				ECB4AC241E36ED340036057A /* Score */,
@@ -17040,6 +17211,346 @@
 			path = ProductDetailSelectStandardNewCell;
 			sourceTree = "<group>";
 		};
+		EC98B3C71E4AC2A5002D66BF /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3C81E4AC2A6002D66BF /* StoreDetail */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		EC98B3C81E4AC2A6002D66BF /* StoreDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3C91E4AC2A6002D66BF /* C */,
+				EC98B3CA1E4AC2A6002D66BF /* M */,
+				EC98B3CB1E4AC2A6002D66BF /* V */,
+			);
+			path = StoreDetail;
+			sourceTree = "<group>";
+		};
+		EC98B3C91E4AC2A6002D66BF /* C */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3D01E4AC2DD002D66BF /* TCStoreDetailViewController.h */,
+				EC98B3D11E4AC2DD002D66BF /* TCStoreDetailViewController.m */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		EC98B3CA1E4AC2A6002D66BF /* M */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B42E1E4AC7A3002D66BF /* TCStoreDetailModel.h */,
+				EC98B42F1E4AC7A3002D66BF /* TCStoreDetailModel.m */,
+				EC98B4311E4AC7B0002D66BF /* TCStoreDetailData.h */,
+				EC98B4321E4AC7B0002D66BF /* TCStoreDetailData.m */,
+				ECDFC0CB1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.h */,
+				ECDFC0CC1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.m */,
+				ECDFC0EF1E4B2F0900ECAF58 /* TCStoreDetailFacility.h */,
+				ECDFC0F01E4B2F0900ECAF58 /* TCStoreDetailFacility.m */,
+				ECDFC0F21E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.h */,
+				ECDFC0F31E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.m */,
+				ECDFC0CE1E4B178300ECAF58 /* TCStoreDetailShare.h */,
+				ECDFC0CF1E4B178300ECAF58 /* TCStoreDetailShare.m */,
+				ECDFC0D11E4B17A400ECAF58 /* TCStoreDetailProductPackage.h */,
+				ECDFC0D21E4B17A400ECAF58 /* TCStoreDetailProductPackage.m */,
+				ECDFC0E01E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.h */,
+				ECDFC0E11E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.m */,
+				ECDFC0D41E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.h */,
+				ECDFC0D51E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.m */,
+				ECDFC0D71E4B17D900ECAF58 /* TCStoreDetailComment.h */,
+				ECDFC0D81E4B17D900ECAF58 /* TCStoreDetailComment.m */,
+				ECDFC0DD1E4B182A00ECAF58 /* TCStoreDetailCommentItem.h */,
+				ECDFC0DE1E4B182A00ECAF58 /* TCStoreDetailCommentItem.m */,
+				ECDFC0E91E4B284100ECAF58 /* TCStoreDetailCommentItemScore.h */,
+				ECDFC0EA1E4B284100ECAF58 /* TCStoreDetailCommentItemScore.m */,
+				ECDFC0EC1E4B289300ECAF58 /* TCStoreDetailScoreItem.h */,
+				ECDFC0ED1E4B289300ECAF58 /* TCStoreDetailScoreItem.m */,
+			);
+			path = M;
+			sourceTree = "<group>";
+		};
+		EC98B3CB1E4AC2A6002D66BF /* V */ = {
+			isa = PBXGroup;
+			children = (
+				ECDFC0C51E4B117900ECAF58 /* Navi */,
+				EC98B3CC1E4AC2A6002D66BF /* Cells */,
+				EC98B3CD1E4AC2A6002D66BF /* Header */,
+				EC98B3CE1E4AC2A6002D66BF /* ToolBar */,
+				EC98B3CF1E4AC2A6002D66BF /* View */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		EC98B3CC1E4AC2A6002D66BF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4521E4B0276002D66BF /* TCStoreDetailActivityPackageCell */,
+				EC98B4561E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell */,
+				EC98B45A1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell */,
+				EC98B45E1E4B0276002D66BF /* TCStoreDetailAddressCell */,
+				EC98B4621E4B0276002D66BF /* TCStoreDetailBaseCell */,
+				EC98B4661E4B0276002D66BF /* TCStoreDetailCommentCell */,
+				EC98B46A1E4B0276002D66BF /* TCStoreDetailCommentTitleCell */,
+				EC98B46E1E4B0276002D66BF /* TCStoreDetailCouponCell */,
+				EC98B4721E4B0276002D66BF /* TCStoreDetailCouponMoreCell */,
+				EC98B4761E4B0276002D66BF /* TCStoreDetailCouponTitleCell */,
+				EC98B47A1E4B0276002D66BF /* TCStoreDetailHeaderCell */,
+				EC98B47E1E4B0276002D66BF /* TCStoreDetailMoreStoreCell */,
+				EC98B4821E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell */,
+				EC98B4861E4B0276002D66BF /* TCStoreDetailNearbyCell */,
+				EC98B48A1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell */,
+				EC98B48E1E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell */,
+				EC98B4921E4B0276002D66BF /* TCStoreDetailNearbyTitleCell */,
+				EC98B4961E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell */,
+				EC98B49A1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell */,
+				EC98B49E1E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell */,
+				ECDFC0E31E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell */,
+				EC98B4A21E4B0276002D66BF /* TCStoreDetailWebCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EC98B3CD1E4AC2A6002D66BF /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3D91E4AC326002D66BF /* TCStoreDetailColumnHeader.h */,
+				EC98B3DA1E4AC326002D66BF /* TCStoreDetailColumnHeader.m */,
+				EC98B3DC1E4AC332002D66BF /* TCStoreDetailColumnHeader.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		EC98B3CE1E4AC2A6002D66BF /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3DE1E4AC381002D66BF /* TCStoreDetailToolBar.h */,
+				EC98B3DF1E4AC381002D66BF /* TCStoreDetailToolBar.m */,
+				EC98B3E11E4AC38C002D66BF /* TCStoreDetailToolBar.xib */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		EC98B3CF1E4AC2A6002D66BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B3D31E4AC2F2002D66BF /* TCStoreDetailView.h */,
+				EC98B3D41E4AC2F2002D66BF /* TCStoreDetailView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EC98B4521E4B0276002D66BF /* TCStoreDetailActivityPackageCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4531E4B0276002D66BF /* TCStoreDetailActivityPackageCell.h */,
+				EC98B4541E4B0276002D66BF /* TCStoreDetailActivityPackageCell.m */,
+				EC98B4551E4B0276002D66BF /* TCStoreDetailActivityPackageCell.xib */,
+			);
+			path = TCStoreDetailActivityPackageCell;
+			sourceTree = "<group>";
+		};
+		EC98B4561E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4571E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.h */,
+				EC98B4581E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.m */,
+				EC98B4591E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.xib */,
+			);
+			path = TCStoreDetailActivityPackageMoreCell;
+			sourceTree = "<group>";
+		};
+		EC98B45A1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B45B1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.h */,
+				EC98B45C1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.m */,
+				EC98B45D1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.xib */,
+			);
+			path = TCStoreDetailActivityPackageTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B45E1E4B0276002D66BF /* TCStoreDetailAddressCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B45F1E4B0276002D66BF /* TCStoreDetailAddressCell.h */,
+				EC98B4601E4B0276002D66BF /* TCStoreDetailAddressCell.m */,
+				EC98B4611E4B0276002D66BF /* TCStoreDetailAddressCell.xib */,
+			);
+			path = TCStoreDetailAddressCell;
+			sourceTree = "<group>";
+		};
+		EC98B4621E4B0276002D66BF /* TCStoreDetailBaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4631E4B0276002D66BF /* TCStoreDetailBaseCell.h */,
+				EC98B4641E4B0276002D66BF /* TCStoreDetailBaseCell.m */,
+				EC98B4651E4B0276002D66BF /* TCStoreDetailBaseCell.xib */,
+			);
+			path = TCStoreDetailBaseCell;
+			sourceTree = "<group>";
+		};
+		EC98B4661E4B0276002D66BF /* TCStoreDetailCommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4671E4B0276002D66BF /* TCStoreDetailCommentCell.h */,
+				EC98B4681E4B0276002D66BF /* TCStoreDetailCommentCell.m */,
+				EC98B4691E4B0276002D66BF /* TCStoreDetailCommentCell.xib */,
+			);
+			path = TCStoreDetailCommentCell;
+			sourceTree = "<group>";
+		};
+		EC98B46A1E4B0276002D66BF /* TCStoreDetailCommentTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B46B1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.h */,
+				EC98B46C1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.m */,
+				EC98B46D1E4B0276002D66BF /* TCStoreDetailCommentTitleCell.xib */,
+			);
+			path = TCStoreDetailCommentTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B46E1E4B0276002D66BF /* TCStoreDetailCouponCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B46F1E4B0276002D66BF /* TCStoreDetailCouponCell.h */,
+				EC98B4701E4B0276002D66BF /* TCStoreDetailCouponCell.m */,
+				EC98B4711E4B0276002D66BF /* TCStoreDetailCouponCell.xib */,
+			);
+			path = TCStoreDetailCouponCell;
+			sourceTree = "<group>";
+		};
+		EC98B4721E4B0276002D66BF /* TCStoreDetailCouponMoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4731E4B0276002D66BF /* TCStoreDetailCouponMoreCell.h */,
+				EC98B4741E4B0276002D66BF /* TCStoreDetailCouponMoreCell.m */,
+				EC98B4751E4B0276002D66BF /* TCStoreDetailCouponMoreCell.xib */,
+			);
+			path = TCStoreDetailCouponMoreCell;
+			sourceTree = "<group>";
+		};
+		EC98B4761E4B0276002D66BF /* TCStoreDetailCouponTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4771E4B0276002D66BF /* TCStoreDetailCouponTitleCell.h */,
+				EC98B4781E4B0276002D66BF /* TCStoreDetailCouponTitleCell.m */,
+				EC98B4791E4B0276002D66BF /* TCStoreDetailCouponTitleCell.xib */,
+			);
+			path = TCStoreDetailCouponTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B47A1E4B0276002D66BF /* TCStoreDetailHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B47B1E4B0276002D66BF /* TCStoreDetailHeaderCell.h */,
+				EC98B47C1E4B0276002D66BF /* TCStoreDetailHeaderCell.m */,
+				EC98B47D1E4B0276002D66BF /* TCStoreDetailHeaderCell.xib */,
+			);
+			path = TCStoreDetailHeaderCell;
+			sourceTree = "<group>";
+		};
+		EC98B47E1E4B0276002D66BF /* TCStoreDetailMoreStoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B47F1E4B0276002D66BF /* TCStoreDetailMoreStoreCell.h */,
+				EC98B4801E4B0276002D66BF /* TCStoreDetailMoreStoreCell.m */,
+				EC98B4811E4B0276002D66BF /* TCStoreDetailMoreStoreCell.xib */,
+			);
+			path = TCStoreDetailMoreStoreCell;
+			sourceTree = "<group>";
+		};
+		EC98B4821E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4831E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.h */,
+				EC98B4841E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.m */,
+				EC98B4851E4B0276002D66BF /* TCStoreDetailMoreStoreTitleCell.xib */,
+			);
+			path = TCStoreDetailMoreStoreTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B4861E4B0276002D66BF /* TCStoreDetailNearbyCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4871E4B0276002D66BF /* TCStoreDetailNearbyCell.h */,
+				EC98B4881E4B0276002D66BF /* TCStoreDetailNearbyCell.m */,
+				EC98B4891E4B0276002D66BF /* TCStoreDetailNearbyCell.xib */,
+			);
+			path = TCStoreDetailNearbyCell;
+			sourceTree = "<group>";
+		};
+		EC98B48A1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B48B1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.h */,
+				EC98B48C1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.m */,
+				EC98B48D1E4B0276002D66BF /* TCStoreDetailNearbyPackageCell.xib */,
+			);
+			path = TCStoreDetailNearbyPackageCell;
+			sourceTree = "<group>";
+		};
+		EC98B48E1E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B48F1E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.h */,
+				EC98B4901E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.m */,
+				EC98B4911E4B0276002D66BF /* TCStoreDetailNearbyPackageTitleCell.xib */,
+			);
+			path = TCStoreDetailNearbyPackageTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B4921E4B0276002D66BF /* TCStoreDetailNearbyTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4931E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.h */,
+				EC98B4941E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.m */,
+				EC98B4951E4B0276002D66BF /* TCStoreDetailNearbyTitleCell.xib */,
+			);
+			path = TCStoreDetailNearbyTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B4961E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4971E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.h */,
+				EC98B4981E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.m */,
+				EC98B4991E4B0276002D66BF /* TCStoreDetailPreferentialPackageCell.xib */,
+			);
+			path = TCStoreDetailPreferentialPackageCell;
+			sourceTree = "<group>";
+		};
+		EC98B49A1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B49B1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.h */,
+				EC98B49C1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.m */,
+				EC98B49D1E4B0276002D66BF /* TCStoreDetailPreferentialPackageMoreCell.xib */,
+			);
+			path = TCStoreDetailPreferentialPackageMoreCell;
+			sourceTree = "<group>";
+		};
+		EC98B49E1E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B49F1E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.h */,
+				EC98B4A01E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.m */,
+				EC98B4A11E4B0276002D66BF /* TCStoreDetailPreferentialPackageTitleCell.xib */,
+			);
+			path = TCStoreDetailPreferentialPackageTitleCell;
+			sourceTree = "<group>";
+		};
+		EC98B4A21E4B0276002D66BF /* TCStoreDetailWebCell */ = {
+			isa = PBXGroup;
+			children = (
+				EC98B4A31E4B0276002D66BF /* TCStoreDetailWebCell.h */,
+				EC98B4A41E4B0276002D66BF /* TCStoreDetailWebCell.m */,
+				EC98B4A51E4B0276002D66BF /* TCStoreDetailWebCell.xib */,
+			);
+			path = TCStoreDetailWebCell;
+			sourceTree = "<group>";
+		};
 		EC99A05A1D7B219A008E6F33 /* YYHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -18508,6 +19019,26 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		ECDFC0C51E4B117900ECAF58 /* Navi */ = {
+			isa = PBXGroup;
+			children = (
+				ECDFC0C61E4B117900ECAF58 /* TCStoreDetailNaviRightView.h */,
+				ECDFC0C71E4B117900ECAF58 /* TCStoreDetailNaviRightView.m */,
+				ECDFC0C81E4B117900ECAF58 /* TCStoreDetailNaviRightView.xib */,
+			);
+			path = Navi;
+			sourceTree = "<group>";
+		};
+		ECDFC0E31E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell */ = {
+			isa = PBXGroup;
+			children = (
+				ECDFC0E41E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.h */,
+				ECDFC0E51E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.m */,
+				ECDFC0E61E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.xib */,
+			);
+			path = TCStoreDetailSectionEmptyCell;
+			sourceTree = "<group>";
+		};
 		ECEE2B2D1E07B09B00FAB7C2 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
@@ -19279,6 +19810,7 @@
 				EC299C011E4484310006B701 /* WolesaleProductDetailV2JoinTipCell.xib in Resources */,
 				EC5505B51E00E9AF00180A2C /* ProductDetailSecondKillCell.xib in Resources */,
 				EC31686C1E0243CD009F0945 /* ProductDetailFreeApplyUserRemarkCell.xib in Resources */,
+				EC98B3E21E4AC38C002D66BF /* TCStoreDetailToolBar.xib in Resources */,
 				EC4FC2BB1D77CEE400BBD050 /* HeaderView.xib in Resources */,
 				EC4FC2371D77CEE400BBD050 /* LoginViewController.xib in Resources */,
 				EC299C051E4484310006B701 /* WolesaleProductDetailV2PlaceCell.xib in Resources */,
@@ -19320,6 +19852,7 @@
 				EC9774F41E0B874F00980C4A /* RecommendTarentoCollectTarentoFooter.xib in Resources */,
 				ECAA494C1D79A45B00799CBE /* ArticleHomeNoIconCell.xib in Resources */,
 				EC299BD11E4484300006B701 /* WholesalePickDateViewController.xib in Resources */,
+				EC98B4B11E4B0276002D66BF /* TCStoreDetailCommentCell.xib in Resources */,
 				ECCF495D1E29E2DC00C4DDB3 /* ActivityProductCouponsFooter.xib in Resources */,
 				ECAA49351D79A45B00799CBE /* ArticleHomeAlbumCollectionViewCell.xib in Resources */,
 				EC0043451DE559110042B701 /* NurseryViewController.xib in Resources */,
@@ -19343,8 +19876,10 @@
 				EC9774561E0A38A600980C4A /* RecommendProductOrderListView.xib in Resources */,
 				EC4FC46E1D77CEE400BBD050 /* FavourateViewController.xib in Resources */,
 				EC4E27911DF0134E00622711 /* NearbyTableViewCell.xib in Resources */,
+				EC98B4A71E4B0276002D66BF /* TCStoreDetailActivityPackageCell.xib in Resources */,
 				EC4FC5C21D77CEEF00BBD050 /* ImageSelectedSmallOff.png in Resources */,
 				EC299AEC1E44842E0006B701 /* RadishOrderDetailOrderNoCell.xib in Resources */,
+				EC98B4AB1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.xib in Resources */,
 				EC299AF81E44842E0006B701 /* RadishOrderDetailProductCell.xib in Resources */,
 				ECB4AD221E3761650036057A /* HomeTableIconsCollectionCell.xib in Resources */,
 				EC4FC3A61D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.xib in Resources */,
@@ -19354,6 +19889,7 @@
 				EC299C491E4484320006B701 /* WholesaleSettlementProductInfoCell.xib in Resources */,
 				EC299B9E1E4484300006B701 /* WholesaleOrderDetailCountDownCell.xib in Resources */,
 				EC4FC5BC1D77CEEF00BBD050 /* ImageSelectedOff.png in Resources */,
+				EC98B4C31E4B0277002D66BF /* TCStoreDetailNearbyPackageCell.xib in Resources */,
 				EC299A7A1E44842D0006B701 /* FlashBuyProductDetailRuleTitleCell.xib in Resources */,
 				EC4870A81DFC3FC1005CA365 /* ProductOrderFreeDetailStoreCell.xib in Resources */,
 				EC30ABC71DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoTitleCell.xib in Resources */,
@@ -19364,11 +19900,13 @@
 				EC299BA21E4484300006B701 /* WholesaleOrderDetailFailureCell.xib in Resources */,
 				EC5CDD311DE538F200F95C6F /* ProductDetailFreeApplyParentNameCell.xib in Resources */,
 				EC4FC2B71D77CEE400BBD050 /* CategoryItemCell.xib in Resources */,
+				EC98B4BD1E4B0277002D66BF /* TCStoreDetailMoreStoreCell.xib in Resources */,
 				EC4870001DFBFBB5005CA365 /* ProductOrderFreeDetailToolBar.xib in Resources */,
 				EC299BB91E4484300006B701 /* WholesaleOrderDetailTitleCell.xib in Resources */,
 				EC4FC4B31D77CEE400BBD050 /* OrderRefundViewController.xib in Resources */,
 				ECCF49841E2DD20300C4DDB3 /* ProductDetailVideoTipCell.xib in Resources */,
 				EC299B7C1E44842F0006B701 /* RadishSettlementPlaceInfoCell.xib in Resources */,
+				ECDFC0CA1E4B117900ECAF58 /* TCStoreDetailNaviRightView.xib in Resources */,
 				ECCF49531E29E1A300C4DDB3 /* ActivityProductCollectionMediumCell.xib in Resources */,
 				EC4FC5F01D77CEEF00BBD050 /* ZPPopoverCell.xib in Resources */,
 				ECCF489E1E28E85B00C4DDB3 /* ActivityProductBaseCell.xib in Resources */,
@@ -19394,6 +19932,7 @@
 				EC4FC3EF1D77CEE400BBD050 /* StrategyDetailBottomView.xib in Resources */,
 				EC4C60B91DF5B0CB00830126 /* ProductOrderListAllTitleShowView.xib in Resources */,
 				EC299B621E44842F0006B701 /* RadishProductDetailTwoColumnConsultMoreCell.xib in Resources */,
+				ECDFC0E81E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.xib in Resources */,
 				EC30AB361DFF273F007380B0 /* ProductOrderNormalDetailBookingCell.xib in Resources */,
 				EC98B32E1E458F11002D66BF /* NormalProductDetailCommentCell.xib in Resources */,
 				EC0D360F1DFEDC110028BC0E /* ProductOrderNormalDetailPayTipCell.xib in Resources */,
@@ -19405,8 +19944,10 @@
 				ECCF48661E28A40300C4DDB3 /* ActivityProductCountDownCell.xib in Resources */,
 				EC486F391DF7C726005CA365 /* SearchFactorFilterCategoryCellRight.xib in Resources */,
 				ECF704D71D88E75400650C0A /* ArticleUserCenterTableHeaderView.xib in Resources */,
+				EC98B4C11E4B0277002D66BF /* TCStoreDetailNearbyCell.xib in Resources */,
 				EC299B021E44842E0006B701 /* RadishOrderDetailUserRemarkCell.xib in Resources */,
 				EC0D360A1DFEDA1F0028BC0E /* ProductOrderNormalDetailPayInfoCell.xib in Resources */,
+				EC98B4C71E4B0277002D66BF /* TCStoreDetailNearbyTitleCell.xib in Resources */,
 				EC30ABBD1DFF9CD3007380B0 /* ProductOrderTicketDetailDeliverCell.xib in Resources */,
 				EC4FC3941D77CEE400BBD050 /* StoreDetailCommentCell.xib in Resources */,
 				EC56C9C61E2E47CF00C2F1E6 /* CommentUtilsViewController.xib in Resources */,
@@ -19425,6 +19966,7 @@
 				EC4FC5CB1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap.png in Resources */,
 				EC299B5C1E44842F0006B701 /* RadishProductDetailTitleCell.xib in Resources */,
 				ECCF49491E29E1A300C4DDB3 /* ActivityProductCouponsCell.xib in Resources */,
+				EC98B4BB1E4B0277002D66BF /* TCStoreDetailHeaderCell.xib in Resources */,
 				EC299BA81E4484300006B701 /* WholesaleOrderDetailJoinMemberCell.xib in Resources */,
 				EC299A361E44842C0006B701 /* FlashServiceOrderDetailProgressCollectionViewCell.xib in Resources */,
 				EC4FC5C81D77CEEF00BBD050 /* PlayButtonOverlayLarge.png in Resources */,
@@ -19441,6 +19983,7 @@
 				ECB4AD571E3762350036057A /* HomeTableRecommendCell.xib in Resources */,
 				EC4FBBE51D77CD8300BBD050 /* Assets.xcassets in Resources */,
 				EC0044D91DE7F4E40042B701 /* ProductDetailTwoColumnWebViewCell.xib in Resources */,
+				EC98B4B71E4B0277002D66BF /* TCStoreDetailCouponMoreCell.xib in Resources */,
 				EC299C3C1E4484310006B701 /* WholesaleSettlementAddressCell.xib in Resources */,
 				ECA59C071DED61A600B3B1F7 /* SearchFactorAreaView.xib in Resources */,
 				EC0044271DE6B8970042B701 /* ProductDetailStandardCell.xib in Resources */,
@@ -19501,6 +20044,7 @@
 				EC299A6E1E44842D0006B701 /* FlashBuyProductDetailContentCell.xib in Resources */,
 				EC00442F1DE6B8970042B701 /* ProductDetailTicketDesCell.xib in Resources */,
 				ECB4AD5C1E3762490036057A /* HomeTableThreeScrollCell.xib in Resources */,
+				EC98B4AF1E4B0276002D66BF /* TCStoreDetailBaseCell.xib in Resources */,
 				EC35FBDC1E266A2D0097BAB3 /* SeckillBaseCell.xib in Resources */,
 				ECAA49371D79A45B00799CBE /* ArticleHomeAlbumEntrysCell.xib in Resources */,
 				ECB3E7831D92C82E0059267D /* OrderBookingSelectTimeCell.xib in Resources */,
@@ -19542,6 +20086,7 @@
 				EC00441D1DE6B8970042B701 /* ProductDetailInfoCell.xib in Resources */,
 				EC98B3421E458F11002D66BF /* NormalProductDetailNoticeCollectionCell.xib in Resources */,
 				ECBC97CD1DFF0C7200B7386C /* ProductOrderNormalDetailRefundTitleCell.xib in Resources */,
+				EC98B4CB1E4B0277002D66BF /* TCStoreDetailPreferentialPackageMoreCell.xib in Resources */,
 				EC5CDD2E1DE538F200F95C6F /* ProductDetailFreeApplyBabySexCell.xib in Resources */,
 				EC4FC5D61D77CEEF00BBD050 /* UIBarButtonItemGrid@3x.png in Resources */,
 				EC299BAE1E4484300006B701 /* WholesaleOrderDetailProductInfoCell.xib in Resources */,
@@ -19604,6 +20149,7 @@
 				EC299C601E44855A0006B701 /* NormalProductDetailToolBar.xib in Resources */,
 				EC13B4F41DD1F3430040F760 /* AccountCenterCollectionsCell.xib in Resources */,
 				EC299B5A1E44842F0006B701 /* RadishProductDetailStandardCell.xib in Resources */,
+				EC98B4A91E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.xib in Resources */,
 				EC299BB71E4484300006B701 /* WholesaleOrderDetailSurplusCell.xib in Resources */,
 				ECB3E7851D92C82E0059267D /* OrderBookingServiceInfoCell.xib in Resources */,
 				EC299B1B1E44842E0006B701 /* RadishProductOrderListTimeCell.xib in Resources */,
@@ -19680,6 +20226,7 @@
 				EC4FC4521D77CEE400BBD050 /* CommentListViewSegmentCell.xib in Resources */,
 				EC299AE61E44842E0006B701 /* RadishOrderDetailContactCell.xib in Resources */,
 				EC4FC37A1D77CEE400BBD050 /* ServiceSettlementPickCouponViewHeader.xib in Resources */,
+				EC98B4B51E4B0277002D66BF /* TCStoreDetailCouponCell.xib in Resources */,
 				EC299C311E4484310006B701 /* WolesaleProductDetailToolBar.xib in Resources */,
 				EC486FA31DFA908D005CA365 /* SearchResultStoreHeader.xib in Resources */,
 				EC299A841E44842D0006B701 /* FlashBuyProductDetailWebEmptyCell.xib in Resources */,
@@ -19711,6 +20258,8 @@
 				EC97751B1E0D42B200980C4A /* StoreDetailAnnotationTipView.xib in Resources */,
 				ECB4AC421E36EECC0036057A /* ScoreCenterItemsCell.xib in Resources */,
 				EC0044291DE6B8970042B701 /* ProductDetailTicketActorCell.xib in Resources */,
+				EC98B4B31E4B0276002D66BF /* TCStoreDetailCommentTitleCell.xib in Resources */,
+				EC98B4B91E4B0277002D66BF /* TCStoreDetailCouponTitleCell.xib in Resources */,
 				EC4FC3D01D77CEE400BBD050 /* StrategyTagPicCollectionViewCell.xib in Resources */,
 				EC98B3521E458F11002D66BF /* NormalProductDetailVideoTipCell.xib in Resources */,
 				EC299B5E1E44842F0006B701 /* RadishProductDetailTwoColumnConsultConsultCell.xib in Resources */,
@@ -19734,6 +20283,7 @@
 				EC4FC29E1D77CEE400BBD050 /* ArticleWeChatLargeCell.xib in Resources */,
 				EC4FC2B01D77CEE400BBD050 /* ActivityViewCell.xib in Resources */,
 				EC00440F1DE6B8970042B701 /* ProductDetailCommentCellCollectionViewCell.xib in Resources */,
+				EC98B4AD1E4B0276002D66BF /* TCStoreDetailAddressCell.xib in Resources */,
 				EC4FC3AA1D77CEE400BBD050 /* StoreDetailHotRecommendListViewController.xib in Resources */,
 				ECB4AD521E3762270036057A /* HomeTableOneToFourCell.xib in Resources */,
 				EC98B3321E458F11002D66BF /* NormalProductDetailCommentMoreCell.xib in Resources */,
@@ -19779,6 +20329,7 @@
 				EC59719B1DD016670047CDEC /* SoftwareSettingHeader.xib in Resources */,
 				EC4FC3B81D77CEE400BBD050 /* StoreDetailServiceCell.xib in Resources */,
 				EC4FC5C51D77CEEF00BBD050 /* ImageSelectedSmallOn.png in Resources */,
+				EC98B4C91E4B0277002D66BF /* TCStoreDetailPreferentialPackageCell.xib in Resources */,
 				ECEE2B431E07C91600FAB7C2 /* ProductStandardCell.xib in Resources */,
 				EC0044081DE6B8970042B701 /* ProductDetailBannerCell.xib in Resources */,
 				EC299C861E4487660006B701 /* TicketProductDetailBaseCell.xib in Resources */,
@@ -19792,6 +20343,7 @@
 				EC299BF91E4484310006B701 /* WolesaleProductDetailV2InfoCell.xib in Resources */,
 				EC31684D1E01CC93009F0945 /* ProductOrderNormalDetailUserRemarkCell.xib in Resources */,
 				EC4E27F51DF152F700622711 /* NearbyCalendarToolBar.xib in Resources */,
+				EC98B4C51E4B0277002D66BF /* TCStoreDetailNearbyPackageTitleCell.xib in Resources */,
 				EC5CDD331DE538F200F95C6F /* ProductDetailFreeApplyUserAddressCell.xib in Resources */,
 				EC299AC41E44842E0006B701 /* RadishMallItemsCell.xib in Resources */,
 				ECCF47D01E273E4D00C4DDB3 /* SeckillOtherRightCell.xib in Resources */,
@@ -19892,6 +20444,7 @@
 				EC9774CB1E0B85CD00980C4A /* RecommendStoreCollectStoreHeader.xib in Resources */,
 				EC4FC40E1D77CEE400BBD050 /* AppointmentListViewHeaderTabCell.xib in Resources */,
 				EC2F262C1DD6E53900B67BBA /* ServiceSettlementTicketGetSelfCell.xib in Resources */,
+				EC98B4BF1E4B0277002D66BF /* TCStoreDetailMoreStoreTitleCell.xib in Resources */,
 				EC4FC4101D77CEE400BBD050 /* AppointmentOrderListCell.xib in Resources */,
 				EC2F26F31DDB0AE500B67BBA /* MyTracksCell.xib in Resources */,
 				EC98B3501E458F11002D66BF /* NormalProductDetailVideoCell.xib in Resources */,
@@ -19933,11 +20486,13 @@
 				EC4FC3BA1D77CEE400BBD050 /* StoreDetialMapPoiAnnotationView.xib in Resources */,
 				EC4FC5CC1D77CEEF00BBD050 /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				EC299A401E44842C0006B701 /* FlashServiceOrderDetailServiceInfoCell.xib in Resources */,
+				EC98B4CF1E4B0277002D66BF /* TCStoreDetailWebCell.xib in Resources */,
 				EC98B3611E45B132002D66BF /* NormalProductDetailSectionEmptyCell.xib in Resources */,
 				EC0D361E1DFEDEF90028BC0E /* ProductOrderNormalDetailRemarkCell.xib in Resources */,
 				EC299AA81E44842D0006B701 /* FlashBalanceSettlementPayTypeCell.xib in Resources */,
 				EC299AAA1E44842D0006B701 /* FlashBalanceSettlementScoreCell.xib in Resources */,
 				EC4C60F31DF6A72E00830126 /* SearchTableViewFooter.xib in Resources */,
+				EC98B4CD1E4B0277002D66BF /* TCStoreDetailPreferentialPackageTitleCell.xib in Resources */,
 				EC2F26701DD9809D00B67BBA /* CollectProductReduceCell.xib in Resources */,
 				EC299ACE1E44842E0006B701 /* RadishMallSmallCell.xib in Resources */,
 				EC4FC23B1D77CEE400BBD050 /* RegisterViewController.xib in Resources */,
@@ -19962,6 +20517,7 @@
 				EC739DDD1E1B63B30027E91E /* ProductOrderFreeListAddressCell.xib in Resources */,
 				EC299B121E44842E0006B701 /* RadishProductOrderListAddressCell.xib in Resources */,
 				EC4C60D01DF6697400830126 /* SearchHotKeyCollectionCell.xib in Resources */,
+				EC98B3DD1E4AC332002D66BF /* TCStoreDetailColumnHeader.xib in Resources */,
 				ECB3E78B1D92C82E0059267D /* OrderBookingSelectTimeViewController.xib in Resources */,
 				EC299B941E4484300006B701 /* WholesaleOrderDetailV2BannersCollectionCell.xib in Resources */,
 				EC299C421E4484320006B701 /* WholesaleSettlementDateCell.xib in Resources */,
@@ -20106,6 +20662,7 @@
 				ECCF47C71E273E4D00C4DDB3 /* SeckillOtherViewController.m in Sources */,
 				ECFFC74F1DC3A079002DBFB9 /* ServiceSettlementBuyNumCell.m in Sources */,
 				EC299C221E4484310006B701 /* WolesaleProductDetailProgressCell.m in Sources */,
+				ECDFC0EE1E4B289300ECAF58 /* TCStoreDetailScoreItem.m in Sources */,
 				EC0043581DE59EE30042B701 /* NurseryAnnoView.m in Sources */,
 				EC4FC43D1D77CEE400BBD050 /* CommentReplyItemModel.m in Sources */,
 				EC30AB6E1DFF9829007380B0 /* ProductOrderTicketDetailCountDown.m in Sources */,
@@ -20147,6 +20704,7 @@
 				ECA95A6B1DDB29D600990AAE /* CouponListUsedView.m in Sources */,
 				EC299BE31E4484300006B701 /* WolesaleProductDetailViewController.m in Sources */,
 				ECBCCEF51DBF152E001B9571 /* ComposeButton.m in Sources */,
+				EC98B3D21E4AC2DD002D66BF /* TCStoreDetailViewController.m in Sources */,
 				EC4FC6401D78092900BBD050 /* FailureViewManager.m in Sources */,
 				EC4FC29F1D77CEE400BBD050 /* ArticleWeChatSmallCell.m in Sources */,
 				EC299A971E44842D0006B701 /* FlashAdvanceSettlementReadRuleCell.m in Sources */,
@@ -20165,8 +20723,10 @@
 				EC4FC3B31D77CEE400BBD050 /* StoreRelatedStrategyModel.m in Sources */,
 				EC889D0E1DE069610054355C /* ServiceSettlementSubViewsProvider.m in Sources */,
 				EC299B011E44842E0006B701 /* RadishOrderDetailUserRemarkCell.m in Sources */,
+				EC98B4CC1E4B0277002D66BF /* TCStoreDetailPreferentialPackageTitleCell.m in Sources */,
 				EC299A871E44842D0006B701 /* FlashBuyProductDetailNaviRightView.m in Sources */,
 				EC4FC3871D77CEE400BBD050 /* SettlementResultShareViewController.m in Sources */,
+				EC98B4331E4AC7B0002D66BF /* TCStoreDetailData.m in Sources */,
 				EC299B611E44842F0006B701 /* RadishProductDetailTwoColumnConsultMoreCell.m in Sources */,
 				EC299B131E44842E0006B701 /* RadishProductOrderListBaseCell.m in Sources */,
 				EC299AD41E44842E0006B701 /* RadishOrderDetailData.m in Sources */,
@@ -20217,6 +20777,7 @@
 				EC4FC3DB1D77CEE400BBD050 /* StrategyTagColumnModel.m in Sources */,
 				EC4E27921DF0134E00622711 /* NearbyTableViewHeader.m in Sources */,
 				EC2F25D11DD40DDD00B67BBA /* CollectProductAllView.m in Sources */,
+				EC98B4BE1E4B0277002D66BF /* TCStoreDetailMoreStoreTitleCell.m in Sources */,
 				EC4C60F11DF6A72300830126 /* SearchTableViewFooter.m in Sources */,
 				EC4FC4341D77CEE400BBD050 /* CommentListViewController.m in Sources */,
 				EC299B651E44842F0006B701 /* RadishProductDetailTwoColumnToolBar.m in Sources */,
@@ -20225,6 +20786,7 @@
 				EC97752B1E0D54ED00980C4A /* SearchHistoryKeywordsModel.m in Sources */,
 				EC299A461E44842C0006B701 /* FlashServiceOrderListViewController.m in Sources */,
 				ECA2BC151DF2A58E00EAE79C /* ProductOrderListBtn.m in Sources */,
+				EC98B4C21E4B0277002D66BF /* TCStoreDetailNearbyPackageCell.m in Sources */,
 				EC299BDF1E4484300006B701 /* WholesalePickDateTitleCell.m in Sources */,
 				EC30AB6B1DFF978F007380B0 /* ProductOrderTicketDetailData.m in Sources */,
 				EC4FC3B11D77CEE400BBD050 /* StoreDetailRelatedStrategyListViewController.m in Sources */,
@@ -20349,6 +20911,7 @@
 				EC4FC3D91D77CEE400BBD050 /* StrategyDetailMapViewController.m in Sources */,
 				EC299C4C1E4484320006B701 /* WholesaleSettlementRuleCell.m in Sources */,
 				EC98B3391E458F11002D66BF /* NormalProductDetailDateCell.m in Sources */,
+				ECDFC0D01E4B178300ECAF58 /* TCStoreDetailShare.m in Sources */,
 				EC299A3F1E44842C0006B701 /* FlashServiceOrderDetailServiceInfoCell.m in Sources */,
 				EC4FC4271D77CEE400BBD050 /* PromotionLogoItem.m in Sources */,
 				EC299AB41E44842D0006B701 /* RadishMallData.m in Sources */,
@@ -20376,6 +20939,7 @@
 				EC299BBE1E4484300006B701 /* WholesaleOrderDetailWebCell.m in Sources */,
 				EC4C607B1DF5765400830126 /* ProductOrderFreeListViewController.m in Sources */,
 				EC00444B1DE6B8980042B701 /* ProductDetailNormalToolBar.m in Sources */,
+				EC98B3D51E4AC2F2002D66BF /* TCStoreDetailView.m in Sources */,
 				EC299AB91E44842D0006B701 /* RadishUserData.m in Sources */,
 				EC4FC36E1D77CEE400BBD050 /* ServiceSettlementServiceInfoCell.m in Sources */,
 				EC739DDC1E1B63B30027E91E /* ProductOrderFreeListAddressCell.m in Sources */,
@@ -20412,11 +20976,13 @@
 				EC4FC3E11D77CEE400BBD050 /* ParentingStrategyView.m in Sources */,
 				EC30ABC41DFF9CD3007380B0 /* ProductOrderTicketDetailEmptyCell.m in Sources */,
 				EC0044201DE6B8970042B701 /* ProductDetailNoticeCell.m in Sources */,
+				EC98B4B61E4B0277002D66BF /* TCStoreDetailCouponMoreCell.m in Sources */,
 				EC299C241E4484310006B701 /* WolesaleProductDetailRuleTipCell.m in Sources */,
 				EC299C461E4484320006B701 /* WholesaleSettlementPhoneCell.m in Sources */,
 				EC4FC3781D77CEE400BBD050 /* ServiceSettlementPickCouponViewController.m in Sources */,
 				EC299A751E44842D0006B701 /* FlashBuyProductDetailProgressCollectionCell.m in Sources */,
 				EC2F26F41DDB0AE500B67BBA /* MyTracksHeader.m in Sources */,
+				ECDFC0D31E4B17A400ECAF58 /* TCStoreDetailProductPackage.m in Sources */,
 				EC2289521DE95D4F00EC324A /* CollectionStoreCoupon.m in Sources */,
 				ECF704E51D89054000650C0A /* ArticleUserCenterCommentModel.m in Sources */,
 				EC72643C1D7D473B00AA739B /* ArticleHomeTableView.m in Sources */,
@@ -20481,6 +21047,7 @@
 				EC299A371E44842C0006B701 /* FlashServiceOrderDetailRefundInfoCell.m in Sources */,
 				EC7FBA1A1DE864DF0058E541 /* CollectProductItem.m in Sources */,
 				EC2F26631DD9803B00B67BBA /* CollectProductAllCell.m in Sources */,
+				EC98B4AC1E4B0276002D66BF /* TCStoreDetailAddressCell.m in Sources */,
 				EC486FFF1DFBFBB5005CA365 /* ProductOrderFreeDetailToolBar.m in Sources */,
 				EC299B851E44842F0006B701 /* RadishSettlementUserRemarkCell.m in Sources */,
 				EC4FC2241D77CEE400BBD050 /* TabBarController.m in Sources */,
@@ -20516,6 +21083,7 @@
 				ECA59BE81DED612600B3B1F7 /* SearchFactorSortDataItem.m in Sources */,
 				EC4FC2701D77CEE400BBD050 /* CommonShareService.m in Sources */,
 				ECEE2B6B1E08FCEA00FAB7C2 /* RecommendProductModel.m in Sources */,
+				ECDFC0E71E4B1F2800ECAF58 /* TCStoreDetailSectionEmptyCell.m in Sources */,
 				EC7FBBC41DC49F8A007B326C /* ProductDetailConsultItem.m in Sources */,
 				EC0043481DE5592B0042B701 /* NurseryModel.m in Sources */,
 				EC2F271C1DDB27E800B67BBA /* CouponListBaseView.m in Sources */,
@@ -20632,6 +21200,7 @@
 				EC299B0F1E44842E0006B701 /* RadishProductOrderListModel.m in Sources */,
 				EC4FC2871D77CEE400BBD050 /* AlbumnModel.m in Sources */,
 				EC3168511E01CE5B009F0945 /* ProductOrderTicketDetailUserRemarkCell.m in Sources */,
+				EC98B4CE1E4B0277002D66BF /* TCStoreDetailWebCell.m in Sources */,
 				EC630DBC1DCA045B0088145E /* NetWorkTipView.m in Sources */,
 				EC30AB771DFF9A51007380B0 /* ProductOrderTicketDetailDeliverItem.m in Sources */,
 				ECCF49481E29E1A300C4DDB3 /* ActivityProductCouponsCell.m in Sources */,
@@ -20661,17 +21230,21 @@
 				ECAA49451D79A45B00799CBE /* ArticleHomeColumnTitleCell.m in Sources */,
 				EC4FC4571D77CEE400BBD050 /* CommentDetailViewModel.m in Sources */,
 				EC299B231E44842E0006B701 /* RadishProductDetailCommentScore.m in Sources */,
+				EC98B4C81E4B0277002D66BF /* TCStoreDetailPreferentialPackageCell.m in Sources */,
 				ECFFC6F11DC363C1002DBFB9 /* ProductDetailComment.m in Sources */,
 				ECAA49511D79A45B00799CBE /* ArticleHomeVideoCell.m in Sources */,
 				ECB4AC461E36EEFE0036057A /* ScoreCenterDetailCell.m in Sources */,
+				ECDFC0CD1E4B16DC00ECAF58 /* TCStoreDetailStoreBase.m in Sources */,
 				EC97750F1E0C158D00980C4A /* RecommendTarentoModel.m in Sources */,
 				EC299BAD1E4484300006B701 /* WholesaleOrderDetailProductInfoCell.m in Sources */,
 				EC299A8C1E44842D0006B701 /* FlashBuyProductDetailSelectStoreCell.m in Sources */,
+				ECDFC0D91E4B17D900ECAF58 /* TCStoreDetailComment.m in Sources */,
 				EC299BB61E4484300006B701 /* WholesaleOrderDetailSurplusCell.m in Sources */,
 				EC4FC21B1D77CEE400BBD050 /* UIButton+Category.m in Sources */,
 				EC4FC26B1D77CEE400BBD050 /* SegueMaster.m in Sources */,
 				EC0D36091DFEDA1F0028BC0E /* ProductOrderNormalDetailPayInfoCell.m in Sources */,
 				EC299A391E44842C0006B701 /* FlashServiceOrderDetailRefundTipCell.m in Sources */,
+				EC98B4B81E4B0277002D66BF /* TCStoreDetailCouponTitleCell.m in Sources */,
 				EC154D511D87F5C3007137E8 /* ArticleWritePreviewViewController.m in Sources */,
 				EC30AB351DFF273F007380B0 /* ProductOrderNormalDetailBookingCell.m in Sources */,
 				EC2289641DE9B35600EC324A /* AccountCenterBackgroundImg.m in Sources */,
@@ -20686,6 +21259,7 @@
 				EC299B3D1E44842F0006B701 /* RadishProductDetailBuyNoticeEmptyCell.m in Sources */,
 				EC299A911E44842D0006B701 /* FlashAdvanceSettlementViewController.m in Sources */,
 				EC455FF11DFE7C3B000BD822 /* ProductOrderNormalDetailToolBar.m in Sources */,
+				ECDFC0D61E4B17BF00ECAF58 /* TCStoreDetailMoreProductPackage.m in Sources */,
 				EC299B551E44842F0006B701 /* RadishProductDetailPriceCell.m in Sources */,
 				EC455FE31DFE7BA8000BD822 /* ProductOrderTicketDetailViewController.m in Sources */,
 				EC299BEA1E4484310006B701 /* WholesaleProductDetailStore.m in Sources */,
@@ -20703,6 +21277,7 @@
 				EC299BF61E4484310006B701 /* WolesaleProductDetailV2BannersCollectionCell.m in Sources */,
 				EC299BED1E4484310006B701 /* WolesaleProductDetailModel.m in Sources */,
 				EC299ADC1E44842E0006B701 /* RadishOrderDetailUserAddress.m in Sources */,
+				ECDFC0EB1E4B284100ECAF58 /* TCStoreDetailCommentItemScore.m in Sources */,
 				EC98B3371E458F11002D66BF /* NormalProductDetailCouponCell.m in Sources */,
 				ECBC97BD1DFEE80B00B7386C /* ProductOrderNormalDetailPayInfoTitleCell.m in Sources */,
 				EC76B8DB1DC65FC6006518DE /* ServiceDetailSegmentCell.m in Sources */,
@@ -20796,6 +21371,7 @@
 				EC35F8AF1E1F88BB0097BAB3 /* ProductOrderListCell.m in Sources */,
 				EC299B2A1E44842F0006B701 /* RadishProductDetailNotice.m in Sources */,
 				EC68C3C31D9BBC8D00D4401A /* HomeActivityModel.m in Sources */,
+				EC98B3DB1E4AC326002D66BF /* TCStoreDetailColumnHeader.m in Sources */,
 				ECBCCEF21DBF152E001B9571 /* ComposeData.m in Sources */,
 				ECA59C061DED61A600B3B1F7 /* SearchFactorAreaView.m in Sources */,
 				EC299BF31E4484310006B701 /* WholesaleProductDetailTeamModel.m in Sources */,
@@ -20873,6 +21449,7 @@
 				EC4E27FB1DF152F700622711 /* NearbyCalendarToolBarItemView.m in Sources */,
 				EC4FC3A51D77CEE400BBD050 /* StoreDetailAppointmentPreferenceTipCell.m in Sources */,
 				EC299C321E4484310006B701 /* WolesaleProductDetailView.m in Sources */,
+				EC98B4BA1E4B0277002D66BF /* TCStoreDetailHeaderCell.m in Sources */,
 				EC299C851E4487660006B701 /* TicketProductDetailBaseCell.m in Sources */,
 				EC299B171E44842E0006B701 /* RadishProductOrderListCellBtnsView.m in Sources */,
 				EC4FC3F31D77CEE400BBD050 /* StrategyDetailServiceItemModel.m in Sources */,
@@ -20903,6 +21480,7 @@
 				EC299C4E1E4484320006B701 /* WholesaleSettlementStoreInfoCell.m in Sources */,
 				EC98B2831E4581CA002D66BF /* NormalProductDetailScoreItem.m in Sources */,
 				EC4870011DFBFBB5005CA365 /* ProductOrderFreeDetailView.m in Sources */,
+				EC98B4BC1E4B0277002D66BF /* TCStoreDetailMoreStoreCell.m in Sources */,
 				EC0D360E1DFEDC110028BC0E /* ProductOrderNormalDetailPayTipCell.m in Sources */,
 				EC9775191E0D42A900980C4A /* StoreDetailAnnotationTipView.m in Sources */,
 				EC4FC4821D77CEE400BBD050 /* NotificationCenterModel.m in Sources */,
@@ -20918,15 +21496,19 @@
 				EC68C3B61D9BBC5700D4401A /* HomeRefreshModel.m in Sources */,
 				EC4FC2561D77CEE400BBD050 /* RouteAnnotation.m in Sources */,
 				ECF5D0FD1DB8CE3900A1B268 /* TCHomeCollectionViewBaseLayout.m in Sources */,
+				ECDFC0F11E4B2F0900ECAF58 /* TCStoreDetailFacility.m in Sources */,
 				EC4FC27A1D77CEE400BBD050 /* ThemeManager.m in Sources */,
 				EC0B6D941D8E693A00EC20EA /* ArticleAutoRollCell.m in Sources */,
+				EC98B4A81E4B0276002D66BF /* TCStoreDetailActivityPackageMoreCell.m in Sources */,
 				EC68C3B51D9BBC5700D4401A /* HomeRefreshViewController.m in Sources */,
 				EC31CF611DA9239800C49E29 /* BuryPointManager.m in Sources */,
 				EC299B531E44842F0006B701 /* RadishProductDetailPlaceCountCell.m in Sources */,
+				ECDFC0C91E4B117900ECAF58 /* TCStoreDetailNaviRightView.m in Sources */,
 				EC56C9CC1E2E4FB400C2F1E6 /* CommentUtilsToolBar.m in Sources */,
 				EC72642A1D7D279A00AA739B /* ArticleLikeViewController.m in Sources */,
 				ECA2BC0F1DF2A11700EAE79C /* ProductOrderListModel.m in Sources */,
 				ECAA494F1D79A45B00799CBE /* ArticleHomeTagImgTableViewCell.m in Sources */,
+				EC98B4CA1E4B0277002D66BF /* TCStoreDetailPreferentialPackageMoreCell.m in Sources */,
 				EC299A551E44842C0006B701 /* FlashBuyProductDetailShare.m in Sources */,
 				ECB4AD151E3761650036057A /* HomeTableBannerCell.m in Sources */,
 				ECEE2B521E07DF1C00FAB7C2 /* ProductStandardDetailModel.m in Sources */,
@@ -20966,6 +21548,7 @@
 				EC5CDD291DE538F200F95C6F /* ProductDetailFreeApplyBabyBirthCell.m in Sources */,
 				EC5505BE1E011DB000180A2C /* ProductDetailCountDown.m in Sources */,
 				EC4FC3F01D77CEE400BBD050 /* ParentingStrategyDetailViewModel.m in Sources */,
+				ECDFC0DF1E4B182A00ECAF58 /* TCStoreDetailCommentItem.m in Sources */,
 				EC299AC91E44842E0006B701 /* RadishMallLargeCell.m in Sources */,
 				EC4FC5EE1D77CEEF00BBD050 /* TTTAttributedLabel.m in Sources */,
 				EC299BA11E4484300006B701 /* WholesaleOrderDetailFailureCell.m in Sources */,
@@ -21035,6 +21618,7 @@
 				EC4FC3CF1D77CEE400BBD050 /* StrategyTagPicCollectionViewCell.m in Sources */,
 				EC4FC4151D77CEE400BBD050 /* AppointmentOrderListViewModel.m in Sources */,
 				EC4FC4451D77CEE400BBD050 /* CommentDetailViewNormalHeaderCell.m in Sources */,
+				EC98B3E01E4AC381002D66BF /* TCStoreDetailToolBar.m in Sources */,
 				EC299BF11E4484310006B701 /* WholesaleProductDetailOtherProductModel.m in Sources */,
 				EC98B2801E4581A5002D66BF /* NormalProductDetailCommentScore.m in Sources */,
 				EC4FC26C1D77CEE400BBD050 /* SegueModel.m in Sources */,
@@ -21048,11 +21632,14 @@
 				EC4FC3FA1D77CEE400BBD050 /* AccountSettingViewCell.m in Sources */,
 				EC4FC4431D77CEE400BBD050 /* CommentDetailViewCell.m in Sources */,
 				EC4FC2521D77CEE400BBD050 /* MapLocateAnnotationTipView.m in Sources */,
+				EC98B4AE1E4B0276002D66BF /* TCStoreDetailBaseCell.m in Sources */,
 				EC00444A1DE6B8980042B701 /* ProductDetailBaseToolBar.m in Sources */,
+				EC98B4B21E4B0276002D66BF /* TCStoreDetailCommentTitleCell.m in Sources */,
 				ECA95A831DDB39E400990AAE /* CouponListUnusedViewController.m in Sources */,
 				ECB4AD601E37625C0036057A /* HomeTableTwoColumnProductCell.m in Sources */,
 				EC4FC2611D77CEE400BBD050 /* PromotionBaseModel.m in Sources */,
 				EC0D35FA1DFED9E90028BC0E /* ProductOrderNormalDetailDeliverCell.m in Sources */,
+				EC98B4C61E4B0277002D66BF /* TCStoreDetailNearbyTitleCell.m in Sources */,
 				EC299AD21E44842E0006B701 /* RadishOrderDetailConsumeCode.m in Sources */,
 				EC4FC4741D77CEE400BBD050 /* FavourateSegmentViewCell.m in Sources */,
 				EC0044101DE6B8970042B701 /* ProductDetailCommentMoreCell.m in Sources */,
@@ -21134,6 +21721,7 @@
 				EC154D491D87D269007137E8 /* ArticleWriteShareModel.m in Sources */,
 				ECA95A7C1DDB2A5F00990AAE /* CouponListExpiredCell.m in Sources */,
 				EC13B5061DD1F3960040F760 /* AccountCenterData.m in Sources */,
+				ECDFC0E21E4B1A6100ECAF58 /* TCStoreDetailProductPackageItem.m in Sources */,
 				EC98B31D1E458F11002D66BF /* NormalProductDetailBannerCell.m in Sources */,
 				EC299B091E44842E0006B701 /* RadishProductOrderListViewController.m in Sources */,
 				EC7FBC0D1DC4D074007B326C /* ProductDetailAddNewConsultViewController.m in Sources */,
@@ -21182,6 +21770,7 @@
 				ECB4AC8C1E37554A0036057A /* HomeMainCollectionCell.m in Sources */,
 				EC13B51B1DD1F4790040F760 /* AccountCenterConfig.m in Sources */,
 				EC299C6E1E4486C00006B701 /* FreeProductDetailModel.m in Sources */,
+				ECDFC0F41E4B2FFF00ECAF58 /* TCStoreDetailFacilityItem.m in Sources */,
 				EC299AB81E44842D0006B701 /* RadishPageModel.m in Sources */,
 				EC299A991E44842D0006B701 /* FlashAdvanceSettlementServiceInfoCell.m in Sources */,
 				EC98B2981E45844A002D66BF /* NormalProductDetailStandard.m in Sources */,
@@ -21224,6 +21813,7 @@
 				EC739DCE1E1B63630027E91E /* ProductOrderFreeListView.m in Sources */,
 				EC4FC40D1D77CEE400BBD050 /* AppointmentListViewHeaderTabCell.m in Sources */,
 				EC4FC6411D78092900BBD050 /* WebFailureView.m in Sources */,
+				EC98B4C41E4B0277002D66BF /* TCStoreDetailNearbyPackageTitleCell.m in Sources */,
 				EC4FC25E1D77CEE400BBD050 /* PosterManager.m in Sources */,
 				EC2F25DF1DD5941400B67BBA /* ProductDetailDataManager.m in Sources */,
 				EC299B031E44842E0006B701 /* RadishOrderDetailHeader.m in Sources */,
@@ -21324,8 +21914,10 @@
 				EC3CE0C11DF17A57005729E2 /* NearbyCategoryToolBarItem.m in Sources */,
 				EC35FBE81E266A2D0097BAB3 /* SeckillProgressView.m in Sources */,
 				EC486F3C1DF7C726005CA365 /* SearchFactorFilterToolBar.m in Sources */,
+				EC98B4B41E4B0276002D66BF /* TCStoreDetailCouponCell.m in Sources */,
 				EC299C581E4484DF0006B701 /* NormalProductDetailView.m in Sources */,
 				ECBC97CC1DFF0C7200B7386C /* ProductOrderNormalDetailRefundTitleCell.m in Sources */,
+				EC98B4301E4AC7A3002D66BF /* TCStoreDetailModel.m in Sources */,
 				EC299C961E448D790006B701 /* NormalProductDetailNaviRightView.m in Sources */,
 				EC299A851E44842D0006B701 /* FlashBuyProductDetailColumnsHeader.m in Sources */,
 				EC299BFC1E4484310006B701 /* WolesaleProductDetailV2JoinCountCollectionCell.m in Sources */,
@@ -21405,6 +21997,7 @@
 				EC299BA91E4484300006B701 /* WholesaleOrderDetailJoinTipCell.m in Sources */,
 				EC5971991DD0165C0047CDEC /* SoftwareSettingHeader.m in Sources */,
 				EC98B39C1E486DA5002D66BF /* ProductDetailNaviView.m in Sources */,
+				EC98B4A61E4B0276002D66BF /* TCStoreDetailActivityPackageCell.m in Sources */,
 				EC4FC43E1D77CEE400BBD050 /* CommentScoreConfigModel.m in Sources */,
 				EC4FC5E71D77CEEF00BBD050 /* MBProgressHUD.m in Sources */,
 				EC0044181DE6B8970042B701 /* ProductDetailCouponCell.m in Sources */,
@@ -21492,6 +22085,7 @@
 				EC299BE81E4484300006B701 /* WholesaleProductDetailNotice.m in Sources */,
 				EC30ABC81DFF9CD3007380B0 /* ProductOrderTicketDetailPayInfoTotalCell.m in Sources */,
 				ECA59B4B1DEBDFBF00B3B1F7 /* CouponListUnusedModel.m in Sources */,
+				EC98B4C01E4B0277002D66BF /* TCStoreDetailNearbyCell.m in Sources */,
 				EC4FC2221D77CEE400BBD050 /* UIView+Category.m in Sources */,
 				EC4FC39D1D77CEE400BBD050 /* StoreDetailViewCouponCell.m in Sources */,
 				EC2F26951DD9B77A00B67BBA /* CollectionSCTViewController.m in Sources */,
@@ -21556,6 +22150,7 @@
 				EC4FC2781D77CEE400BBD050 /* Theme.m in Sources */,
 				EC4FC40A1D77CEE400BBD050 /* UserAddressManageViewController.m in Sources */,
 				ECA2BC121DF2A12600EAE79C /* ProductOrderListItem.m in Sources */,
+				EC98B4AA1E4B0276002D66BF /* TCStoreDetailActivityPackageTitleCell.m in Sources */,
 				ECCF49521E29E1A300C4DDB3 /* ActivityProductCollectionMediumCell.m in Sources */,
 				ECA59BE91DED612600B3B1F7 /* SearchFactorSortDataManager.m in Sources */,
 				EC30AB711DFF99D3007380B0 /* ProductOrderTicketDetailBtn.m in Sources */,
@@ -21593,6 +22188,7 @@
 				EC486FFE1DFBFBB5005CA365 /* ProductOrderFreeDetailBtnsView.m in Sources */,
 				EC4FC2391D77CEE400BBD050 /* RegisterModel.m in Sources */,
 				EC48705E1DFC18B5005CA365 /* ProductOrderFreeDetailData.m in Sources */,
+				EC98B4B01E4B0276002D66BF /* TCStoreDetailCommentCell.m in Sources */,
 				EC5CDD471DE5394500F95C6F /* ProductDetailFreeApplySelectStoreCell.m in Sources */,
 				EC4FC2261D77CEE400BBD050 /* Model.m in Sources */,
 				EC4FC4251D77CEE400BBD050 /* KTCBrowseHistoryViewStoreCell.m in Sources */,

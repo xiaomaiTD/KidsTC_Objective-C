@@ -14,7 +14,7 @@
 #import "ParentingStrategyViewController.h"
 #import "NormalProductDetailViewController.h"
 #import "ProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
 #import "ProductOrderListViewController.h"
@@ -194,7 +194,8 @@
         case SegueDestinationStoreDetail:
         {
             NSString *storeId = [NSString stringWithFormat:@"%@", model.segueParam[@"sid"]];
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:storeId];
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = storeId;
             toController = controller;
         }
             break;
