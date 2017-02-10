@@ -96,7 +96,10 @@ static NSString *const ID = @"NormalProductDetailCommentCollectionCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NormalProductDetailCommentCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.imgUrl = self.comment.imageUrl[indexPath.row].firstObject;
+    NSInteger row = indexPath.row;
+    if (row<self.comment.imageUrl.count) {
+        cell.imgUrl = self.comment.imageUrl[row].firstObject;
+    }
     return cell;
 }
 

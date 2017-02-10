@@ -19,6 +19,6 @@ typedef enum : NSUInteger {
 @end
 
 @interface StoreDetailAppointmentBaseCell : UITableViewCell
-@property (nonatomic, strong) StoreDetailModel *detailModel;
+@property (nonatomic, strong) NSArray<ActivityLogoItem *> *activeModelsArray;
 @property (nonatomic, assign) id<StoreDetailAppointmentBaseCellDelegate> delegate;
 @end

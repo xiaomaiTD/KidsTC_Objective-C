@@ -165,4 +165,14 @@
     return commentModel;
 }
 
++ (instancetype)modelFromTCStore:(TCStoreDetailData *)data {
+    CommentFoundingModel *commentModel = [[CommentFoundingModel alloc] init];
+    commentModel.relationSysNo = data.storeBase.storeId;
+    commentModel.sourceType = CommentFoundingSourceTypeStore;
+    commentModel.relationType = CommentRelationTypeStore;
+    commentModel.objectId = data.storeBase.storeId;
+    commentModel.objectName = data.storeBase.storeName;
+    commentModel.imageUrl = [NSURL URLWithString:data.storeBase.logoImg];
+    return commentModel;
+}
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "StoreDetailModel.h"
+#import "ActivityLogoItem.h"
 
 @interface StoreDetailAppointmentViewController : ViewController
-@property (nonatomic, strong) StoreDetailModel *detailModel;
+@property (nonatomic, strong) NSArray<ActivityLogoItem *> *activeModelsArray;
+@property (nonatomic, strong) NSString *storeId;
 @end

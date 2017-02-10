@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TCStoreDetailColumnHeader">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLv-xp-9vt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fki-pQ-JzJ">
+                            <rect key="frame" x="0.0" y="45.5" width="375" height="0.5"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="Cjd-or-ges"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-vJ-EM9">
+                            <rect key="frame" x="0.0" y="44" width="100" height="2"/>
+                            <color key="backgroundColor" red="1" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="JVR-q2-SBw"/>
+                                <constraint firstAttribute="width" constant="100" id="eRN-vJ-jcx"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="hwp-vJ-EM9" secondAttribute="bottom" id="5zh-3S-wOK"/>
+                        <constraint firstItem="hwp-vJ-EM9" firstAttribute="leading" secondItem="VLv-xp-9vt" secondAttribute="leading" id="GQR-au-leh"/>
+                        <constraint firstAttribute="trailing" secondItem="Fki-pQ-JzJ" secondAttribute="trailing" id="Mo7-PX-xtg"/>
+                        <constraint firstAttribute="height" constant="46" id="QzG-tN-6FG"/>
+                        <constraint firstAttribute="bottom" secondItem="Fki-pQ-JzJ" secondAttribute="bottom" id="d4X-Ht-gdR"/>
+                        <constraint firstItem="Fki-pQ-JzJ" firstAttribute="leading" secondItem="VLv-xp-9vt" secondAttribute="leading" id="k0o-M6-SG4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VLv-xp-9vt" secondAttribute="trailing" id="BjX-Rv-EaM"/>
+                <constraint firstItem="VLv-xp-9vt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="OLW-fx-jBR"/>
+                <constraint firstItem="VLv-xp-9vt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kOs-AP-mJt"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="HLineH" destination="Cjd-or-ges" id="TIb-iK-JjA"/>
+                <outlet property="bgContentView" destination="VLv-xp-9vt" id="XXZ-nP-Jir"/>
+                <outlet property="lineLeading" destination="GQR-au-leh" id="eDS-P6-TS2"/>
+                <outlet property="lineWidth" destination="eRN-vJ-jcx" id="9fq-yZ-Ke7"/>
+            </connections>
+            <point key="canvasLocation" x="-438" y="30"/>
+        </view>
+    </objects>
+</document>

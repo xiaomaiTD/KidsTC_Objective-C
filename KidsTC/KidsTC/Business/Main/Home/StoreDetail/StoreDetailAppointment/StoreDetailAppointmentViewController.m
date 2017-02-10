@@ -28,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
+    
     self.tableView.estimatedRowHeight = 44.0f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
@@ -35,7 +37,7 @@
     NSMutableArray *section00 = [NSMutableArray array];
     
     __block CGFloat height = 0;
-    NSArray<ActivityLogoItem *> *activeModelsArray = self.detailModel.activeModelsArray;
+    NSArray<ActivityLogoItem *> *activeModelsArray = self.activeModelsArray;
     if (activeModelsArray.count>0) {
         StoreDetailAppointmentPreferenceTipCell *preferenceTipCell = [self viewWithNib:@"StoreDetailAppointmentPreferenceTipCell"];
         [section00 addObject:preferenceTipCell];
@@ -87,7 +89,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     StoreDetailAppointmentBaseCell *cell = self.sections[indexPath.section][indexPath.row];
-    cell.detailModel = self.detailModel;
+    cell.activeModelsArray = self.activeModelsArray;
     cell.delegate = self;
     return cell;
 }
@@ -96,7 +98,7 @@
 
 - (void)storeDetailAppointmentBaseCell:(StoreDetailAppointmentBaseCell *)cell actionType:(StoreDetailAppointmentBaseCellActionType)type value:(id)value{
     NSString *text = value;
-    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:self.detailModel.storeId, @"storeno", text, @"mobile", nil];
+    NSDictionary *param = [NSDictionary dictionaryWithObjectsAndKeys:self.storeId, @"storeno", text, @"mobile", nil];
     [TCProgressHUD showSVP];
     [Request startWithName:@"ORDER_CREATE_APPOINTMENTORDER" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];

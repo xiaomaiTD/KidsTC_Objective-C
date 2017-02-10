@@ -347,7 +347,8 @@
         {
             [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
                 StoreDetailAppointmentViewController *controller = [[StoreDetailAppointmentViewController alloc] initWithNibName:@"StoreDetailAppointmentViewController" bundle:nil];
-                controller.detailModel = self.viewModel.detailModel;
+                controller.activeModelsArray = self.viewModel.detailModel.activeModelsArray;
+                controller.storeId = self.storeId;
                 controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 controller.modalPresentationStyle = UIModalPresentationCustom;
                 [self presentViewController:controller animated:NO completion:nil];

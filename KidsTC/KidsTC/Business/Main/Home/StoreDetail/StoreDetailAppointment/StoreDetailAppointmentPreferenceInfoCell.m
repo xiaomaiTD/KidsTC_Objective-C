@@ -21,10 +21,9 @@
     self.HLineConstraintHeight.constant = LINE_H;
 }
 
-- (void)setDetailModel:(StoreDetailModel *)detailModel{
-    [super setDetailModel:detailModel];
-    
-    NSArray<ActivityLogoItem *> *activeModelsArray = self.detailModel.activeModelsArray;
+
+- (void)setActiveModelsArray:(NSArray<ActivityLogoItem *> *)activeModelsArray {
+    [super setActiveModelsArray:activeModelsArray];
     if (self.tag<activeModelsArray.count) {
         ActivityLogoItem *item = activeModelsArray[self.tag];
         self.iconImageView.image = item.image;
