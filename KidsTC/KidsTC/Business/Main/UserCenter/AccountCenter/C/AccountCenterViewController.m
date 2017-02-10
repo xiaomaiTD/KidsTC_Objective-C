@@ -46,6 +46,7 @@
 
 #import "SeckillViewController.h"
 #import "ActivityProductViewController.h"
+#import "ScoreExchangeViewController.h"
 
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
@@ -335,13 +336,17 @@
             break;
         case AccountCenterViewActionTypeShareMakeMoney:
         {
-            NSString *urlString = self.model.data.invite.linkUrl;
-            if ([urlString isNotNull]) {
-                WebViewController *controller = [[WebViewController alloc]init];
-                controller.urlString = urlString;
-                toController = controller;
-                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
-            }
+//            NSString *urlString = self.model.data.invite.linkUrl;
+//            if ([urlString isNotNull]) {
+//                WebViewController *controller = [[WebViewController alloc]init];
+//                controller.urlString = urlString;
+//                toController = controller;
+//                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+//            }
+            ScoreExchangeViewController *controller = [[ScoreExchangeViewController alloc] initWithNibName:@"ScoreExchangeViewController" bundle:nil];
+            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            controller.modalPresentationStyle = UIModalPresentationCustom;
+            [self presentViewController:controller animated:NO completion:nil];
         }
             break;
         case AccountCenterViewActionTypeBringUpHeadline:

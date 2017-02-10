@@ -15,6 +15,7 @@
 static NSString *const CouponMoreCellID = @"StoreDetailCouponMoreCell";
 @interface StoreDetailCouponMoreViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) BOOL hasChangeCouponStatus;
 @end
 
 @implementation StoreDetailCouponMoreViewController
@@ -27,6 +28,15 @@ static NSString *const CouponMoreCellID = @"StoreDetailCouponMoreCell";
     self.tableView.estimatedRowHeight = 100;
     [self.tableView registerNib:[UINib nibWithNibName:@"StoreDetailCouponMoreCell" bundle:nil] forCellReuseIdentifier:CouponMoreCellID];
     [self.tableView reloadData];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (self.hasChangeCouponStatus) {
+        if ([self.delegate respondsToSelector:@selector(couponStatusHasChangeStoreDetailCouponMoreViewController:)]) {
+            [self.delegate couponStatusHasChangeStoreDetailCouponMoreViewController:self];
+        }
+    }
+    [self back];
 }
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
@@ -50,6 +60,10 @@ static NSString *const CouponMoreCellID = @"StoreDetailCouponMoreCell";
     NSInteger row = indexPath.row;
     if (row<self.coupons.count) {
         TCStoreDetailCoupon *coupon = self.coupons[row];
+        if (coupon.isProvider) {
+            [[iToast makeText:@"不可重复领取哦~"] show];
+            return;
+        }
         NSString *batchNo = coupon.batchNo;
         if (![batchNo isNotNull]) {
             [[iToast makeText:@"该优惠券暂不支持领取"] show];
@@ -62,6 +76,9 @@ static NSString *const CouponMoreCellID = @"StoreDetailCouponMoreCell";
                 [TCProgressHUD dismissSVP];
                 NSString *errMsg = @"恭喜您，优惠券领取成功！";
                 [[iToast makeText:errMsg] show];
+                self.hasChangeCouponStatus = YES;
+                coupon.isProvider = YES;
+                [tableView reloadData];
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 [TCProgressHUD dismissSVP];
                 NSString *errMsg = @"领取优惠券失败，请稍后再试~";

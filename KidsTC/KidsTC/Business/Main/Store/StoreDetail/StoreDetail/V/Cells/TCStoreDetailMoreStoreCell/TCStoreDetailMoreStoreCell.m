@@ -43,6 +43,7 @@
     self.nameL.text = store.storeName;
     self.starsView.starNumber = store.level;
     self.priceL.text = store.averagePrice;
+    self.priceSubL.text = store.averageSuffix;
     self.distanceL.text = [NSString stringWithFormat:@"距离%@",store.distanceStr];
 }
 

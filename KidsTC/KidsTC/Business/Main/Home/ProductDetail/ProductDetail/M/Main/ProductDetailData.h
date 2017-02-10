@@ -30,6 +30,7 @@
 #import "ProductDetailPlace.h"
 #import "ProductDetailSecKillInfo.h"
 #import "VideoPlayVideoRes.h"
+#import "ProductDetailActivity.h"
 
 typedef enum : NSUInteger {
     TCProductTypeService = 1,//服务
@@ -129,6 +130,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *standardTitle;
 @property (nonatomic, strong) NSString *standardName;
 @property (nonatomic, strong) VideoPlayVideoRes *productVideoRes;
+@property (nonatomic, strong) NSArray<ProductDetailActivity *> *activities;
 
 #pragma mark - selfDefine
 

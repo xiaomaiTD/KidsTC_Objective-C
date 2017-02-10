@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDb-5R-xFJ">
-                    <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                    <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w6R-cV-GGI">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="SkY-na-soY"/>
@@ -34,7 +35,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="300" id="BaD-40-Arh"/>
                         <constraint firstItem="w6R-cV-GGI" firstAttribute="top" secondItem="gDb-5R-xFJ" secondAttribute="top" id="Cu5-Wf-Vjx"/>
                         <constraint firstAttribute="trailing" secondItem="w6R-cV-GGI" secondAttribute="trailing" id="HXN-IX-V3j"/>
                         <constraint firstAttribute="bottom" secondItem="w6R-cV-GGI" secondAttribute="bottom" id="snC-yz-bVh"/>
@@ -47,6 +47,7 @@
                 <constraint firstItem="gDb-5R-xFJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0w0-nY-WdV"/>
                 <constraint firstAttribute="trailing" secondItem="gDb-5R-xFJ" secondAttribute="trailing" id="G5e-jl-KmI"/>
                 <constraint firstAttribute="bottom" secondItem="gDb-5R-xFJ" secondAttribute="bottom" id="Qhj-bF-XS1"/>
+                <constraint firstItem="gDb-5R-xFJ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="Vo2-Uw-bgq"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>

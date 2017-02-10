@@ -89,13 +89,17 @@ CGFloat const kTCStoreDetailColumnHeaderH = 46;
     NSUInteger index = btn.tag;
     if (index>=self.data.columns.count) return;
     TCStoreDetailColumn *column = self.data.columns[index];
+    NSString *title = column.title;
+    NSLog(@"%@",title);
     [self selectColumn:column];
+    
     if ([self.delegate respondsToSelector:@selector(tcStoreDetailColumnHeader:didSelectColumn:)]) {
         [self.delegate tcStoreDetailColumnHeader:self didSelectColumn:column];
     }
 }
 
 - (void)selectColumn:(TCStoreDetailColumn *)column {
+    if (!column || ![column isKindOfClass:[TCStoreDetailColumn class]]) return;
     if (column==self.selectColumn) return;
     column.select = YES;
     self.selectColumn.select = NO;

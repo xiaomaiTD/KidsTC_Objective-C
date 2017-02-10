@@ -10,7 +10,7 @@
 
 @interface WholesaleOrderDetailWebCell ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property (nonatomic, assign) BOOL webViewHasLoad;
 @end
 
 @implementation WholesaleOrderDetailWebCell
@@ -40,16 +40,15 @@
 - (void)setData:(WholesaleOrderDetailData *)data {
     [super setData:data];
     WholesaleProductDetailBase *base = data.fightGroupBase;
-    if (!base.webViewHasLoad) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:base.detailUrl]];
-        [self.webView loadRequest:request];
-    }
+    if (self.webViewHasLoad || self.webView.isLoading) return;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:base.detailUrl]];
+    [self.webView loadRequest:request];
+    self.webViewHasLoad = YES;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
     [self layoutIfNeeded];
-    WholesaleProductDetailBase *base = self.data.fightGroupBase;
-    if (base.webViewHasLoad) {
+    if (self.webViewHasLoad) {
         size.height = self.webView.scrollView.contentSize.height;
     }else{
         size.height = SCREEN_HEIGHT;
@@ -71,7 +70,6 @@
 }
 #pragma mark - UIWebViewDelegate helper
 - (void)webLoadFinish {
-    self.data.fightGroupBase.webViewHasLoad = YES;
     if ([self.delegate respondsToSelector:@selector(wholesaleOrderDetailBaseCell:actionType:value:)]) {
         [self.delegate wholesaleOrderDetailBaseCell:self actionType:WholesaleOrderDetailBaseCellActionTypeWebLoadFinish value:nil];
     }

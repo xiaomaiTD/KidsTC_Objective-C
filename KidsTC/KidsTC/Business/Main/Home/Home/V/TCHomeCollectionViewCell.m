@@ -98,7 +98,7 @@
         discountL.layer.cornerRadius = 2;
         discountL.layer.masksToBounds = YES;
         discountL.textAlignment = NSTextAlignmentCenter;
-        discountL.backgroundColor = [UIColor colorFromHexString:@"66cef0"];
+        discountL.backgroundColor = [UIColor colorFromHexString:@"fe80a5"];
         [self addSubview:discountL];
         self.discountL = discountL;
         

@@ -15,6 +15,7 @@
 @property (nonatomic, assign) NSInteger level;
 @property (nonatomic, strong) NSString *distanceStr;
 @property (nonatomic, strong) NSString *averagePrice;
+@property (nonatomic, strong) NSString *averageSuffix;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @end

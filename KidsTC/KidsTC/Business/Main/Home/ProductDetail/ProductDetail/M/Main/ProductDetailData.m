@@ -26,7 +26,8 @@
              @"store":[ProductDetailStore class],
              @"actors":[ProductDetailActor class],
              @"joinMember":[NSString class],
-             @"place":[ProductDetailPlace class]};
+             @"place":[ProductDetailPlace class],
+             @"activities":[ProductDetailActivity class]};
 }
 
 - (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
@@ -58,6 +59,7 @@
         case ProductDetailTypeNormal:
         {
             _standardTitle = [_standardTitle isNotNull]?_standardTitle:@"已选套餐";
+            [self setupActivities];
         }
             break;
         case ProductDetailTypeTicket:
@@ -161,6 +163,24 @@
     if (!has) {
         _product_standards.firstObject.selected = YES;
     }
+}
+
+- (void)setupActivities {
+    NSMutableArray *ary = [NSMutableArray array];
+    [_activities enumerateObjectsUsingBlock:^(ProductDetailActivity * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        switch (obj.type) {
+            case ProductDetailActivityTypeSeckill:
+            case ProductDetailActivityTypeFightGroup:
+            {
+                if (obj) [ary addObject:obj];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }];
+    _activities = [NSArray arrayWithArray:ary];
 }
 
 #pragma mark - Ticket

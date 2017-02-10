@@ -10,13 +10,14 @@
 
 @interface TCStoreDetailWebCell ()<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, assign) BOOL webViewHasLoad;
 @end
 
 @implementation TCStoreDetailWebCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    [self layoutIfNeeded];
     self.webView.opaque = NO;
     self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.scalesPageToFit = YES;
@@ -29,7 +30,8 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    if (self.data.storeBase.webViewHasLoad) {
+    [self layoutIfNeeded];
+    if (self.webViewHasLoad) {
         size.height = self.webView.scrollView.contentSize.height;
     }else{
         size.height = SCREEN_HEIGHT*1.5;
@@ -39,10 +41,10 @@
 
 - (void)setData:(TCStoreDetailData *)data {
     [super setData:data];
-    if (!self.data.storeBase.webViewHasLoad) {
+    if (!self.webView.isLoading && !self.webViewHasLoad) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.data.storeBase.detailUrl]];
         [self.webView loadRequest:request];
-        self.data.storeBase.webViewHasLoad = YES;
+        self.webViewHasLoad = YES;
     }
 }
 

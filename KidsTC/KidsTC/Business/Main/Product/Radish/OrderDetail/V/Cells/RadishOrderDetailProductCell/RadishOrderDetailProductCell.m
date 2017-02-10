@@ -43,4 +43,5 @@
         [self.delegate radishOrderDetailBaseCell:self actionType:RadishOrderDetailBaseCellActionTypeSegue value:self.data.productSegueModel];
     }
 }
+
 @end

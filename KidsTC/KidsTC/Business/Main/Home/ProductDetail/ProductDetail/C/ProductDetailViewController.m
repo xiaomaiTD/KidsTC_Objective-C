@@ -70,9 +70,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //_type = ProductDetailTypeTicket;
-    //_productId = @"100001";//100001  //3000000004   3000000013   3000000008
-    //_channelId = @"0";
+    _type = ProductDetailTypeNormal;
+    _productId = @"2000000201";//100001  //3000000004   3000000013   3000000008
+    _channelId = @"0";
     
     switch (_type) {
         case ProductDetailTypeNormal:

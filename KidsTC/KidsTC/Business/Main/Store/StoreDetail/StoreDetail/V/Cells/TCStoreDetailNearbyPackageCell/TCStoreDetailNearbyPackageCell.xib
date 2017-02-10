@@ -59,10 +59,10 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azp-59-CeZ">
-                        <rect key="frame" x="137" y="70" width="50" height="14"/>
+                        <rect key="frame" x="137" y="69.5" width="50" height="15.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="256" verticalHuggingPriority="251" horizontalCompressionResistancePriority="756" text="减100元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqi-qc-mFS">
-                                <rect key="frame" x="4" y="0.0" width="42" height="14"/>
+                                <rect key="frame" x="4" y="1" width="42" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" red="0.99607843137254903" green="0.50196078431372548" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
@@ -70,14 +70,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rqi-qc-mFS" firstAttribute="centerY" secondItem="azp-59-CeZ" secondAttribute="centerY" id="5yF-Wr-v2x"/>
                             <constraint firstAttribute="trailing" secondItem="rqi-qc-mFS" secondAttribute="trailing" constant="4" id="NS0-7f-71E"/>
-                            <constraint firstAttribute="height" constant="14" id="t3p-hv-hsY"/>
+                            <constraint firstAttribute="bottom" secondItem="rqi-qc-mFS" secondAttribute="bottom" constant="1" id="ivT-1J-wc1"/>
+                            <constraint firstItem="rqi-qc-mFS" firstAttribute="top" secondItem="azp-59-CeZ" secondAttribute="top" constant="1" id="sZN-5p-shN"/>
                             <constraint firstItem="rqi-qc-mFS" firstAttribute="leading" secondItem="azp-59-CeZ" secondAttribute="leading" constant="4" id="vFx-lw-tEf"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="257" verticalHuggingPriority="251" horizontalCompressionResistancePriority="757" text="已售17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvA-Vj-WsL">
-                        <rect key="frame" x="323" y="69" width="37" height="15"/>
+                        <rect key="frame" x="323" y="70" width="37" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <nil key="highlightedColor"/>

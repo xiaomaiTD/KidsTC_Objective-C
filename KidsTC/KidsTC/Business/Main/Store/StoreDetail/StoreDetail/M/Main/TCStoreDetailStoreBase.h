@@ -26,5 +26,4 @@
 @property (nonatomic, strong) NSString *statusDesc;
 //selfDefine
 @property (nonatomic, strong) NSArray<NSString *> *phones;
-@property (nonatomic, assign) BOOL webViewHasLoad;
 @end

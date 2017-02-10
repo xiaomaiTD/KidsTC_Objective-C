@@ -46,7 +46,6 @@
 @property (nonatomic, strong) NSString *otherPackageTitle;
 @property (nonatomic, strong) VideoPlayVideoRes *productVideoRes;
 //selfDefine
-@property (nonatomic, assign) BOOL webViewHasLoad;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailTeam *> *teams;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *teamCounts;
 @property (nonatomic, strong) NSArray<WholesaleProductDetailOtherProduct *> *otherProducts;

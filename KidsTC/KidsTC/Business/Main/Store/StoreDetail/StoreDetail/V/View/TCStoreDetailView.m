@@ -68,6 +68,7 @@ static NSString *const WebCellID = @"TCStoreDetailWebCell";
 @property (nonatomic, strong) NSArray<NSArray<TCStoreDetailBaseCell *> *> *sections;
 @property (nonatomic, strong) TCStoreDetailToolBar *toolBar;
 @property (nonatomic, strong) TCStoreDetailColumnHeader *header;
+@property (nonatomic, assign) BOOL didClickHeader;
 @end
 
 @implementation TCStoreDetailView
@@ -336,7 +337,7 @@ static NSString *const WebCellID = @"TCStoreDetailWebCell";
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.data.columns.count<1 || !self.data.hasColumn || !self.header) return;
+    if (self.didClickHeader || self.data.columns.count<1 || !self.data.hasColumn || !self.header) return;
     NSArray<NSIndexPath *> *indexPathsForVisibleRows = [self.tableView indexPathsForVisibleRows];
     if (indexPathsForVisibleRows.count>0) {
         NSIndexPath *firstIndexPath = indexPathsForVisibleRows.firstObject;
@@ -402,7 +403,11 @@ static NSString *const WebCellID = @"TCStoreDetailWebCell";
 #pragma mark TCStoreDetailColumnHeaderDelegate
 
 - (void)tcStoreDetailColumnHeader:(TCStoreDetailColumnHeader *)haeder didSelectColumn:(TCStoreDetailColumn *)column {
+    self.didClickHeader = YES;
     [self.tableView scrollToRowAtIndexPath:column.indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.didClickHeader = NO;
+    });
 }
 
 #pragma mark NormalProductDetailBaseCellDelegate

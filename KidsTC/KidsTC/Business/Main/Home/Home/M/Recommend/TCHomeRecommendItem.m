@@ -67,7 +67,7 @@
         processDesc = [NSString stringWithFormat:@" %@",_processDesc];
     }
     NSTextAttachment *imgAtt = [NSTextAttachment new];
-    imgAtt.image = [UIImage imageNamed:@"icon_clock"];
+    imgAtt.image = [UIImage imageNamed:@"home_time_01"];
     imgAtt.bounds = CGRectMake(0, -1, 13, 13);
     NSAttributedString *imgAttStr = [NSAttributedString attributedStringWithAttachment:imgAtt];
     NSMutableAttributedString *attStatus = [[NSMutableAttributedString alloc] initWithString:processDesc];
@@ -81,8 +81,8 @@
     NSString *storeName = [_storeName isNotNull]?[NSString stringWithFormat:@" %@",_storeName]:@"";
     if ([storeName isNotNull]) {
         NSTextAttachment *attachment = [[NSTextAttachment alloc] init];
-        attachment.image = [UIImage imageNamed:@"home_recommend_local"];
-        attachment.bounds = CGRectMake(0, -2, 11, 14);
+        attachment.image = [UIImage imageNamed:@"home_address_01"];
+        attachment.bounds = CGRectMake(0, -1, 13, 13);
         NSAttributedString *attachmentStr = [NSAttributedString attributedStringWithAttachment:attachment];
         
         NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:storeName];
@@ -130,7 +130,7 @@
         NSMutableAttributedString *attDiscountDesc = [[NSMutableAttributedString alloc] initWithString:_priceRate];
         attDiscountDesc.lineSpacing = 1;
         attDiscountDesc.color = [UIColor whiteColor];
-        attDiscountDesc.font = [UIFont systemFontOfSize:10];
+        attDiscountDesc.font = [UIFont systemFontOfSize:13];
         attDiscountDesc.lineBreakMode = NSLineBreakByTruncatingTail;
         attDiscountDesc.alignment = NSTextAlignmentCenter;
         content.attDiscountDesc = attDiscountDesc;

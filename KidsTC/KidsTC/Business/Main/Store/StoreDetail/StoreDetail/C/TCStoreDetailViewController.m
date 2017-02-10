@@ -221,6 +221,10 @@ StoreDetailCouponMoreViewControllerDelegate
         return;
     }
     TCStoreDetailCoupon *coupon = self.data.coupons[index];
+    if (coupon.isProvider) {
+        [[iToast makeText:@"不可重复领取哦~"] show];
+        return;
+    }
     NSString *batchNo = coupon.batchNo;
     if (![batchNo isNotNull]) {
         [[iToast makeText:@"该优惠券暂不支持领取"] show];

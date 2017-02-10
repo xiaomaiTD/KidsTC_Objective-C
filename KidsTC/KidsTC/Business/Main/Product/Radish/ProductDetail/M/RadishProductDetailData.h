@@ -98,7 +98,6 @@ typedef enum : NSUInteger {
 //showType
 @property (nonatomic, assign) RadishProductDetailTwoColumnShowType showType;
 @property (nonatomic, assign) BOOL webViewHasOpen;
-@property (nonatomic, assign) BOOL webViewHasLoad;
 //apply
 @property (nonatomic, strong) NSArray<NSAttributedString *> *attApply;
 

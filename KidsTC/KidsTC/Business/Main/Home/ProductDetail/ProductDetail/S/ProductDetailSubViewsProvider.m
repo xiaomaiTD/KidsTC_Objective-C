@@ -47,6 +47,7 @@
 #import "ProductDetaiFreeLifeTipCell.h"
 #import "ProductDetailVideoTipCell.h"
 #import "ProductDetailVideoCell.h"
+#import "ProductDetailAdvanceCell.h"
 
 #import "ProductDetailNormalToolBar.h"
 #import "ProductDetailTicketToolBar.h"
@@ -274,6 +275,10 @@
     return [self viewWithNib:@"ProductDetailVideoCell"];
 }
 
+- (ProductDetailAdvanceCell *)advanceCell {
+    return [self viewWithNib:@"ProductDetailAdvanceCell"];
+}
+
 - (ProductDetailTicketInfoCell *)ticketInfoCell {
     if (!_ticketInfoCell)
     {
@@ -412,6 +417,13 @@
     [section00 addObject:self.infoCell];
     if (_data.priceSort != PriceSortSecKill) {
         [section00 addObject:self.priceCell];
+    }
+    if (_data.activities.count>0) {
+        [_data.activities enumerateObjectsUsingBlock:^(ProductDetailActivity * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ProductDetailAdvanceCell *advanceCell = self.advanceCell;
+            advanceCell.activity = obj;
+            if (advanceCell) [section00 addObject:advanceCell];
+        }];
     }
     if ([_data.time.desc isNotNull] && _data.time.times.count>0) {
         [section00 addObject:self.dateCell];

@@ -208,7 +208,7 @@
                 if ([_discount isNotNull]) {
                     NSMutableAttributedString *attDiscountDesc = [[NSMutableAttributedString alloc] initWithString:_discount];
                     attDiscountDesc.color = [UIColor whiteColor];
-                    attDiscountDesc.font = [UIFont systemFontOfSize:10];
+                    attDiscountDesc.font = [UIFont systemFontOfSize:11];
                     attDiscountDesc.alignment = NSTextAlignmentCenter;
                     _attDiscountDesc = attDiscountDesc;
                 }

@@ -928,24 +928,22 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
-    CGFloat title_h = 20, title_y = img_h + img_y + 4;
-    __block CGFloat title_x = 0;
-    __block CGFloat title_w = 0;
+    CGFloat title_h = 20, title_y = img_h + img_y + 4,title_x = 0,title_w = item_w;
+    CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     
-    CGFloat price_h = 20, price_w = item_w, price_x = 0, price_y = title_h + title_y + 4;
-    CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
-    
+    CGFloat price_h = 20, price_x = 0, price_y = title_h + title_y + 4;
+    __block CGFloat price_w = 0;
     __block CGFloat item_x, item_y;
     NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [NSMutableArray array];
     [_contents enumerateObjectsUsingBlock:^(TCHomeFloorContent * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        CGFloat discount_h = 14, discount_w = [obj.attDiscountDesc size].width + 8, discount_x = 0, discount_y = img_h + img_y + 7;
+        price_w = [obj.attPrice size].width;
+        CGRect priceFrame = CGRectMake(price_x, price_y, price_w, price_h);
+        
+        CGFloat discount_h = 14, discount_w = [obj.attDiscountDesc size].width + 8, discount_x = price_w+price_x+8, discount_y = price_y + 3;
         CGRect discountFrame = CGRectMake(discount_x, discount_y, discount_w, discount_h);
         BOOL discountShow = [obj.discount isNotNull];
-
-        title_x = discountShow?(discount_x+discount_w+4):0;
-        title_w = item_w-title_x;
-        CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
+        
         
         TCHomeContentLayoutAttributes contentAtt =
         TCHomeContentLayoutAttributesMake(YES, NO, YES, YES, NO, NO, NO, NO, NO, NO,

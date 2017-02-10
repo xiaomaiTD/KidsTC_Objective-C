@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *openDetailView;
 @property (weak, nonatomic) IBOutlet UIButton *openDetailBtn;
 @property (weak, nonatomic) IBOutlet UILabel *openDetailL;
-
+@property (nonatomic, assign) BOOL webViewHasLoad;
 @end
 
 @implementation RadishProductDetailTwoColumnWebViewCell
@@ -48,7 +48,7 @@
     if (self.data.webViewHasOpen) {
         return CGSizeMake(size.width, web_h);
     }else{
-        if (self.data.webViewHasLoad) {
+        if (self.webViewHasLoad) {
             if (web_h<=SCREEN_HEIGHT*1.5) {
                 if (web_h<44) web_h = 44;
                 return CGSizeMake(size.width, web_h);
@@ -69,12 +69,11 @@
 - (void)setData:(RadishProductDetailData *)data {
     [super setData:data];
     self.openDetailView.hidden = self.data.webViewHasOpen;
-    
-    if (!self.data.webViewHasLoad) {
-        NSString *rulStr = [data.detailUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:rulStr]];
-        [self.webView loadRequest:request];
-    }
+    if (self.webViewHasLoad || self.webView.isLoading) return;
+    NSString *rulStr = [data.detailUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:rulStr]];
+    [self.webView loadRequest:request];
+    self.webViewHasLoad = YES;
     [self layoutIfNeeded];
 }
 
@@ -100,7 +99,6 @@
 #pragma mark - UIWebViewDelegate helper
 
 - (void)webViewFinishLoad {
-    self.data.webViewHasLoad = YES;
     if ([self.delegate respondsToSelector:@selector(radishProductDetailBaseCell:actionType:value:)]) {
         [self.delegate radishProductDetailBaseCell:self actionType:RadishProductDetailBaseCellActionTypeWebLoadFinish value:nil];
     }
