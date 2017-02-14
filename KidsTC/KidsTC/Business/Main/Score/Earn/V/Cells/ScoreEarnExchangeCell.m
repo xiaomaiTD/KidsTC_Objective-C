@@ -8,17 +8,35 @@
 
 #import "ScoreEarnExchangeCell.h"
 
+@interface ScoreEarnExchangeCell ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
+@property (weak, nonatomic) IBOutlet UILabel *scoreCountL;
+@property (weak, nonatomic) IBOutlet UIButton *plantBtn;
+@property (weak, nonatomic) IBOutlet UIButton *exchangeBtn;
+@end
+
 @implementation ScoreEarnExchangeCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.HLineH.constant = LINE_H;
+    self.plantBtn.tag = ScoreEarnBaseCellActionTypePlant;
+    self.exchangeBtn.tag = ScoreEarnBaseCellActionTypeExchange;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setItem:(ScoreEarnShowItem *)item {
+    [super setItem:item];
+    ScoreUserInfoData *userInfoData = self.userInfoData;
+    self.radishCountL.text = [NSString stringWithFormat:@"%@根",@(userInfoData.canMaxScore*userInfoData.radishExchangeRate)];
+    self.scoreCountL.text = [NSString stringWithFormat:@"%@积分",@(userInfoData.canMaxScore)];
 }
+
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(scoreEarnBaseCell:actionType:value:)]) {
+        [self.delegate scoreEarnBaseCell:self actionType:(ScoreEarnBaseCellActionType)sender.tag value:nil];
+    }
+}
+
 
 @end

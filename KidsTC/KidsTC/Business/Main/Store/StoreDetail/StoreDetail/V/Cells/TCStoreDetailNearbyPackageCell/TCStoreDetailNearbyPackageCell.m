@@ -35,6 +35,8 @@
     self.icon.layer.borderWidth = LINE_H;
     self.icon.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     
+    self.categoryBGView.layer.cornerRadius = 2;
+    self.categoryBGView.layer.masksToBounds = YES;
     self.categoryBGView.layer.borderColor = [UIColor colorFromHexString:@"FE80A5"].CGColor;
     self.categoryBGView.layer.borderWidth = 1;
     

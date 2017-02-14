@@ -23,10 +23,11 @@
     content.imageUrl = self.imgUrl;
     content.title = self.serveName;
     content.subTitle = self.promotionText;
-    content.price = self.price;
+    content.price = self.priceV2;
     content.segueModel = self.segueModel;
     content.productRedirect = self.productRedirect;
     content.serveId = self.serveId;
+    content.priceSuffix = self.priceSuffix;
     NSString *tipImgName = nil;
     switch (_reProductType) {
         case TCHomeRecommendProductTypeNew:
@@ -145,6 +146,7 @@
         attBtnDesc.alignment = NSTextAlignmentCenter;
         content.attBtnDesc = attBtnDesc;
     }
+    
     
     TCHomeFloor *floor = [TCHomeFloor new];
     floor.contents = @[content];

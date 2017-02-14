@@ -28,6 +28,7 @@ typedef enum : NSUInteger {
 @interface NearbyCollectionViewCell : UICollectionViewCell
 @property (nonatomic, weak) id<NearbyCollectionViewCellDelegate> delegate;
 @property (nonatomic, weak) NearbyData *data;
+@property (nonatomic,assign) BOOL isLoadRecommend;
 @property (nonatomic, assign) NSInteger index;
 - (void)dealWithUI:(NSUInteger)loadCount;
 @end

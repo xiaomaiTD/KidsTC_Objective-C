@@ -14,6 +14,8 @@ typedef enum : NSUInteger {
     WholesaleOrderListCellActionTypeInvite = 2,//邀请好友
     WholesaleOrderListCellActionTypeShare = 3,//分享
     WholesaleOrderListCellActionTypePay = 4,//支付
+    WholesaleOrderListCellActionTypeConsumeCode = 5,//消费码
+    WholesaleOrderListCellActionTypeComment = 6,//评论
     WholesaleOrderListCellActionTypeCountDownOver,//倒计时结束
     
 } WholesaleOrderListCellActionType;

@@ -7,7 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "ScoreUserInfoData.h"
+@class ScoreExchangeViewController;
+@protocol ScoreExchangeViewControllerDelegate <NSObject>
+- (void)scoreExchangeViewControllerDidExchangeSuccess:(ScoreExchangeViewController *)controller;
+@end
 
 @interface ScoreExchangeViewController : ViewController
-
+@property (nonatomic,strong) ScoreUserInfoData *userInfoData;
+@property (nonatomic,  weak) id<ScoreExchangeViewControllerDelegate> delegate;
 @end

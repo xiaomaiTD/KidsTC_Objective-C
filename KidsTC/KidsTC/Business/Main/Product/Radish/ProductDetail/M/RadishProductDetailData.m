@@ -54,8 +54,8 @@
     }
     if ([_promote isNotNull]) {
         NSMutableAttributedString *attPromote = [[NSMutableAttributedString alloc] initWithString:_promote];
-        attPromote.font = [UIFont systemFontOfSize:12];
-        attPromote.color = COLOR_PINK;
+        attPromote.font = [UIFont systemFontOfSize:13];
+        attPromote.color = [UIColor colorFromHexString:@"f36863"];
         attPromote.lineSpacing = 6;
         _attPromote = [[NSAttributedString alloc] initWithAttributedString:attPromote];
     }

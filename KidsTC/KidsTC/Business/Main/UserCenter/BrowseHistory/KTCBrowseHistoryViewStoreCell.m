@@ -22,6 +22,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
     [self.contentView setBackgroundColor:COLOR_BG_CEll];
     
     self.cellImageView.layer.cornerRadius = 4;
@@ -34,7 +35,9 @@
     if (model) {
         [self.cellImageView sd_setImageWithURL:model.imageUrl placeholderImage:PLACEHOLDERIMAGE_SMALL];
         [self.titleLabel setText:model.name];
-        [self.bizZoneLabel setText:model.bizZone];
+        if ([model respondsToSelector:@selector(bizZone)]) {
+            [self.bizZoneLabel setText:model.bizZone];
+        }
     }
 }
 

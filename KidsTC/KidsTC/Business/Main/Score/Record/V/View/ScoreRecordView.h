@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreRecordItem.h"
+
+typedef enum : NSUInteger {
+    ScoreRecordViewActionTypeLoadData = 1,
+} ScoreRecordViewActionType;
+@class ScoreRecordView;
+@protocol ScoreRecordViewDelegate <NSObject>
+- (void)scoreRecordView:(ScoreRecordView *)view actionType:(ScoreRecordViewActionType)type value:(id)value;
+@end
 
 @interface ScoreRecordView : UIView
-
+@property (nonatomic,  weak) id<ScoreRecordViewDelegate> delegate;
+@property (nonatomic,strong) NSArray<ScoreRecordItem *> *records;
+- (void)dealWithUI:(NSUInteger)loadCount;
 @end

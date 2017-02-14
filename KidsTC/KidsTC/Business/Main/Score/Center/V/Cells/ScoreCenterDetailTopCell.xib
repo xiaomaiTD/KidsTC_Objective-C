@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,6 +45,12 @@
                             <constraint firstAttribute="width" secondItem="8mj-yO-9Np" secondAttribute="height" multiplier="1:1" id="WcI-hN-YC4"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tie-ss-2Et">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <connections>
+                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vag-Vm-UzL"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GJu-ae-0gu" firstAttribute="top" secondItem="mgq-6U-Gif" secondAttribute="bottom" constant="15" id="2pm-a7-zOM"/>
@@ -53,16 +59,20 @@
                     <constraint firstAttribute="trailing" secondItem="GJu-ae-0gu" secondAttribute="trailing" id="Fou-bX-8em"/>
                     <constraint firstItem="8mj-yO-9Np" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GqI-oN-C9t"/>
                     <constraint firstItem="mgq-6U-Gif" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Prq-hQ-wvS"/>
+                    <constraint firstItem="tie-ss-2Et" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Qdy-Vj-6P7"/>
                     <constraint firstAttribute="bottom" secondItem="GJu-ae-0gu" secondAttribute="bottom" id="ZPE-Uv-FuJ"/>
                     <constraint firstItem="mgq-6U-Gif" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="bXm-EF-TQc"/>
                     <constraint firstItem="7Mt-c2-p3i" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="doR-zR-ZtN"/>
+                    <constraint firstAttribute="bottom" secondItem="tie-ss-2Et" secondAttribute="bottom" id="j3g-fT-UL3"/>
+                    <constraint firstAttribute="trailing" secondItem="tie-ss-2Et" secondAttribute="trailing" id="mbB-i3-c7w"/>
+                    <constraint firstItem="tie-ss-2Et" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="v9i-7r-90V"/>
                     <constraint firstItem="GJu-ae-0gu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="w1g-X8-ygr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="HLineH" destination="KUg-3d-zt3" id="hYM-6U-G8p"/>
             </connections>
-            <point key="canvasLocation" x="25" y="37"/>
+            <point key="canvasLocation" x="-137" y="22"/>
         </tableViewCell>
     </objects>
     <resources>

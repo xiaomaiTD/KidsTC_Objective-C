@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ScoreRecordItem.h"
 @interface ScoreRecordDetailCell : UITableViewCell
-
+@property (nonatomic,strong) ScoreRecordItem *record;
 @end

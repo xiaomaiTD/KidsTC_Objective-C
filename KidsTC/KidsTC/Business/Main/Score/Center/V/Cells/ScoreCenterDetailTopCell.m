@@ -9,9 +9,7 @@
 #import "ScoreCenterDetailTopCell.h"
 
 @interface ScoreCenterDetailTopCell ()
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
-
 @end
 
 @implementation ScoreCenterDetailTopCell
@@ -21,5 +19,10 @@
     self.HLineH.constant = LINE_H;
 }
 
+- (IBAction)action:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(scoreCenterBaseCell:actionType:vlaue:)]) {
+        [self.delegate scoreCenterBaseCell:self actionType:ScoreCenterBaseCellActionTypeMore vlaue:nil];
+    }
+}
 
 @end

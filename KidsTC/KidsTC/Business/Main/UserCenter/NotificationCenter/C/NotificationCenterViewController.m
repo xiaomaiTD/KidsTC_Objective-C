@@ -72,7 +72,6 @@ static NSString *const NotificationCenterViewCellID = @"NotificationCenterViewCe
         StrongSelf(self)
         [self getDataRefresh:YES];
     }];
-    mj_header.automaticallyChangeAlpha = YES;
     tableView.mj_header = mj_header;
     
     RefreshFooter *mj_footer = [RefreshFooter footerWithRefreshingBlock:^{

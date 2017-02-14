@@ -14,6 +14,7 @@
 #import "BuryPointManager.h"
 #import "SegueMaster.h"
 #import "KTCFavouriteManager.h"
+#import "GuideManager.h"
 
 #import "TCStoreDetailModel.h"
 #import "TCStoreDetailNearbyModel.h"
@@ -383,6 +384,7 @@ StoreDetailCouponMoreViewControllerDelegate
     self.detailView.data = data;
     self.navigationItem.title = data.storeBase.storeSimpleName;
     [self loadStoreNearby];
+    [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeStoreDetail resultBlock:nil];
 }
 
 - (void)loadDataFailure:(NSError *)error {

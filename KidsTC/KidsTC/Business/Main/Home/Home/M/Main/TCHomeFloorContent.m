@@ -177,6 +177,17 @@
                     attPrice.font = [UIFont systemFontOfSize:17];
                     attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
                     attPrice.alignment = NSTextAlignmentRight;
+                    
+                    if ([_priceSuffix isNotNull]) {
+                        NSMutableAttributedString *attPriceSuffix = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@" %@",_priceSuffix]];
+                        attPriceSuffix.lineSpacing = 0;
+                        attPriceSuffix.color = [UIColor colorFromHexString:@"444444"];
+                        attPriceSuffix.font = [UIFont systemFontOfSize:12];
+                        attPriceSuffix.lineBreakMode = NSLineBreakByTruncatingTail;
+                        attPriceSuffix.alignment = NSTextAlignmentRight;
+                        [attPrice appendAttributedString:attPriceSuffix];
+                    }
+                    
                     _attPrice = attPrice;
                 }
                 if ([subTitle isNotNull]) {

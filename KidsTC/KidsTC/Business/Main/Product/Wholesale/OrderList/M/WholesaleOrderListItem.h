@@ -32,6 +32,8 @@
 @property (nonatomic, strong) NSString *surplusCountDesc;
 @property (nonatomic, strong) NSArray<NSNumber *> *btns;
 @property (nonatomic, assign) WholesaleOrderListBtnType defaultBtn;
+@property (nonatomic,strong) NSString *commentNo;
+@property (nonatomic,assign) NSInteger commentRelationType;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, strong) NSArray<WholesaleOrderListBtn *> *orderBtns;

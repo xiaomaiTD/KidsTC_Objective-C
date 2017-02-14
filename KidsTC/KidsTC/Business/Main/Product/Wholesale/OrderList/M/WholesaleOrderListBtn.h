@@ -38,6 +38,8 @@ typedef enum : NSUInteger {
     WholesaleOrderListBtnTypeInvite = 2,//邀请好友
     WholesaleOrderListBtnTypeShare = 3,//分享
     WholesaleOrderListBtnTypePay = 4,//支付
+    WholesaleOrderListBtnTypeConsumeCode = 5,//消费码
+    WholesaleOrderListBtnTypeComment = 6,//评论
 } WholesaleOrderListBtnType;
 
 @interface WholesaleOrderListBtn : NSObject

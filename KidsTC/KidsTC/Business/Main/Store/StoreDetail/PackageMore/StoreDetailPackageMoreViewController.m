@@ -21,6 +21,8 @@ static NSString *const PackageMoreCellID = @"StoreDetailPackageMoreCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"活动套餐";
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.estimatedRowHeight = 100;

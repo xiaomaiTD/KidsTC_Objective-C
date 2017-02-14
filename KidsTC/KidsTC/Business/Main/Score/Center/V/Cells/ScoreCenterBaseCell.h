@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreUserInfoData.h"
+typedef enum : NSUInteger {
+    ScoreCenterBaseCellActionTypeRule = 1,
+    ScoreCenterBaseCellActionTypeGet,
+    ScoreCenterBaseCellActionTypeUse,
+    ScoreCenterBaseCellActionTypeMore
+} ScoreCenterBaseCellActionType;
+@class ScoreCenterBaseCell;
+@protocol ScoreCenterBaseCellDelegate <NSObject>
+- (void)scoreCenterBaseCell:(ScoreCenterBaseCell *)cell actionType:(ScoreCenterBaseCellActionType)type vlaue:(id)value;
+@end
 
 @interface ScoreCenterBaseCell : UITableViewCell
-
+@property (nonatomic,  weak) id<ScoreCenterBaseCellDelegate> delegate;
+@property (nonatomic,strong) ScoreUserInfoData *userInfoData;
 @end

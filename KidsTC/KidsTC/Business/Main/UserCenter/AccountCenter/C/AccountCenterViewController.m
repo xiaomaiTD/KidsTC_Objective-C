@@ -35,19 +35,8 @@
 #import "AppointmentOrderListViewController.h"
 #import "ArticleWeChatTableViewController.h"
 #import "WebViewController.h"
-#import "NurseryViewController.h"
 #import "ScoreCenterViewController.h"
-
 #import "RadishMallViewController.h"
-#import "RadishProductDetailViewController.h"
-#import "RadishSettlementViewController.h"
-#import "RadishProductOrderListViewController.h"
-#import "RadishOrderDetailViewController.h"
-
-#import "SeckillViewController.h"
-#import "ActivityProductViewController.h"
-#import "ScoreExchangeViewController.h"
-
 
 @interface AccountCenterViewController ()<AccountCenterViewDelegate>
 @property (nonatomic, strong) AccountCenterModel *model;
@@ -267,14 +256,6 @@
             break;
         case AccountCenterViewActionTypeScore:
         {
-            /*
-            NSString *urlString = self.model.data.config.scoreNumLink;
-            if ([urlString isNotNull]) {
-                WebViewController *controller = [[WebViewController alloc]init];
-                controller.urlString = urlString;
-                toController = controller;
-            }
-             */
             toController = [[ScoreCenterViewController alloc] initWithNibName:@"ScoreCenterViewController" bundle:nil];
         }
             break;
@@ -336,17 +317,13 @@
             break;
         case AccountCenterViewActionTypeShareMakeMoney:
         {
-//            NSString *urlString = self.model.data.invite.linkUrl;
-//            if ([urlString isNotNull]) {
-//                WebViewController *controller = [[WebViewController alloc]init];
-//                controller.urlString = urlString;
-//                toController = controller;
-//                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
-//            }
-            ScoreExchangeViewController *controller = [[ScoreExchangeViewController alloc] initWithNibName:@"ScoreExchangeViewController" bundle:nil];
-            controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            controller.modalPresentationStyle = UIModalPresentationCustom;
-            [self presentViewController:controller animated:NO completion:nil];
+            NSString *urlString = self.model.data.invite.linkUrl;
+            if ([urlString isNotNull]) {
+                WebViewController *controller = [[WebViewController alloc]init];
+                controller.urlString = urlString;
+                toController = controller;
+                [BuryPointManager trackEvent:@"event_skip_usr_sign" actionId:21506 params:nil];
+            }
         }
             break;
         case AccountCenterViewActionTypeBringUpHeadline:

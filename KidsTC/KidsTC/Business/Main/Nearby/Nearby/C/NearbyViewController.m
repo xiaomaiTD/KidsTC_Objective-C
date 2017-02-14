@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 #import "GuideManager.h"
 #import "BuryPointManager.h"
+#import "RecommendDataManager.h"
 
 #import "NearbyModel.h"
 #import "NearbyView.h"
@@ -82,17 +83,6 @@
             MapLocateViewController *controller = [[MapLocateViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
             [BuryPointManager trackEvent:@"event_skip_nearby_location" actionId:21700 params:nil];
-            /*
-            NSMutableArray *ary  = [NSMutableArray array];
-            NSString *str = nil;
-            [ary addObject:str];
-             */
-            /*
-            NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-            NSString *str = nil;
-            [dic setObject:str forKey:@"oo"];
-             */
-            
         }
             break;
             
@@ -180,7 +170,16 @@
         return;
     }
     BOOL refresh = [value boolValue];
-    
+    if (!cell.isLoadRecommend) {
+        [self loadNearbyDataWithCell:cell refresh:refresh];
+    }else{
+        [self loadRecommendRefresh:refresh];
+    }
+}
+
+- (void)loadNearbyDataWithCell:(NearbyCollectionViewCell *)cell
+                       refresh:(BOOL)refresh
+{
     NSInteger index = cell.index;
     if (index>=self.datas.count) [cell dealWithUI:0];
     NearbyData *data = self.datas[index];
@@ -220,6 +219,14 @@
         [cell dealWithUI:loadData.data.count];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [cell dealWithUI:0];
+    }];
+}
+
+- (void)loadRecommendRefresh:(BOOL)refresh {
+    [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeDefault refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+        
+    } failureBlock:^(NSError *error) {
+        
     }];
 }
 

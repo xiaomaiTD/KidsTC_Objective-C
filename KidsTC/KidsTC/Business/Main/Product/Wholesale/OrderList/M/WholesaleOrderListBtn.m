@@ -38,6 +38,16 @@
             btn.title = @"支付";
         }
             break;
+        case WholesaleOrderListBtnTypeConsumeCode:
+        {
+            btn.title = @"取票码";
+        }
+            break;
+        case WholesaleOrderListBtnTypeComment:
+        {
+            btn.title = @"评价";
+        }
+            break;
         default:
         {
             return nil;

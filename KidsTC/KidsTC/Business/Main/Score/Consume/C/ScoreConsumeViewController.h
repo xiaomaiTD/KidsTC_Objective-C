@@ -2,7 +2,7 @@
 //  ScoreConsumeViewController.h
 //  KidsTC
 //
-//  Created by 詹平 on 2017/2/10.
+//  Created by 童成mac-dev1 on 2017/2/14.
 //  Copyright © 2017年 zhanping. All rights reserved.
 //
 

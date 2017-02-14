@@ -19,8 +19,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.HLineH.constant = LINE_H;
 }
 
+- (void)setRecord:(ScoreRecordItem *)record {
+    _record = record;
+    self.titleL.text = [NSString stringWithFormat:@"%@（%@）",record.type,record.desc];
+    self.timeL.text = record.time;
+    self.scoreL.text = record.num;
+}
 
 @end

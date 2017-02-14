@@ -1,13 +1,13 @@
 //
-//  ScoreEarnMemberSmallCell.h
+//  ScoreConsumeTipCell.h
 //  KidsTC
 //
 //  Created by 詹平 on 2017/2/10.
 //  Copyright © 2017年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ScoreConsumeBaseCell.h"
 
-@interface ScoreEarnMemberSmallCell : UITableViewCell
+@interface ScoreConsumeTipCell : ScoreConsumeBaseCell
 
 @end

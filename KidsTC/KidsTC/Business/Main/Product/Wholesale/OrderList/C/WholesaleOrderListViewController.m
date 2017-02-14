@@ -11,14 +11,16 @@
 #import "RecommendDataManager.h"
 #import "SegueMaster.h"
 #import "OnlineCustomerService.h"
+#import "NSString+Category.h"
 
 #import "WholesaleOrderListModel.h"
 #import "WholesaleOrderListView.h"
 #import "CommonShareViewController.h"
 #import "WebViewController.h"
 #import "CashierDeskViewController.h"
+#import "CommentFoundingViewController.h"
 
-@interface WholesaleOrderListViewController ()<WholesaleOrderListViewDelegate>
+@interface WholesaleOrderListViewController ()<WholesaleOrderListViewDelegate,CommentFoundingViewControllerDelegate>
 @property (nonatomic, strong) WholesaleOrderListView *listView;
 @property (nonatomic, strong) NSArray<WholesaleOrderListItem *> *data;
 @property (nonatomic, assign) NSInteger page;
@@ -61,6 +63,16 @@
         case WholesaleOrderListViewActionTypePay://支付
         {
             [self pay:value];
+        }
+            break;
+        case WholesaleOrderListViewActionTypeConsumeCode://消费码
+        {
+            [self consumeCode:value];
+        }
+            break;
+        case WholesaleOrderListViewActionTypeComment://评论
+        {
+            [self comment:value];
         }
             break;
         case WholesaleOrderListViewActionTypeCountDownOver://倒计时结束
@@ -112,6 +124,49 @@
         controller.productType = ProductDetailTypeWholesale;
         [self.navigationController pushViewController:controller animated:YES];
     }];
+}
+
+#pragma mark 消费码
+- (void)consumeCode:(id)value {
+    if (![value isKindOfClass:[WholesaleOrderListItem class]]) return;
+    WholesaleOrderListItem *item = value;
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        NSString *orderId = item.orderNo;
+        if (![orderId isNotNull]) {
+            [[iToast makeText:@"订单编号为空"] show];
+            return;
+        }
+        NSDictionary *param = @{@"orderId":orderId};
+        [Request startWithName:@"ORDER_SEND_CONSUME_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSString *msg = @"获取消费码失败";
+            NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+            if ([errMsg isNotNull]) {
+                msg = errMsg;
+            }
+            [[iToast makeText:msg] show];
+        }];
+    }];
+}
+
+#pragma mark 评论
+- (void)comment:(id)value {
+    if (![value isKindOfClass:[WholesaleOrderListItem class]]) return;
+    WholesaleOrderListItem *item = value;
+    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+        CommentFoundingViewController *controller = [[CommentFoundingViewController alloc] initWithCommentFoundingModel:[CommentFoundingModel modelFromWholesaleOrderListItem:item]];
+        controller.delegate = self;
+        [self.navigationController pushViewController:controller animated:YES];
+    }];
+}
+
+#pragma mark CommentFoundingViewControllerDelegate
+
+- (void)commentFoundingViewControllerDidFinishSubmitComment:(CommentFoundingViewController *)vc {
+    self.listView.noMoreOrderListData = NO;
+    self.listView.noMoreRecommendData = NO;
+    [self loadData:@(YES)];
 }
 
 #pragma mark 加载数据

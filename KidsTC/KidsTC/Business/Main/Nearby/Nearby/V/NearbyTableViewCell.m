@@ -59,7 +59,7 @@
     self.categoryL.text = _item.categoryName;
     if ([_item.categoryName isNotNull]) {
         self.categoryL.hidden = NO;
-        self.categoryW.constant = [_item.categoryName sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}].width + 8;
+        self.categoryW.constant = [_item.categoryName sizeWithAttributes:@{NSFontAttributeName:self.categoryL.font}].width + 8;
     }else{
         self.categoryL.hidden = YES;
         self.categoryW.constant = 0;
@@ -67,7 +67,7 @@
     self.areaL.text = _item.districtName;
     if ([_item.districtName isNotNull]) {
         self.areaL.hidden = NO;
-        self.areaW.constant = [_item.districtName sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}].width + 8;
+        self.areaW.constant = [_item.districtName sizeWithAttributes:@{NSFontAttributeName:self.areaL.font}].width + 8;
     }else{
         self.areaL.hidden = YES;
         self.areaW.constant = 0;

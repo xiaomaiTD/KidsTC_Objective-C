@@ -40,6 +40,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     self.icon.layer.cornerRadius = 4;
     self.icon.layer.masksToBounds = YES;
     self.icon.layer.borderWidth = LINE_H;
@@ -48,9 +50,13 @@
     self.tagBGView.layer.cornerRadius = 2;
     self.tagBGView.layer.masksToBounds = YES;
     
+    self.discountBGView.layer.cornerRadius = 2;
+    self.discountBGView.layer.masksToBounds = YES;
     self.discountBGView.layer.borderColor = [UIColor colorFromHexString:@"ffbc00"].CGColor;
     self.discountBGView.layer.borderWidth = 1;
     
+    self.ageBGView.layer.cornerRadius = 2;
+    self.ageBGView.layer.masksToBounds = YES;
     self.ageBGView.layer.borderColor = [UIColor colorFromHexString:@"71B0EA"].CGColor;
     self.ageBGView.layer.borderWidth = 1;
     
@@ -68,7 +74,7 @@
         self.storePriceLeading.constant = 8;
         
         self.discountBGView.hidden = YES;
-        self.discountBGViewLeading.constant = 0;
+        self.discountBGViewLeading.constant = -8;
         self.discountL.text = nil;
         
     }else{
@@ -76,7 +82,7 @@
         self.storePriceLeading.constant = 0;
         
         self.discountBGView.hidden = ![product.reducePrice isNotNull];
-        self.discountBGViewLeading.constant = self.discountBGView.hidden?0:8;
+        self.discountBGViewLeading.constant = self.discountBGView.hidden?-8:8;
         self.discountL.text = product.reducePrice;
     }
     

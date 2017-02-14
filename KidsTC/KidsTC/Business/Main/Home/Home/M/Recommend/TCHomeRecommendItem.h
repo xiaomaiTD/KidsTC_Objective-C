@@ -36,6 +36,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *joinDesc;
 @property (nonatomic, strong) NSString *priceRate;
 @property (nonatomic, strong) NSString *btnName;
+@property (nonatomic,strong) NSString *priceV2;
+@property (nonatomic,strong) NSString *priceSuffix;
 //selfDefine
 @property (nonatomic, strong) SegueModel *segueModel;
 - (TCHomeFloor *)conventToFloor;

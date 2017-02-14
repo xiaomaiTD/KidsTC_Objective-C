@@ -7,7 +7,7 @@
 //
 
 #import "ScoreCenterBaseCell.h"
-
+#import "ScoreRecordItem.h"
 @interface ScoreCenterDetailCell : ScoreCenterBaseCell
-
+@property (nonatomic,strong) ScoreRecordItem *record;
 @end

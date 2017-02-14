@@ -8,6 +8,11 @@
 
 #import "ScoreEarnMemberTipCell.h"
 
+@interface ScoreEarnMemberTipCell ()
+@property (weak, nonatomic) IBOutlet UILabel *titleL;
+
+@end
+
 @implementation ScoreEarnMemberTipCell
 
 - (void)awakeFromNib {
@@ -15,10 +20,10 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setItem:(ScoreEarnShowItem *)item {
+    [super setItem:item];
+    self.titleL.text = item.title;
 }
+
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 zhanping. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ScoreEarnBaseCell.h"
 
-@interface ScoreEarnCommentCell : UITableViewCell
+@interface ScoreEarnCommentCell : ScoreEarnBaseCell
 
 @end
