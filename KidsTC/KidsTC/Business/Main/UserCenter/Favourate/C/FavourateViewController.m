@@ -9,7 +9,7 @@
 #import "FavourateViewController.h"
 #import "FavourateViewModel.h"
 #import "ProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 //#import "WebViewController.h"  //原接入点在点击事件的 FavourateViewSegmentTagNews处现为segue跳转
 #import "SegueMaster.h"
@@ -57,7 +57,8 @@
         case FavourateViewSegmentTagStore:
         {
             FavouriteStoreItemModel *model = [array objectAtIndex:index];
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = model.identifier;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

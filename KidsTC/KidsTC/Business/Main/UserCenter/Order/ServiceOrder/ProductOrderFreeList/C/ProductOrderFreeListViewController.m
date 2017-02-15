@@ -23,7 +23,7 @@
 #import "OrderBookingViewController.h"
 #import "CommentFoundingViewController.h"
 #import "WebViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "FlashServiceOrderListViewController.h"
 #import "AppointmentOrderListViewController.h"
 #import "ProductOrderFreeListViewController.h"
@@ -417,7 +417,9 @@
 #pragma mark ================门店详情================
 
 - (void)storeInfo:(ProductOrderFreeListItem *)item {
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:item.storeInfo.storeId];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = item.storeInfo.storeId;
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 

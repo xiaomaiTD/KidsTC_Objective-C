@@ -10,7 +10,7 @@
 #import "MyCommentListViewModel.h"
 #import "MWPhotoBrowser.h"
 #import "ProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "WebViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CommentEditViewController.h"
@@ -71,7 +71,9 @@
         case CommentRelationTypeStore:
         {
             if ([model.relationIdentifier length] > 0) {
-                StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.relationIdentifier];
+                TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+                controller.storeId = model.relationIdentifier;
+                
                 [self.navigationController pushViewController:controller animated:YES];
             }
             return;

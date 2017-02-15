@@ -48,9 +48,7 @@
 #pragma mark AppointmentOrderDetailViewDelegate
 
 - (void)didClickedStoreOnAppointmentOrderDetailView:(AppointmentOrderDetailView *)detailView {
-//    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:self.viewModel.orderModel.storeId];
-//    [controller setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:controller animated:YES];
+
 }
 
 - (void)didClickedCommentButtonOnAppointmentOrderDetailView:(AppointmentOrderDetailView *)detailView {

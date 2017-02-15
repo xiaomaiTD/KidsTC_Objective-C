@@ -18,7 +18,7 @@
 #import "ProductOrderFreeDetailView.h"
 
 #import "CashierDeskViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ServiceSettlementViewController.h"
 #import "WebViewController.h"
 #import "OrderBookingViewController.h"
@@ -429,7 +429,9 @@
 #pragma mark ================门店详情================
 
 - (void)storeInfo:(ProductOrderFreeDetailData *)data {
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:data.storeInfo.storeId];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = data.storeInfo.storeId;
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 

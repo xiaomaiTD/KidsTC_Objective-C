@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *fightImg;
 @property (weak, nonatomic) IBOutlet UIImageView *fightArrowImg;
 @property (weak, nonatomic) IBOutlet UILabel *fightNameL;
+@property (weak, nonatomic) IBOutlet UIView *radishBGView;
+@property (weak, nonatomic) IBOutlet UILabel *radishCountL;
 
 
 @property (nonatomic,strong) ScoreOrderItem *order;
@@ -123,7 +125,12 @@
             break;
     }
     
-    
+    if (order.orderKind == OrderKindRadish) {
+        self.radishBGView.hidden = NO;
+        self.radishCountL.text = [NSString stringWithFormat:@"%@",order.radishCount];
+    }else{
+        self.radishBGView.hidden = YES;
+    }
     
     self.productNameL.text = order.productName;
     self.countL.text = [NSString stringWithFormat:@"x%@",order.payNum];

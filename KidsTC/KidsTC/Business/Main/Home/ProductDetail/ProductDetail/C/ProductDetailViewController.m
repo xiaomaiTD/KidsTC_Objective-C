@@ -34,11 +34,11 @@
 #import "TabBarController.h"
 #import "SearchViewController.h"
 #import "CommonShareViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ProductDetailGetCouponListViewController.h"
 #import "ProductDetailTicketSelectSeatViewController.h"
 #import "ProductDetailFreeApplyViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "CommentFoundingViewController.h"
 #import "NavigationController.h"
 #import "ProductStandardViewController.h"
@@ -70,9 +70,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _type = ProductDetailTypeNormal;
-    _productId = @"2000000201";//100001  //3000000004   3000000013   3000000008
-    _channelId = @"0";
+//    _type = ProductDetailTypeNormal;
+//    _productId = @"2000000201";//100001  //3000000004   3000000013   3000000008
+//    _channelId = @"0";
     
     switch (_type) {
         case ProductDetailTypeNormal:
@@ -369,7 +369,7 @@
             break;
         case ProductDetailViewActionTypeTicketToolBarStar://票务 - 想看
         {
-            [self attentionType:KTCFavouriteTypeTicketService value:value];
+            [self share];
         }
             break;
         case ProductDetailViewActionTypeTicketToolBarSelectSeat://票务 - 选座购票
@@ -862,7 +862,9 @@
 - (void)freeStoreDetail:(id)value {
     NSArray<ProductDetailStore *> *stores = self.data.store;
     if (stores.count<1) return;
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:stores.firstObject.storeId];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = stores.firstObject.storeId;
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -1184,7 +1186,9 @@
         case KTCBrowseHistoryTypeStore:
         {
             BrowseHistoryStoreListItemModel *model = [array objectAtIndex:index];
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
+
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = model.identifier;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

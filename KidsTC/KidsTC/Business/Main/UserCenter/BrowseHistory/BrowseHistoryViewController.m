@@ -20,7 +20,7 @@
 //门店
 #import "StoreListItemModel.h"
 #import "StoreListViewCell.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 
 static NSString *const serviceCellIdentifier = @"ServiceListViewCell";
 static NSString *const storeCellIdentifier = @"StoreListViewCell";
@@ -330,8 +330,8 @@ static NSString *const storeCellIdentifier = @"StoreListViewCell";
 
     }else{//门店
         StoreListItemModel *model = [self.storeAry objectAtIndex:indexPath.row];
-        StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
-        [controller setHidesBottomBarWhenPushed:YES];
+        TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+        controller.storeId = model.identifier;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

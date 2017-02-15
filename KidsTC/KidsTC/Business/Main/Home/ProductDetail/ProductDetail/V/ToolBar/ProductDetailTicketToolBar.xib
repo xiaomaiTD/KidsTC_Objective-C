@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,10 +42,10 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkO-1S-goW" customClass="ProductDetailToolBarButton">
                             <rect key="frame" x="94" y="0.0" width="93.5" height="60"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <state key="normal" title="想看" image="ProductDetail_normalToolBar_love_n">
+                            <state key="normal" title="分享" image="ProductDetail_freeToolBar_share">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="selected" image="ProductDetail_normalToolBar_love_y"/>
+                            <state key="selected" image="ProductDetail_freeToolBar_share"/>
                             <connections>
                                 <action selector="action:" destination="iN0-l3-epB" eventType="touchUpInside" id="NSG-lB-pYB"/>
                             </connections>
@@ -109,8 +109,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ProductDetail_normalToolBar_love_n" width="90" height="83"/>
-        <image name="ProductDetail_normalToolBar_love_y" width="90" height="83"/>
+        <image name="ProductDetail_freeToolBar_share" width="99" height="100"/>
         <image name="ProductDetail_ticketToolBar_write" width="67" height="67"/>
     </resources>
 </document>

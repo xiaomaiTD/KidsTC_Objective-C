@@ -9,6 +9,7 @@
 #import "StoreDetailAppointmentContactCell.h"
 #import "User.h"
 #import "iToast.h"
+#import "NSString+Category.h"
 
 @interface StoreDetailAppointmentContactCell ()
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
@@ -24,7 +25,7 @@
     self.btn.backgroundColor = COLOR_PINK;
     self.btn.layer.cornerRadius =8;
     self.btn.layer.masksToBounds = YES;
-    self.tf.text = [User shareUser].phone.length>0?[User shareUser].phone:@"";
+    self.tf.text = [[User shareUser].phone isNotNull]?[User shareUser].phone:@"";
 }
 
 

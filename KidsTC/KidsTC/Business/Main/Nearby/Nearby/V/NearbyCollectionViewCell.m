@@ -13,6 +13,7 @@
 #import "KTCEmptyDataView.h"
 
 #import "NearbyTableViewHeader.h"
+#import "NearbyTableViewEmptyHeader.h"
 #import "NearbyTableViewCell.h"
 
 
@@ -21,6 +22,7 @@ static NSString *const CellID = @"NearbyTableViewCell";
 @interface NearbyCollectionViewCell ()<UITableViewDelegate,UITableViewDataSource,NearbyTableViewHeaderDelegate,NearbyTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NearbyTableViewHeader *header;
+@property (nonatomic,strong) NearbyTableViewEmptyHeader *emptyHeader;
 @end
 
 @implementation NearbyCollectionViewCell
@@ -33,6 +35,15 @@ static NSString *const CellID = @"NearbyTableViewCell";
     }
     return _header;
 }
+
+- (NearbyTableViewEmptyHeader *)emptyHeader {
+    if (!_emptyHeader) {
+        _emptyHeader = [[NSBundle mainBundle] loadNibNamed:@"NearbyTableViewEmptyHeader" owner:self options:nil].firstObject;
+        _emptyHeader.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNearbyTableViewEmptyHeaderH);
+    }
+    return _emptyHeader;
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -71,12 +82,17 @@ static NSString *const CellID = @"NearbyTableViewCell";
     WeakSelf(self);
     RefreshHeader *header = [RefreshHeader headerWithRefreshingBlock:^{
         StrongSelf(self);
+        self.data.isLoadRecommend = NO;
         [self loadData:YES];
     }];
     self.tableView.mj_header = header;
     RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
         StrongSelf(self);
-        [self loadData:NO];
+        if (self.data.isLoadRecommend) {
+            [self loadRecommend:NO];
+        }else{
+            [self loadData:NO];
+        }
     }];
     self.tableView.mj_footer = footer;
     //[self.tableView.mj_header beginRefreshing];
@@ -85,6 +101,12 @@ static NSString *const CellID = @"NearbyTableViewCell";
 - (void)loadData:(BOOL)refresh {
     if ([self.delegate respondsToSelector:@selector(nearbyCollectionViewCell:actionType:value:)]) {
         [self.delegate nearbyCollectionViewCell:self actionType:NearbyCollectionViewCellActionTypeLoadData value:@(refresh)];
+    }
+}
+
+- (void)loadRecommend:(BOOL)refresh {
+    if ([self.delegate respondsToSelector:@selector(nearbyCollectionViewCell:actionType:value:)]) {
+        [self.delegate nearbyCollectionViewCell:self actionType:NearbyCollectionViewCellActionTypeLoadRecommend value:@(refresh)];
     }
 }
 
@@ -103,16 +125,25 @@ static NSString *const CellID = @"NearbyTableViewCell";
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                                           image:nil description:@"附近没有正在举行的活动"
                                                                      needGoHome:NO];
+        if (!self.data.isLoadRecommend) {
+            self.data.isLoadRecommend = YES;
+            [self loadRecommend:YES];
+        }
     }else self.tableView.backgroundView = nil;
 }
 
 - (void)setupHeader {
-    NearbyPlaceInfo *placeInfo = _data.placeInfo;
-    if ((_index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData)) {
-        self.tableView.tableHeaderView = self.header;
-        self.header.placeInfo = placeInfo;
-    }else {
-        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+    
+    if (self.data.isLoadRecommend) {
+        self.tableView.tableHeaderView = self.emptyHeader;
+    }else{
+        NearbyPlaceInfo *placeInfo = _data.placeInfo;
+        if ((_index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData)) {
+            self.tableView.tableHeaderView = self.header;
+            self.header.placeInfo = placeInfo;
+        }else {
+            self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.001)];
+        }
     }
 }
 

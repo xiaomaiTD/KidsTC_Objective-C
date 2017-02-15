@@ -33,7 +33,7 @@
 
 #import "WebViewController.h"
 #import "FlashBuyProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "OrderRefundViewController.h"
 #import "CashierDeskViewController.h"
 #import "FlashBalanceSettlementViewController.h"
@@ -364,7 +364,8 @@
 }
 
 - (void)storeInfo {
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:self.data.storeInfo.storeId];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = self.data.storeInfo.storeId;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -79,6 +79,7 @@
                     <constraint firstItem="dy9-u4-ijF" firstAttribute="leading" secondItem="bmc-9z-Azj" secondAttribute="leading" constant="15" id="Bs8-tU-217"/>
                     <constraint firstAttribute="trailing" secondItem="Sr8-HY-67G" secondAttribute="trailing" id="Gym-fG-yrz"/>
                     <constraint firstAttribute="trailing" secondItem="6ET-BG-hEx" secondAttribute="trailing" constant="15" id="M1c-eO-0jy"/>
+                    <constraint firstItem="Sr8-HY-67G" firstAttribute="top" secondItem="dy9-u4-ijF" secondAttribute="bottom" constant="15" id="RpE-4y-Fvy"/>
                     <constraint firstAttribute="bottom" secondItem="6ET-BG-hEx" secondAttribute="bottom" constant="16" id="T9V-Pj-2Uv"/>
                     <constraint firstItem="6ET-BG-hEx" firstAttribute="leading" secondItem="kfG-dC-voo" secondAttribute="trailing" constant="12" id="UWN-4e-cvF"/>
                     <constraint firstItem="Sr8-HY-67G" firstAttribute="leading" secondItem="bmc-9z-Azj" secondAttribute="leading" id="Ztb-Bi-32g"/>

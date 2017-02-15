@@ -26,4 +26,16 @@ singleH(DataBaseManager)
 
 - (void)buryPoint_inset_did_upload:(BuryPointModel *)model successBlock:(void(^)(BOOL success))successBlock;
 
+#pragma mark - request
+
+- (void)request_inset:(BuryPointModel *)model successBlock:(void(^)(BOOL success))successBlock;
+
+- (void)request_delete:(BuryPointModel *)model successBlock:(void(^)(BOOL success))successBlock;
+
+- (void)request_not_upload_count:(void(^)(NSUInteger count))countBlock;
+
+- (void)request_not_upload_allModels_deleteSuccessBlock:(void(^)(BOOL success))successBlock;
+
+- (void)request_not_upload_allModels:(void(^)(NSArray<BuryPointModel *> *models))allModelsBlock;
+
 @end

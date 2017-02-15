@@ -11,6 +11,10 @@
 #import "InterfaceManager.h"
 #import "AFNetworking.h"
 #import "CookieManager.h"
+#import "DataBaseManager.h"
+#import "NSString+Category.h"
+#import "BuryPointManager.h"
+#import "NSString+ZP.h"
 
 static Request *_requestManager;
 
@@ -376,21 +380,14 @@ static Request *_requestManager;
 + (void)getStatusCodeItem:(InterfaceItem *)interfaceItem
                      task:(NSURLSessionDataTask *)task
 {
-    if ([task isKindOfClass:[NSHTTPURLResponse class]]) {
-        
-    }
+    NSString *urlTag = interfaceItem.name;
+    if (![urlTag isNotNull]) return;
+    
     NSHTTPURLResponse *responses = (NSHTTPURLResponse *)task.response;
-    
     NSInteger netCode = responses.statusCode;
-    
     long long time = (interfaceItem.end - interfaceItem.start)*1000;
     
-    NSString *urlTag = interfaceItem.name;
-    
     NSDictionary *allHeaderFields = responses.allHeaderFields;
-    
-    
-    
     id date = allHeaderFields[@"Date"];
     id last_Modified = allHeaderFields[@"Last-Modified"];
     if (date && last_Modified && [date isKindOfClass:[NSDate class]] && [last_Modified isKindOfClass:[NSDate class]]) {
@@ -399,7 +396,67 @@ static Request *_requestManager;
         time = (last_Modified_time - date_time)*1000;
     }
     
-    NSLog(@"netCode:%@ time:%@ urlTag:%@",@(netCode),@(time),urlTag);
+    NSMutableDictionary *content = [NSMutableDictionary dictionary];
+    [content setObject:@(time) forKey:@"apiCellTime"];
+    NetType netType = [BuryPointManager NetworkStatusTo];
+    [content setObject:@(netType) forKey:@"networkType"];
+    [content setObject:@(netCode) forKey:@"httpStatusCode"];
+    [content setObject:@(2) forKey:@"channel"];
+    if ([urlTag isNotNull]) {
+        [content setObject:urlTag forKey:@"urlTag"];
+    }
+    long long pk = arc4random()%10000000000;
+    NSString *pkMD5String = [NSString stringWithFormat:@"%@",@(pk)].md5String;
+    if ([pkMD5String isNotNull]) {
+        [content setObject:pkMD5String forKey:@"pk"];
+    }
+    
+    NSString *str = [NSString zp_stringWithJsonObj:content];
+    if ([str isNotNull]) {
+        BuryPointModel *model = [BuryPointModel new];
+        model.content = str;
+        DataBaseManager *man = [DataBaseManager shareDataBaseManager];
+        [man request_inset:model successBlock:^(BOOL success) {
+            [man request_not_upload_count:^(NSUInteger count) {
+                if (count<50) return ;
+                [man request_not_upload_allModels:^(NSArray<BuryPointModel *> *models) {
+                    if (models.count<1) return;
+                    NSMutableArray *ary = [NSMutableArray array];
+                    [models enumerateObjectsUsingBlock:^(BuryPointModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        if ([obj.content isNotNull]) {
+                            NSData *data = [obj.content dataUsingEncoding:NSUTF8StringEncoding];
+                            if (data) {
+                                NSError *error_dic = nil;
+                                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error_dic];
+                                if (!error_dic && dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
+                                    [ary addObject:dic];
+                                }
+                            };
+                        }
+                    }];
+                    NSString *aryStr = [NSString zp_stringWithJsonObj:ary];
+                    if (![aryStr isNotNull]) return;
+                    NSDictionary *param = @{@"reportMsg":aryStr};
+                    [Request startWithName:@"REPORT_API_CELL_TIME" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+                        [self deleteRequest_not_upload];
+                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        [self deleteRequest_not_upload];
+                    }];
+                }];
+            }];
+        }];
+    }
 }
+
++ (void)deleteRequest_not_upload {
+    [[DataBaseManager shareDataBaseManager] request_not_upload_allModels_deleteSuccessBlock:^(BOOL success) {
+        if (success) {
+            TCLog(@"request_not_upload_allModels批量删除成功...");
+        }else{
+            TCLog(@"request_not_upload_allModels批量删除失败...");
+        }
+    }];
+}
+
 
 @end

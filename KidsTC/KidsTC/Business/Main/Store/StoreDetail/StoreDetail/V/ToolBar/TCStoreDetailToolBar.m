@@ -68,6 +68,8 @@ CGFloat const kTCStoreDetailToolBarH = 49;
     self.likeImg.image = [UIImage imageNamed:likeImgName];
     self.likeL.text = liekTitle;
     self.likeL.textColor = [UIColor colorFromHexString:liekTitleColor];
+    
+    [self layoutIfNeeded];
 }
 
 - (void)setupStatus {

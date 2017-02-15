@@ -401,6 +401,7 @@
         {
             BrowseHistoryStoreListItemModel *model = [array objectAtIndex:index];
             StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
+            
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

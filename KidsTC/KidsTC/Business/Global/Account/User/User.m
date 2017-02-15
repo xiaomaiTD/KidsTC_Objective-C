@@ -17,6 +17,7 @@
 #import "NotificationService.h"
 #import "GetUserPopulationModel.h"
 #import "TabBarController.h"
+#import "BuryPointManager.h"
 
 //用户uid skey
 static NSString *const USERDEFAULT_UID_KEY = @"UserDefaultUidKey";
@@ -130,10 +131,22 @@ singleM(User)
         }else{
             if (success) success();
         }
+        [self buryPointType:1];
     }else{//自动
+        [self buryPointType:2];
         [self logoutLocal];
         if (success) success();
     }
+}
+
+- (void)buryPointType:(NSInteger)type  {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    NSString *uid = [User shareUser].uid;
+    if ([uid isNotNull]) {
+        [param setObject:uid forKey:@"uid"];
+    }
+    [param setObject:@(type) forKey:@"type"];
+    [BuryPointManager trackEvent:@"event_result_logoff" actionId:21518 params:param];
 }
 
 - (void)logoutLocal{

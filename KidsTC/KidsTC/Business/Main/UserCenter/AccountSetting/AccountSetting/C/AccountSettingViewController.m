@@ -20,6 +20,7 @@
 #import "TZImagePickerController.h"
 #import "BuryPointManager.h"
 #import "UserAddressManageViewController.h"
+#import "NSString+Category.h"
 
 @interface AccountSettingViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,TZImagePickerControllerDelegate,ImageTrimViewControllerDelegate,ActionSheetDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -276,8 +277,6 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
             [TCProgressHUD dismissSVP];
             [[iToast makeText:@"退出登录失败"] show];
         }];
-        NSDictionary *params = @{@"uid":[User shareUser].uid};
-        [BuryPointManager trackEvent:@"event_result_logoff" actionId:21503 params:params];
     }
 }
 

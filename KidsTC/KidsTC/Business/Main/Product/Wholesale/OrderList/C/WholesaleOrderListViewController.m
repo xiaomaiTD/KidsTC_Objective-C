@@ -14,6 +14,7 @@
 #import "NSString+Category.h"
 
 #import "WholesaleOrderListModel.h"
+#import "WholesaleOrderListReplaceModel.h"
 #import "WholesaleOrderListView.h"
 #import "CommonShareViewController.h"
 #import "WebViewController.h"
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) WholesaleOrderListView *listView;
 @property (nonatomic, strong) NSArray<WholesaleOrderListItem *> *data;
 @property (nonatomic, assign) NSInteger page;
+@property (nonatomic,strong) WholesaleOrderListItem *currentItem;
 @end
 
 @implementation WholesaleOrderListViewController
@@ -41,9 +43,51 @@
     self.listView = listView;
 }
 
+#pragma mark - 更换单个Item
+
+- (void)loadReplaceItem:(WholesaleOrderListItem *)item {
+    
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        [[iToast makeText:@"订单编号为空"] show];
+        return;
+    }
+    NSDictionary *param = @{@"orderNo":orderId};
+    
+    [Request startWithName:@"GET_USER_FIGHT_GROUP_ORDER_ITEM" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        WholesaleOrderListItem *replaceItem = [WholesaleOrderListReplaceModel modelWithDictionary:dic].data;
+        if (replaceItem) [self loadReplaceItemSuccess:replaceItem];
+    } failure:nil];
+}
+
+- (void)loadReplaceItemSuccess:(WholesaleOrderListItem *)item {
+    NSString *orderId = item.orderNo;
+    if (![orderId isNotNull]) {
+        return;
+    }
+    __block NSInteger index = -1;
+    NSMutableArray<WholesaleOrderListItem *> *items = [NSMutableArray arrayWithArray:self.data];
+    [items enumerateObjectsUsingBlock:^(WholesaleOrderListItem  * obj, NSUInteger idx, BOOL *stop) {
+        if ([obj.orderNo isNotNull]) {
+            if ([obj.orderNo isEqualToString:orderId]) {
+                index = idx;
+                *stop = YES;
+            }
+        }
+    }];
+    if (index>=0) {
+        [items removeObjectAtIndex:index];
+        [items insertObject:item atIndex:index];
+        self.data = [NSArray arrayWithArray:items];
+        self.listView.items = self.data;
+        [self.listView reloadData];
+    }
+}
+
 #pragma mark - WholesaleOrderListViewDelegate
 
 - (void)wholesaleOrderListView:(WholesaleOrderListView *)view actionType:(WholesaleOrderListViewActionType)type value:(id)value {
+    if ([value isKindOfClass:[WholesaleOrderListItem class]]) self.currentItem = value;
     switch (type) {
         case WholesaleOrderListViewActionTypeConnectService://在线客服
         {
@@ -77,7 +121,7 @@
             break;
         case WholesaleOrderListViewActionTypeCountDownOver://倒计时结束
         {
-            [self loadData:@(YES)];
+            [self countDownOver:value];
         }
             break;
         case WholesaleOrderListViewActionTypeSegue:
@@ -122,6 +166,9 @@
         controller.productId = item.fightGroupSysNo;
         controller.openGroupId = item.fightGroupOpenGroupSysNo;
         controller.productType = ProductDetailTypeWholesale;
+        controller.resultBlock = ^(BOOL success){
+            if(success)[self loadReplaceItem:self.currentItem];
+        };
         [self.navigationController pushViewController:controller animated:YES];
     }];
 }
@@ -137,9 +184,13 @@
             return;
         }
         NSDictionary *param = @{@"orderId":orderId};
+        [TCProgressHUD showSVP];
         [Request startWithName:@"ORDER_SEND_CONSUME_CODE" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+            [TCProgressHUD dismissSVP];
             [[iToast makeText:@"消费码已发到您的手机，请注意查收"] show];
+            [self loadReplaceItem:self.currentItem];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [TCProgressHUD dismissSVP];
             NSString *msg = @"获取消费码失败";
             NSString *errMsg = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
             if ([errMsg isNotNull]) {
@@ -164,9 +215,13 @@
 #pragma mark CommentFoundingViewControllerDelegate
 
 - (void)commentFoundingViewControllerDidFinishSubmitComment:(CommentFoundingViewController *)vc {
-    self.listView.noMoreOrderListData = NO;
-    self.listView.noMoreRecommendData = NO;
-    [self loadData:@(YES)];
+    [self loadReplaceItem:self.currentItem];
+}
+
+#pragma mark CountDownOver
+
+- (void)countDownOver:(id)value {
+    [self loadReplaceItem:self.currentItem];
 }
 
 #pragma mark 加载数据

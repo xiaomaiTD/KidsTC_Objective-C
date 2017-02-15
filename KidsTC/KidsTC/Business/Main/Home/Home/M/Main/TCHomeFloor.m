@@ -976,21 +976,25 @@ int const kTCHomeCollectionViewCellMaxSections = 3;
     layout.minimumLineSpacing = margins.vertical;
     layout.minimumInteritemSpacing = margins.horizontal;
     
-    CGFloat columnCount = 3.5;
+    CGFloat columnCount = 1.5;
     int marginCountH = (columnCount - (int)columnCount) > 0 ? (int)columnCount : (columnCount - 1);
     CGFloat item_w = (SCREEN_WIDTH - margins.left - margins.right - margins.horizontal * marginCountH) / columnCount;
     
     CGFloat img_w = item_w, img_h = img_w * _ratio, img_y = 0, img_x = 0;
     CGRect imgFrame = CGRectMake(img_x, img_y, img_w, img_h);
     
-    CGFloat title_h = 20, title_w = item_w, title_x = 0, title_y = img_h + img_y + 4;
+    CGFloat title_h = 20, title_w = item_w, title_x = 0, title_y = img_h + img_y + 8;
     CGRect titleFrame = CGRectMake(title_x, title_y, title_w, title_h);
     
-    TCHomeContentLayoutAttributes contentAtt =
-    TCHomeContentLayoutAttributesMake(YES, NO, NO, YES, NO, NO, NO, NO, NO, NO,
-                                      imgFrame, CGRectZero, CGRectZero, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero, CGRectZero);
+    CGRect storeAddressFrame = CGRectMake(0, CGRectGetMaxY(titleFrame)+6, item_w, 14);
     
-    CGFloat item_h = _contents.count>0?CGRectGetMaxY(titleFrame):0;
+    CGRect priceFrame = CGRectMake(0, CGRectGetMaxY(storeAddressFrame)+6, item_w, 20);
+    
+    TCHomeContentLayoutAttributes contentAtt =
+    TCHomeContentLayoutAttributesMake(YES, NO, YES, YES, NO, NO, NO, NO, YES, NO,
+                                      imgFrame, CGRectZero, priceFrame, titleFrame, CGRectZero, CGRectZero, CGRectZero, CGRectZero, storeAddressFrame, CGRectZero);
+    
+    CGFloat item_h = _contents.count>0?CGRectGetMaxY(priceFrame)+6:0;
     
     layout.itemSize = CGSizeMake(item_w, item_h);
     

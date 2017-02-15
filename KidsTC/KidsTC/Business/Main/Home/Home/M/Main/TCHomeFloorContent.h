@@ -172,6 +172,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat heightScale;
 @property (nonatomic, strong) NSString *storePrice;
 @property (nonatomic, strong) NSString *priceSuffix;
+//18
+@property (nonatomic,strong) NSString *address;
 
 //selfDefine
 @property (nonatomic, strong) NSAttributedString *attTitle;

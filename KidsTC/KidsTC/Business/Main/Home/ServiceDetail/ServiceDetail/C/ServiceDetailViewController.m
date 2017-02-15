@@ -17,7 +17,7 @@
 #import "WebViewController.h"
 #import "KTCActionView.h"
 #import "CommonShareViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "KTCBrowseHistoryView.h"
 #import "KTCBrowseHistoryManager.h"
 #import "SegueMaster.h"
@@ -160,8 +160,9 @@
 
 - (void)serviceDetailView:(ServiceDetailView *)detailView didClickedStoreCellAtIndex:(NSUInteger)index {
     StoreListItemModel *model = [self.viewModel.detailModel.storeItemsArray objectAtIndex:index];
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
-    [controller setHidesBottomBarWhenPushed:YES];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = model.identifier;
+    
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -301,7 +302,9 @@
         case KTCBrowseHistoryTypeStore:
         {
             BrowseHistoryStoreListItemModel *model = [array objectAtIndex:index];
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = model.identifier;
+
             [controller setHidesBottomBarWhenPushed:YES];
             [self.navigationController pushViewController:controller animated:YES];
         }

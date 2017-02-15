@@ -35,6 +35,7 @@
 @property (nonatomic,strong) NSString *openGroupHeader;
 @property (nonatomic,strong) NSString *openGroupUserName;
 @property (nonatomic,strong) NSString *openGroupId;
+@property (nonatomic,strong) NSString *radishCount;
 //selfDeine
 @property (nonatomic, strong) SegueModel *segueModel;
 @property (nonatomic, strong) NSArray<NSString *> *phones;

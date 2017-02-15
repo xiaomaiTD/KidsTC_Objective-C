@@ -23,21 +23,22 @@ static NSString *const SmallCellID = @"SeckillSmallCell";
 static NSString *const LargeCellID = @"SeckillLargeCell";
 
 @interface SeckillView ()<UITableViewDelegate,UITableViewDataSource,SeckillBaseCellDelegate,SeckillSliderDelegate,SeckillToolBarDelegate>
-@property (nonatomic, strong) SeckillSlider *slider;
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) SeckillToolBar *tooBar;
+@property (weak, nonatomic) IBOutlet SeckillSlider *slider;
+
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet SeckillToolBar *tooBar;
+
 @end
 
 @implementation SeckillView
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setupSlider];
-        [self setupTableView];
-        [self setupToolBar];
-    }
-    return self;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self setupSlider];
+    [self setupTableView];
+    [self setupToolBar];
 }
 
 - (void)setTimeData:(SeckillTimeData *)timeData {
@@ -66,14 +67,7 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kSeckillSliderH, SCREEN_WIDTH, CGRectGetHeight(self.bounds)-kSeckillSliderH-kSeckillToolBarH) style:UITableViewStylePlain];
-    tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.estimatedRowHeight = 66;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self addSubview:tableView];
-    self.tableView = tableView;
+    self.tableView.estimatedRowHeight = 66;
     [self registerCells];
 }
 
@@ -156,12 +150,8 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
 #pragma mark - setupSlider
 
 - (void)setupSlider {
-    SeckillSlider *slider = [[NSBundle mainBundle] loadNibNamed:@"SeckillSlider" owner:self options:nil].firstObject;
-    slider.hidden = YES;
-    slider.frame = CGRectMake(0, 0, SCREEN_WIDTH, kSeckillSliderH);
-    slider.delegate = self;
-    [self addSubview:slider];
-    self.slider = slider;
+    self.slider.hidden = YES;
+    self.slider.delegate = self;
 }
 
 #pragma mark SeckillSliderDelegate
@@ -181,12 +171,8 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
 #pragma mark - setupToolBar
 
 - (void)setupToolBar {
-    SeckillToolBar *tooBar = [[NSBundle mainBundle] loadNibNamed:@"SeckillToolBar" owner:self options:nil].firstObject;
-    tooBar.hidden = YES;
-    tooBar.frame = CGRectMake(0, CGRectGetHeight(self.bounds)-kSeckillToolBarH, SCREEN_WIDTH, kSeckillToolBarH);
-    tooBar.delegate = self;
-    [self addSubview:tooBar];
-    self.tooBar = tooBar;
+    self.tooBar.hidden = YES;
+    self.tooBar.delegate = self;
 }
 
 #pragma mark SeckillToolBarDelegate

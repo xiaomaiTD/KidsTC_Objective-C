@@ -35,6 +35,7 @@ static CGFloat const kBtn_h = 80;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.naviTheme = NaviThemeWihte;
     self.view.backgroundColor = [UIColor clearColor];
     
     [self setupLayer];

@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Single.h"
+
+//网络类型
+typedef enum : NSUInteger {
+    NetTypeNone = 0,
+    NetTypeWIFI = 1,
+    NetType2G = 2,
+    NetType3G = 3,
+    NetType4G = 4,
+    NetType5G = 5,
+} NetType;
+
 @interface BuryPointManager : NSObject
 singleH(BuryPointManager)
 
@@ -26,4 +37,7 @@ singleH(BuryPointManager)
 + (void)trackEvent:(NSString *)eventName
           actionId:(long)actionId
             params:(NSDictionary *)params;
+
++ (NetType)NetworkStatusTo;
+
 @end

@@ -22,6 +22,8 @@ typedef enum : NSUInteger {
     
     NearbyViewActionTypeDidSelectCategory = 200,
     
+    NearbyViewActionTypeLoadRecommend = 1000,
+    
 } NearbyViewActionType;
 @class NearbyView;
 @protocol NearbyViewDelegate <NSObject>

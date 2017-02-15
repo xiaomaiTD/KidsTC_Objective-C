@@ -14,9 +14,9 @@
 #import "NSString+Category.h"
 #import "GuideManager.h"
 #import "BuryPointManager.h"
-#import "RecommendDataManager.h"
 
 #import "NearbyModel.h"
+#import "NearbyRecommendModel.h"
 #import "NearbyView.h"
 #import "NearbyTitleView.h"
 #import "NearbyCalendarViewController.h"
@@ -30,6 +30,8 @@
 @property (weak, nonatomic) NearbyView *nearbyView;
 @property (nonatomic, strong) NSArray<NearbyData *> *datas;
 @property (nonatomic, strong) NSString *categoryValue;
+@property (nonatomic,assign) NSInteger recommendPage;
+@property (nonatomic,strong) NSArray<NearbyItem *> *recommendDatas;
 @end
 
 @implementation NearbyViewController
@@ -132,6 +134,11 @@
             [self didSelectCategory:value];
         }
             break;
+        case NearbyViewActionTypeLoadRecommend:
+        {
+            [self loadRecommendWithCell:cell refresh:value];
+        }
+            break;
             default:
         {
             [self nursery:type data:value];
@@ -170,16 +177,7 @@
         return;
     }
     BOOL refresh = [value boolValue];
-    if (!cell.isLoadRecommend) {
-        [self loadNearbyDataWithCell:cell refresh:refresh];
-    }else{
-        [self loadRecommendRefresh:refresh];
-    }
-}
-
-- (void)loadNearbyDataWithCell:(NearbyCollectionViewCell *)cell
-                       refresh:(BOOL)refresh
-{
+    
     NSInteger index = cell.index;
     if (index>=self.datas.count) [cell dealWithUI:0];
     NearbyData *data = self.datas[index];
@@ -222,11 +220,35 @@
     }];
 }
 
-- (void)loadRecommendRefresh:(BOOL)refresh {
-    [[RecommendDataManager shareRecommendDataManager] loadRecommendProductType:RecommendProductTypeDefault refresh:refresh pageCount:TCPAGECOUNT productNos:nil successBlock:^(NSArray<RecommendProduct *> *data) {
+- (void)loadRecommendWithCell:(NearbyCollectionViewCell *)cell refresh:(id)value {
+    
+    if (![value respondsToSelector:@selector(boolValue)]) {
+        [cell dealWithUI:0];
+        return;
+    }
+    BOOL refresh = [value boolValue];
+    
+    NSInteger index = cell.index;
+    if (index>=self.datas.count) [cell dealWithUI:0];
+    NearbyData *data = self.datas[index];
+    
+    self.recommendPage = refresh?1:++self.recommendPage;
+    NSDictionary *param = @{@"page":@(self.recommendPage),
+                            @"pageSize":@(TCPAGECOUNT)};
+    [Request startWithName:@"NEAR_BY_RECOMMEND_PRODUCT" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        NSArray<NearbyItem *> *recommendData = [NearbyRecommendModel modelWithDictionary:dic].data;
+        if (refresh) {
+            self.recommendDatas = [NSArray arrayWithArray:recommendData];
+        }else{
+            NSMutableArray *ary = [NSMutableArray arrayWithArray:self.recommendDatas];
+            [ary addObjectsFromArray:recommendData];
+            self.recommendDatas = [NSArray arrayWithArray:ary];
+        }
+        data.data = self.recommendDatas;
         
-    } failureBlock:^(NSError *error) {
-        
+        [cell dealWithUI:recommendData.count];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [cell dealWithUI:0];
     }];
 }
 

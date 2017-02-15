@@ -13,6 +13,7 @@
 #import "AccountCenterFsList.h"
 #import "AccountCenterUserInfo.h"
 #import "AccountCenterConfig.h"
+#import "AccountCenterMemberPage.h"
 
 @interface AccountCenterData : NSObject
 @property (nonatomic, strong) AccountCenterUserCount *userCount;
@@ -23,4 +24,5 @@
 @property (nonatomic, strong) NSString *kfMobile;
 @property (nonatomic, strong) AccountCenterUserInfo *userInfo;
 @property (nonatomic, strong) AccountCenterConfig *config;
+@property (nonatomic,strong) AccountCenterMemberPage *memberPage;
 @end

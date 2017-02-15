@@ -348,7 +348,7 @@
             break;
         case SegueDestinationActivitySeckill:
         {
-            toController = [[SeckillViewController alloc] init];
+            toController = [[SeckillViewController alloc] initWithNibName:@"SeckillViewController" bundle:nil];
         }
             break;
         case SegueDestinationOtherActivity:

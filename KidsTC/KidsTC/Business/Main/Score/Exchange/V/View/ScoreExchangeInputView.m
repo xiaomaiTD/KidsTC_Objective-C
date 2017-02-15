@@ -32,6 +32,7 @@
     self.totalRadishCountL.text = [NSString stringWithFormat:@"%@根",@(userInfoData.userRadishNum)];
     self.tf.text = [NSString stringWithFormat:@"%@",@(userInfoData.canMaxScore)];
     self.radishCountL.text = [NSString stringWithFormat:@"%@",@(userInfoData.canMaxScore*userInfoData.radishExchangeRate)];
+    [self resetSubView];
 }
 
 - (void)startInput:(BOOL)start {
@@ -62,7 +63,7 @@
     NSInteger score = text.integerValue;
     if (score>self.userInfoData.canMaxScore) {
         score = self.userInfoData.canMaxScore;
-        NSString *tip = [NSString stringWithFormat:@"最多只能兑换%@积分",@(score)];
+        NSString *tip = [NSString stringWithFormat:@"您拥有的萝卜最多只能兑换%@积分",@(score)];
         [[iToast makeText:tip] show];
     }
     if (score<=0) {
@@ -73,6 +74,10 @@
     
     self.tf.text = text;
     
+    [self resetSubView];
+}
+
+- (void)resetSubView {
     CGFloat tfw = [self.tf.text sizeWithAttributes:@{NSFontAttributeName:self.tf.font}].width + 16;
     if (tfw<34) tfw=34;
     self.tfW.constant = tfw;

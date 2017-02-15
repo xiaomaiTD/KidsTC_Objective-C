@@ -191,12 +191,69 @@
                                     <constraint firstAttribute="height" constant="0.5" id="WLs-A5-isS"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whT-HJ-xFh">
+                                <rect key="frame" x="136" y="9" width="69.5" height="25"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" image="Radish_bg_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="KvL-sU-wDv">
+                                        <rect key="frame" x="8" y="5" width="61.5" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="syu-e6-sZY"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Radish_Radish" translatesAutoresizingMaskIntoConstraints="NO" id="UWn-xP-ybx">
+                                        <rect key="frame" x="0.0" y="0.0" width="18" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="17.5" id="9lC-i8-zLM"/>
+                                            <constraint firstAttribute="height" constant="25" id="noR-g3-QYl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAz-0B-Ach">
+                                        <rect key="frame" x="23" y="7" width="44.5" height="14"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" image="Radish_bg_pink" translatesAutoresizingMaskIntoConstraints="NO" id="BZn-hq-7Qy">
+                                                <rect key="frame" x="0.0" y="0.0" width="44.5" height="14"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="300" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="995根" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQQ-s0-kDA">
+                                                <rect key="frame" x="6" y="0.0" width="32.5" height="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="BZn-hq-7Qy" secondAttribute="bottom" id="3Na-p3-HGl"/>
+                                            <constraint firstAttribute="trailing" secondItem="BZn-hq-7Qy" secondAttribute="trailing" id="3xK-6Y-Ie0"/>
+                                            <constraint firstItem="jQQ-s0-kDA" firstAttribute="centerY" secondItem="zAz-0B-Ach" secondAttribute="centerY" id="94w-e4-Qnf"/>
+                                            <constraint firstAttribute="trailing" secondItem="jQQ-s0-kDA" secondAttribute="trailing" constant="6" id="ED7-t5-BrC"/>
+                                            <constraint firstAttribute="height" constant="14" id="a5Q-4o-tDG"/>
+                                            <constraint firstItem="jQQ-s0-kDA" firstAttribute="leading" secondItem="zAz-0B-Ach" secondAttribute="leading" constant="6" id="abR-mX-15e"/>
+                                            <constraint firstItem="BZn-hq-7Qy" firstAttribute="leading" secondItem="zAz-0B-Ach" secondAttribute="leading" id="rAe-hn-E3u"/>
+                                            <constraint firstItem="BZn-hq-7Qy" firstAttribute="top" secondItem="zAz-0B-Ach" secondAttribute="top" id="rAw-7W-JMz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="KvL-sU-wDv" firstAttribute="leading" secondItem="whT-HJ-xFh" secondAttribute="leading" constant="8" id="6Jh-O6-q25"/>
+                                    <constraint firstItem="zAz-0B-Ach" firstAttribute="centerY" secondItem="whT-HJ-xFh" secondAttribute="centerY" constant="1" id="92i-Rs-tDV"/>
+                                    <constraint firstItem="zAz-0B-Ach" firstAttribute="leading" secondItem="UWn-xP-ybx" secondAttribute="trailing" constant="5" id="AN3-EB-Z8s"/>
+                                    <constraint firstItem="KvL-sU-wDv" firstAttribute="centerY" secondItem="whT-HJ-xFh" secondAttribute="centerY" constant="1" id="IMm-VH-hcM"/>
+                                    <constraint firstAttribute="trailing" secondItem="KvL-sU-wDv" secondAttribute="trailing" id="LC7-vc-Us1"/>
+                                    <constraint firstItem="UWn-xP-ybx" firstAttribute="leading" secondItem="whT-HJ-xFh" secondAttribute="leading" id="Vkd-xl-ZdS"/>
+                                    <constraint firstItem="UWn-xP-ybx" firstAttribute="top" secondItem="whT-HJ-xFh" secondAttribute="top" id="k5H-c2-cld"/>
+                                    <constraint firstAttribute="bottom" secondItem="UWn-xP-ybx" secondAttribute="bottom" id="qf1-qb-XAL"/>
+                                    <constraint firstAttribute="trailing" secondItem="zAz-0B-Ach" secondAttribute="trailing" constant="2" id="uMK-kx-zJ4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="DVh-SZ-Mgd" secondAttribute="trailing" constant="15" id="0ET-jg-nwf"/>
                             <constraint firstItem="ZBS-1s-dxQ" firstAttribute="centerY" secondItem="ALx-zZ-bDo" secondAttribute="centerY" id="2dE-n6-L7d"/>
                             <constraint firstAttribute="trailing" secondItem="Kor-5h-17i" secondAttribute="trailing" id="7m1-Il-4KO"/>
                             <constraint firstItem="DVh-SZ-Mgd" firstAttribute="centerY" secondItem="ALx-zZ-bDo" secondAttribute="centerY" id="CK7-Ri-A4o"/>
+                            <constraint firstItem="ZBS-1s-dxQ" firstAttribute="leading" secondItem="whT-HJ-xFh" secondAttribute="trailing" constant="8.5" id="FDY-Oh-bt1"/>
+                            <constraint firstItem="whT-HJ-xFh" firstAttribute="centerY" secondItem="ALx-zZ-bDo" secondAttribute="centerY" id="NCE-2m-QcZ"/>
                             <constraint firstItem="DVh-SZ-Mgd" firstAttribute="leading" secondItem="ZBS-1s-dxQ" secondAttribute="trailing" constant="3" id="O9h-pU-g4X"/>
                             <constraint firstAttribute="bottom" secondItem="Kor-5h-17i" secondAttribute="bottom" id="Pc0-Tj-o6l"/>
                             <constraint firstAttribute="height" constant="43.5" id="XZe-GM-QtL"/>
@@ -287,6 +344,8 @@
                 <outlet property="imageIcon" destination="euT-nm-bKA" id="OLL-oT-zhT"/>
                 <outlet property="priceL" destination="0RR-eG-nY3" id="dJ5-vK-cvi"/>
                 <outlet property="productNameL" destination="GKR-LD-kqu" id="yy6-f8-FvP"/>
+                <outlet property="radishBGView" destination="whT-HJ-xFh" id="RZk-le-shU"/>
+                <outlet property="radishCountL" destination="jQQ-s0-kDA" id="wAQ-bn-oXJ"/>
                 <outlet property="realPriceL" destination="DVh-SZ-Mgd" id="t00-uL-QKs"/>
                 <outlet property="realPriceTipL" destination="ZBS-1s-dxQ" id="Xmc-w5-uvG"/>
                 <outlet property="statusNameL" destination="jBk-R0-f89" id="hru-cm-itt"/>
@@ -300,6 +359,9 @@
     </objects>
     <resources>
         <image name="ProductOrderList_store" width="53" height="51"/>
+        <image name="Radish_Radish" width="74" height="105"/>
+        <image name="Radish_bg_pink" width="131" height="57"/>
+        <image name="Radish_bg_yellow" width="216" height="70"/>
         <image name="wholesale_leader" width="151" height="57"/>
     </resources>
 </document>

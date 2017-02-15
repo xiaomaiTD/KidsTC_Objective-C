@@ -25,7 +25,7 @@
 
 #import "SearchViewController.h"
 #import "CommonShareViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ProductDetailCalendarViewController.h"
 #import "ProductDetailAddressViewController.h"
 #import "ProductDetailAddNewConsultViewController.h"
@@ -668,7 +668,8 @@ ProductDetailAddNewConsultViewControllerDelegate
         case KTCBrowseHistoryTypeStore:
         {
             BrowseHistoryStoreListItemModel *model = [array objectAtIndex:index];
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.identifier];
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = model.identifier;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

@@ -26,7 +26,7 @@
 #import "SeckillOtherViewController.h"
 
 @interface SeckillViewController ()<SeckillViewDelegate>
-@property (nonatomic, strong) SeckillView *seckillView;
+@property (strong, nonatomic) IBOutlet SeckillView *seckillView;
 @property (nonatomic, strong) SeckillTimeData *timeData;
 @property (nonatomic, strong) SeckillDataData *dataData;
 @property (nonatomic, strong) NSArray<SeckillOtherItem *> *otherData;
@@ -47,10 +47,7 @@
     titleView.frame = CGRectMake(0, 0, 80, 19);
     self.navigationItem.titleView = titleView;
     
-    SeckillView *seckillView = [[SeckillView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
-    seckillView.delegate = self;
-    [self.view addSubview:seckillView];
-    self.seckillView = seckillView;
+    self.seckillView.delegate = self;
     
     [self loadSeckill];
     

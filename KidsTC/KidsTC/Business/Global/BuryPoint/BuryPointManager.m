@@ -18,6 +18,9 @@
 #import "CookieManager.h"
 #import "DataBaseManager.h"
 #import "BuryPointTrackModel.h"
+#import "NSDate+ZP.h"
+#import "NSString+ZP.h"
+#import "ZPDateFormate.h"
 
 //设备类型
 typedef enum : NSUInteger {
@@ -29,15 +32,6 @@ typedef enum : NSUInteger {
     AppDeviceTypeAndroidIPad = 6
 } AppDeviceType;
 
-//网络类型
-typedef enum : NSUInteger {
-    NetTypeNone = 0,
-    NetTypeWIFI = 1,
-    NetType2G = 2,
-    NetType3G = 3,
-    NetType4G = 4,
-    NetType5G = 5,
-} NetType;
 
 //上报类型
 typedef enum : NSUInteger {
@@ -111,11 +105,15 @@ singleM(BuryPointManager)
 
 #pragma mark - private
 
-- (NSString *)guid{
+- (NSString *)guid {
     BuryPointManager *manager = [BuryPointManager shareBuryPointManager];
     NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval stayTimeInterval = timeInterval - manager.lastProductGuidTimeInterval;
-    if (!_guid || stayTimeInterval > 30 * 60) {
+    NSTimeInterval maxTime = 30 * 60;
+#if DEBUG
+    maxTime = 1 * 60;
+#endif
+    if (!_guid || stayTimeInterval > maxTime) {
         _guid = [UIDevice uuidString];
         _squence = 0;
         [[CookieManager shareCookieManager] setCookieWithName:CookieKeyGuid andValue:_guid];
@@ -250,6 +248,8 @@ static NSInteger errorCount = 0;
     NSString *guid = self.guid;
     NSString *mapAddr = [KTCMapService shareKTCMapService].currentLocationString;
     NSString *ip = [NSString deviceIPAdress];
+    //NSTimeInterval date = [[NSDate date] timeIntervalSince1970] * 1000;
+    NSString *time = [NSString zp_stringWithDate:[NSDate date] Format:DF_yMd_hms];
     NSDictionary *reportMsgDic = @{@"guid":guid,
                                    @"projectId":_projectId,
                                    @"deviceId":_deviceId,
@@ -259,7 +259,8 @@ static NSInteger errorCount = 0;
                                    @"channel":_channel,
                                    @"mapAddr":mapAddr,
                                    @"ip":ip,
-                                   @"deviceInfo":_deviceInfo};
+                                   @"deviceInfo":_deviceInfo,
+                                   @"openTime":time};
     NSString *msg = [NSString zp_stringWithJsonObj:reportMsgDic];
     if (![msg isNotNull]) msg = @"";
     return msg;

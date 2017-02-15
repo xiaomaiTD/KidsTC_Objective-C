@@ -64,6 +64,17 @@ singleM(DataBaseManager)
                 }
             }
             
+            BOOL request_not_upload_exists = [db tableExists:@"request_not_upload"];
+            if (!request_not_upload_exists) {
+                NSString *request_not_upload = @"CREATE TABLE 'request_not_upload' ('id' INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, 'content' VARCHAR(255))";
+                BOOL request_not_upload_creat = [db executeUpdate:request_not_upload];
+                if (request_not_upload_creat) {
+                    TCLog(@"buryPoint_not_upload建表成功…");
+                }else{
+                    TCLog(@"buryPoint_not_upload建表失败…");
+                }
+            }
+            
             [db close];
         }
     }];
@@ -184,6 +195,88 @@ singleM(DataBaseManager)
             if (successBlock) successBlock(success);
         }else{
             if (successBlock) successBlock(NO);
+        }
+    }];
+}
+
+#pragma mark - request
+
+- (void)request_inset:(BuryPointModel *)model successBlock:(void(^)(BOOL success))successBlock {
+    if (!model) {
+        if (successBlock) successBlock(NO);
+    }
+    if (![model.content isNotNull]) {
+        if (successBlock) successBlock(NO);
+    }
+    [self getDB:^(FMDatabase *db) {
+        if ([db open]) {
+            BOOL success = [db executeUpdate:@"INSERT INTO request_not_upload (content) VALUES (?);", model.content];
+            [db close];
+            if (successBlock) successBlock(success);
+        }else{
+            if (successBlock) successBlock(NO);
+        }
+    }];
+}
+
+- (void)request_delete:(BuryPointModel *)model successBlock:(void(^)(BOOL success))successBlock {
+    if (!model) {
+        if (successBlock) successBlock(NO);
+    }
+    if (![model.pk isNotNull]) {
+        if (successBlock) successBlock(NO);
+    }
+    [self getDB:^(FMDatabase *db) {
+        if ([db open]) {
+            BOOL success = [db executeUpdate:@"DELETE FROM request_not_upload WHERE pk = ?",model.pk];
+            [db close];
+            if (successBlock) successBlock(success);
+        }else{
+            if (successBlock) successBlock(NO);
+        }
+    }];
+}
+
+- (void)request_not_upload_count:(void(^)(NSUInteger count))countBlock {
+    [self getDB:^(FMDatabase *db) {
+        if ([db open]) {
+            NSUInteger count = [db intForQuery:@"select count(*) from request_not_upload"];
+            [db close];
+            if (countBlock) countBlock(count);
+        }else{
+            if (countBlock) countBlock(0);
+        }
+    }];
+}
+
+- (void)request_not_upload_allModels_deleteSuccessBlock:(void(^)(BOOL success))successBlock  {
+    [self getDB:^(FMDatabase *db) {
+        if ([db open]) {
+            BOOL success = [db executeUpdate:@"DELETE FROM request_not_upload"];
+            [db close];
+            if (successBlock) successBlock(success);
+        }else{
+            if (successBlock) successBlock(NO);
+        }
+    }];
+}
+
+- (void)request_not_upload_allModels:(void(^)(NSArray<BuryPointModel *> *models))allModelsBlock{
+    [self getDB:^(FMDatabase *db) {
+        if ([db open]) {
+            NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+            FMResultSet *res = [db executeQuery:@"SELECT * FROM request_not_upload"];
+            while ([res next]) {
+                BuryPointModel *model = [[BuryPointModel alloc] init];
+                model.ID = [NSString stringWithFormat:@"%@",[res stringForColumn:@"id"]];
+                model.content = [NSString stringWithFormat:@"%@",[res stringForColumn:@"content"]];
+                if(model) [dataArray addObject:model];
+            }
+            [db close];
+            NSArray *ary = [NSArray arrayWithArray:dataArray];
+            if (allModelsBlock) allModelsBlock(ary);
+        }else{
+            if (allModelsBlock) allModelsBlock(nil);
         }
     }];
 }

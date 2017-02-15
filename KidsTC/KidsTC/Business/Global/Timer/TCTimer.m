@@ -19,13 +19,13 @@ singleM(TCTimer)
 - (instancetype)init {
     self = [super init];
     if (self) {
-        //self.timer = [YYTimer timerWithTimeInterval:1 target:self selector:@selector(countDown) repeats:YES];
+        self.timer = [YYTimer timerWithTimeInterval:1 target:self selector:@selector(countDown) repeats:YES];
     }
     return self;
 }
 
 - (void)countDown{
-    //[NotificationCenter postNotificationName:kTCCountDownNoti object:nil];
+    [NotificationCenter postNotificationName:kTCCountDownNoti object:nil];
 }
 
 @end

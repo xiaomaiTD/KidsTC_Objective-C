@@ -11,7 +11,7 @@
 #import "MyCommentListViewCell.h"
 #import "MWPhotoBrowser.h"
 #import "CommentEditViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "ProductDetailViewController.h"
 #import "CashierDeskViewController.h"
@@ -374,7 +374,9 @@ static NSUInteger pageSize = 10;
             case CommentRelationTypeStore:
             {
                 if ([model.relationIdentifier length] > 0) {
-                    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:model.relationIdentifier];
+                    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+                    controller.storeId = model.relationIdentifier;
+
                     [self.navigationController pushViewController:controller animated:YES];
                 }
                 return;

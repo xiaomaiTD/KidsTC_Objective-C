@@ -16,11 +16,12 @@ CGFloat const kSeckillSliderH = 122;
 @interface SeckillSlider ()<SeckillSliderDateItemDelegate,SeckillSliderTimeItemDelegate,SeckillSliderCountDownViewDelegate>
 @property (weak, nonatomic  ) IBOutlet UIView *dateBGView;
 @property (weak, nonatomic  ) IBOutlet UIScrollView *dateScrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dateBGViewH;
 
 @property (weak, nonatomic  ) IBOutlet UIView *timeBGView;
 @property (weak, nonatomic  ) IBOutlet UIScrollView *timeScrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeBGViewH;
 
-@property (weak, nonatomic  ) IBOutlet UIImageView *arrowDownImg;
 @property (weak, nonatomic  ) IBOutlet SeckillSliderCountDownView *countDownView;
 
 @property (nonatomic, strong) NSArray<SeckillSliderDateItem *> *dates;
@@ -87,6 +88,7 @@ CGFloat const kSeckillSliderH = 122;
         self.dates = nil;
     }
     
+    
     NSMutableArray *dates = [NSMutableArray array];
     NSMutableArray *dateArrows = [NSMutableArray array];
     NSUInteger dateCount = timeData.tabs.count;
@@ -116,6 +118,14 @@ CGFloat const kSeckillSliderH = 122;
     }
     if (selDateItem) {
         [self didSelectDateItem:selDateItem];
+    }
+    
+    if (timeData.tabs.count<2) {
+        self.dateScrollView.hidden = YES;
+        self.dateBGViewH.constant = 0;
+    }else{
+        self.dateScrollView.hidden = NO;
+        self.dateBGViewH.constant = 30;
     }
 }
 
@@ -162,6 +172,14 @@ CGFloat const kSeckillSliderH = 122;
     [self layoutIfNeeded];
     
     [self scroll:self.dateScrollView target:dateItem];
+    
+    if (timeItems.count<2) {
+        self.timeBGView.hidden = YES;
+        self.timeBGViewH.constant = 0;
+    }else{
+        self.timeBGView.hidden = NO;
+        self.timeBGViewH.constant = 53;
+    }
 }
 
 - (void)didSelectTimeItem:(SeckillSliderTimeItem *)timeItem {

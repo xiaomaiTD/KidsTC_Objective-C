@@ -25,7 +25,7 @@
 #import "ArticleCommentViewController.h"
 #import "MWPhotoBrowser.h"
 #import "ProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "ParentingStrategyDetailViewController.h"
 #import "CouponListViewController.h"
 #import "FlashBuyProductDetailViewController.h"
@@ -352,7 +352,8 @@ typedef enum : NSUInteger {
     NSRange range = [param rangeOfString:@"id="];
     NSString *ID = [param substringFromIndex:(range.location+range.length)];
     if ([ID isNotNull]) {
-        StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:ID];
+        TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+        controller.storeId = ID;
         [self makeSegue:controller];
         NSDictionary *params = @{@"url":self.urlString,
                                  @"sid":ID};
@@ -395,15 +396,13 @@ typedef enum : NSUInteger {
     NSRange range = [param rangeOfString:@"pid="];
     NSString *pid = [param substringFromIndex:(range.location+range.length)];
     if ([pid isNotNull]) {
-        [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-            FlashBuyProductDetailViewController *controller = [[FlashBuyProductDetailViewController alloc] init];
-            controller.pid = pid;
-            [self makeSegue:controller];
-            
-            NSDictionary *params = @{@"url":self.urlString,
-                                     @"pid":pid};
-            [BuryPointManager trackEvent:@"event_skip_flash_detail" actionId:30002 params:params];
-        }];
+        FlashBuyProductDetailViewController *controller = [[FlashBuyProductDetailViewController alloc] init];
+        controller.pid = pid;
+        [self makeSegue:controller];
+        
+        NSDictionary *params = @{@"url":self.urlString,
+                                 @"pid":pid};
+        [BuryPointManager trackEvent:@"event_skip_flash_detail" actionId:30002 params:params];
     }else{
         [[iToast makeText:@"闪购详情关联id为空"] show];
     }
@@ -586,7 +585,7 @@ typedef enum : NSUInteger {
 }
 #pragma mark 秒杀活动
 - (void)seckillActivity:(NSString *)param {
-    SeckillViewController *controller = [[SeckillViewController alloc] init];
+    SeckillViewController *controller = [[SeckillViewController alloc] initWithNibName:@"SeckillViewController" bundle:nil];
     [self makeSegue:controller];
 }
 #pragma mark 服务活动
@@ -891,7 +890,7 @@ typedef enum : NSUInteger {
     switch (type) {
         case WebViewOptNavBarTypeShow:
         {
-            self.naviColor = COLOR_PINK;
+            self.naviColor = [UIColor whiteColor];
             [self.navigationController setNavigationBarHidden:NO animated:YES];
         }
             break;
@@ -911,6 +910,7 @@ typedef enum : NSUInteger {
         }
             break;
     }
+    self.naviTheme = NaviThemeWihte;
     self.webView.scrollView.scrollIndicatorInsets = self.webView.scrollView.contentInset;
 }
 #pragma mark 隐藏/显示tabBar

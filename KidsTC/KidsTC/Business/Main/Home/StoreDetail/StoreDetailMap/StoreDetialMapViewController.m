@@ -13,7 +13,7 @@
 #import "StoreDetailAnnotationTipView.h"
 #import "MapRouteViewController.h"
 #import "RouteAnnotation.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 @interface StoreDetialMapViewController ()<BMKMapViewDelegate,StoreDetailAnnotationTipViewDelegate>
 @property (nonatomic, weak) BMKMapView *mapView;
 @end
@@ -151,7 +151,9 @@ static NSString *const annotationViewReuseIndentifier = @"annotationViewReuseInd
         case StoreDetailAnnotationTipViewActionTypeShow:
         {
             StoreListItemModel *model = view.model;
-            StoreDetailViewController *controller = [[StoreDetailViewController alloc]initWithStoreId:model.identifier];
+
+            TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+            controller.storeId = model.identifier;
             [self.navigationController pushViewController:controller animated:YES];
         }
             break;

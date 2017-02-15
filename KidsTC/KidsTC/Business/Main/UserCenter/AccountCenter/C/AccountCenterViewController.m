@@ -77,6 +77,7 @@
 - (void)loadDataSuccess:(AccountCenterModel *)model {
     self.model = model;
     self.accountCenterView.model = model;
+    [User shareUser].phone = model.data.userInfo.mobile;
     if (!model.data.userInfo) {
         [[User shareUser] logoutManually:NO withSuccess:nil failure:nil];
     }
@@ -256,7 +257,9 @@
             break;
         case AccountCenterViewActionTypeScore:
         {
-            toController = [[ScoreCenterViewController alloc] initWithNibName:@"ScoreCenterViewController" bundle:nil];
+            if (self.model.data.memberPage.isApp) {
+                toController = [[ScoreCenterViewController alloc] initWithNibName:@"ScoreCenterViewController" bundle:nil];
+            }
         }
             break;
         case AccountCenterViewActionTypeRadish:

@@ -23,7 +23,7 @@
 #import "OrderBookingMakeSureCell.h"
 
 #import "ProductDetailViewController.h"
-#import "StoreDetailViewController.h"
+#import "TCStoreDetailViewController.h"
 #import "OrderBookingSelectTimeViewController.h"
 #import "OrderBookingSelectAgeViewController.h"
 
@@ -231,7 +231,9 @@
 }
 
 - (void)storeInfo {
-    StoreDetailViewController *controller = [[StoreDetailViewController alloc] initWithStoreId:self.data.storeInfo.storeNo];
+    TCStoreDetailViewController *controller = [[TCStoreDetailViewController alloc] init];
+    controller.storeId = self.data.storeInfo.storeNo;
+
     [self.navigationController pushViewController:controller animated:YES];
 }
 

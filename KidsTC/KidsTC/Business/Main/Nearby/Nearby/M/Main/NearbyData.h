@@ -22,4 +22,5 @@
  */
 @property (nonatomic, strong) NSString *stValue;//排序规则
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic,assign) BOOL isLoadRecommend;
 @end

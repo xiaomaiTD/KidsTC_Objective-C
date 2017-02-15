@@ -31,7 +31,6 @@
     self.starBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarStar;
     self.selectSeatBtn.tag = ProductDetailBaseToolBarActionTypeTicketToolBarSelectSeat;
     [self layoutIfNeeded];
-    [NotificationCenter addObserver:self selector:@selector(ticketLike) name:kProductDetaiTicketLike object:nil];
 }
 
 - (void)setData:(ProductDetailData *)data {
@@ -45,21 +44,9 @@
     ProductDetailBaseToolBarActionType type = (ProductDetailBaseToolBarActionType)sender.tag;
     if ([self.delegate respondsToSelector:@selector(productDetailBaseToolBar:actionType:value:)]) {
         [self.delegate productDetailBaseToolBar:self actionType:type value:self.data];
-        if (type == ProductDetailBaseToolBarActionTypeTicketToolBarStar) {
-            [[User shareUser] checkLoginWithTarget:nil resultBlock:^(NSString *uid, NSError *error) {
-                self.data.isFavor = !self.data.isFavor;
-                [NotificationCenter postNotificationName:kProductDetaiTicketLike object:nil];
-            }];
-        }
+        
     }
 }
 
-- (void)ticketLike {
-    self.starBtn.selected = self.data.isFavor;
-}
-
-- (void)dealloc {
-    [NotificationCenter removeObserver:self name:kProductDetaiTicketLike object:nil];
-}
 
 @end

@@ -250,10 +250,39 @@
                 if ([title isNotNull]) {
                     NSMutableAttributedString *attTitle = [[NSMutableAttributedString alloc] initWithString:title];
                     attTitle.color = [UIColor colorFromHexString:@"333333"];
-                    attTitle.font = [UIFont systemFontOfSize:14];
-                    attTitle.alignment = NSTextAlignmentCenter;
+                    attTitle.font = [UIFont systemFontOfSize:15];
+                    attTitle.alignment = NSTextAlignmentLeft;
                     _attTitle = attTitle;
                 }
+                
+                if (_address) {
+                    NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:title];
+                    attStoreAddress.color = [UIColor colorFromHexString:@"A9A9A9"];
+                    attStoreAddress.font = [UIFont systemFontOfSize:11];
+                    attStoreAddress.alignment = NSTextAlignmentLeft;
+                    _attStoreAddress = attStoreAddress;
+                }
+                
+                if ([price isNotNull]) {
+                    NSMutableAttributedString *attPrice = [[NSMutableAttributedString alloc] initWithString:price];
+                    attPrice.lineSpacing = 0;
+                    attPrice.color = [UIColor colorFromHexString:@"FF4A47"];
+                    attPrice.font = [UIFont systemFontOfSize:15];
+                    attPrice.lineBreakMode = NSLineBreakByTruncatingTail;
+                    attPrice.alignment = NSTextAlignmentLeft;
+                    
+                    if ([_priceSuffix isNotNull]) {
+                        NSMutableAttributedString *attPriceTip = [[NSMutableAttributedString alloc] initWithString:_priceSuffix];
+                        attPriceTip.lineSpacing = 0;
+                        attPriceTip.color = [UIColor colorFromHexString:@"555555"];
+                        attPriceTip.font = [UIFont systemFontOfSize:10];
+                        attPriceTip.lineBreakMode = NSLineBreakByTruncatingTail;
+                        attPriceTip.alignment = NSTextAlignmentLeft;
+                        [attPrice appendAttributedString:attPriceTip];
+                    }
+                    _attPrice = attPrice;
+                }
+                
             }
                 break;
         }
