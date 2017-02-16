@@ -77,10 +77,11 @@
     [Request startWithName:@"GET_SEC_KILL_EVENT_TAB" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         [TCProgressHUD dismissSVP];
         SeckillTimeData *data = [SeckillTimeModel modelWithDictionary:dic].data;
-        if (data) {
+        if (data && data.tabs.count>0) {
             [self loadSeckillSuccess:data];
         }else{
-            [self loadSeckillFailure:nil];
+            NSError *error = [NSError errorWithDomain:@"" code:-1 userInfo:@{@"data":@"暂无秒杀场次，请稍后再试！"}];
+            [self loadSeckillFailure:error];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [TCProgressHUD dismissSVP];

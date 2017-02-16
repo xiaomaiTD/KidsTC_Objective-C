@@ -14,21 +14,21 @@
     SearchHotKeywordsItem *item = [SearchHotKeywordsItem new];
     item.name = name;
     item.searchType = SearchTypeProduct;
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    if ([name isNotNull]) {
-        [param setObject:name forKey:kSearchKey_words];
-    }
-    item.search_parms = [NSDictionary dictionaryWithDictionary:param];
+//    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+//    if ([name isNotNull]) {
+//        [param setObject:name forKey:kSearchKey_words];
+//    }
+//    item.search_parms = [NSDictionary dictionaryWithDictionary:param];
     return item;
 }
-- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
-    
-    if ([_name isNotNull]) {
-        NSMutableDictionary *search_params = [NSMutableDictionary dictionaryWithDictionary:_search_parms];
-        [search_params setObject:_name forKey:kSearchKey_words];
-        _search_parms = [NSDictionary dictionaryWithDictionary:search_params];
-    }
-    
-    return YES;
-}
+//- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+//    
+//    if ([_name isNotNull]) {
+//        NSMutableDictionary *search_params = [NSMutableDictionary dictionaryWithDictionary:_search_parms];
+//        [search_params setObject:_name forKey:kSearchKey_words];
+//        _search_parms = [NSDictionary dictionaryWithDictionary:search_params];
+//    }
+//    
+//    return YES;
+//}
 @end

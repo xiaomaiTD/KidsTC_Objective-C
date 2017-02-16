@@ -191,6 +191,10 @@
 #pragma mark ScoreExchangeViewControllerDelegate
 
 - (void)scoreExchangeViewControllerDidExchangeSuccess:(ScoreExchangeViewController *)controller {
+    [self reloadScore];
+}
+
+- (void)reloadScore {
     [Request startWithName:@"GET_USER_RADISH_SCORE_INFO" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         ScoreUserInfoData *data = [ScoreUserInfoModel modelWithDictionary:dic].data;
         if (data) {
@@ -310,6 +314,8 @@
     }];
     self.earnView.orderItems = [NSArray arrayWithArray:ary];
     [self.earnView reloadData];
+    
+    [self reloadScore];
 }
 
 #pragma mark segue

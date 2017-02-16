@@ -23,6 +23,7 @@
 @interface ScoreCenterViewController ()<ScoreCenterViewDelegate>
 @property (strong, nonatomic) IBOutlet ScoreCenterView *centerView;
 @property (nonatomic,strong) ScoreUserInfoData *userInfoData;
+@property (nonatomic,assign) BOOL showSvp;
 @end
 
 @implementation ScoreCenterViewController
@@ -34,12 +35,17 @@
     self.naviTheme = NaviThemeWihte;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.centerView.delegate = self;
+    self.showSvp = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self loadBase];
-    
+    self.showSvp = NO;
 }
 
 - (void)loadBase {
-    [TCProgressHUD showSVP];
+    if(self.showSvp) [TCProgressHUD showSVP];
     [Request startWithName:@"GET_USER_RADISH_SCORE_INFO" param:nil progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
         ScoreUserInfoData *data = [ScoreUserInfoModel modelWithDictionary:dic].data;
         if (data) {

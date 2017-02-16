@@ -99,14 +99,13 @@ static NSString *const MemberLargeCellID = @"ScoreEarnMemberLargeCell";
         }
     }
     
-    if (self.productData.products.count<1 && self.orderItems.count<1) {
+    [self reloadData];
+    
+    if (self.items.count<1) {
         self.tableView.backgroundView = [[KTCEmptyDataView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                                           image:nil description:@"啥都没有啊…"
                                                                      needGoHome:NO];
     }else self.tableView.backgroundView = nil;
-    
-    [self reloadData];
-    
 }
 
 - (void)reloadData {

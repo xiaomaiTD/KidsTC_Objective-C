@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海上海市嘉定区周家桥街道龙井路1208弄190号12号楼8楼803室" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9k-ZM-cft">
-                        <rect key="frame" x="47" y="41" width="245" height="21"/>
+                        <rect key="frame" x="47" y="41" width="250" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -33,15 +33,15 @@
                             <constraint firstAttribute="width" constant="22" id="rnK-ax-T38"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_r" translatesAutoresizingMaskIntoConstraints="NO" id="yJx-1J-744">
-                        <rect key="frame" x="292" y="33" width="13" height="13"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ServiceSettlement_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yJx-1J-744">
+                        <rect key="frame" x="297" y="32.5" width="8" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="yJx-1J-744" secondAttribute="height" multiplier="1:1" id="WN0-Rs-Wwf"/>
-                            <constraint firstAttribute="width" constant="13" id="kgB-9z-ees"/>
+                            <constraint firstAttribute="width" constant="8" id="NHX-Vk-Wzu"/>
+                            <constraint firstAttribute="width" secondItem="yJx-1J-744" secondAttribute="height" multiplier="35:61" id="mo9-wO-9On"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="顾晶晶  13916539506" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCB-5E-jac">
-                        <rect key="frame" x="47" y="14" width="245" height="17"/>
+                        <rect key="frame" x="47" y="14" width="250" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -55,6 +55,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="H9k-ZM-cft" firstAttribute="leading" secondItem="6KI-vN-fK4" secondAttribute="trailing" constant="10" id="0b6-Qp-nSG"/>
+                    <constraint firstAttribute="trailing" secondItem="yJx-1J-744" secondAttribute="trailing" constant="15" id="289-Cf-Rxd"/>
                     <constraint firstAttribute="bottom" secondItem="H9k-ZM-cft" secondAttribute="bottom" constant="16" id="9bn-i8-j0P"/>
                     <constraint firstItem="yJx-1J-744" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="A9h-lc-NCs"/>
                     <constraint firstItem="6KI-vN-fK4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AXG-g8-Xj1"/>
@@ -67,7 +68,6 @@
                     <constraint firstAttribute="bottom" secondItem="iZ5-nr-R61" secondAttribute="bottom" id="h94-h0-EE3"/>
                     <constraint firstAttribute="trailing" secondItem="iZ5-nr-R61" secondAttribute="trailing" id="iat-si-9vU"/>
                     <constraint firstItem="yJx-1J-744" firstAttribute="leading" secondItem="H9k-ZM-cft" secondAttribute="trailing" id="jWO-H1-1nC"/>
-                    <constraint firstAttribute="trailing" secondItem="yJx-1J-744" secondAttribute="trailing" constant="15" id="lnz-l1-NXB"/>
                     <constraint firstItem="H9k-ZM-cft" firstAttribute="leading" secondItem="pCB-5E-jac" secondAttribute="leading" id="pzO-IR-cgX"/>
                     <constraint firstItem="iZ5-nr-R61" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yTA-v4-LLO"/>
                 </constraints>
@@ -86,8 +86,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ProductOrderNormalDetail_address" width="76" height="96"/>
-        <image name="arrow_r" width="15" height="15"/>
+        <image name="ProductOrderNormalDetail_address" width="79" height="99"/>
+        <image name="ServiceSettlement_arrow" width="35" height="61"/>
         <image name="settlement_address_tip" width="1585" height="16"/>
     </resources>
 </document>

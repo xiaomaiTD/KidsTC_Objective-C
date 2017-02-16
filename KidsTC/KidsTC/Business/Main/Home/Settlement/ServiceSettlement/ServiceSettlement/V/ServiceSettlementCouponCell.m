@@ -19,11 +19,19 @@
 @property (weak, nonatomic) IBOutlet UILabel *couponDescLabel;
 @property (weak, nonatomic) IBOutlet UILabel *couponPriceTipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *couponTipLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *couponArrowImg;
+
 
 @property (weak, nonatomic) IBOutlet UIView *scoreBGView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreTipLabel;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *scoreInputTf;
 @property (weak, nonatomic) IBOutlet UILabel *useScoreTipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreMoneyL;
+@property (weak, nonatomic) IBOutlet UIImageView *scoreArrowImg;
+@property (weak, nonatomic) IBOutlet UIButton *scoreBtn;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintHeight;
 @end
 
@@ -35,7 +43,6 @@
     self.couponTipL.textColor = [UIColor colorFromHexString:@"222222"];
     self.scoreTipL.textColor = [UIColor colorFromHexString:@"222222"];
     self.promotionTipLabel.textColor = COLOR_YELL;
-    self.useScoreTipLabel.textColor = [UIColor colorFromHexString:@"555555"];
     
     self.couponDescBGView.backgroundColor = COLOR_PINK;
     self.couponDescBGView.layer.cornerRadius = 2;
@@ -52,6 +59,11 @@
     [self.couponBGView addGestureRecognizer:couponTapGR];
     
     [self layoutIfNeeded];
+}
+- (IBAction)scoreAction:(UIButton *)sender {
+    if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
+        [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeScore value:nil];
+    }
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item{
@@ -74,7 +86,9 @@
     NSString *couponTip = @"";
     if (count==0) {
         couponTip = @"不可使用";
+        self.couponArrowImg.hidden = YES;
     }else{
+        self.couponArrowImg.hidden = NO;
         if (item.maxCoupon) {
             couponTip = @"已使用";
         }else {
@@ -86,35 +100,30 @@
     /**
      *  ======================积分=====================
      */
-    NSString *scorenumStr = [NSString stringWithFormat:@"%zd",item.scorenum];
-    NSString *scorenumTip = [NSString stringWithFormat:@"共%@积分可使用",scorenumStr];
-    UIFont *font = [UIFont systemFontOfSize:12];
-    NSDictionary *att = @{NSFontAttributeName:font,
-                          NSForegroundColorAttributeName:[UIColor lightGrayColor]};
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:scorenumTip
-                                                                              attributes:att];
-    [attStr addAttribute:NSForegroundColorAttributeName value:COLOR_PINK range:[scorenumTip rangeOfString:scorenumStr]];
-    self.scoreTipLabel.attributedText = attStr;
-    
-    self.scoreInputTf.hidden = !(item.scorenum>0);
-    if (!self.scoreInputTf.hidden) {
-        self.scoreInputTf.text = @(item.usescorenum).stringValue;
+    if (item.usescorenum>0) {
+        self.useScoreTipLabel.text = [NSString stringWithFormat:@"已使用%@积分，抵扣",@(item.usescorenum)];
+        self.scoreMoneyL.text = [NSString stringWithFormat:@"¥%@",@(item.usescorenum/10.0)];
+        self.scoreArrowImg.hidden = NO;
+        self.scoreBtn.enabled = YES;
+    }else{
+        if (item.scorenum>0) {
+            self.useScoreTipLabel.text = [NSString stringWithFormat:@"共%@积分，可抵扣",@(item.scorenum)];
+            self.scoreMoneyL.text = [NSString stringWithFormat:@"¥%@",@(item.scorenum/10.0)];
+            self.scoreArrowImg.hidden = NO;
+            self.scoreBtn.enabled = YES;
+        }else{
+            self.useScoreTipLabel.text = [NSString stringWithFormat:@"无可用积分"];
+            self.scoreMoneyL.text = nil;
+            self.scoreArrowImg.hidden = YES;
+            self.scoreBtn.enabled = NO;
+        }
     }
-    self.useScoreTipLabel.text = item.scorenum>0?@"积分":@"不可使用";
 }
 
 - (void)tapGRAction:(UITapGestureRecognizer *)tapGR {
     if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
         [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeCoupon value:nil];
     }
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    
-    if ([self.delegate respondsToSelector:@selector(serviceSettlementBaseCell:actionType:value:)]) {
-        [self.delegate serviceSettlementBaseCell:self actionType:ServiceSettlementBaseCellActionTypeScore value:nil];
-    }
-    return NO;
 }
 
 @end

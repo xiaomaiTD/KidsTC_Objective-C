@@ -78,6 +78,7 @@
             self.fightGroupL.hidden = NO;
             self.fightGroupL.text = product.joinDesc;
             self.priceBGViewLeading.constant = 15 + 8 + [product.joinDesc sizeWithAttributes:@{NSFontAttributeName:self.fightGroupL.font}].width;
+            self.priceL.text = product.price;
         }
             break;
         case ProductDetailTypeRadish:
@@ -87,6 +88,7 @@
             self.fightGroupL.hidden = YES;
             self.fightGroupL.text = nil;
             self.priceBGViewLeading.constant = 15 + 8 + [self.radishCountL.text sizeWithAttributes:@{NSFontAttributeName:self.radishCountL.font}].width + 37;
+            self.priceL.text = [product.price isNotNull]?[NSString stringWithFormat:@"+%@元",product.price]:nil;
         }
             break;
         default:
@@ -96,13 +98,14 @@
             self.fightGroupL.hidden = YES;
             self.fightGroupL.text = nil;
             self.priceBGViewLeading.constant = 15;
+            self.priceL.text = product.price;
         }
             break;
     }
     
     self.nameL.text = product.productName;
     self.subTitleL.text = product.promotionText;
-    self.priceL.text = product.price;
+    
     if ([product.discount isNotNull]) {
         self.discountBGView.hidden = NO;
         self.discountBGViewLeading.constant = 8;

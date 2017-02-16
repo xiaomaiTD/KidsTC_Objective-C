@@ -443,7 +443,7 @@ singleM(NotificationService)
 - (void)readMessage:(NotificationModel *)model {
     NSDictionary *params = @{@"ids":model.ID,
                              @"remindType":@(model.remindType),
-                             @"messageType":@(model.messageType)};
+                             @"messageType":@(MessageTypeUserCenter)};
     [Request startWithName:@"PUSH_USER_READ_MESSAGE" param:params progress:nil success:nil failure:nil];
 }
 

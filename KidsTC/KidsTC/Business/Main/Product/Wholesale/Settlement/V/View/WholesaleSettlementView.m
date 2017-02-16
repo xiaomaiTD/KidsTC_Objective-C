@@ -7,6 +7,7 @@
 //
 
 #import "WholesaleSettlementView.h"
+#import "NSString+Category.h"
 
 #import "WholesaleSettlementBaseCell.h"
 #import "WholesaleSettlementAddressTipCell.h"
@@ -67,7 +68,7 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-kWholesaleSettlementToolBarH) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStyleGrouped];
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 66;
@@ -150,6 +151,13 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    BOOL addressShow = self.data.hasUserAddress && [self.data.userAddressInfo.addressDescription isNotNull];
+    BOOL scrollShow = scrollView.contentOffset.y>80;
+    NSLog(@"scrollShow:%@",@(scrollView.contentOffset.y));
+    [self.toolBar setAddressBGViewHide:(!addressShow || !scrollShow)];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;
 }
@@ -166,7 +174,7 @@ static NSString *const DateCellID = @"WholesaleSettlementDateCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return (section==self.sections.count-1)?38:10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

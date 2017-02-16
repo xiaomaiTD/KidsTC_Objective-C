@@ -8,30 +8,27 @@
 
 #import "TCStoreDetailCouponCell.h"
 
-@interface TCStoreDetailCouponCell ()
+#import "TCStoreDetailCouponItemView.h"
 
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *coupons;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btns;
+@interface TCStoreDetailCouponCell ()<TCStoreDetailCouponItemViewDelegate>
+@property (strong, nonatomic) IBOutletCollection(TCStoreDetailCouponItemView) NSArray *coupons;
 @end
 
 @implementation TCStoreDetailCouponCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.btns enumerateObjectsUsingBlock:^(UIButton *btn, NSUInteger idx, BOOL * _Nonnull stop) {
-        btn.tag = idx;
+    [self.coupons enumerateObjectsUsingBlock:^(TCStoreDetailCouponItemView *obj, NSUInteger idx, BOOL *stop) {
+        obj.delegate = self;
     }];
 }
 
 - (void)setData:(TCStoreDetailData *)data {
     [super setData:data];
-    
-    [self.coupons enumerateObjectsUsingBlock:^(UIView  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (idx<data.coupons.count && idx<self.labels.count) {
+    [self.coupons enumerateObjectsUsingBlock:^(TCStoreDetailCouponItemView  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx<data.coupons.count) {
             TCStoreDetailCoupon *coupon = data.coupons[idx];
-            UILabel *label = self.labels[idx];
-            label.text = coupon.couponName;
+            obj.coupon = coupon;
             obj.hidden = NO;
         }else{
             obj.hidden = YES;
@@ -39,9 +36,11 @@
     }];
 }
 
-- (IBAction)action:(UIButton *)sender {
+#pragma mark TCStoreDetailCouponItemViewDelegate
+
+- (void)tcStoreDetailCouponItemView:(TCStoreDetailCouponItemView *)view didClickCoupon:(TCStoreDetailCoupon *)coupon {
     if ([self.delegate respondsToSelector:@selector(tcStoreDetailBaseCell:actionType:value:)]) {
-        [self.delegate tcStoreDetailBaseCell:self actionType:TCStoreDetailBaseCellActionTypeCoupon value:@(sender.tag)];
+        [self.delegate tcStoreDetailBaseCell:self actionType:TCStoreDetailBaseCellActionTypeCoupon value:coupon];
     }
 }
 @end

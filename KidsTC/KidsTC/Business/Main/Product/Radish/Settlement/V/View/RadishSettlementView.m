@@ -7,6 +7,7 @@
 //
 
 #import "RadishSettlementView.h"
+#import "NSString+Category.h"
 
 #import "RadishSettlementBaseCell.h"
 #import "RadishSettlementTipAddressCell.h"
@@ -50,6 +51,7 @@ static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, CGRectGetHeight(self.bounds));
+    self.toolBar.frame = CGRectMake(0, SCREEN_HEIGHT-64-kRadishSettlementToolBarH, SCREEN_WIDTH, kRadishSettlementToolBarH);
 }
 
 - (void)setData:(RadishSettlementData *)data {
@@ -60,6 +62,7 @@ static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
 }
 
 - (void)reloadData {
+    self.toolBar.data = self.data;
     [self.tableView reloadData];
 }
 
@@ -73,7 +76,7 @@ static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
 #pragma mark - setupTableView
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-kRadishSettlementToolBarH) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
     tableView.backgroundColor = [UIColor colorFromHexString:@"F7F7F7"];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.contentInset = UIEdgeInsetsMake(0, 0, kRadishSettlementToolBarH, 0);
@@ -165,6 +168,14 @@ static NSString *const UserRemarkCellID = @"RadishSettlementUserRemarkCell";
 }
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    BOOL addressShow = self.data.hasUserAddress && [self.data.userAddressInfo.addressDescription isNotNull];
+    BOOL scrollShow = scrollView.contentOffset.y>80;
+    NSLog(@"scrollShow:%@",@(scrollView.contentOffset.y));
+    [self.toolBar setAddressBGViewHide:(!addressShow || !scrollShow)];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.sections.count;

@@ -177,7 +177,6 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
 
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
     [picker dismissViewControllerAnimated:NO completion:nil];
-    
     if (photos.count>0) {
         [self trimImage:photos[0]];
     }
@@ -196,12 +195,12 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
 
 - (void)imageTrimViewController:(ImageTrimViewController *)controller didFinishedTrimmingWithNewImage:(UIImage *)image{
     if (image) {
-        [TCProgressHUD showSVP];
         NSData *data = UIImageJPEGRepresentation(image, 0.0);
         NSString *dataString = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
         NSDictionary *param = @{@"fileStr": dataString,
                                 @"suffix" : @"JPEG",
                                 @"count"  : @"1"};
+        [TCProgressHUD showSVP];
         [Request startWithName:@"IMAGE_UPLOAD" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
             NSString *url = dic[@"data"];
             if (url.length==0) {[[iToast makeText:@"图片上传成功,但返回url为空"] show];return;}
@@ -218,7 +217,6 @@ static NSString *const AccountSettingViewCellID = @"AccountSettingViewCellID";
 - (void)uploadImageSuccess:(NSString *)url{
     NSDictionary *param = @{@"headUrl":url};
     [Request startWithName:@"USER_UPDATE_INFO" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        
         [TCProgressHUD dismissSVP];
         [[iToast makeText:@"头像更换成功"] show];
         self.model.headerUrl = url;

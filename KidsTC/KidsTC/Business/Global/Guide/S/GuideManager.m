@@ -111,11 +111,7 @@ singleM(GuideManager)
                                                   btnCanShow:NO
                                                 btnImageName:nil
                                                     btnFrame:CGRectZero];
-    GuideDataItem *item_2 = [GuideDataItem itemWithImageName:@"productDetail_guid_03"
-                                                  btnCanShow:NO
-                                                btnImageName:nil
-                                                    btnFrame:CGRectZero];
-    return [GuideModel modelWithDatas:@[item_0,item_1,item_2]];
+    return [GuideModel modelWithDatas:@[item_0,item_1]];
 }
 
 - (GuideModel *)storeDtailGuideModel {

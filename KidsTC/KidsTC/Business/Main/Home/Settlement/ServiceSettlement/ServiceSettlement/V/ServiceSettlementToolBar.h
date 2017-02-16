@@ -23,4 +23,5 @@ typedef enum : NSUInteger {
 @interface ServiceSettlementToolBar : UIView
 @property (nonatomic, weak) id<ServiceSettlementToolBarDelegate> delegate;
 @property (nonatomic, strong) ServiceSettlementDataItem *item;
+- (void)setAddressBGViewHide:(BOOL)hide;
 @end

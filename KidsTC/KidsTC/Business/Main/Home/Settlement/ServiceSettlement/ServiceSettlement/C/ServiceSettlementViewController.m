@@ -102,7 +102,7 @@
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kServiceSettlementToolBarH) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -223,12 +223,23 @@
 
 #pragma mark UITableViewDelegate,UITableViewDataSource
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    BOOL addressShow = self.model.data.hasUserAddress && [self.model.data.userAddress.addressDescription isNotNull];
+    BOOL scrollShow = scrollView.contentOffset.y>80;
+    NSLog(@"scrollShow:%@",@(scrollView.contentOffset.y));
+    [self.tooBar setAddressBGViewHide:(!addressShow || !scrollShow)];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.sections[section].count;
+    if (section<self.sections.count) {
+        return self.sections[section].count;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -236,7 +247,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return (section==self.sections.count-1)?38:10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -269,6 +280,7 @@
             controller.fromeType = UserAddressManageFromTypeSettlement;
             controller.pickeAddressBlock = ^void (UserAddressManageDataItem *item){
                 self.model.data.userAddress = item;
+                self.tooBar.item = self.model.data;
                 [self.tableView reloadData];
             };
             [self.navigationController pushViewController:controller animated:YES];
@@ -697,7 +709,7 @@
 }
 
 - (void)keyboardWillDisappear:(NSNotification *)noti {
-    self.tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - kServiceSettlementToolBarH);
+    self.tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49);
 }
 
 - (void)dealloc {

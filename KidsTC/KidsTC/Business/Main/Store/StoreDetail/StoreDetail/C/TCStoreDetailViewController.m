@@ -214,14 +214,18 @@ StoreDetailCouponMoreViewControllerDelegate
 }
 
 - (void)coupon:(id)value {
-    if (![value respondsToSelector:@selector(integerValue)]) {
+    
+    if (![User shareUser].hasLogin) {
+        [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
+            [self loadData];
+        }];
         return;
     }
-    NSInteger index = [value integerValue];
-    if (index>=self.data.coupons.count) {
+    
+    if (![value isKindOfClass:[TCStoreDetailCoupon class]]) {
         return;
     }
-    TCStoreDetailCoupon *coupon = self.data.coupons[index];
+    TCStoreDetailCoupon *coupon = value;
     if (coupon.isProvider) {
         [[iToast makeText:@"不可重复领取哦~"] show];
         return;
@@ -231,20 +235,19 @@ StoreDetailCouponMoreViewControllerDelegate
         [[iToast makeText:@"该优惠券暂不支持领取"] show];
         return;
     }
-    [[User shareUser] checkLoginWithTarget:self resultBlock:^(NSString *uid, NSError *error) {
-        NSDictionary *param = @{@"batchid":batchNo};
-        [TCProgressHUD showSVP];
-        [Request startWithName:@"COUPON_FETCH" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-            [TCProgressHUD dismissSVP];
-            NSString *errMsg = @"恭喜您，优惠券领取成功！";
-            [[iToast makeText:errMsg] show];
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [TCProgressHUD dismissSVP];
-            NSString *errMsg = @"领取优惠券失败，请稍后再试~";
-            NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
-            if ([text isNotNull]) errMsg = text;
-            [[iToast makeText:errMsg] show];
-        }];
+    
+    NSDictionary *param = @{@"batchid":batchNo};
+    [TCProgressHUD showSVP];
+    [Request startWithName:@"COUPON_FETCH" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        [TCProgressHUD dismissSVP];
+        NSString *errMsg = @"恭喜您，优惠券领取成功！";
+        [[iToast makeText:errMsg] show];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [TCProgressHUD dismissSVP];
+        NSString *errMsg = @"领取优惠券失败，请稍后再试~";
+        NSString *text = [NSString stringWithFormat:@"%@",error.userInfo[@"data"]];
+        if ([text isNotNull]) errMsg = text;
+        [[iToast makeText:errMsg] show];
     }];
 }
 
@@ -397,14 +400,10 @@ StoreDetailCouponMoreViewControllerDelegate
 
 - (void)loadStoreNearby {
     NSDictionary *param = @{@"storeId":_storeId};
-    [TCProgressHUD showSVP];
     [Request startWithName:@"GET_STORE_NEAR_BY" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        [TCProgressHUD dismissSVP];
         TCStoreDetailNearbyData *data = [TCStoreDetailNearbyModel modelWithDictionary:dic].data;
         if (data) [self loadStoreNearbyDataSuccess:data];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [TCProgressHUD dismissSVP];
-    }];
+    } failure:nil];
 }
 
 - (void)loadStoreNearbyDataSuccess:(TCStoreDetailNearbyData *)data {

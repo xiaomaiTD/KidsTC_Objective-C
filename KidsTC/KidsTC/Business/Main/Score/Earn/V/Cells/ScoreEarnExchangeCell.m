@@ -23,11 +23,14 @@
     self.HLineH.constant = LINE_H;
     self.plantBtn.tag = ScoreEarnBaseCellActionTypePlant;
     self.exchangeBtn.tag = ScoreEarnBaseCellActionTypeExchange;
+    [self.exchangeBtn setImage:[UIImage imageNamed:@"Score_exchange_01"] forState:UIControlStateNormal];
+    [self.exchangeBtn setImage:[UIImage imageNamed:@"Score_exchange_01_un"] forState:UIControlStateDisabled];
 }
 
 - (void)setItem:(ScoreEarnShowItem *)item {
     [super setItem:item];
     ScoreUserInfoData *userInfoData = self.userInfoData;
+    self.exchangeBtn.enabled = userInfoData.canMaxScore>0;
     self.radishCountL.text = [NSString stringWithFormat:@"%@根",@(userInfoData.canMaxScore*userInfoData.radishExchangeRate)];
     self.scoreCountL.text = [NSString stringWithFormat:@"%@积分",@(userInfoData.canMaxScore)];
 }

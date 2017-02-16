@@ -15,6 +15,7 @@
 
 @interface ServiceSettlementUserRemarkCell ()<UITextViewDelegate,ServiceSettlementBuyNumTfInputViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *inputBGView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inputH;
 
 @property (weak, nonatomic) IBOutlet UITextView *tv;
 @property (weak, nonatomic) IBOutlet UILabel *tvTipL;
@@ -32,9 +33,6 @@
     self.tv.inputAccessoryView = inputView;
     self.tv.font = [UIFont systemFontOfSize:14];
     self.tv.textColor = [UIColor colorFromHexString:@"222222"];
-    
-    self.inputBGView.layer.borderWidth = LINE_H;
-    self.inputBGView.layer.borderColor = [UIColor colorFromHexString:@"cccccc"].CGColor;
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
@@ -49,10 +47,18 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
     self.tvTipL.hidden = textView.text.length>0;
+    
     if (textView.text.length>100) {
         textView.text = [textView.text substringToIndex:100];
         [[iToast makeText:@"最多只能输入100个字哦"] show];
     }
+//    
+//    CGFloat height = [textView.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-16, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:textView.font} context:nil].size.height + 8;
+//    if (height<16) height=16;
+//    self.inputH.constant =height;
+//    
+//    [self layoutIfNeeded];
+    
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {

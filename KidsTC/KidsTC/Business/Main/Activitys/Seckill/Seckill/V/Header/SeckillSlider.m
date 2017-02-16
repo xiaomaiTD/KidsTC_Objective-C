@@ -82,7 +82,7 @@ CGFloat const kSeckillSliderH = 122;
 
 - (void)setTimeData:(SeckillTimeData *)timeData {
     _timeData = timeData;
-    self.hidden = (timeData==nil);
+    self.hidden = (timeData==nil||timeData.tabs.count<1);
     if (self.dates.count>0) {
         [self.dates makeObjectsPerformSelector:@selector(removeFromSuperview)];
         self.dates = nil;

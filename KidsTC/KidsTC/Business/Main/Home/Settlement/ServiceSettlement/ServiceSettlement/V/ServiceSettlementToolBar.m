@@ -9,7 +9,7 @@
 #import "ServiceSettlementToolBar.h"
 #import "Colours.h"
 
-CGFloat const kServiceSettlementToolBarH = 49;
+CGFloat const kServiceSettlementToolBarH = 77;
 
 @interface ServiceSettlementToolBar ()
 @property (weak, nonatomic) IBOutlet UILabel *tipL;
@@ -17,6 +17,10 @@ CGFloat const kServiceSettlementToolBarH = 49;
 @property (weak, nonatomic) IBOutlet UIButton *commitBtn;
 @property (weak, nonatomic) IBOutlet UIView *Hline;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineH;
+
+@property (weak, nonatomic) IBOutlet UIView *addressBGView;
+@property (weak, nonatomic) IBOutlet UILabel *addressL;
+
 @end
 
 @implementation ServiceSettlementToolBar
@@ -29,8 +33,12 @@ CGFloat const kServiceSettlementToolBarH = 49;
     self.commitBtn.backgroundColor = COLOR_PINK;
     [self.commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self layoutIfNeeded];
-    
+    self.addressBGView.hidden = YES;
     self.commitBtn.tag = ServiceSettlementToolBarActionTypeCommit;
+}
+
+- (void)setAddressBGViewHide:(BOOL)hide {
+    self.addressBGView.hidden = hide;
 }
 
 - (void)setItem:(ServiceSettlementDataItem *)item {
@@ -53,6 +61,7 @@ CGFloat const kServiceSettlementToolBarH = 49;
         }
             break;
     }
+    self.addressL.text = [NSString stringWithFormat:@"送至：%@",_item.userAddress.addressDescription];
 }
 
 - (IBAction)commit:(UIButton *)sender {

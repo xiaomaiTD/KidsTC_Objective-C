@@ -212,16 +212,28 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     if (self.animationBlock || [self isShowing]) {
         return;
     }
+    
+    
+    
     CGFloat viewWidth = SCREEN_WIDTH / 4;
-    self.frame = CGRectMake(SCREEN_WIDTH + viewWidth, 64, viewController.view.frame.size.width, viewController.view.frame.size.height-64);
+    self.frame = CGRectMake(SCREEN_WIDTH + viewWidth, 0, viewController.view.frame.size.width, viewController.view.frame.size.height);
     [self setAlpha:0];
-    [viewController.view addSubview:self];
-    [viewController.view layoutIfNeeded];
+    
+    UIWindow *window = [[UIApplication sharedApplication].delegate window];
+    if ([window isKeyWindow] == NO)
+    {
+        [window makeKeyAndVisible];
+    }
+    if (window && self) {
+        [window addSubview:self];
+        [window layoutIfNeeded];
+    }
+    
     _isShowing = YES;
     
     self.animationBlock = YES;
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.frame = CGRectMake(0, 64, self.frame.size.width, self.frame.size.height) ;
+        self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) ;
         [self setAlpha:1];
     } completion:^(BOOL finished) {
         self.animationBlock = NO;
@@ -235,7 +247,7 @@ static KTCBrowseHistoryView *_sharedInstance = nil;
     CGFloat viewWidth = SCREEN_WIDTH / 4;
     self.animationBlock = YES;
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.frame = CGRectMake(SCREEN_WIDTH + viewWidth, 64, self.frame.size.width, self.frame.size.height) ;
+        self.frame = CGRectMake(SCREEN_WIDTH + viewWidth, 0, self.frame.size.width, self.frame.size.height) ;
         [self setAlpha:0];
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

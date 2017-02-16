@@ -377,9 +377,14 @@ static Request *_requestManager;
     return str;
 }
 
+static bool canupload = true;
+
 + (void)getStatusCodeItem:(InterfaceItem *)interfaceItem
                      task:(NSURLSessionDataTask *)task
 {
+    if(!canupload)return;
+    canupload = false;
+    
     NSString *urlTag = interfaceItem.name;
     if (![urlTag isNotNull]) return;
     
@@ -438,8 +443,10 @@ static Request *_requestManager;
                     if (![aryStr isNotNull]) return;
                     NSDictionary *param = @{@"reportMsg":aryStr};
                     [Request startWithName:@"REPORT_API_CELL_TIME" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+                        canupload = true;
                         [self deleteRequest_not_upload];
                     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        canupload = true;
                         [self deleteRequest_not_upload];
                     }];
                 }];

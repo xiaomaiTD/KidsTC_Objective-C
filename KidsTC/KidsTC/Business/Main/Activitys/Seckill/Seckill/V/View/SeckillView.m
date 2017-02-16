@@ -24,12 +24,8 @@ static NSString *const LargeCellID = @"SeckillLargeCell";
 
 @interface SeckillView ()<UITableViewDelegate,UITableViewDataSource,SeckillBaseCellDelegate,SeckillSliderDelegate,SeckillToolBarDelegate>
 @property (weak, nonatomic) IBOutlet SeckillSlider *slider;
-
-
-
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SeckillToolBar *tooBar;
-
 @end
 
 @implementation SeckillView

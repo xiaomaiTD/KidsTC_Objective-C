@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineConstraintWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *AlertViewConstraintBottomMargin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyBoardMrginH;
 
 @end
 
@@ -33,20 +34,16 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
-    self.alertView.layer.cornerRadius = 8;
-    self.alertView.layer.masksToBounds = YES;
     self.HLineConstraintHeight.constant = LINE_H;
     self.VLineConstraintWidth.constant = LINE_H;
-    self.reachMoneyLabel.textColor = COLOR_PINK;
-    self.totalScoreNumLabel.textColor = COLOR_PINK;
     self.cancleBtn.tag = ServiceSettlementPickScoreActionTypeCancle;
     self.sureBtn.tag = ServiceSettlementPickScoreActionTypeSure;
     
-    self.scoreInputTf.textColor = COLOR_PINK;
-    self.scoreInputTf.layer.borderColor = [[UIColor lightGrayColor]colorWithAlphaComponent:0.3].CGColor;
-    self.scoreInputTf.layer.borderWidth = LINE_H;
+    self.scoreInputTf.layer.cornerRadius = 4;
+    self.scoreInputTf.layer.masksToBounds = YES;
+    self.scoreInputTf.layer.borderColor = [UIColor colorFromHexString:@"CBCBCB"].CGColor;
+    self.scoreInputTf.layer.borderWidth = 1;
     [self.scoreInputTf addTarget:self action:@selector(textFieldTextDidChange:) forControlEvents:UIControlEventEditingChanged];
-    
     
     self.alertView.hidden = YES;
     
@@ -78,19 +75,11 @@
     self.alertView.hidden = NO;
     self.view.backgroundColor = [UIColor clearColor];
     [UIView animateWithDuration:0.3 animations:^{
-        self.AlertViewConstraintBottomMargin.constant = SCREEN_HEIGHT*0.5;
+        self.AlertViewConstraintBottomMargin.constant = 0;
         [self.view layoutIfNeeded];
         self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.2 animations:^{
-            self.alertView.transform = CGAffineTransformMakeScale(1.2, 1.2);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.2 animations:^{
-                self.alertView.transform = CGAffineTransformIdentity;
-            } completion:^(BOOL finished) {
-                [self.scoreInputTf becomeFirstResponder];
-            }];
-        }];
+        [self.scoreInputTf becomeFirstResponder];
     }];
 }
 
@@ -125,6 +114,18 @@
     self.reachMoneyLabel.text = [NSString stringWithFormat:@"%0.1f元",numVlaue/10.0];
     //[textField resignFirstResponder];
     //[textField becomeFirstResponder];
+    [self.view layoutIfNeeded];
+}
+
+- (void)keyboardWillShow:(NSNotification *)noti {
+    [super keyboardWillShow:noti];
+    self.keyBoardMrginH.constant = self.keyboardHeight + 16;
+    [self.view layoutIfNeeded];
+}
+
+- (void)keyboardWillDisappear:(NSNotification *)noti {
+    [super keyboardWillDisappear:noti];
+    self.keyBoardMrginH.constant = 159;
     [self.view layoutIfNeeded];
 }
 

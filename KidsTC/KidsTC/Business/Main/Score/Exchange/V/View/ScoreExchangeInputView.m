@@ -48,6 +48,10 @@
     if (![text respondsToSelector:@selector(integerValue)]) return;
     NSInteger score = text.integerValue;
     NSInteger radishNum = score*self.userInfoData.radishExchangeRate;
+    if (score<=0) {
+        [[iToast makeText:@"兑换积分不能为0"] show];
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(scoreExchangeInputView:exchangeRadishNum:scoreNum:)]) {
         [self.delegate scoreExchangeInputView:self exchangeRadishNum:radishNum scoreNum:score];
     }

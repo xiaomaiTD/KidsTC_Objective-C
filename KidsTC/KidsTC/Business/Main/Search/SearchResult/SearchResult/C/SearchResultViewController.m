@@ -72,11 +72,7 @@
     
     self.rightBarBtn.enabled = (searchType == SearchTypeProduct);
     
-    NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
-    if (![searchKeyWords isNotNull]) {
-        searchKeyWords = nil;
-    }
-    self.tf.text = searchKeyWords;
+    [self setupPlaceHolder];
     
     [self.resultView beginRefreshing];
 }
@@ -127,7 +123,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tf.placeholder = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem.name;
+    [self setupPlaceHolder];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -193,12 +189,15 @@
     self.navigationItem.titleView = tf;
     self.tf = tf;
     
+    [self setupPlaceHolder];
+}
+
+- (void)setupPlaceHolder {
     NSString *searchKeyWords = [NSString stringWithFormat:@"%@",self.params_current[kSearchKey_words]];
     if (![searchKeyWords isNotNull]) {
         searchKeyWords = nil;
     }
     self.tf.text = searchKeyWords;
-    
 }
 
 #pragma mark - UITextFieldDelegate
@@ -265,15 +264,6 @@
     [target presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)search {
-    NSString *key = self.tf.text;
-    SearchHotKeywordsItem *item;
-    if ([key isNotNull]) {
-        item = [SearchHotKeywordsItem itemWithName:key];
-    }else{
-        item = [SearchHotKeywordsManager shareSearchHotKeywordsManager].firstItem;
-    }
-}
 
 - (void)setupToolBar {
     SearchResultToolBar *toolBar = [[NSBundle mainBundle] loadNibNamed:@"SearchResultToolBar" owner:self options:nil].firstObject;

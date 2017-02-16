@@ -19,4 +19,5 @@ extern CGFloat const kRadishSettlementToolBarH;
 @interface RadishSettlementToolBar : UIView
 @property (nonatomic, strong) RadishSettlementData *data;
 @property (nonatomic, weak) id<RadishSettlementToolBarDelegate> delegate;
+- (void)setAddressBGViewHide:(BOOL)hide;
 @end

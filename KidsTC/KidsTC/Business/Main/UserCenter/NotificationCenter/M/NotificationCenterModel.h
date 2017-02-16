@@ -26,7 +26,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NotificationStatus status;
 @property (nonatomic, strong) NSString *createTime;
 @property (nonatomic, strong) NSString *updateTime;
-@property (nonatomic, assign) NSInteger sysNo;
+@property (nonatomic, strong) NSString *sysNo;
 @property (nonatomic, strong) NSString *title;
 //@property (nonatomic, strong) <#type#> *type;
 @property (nonatomic, assign) CGFloat cellHeight;

@@ -127,7 +127,7 @@
     
     if (order.orderKind == OrderKindRadish) {
         self.radishBGView.hidden = NO;
-        self.radishCountL.text = [NSString stringWithFormat:@"%@",order.radishCount];
+        self.radishCountL.text = [NSString stringWithFormat:@"%@根",order.radishCount];
     }else{
         self.radishBGView.hidden = YES;
     }

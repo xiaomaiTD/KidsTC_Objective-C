@@ -24,6 +24,8 @@ NSString *const kActivityWebViewJumpPrefix  = @"hook::jump_activity::";
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.naviTheme = NaviThemeWihte;
     self.view.backgroundColor = [UIColor clearColor];
     
     [self setupWebView];

@@ -19,4 +19,5 @@ extern CGFloat const kWholesaleSettlementToolBarH;
 @interface WholesaleSettlementToolBar : UIView
 @property (nonatomic, strong) WholesaleSettlementData *data;
 @property (nonatomic, weak) id<WholesaleSettlementToolBarDelegate> delegate;
+- (void)setAddressBGViewHide:(BOOL)hide;
 @end

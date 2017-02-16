@@ -15,7 +15,6 @@
 #import "WeChatManager.h"
 #import "KTCMapService.h"
 #import "BuryPointManager.h"
-#import "JSPatch.h"
 #import "NotificationService.h"
 #import <Bugly/Bugly.h>
 
@@ -110,8 +109,6 @@
     
     [self setupUserAgent];
     
-    [self JSPatchRemote:YES];
-    
     [Bugly startWithAppId:@"dcdb33fdf5"];
     
     [[ReachabilityManager shareReachabilityManager] startMonitoring];
@@ -134,23 +131,6 @@
     
     [TCTimer shareTCTimer];
 }
-
-- (void)JSPatchRemote:(BOOL)remote{
-    
-    if (!remote) {
-        [JSPatch testScriptInBundle];
-    }else{
-        [JSPatch setupLogger:^(NSString *msg) {
-            TCLog(@"JSPatch-TCLog-:\n====\n\n%@\n\n=====", msg);
-        }];
-        [JSPatch startWithAppKey:@"5e2b0e78134a2551"];
-#ifdef DEBUG
-        [JSPatch setupDevelopment];
-#endif
-        [JSPatch sync];
-    }
-}
-
 
 - (void)setupUserAgent {
     

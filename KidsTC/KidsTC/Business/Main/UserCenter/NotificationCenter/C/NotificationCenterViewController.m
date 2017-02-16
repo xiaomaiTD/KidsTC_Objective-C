@@ -16,6 +16,8 @@
 #import "SegueMaster.h"
 #import "KTCEmptyDataView.h"
 #import "TabBarController.h"
+#import "NSString+Category.h"
+#import "NotificationModel.h"
 
 #define pageCount 10
 @interface NotificationCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -158,6 +160,15 @@ static NSString *const NotificationCenterViewCellID = @"NotificationCenterViewCe
     }else if (item.segueModel){
         [SegueMaster makeSegueWithModel:item.segueModel fromController:self];
     }
+    if (item.status != NotificationStatusUnread) return;
+    if (![item.sysNo isNotNull]) return;
+    NSDictionary *params = @{@"ids":item.sysNo,
+                             @"remindType":@(RemindTypeNormol),
+                             @"messageType":@(MessageTypeUserCenter)};
+    [Request startWithName:@"PUSH_USER_READ_MESSAGE" param:params progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        item.status = NotificationStatusRead;
+        [tableView reloadData];
+    } failure:nil];
 }
 
 

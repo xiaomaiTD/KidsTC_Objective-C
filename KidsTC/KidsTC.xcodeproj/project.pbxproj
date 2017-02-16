@@ -48,6 +48,7 @@
 		61BCC6281E54247600245EB9 /* NearbyRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BCC6271E54247600245EB9 /* NearbyRecommendModel.m */; };
 		61BCC6311E54605A00245EB9 /* SeckillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BCC62F1E54605A00245EB9 /* SeckillViewController.m */; };
 		61BCC6321E54605A00245EB9 /* SeckillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BCC6301E54605A00245EB9 /* SeckillViewController.xib */; };
+		61BDB4AA1E55538D0068AD82 /* TCStoreDetailCouponItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 61BDB4A91E55538D0068AD82 /* TCStoreDetailCouponItemView.m */; };
 		61CA87A31E509CA700BF195A /* StoreDetailPackageMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CA87A11E509CA700BF195A /* StoreDetailPackageMoreViewController.m */; };
 		61CA87A41E509CA700BF195A /* StoreDetailPackageMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61CA87A21E509CA700BF195A /* StoreDetailPackageMoreViewController.xib */; };
 		61CA87A81E509D7900BF195A /* StoreDetailPackageMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CA87A61E509D7900BF195A /* StoreDetailPackageMoreCell.m */; };
@@ -1008,7 +1009,6 @@
 		EC35FBE91E266A2D0097BAB3 /* SeckillTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FBBF1E266A2D0097BAB3 /* SeckillTitleView.m */; };
 		EC35FBEA1E266A2D0097BAB3 /* SeckillTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FBC01E266A2D0097BAB3 /* SeckillTitleView.xib */; };
 		EC35FBEB1E266A2D0097BAB3 /* SeckillToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FBC31E266A2D0097BAB3 /* SeckillToolBar.m */; };
-		EC35FBEC1E266A2D0097BAB3 /* SeckillToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FBC41E266A2D0097BAB3 /* SeckillToolBar.xib */; };
 		EC35FBED1E266A2D0097BAB3 /* SeckillToolBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FBC61E266A2D0097BAB3 /* SeckillToolBarItem.m */; };
 		EC35FBEE1E266A2D0097BAB3 /* SeckillToolBarItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC35FBC71E266A2D0097BAB3 /* SeckillToolBarItem.xib */; };
 		EC35FBEF1E266A2D0097BAB3 /* SeckillView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC35FBCA1E266A2D0097BAB3 /* SeckillView.m */; };
@@ -2589,6 +2589,8 @@
 		61BCC62E1E54605A00245EB9 /* SeckillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeckillViewController.h; sourceTree = "<group>"; };
 		61BCC62F1E54605A00245EB9 /* SeckillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeckillViewController.m; sourceTree = "<group>"; };
 		61BCC6301E54605A00245EB9 /* SeckillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeckillViewController.xib; sourceTree = "<group>"; };
+		61BDB4A81E55538D0068AD82 /* TCStoreDetailCouponItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCStoreDetailCouponItemView.h; sourceTree = "<group>"; };
+		61BDB4A91E55538D0068AD82 /* TCStoreDetailCouponItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCStoreDetailCouponItemView.m; sourceTree = "<group>"; };
 		61CA87A01E509CA700BF195A /* StoreDetailPackageMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetailPackageMoreViewController.h; sourceTree = "<group>"; };
 		61CA87A11E509CA700BF195A /* StoreDetailPackageMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetailPackageMoreViewController.m; sourceTree = "<group>"; };
 		61CA87A21E509CA700BF195A /* StoreDetailPackageMoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreDetailPackageMoreViewController.xib; sourceTree = "<group>"; };
@@ -4166,7 +4168,6 @@
 		EC35FBC01E266A2D0097BAB3 /* SeckillTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeckillTitleView.xib; sourceTree = "<group>"; };
 		EC35FBC21E266A2D0097BAB3 /* SeckillToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeckillToolBar.h; sourceTree = "<group>"; };
 		EC35FBC31E266A2D0097BAB3 /* SeckillToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeckillToolBar.m; sourceTree = "<group>"; };
-		EC35FBC41E266A2D0097BAB3 /* SeckillToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeckillToolBar.xib; sourceTree = "<group>"; };
 		EC35FBC51E266A2D0097BAB3 /* SeckillToolBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeckillToolBarItem.h; sourceTree = "<group>"; };
 		EC35FBC61E266A2D0097BAB3 /* SeckillToolBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeckillToolBarItem.m; sourceTree = "<group>"; };
 		EC35FBC71E266A2D0097BAB3 /* SeckillToolBarItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeckillToolBarItem.xib; sourceTree = "<group>"; };
@@ -12241,7 +12242,6 @@
 			children = (
 				EC35FBC21E266A2D0097BAB3 /* SeckillToolBar.h */,
 				EC35FBC31E266A2D0097BAB3 /* SeckillToolBar.m */,
-				EC35FBC41E266A2D0097BAB3 /* SeckillToolBar.xib */,
 				EC35FBC51E266A2D0097BAB3 /* SeckillToolBarItem.h */,
 				EC35FBC61E266A2D0097BAB3 /* SeckillToolBarItem.m */,
 				EC35FBC71E266A2D0097BAB3 /* SeckillToolBarItem.xib */,
@@ -19435,6 +19435,8 @@
 				ECDFC1A41E4C7BB400ECAF58 /* TCStoreDetailCouponCell.h */,
 				ECDFC1A51E4C7BB400ECAF58 /* TCStoreDetailCouponCell.m */,
 				ECDFC1A61E4C7BB400ECAF58 /* TCStoreDetailCouponCell.xib */,
+				61BDB4A81E55538D0068AD82 /* TCStoreDetailCouponItemView.h */,
+				61BDB4A91E55538D0068AD82 /* TCStoreDetailCouponItemView.m */,
 			);
 			path = TCStoreDetailCouponCell;
 			sourceTree = "<group>";
@@ -20714,7 +20716,6 @@
 				EC299A301E44842C0006B701 /* FlashServiceOrderDetailCountDownCell.xib in Resources */,
 				EC0044D51DE7F4E40042B701 /* ProductDetailTwoColumnConsultTipCell.xib in Resources */,
 				EC35FBE01E266A2D0097BAB3 /* SeckillSmallCell.xib in Resources */,
-				EC35FBEC1E266A2D0097BAB3 /* SeckillToolBar.xib in Resources */,
 				EC1E2FAE1D8286EC002381E7 /* ArticleWriteCoverCell.xib in Resources */,
 				EC4FC42F1D77CEE400BBD050 /* CommentDetailViewController.xib in Resources */,
 				ECBC97C31DFEE9C700B7386C /* ProductOrderNormalDetailPayInfoEmptyCell.xib in Resources */,
@@ -22250,6 +22251,7 @@
 				EC4FC4451D77CEE400BBD050 /* CommentDetailViewNormalHeaderCell.m in Sources */,
 				EC299BF11E4484310006B701 /* WholesaleProductDetailOtherProductModel.m in Sources */,
 				EC98B2801E4581A5002D66BF /* NormalProductDetailCommentScore.m in Sources */,
+				61BDB4AA1E55538D0068AD82 /* TCStoreDetailCouponItemView.m in Sources */,
 				EC4FC26C1D77CEE400BBD050 /* SegueModel.m in Sources */,
 				ECB4AD1F1E3761650036057A /* HomeTableIconsCell.m in Sources */,
 				EC43A2E21DC97FDC00A99638 /* ArticleHomeClassButton.m in Sources */,

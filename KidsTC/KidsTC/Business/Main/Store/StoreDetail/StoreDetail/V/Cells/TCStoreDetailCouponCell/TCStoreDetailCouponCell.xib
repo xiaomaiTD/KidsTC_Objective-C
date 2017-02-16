@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G1Y-ps-AgG">
                         <rect key="frame" x="15" y="12" width="290" height="49"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtl-FS-2yE">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtl-FS-2yE" userLabel="One" customClass="TCStoreDetailCouponItemView">
                                 <rect key="frame" x="0.0" y="0.0" width="88.5" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="m82-Kw-Zm3">
@@ -54,18 +54,25 @@
                                             <constraint firstItem="0lC-iz-9Nk" firstAttribute="leading" secondItem="HMv-IP-QyC" secondAttribute="leading" id="nkP-kH-HQT"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon_get_log" translatesAutoresizingMaskIntoConstraints="NO" id="QBs-py-W25">
+                                        <rect key="frame" x="0.0" y="0.0" width="88.5" height="49"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDd-dl-5Ka">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="49"/>
                                         <connections>
-                                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kVF-KE-bqr"/>
+                                            <action selector="action:" destination="xtl-FS-2yE" eventType="touchUpInside" id="3eK-YO-wod"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QBs-py-W25" secondAttribute="trailing" id="0mY-LN-aAv"/>
                                     <constraint firstItem="m82-Kw-Zm3" firstAttribute="leading" secondItem="xtl-FS-2yE" secondAttribute="leading" id="8q6-U5-7ER"/>
+                                    <constraint firstItem="QBs-py-W25" firstAttribute="leading" secondItem="xtl-FS-2yE" secondAttribute="leading" id="DWQ-Si-UTb"/>
                                     <constraint firstAttribute="trailing" secondItem="m82-Kw-Zm3" secondAttribute="trailing" id="ICM-MU-ydO"/>
                                     <constraint firstItem="CDd-dl-5Ka" firstAttribute="leading" secondItem="xtl-FS-2yE" secondAttribute="leading" id="MEJ-ez-77u"/>
+                                    <constraint firstItem="QBs-py-W25" firstAttribute="top" secondItem="xtl-FS-2yE" secondAttribute="top" id="Mp3-ng-Q5M"/>
+                                    <constraint firstAttribute="bottom" secondItem="QBs-py-W25" secondAttribute="bottom" id="NXc-7d-0Jj"/>
                                     <constraint firstItem="HMv-IP-QyC" firstAttribute="centerY" secondItem="xtl-FS-2yE" secondAttribute="centerY" id="ZNQ-8r-Lke"/>
                                     <constraint firstItem="CDd-dl-5Ka" firstAttribute="top" secondItem="xtl-FS-2yE" secondAttribute="top" id="adx-o7-jkz"/>
                                     <constraint firstAttribute="bottom" secondItem="m82-Kw-Zm3" secondAttribute="bottom" id="afh-Ge-cXv"/>
@@ -74,8 +81,13 @@
                                     <constraint firstAttribute="trailing" secondItem="CDd-dl-5Ka" secondAttribute="trailing" id="uGM-3g-qH4"/>
                                     <constraint firstItem="HMv-IP-QyC" firstAttribute="centerX" secondItem="xtl-FS-2yE" secondAttribute="centerX" id="wUa-zt-wyu"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="bgImg" destination="m82-Kw-Zm3" id="qld-CH-kk1"/>
+                                    <outlet property="bgImg_get_log" destination="QBs-py-W25" id="kfv-4b-t6d"/>
+                                    <outlet property="titleL" destination="c5t-pG-fGB" id="zIA-js-1Jy"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-Hi-BoU">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1T-Hi-BoU" userLabel="Two" customClass="TCStoreDetailCouponItemView">
                                 <rect key="frame" x="100" y="0.0" width="89" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="BMc-og-DjE">
@@ -108,10 +120,13 @@
                                             <constraint firstItem="wQs-ly-fYs" firstAttribute="top" secondItem="lDB-rl-tBl" secondAttribute="top" id="vz1-SK-bFp"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon_get_log" translatesAutoresizingMaskIntoConstraints="NO" id="Tpv-eD-AMo">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="49"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRB-BW-zrD">
                                         <rect key="frame" x="0.0" y="0.0" width="89" height="49"/>
                                         <connections>
-                                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="N13-Lc-C9T"/>
+                                            <action selector="action:" destination="S1T-Hi-BoU" eventType="touchUpInside" id="tmV-pY-br9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -119,17 +134,26 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pRB-BW-zrD" secondAttribute="trailing" id="35W-pG-0Kr"/>
                                     <constraint firstItem="lDB-rl-tBl" firstAttribute="centerY" secondItem="S1T-Hi-BoU" secondAttribute="centerY" id="3S8-e1-Ds0"/>
+                                    <constraint firstItem="Tpv-eD-AMo" firstAttribute="leading" secondItem="S1T-Hi-BoU" secondAttribute="leading" id="C0J-au-zXI"/>
                                     <constraint firstItem="pRB-BW-zrD" firstAttribute="leading" secondItem="S1T-Hi-BoU" secondAttribute="leading" id="Er0-iO-7XP"/>
                                     <constraint firstAttribute="bottom" secondItem="pRB-BW-zrD" secondAttribute="bottom" id="FQY-FV-AI5"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tpv-eD-AMo" secondAttribute="bottom" id="HIf-s6-hnB"/>
                                     <constraint firstItem="lDB-rl-tBl" firstAttribute="centerX" secondItem="S1T-Hi-BoU" secondAttribute="centerX" id="Hbw-Tl-uit"/>
                                     <constraint firstItem="BMc-og-DjE" firstAttribute="leading" secondItem="S1T-Hi-BoU" secondAttribute="leading" id="NyM-GF-3Cl"/>
                                     <constraint firstItem="BMc-og-DjE" firstAttribute="top" secondItem="S1T-Hi-BoU" secondAttribute="top" id="PdB-bn-WX0"/>
                                     <constraint firstItem="pRB-BW-zrD" firstAttribute="top" secondItem="S1T-Hi-BoU" secondAttribute="top" id="UXX-Vp-hJA"/>
                                     <constraint firstAttribute="trailing" secondItem="BMc-og-DjE" secondAttribute="trailing" id="hNQ-OK-cwi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tpv-eD-AMo" secondAttribute="trailing" id="t2U-LY-4E2"/>
                                     <constraint firstAttribute="bottom" secondItem="BMc-og-DjE" secondAttribute="bottom" id="vVL-J6-Y4J"/>
+                                    <constraint firstItem="Tpv-eD-AMo" firstAttribute="top" secondItem="S1T-Hi-BoU" secondAttribute="top" id="yHA-XZ-Np0"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="bgImg" destination="BMc-og-DjE" id="Zur-lz-iYe"/>
+                                    <outlet property="bgImg_get_log" destination="Tpv-eD-AMo" id="6da-PI-eEs"/>
+                                    <outlet property="titleL" destination="1GQ-Tl-GP7" id="qSd-5m-i7R"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-0k-bI3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-0k-bI3" userLabel="Three" customClass="TCStoreDetailCouponItemView">
                                 <rect key="frame" x="201.5" y="0.0" width="88.5" height="49"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon" translatesAutoresizingMaskIntoConstraints="NO" id="rfm-cK-zcU">
@@ -162,26 +186,38 @@
                                             <constraint firstAttribute="trailing" secondItem="Qom-Bx-hXJ" secondAttribute="trailing" id="xeY-05-aYe"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StoreDetail_coupon_get_log" translatesAutoresizingMaskIntoConstraints="NO" id="lDw-Eh-dt3">
+                                        <rect key="frame" x="-0.5" y="0.0" width="88.5" height="49"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-4x-M0k">
                                         <rect key="frame" x="0.0" y="0.0" width="88.5" height="49"/>
                                         <connections>
-                                            <action selector="action:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Oiy-b2-ppa"/>
+                                            <action selector="action:" destination="EE9-0k-bI3" eventType="touchUpInside" id="RBZ-Yy-1tW"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lDw-Eh-dt3" secondAttribute="bottom" id="CMr-z9-3g2"/>
+                                    <constraint firstItem="lDw-Eh-dt3" firstAttribute="top" secondItem="EE9-0k-bI3" secondAttribute="top" id="Cl3-9e-lgp"/>
                                     <constraint firstItem="YXJ-rX-2uF" firstAttribute="centerX" secondItem="EE9-0k-bI3" secondAttribute="centerX" id="FxF-gu-hzz"/>
                                     <constraint firstAttribute="trailing" secondItem="mhw-4x-M0k" secondAttribute="trailing" id="KQl-qM-GHa"/>
                                     <constraint firstItem="rfm-cK-zcU" firstAttribute="top" secondItem="EE9-0k-bI3" secondAttribute="top" id="WHT-il-2sl"/>
                                     <constraint firstAttribute="bottom" secondItem="mhw-4x-M0k" secondAttribute="bottom" id="bkM-fK-MYk"/>
                                     <constraint firstItem="rfm-cK-zcU" firstAttribute="leading" secondItem="EE9-0k-bI3" secondAttribute="leading" id="c89-7b-k0V"/>
+                                    <constraint firstItem="lDw-Eh-dt3" firstAttribute="leading" secondItem="EE9-0k-bI3" secondAttribute="leading" id="fYa-bE-a0G"/>
                                     <constraint firstItem="mhw-4x-M0k" firstAttribute="leading" secondItem="EE9-0k-bI3" secondAttribute="leading" id="kPm-5C-zb8"/>
                                     <constraint firstItem="YXJ-rX-2uF" firstAttribute="centerY" secondItem="EE9-0k-bI3" secondAttribute="centerY" id="lkT-P3-moq"/>
                                     <constraint firstAttribute="trailing" secondItem="rfm-cK-zcU" secondAttribute="trailing" id="nLy-ky-Hb6"/>
+                                    <constraint firstAttribute="trailing" secondItem="lDw-Eh-dt3" secondAttribute="trailing" id="wkh-d7-li3"/>
                                     <constraint firstAttribute="bottom" secondItem="rfm-cK-zcU" secondAttribute="bottom" id="wsB-P6-2vx"/>
                                     <constraint firstItem="mhw-4x-M0k" firstAttribute="top" secondItem="EE9-0k-bI3" secondAttribute="top" id="ymP-WO-Xdc"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="bgImg" destination="rfm-cK-zcU" id="sbe-c5-vjB"/>
+                                    <outlet property="bgImg_get_log" destination="lDw-Eh-dt3" id="6fT-Dz-lAs"/>
+                                    <outlet property="titleL" destination="Qom-Bx-hXJ" id="jDt-gB-yje"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -210,20 +246,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outletCollection property="coupons" destination="xtl-FS-2yE" id="SFM-Eo-L1F"/>
-                <outletCollection property="coupons" destination="S1T-Hi-BoU" id="n3x-mG-hM4"/>
-                <outletCollection property="coupons" destination="EE9-0k-bI3" id="oX2-rF-c7a"/>
-                <outletCollection property="labels" destination="c5t-pG-fGB" id="3WV-Kf-CMh"/>
-                <outletCollection property="labels" destination="1GQ-Tl-GP7" id="8H1-BS-quo"/>
-                <outletCollection property="labels" destination="Qom-Bx-hXJ" id="TOE-2A-6iQ"/>
-                <outletCollection property="btns" destination="CDd-dl-5Ka" id="psf-VM-3cV"/>
-                <outletCollection property="btns" destination="pRB-BW-zrD" id="qnZ-0I-dLq"/>
-                <outletCollection property="btns" destination="mhw-4x-M0k" id="Y0k-8B-feW"/>
+                <outletCollection property="coupons" destination="xtl-FS-2yE" id="Pj9-OW-j36"/>
+                <outletCollection property="coupons" destination="S1T-Hi-BoU" id="3A5-6r-cP6"/>
+                <outletCollection property="coupons" destination="EE9-0k-bI3" id="KKN-OJ-HhZ"/>
             </connections>
             <point key="canvasLocation" x="98" y="4"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="StoreDetail_coupon" width="440" height="204"/>
+        <image name="StoreDetail_coupon_get_log" width="440" height="204"/>
     </resources>
 </document>

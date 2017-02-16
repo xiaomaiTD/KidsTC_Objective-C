@@ -96,7 +96,7 @@ pathForResource:path ofType:@"" inDirectory:@"SynchronizedData"]
 #define PLACEHOLDERIMAGE_BIG_LOG ([UIImage imageWithColor:[UIColor colorFromHexString:@"f4dfdf"]])
 
 #pragma mark - 桌面同步路径
-#define DESKTOP_SYNCHRONIZEDDATA(path) [NSString stringWithFormat:@"/Users/zhanping/Desktop/SynchronizedData/%@",path]
+#define DESKTOP_SYNCHRONIZEDDATA(path) [NSString stringWithFormat:@"/Users/tongchengmac-dev1/Desktop/SynchronizedData/%@",path]
 
 
 
