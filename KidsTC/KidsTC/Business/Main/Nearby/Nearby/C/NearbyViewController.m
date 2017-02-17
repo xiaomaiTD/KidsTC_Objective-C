@@ -74,6 +74,8 @@
     titleView.delegate = self;
     self.navigationItem.titleView = titleView;
     
+    [NotificationCenter addObserver:self selector:@selector(userLocation) name:kUserLocationHasChangedNotification object:nil];
+    
 }
 
 #pragma mark - NearbyTitleViewDelegate
@@ -206,7 +208,7 @@
         if (refresh) {
             data.data = items;
             data.placeInfo = placeInfo;
-            if ((index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData)) {
+            if ((index == 0) && placeInfo.isShow && (placeInfo.leftData || placeInfo.rightData) && data.data.count>0) {
                 [[GuideManager shareGuideManager] checkGuideWithTarget:self type:GuideTypeNearby resultBlock:nil];
             }
         }else{
@@ -306,6 +308,18 @@
     self.categoryValue = [NSString stringWithFormat:@"%@",item.value];
     self.datas = nil;
     self.nearbyView.datas = self.datas;
+}
+
+
+#pragma mark - userLocation
+
+- (void)userLocation {
+    self.datas = nil;
+    self.nearbyView.datas = self.datas;
+}
+
+- (void)dealloc {
+    [NotificationCenter removeObserver:self name:kUserLocationHasChangedNotification object:nil];
 }
 
 @end

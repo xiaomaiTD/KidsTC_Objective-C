@@ -31,6 +31,7 @@
 @interface WolesaleProductDetailViewController ()<WolesaleProductDetailViewDelegate,WholesalePickDateViewControllerDelegate>
 @property (nonatomic, strong) WolesaleProductDetailView *productDetailView;
 @property (nonatomic, strong) WolesaleProductDetailData *data;
+@property (nonatomic,assign) NSInteger page;
 @end
 
 @implementation WolesaleProductDetailViewController
@@ -85,7 +86,6 @@
     self.data = data;
     self.productDetailView.data = data;
     [self loadJoinTeam:@(1) showProgress:NO];
-    [self loadOtherProduct:@(1) showProgress:NO];
     
     if (data.fightGroupBase.detailV2) {
         self.pageId = 10408;
@@ -141,11 +141,6 @@
             [self loadJoinTeam:value showProgress:YES];
         }
             break;
-        case WolesaleProductDetailViewActionTypeLoadOtherProduct://加载其他拼团
-        {
-            [self loadOtherProduct:value showProgress:YES];
-        }
-            break;
         case WolesaleProductDetailViewActionTypeShare://分享
         {
             [self share];
@@ -169,6 +164,11 @@
         case WolesaleProductDetailViewActionTypeCountDownOver://倒计时结束
         {
             [self loadData];
+        }
+            break;
+        case WolesaleProductDetailViewActionTypeLoadStandard:
+        {
+            [self loadStandard];
         }
             break;
     }
@@ -265,29 +265,6 @@
         base.teams = model.data;
         if (base.teamCounts.count<1) {
             base.teamCounts = model.counts;
-        }
-        self.productDetailView.data = self.data;
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        if(showProgress)[TCProgressHUD dismissSVP];
-    }];
-}
-
-#pragma mark 加载其他拼团
-
-- (void)loadOtherProduct:(id)value showProgress:(BOOL)showProgress{
-    if (![value respondsToSelector:@selector(integerValue)]) return;
-    NSInteger pageIndex = [value integerValue];
-    NSDictionary *param = @{@"page":@(pageIndex),
-                            @"pageCount":@(5),
-                            @"fightGroupId":_productId};
-    if(showProgress)[TCProgressHUD showSVP];
-    [Request startWithName:@"GET_OTHER_PRODUCT_TUAN" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
-        if(showProgress)[TCProgressHUD dismissSVP];
-        WholesaleProductDetailOtherProductModel *model = [WholesaleProductDetailOtherProductModel modelWithDictionary:dic];
-        WholesaleProductDetailBase *base = self.data.fightGroupBase;
-        base.otherProducts = model.data;
-        if (base.otherProductCounts.count<1) {
-            base.otherProductCounts = model.counts;
         }
         self.productDetailView.data = self.data;
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
@@ -440,6 +417,31 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark LoadStandard
+
+- (void)loadStandard {
+    
+    NSDictionary *param = @{@"page":@(++self.page),
+                            @"pageCount":@(5),
+                            @"fightGroupId":_productId};
+    
+    [Request startWithName:@"GET_OTHER_PRODUCT_TUAN" param:param progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *dic) {
+        
+        WholesaleProductDetailOtherProductModel *model = [WholesaleProductDetailOtherProductModel modelWithDictionary:dic];
+        WholesaleProductDetailBase *base = self.data.fightGroupBase;
+        if (!base.otherProducts || base.otherProducts.count<1) {
+            base.otherProducts = model.data;
+        }else{
+            NSMutableArray *ary = [NSMutableArray arrayWithArray:base.otherProducts];
+            [ary addObjectsFromArray:model.data];
+            base.otherProducts = [NSArray arrayWithArray:ary];
+        }
+        self.productDetailView.data = self.data;
+        [self.productDetailView deailWithUI:model.data.count];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.productDetailView deailWithUI:0];
+    }];
+}
 
 
 @end

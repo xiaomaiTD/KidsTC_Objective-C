@@ -89,7 +89,10 @@ singleM(User)
             target = [TabBarController shareTabBarController].selectedViewController;
         }
         LoginViewController *controller = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-        controller.resultBlock = resultBlock;
+        controller.resultBlock = ^(NSString *uid, NSError*error) {
+            if (resultBlock) resultBlock(uid,error);
+            [self getUserPopulation];
+        };
         NavigationController *navi = [[NavigationController alloc]initWithRootViewController:controller];
         [target presentViewController:navi animated:YES completion:nil];
     }
@@ -204,6 +207,7 @@ singleM(User)
         Role *role = [Role roleWityID:data.WirelessPopulationType];
         if (data && role && _role.roleIdentifier != data.WirelessPopulationType) {
             self.role = role;
+            [NotificationCenter postNotificationName:kRoleHasChangedNotification object:nil];
         }else{
             //当用户没有年龄段的时候，同步本地年龄段到服务器
             [self updateUserPopulation];

@@ -39,7 +39,7 @@
 - (void)setSeat:(ProductDetailTicketSelectSeatSeat *)seat {
     _seat = seat;
     
-    self.priceL.text = [NSString stringWithFormat:@"%@",@(seat.price)];
+    self.priceL.text = [NSString stringWithFormat:@"¥%@",@(seat.price)];
     BOOL showOriginal = seat.orignalPrice>seat.price;
     self.origionalPriceL.text = showOriginal?[NSString stringWithFormat:@"¥%@",@(_seat.orignalPrice)]:nil;
     self.tipL.text = _seat.priceSortName;

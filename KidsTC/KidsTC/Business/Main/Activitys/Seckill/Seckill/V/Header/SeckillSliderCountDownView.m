@@ -51,7 +51,10 @@
         self.dayL.text = data.daysLeft;
         if ([data.daysLeft isNotNull]) {
             self.dayView.hidden = NO;
-            self.dayViewW.constant = [self.dayL.text sizeWithAttributes:@{NSFontAttributeName:self.dayL.font}].width + 15 + 8;
+            CGFloat w = 0;
+            w = [self.dayL.text sizeWithAttributes:@{NSFontAttributeName:self.dayL.font}].width + 15 + 8;
+            if (w<38) w = 38;
+            self.dayViewW.constant = w;
         }else{
             self.dayView.hidden = YES;
             self.dayViewW.constant = 0;

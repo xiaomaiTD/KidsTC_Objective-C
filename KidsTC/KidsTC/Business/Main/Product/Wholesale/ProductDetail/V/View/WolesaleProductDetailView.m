@@ -8,6 +8,7 @@
 
 #import "WolesaleProductDetailView.h"
 #import "NSString+Category.h"
+#import "RefreshFooter.h"
 
 #import "WolesaleProductDetailBaseCell.h"
 #import "WolesaleProductDetailProgressCell.h"
@@ -99,6 +100,11 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
     [self.tableView reloadData];
 }
 
+- (void)deailWithUI:(NSInteger)count {
+    [self.tableView.mj_footer endRefreshing];
+    if (count<1) [self.tableView.mj_footer endRefreshingWithNoMoreData];
+}
+
 #pragma mark - setupTableView
 
 - (void)setupTableView {
@@ -111,6 +117,19 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
     [self addSubview:tableView];
     self.tableView = tableView;
     [self registerCells];
+    
+    WeakSelf(self)
+    RefreshFooter *footer = [RefreshFooter footerWithRefreshingBlock:^{
+        StrongSelf(self)
+        [self loadMoreStandard];
+    }];
+    tableView.mj_footer = footer;
+}
+
+- (void)loadMoreStandard {
+    if ([self.delegate respondsToSelector:@selector(wolesaleProductDetailView:actionType:value:)]) {
+        [self.delegate wolesaleProductDetailView:self actionType:WolesaleProductDetailViewActionTypeLoadStandard value:nil];
+    }
 }
 
 - (void)registerCells {
@@ -261,12 +280,7 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
         otherPorductCell.otherProduct = otherProduct;
         if (otherPorductCell) [section04 addObject:otherPorductCell];
     }];
-    if (base.otherProductCounts.count>1) {
-        WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
-        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
-        joinCountCell_otherProducts.counts = base.otherProductCounts;
-        if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
-    }
+
     if(section04.count>0) [sections addObject:section04];
     
     self.sections = [NSArray arrayWithArray:sections];
@@ -419,12 +433,7 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
         otherPorductCell.otherProduct = otherProduct;
         if (otherPorductCell) [section04 addObject:otherPorductCell];
     }];
-    if (base.otherProductCounts.count>1) {
-        WolesaleProductDetailJoinCountCell *joinCountCell_otherProducts = [self cellWithID:JoinCountCellID];
-        joinCountCell_otherProducts.tag = WolesaleProductDetailBaseCellActionTypeLoadOtherProduct;
-        joinCountCell_otherProducts.counts = base.otherProductCounts;
-        if (joinCountCell_otherProducts) [section04 addObject:joinCountCell_otherProducts];
-    }
+
     if(section04.count>0) [sections addObject:section04];
     
     self.sections = [NSArray arrayWithArray:sections];
@@ -448,7 +457,7 @@ static NSString *const V2WebTitleCellID = @"WolesaleProductDetailV2WebTitleCell"
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return (section == self.sections.count - 1)?38:10;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="228.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJh-fS-fEz">
@@ -117,13 +117,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1k-c0-6MV">
-                                        <rect key="frame" x="30.5" y="50.5" width="16.5" height="19.5"/>
+                                        <rect key="frame" x="30.5" y="51.5" width="16.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥180" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-OX-JFt">
-                                        <rect key="frame" x="83.5" y="50.5" width="37" height="19.5"/>
+                                        <rect key="frame" x="83.5" y="51.5" width="37" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -150,9 +150,9 @@
                                     <constraint firstAttribute="bottom" secondItem="wdj-ln-ze5" secondAttribute="bottom" id="Dpm-nV-Hop"/>
                                     <constraint firstItem="UIG-Qd-fRK" firstAttribute="leading" secondItem="Vzt-lh-lbx" secondAttribute="leading" id="IBJ-lj-ize"/>
                                     <constraint firstItem="F1k-c0-6MV" firstAttribute="leading" secondItem="UIG-Qd-fRK" secondAttribute="trailing" id="KYh-FX-aXZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="F1k-c0-6MV" secondAttribute="bottom" id="LKg-zW-yYj"/>
+                                    <constraint firstAttribute="bottom" secondItem="F1k-c0-6MV" secondAttribute="bottom" constant="-1" id="LKg-zW-yYj"/>
                                     <constraint firstAttribute="trailing" secondItem="wdj-ln-ze5" secondAttribute="trailing" id="Lob-02-bHv"/>
-                                    <constraint firstAttribute="bottom" secondItem="sQ5-OX-JFt" secondAttribute="bottom" id="NnJ-2T-C0P"/>
+                                    <constraint firstAttribute="bottom" secondItem="sQ5-OX-JFt" secondAttribute="bottom" constant="-1" id="NnJ-2T-C0P"/>
                                     <constraint firstItem="ZPS-8n-FdC" firstAttribute="top" secondItem="Vzt-lh-lbx" secondAttribute="top" id="ZvD-g2-EgD"/>
                                     <constraint firstAttribute="trailing" secondItem="jR3-2p-WQn" secondAttribute="trailing" id="gi7-fx-hSt"/>
                                     <constraint firstAttribute="bottom" secondItem="UIG-Qd-fRK" secondAttribute="bottom" id="ky4-lw-h2M"/>
@@ -364,7 +364,7 @@
                 <outlet property="ticketTimeL" destination="wdj-ln-ze5" id="0gU-XA-ep7"/>
                 <outlet property="timeL" destination="ueE-m1-eoe" id="D1s-QE-Gdc"/>
             </connections>
-            <point key="canvasLocation" x="21" y="-236"/>
+            <point key="canvasLocation" x="268" y="-279"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -17,13 +17,15 @@ typedef enum : NSUInteger {
     WolesaleProductDetailViewActionTypeWebLoadFinish,//web加载完毕
     WolesaleProductDetailViewActionTypeOtherProduct,//其他拼团
     WolesaleProductDetailViewActionTypeLoadTeam,//加载参加其他团
-    WolesaleProductDetailViewActionTypeLoadOtherProduct,//加载其他拼团
     
     WolesaleProductDetailViewActionTypeShare = 50,//分享
     WolesaleProductDetailViewActionTypeJoin,//我要参团
     WolesaleProductDetailViewActionTypeSale,//我要组团
     WolesaleProductDetailViewActionTypeMySale,//我的拼团
     WolesaleProductDetailViewActionTypeCountDownOver,//倒计时结束
+    
+    WolesaleProductDetailViewActionTypeLoadStandard,//加载更多拼团
+    
 } WolesaleProductDetailViewActionType;
 
 @class WolesaleProductDetailView;
@@ -34,4 +36,5 @@ typedef enum : NSUInteger {
 @interface WolesaleProductDetailView : UIView
 @property (nonatomic, strong) WolesaleProductDetailData *data;
 @property (nonatomic, weak) id<WolesaleProductDetailViewDelegate> delegate;
+- (void)deailWithUI:(NSInteger)count;
 @end

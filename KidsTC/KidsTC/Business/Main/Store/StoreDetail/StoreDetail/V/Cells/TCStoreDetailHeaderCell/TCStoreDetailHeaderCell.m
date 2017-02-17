@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgImg;
 @property (weak, nonatomic) IBOutlet UIImageView *logImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameL;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nameLeadingMargin;
+
 @property (weak, nonatomic) IBOutlet FiveStarsView *starsView;
 @property (weak, nonatomic) IBOutlet UIView *verifyBGView;
 
@@ -44,7 +46,15 @@
         NSString *bgImg = narrowImg.firstObject;
         [self.bgImg sd_setImageWithURL:[NSURL URLWithString:bgImg] placeholderImage:PLACEHOLDERIMAGE_BIG];
     }
-    [self.logImg sd_setImageWithURL:[NSURL URLWithString:storeBase.logoImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+    if ([storeBase.logoImg isNotNull]) {
+        self.logImg.hidden = NO;
+        [self.logImg sd_setImageWithURL:[NSURL URLWithString:storeBase.logoImg] placeholderImage:PLACEHOLDERIMAGE_SMALL_LOG];
+        self.nameLeadingMargin.constant = 52;
+    }else{
+        self.logImg.hidden = YES;
+        self.nameLeadingMargin.constant = 15;
+    }
+    
     self.verifyBGView.hidden = ![storeBase.verifyImg isNotNull];
     [self.verifyImg sd_setImageWithURL:[NSURL URLWithString:storeBase.verifyImg]];
     self.starsView.starNumber = storeBase.level;

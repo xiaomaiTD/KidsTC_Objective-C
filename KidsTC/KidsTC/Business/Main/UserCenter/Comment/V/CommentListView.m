@@ -218,7 +218,7 @@ static NSString *const kContentCellIdentifier = @"kCommentCellIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0;
+    return CGFLOAT_MIN;
 }
 
 

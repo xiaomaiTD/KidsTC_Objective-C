@@ -66,6 +66,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *priceTitle;
 @property (nonatomic, assign) CGFloat  price;
+@property (nonatomic, strong) NSString *priceSuffix;
 @property (nonatomic, assign) ProductDetailType productRedirect;
 /**SelfDefine*/
 @property (nonatomic, strong) SegueModel *segueModel;

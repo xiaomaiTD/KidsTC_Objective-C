@@ -23,6 +23,7 @@
 @implementation KTCBrowseHistoryViewServiceCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     
     [self.contentView setBackgroundColor:COLOR_BG_CEll];
     

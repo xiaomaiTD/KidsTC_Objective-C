@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *productTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceSuffixL;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintHeight;
 @end
 
@@ -40,6 +42,7 @@
     NSString *priceTitle = [product.priceTitle isNotNull]?[NSString stringWithFormat:@"%@:",product.priceTitle]:@"";
     self.priceTitleLabel.text = priceTitle;
     self.priceLabel.text = [NSString stringWithFormat:@"¥%0.1f",product.price];
+    self.priceSuffixL.text = [product.priceSuffix isNotNull]?product.priceSuffix:nil;
 }
 
 @end

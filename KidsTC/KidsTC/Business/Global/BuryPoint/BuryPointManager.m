@@ -277,7 +277,8 @@ static NSInteger errorCount = 0;
     NSString *deviceId = manager.deviceId;
     NSString *clientIp = [NSString deviceIPAdress];
     NSNumber *actionID = [NSNumber numberWithLong:actionId];
-    NSMutableDictionary *reportMsgDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:type,@"type",net,@"net" ,guid,@"guid",actionID,@"actionId",uid,@"uid",squence,@"squence",deviceId,@"deviceId",clientIp,@"clientIp",nil];
+    NSTimeInterval pageLoadTime = [[NSDate date] timeIntervalSince1970];
+    NSMutableDictionary *reportMsgDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:type,@"type",net,@"net" ,guid,@"guid",actionID,@"actionId",uid,@"uid",squence,@"squence",deviceId,@"deviceId",clientIp,@"clientIp",@(pageLoadTime*1000),@"pageLoadTime",nil];
     if (dic && [dic isKindOfClass:[NSDictionary class]] && dic.count>0) {
         NSString *paramsStr = [manager jsonWithObj:dic];
         if ([paramsStr isNotNull])[reportMsgDic setValue:paramsStr forKey:@"params"];

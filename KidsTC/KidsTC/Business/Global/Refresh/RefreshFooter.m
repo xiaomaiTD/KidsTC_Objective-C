@@ -186,9 +186,9 @@
 {
     [super placeSubviews];
     
-    CGFloat arrowCenterX = self.mj_w * 0.5;
+    CGFloat arrowCenterX = self.mj_w * 0.5-10;
     if (!self.stateLabel.hidden) {
-        arrowCenterX = self.mj_w * 0.5 * 0.6;
+        arrowCenterX = self.mj_w * 0.5 * 0.6-10;
         //self.labelLeftInset +self.stateLabel.mj_textWith * 0.5 + self.gifView.mj_w*0.5;
     }
     CGFloat arrowCenterY = self.mj_h * 0.5;

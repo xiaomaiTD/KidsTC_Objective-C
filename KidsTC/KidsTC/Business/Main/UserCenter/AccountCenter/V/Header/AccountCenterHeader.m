@@ -52,6 +52,8 @@
     UITapGestureRecognizer *tapRoleGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.roleBGView addGestureRecognizer:tapRoleGR];
     
+    [NotificationCenter addObserver:self selector:@selector(roleHasChange) name:kRoleHasChangedNotification object:nil];
+    
 }
 
 - (void)setupLayer:(CALayer *)layer {
@@ -88,6 +90,11 @@
     self.roleL.text = [User shareUser].role.statusName;
     self.roleBGView.hidden = ![self.roleL.text isNotNull];
 }
+
+- (void)roleHasChange {
+    self.roleL.text = [User shareUser].role.statusName;
+}
+
 - (IBAction)action:(UIButton *)sender {
     if ([self.delegate respondsToSelector:@selector(accountCenterHeader:actionType:value:)]) {
         [self.delegate accountCenterHeader:self actionType:sender.tag value:nil];
@@ -99,6 +106,10 @@
     if ([self.delegate respondsToSelector:@selector(accountCenterHeader:actionType:value:)]) {
         [self.delegate accountCenterHeader:self actionType:view.tag value:nil];
     }
+}
+
+- (void)dealloc {
+    [NotificationCenter removeObserver:self name:kRoleHasChangedNotification object:nil];
 }
 
 @end

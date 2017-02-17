@@ -18,6 +18,8 @@
 		61054DEC1E54046300E2E1AD /* NearbyViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 61054DE61E54046300E2E1AD /* NearbyViewFlowLayout.m */; };
 		61054DF21E540B8400E2E1AD /* NearbyTableViewEmptyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 61054DF11E540B8400E2E1AD /* NearbyTableViewEmptyHeader.m */; };
 		61054DF41E540B8E00E2E1AD /* NearbyTableViewEmptyHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61054DF31E540B8E00E2E1AD /* NearbyTableViewEmptyHeader.xib */; };
+		611280F11E569DBA009606B5 /* ProductDetailAdvanceFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 611280EF1E569DBA009606B5 /* ProductDetailAdvanceFirstCell.m */; };
+		611280F21E569DBA009606B5 /* ProductDetailAdvanceFirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 611280F01E569DBA009606B5 /* ProductDetailAdvanceFirstCell.xib */; };
 		615BDABE1E517A35007977C9 /* ScoreRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 615BDABD1E517A35007977C9 /* ScoreRecordModel.m */; };
 		615BDAC11E517B2B007977C9 /* ScoreRecordItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 615BDAC01E517B2B007977C9 /* ScoreRecordItem.m */; };
 		615BDACA1E5191AE007977C9 /* ScoreUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 615BDAC91E5191AE007977C9 /* ScoreUserInfoModel.m */; };
@@ -2536,6 +2538,9 @@
 		61054DF01E540B8400E2E1AD /* NearbyTableViewEmptyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewEmptyHeader.h; sourceTree = "<group>"; };
 		61054DF11E540B8400E2E1AD /* NearbyTableViewEmptyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewEmptyHeader.m; sourceTree = "<group>"; };
 		61054DF31E540B8E00E2E1AD /* NearbyTableViewEmptyHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearbyTableViewEmptyHeader.xib; sourceTree = "<group>"; };
+		611280EE1E569DBA009606B5 /* ProductDetailAdvanceFirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailAdvanceFirstCell.h; sourceTree = "<group>"; };
+		611280EF1E569DBA009606B5 /* ProductDetailAdvanceFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailAdvanceFirstCell.m; sourceTree = "<group>"; };
+		611280F01E569DBA009606B5 /* ProductDetailAdvanceFirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailAdvanceFirstCell.xib; sourceTree = "<group>"; };
 		615BDABC1E517A35007977C9 /* ScoreRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreRecordModel.h; path = KidsTC/Business/Main/Store/StoreDetail/PackageMore/ScoreRecordModel.h; sourceTree = SOURCE_ROOT; };
 		615BDABD1E517A35007977C9 /* ScoreRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreRecordModel.m; path = KidsTC/Business/Main/Store/StoreDetail/PackageMore/ScoreRecordModel.m; sourceTree = SOURCE_ROOT; };
 		615BDABF1E517B2B007977C9 /* ScoreRecordItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreRecordItem.h; path = KidsTC/Business/Main/Store/StoreDetail/PackageMore/ScoreRecordItem.h; sourceTree = SOURCE_ROOT; };
@@ -6697,6 +6702,16 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		611280ED1E569DBA009606B5 /* ProductDetailAdvanceFirstCell */ = {
+			isa = PBXGroup;
+			children = (
+				611280EE1E569DBA009606B5 /* ProductDetailAdvanceFirstCell.h */,
+				611280EF1E569DBA009606B5 /* ProductDetailAdvanceFirstCell.m */,
+				611280F01E569DBA009606B5 /* ProductDetailAdvanceFirstCell.xib */,
+			);
+			path = ProductDetailAdvanceFirstCell;
+			sourceTree = "<group>";
+		};
 		615BDAE21E51A37E007977C9 /* M */ = {
 			isa = PBXGroup;
 			children = (
@@ -6918,6 +6933,7 @@
 				EC0043C41DE6B8970042B701 /* ProductDetailTicketPromiseCell */,
 				EC0043C81DE6B8970042B701 /* ProductDetailTitleCell */,
 				EC0044B41DE7F4E40042B701 /* ProductDetailTwoColumnViews */,
+				611280ED1E569DBA009606B5 /* ProductDetailAdvanceFirstCell */,
 				ECDD5B7A1E4DBF3E001467EB /* ProductDetailAdvanceCell */,
 				ECCF496B1E2C7A0100C4DDB3 /* ProductDetailVideoCell */,
 			);
@@ -20955,6 +20971,7 @@
 				EC9774C91E0B85CC00980C4A /* RecommendStoreCollectStoreFooter.xib in Resources */,
 				EC98B3341E458F11002D66BF /* NormalProductDetailContentEleCell.xib in Resources */,
 				EC0044471DE6B8980042B701 /* ProductDetailViewTicketHeader.xib in Resources */,
+				611280F21E569DBA009606B5 /* ProductDetailAdvanceFirstCell.xib in Resources */,
 				EC739DD31E1B638C0027E91E /* ProductOrderFreeListBaseCell.xib in Resources */,
 				ECB3E7811D92C82E0059267D /* OrderBookingSelectAgeCell.xib in Resources */,
 				EC2F26BE1DD9BF8300B67BBA /* CollectionStoreCell.xib in Resources */,
@@ -21930,6 +21947,7 @@
 				EC4FC5EB1D77CEEF00BBD050 /* StepperView.m in Sources */,
 				EC486F531DF852A9005CA365 /* SearchResultProduct.m in Sources */,
 				ECCF47CF1E273E4D00C4DDB3 /* SeckillOtherRightCell.m in Sources */,
+				611280F11E569DBA009606B5 /* ProductDetailAdvanceFirstCell.m in Sources */,
 				EC00441C1DE6B8970042B701 /* ProductDetailInfoCell.m in Sources */,
 				EC4870601DFC18B5005CA365 /* ProductOrderFreeDetailStore.m in Sources */,
 				EC299A2A1E44842C0006B701 /* FlashServiceOrderDetailBaseCell.m in Sources */,
@@ -23028,7 +23046,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kidstc.iPhoneKidsTC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a7c648c1-706a-484a-b00d-46ac30e174e5";
+				PROVISIONING_PROFILE = "7d23e0ed-62a9-4ce4-9775-b9e0ca1e5d80";
 				PROVISIONING_PROFILE_SPECIFIER = iPhoneAppID_DEV_Profile;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -14,6 +14,4 @@
 @property (nonatomic, strong) NSArray<WholesaleProductDetailOtherProduct *> *data;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSString *page;
-//selfDefine
-@property (nonatomic, strong) NSArray<WholesaleProductDetailCount *> *counts;
 @end

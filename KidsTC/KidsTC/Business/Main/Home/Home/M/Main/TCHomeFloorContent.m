@@ -256,7 +256,7 @@
                 }
                 
                 if (_address) {
-                    NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:title];
+                    NSMutableAttributedString *attStoreAddress = [[NSMutableAttributedString alloc] initWithString:_address];
                     attStoreAddress.color = [UIColor colorFromHexString:@"A9A9A9"];
                     attStoreAddress.font = [UIFont systemFontOfSize:11];
                     attStoreAddress.alignment = NSTextAlignmentLeft;

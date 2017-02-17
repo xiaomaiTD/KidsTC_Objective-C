@@ -1045,4 +1045,10 @@ typedef enum : NSUInteger {
     };
     [self presentViewController:controller animated:YES completion:nil];
 }
+
+- (void)dealloc {
+    self.webView.delegate = nil;
+    self.webView.scrollView.delegate = nil;
+}
+
 @end

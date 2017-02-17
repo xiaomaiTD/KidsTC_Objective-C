@@ -19,9 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *sureBtn;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineConstraintHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *HLineTwoConstraintHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *VLineConstraintWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *AlertViewConstraintBottomMargin;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyBoardMrginH;
 
 @end
 
@@ -35,7 +35,9 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     self.HLineConstraintHeight.constant = LINE_H;
+    self.HLineTwoConstraintHeight.constant = LINE_H;
     self.VLineConstraintWidth.constant = LINE_H;
+    
     self.cancleBtn.tag = ServiceSettlementPickScoreActionTypeCancle;
     self.sureBtn.tag = ServiceSettlementPickScoreActionTypeSure;
     
@@ -94,7 +96,6 @@
     }];
 }
 
-
 - (void)textFieldTextDidChange:(UITextField *)textField {
     NSUInteger numVlaue = [textField.text integerValue];
     if (textField.text.length>0) {
@@ -119,13 +120,13 @@
 
 - (void)keyboardWillShow:(NSNotification *)noti {
     [super keyboardWillShow:noti];
-    self.keyBoardMrginH.constant = self.keyboardHeight + 16;
+    self.AlertViewConstraintBottomMargin.constant = self.keyboardHeight;
     [self.view layoutIfNeeded];
 }
 
 - (void)keyboardWillDisappear:(NSNotification *)noti {
     [super keyboardWillDisappear:noti];
-    self.keyBoardMrginH.constant = 159;
+    self.AlertViewConstraintBottomMargin.constant = 0;
     [self.view layoutIfNeeded];
 }
 

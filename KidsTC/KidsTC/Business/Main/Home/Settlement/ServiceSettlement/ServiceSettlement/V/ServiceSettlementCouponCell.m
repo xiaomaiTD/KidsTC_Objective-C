@@ -80,12 +80,12 @@
     }
     self.couponPriceTipLabel.hidden = !item.maxCoupon;
     if (!self.couponPriceTipLabel.hidden) {
-        self.couponPriceTipLabel.text = item.maxCoupon.desc;
+        self.couponPriceTipLabel.text = item.maxCoupon.name;
     }
     
     NSString *couponTip = @"";
     if (count==0) {
-        couponTip = @"不可使用";
+        couponTip = @"无可用优惠券";
         self.couponArrowImg.hidden = YES;
     }else{
         self.couponArrowImg.hidden = NO;
