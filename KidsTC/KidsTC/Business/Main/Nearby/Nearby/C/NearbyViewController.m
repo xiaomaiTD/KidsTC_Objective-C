@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSString *categoryValue;
 @property (nonatomic,assign) NSInteger recommendPage;
 @property (nonatomic,strong) NSArray<NearbyItem *> *recommendDatas;
+@property (nonatomic,assign) BOOL changeLocalAddress;
 @end
 
 @implementation NearbyViewController
@@ -75,7 +76,6 @@
     self.navigationItem.titleView = titleView;
     
     [NotificationCenter addObserver:self selector:@selector(userLocation) name:kUserLocationHasChangedNotification object:nil];
-    
 }
 
 #pragma mark - NearbyTitleViewDelegate
@@ -87,6 +87,7 @@
             MapLocateViewController *controller = [[MapLocateViewController alloc]init];
             [self.navigationController pushViewController:controller animated:YES];
             [BuryPointManager trackEvent:@"event_skip_nearby_location" actionId:21700 params:nil];
+            self.changeLocalAddress = YES;
         }
             break;
             
@@ -141,7 +142,7 @@
             [self loadRecommendWithCell:cell refresh:value];
         }
             break;
-            default:
+        default:
         {
             [self nursery:type data:value];
         }
@@ -314,8 +315,10 @@
 #pragma mark - userLocation
 
 - (void)userLocation {
+    if (!self.changeLocalAddress) return;
     self.datas = nil;
     self.nearbyView.datas = self.datas;
+    self.changeLocalAddress = NO;
 }
 
 - (void)dealloc {

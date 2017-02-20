@@ -195,9 +195,15 @@
         [param setObject:price forKey:@"price"];
     }
     
+    BOOL hasUserAddress = self.data.hasUserAddress;
     NSString *addressId = self.data.userAddressInfo.ID;
-    if ([addressId isNotNull]) {
-        [param setObject:addressId forKey:@"addressId"];
+    if (hasUserAddress) {
+        if ([addressId isNotNull]) {
+            [param setObject:addressId forKey:@"addressId"];
+        }else{
+            [[iToast makeText:@"请填写收货地址"] show];
+            return;
+        }
     }
     
     NSString *storeId = self.data.store.storeId;

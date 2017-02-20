@@ -89,7 +89,7 @@ typedef enum : NSUInteger {
     [self loadData];
     
     [self setupNavigationItems];
-
+    
     WeakSelf(self)
     self.failurePageActionBlock = ^(){
         StrongSelf(self)
@@ -107,9 +107,9 @@ typedef enum : NSUInteger {
     
     /*
      if (![[urlStr lowercaseString] hasPrefix:@"http"]) {
-        [[iToast makeText:@"无效的网页地址"] show];
-        [self back];
-        return;
+     [[iToast makeText:@"无效的网页地址"] show];
+     [self back];
+     return;
      }
      */
     
@@ -165,6 +165,9 @@ typedef enum : NSUInteger {
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"ProductDetail_navi_more" highImageName:nil postion:UIBarButtonPositionRightCenter target:self action:@selector(rightBarButtonItemAction)];
 }
+
+- (void)setupBackItem:(NSString *)imageName
+        highImageName:(NSString *)highImageName{}
 
 - (void)webBack {
     if (self.webView.canGoBack) {
@@ -222,7 +225,6 @@ typedef enum : NSUInteger {
 - (NSString *)getAppIconName{
     
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-    
     //获取app中所有icon名字数组
     NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
     //取最后一个icon的名字
@@ -304,7 +306,7 @@ typedef enum : NSUInteger {
     if(!self.navigationController) return;
     BOOL canGoBack = self.webView.canGoBack;
     BOOL naviCount = self.navigationController.viewControllers.count>1;
-    self.backBtn.hidden  = !(canGoBack || naviCount);
+    self.backWebBtn.hidden  = !(canGoBack || naviCount);
     self.closeBtn.hidden = !(canGoBack && naviCount);
 }
 
